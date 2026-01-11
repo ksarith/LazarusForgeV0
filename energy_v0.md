@@ -94,7 +94,8 @@ Energy independence is not assumed at v0.
 
 ## Metrics (Falsifiable)
 
-Primary metric:
+Primary metric:  
+**kWh consumed per kg of recovered usable output**
 
 Secondary indicators:
 - % energy supplied by recovered sources
