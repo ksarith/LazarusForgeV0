@@ -26,6 +26,101 @@ Absence does not invalidate the Forge, only limits it.
 
 
 
+## Bootstrap Doctrine
+
+### Purpose
+
+The Bootstrap Doctrine defines how a Lazarus Forge may begin operation **before** ideal components, refined materials, or industrial precision are available.
+
+It formalizes imperfect beginnings as a valid and expected state.
+
+---
+
+### Core Principle
+
+> **A component is sufficient if it allows the Forge loop to close.  
+> A component is critical if its absence permits silent failure.**
+
+Perfection is not required. **Closure is.**
+
+---
+
+### Tier −1: Bootstrap / Seed Components
+
+Bootstrap components are not optimized, durable, or efficient.  
+They exist solely to **enable the first self-improving loop**.
+
+Typical sources include:
+- Salvaged tools and appliances
+- Discarded electronics
+- Improvised mechanical assemblies
+- Manually operated systems
+
+Common examples:
+- High-torque DC motors or steppers (printers, tools)
+- Bearings, gears, rails, and fasteners from scrap
+- Repurposed power supplies, UPS units, or battery packs
+- Microcontrollers or single-board computers
+- Basic sensors (temperature, current, limit switches)
+
+These components are **expected to fail** and **expected to be replaced**.
+
+Failure is not a defect — **silence is**.
+
+---
+
+### Proxy Components & Downgrade Paths
+
+For every “ideal” component listed in this document, a Forge may begin with:
+
+- Lower-precision analogs
+- Manual or semi-manual processes
+- Open-loop control where closed-loop is unavailable
+- Human-in-the-loop verification
+
+Examples:
+- Laser metal deposition → MIG/TIG wire deposition
+- Inert gas chamber → sealed glove-box or purge bag
+- Automated handling → manual fixtures with jigs
+- Inline metrology → destructive testing and observation
+
+Each proxy exists to be **measured, understood, and replaced**, not immortalized.
+
+---
+
+### Graduation Rule
+
+A component graduates from bootstrap status when the Forge can:
+
+1. Detect its degradation or failure  
+2. Repair or replace it using internal capabilities  
+3. Improve its successor based on logged performance  
+
+Once graduated, it becomes a normal *Critical* or *Useful* component.
+
+---
+
+### Energy Awareness (Minimal v0 Rule)
+
+At bootstrap stage:
+- Exact efficiency is not required
+- **Energy visibility is**
+
+If energy draw cannot be observed or estimated, the Forge does not yet understand the component.
+
+---
+
+### Relationship to GECK
+
+The GECK defines the **minimum viable seed** required to initiate this doctrine.
+
+Components listed here represent:
+- One possible implementation path
+- Not a mandate
+- Not an assumption of industrial access
+
+Over time, GECK becomes primary; this document becomes reference.
+
 
 ---
 
