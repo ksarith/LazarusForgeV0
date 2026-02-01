@@ -1,246 +1,97 @@
-Air Scrubber v0 — Design Doctrine
-
-Purpose
-
-The Air Scrubber is a core stewardship subsystem of the Lazarus Forge. Its purpose is to prevent the release, accumulation, or uncontrolled transformation of hazardous airborne byproducts generated during Forge operation. The scrubber is not an accessory or afterthought; it is an enabling system without which the Forge shall not operate.
-
-The Air Scrubber exists to:
-
-Protect operators, nearby systems, and environments
-
-Prevent secondary hazard creation (e.g., toxic reaction products)
-
-Capture, stabilize, and channel byproducts into managed streams
-
-Provide diagnostic insight into Forge chemistry and health
-
-
-
----
-
-Design Philosophy
-
-1. Capture Is Part of Production
-
-All Forge processes assume byproduct generation. The Air Scrubber is designed as a continuation of the production path, not a cleanup step performed after the fact.
-
-No Forge mode assumes “clean exhaust.” Every mode assumes containment.
-
-
----
-
-2. Interaction Is Forced, Not Hoped For
-
-The system does not rely on dilution, dispersion, or passive escape.
-
-Airflow is deliberately manipulated to:
-
-Increase residence time
-
-Increase molecular and particulate interaction
-
-Convert mobile hazards into capturable forms
-
-
-The scrubber biases physics toward capture.
-
-
----
-
-3. Charge, Cool, Then Capture
-
-Hazardous species are most difficult to manage when they are hot, fast-moving, and neutral.
-
-The scrubber architecture follows a consistent logic:
-
-1. Charge airborne species to encourage attachment and agglomeration
-
-
-2. Cool the gas stream to reduce volatility and stabilize intermediates
-
-
-3. Capture contaminants into liquid or solid phases
-
-
-
-This ordering is intentional and forms the backbone of the system.
-
-
----
-
-4. Negative Pressure as a Safety Boundary
-
-The Air Scrubber operates under slight negative pressure relative to its surroundings.
-
-Design intent:
-
-Leaks draw air inward rather than expelling contaminants
-
-Loss of airflow is treated as a critical fault
-
-The Forge defaults to shutdown rather than uncontrolled exhaust
-
-
-Containment is maintained even during partial failure.
-
-
----
-
-Functional Architecture (Conceptual)
-
-Stage A — Sacrificial Mechanical Intercept
-
-Intent: Protect downstream stages and define a human-safe interaction point.
-
-Captures coarse particulates and debris
-
-Prevents fouling of ionization and wet stages
-
-Designed for frequent replacement or servicing
-
-
-This stage is treated as expendable by design.
-
-
----
-
-Stage B — Ionization / Electrostatic Conditioning
-
-Intent: Convert poorly behaved contaminants into cooperative ones.
-
-Imparts charge to particulates, aerosols, and vapors
-
-Encourages agglomeration and surface attachment
-
-Increases downstream capture efficiency
-
-
-Ionization energy is moderated; the goal is interaction, not destruction.
-
-Ozone or unintended reactive species are considered fault conditions and must be monitored.
-
-
----
-
-Stage C — Thermal Quench / Cooling Zone
-
-Intent: Reduce mobility, volatility, and reaction rates.
-
-Rapidly lowers gas temperature
-
-Encourages condensation of semi-volatile compounds
-
-Stabilizes charged species long enough for capture
-
-
-Cooling may be active or passive but must be explicit in design.
-
-
----
-
-Stage D — Wet Scrubbing / Water Column
-
-Intent: Perform bulk removal and phase transfer.
-
-This stage simultaneously:
-
-Absorbs soluble gases
-
-Captures charged and agglomerated particulates
-
-Condenses vapors into liquid form
-
-Removes heat from the exhaust stream
-
-
-Water is operated in a recirculating loop with monitoring. The scrubber assumes that captured material is hazardous until proven otherwise.
-
-
----
-
-Stage E — Polishing / Last-Chance Capture
-
-Intent: Avoid reliance on any single mechanism.
-
-Captures residual contaminants that escape primary stages
-
-Provides redundancy against upstream variability
-
-Serves as a final barrier before release
-
-
-The specific method is modular and may evolve without changing upstream philosophy.
-
-
----
-
-Waste as a Managed Output
-
-Captured materials are not treated as disposable nuisances.
-
-Liquids, sludges, and solids are routed into controlled handling paths
-
-Composition is monitored as a diagnostic signal
-
-Outputs may become future feedstock or require immobilization
-
-
-The Air Scrubber doubles as a sensor system for Forge chemistry.
-
-
----
-
-Monitoring & Failure Doctrine
-
-The scrubber is instrumented to detect:
-
-Loss of airflow or pressure balance
-
-Excessive ionization byproducts
-
-Water chemistry drift
-
-Overflow or carryover conditions
-
-
-Design rule:
-
-> If the scrubber cannot verify safe operation, the Forge does not run.
-
-
-
-Safety is enforced through system logic, not operator vigilance.
-
-
----
-
-Compatibility With Autonomous Operation
-
-While this document does not prescribe control software, the Air Scrubber is designed to:
-
-Operate continuously without manual tuning
-
-Provide clear health signals to supervisory systems
-
-Fail into containment rather than release
-
-
-Human oversight is optional; stewardship is not.
-
-
----
-
-Summary Doctrine
-
-The Air Scrubber is not a filter.
-
-It is a boundary system that:
-
-Forces hazardous matter into managed forms
-
-Prevents accidental chemistry
-
-Makes responsible operation possible at scale
-
-
-A Forge that cannot clean up after itself is incomplete by definition.
+# Air_Scrubber_v0.md
+
+**Purpose**  
+Primary safety module for Lazarus Forge: capture fumes, dust, volatiles, and aerosols generated during salvage processing (grinding, thermal steps, chemical exposure, spin/strat chambers) before they escape into the workspace or environment.  
+Core doctrine: **Capture is production** — captured material is feedstock, not waste.
+
+**Design Philosophy**  
+- Negative pressure containment boundary at all times  
+- Forced interaction between gas and capture medium (no passive settling)  
+- Modest energy draw — prioritize low-power fans/compressors over high-throughput  
+- Multi-stage progression: Charge → Cool → Capture  
+- Prefer wet methods for most streams (superior particle adhesion, cooling, and chemical trapping)  
+- Design for easy maintenance and media refresh using salvaged components  
+
+### Environmental & Marine Extension Potential
+
+While primarily designed for Forge fume/dust hazards (e.g., from Spin_Chamber or Stratification_Chamber exhaust), the bubble-column architecture naturally extends to marine applications via reverse-flow aeration in low-DO ocean zones. This enables:  
+- In-situ oxygenation and volatile capture testing  
+- Validation of scrubber robustness under pressure, corrosion, and biofouling  
+- Feedback loops for orbital volatile handling analogs (Astroid-miner synergies)  
+
+All extensions remain subordinate to the core negative-pressure safety boundary and modest energy ethos.
+
+**Functional Architecture (Baseline)**  
+1. **Charge Stage** — Ionization or electrostatic preconditioning to charge particles (optional but effective for sub-micron fines)  
+2. **Cool Stage** — Heat exchanger or mist quench to condense vapors and reduce gas temperature (prevents evaporation loss in wet stage)  
+3. **Capture Stage** — Bubble-column wet scrubber (preferred) or packed-bed variant  
+   - Gas forced upward through liquid pool with fine bubbles  
+   - High surface area contact → efficient trapping of particulates, acids, VOCs  
+
+**Preferred Methods & Variants**
+
+**Variant 1 — Baseline Bubble-Column (Aerated Pond Style)**  
+- Simple tank with submerged porous diffuser  
+- Air compressor forces gas through fine bubbles into scrubbing liquid (water + additives)  
+- Overflow or skimmer removes captured sludge  
+
+**Variant 2 — Packed Column with Recirculation**  
+- Gas rises through packed media (Raschig rings, pall rings, or salvaged plastic scraps) wetted by recirculating liquid  
+- Higher efficiency for soluble gases; higher pressure drop  
+
+**Variant 3 — Venturi Scrubber (High-Energy Option)**  
+- High-velocity throat atomizes liquid into gas stream  
+- Used only for very fine or sticky aerosols when bubble column insufficient  
+
+**Variant 4 — High-Pressure / Underwater Bubble-Column Extension (Leviathan-Compatible)**  
+For deep-ocean or high-humidity testing environments (e.g., Leviathan platform deployments in hypoxic/dead zones), adapt the baseline aerated pond-style bubbler into a reverse-flow or in-situ configuration:  
+
+- Inject compressed air (or oxygen-enriched mix) through submerged diffusers to create rising bubble plumes that enhance gas–liquid exchange.  
+- In "reverse scrubbing" mode, bubbles aerate low-DO water, capturing volatiles (e.g., H₂S, CO₂) into the gas phase for surface off-gassing analysis, or dissolving O₂ to test oxygenation efficiency.  
+- Key adaptations: Pressure-rated diffusers (porous hoses or fine-pore membranes) to match ambient depths (10–100 atm); recirculating loops if needed for closed-system tests; integration with onboard sensors for real-time pH, DO, turbidity, and gas composition.  
+- Rationale: Validates bubble efficiency under pressure/corrosive conditions analogous to salvage fume processing; provides data on residence time, mass transfer rates, and energy per m³ aerated.  
+- Quantitative targets (initial benchmarks from analogs): Achieve 10–30% DO saturation increase in <2 mg/L hypoxic water; bubble sizes 80–500 μm for optimal transfer; energy draw scaled to Leviathan nuclear/battery output (e.g., <100 W per 1–2 m³ plume).  
+- **Bubble Size Optimization**: Target 80–500 μm range for peak mass transfer coefficient (higher interfacial area without excessive coalescence); finer pores for deeper ops, coarser for energy savings in shallow tests.  
+- **Residence Time & Height Tuning**: Adjust column/submerged depth (1–3 m typical) to balance transfer efficiency vs. pressure drop; monitor via swarm sensors for real-time refinement.  
+- **Fouling Mitigation**: Periodic back-flush or additive dosing (e.g., low-concentration surfactants) to counter marine biofouling; test divergent variants in parallel.  
+
+This variant turns the scrubber into a dual-purpose tool: hazard containment in Forge ops and environmental remediation/testing in marine contexts.
+
+**Energy Awareness**  
+Conceptual ballpark ranges (Earth surface, standard conditions):  
+- Fan/compressor draw: 50–150 W (baseline bubble column)  
+- Ionization stage: 10–30 W  
+- Recirculation pump (if used): 20–80 W  
+Under high-pressure underwater loads, expect 20–50% uplift in air movement draw due to compression; swarm data will refine these estimates.  
+Goal: Stay well below 500 W total system draw even in worst-case variants.
+
+**Testing Extensions & Divergent Validation (Leviathan Integration)**
+
+To falsify assumptions and accelerate refinement, incorporate high-throughput, parallel testing via Leviathan swarm proxies:  
+
+- **Aeration Field Experiments** — Deploy 10–100+ miniaturized scrubber variants in mostly lifeless ocean zones (e.g., oxygen minimum zones). High-pressure air systems create controlled bubble plumes mid-water (avoiding sediment resuspension), churning for vertical mixing while monitoring air off-gassing quality (VOCs, CO₂) and water parameters (DO gradients, pH shifts, turbidity).  
+- **Divergent Setups** — Run simultaneous A/B/n variants: bubble-column vs. packed column; fine vs. coarse diffusers; ionization preconditioning on/off; different electrolytes/additives. Quantify KPIs: DO increase per kWh, mass transfer coefficient, fouling rates, and failure propagation across swarm.  
+- **Value & Metrics** — Generate terabytes of spatial/temporal data for statistical modeling; benchmark against analogs (e.g., 3–100× efficiency gains via optimized bubble size/hydrodynamic effects). Feed results into energy accounting (value recovered per kWh) and upstream triage adjustments.  
+- **Safety & Ethics** — Limit to hypoxic areas with low biodiversity; enforce autonomous shutdown on chemistry drift or unintended byproducts; open-source plume data for community remediation studies.  
+
+These extensions provide falsifiable, quantitative validation in extreme conditions, bridging Earth-bound salvage to potential orbital/volatile-capture applications.
+
+**Cross-Module & Leviathan Tie-ins**
+
+- `leviathan_testing.md` — Primary testbed: underwater bubble-column variants, swarm-scale divergent aeration/recovery ops, sensor fusion for plume monitoring.  
+- `Component_Triage_System.md` — Feedback from scrubber chemistry (e.g., captured volatiles/particulates) refines classification heuristics for marine artifacts.  
+- `Trajectories_LF.md` — Updated paths for gas/liquid byproducts during lift-bag assisted recovery or in-situ electrolysis.  
+- `energy_v0.md` — Aggregate swarm data refines modest-draw estimates (50–150 W baseline) under pressure-variable loads.  
+- `Spin_Chamber_v0.md` / `Stratification_Chamber_v0.md` — Exhaust routing tests in wet environments; potential centrifugal pre-separation before scrubbing.  
+- `geck_forge_seed.md` — Bootstrap minimal scrubber seeds for swarm self-deployment in remote tests.  
+- `Ship_of_Theseus_Right_to_Repair.md` — Scrubber as a "preservation enabler" during marine artifact recovery, delaying irreversible corrosion.
+
+**Next Steps / Planned**
+
+- Prototype pressure-rated diffuser payloads for Leviathan proxies.  
+- Simulate bubble dynamics (e.g., via open-source hydro tools) before lake/ocean drops near Jonesboro-area watersheds.  
+- Open issues for community input on fine-bubble variants or electrolytic preconditioning add-ons.  
+- Field test small-scale bubble-column in controlled tank/lake environment to baseline mass transfer rates.  
+- Explore integration with electrolytic stages for combined gas scrubbing + metal ion capture.
+
+Last updated: February 01, 2026
