@@ -213,3 +213,198 @@ Designs, materials, power systems, and deployment strategies are expected to cha
 Leviathan is an experiment.
 
 Experiments exist to be wrong — safely.
+
+
+# Leviathan Extensions Framework
+## Optional Capabilities and Scaled Learning Systems
+
+This document defines **non-core extensions** to the Leviathan Core Test Framework.
+
+Extensions are optional, modular, and explicitly **non-authoritative**.  
+They may be enabled, disabled, or abandoned without invalidating Leviathan Core results.
+
+Extensions exist to:
+- Accelerate learning
+- Increase test throughput
+- Explore emergent behavior
+- Stress inter-system coordination
+
+Failure within an extension is acceptable.
+Failure that contaminates Core assumptions is not.
+
+## Extension Philosophy
+
+Leviathan extensions assume that:
+- Errors are inevitable
+- Knowledge is unevenly distributed
+- Coordination introduces new failure modes
+
+Therefore, learning systems must:
+- Share insights without enforcing consensus
+- Propagate failure data faster than behavior changes
+- Prevent single-node pathologies from scaling unchecked
+
+No extension may override local autonomy or safety constraints.
+
+## Extension A — Distributed Leviathan Units
+
+Leviathan may be instantiated as a heterogeneous population of units rather than a single platform.
+
+Characteristics:
+- Mixed hardware capabilities
+- Divergent power budgets
+- Asymmetric sensor suites
+- Uneven mission objectives
+
+The goal is not coordination for efficiency, but **parallel falsification**.
+
+Swarm deployments are used to:
+- Expose rare or edge-case failures
+- Observe emergent behaviors
+- Measure failure propagation dynamics
+- Compare divergent strategies under identical conditions
+
+Consensus is not required.
+Disagreement is data.
+
+## Extension B — Cross-Unit Learning
+
+Leviathan units may exchange:
+- Failure summaries
+- Anomaly signatures
+- Environmental hazard markers
+- Resource exhaustion patterns
+- Post-mortem telemetry
+
+Learning is **asynchronous and non-binding**.
+
+Each unit retains the right to:
+- Ignore external recommendations
+- Weight peer data based on trust models
+- Reject updates that violate local constraints
+
+No unit may force behavioral updates onto another.
+
+## Networking and Communication Guidelines
+
+Leviathan networking exists to **share experience, not authority**.
+
+### Core Principles
+
+1. **Local Autonomy Is Absolute**
+   - Each unit must remain operationally independent
+   - Loss of network connectivity must not impair safety
+   - Network silence is a normal condition
+
+2. **Learning Is Advisory, Not Prescriptive**
+   - Shared data informs decision-making
+   - It does not mandate action
+   - No global policy enforcement is permitted
+
+3. **Errors Travel Faster Than Optimizations**
+   - Failure modes, hazards, and abort conditions have priority
+   - Performance improvements propagate slowly and skeptically
+
+4. **Trust Is Earned, Not Assumed**
+   - Units maintain trust scores for peers
+   - Repeated false positives or harmful advice reduce weight
+   - Trust decay is automatic and reversible
+
+5. **Bandwidth Is Precious**
+   - Prefer compressed summaries over raw data
+   - Transmit deltas, not full models
+   - Opportunistic sync is favored over continuous links
+
+## Communication Modes
+
+Leviathan networking supports multiple modes:
+
+- **Opportunistic Peer Exchange**
+  Short-range or intermittent data sharing between nearby units.
+
+- **Relay-Based Synchronization**
+  Periodic uploads via surface buoys, rafts, or support infrastructure.
+
+- **Delay-Tolerant Broadcasting**
+  Store-and-forward transmission for high-latency environments.
+
+No mode is assumed to be reliable, timely, or complete.
+
+## Knowledge Classification
+
+Shared knowledge is classified before propagation:
+
+### Tier 1 — Critical Failures (High Priority)
+- Catastrophic faults
+- Environmental hazards
+- Safety violations
+- Irrecoverable loss patterns
+
+Propagation: Immediate, wide distribution  
+Adoption: Local review required, default cautious weighting
+
+### Tier 2 — Degradation Patterns
+- Sensor drift signatures
+- Power decay trends
+- Biofouling or corrosion indicators
+
+Propagation: Opportunistic  
+Adoption: Probabilistic, context-dependent
+
+### Tier 3 — Optimizations and Heuristics
+- Efficiency improvements
+- Path planning tweaks
+- Resource utilization gains
+
+Propagation: Slow, selective  
+Adoption: Experimental only
+
+Speed kills. Caution scales.
+
+## Anti-Pattern Safeguards
+
+The system must actively resist:
+
+- Global behavior lock-in
+- Rapid convergence on untested strategies
+- Echo-chamber reinforcement
+- Runaway optimization cascades
+- Blind imitation of high-survival units
+
+Diversity is a safety feature, not a defect.
+
+## Scaling Considerations
+
+At scale (100s–1000s of units):
+- No global state is assumed
+- No universal clock exists
+- Partial knowledge is the norm
+
+The network behaves more like:
+- A rumor ecosystem
+- A distributed lab notebook
+- A failure-aware guild
+
+Not a hive mind.
+
+## Relationship to Lazarus Forge
+
+Leviathan extensions provide:
+- Empirical grounding for swarm-scale autonomy
+- Early warning of coordination pathologies
+- Data-driven refinement of forge-to-forge cooperation
+
+Lazarus Forge may inherit:
+- Communication patterns
+- Trust models
+- Failure classification schemas
+
+But not Leviathan’s test-specific constraints.
+
+## Status
+
+All extensions are experimental.
+
+They may be revised, disabled, or discarded independently of Leviathan Core.
+
+Extensions exist to explore the space of failure safely.
