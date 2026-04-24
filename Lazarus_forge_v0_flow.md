@@ -143,8 +143,9 @@ Human/AI Oversight Gate: Review items that failed Gates A–D but where reductio
 - Replacement components
 - Infrastructure for future Forge growth
 
-Fabrication is **not terminal**.
 Fabrication is driven by the needs of the Forge itself before external output. Priority order: (1) tools or components the Forge currently lacks, (2) infrastructure that expands Forge capability, (3) output for external use or exchange. A want becomes a need when its absence limits a higher-priority function.
+
+Fabrication is **not terminal**.
 
 ---
 
