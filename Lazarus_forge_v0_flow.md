@@ -200,3 +200,4 @@ This flow is intentionally conservative.
 Irreversibility is delayed.
 Human judgment is explicit.
 Automation is optional, not assumed.
+A want becomes a need when its absence limits a higher-priority function.
