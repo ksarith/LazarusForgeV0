@@ -85,7 +85,7 @@ Classification may be **overridden by human operator**.
 **If NO →** Human/AI Oversight Gate
 
 
-Human/AI Oversight Gate: Review items that failed Gates A–D but where reduction feels premature. Evaluate against active needs only — not hypothetical future uses. If a credible use case exists, assign it with a defined review date. If none, authorize reduction. If no genuine need exists, reduction proceeds without guilt. The gate prevents both hoarding ("maybe someday") and premature destruction.
+Human/AI Oversight Gate: Review items that failed Gates A–D but where reduction feels premature. Evaluate against active needs only — not hypothetical future uses. If a credible use case exists, assign it with a defined review date. If no genuine need exists, reduction proceeds without guilt. The gate prevents both hoarding ("maybe someday") and premature destruction.
 
 ---
 
