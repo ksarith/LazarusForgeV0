@@ -84,11 +84,8 @@ Classification may be **overridden by human operator**.
 **If YES →** Reduction  
 **If NO →** Human/AI Oversight Gate
 
-When a human or AI reviews something at Gate D that technically failed all gates but doesn't feel right to just reduce — the question to ask is:
-"Is there an active need this could partially serve, even imperfectly?"
-If yes, it gets a conditional reprieve — assigned to a specific need with a defined review point. If no genuine need exists, reduction proceeds without guilt. The gate prevents both hoarding ("maybe someday") and premature destruction. 
 
-Human/AI Oversight Gate: Review items that failed Gates A–D but where reduction feels premature. Evaluate against active needs only — not hypothetical future uses. If a credible use case exists, assign it with a defined review date. If none, authorize reduction. This gate exists to prevent both waste and accumulation.
+Human/AI Oversight Gate: Review items that failed Gates A–D but where reduction feels premature. Evaluate against active needs only — not hypothetical future uses. If a credible use case exists, assign it with a defined review date. If none, authorize reduction. If no genuine need exists, reduction proceeds without guilt. The gate prevents both hoarding ("maybe someday") and premature destruction.
 
 ---
 
