@@ -34,6 +34,9 @@ For a new reader or returning AI, read in this sequence:
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/README.md`
 Project landing page. Defines the salvage-first vision, five core principles, system scope, and the primary KPI. Honest about what v0 does and does not claim.
 
+**Auditor_Protocols.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Auditor_Protocols.md`
+
 **Lazarus_forge_v0_flow.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Lazarus_forge_v0_flow.md`
 The master decision flow. Eight sequential gates from intake through utilization, with explicit pass/fail logic at each stage. Includes the Human/AI Oversight Gate and the fabrication priority order. The governing document for all operational decisions.
