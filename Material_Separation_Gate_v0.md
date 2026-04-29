@@ -242,5 +242,3 @@ Ready for the repo. The reference sweep needed across other files:
 - `Spin_Chamber_v0.md` — likely references Stratification Chamber as upstream module
 - `Auditor_Protocols.md` — no direct reference but Discovery.md update covers it
 - `Astroid-miner` repo — check for any cross-repo references
-
-Want to tackle the reference sweep next, or move to `Support_Raft_v0.md` first?
