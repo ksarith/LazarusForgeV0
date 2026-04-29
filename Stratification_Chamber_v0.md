@@ -1,10 +1,11 @@
 # Stratification Chamber v0 — Selective Separation Module
+**Version 0.2**
+
+---
 
 ## Purpose
 
-The Stratification Chamber is a **pre-purification decision module** within the Lazarus Forge.
-Its goal is to **divert material away from energy-intensive melting and refinement**
-by recovering usable fractions earlier in the process.
+The Stratification Chamber is a **pre-purification decision module** within the Lazarus Forge. Its goal is to **divert material away from energy-intensive melting and refinement** by recovering usable fractions earlier in the process.
 
 It is not a smelter, refinery, or guarantee of purity.
 
@@ -12,10 +13,15 @@ Success is defined by *avoided processing*, not perfect separation.
 
 ---
 
+## Revision Note
+
+v0.2 — Refined RPM range to exploration band, added stratification emergent behavior note, sensor degraded mode clause, magnetic bearing v0 proxy, Unknown Bulk loop closure, Bootstrap Proxy Mode, Contamination Risk statement, and energy claim tightening. Core philosophy and performance metrics unchanged. `Spin_Chamber_v0.md` remains the downstream thermal/melting module; this chamber is the upstream mechanical decision gate.
+
+---
+
 ## Position in System Flow
 
-The Stratification Chamber operates **after Reduction** (cutting/shredding)
-and **before Purification**.
+The Stratification Chamber operates **after Reduction** (cutting/shredding) and **before Purification**. It is the first physical decision point — material that passes here avoids the energy cost of the Spin Chamber entirely.
 
 ---
 
@@ -23,9 +29,10 @@ and **before Purification**.
 
 - Preserve function before destroying structure
 - Prefer classification over purification
-- Allow explicit “unknown” and “fail” outputs
+- Allow explicit "unknown" and "fail" outputs — the system must always be able to say no
 - Optimize for learning and tunability, not peak throughput
 - Replicate chambers to scale, do not over-enlarge
+- Refusal of ambiguous material is a success condition, not a failure
 
 ---
 
@@ -41,15 +48,57 @@ and **before Purification**.
 
 ### 1. Rotational Drum / Rotor
 
-- Provides controlled angular acceleration
-- Operates across tunable RPM bands
-- No requirement for high temperature operation
+- Variable-speed rotor operating across tunable RPM bands
+- v0 exploration band: **~1,000–5,000 RPM** [Estimated — to be empirically mapped per feedstock profile; system behavior depends heavily on fragment geometry, ductility, size distribution, and contamination]
+- Stepped-diameter drum geometry encourages stratification by density and inertia
 
-Purpose: expose differences in density, geometry, ductility, and inertia.
+**Stratification Logic:**
+- **Outer Rim** — High-density metallic fragments (iron, nickel, dense alloys)
+- **Mid-Tier** — Silicates, mixed oxides, intermediate-density materials
+- **Inner Core** — Low-density polymers, organics, light composites
+
+*Note: Separation is influenced not only by density, but also by geometry, surface area, ductility, and aerodynamic drag. Stratification bands represent emergent behavior, not strict material classes. Thin steel vs. thick aluminum can invert expected radial positions. Do not treat band assignments as guarantees.*
+
+Purpose: expose differences in density, geometry, ductility, and inertia through controlled centrifugal force rather than thermal energy.
 
 ---
 
-### 2. Optional Field Bias (Deferred)
+### 2. Friction & Thermal Management
+
+[Friction Blindness Check — addressed explicitly]
+
+- Preferred: Passive magnetic or low-contact bearings to reduce wear
+- v0 Proxy: Conventional bearings with monitored wear and vibration tracking
+- Air and fluid drag at operating RPM generates measurable heat — not ignored
+- Heat generated is routed via heat pipe to the Support Raft's thermal sink where available, or dissipated locally in terrestrial configurations
+- Bearing wear rate is a primary maintenance metric and scaling trigger
+
+---
+
+### 3. Sensor Cross-Check
+
+- Onboard density measurement and spectroscopy provide dual-channel material identification
+- Cross-check reduces false classification from single-sensor error
+- Confidence scoring is required before any fraction is routed to a downstream path
+
+**Degraded Mode:**
+If one sensing channel fails or drifts out of calibration, the chamber may operate in single-sensor mode with elevated confidence thresholds and increased routing to Unknown Bulk. Degraded mode does not suspend operation — it tightens refusal criteria.
+
+---
+
+### 4. Fail-to-Bin Protocol
+
+In accordance with the refusal-first ethos of the Forge and `Auditor_Protocols.md`:
+
+- If sensor cross-check confidence is **< 90%**, material is ejected to the **Unknown Bulk** bin
+- Unknown Bulk is not discarded — it is logged, held, and routed to `Component_Triage_System.md` or Synthesizer review at next available cycle
+- Unknown Bulk that remains unresolved after triage may be reprocessed through reduction with adjusted parameters, or routed to Class C for controlled thermal processing
+- Attempting to process unknown material risks furnace contamination and downstream cascade failures
+- Refusal is a first-class output, not a system fault
+
+---
+
+### 5. Optional Field Bias (Deferred)
 
 - Magnetic or electromagnetic biasing may be added in later versions
 - Not required for v0 validation
@@ -57,30 +106,51 @@ Purpose: expose differences in density, geometry, ductility, and inertia.
 
 ---
 
-### 3. Collection Zones
+### 6. Collection Zones
 
-- Radial or axial bins
+- Radial or axial bins aligned to stratification bands
 - Capture fractions that stabilize under rotation
 - Geometry favors repeatable, low-chaos trajectories
 
 ---
 
-### 4. Fail / Eject Path
+## Outputs
 
-- Unstable, bouncing, or ambiguous material is explicitly rejected
-- Failures are logged, not hidden
-- Fail output is routed to further reduction or bulk stock
+- **Class A:** Usable components or near-components
+- **Class B:** Downgraded material (repurpose / lower-precision use)
+- **Class C:** Mixed bulk → Spin Chamber for thermal processing
+- **Unknown Bulk:** Ambiguous or low-confidence material → Component_Triage_System review → reduction retry or Class C routing
+- **Fail:** Unclassifiable after review → Reduction or discard
 
 ---
 
-## Outputs
+## Contamination Risk
 
-- **Class A:** Usable components or near-components  
-- **Class B:** Downgraded material (repurpose / lower-precision use)  
-- **Class C:** Mixed bulk → Purification  
-- **Fail:** Unclassifiable → Reduction or discard  
+Incorrect classification at this stage can introduce contaminants into thermal systems downstream, resulting in alloy degradation, slag instability, equipment fouling, and increased energy cost. The chamber is therefore biased toward refusal over misclassification. The <90% confidence threshold exists to protect the Spin Chamber and everything downstream from decisions made under uncertainty.
 
-The system must always be able to say “no.”
+---
+
+## Energy Position
+
+[Energy Density Paradox Check]
+
+The primary energy value of this chamber is derived from **avoided thermal processing**. Sorted metal recovery via mechanical separation is energy-positive relative to processing the same material through the Spin Chamber. Polymer diversion is currently energy-neutral but justified as a lifecycle necessity — preventing microplastic contamination downstream and in marine Leviathan contexts.
+
+Quantitative energy reduction is expected but not required for v0 validation. Directional improvement is sufficient. Specific reduction estimates are deferred to experimental baseline against `energy_v0.md` kWh/kg metric.
+
+[Logged as Non-blocking Unknown — see Unknowns Registry]
+
+---
+
+## Bootstrap Proxy Mode
+
+The Stratification Chamber may be approximated in early Forge implementations using:
+
+- Inclined vibrating tables or gravity sorting rigs
+- Magnetic separation for ferrous bias
+- Manual classification assisted by simple jigs
+
+These proxies do not replicate full centrifugal behavior but allow early-stage material diversion and learning. The goal is not equivalence, but preservation of the decision loop. An imperfect Stratification Chamber that runs is more valuable than a perfect one that doesn't exist yet.
 
 ---
 
@@ -94,6 +164,7 @@ Scaling triggers include:
 - Input backlog exceeding dwell capacity
 - Wear rate exceeding maintenance window
 - Declining classification confidence
+- Unknown Bulk accumulation rate exceeding review capacity
 
 ---
 
@@ -105,8 +176,35 @@ Target for v0 exploration (not a guarantee):
 - ≥ 30% diversion indicates viability
 - < 10% indicates redesign or removal
 
-This metric exists to test whether the chamber meaningfully reduces
-energy and complexity downstream.
+**Secondary metric (v0.2 addition):**
+- **Unknown Bulk Rate** — proportion of intake routed to Unknown Bulk bin. High rates indicate sensor calibration issues or upstream reduction inconsistency, not chamber failure. Rising Unknown Bulk rate is diagnostic signal, not system fault.
+
+---
+
+## Lifecycle & Failure Modes
+
+[Lifecycle Truncation Check — addressed]
+
+**Degraded Operation** — At reduced RPM or single-sensor operation, classification confidence thresholds tighten automatically. Chamber continues at lower throughput rather than passing ambiguous material downstream.
+
+**Failure Modes & Detection** — Bearing wear presents as vibration signature changes before catastrophic failure. Spectroscopy drift presents as rising Unknown Bulk rate. Both are detectable before failure if monitored.
+
+**Maintenance Access** — Bearing replacement and collection zone clearing are primary service tasks. Modular drum design allows hot-swap in swarm configurations.
+
+**End-of-Life / Recycling Path** — Chamber components are themselves candidates for Forge intake. Magnetic bearing assemblies are Class A salvage priority.
+
+---
+
+## Unknowns Registry
+
+**Non-blocking:**
+- Quantitative energy reduction estimate requires experimental baseline against `energy_v0.md`. Resolution path: Leviathan test cycle data or terrestrial pilot run.
+- Optimal RPM exploration bands for mixed municipal vs. industrial scrap profiles not yet characterized. Resolution path: incremental RPM sweep during v0 testing.
+- Confidence threshold calibration (< 90% rule) requires empirical validation against known feedstock samples. Resolution path: controlled classification trials.
+
+**Exploratory:**
+- Long-term aquatic bio-fouling impact on rotor balance and bearing performance in Leviathan deployments. Route to `leviathan_testing.md`.
+- Electromagnetic field bias integration for later versions. Route to `Trajectories_LF.md`.
 
 ---
 
@@ -119,8 +217,22 @@ energy and complexity downstream.
 
 ---
 
+## Integration Hooks
+
+- `Spin_Chamber_v0.md` — receives Class C bulk output; this chamber reduces its thermal load
+- `Component_Triage_System.md` — receives Unknown Bulk for human or assisted review
+- `Air_Scrubber_v0.md` — receives exhaust from high-RPM operation
+- `energy_v0.md` — energy reduction claims require cross-validation
+- `leviathan_testing.md` — aquatic deployment unknowns routed here
+- `Support_Raft_v0.md` — thermal sink for heat pipe output in marine configurations
+
+---
+
 ## Notes
 
 - The Stratification Chamber is a *decision amplifier*, not a solution by itself
 - Its value increases as upstream reduction and downstream logic improve
 - Honest failure improves system learning
+- Unknown Bulk accumulation is diagnostic signal, not waste
+- Final versions often aren't final
+- You didn't design a separator. You designed a refusal engine that protects the rest of the Forge from bad decisions.
