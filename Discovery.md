@@ -71,6 +71,7 @@ Core melting and separation module. Converts mixed metallic scrap into ranked ma
 
 **Stratification_Chamber_v0.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Stratification_Chamber_v0.md`
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Material_Separation_Gate_v0.md
 Pre-purification separation module operating between reduction and purification. Uses controlled rotation to divert material away from energy-intensive melting. Success is defined by avoided processing, not perfect separation. Target: ≥30% material diversion rate.
 
 **Air_Scrubber_v0.md**
