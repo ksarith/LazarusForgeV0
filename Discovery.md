@@ -85,6 +85,9 @@ Philosophical and legal grounding. Uses the Ship of Theseus paradox to frame rep
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/leviathan_testing.md`
 Deep-ocean autonomous test framework. Leviathan exists to break assumptions and surface hidden failure modes before off-world deployment. Covers core test philosophy, power/endurance assumptions, failure and recovery doctrine, swarm extensions, and distributed learning via delay-tolerant networking. Survival is optional. Understanding is not.
 
+Support_Raft_v0.md 
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Support_Raft_v0.md
+
 ---
 
 ## Repository Role
