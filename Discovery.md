@@ -28,16 +28,17 @@ For a new reader or returning AI, read in this sequence:
 3. `Trajectories_LF.md` — Version roadmap from v0 to interstellar
 4. `Ethical_Constraints.md` — Governance and permission framework
 5. `Auditor_Protocols.md` — Verification and hallucination filter; governs all contributions
-6. `Component_Triage_System.md` — Decision gateway between reuse and destruction
-7. `Components.md` — Critical vs useful components taxonomy
-8. `geck_forge_seed.md` — Minimum viable seed for new Forge deployment (living document — updated actively)
-9. `energy_v0.md` — Energy strategy and accounting
-10. `Spin_Chamber_v0.md` — Core melting and separation module
-11. `Stratification_Chamber_v0.md` — Pre-purification separation module
-12. `Air_Scrubber_v0.md` — Safety and containment subsystem
-13. `Support_Raft_v0.md` — Operational anchor for marine Leviathan deployments
-14. `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding
-15. `leviathan_testing.md` — Deep-ocean autonomous test framework
+6. `Unknowns_LF.md` — Cross-module unknowns registry; tracked frontiers and design agenda
+7. `Component_Triage_System.md` — Decision gateway between reuse and destruction
+8. `Components.md` — Critical vs useful components taxonomy
+9. `geck_forge_seed.md` — Minimum viable seed for new Forge deployment (living document — updated actively)
+10. `energy_v0.md` — Energy strategy and accounting
+11. `Spin_Chamber_v0.md` — Core melting and separation module
+12. `Stratification_Chamber_v0.md` — Pre-purification separation module
+13. `Air_Scrubber_v0.md` — Safety and containment subsystem
+14. `Support_Raft_v0.md` — Operational anchor for marine Leviathan deployments
+15. `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding
+16. `leviathan_testing.md` — Deep-ocean autonomous test framework
 
 ---
 
@@ -55,9 +56,9 @@ Verification and hallucination filter. Governs all contributions — human, AI, 
 
 ---
 
-**Unknowns_LF.md**
+**Unknowns_LF.md** — v0.3
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Unknowns_LF.md`
-classification of known unknowns...
+Cross-module unknowns registry. Tracks unresolved questions, gaps, and dependencies that span multiple files or affect system-wide navigation. Each entry includes: what is unknown, why it matters, resolution path, affected files, dependency chain, owner role, activation trigger, risk type (Unknown / Assumption / Missing mechanism / Interface gap), and phase-split priority (Exploration / Promotion). Includes a dependency map showing how unknowns block or sequence each other. The registry is a control surface for system evolution, not a documentation artifact. Updated after each formal audit cycle.
 
 ---
 
@@ -93,7 +94,7 @@ Taxonomy of critical vs useful components across v0–v3. Includes Bootstrap Doc
 
 **geck_forge_seed.md** *(living document — updated actively)*
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/geck_forge_seed.md`
-Defines the minimum viable seed required to instantiate a new Forge in a resource-sparse location. Eight core modules from power through human interface. Success criterion: the seed can eventually rebuild itself. The G.E.C.K. is not meant to impress — it is meant to survive. A marine variant is flagged as an Exploratory Unknown routed from `Support_Raft_v0.md`.
+Defines the minimum viable seed required to instantiate a new Forge in a resource-sparse location. Eight core modules from power through human interface. Success criterion: the seed can eventually rebuild itself. The G.E.C.K. is not meant to impress — it is meant to survive. A marine variant is flagged as an Exploratory Unknown (UNK-005) routed from `Support_Raft_v0.md`.
 
 ---
 
@@ -112,7 +113,7 @@ Core melting and separation module. Converts mixed metallic scrap into ranked ma
 **Stratification_Chamber_v0.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Stratification_Chamber_v0.md`
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Material_Separation_Gate_v0.md`
-Pre-purification separation module operating between reduction and purification. Uses controlled rotation to divert material away from energy-intensive melting. Success is defined by avoided processing, not perfect separation. Target: ≥30% material diversion rate.
+Pre-purification separation module operating between reduction and purification. Uses controlled rotation to divert material away from energy-intensive melting. Success is defined by avoided processing, not perfect separation. Target: ≥30% material diversion rate. `Material_Separation_Gate_v0.md` is a companion specification for the separation gate subsystem within this module.
 
 ---
 
@@ -136,7 +137,7 @@ Philosophical and legal grounding. Uses the Ship of Theseus paradox to frame rep
 
 **leviathan_testing.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/leviathan_testing.md`
-Deep-ocean autonomous test framework. Leviathan exists to break assumptions and surface hidden failure modes before off-world deployment. Covers core test philosophy, power/endurance assumptions, failure and recovery doctrine, swarm extensions, and distributed learning via delay-tolerant networking. Primary stress-test environment where `Auditor_Protocols.md` faces real pressure. Survival is optional. Understanding is not.
+Deep-ocean autonomous test framework. Leviathan exists to break assumptions and surface hidden failure modes before off-world deployment. Covers core test philosophy, power/endurance assumptions, failure and recovery doctrine, swarm extensions, and distributed learning via delay-tolerant networking. Primary stress-test environment where `Auditor_Protocols.md` faces real pressure. Survival is optional. Understanding is not. Current status: Exploration — four promotion blockers logged in `Unknowns_LF.md` (UNK-006 through UNK-008).
 
 ---
 
@@ -145,6 +146,8 @@ Deep-ocean autonomous test framework. Leviathan exists to break assumptions and 
 `LazarusForgeV0` (this repo) — operational implementation. Lean, connected, specification-oriented.
 
 `Lazarus-Forge-` — doctrine and philosophy. The source of principles that get refined into practice here.
+
+`Astroid-miner` — planned repository, intentionally deferred. Activates when Leviathan deployment is underway. Until then, cross-repo verification is scoped to `Lazarus-Forge-` only.
 
 These are not parallel versions of the same document. They are different layers of the same system. Treating them as interchangeable is a navigation error.
 
@@ -155,7 +158,9 @@ Divergence between them is logged, not ignored. See Repository Role above.
 ## Notes for Returning AI
 
 - `Auditor_Protocols.md` governs all contributions. Read it before generating specification-level content.
+- `Unknowns_LF.md` is the active design agenda. Check it before proposing new work — the dependency map shows what is blocked and what is ready to move.
 - Role declaration is required for significant AI contributions: *"Operating as [Role] per Auditor_Protocols.md v0.3"*
 - `geck_forge_seed.md` is the most actively updated file — do not assume a cached version is current.
 - All cross-references in this file resolve to real documents. If a link fails, log it as a Hallucinated File Unknown per `Auditor_Protocols.md` Rule 1.
 - Divergence between this repo and `Lazarus-Forge-` is a signal. Log it. Do not smooth it over.
+- `Astroid-miner` references in `Auditor_Protocols.md` are labeled planned — do not treat them as active dependencies.
