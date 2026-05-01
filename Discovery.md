@@ -55,6 +55,12 @@ Verification and hallucination filter. Governs all contributions — human, AI, 
 
 ---
 
+**Unknowns_LF.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Unknowns_LF.md`
+classification of known unknowns...
+
+---
+
 **Lazarus_forge_v0_flow.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Lazarus_forge_v0_flow.md`
 The master decision flow. Eight sequential gates from intake through utilization, with explicit pass/fail logic at each stage. Includes the Human/AI Oversight Gate and the fabrication priority order. The governing document for all operational decisions.
