@@ -1,6 +1,6 @@
 Lazarus Forge — Components Taxonomy
 
-> Purpose: Define what a Forge must have to operate safely and truthfully (Critical), versus what amplifies capability, efficiency, or autonomy (Useful).
+> Purpose: Define what a Forge must have to operate safely and truthfully (Critical), versus what amplifies capability, efficiency, or autonomy (Useful).  Metal fabrication is the first milestone because it is the only self-sustaining path to structural capability. Once a Forge can produce reliable metal components from salvaged feedstock, every other system becomes physically constructable. The components defined here are the foundation that everything else is built on top of — not a complete picture of the Forge ecosystem.
 
 This document supports v0–v3 navigation, procurement planning, and honest self‑assessment.
 
