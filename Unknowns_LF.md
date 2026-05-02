@@ -1,6 +1,6 @@
 # Unknowns_LF.md — Cross-Module Unknowns Registry
 **Central registry for unknowns that span multiple modules or affect system-wide navigation.**
-**Version 0.4 — UNK-011 added from energy_v0.md audit cycle.**
+**Version 0.5 — UNK-004 deferred to post-audit-cycle activation; UNK-012 added from Lazarus_forge_v0_flow.md audit.**
 
 ---
 
@@ -55,10 +55,13 @@ UNK-007 (storage degradation at depth)
 UNK-005 (marine GECK seed)
   └── depends on UNK-006
 
+UNK-012 (gate logic determinism)
+  └── affects any module implementing triage or classification logic
+
 UNK-002 (repo topology) [RESOLVED]
   └── UNK-003 (assumption contracts) [DEFERRED]
 
-UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on it
+UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ```
 
 ---
@@ -101,17 +104,17 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 
 ### [UNK-004] — Expiry Rule has no enforcement mechanism
 **What is not yet known:** What constitutes a "version cycle" for the Expiry Rule. `Auditor_Protocols.md` defines the rule but does not define version cycle, does not require timestamps on entries, and does not assign responsibility for triggering escalation checks.
-**Why it matters:** Registry infrastructure. Without enforcement, unknowns accumulate without conversion into action. Silent failure degrades entire system rigor.
-**Resolution path:** Add to `Auditor_Protocols.md`: (1) version cycle definition; (2) "logged in version" as required entry field; (3) Expiry check assigned to Skeptic/Auditor at opening of each audit cycle.
+**Why it matters:** Registry infrastructure. Without enforcement, unknowns accumulate without conversion into action. However, the registry is still young and the audit cadence is still being established — forcing enforcement now is premature.
+**Resolution path:** Add to `Auditor_Protocols.md`: (1) version cycle definition — recommended: any completed multi-agent audit cycle; (2) "logged in version" as required entry field; (3) Expiry check assigned to Skeptic/Auditor at opening of each audit cycle.
 **Affected files:** `Auditor_Protocols.md`, this file
 **Depends on:** None
 **Owner:** Skeptic/Auditor
-**Activation trigger:** Next revision of `Auditor_Protocols.md` — must be included
+**Activation trigger:** First full audit cycle across all primary documents complete; OR any unknown reaches two audit cycles without a resolution path
 **Risk type:** Missing mechanism
-**Priority (Exploration):** Blocking — registry infrastructure
+**Priority (Exploration):** Non-blocking — deferred per human decision; registry is in active development
 **Priority (Promotion):** Blocking
 **Logged in version:** Discovery.md v1.0 audit cycle, May 2026
-**Status:** Open
+**Status:** Deferred — activates when first full audit cycle is complete
 
 ---
 
@@ -120,7 +123,7 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 **Why it matters:** Terrestrial G.E.C.K. modules do not map cleanly to marine deployment. Without a marine variant, Leviathan and Support Raft deployments have no defined seed.
 **Resolution path:** Add a marine variant stub to `geck_forge_seed.md`. Full spec routes to `Trajectories_LF.md` as a v1/v2 milestone.
 **Affected files:** `geck_forge_seed.md`, `Support_Raft_v0.md`, `leviathan_testing.md`
-**Depends on:** UNK-006 (power envelope informs minimum seed power requirements)
+**Depends on:** UNK-006
 **Owner:** Engineer
 **Activation trigger:** Leviathan hardware design begins; or Support Raft v1.0 specification starts
 **Risk type:** Unknown
@@ -133,10 +136,10 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 
 ### [UNK-006] — Power envelope for Leviathan has no placeholder anchor
 **What is not yet known:** Order-of-magnitude power budget for a Leviathan unit under nominal, degraded, and dormancy conditions.
-**Why it matters:** Autonomy claims, endurance claims, and load-shedding behavior cannot be tested without a power substrate. UNK-008 cannot be scoped without this. Note: UNK-011 (terrestrial Forge demand baseline) is a prerequisite — Leviathan envelope cannot be scoped until the terrestrial demand side exists as a reference point.
+**Why it matters:** Autonomy claims, endurance claims, and load-shedding behavior cannot be tested without a power substrate. UNK-008 cannot be scoped without this. UNK-011 is a prerequisite.
 **Resolution path:** Survey deep-sea AUV analog systems (Remus, Seaglider, Nereid Under-Ice) for bounding estimates. Label as Analogous or Placeholder. Add stub Power Budget section to `leviathan_testing.md`, cross-referenced to `energy_v0.md`. Requires UNK-011 stub to exist first.
 **Affected files:** `leviathan_testing.md`, `energy_v0.md`
-**Depends on:** UNK-011 (Forge demand baseline must exist before Leviathan envelope can be scoped)
+**Depends on:** UNK-011
 **Owner:** Energy
 **Activation trigger:** Any attempt to define Leviathan test scenarios; or any hardware component selection
 **Risk type:** Unknown
@@ -149,13 +152,13 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 
 ### [UNK-007] — Deep-ocean storage degradation under pressure and low temperature is unacknowledged
 **What is not yet known:** How sealed cell storage behaves at Leviathan operating depths and temperatures (2–4°C) over extended mission durations.
-**Why it matters:** `leviathan_testing.md` asserts "predictable degradation" as a power system requirement. `energy_v0.md` notes salvaged batteries as preferred storage without acknowledging state-of-health uncertainty. Pressure and thermal effects are well-documented failure modes not yet engaged by either document.
-**Resolution path:** Literature review of battery performance at depth and temperature (MBARI, WHOI data). Results feed into `energy_v0.md` storage section. Run in parallel with UNK-011, not sequentially after.
+**Why it matters:** "Predictable degradation" is asserted as a power system requirement without acknowledging well-documented pressure and thermal failure modes.
+**Resolution path:** Literature review of battery performance at depth and temperature (MBARI, WHOI data). Results feed into `energy_v0.md` storage section. Run in parallel with UNK-011.
 **Affected files:** `leviathan_testing.md`, `energy_v0.md`
 **Depends on:** None (parallel with UNK-011)
 **Owner:** Energy
-**Activation trigger:** Any attempt to select or specify energy storage hardware; or UNK-011 power demand work begins
-**Risk type:** Assumption — "predictable degradation" stated as requirement, not verified as achievable
+**Activation trigger:** Any attempt to select or specify energy storage hardware; or UNK-011 work begins
+**Risk type:** Assumption
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
 **Logged in version:** leviathan_testing.md audit cycle, May 2026
@@ -164,11 +167,11 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 ---
 
 ### [UNK-008] — Leviathan autonomy architecture is unspecified — testability gap
-**What is not yet known:** What decision-making paradigm(s) are under test. None are named in `leviathan_testing.md`.
+**What is not yet known:** What decision-making paradigm(s) are under test.
 **Why it matters:** Falsification requires a stated hypothesis. Without naming what architecture is under test, the framework risks becoming a scenario generator rather than a hypothesis-testing system.
 **Resolution path:** Add a candidate architecture section to `leviathan_testing.md` with three required elements per candidate: (1) observable decision loop; (2) failure signature; (3) minimal test scenario. Minimum viable: two candidates, all three elements each.
 **Affected files:** `leviathan_testing.md`, `Trajectories_LF.md`
-**Depends on:** UNK-006 (power envelope constrains which architectures are feasible)
+**Depends on:** UNK-006
 **Owner:** Autonomy / Skeptic/Auditor
 **Activation trigger:** Any attempt to define Leviathan test scenarios; or any autonomy-related hardware or software selection
 **Risk type:** Missing mechanism
@@ -182,7 +185,7 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 ### [UNK-009] — Trust model mechanism in Extension B is undefined
 **What is not yet known:** Decay function, false-positive definition, trust floor, and initialization state for the peer trust scoring system in Extension B.
 **Why it matters:** Anti-pattern safeguards depend on trust diversity. The behavioral description implies a mechanism without specifying one.
-**Resolution path:** Label trust model as Placeholder in `leviathan_testing.md` Extension B. Full mechanism design routes to `Trajectories_LF.md`.
+**Resolution path:** Label trust model as Placeholder in Extension B. Full mechanism design routes to `Trajectories_LF.md`.
 **Affected files:** `leviathan_testing.md` (Extensions)
 **Depends on:** UNK-008
 **Owner:** Autonomy
@@ -196,9 +199,9 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 ---
 
 ### [UNK-010] — Priority propagation in disconnected network has no enforcement mechanism
-**What is not yet known:** How Tier 1 (critical failure) data reaches out-of-contact units faster than Tier 3 (optimization) data in an opportunistic, delay-tolerant network.
-**Why it matters:** "Errors travel faster than optimizations" is stated as a design principle without a mechanism that enforces it in a disconnected network.
-**Resolution path:** Acknowledge as open design question in Extensions. Designate as primary test target for multi-unit deployments. Full mechanism routes to `Trajectories_LF.md`.
+**What is not yet known:** How Tier 1 (critical failure) data reaches out-of-contact units faster than Tier 3 data in an opportunistic, delay-tolerant network.
+**Why it matters:** "Errors travel faster than optimizations" is stated as a design principle without a mechanism that enforces it.
+**Resolution path:** Acknowledge as open design question. Designate as primary test target for multi-unit deployments. Full mechanism routes to `Trajectories_LF.md`.
 **Affected files:** `leviathan_testing.md` (Extensions)
 **Depends on:** UNK-008
 **Owner:** Autonomy / Engineer
@@ -212,17 +215,33 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 ---
 
 ### [UNK-011] — Forge power demand is uncharacterized at any operating mode
-**What is not yet known:** What the terrestrial Lazarus Forge actually consumes at bootstrap, nominal, and degraded operating modes — even at order-of-magnitude resolution.
-**Why it matters:** `energy_v0.md` describes five supply sources without any demand side to calibrate against. The primary metric (kWh per kg of recovered usable output) cannot be calculated or falsified without a demand anchor. More critically, UNK-006 (Leviathan power envelope) cannot be scoped until a terrestrial demand baseline exists as a reference point. This is the load-bearing gap in the entire energy chain.
-**Resolution path:** Add a stub Power Demand section to `energy_v0.md` with three operating modes: bootstrap (minimum to sustain triage and control), nominal (full triage + partial processing), and degraded (triage only, processing suspended). Source placeholder values from terrestrial analog systems — industrial shredder and sorting line data is publicly available and appropriate for order-of-magnitude anchoring. Label all figures as Placeholder or Analogous. Accuracy is not required at v0 — the integration point must exist.
+**What is not yet known:** What the terrestrial Lazarus Forge actually consumes at bootstrap, nominal, and degraded operating modes.
+**Why it matters:** `energy_v0.md` describes five supply sources without a demand side to calibrate against. UNK-006 cannot be scoped until this baseline exists. This is the load-bearing gap in the entire energy chain.
+**Resolution path:** Power Demand stub added to `energy_v0.md` (May 2026 revision) with three operating modes and Placeholder figures from analog systems. Integration point now exists. Next step: replace Placeholder figures with Analogous or Measured values as hardware selection proceeds.
 **Affected files:** `energy_v0.md`, `leviathan_testing.md`, `Lazarus_forge_v0_flow.md`
 **Depends on:** None
 **Owner:** Energy
-**Activation trigger:** Any attempt to scope UNK-006; or any hardware selection for processing modules; or energy_v0.md promotion begins
-**Risk type:** Missing mechanism — supply side exists without a demand side to anchor against
+**Activation trigger:** Any attempt to scope UNK-006; or any hardware selection for processing modules
+**Risk type:** Missing mechanism
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
 **Logged in version:** energy_v0.md audit cycle, May 2026
+**Status:** In Progress — stub added to energy_v0.md; Placeholder figures in place; awaiting hardware selection to refine
+
+---
+
+### [UNK-012] — Gate logic determinism in Lazarus_forge_v0_flow.md is unverified
+**What is not yet known:** Whether the gate logic (A→B→C→D) produces deterministic routing for all item types, or whether ambiguous cases at the Gate A/C and Gate C/D boundaries require human judgment more frequently than the document implies.
+**Why it matters:** `Lazarus_forge_v0_flow.md` is the terminology reference standard for the entire repository. If its gate logic is ambiguous at key boundaries, every document that implements or references gate routing inherits that ambiguity silently. The Human/AI Oversight Gate acknowledges edge cases exist — but the frequency and trigger conditions are unstated.
+**Resolution path:** Add 2–3 worked examples to `Lazarus_forge_v0_flow.md` that walk through the gate logic hitting the known ambiguous boundaries: (1) an item with degraded but present original function (Gate A/C boundary), (2) an item with no functional use but intact recoverable material (Gate C/D boundary), (3) an item at the Human/AI Oversight Gate with a borderline use case. Examples serve to stress-test the gate definitions and surface hidden assumptions before they propagate. They do not need to be real items — they need to be honest edge cases.
+**Affected files:** `Lazarus_forge_v0_flow.md`, `Component_Triage_System.md`, any module implementing classification logic
+**Depends on:** None
+**Owner:** Engineer / Skeptic/Auditor
+**Activation trigger:** Any module begins implementing triage or classification logic referencing this document; or next revision of Lazarus_forge_v0_flow.md
+**Risk type:** Assumption — gate logic implies determinism without demonstrating it
+**Priority (Exploration):** Non-blocking
+**Priority (Promotion):** Blocking
+**Logged in version:** Lazarus_forge_v0_flow.md audit cycle, May 2026
 **Status:** Open
 
 ---
@@ -231,35 +250,40 @@ UNK-004 (Expiry Rule) — infrastructure; no dependencies, everything depends on
 
 The following unknowns are approaching or past two version cycles without a documented resolution path. Review at next audit cycle.
 
-*(None flagged at v0.4 — all entries are within their first or second cycle.)*
+*(None flagged at v0.5 — all entries are within their first or second cycle. UNK-004 deferred by human decision pending audit cycle completion.)*
 
 ---
 
 ## Resolved Unknowns Archive
 
 ### [UNK-002] — Repository topology: `Astroid-miner` is planned, deferred
-**Resolved:** May 2026 — human confirmation. `Astroid-miner` is a separate planned repository, deferred until Leviathan milestone. Cross-repo verification scoped to `Lazarus-Forge-` only until activation.
+**Resolved:** May 2026 — human confirmation. Deferred until Leviathan milestone.
 
 ---
 
 ## Audit Trail
 
 **v0.1 — May 2026**
-Created from findings of first formal Skeptic/Auditor cycle over `Discovery.md` and `Auditor_Protocols.md`.
-Auditor: Claude (Sonnet 4.6). Five unknowns logged: UNK-001 through UNK-005.
+Created from first formal audit cycle (Discovery.md, Auditor_Protocols.md).
+Auditor: Claude (Sonnet 4.6). UNK-001 through UNK-005 logged.
 
 **v0.2 — May 2026**
-Updated from second formal Skeptic/Auditor cycle over `leviathan_testing.md`.
-Auditor: Claude (Sonnet 4.6). Five unknowns added: UNK-006 through UNK-010.
-UNK-002 resolved. UNK-003 deferred.
+Second audit cycle (leviathan_testing.md).
+Auditor: Claude (Sonnet 4.6). UNK-006 through UNK-010 added. UNK-002 resolved. UNK-003 deferred.
 
 **v0.3 — May 2026**
-Structural upgrade from ChatGPT review, triaged and applied by Claude (Sonnet 4.6).
-Added Owner, Activation Trigger, Depends On, Risk Type, phase-split Priority, Dependency Map.
+Structural upgrade from ChatGPT review, applied by Claude (Sonnet 4.6).
+Owner, Activation Trigger, Depends On, Risk Type, phase-split Priority, Dependency Map added.
 UNK-004 reclassified Blocking (Exploration). UNK-008 resolution path strengthened.
 
 **v0.4 — May 2026**
-Updated from third formal Skeptic/Auditor cycle over `energy_v0.md`.
-Auditor: Claude (Sonnet 4.6). One unknown added: UNK-011 (Forge power demand baseline).
-Dependency Map updated: UNK-011 now sits upstream of UNK-006, making it the earliest
-load-bearing gap in the Leviathan power chain. UNK-006 dependency updated accordingly.
+Third audit cycle (energy_v0.md).
+Auditor: Claude (Sonnet 4.6). UNK-011 added. Dependency Map updated with UNK-011 upstream of UNK-006.
+
+**v0.5 — May 2026**
+Fourth audit cycle (Lazarus_forge_v0_flow.md).
+Auditor: Claude (Sonnet 4.6). UNK-012 added (gate logic determinism).
+UNK-004 reclassified Non-blocking / Deferred per human decision — registry is in active development;
+Expiry Rule enforcement premature until first full audit cycle is complete.
+UNK-011 status updated to In Progress — Power Demand stub added to energy_v0.md.
+Dependency Map updated with UNK-012.
