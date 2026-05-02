@@ -1,0 +1,75 @@
+import urllib.request
+
+BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/"
+
+def fetch(filename):
+    url = BASE + filename
+    try:
+        with urllib.request.urlopen(url) as r:
+            content = r.read().decode('utf-8')
+        print(f"  ✓ {filename} ({len(content):,} chars)")
+        return content
+    except Exception as e:
+        print(f"  ✗ {filename} — FAILED: {e}")
+        return f"[FETCH FAILED: {filename}]"
+
+print("Fetch helper ready.")
+
+ROLE = "Skeptic/Auditor"
+
+TASK = """
+Audit leviathan_testing.md for gaps, contradictions, and unlogged unknowns.
+Apply the full Fallacy Checklist from Auditor_Protocols.md.
+Pay particular attention to:
+- Power and endurance assumptions (Magic Energy, Friction Blindness)
+- Autonomy and decision logic claims (Confidence Without Basis)
+- Swarm coordination assumptions (Incomplete by Omission)
+- Any claims that belong in Trajectories_LF.md instead of v0 scope
+Log all findings in Unknowns_LF.md format where applicable.
+""".strip()
+
+FILES = [
+    "leviathan_testing.md",
+    "Auditor_Protocols.md",
+    "Unknowns_LF.md",
+    # "energy_v0.md",        # uncomment if energy findings need grounding
+    # "Trajectories_LF.md",  # uncomment if scope questions arise
+]
+
+print("Fetching files...")
+fetched = {}
+for f in FILES:
+    fetched[f] = fetch(f)
+print(f"\nDone. {len(fetched)} file(s) loaded.")
+
+DIVIDER = "=" * 60
+sections = []
+
+sections.append(
+    f"Operating as {ROLE} per Auditor_Protocols.md v0.3\n"
+    f"Repository: LazarusForgeV0"
+)
+sections.append(f"TASK:\n{TASK}")
+
+file_block = f"FILES PROVIDED ({len(fetched)}):\n"
+for i, (name, content) in enumerate(fetched.items(), 1):
+    file_block += f"\n{DIVIDER}\nFILE {i}: {name}\n{DIVIDER}\n{content}\n"
+sections.append(file_block)
+
+sections.append(
+    "INSTRUCTIONS:\n"
+    "- Apply the Fallacy Checklist to any specification-level claims.\n"
+    "- Label findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN], [CROSS-REF FAILURE].\n"
+    "- For each finding, suggest a concrete resolution path.\n"
+    "- End with a verification sign-off or list gates that could not be cleared and why."
+)
+
+PROMPT = ("\n\n" + DIVIDER + "\n\n").join(sections)
+print(f"Prompt ready: {len(PROMPT):,} chars (~{len(PROMPT)//4:,} tokens estimated)")
+
+print("COPY EVERYTHING BELOW THIS LINE")
+print("─" * 60)
+print(PROMPT)
+# The loop:
+# Harness fetches repo -> prompt assembled -> paste to Claude
+# -> findings returned -> triage -> update repo -> repeat
