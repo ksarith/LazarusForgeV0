@@ -412,5 +412,3 @@ To protect the token window of AI agents:
 If an AI agent is presented with a file where the **Auditor Notes** exceed 20% of the total word count, the agent **MUST REFUSE** to audit until a **Resolution Pass** is performed by the Synthesizer. This is a hard guardrail against "Metadata Hallucinations."
 ## Thoughts on Resolution Expungement
 Expunging unknowns isn't just about deleting text; it’s about **crystallization**. Every time you move an "Unknown" from the footer into the "Specification" body, the project becomes more deterministic.
-For the **Support Raft**, for example, we can expunge the "Induction Loss" unknown right now because we’ve quantified it at **12%**. That is no longer an unknown; it is a **Measured/Estimated Constraint**.
-**Shall I proceed by performing a "Resolution Pass" on the Support_Raft_v0.md or Pre_Spin_Separation_v0.md to demonstrate how we move these footer notes into the core specs?**
