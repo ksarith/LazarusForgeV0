@@ -408,3 +408,56 @@ All extensions are experimental.
 They may be revised, disabled, or discarded independently of Leviathan Core.
 
 Extensions exist to explore the space of failure safely.
+
+
+Auditor Notes:
+Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4
+Repository: **LazarusForgeV0**
+### EXPIRY WATCH
+*Self-Correction/Verification:* As of v0.9 of the Unknowns Registry, no entries are currently past two cycles. The Expiry Rule remains in a "Watch" state until the registry reaches v1.0.
+### ASSUMPTION EXTRACTION (Rule 6)
+Prior contributions assumed:
+ * leviathan_testing.md is classified as **to be determined**.
+ * Forge_Audit_Kit.md is the authoritative condensed reference for this cycle.
+ * The repository follows a "Fail-Fast" philosophy where survival is secondary to insight.
+ * Energy generation systems are explicitly excluded from core testing.
+These assumptions are carried forward unless contradicted by the audit findings below.
+### AUDIT FINDINGS: leviathan_testing.md
+#### [FALLACY] #7: Confidence Without Basis (Numbers/Specs)
+Throughout the "Power and Endurance" and "Failure and Recovery" sections, the document uses definitive language regarding capabilities (e.g., "Systems must detect internal failure states," "Sealed, closed-cell energy storage") without providing performance envelopes or even placeholder values.
+ * **Finding:** The document functions as a philosophy statement but lacks the **Estimated** or **Placeholder** labels required for a specification-level transition.
+ * **Resolution Path:** Explicitly label all capability requirements as [Estimated] or [Placeholder] to prevent them from being treated as verified engineering bounds.
+#### [FALLACY] #8: Lifecycle Truncation
+While the document excels at "Failure Modes" and "Degraded Operation," it is silent on **Maintenance Access** and **End-of-Life path**.
+ * **Finding:** If a Leviathan unit "fails" in the deep ocean, the document mentions "physical recovery," but does not define the protocol for units that cannot be recovered. Does an unrecovered unit constitute a "Marine G.E.C.K." event (Ref: UNK-005)?
+ * **Resolution Path:** Add an "End-of-Life and Decommissioning" subsection to the Core Framework. Define the criteria for "Abandoned in Situ" vs. "Mandatory Recovery."
+#### [GAP] UNK-006 & UNK-008: Power and Autonomy
+The document references "Sealed, closed-cell energy storage" and "Infrastructure-assisted recharge."
+ * **Finding:** These claims are directly blocked by **UNK-006** (Power envelope no placeholder) and **UNK-008** (Autonomy architecture unspecified). The document describes *what* the autonomy must do but ignores *how* it is structured to do it (e.g., Is it a subsumption architecture? Hierarchical?).
+ * **Resolution Path:** Insert cross-references to UNK-006 and UNK-008 in the "Power" and "Autonomy" sections to acknowledge these are known gaps, rather than settled specs.
+#### [CONTRADICTION] Extension B vs. Core Constraints
+Extension B (Cross-Unit Learning) allows units to exchange "Environmental hazard markers" and "Failure summaries."
+ * **Finding:** The Core Framework states Leviathan is a civilian system that must not conduct "surveillance of populations." However, "environmental hazard markers" in a dual-use context (ocean floor) can inadvertently map cable routes or sensitive infrastructure.
+ * **Resolution Path:** Add a "Data Sanitization" clause to the Networking guidelines to ensure shared peer data cannot be aggregated into a surveillance-capable dataset.
+#### [UNLOGGED UNKNOWN] Recovery Buoyancy Physics
+The document lists "Passive or semi-passive buoyancy deployment" as a mandatory recovery mechanism.
+ * **Finding:** At deep-ocean pressures, "passive" buoyancy (e.g., chemical gas generation or syntactic foam release) has significant mechanical failure rates and depth-dependent efficacy. This is a technical risk not currently logged in Unknowns_LF.md.
+ * **Resolution Path:** Log a new Unknown: **UNK-027 — Deep-ocean passive buoyancy reliability and depth-scaling.**
+### VERIFICATION GATE ASSESSMENT
+| Gate | Status | Reason for Block / Result |
+|---|---|---|
+| **1 — Fallacy Check** | **FAIL** | Violates Fallacy #7 (Confidence Without Basis). Claims are presented as requirements without status labels. |
+| **2 — Verification Artifacts** | **FAIL** | No falsifiable artifacts (e.g., a specific test bit or log format) are defined. |
+| **3 — Adversarial Pass** | **PASS** | The document itself is built on an adversarial "Fail-Fast" premise. |
+| **4 — Scope Alignment** | **PASS** | High alignment with Lazarus Forge v0 goals. |
+| **5 — Cross-Ref Integrity** | **FAIL** | Mentions energy_v0.md and Lazarus_forge_v0_flow.md implicitly but lacks explicit linking. |
+| **6 — Conflict Check** | **PASS** | No direct contradictions with Forge_Audit_Kit.md. |
+### SIGN-OFF
+**Document:** leviathan_testing.md (to be determined audit, 2026-05-04)
+**Auditor:** Skeptic/Auditor — Gemini
+**Gates cleared:** 3, 4, 6
+**Gates blocked:** 1 (Missing confidence labels), 2 (No artifacts), 5 (Weak cross-refs)
+**Unknowns logged:** UNK-027 (Buoyancy reliability)
+**Overrides:** none
+**Sign-off:** The document successfully establishes a high-level "Trial by Fire" philosophy for the deep ocean but currently functions as a manifesto; it requires rigorous confidence labeling and specific failure-mode artifacts before it can be promoted to a Specification.
+
