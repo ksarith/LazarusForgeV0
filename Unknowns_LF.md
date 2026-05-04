@@ -1,6 +1,7 @@
 # Unknowns_LF.md — Cross-Module Unknowns Registry
 **Central registry for unknowns that span multiple modules or affect system-wide navigation.**
-**Version 0.8 — UNK-024 and UNK-025 added from Component_Triage_System.md multi-model audit. UNK-012 status updated.**
+**Version 0.9 — UNK-026 added from Components.md audit. UNK-012 and UNK-024 updated with new inputs.**
+**v1.0 trigger: first full audit cycle across all primary documents complete. Expiry Rule activates.**
 
 ---
 
@@ -56,12 +57,17 @@ UNK-007 (storage degradation at depth)
 UNK-005 (marine GECK seed)
   └── depends on UNK-006
 
-UNK-012 (gate logic determinism)
-  └── partially addressed by Component_Triage_System.md Gate Correspondence table
-  └── UNK-024 (forge duty threshold) — fills the remaining A/C boundary gap
+UNK-026 (Graduation Rule detection circularity)
+  └── feeds UNK-012 (gate logic determinism — concrete input)
 
 UNK-024 (forge duty threshold)
-  └── feeds into UNK-012 resolution
+  └── feeds UNK-012 resolution
+  └── requires Forge loop definition (Bootstrap Doctrine)
+
+UNK-012 (gate logic determinism)
+  └── partially addressed: Gate Correspondence table in Component_Triage_System.md
+  └── remaining: detection circularity (UNK-026), forge duty threshold (UNK-024),
+      Gate C/D boundary worked example
 
 UNK-025 (contamination routing)
   └── affects Component_Triage_System.md, Lazarus_forge_v0_flow.md, Air_Scrubber_v0.md
@@ -91,7 +97,7 @@ UNK-023 (audit trail schema)
 UNK-002 (repo topology) [RESOLVED]
   └── UNK-003 (assumption contracts) [DEFERRED]
 
-UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
+UNK-004 (Expiry Rule) [DEFERRED — activates at v1.0 / first full audit cycle complete]
 ```
 
 ---
@@ -135,16 +141,16 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-004] — Expiry Rule has no enforcement mechanism
 **What is not yet known:** What constitutes a "version cycle" for the Expiry Rule.
 **Why it matters:** Registry infrastructure. Deferred — registry is in active development.
-**Resolution path:** Version cycle definition and Expiry check responsibility added to Auditor_Protocols.md v0.4. Pending: activation of measurement once first full audit cycle is complete.
+**Resolution path:** Version cycle definition and Expiry check responsibility added to Auditor_Protocols.md v0.4. Activation deferred to v1.0 — first full audit cycle complete.
 **Affected files:** `Auditor_Protocols.md`, this file
 **Depends on:** None
 **Owner:** Skeptic/Auditor
-**Activation trigger:** First full audit cycle across all primary documents complete
+**Activation trigger:** v1.0 of this registry — first full audit cycle across all primary documents complete
 **Risk type:** Missing mechanism
 **Priority (Exploration):** Non-blocking — deferred per human decision
 **Priority (Promotion):** Blocking
 **Logged in version:** Discovery.md v1.0 audit cycle, May 2026
-**Status:** Deferred — partially addressed in Auditor_Protocols.md v0.4; activates when first full audit cycle is complete
+**Status:** Deferred — activates at registry v1.0
 
 ---
 
@@ -263,8 +269,8 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-012] — Gate logic determinism in Lazarus_forge_v0_flow.md is unverified
 **What is not yet known:** Whether gate logic (A→B→C→D) produces deterministic routing for all item types, or whether boundary cases require human judgment more frequently than implied.
 **Why it matters:** The flow document is the terminology reference standard. Gate ambiguity propagates silently into every implementing document.
-**Resolution path:** Gate Correspondence table added to Component_Triage_System.md (May 2026 revision) — maps station outcomes to Gates A–D explicitly. Motor worked example added to Station 1 (65% torque → Gate A fail, Gate C pass). This partially resolves the Gate A/C boundary. Remaining gap: UNK-024 (forge duty threshold) must be resolved to fully close the A/C boundary. Gate C/D boundary and Human/AI Oversight Gate worked examples still needed.
-**Affected files:** `Lazarus_forge_v0_flow.md`, `Component_Triage_System.md`
+**Resolution path:** Gate Correspondence table added to Component_Triage_System.md — maps station outcomes to Gates A–D. Motor worked example added (65% torque → Gate A fail, Gate C pass). Remaining gaps: (1) UNK-026 detection circularity in Graduation Rule requires human-in-the-loop proxy at v0; (2) UNK-024 forge duty threshold must be explicitly defined; (3) Gate C/D boundary and Human/AI Oversight Gate worked examples still needed in Lazarus_forge_v0_flow.md.
+**Affected files:** `Lazarus_forge_v0_flow.md`, `Component_Triage_System.md`, `Components.md`
 **Depends on:** None
 **Owner:** Engineer / Skeptic/Auditor
 **Activation trigger:** Any module begins implementing triage or classification logic; or next revision of flow document
@@ -272,7 +278,7 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
 **Logged in version:** Lazarus_forge_v0_flow.md audit cycle, May 2026
-**Status:** In Progress — Gate A/C partially addressed; Gate C/D boundary and Oversight Gate worked examples still needed
+**Status:** In Progress — Gate A/C partially addressed; three remaining gaps identified
 
 ---
 
@@ -295,7 +301,7 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-014] — Anti-Weaponization pattern-matching mechanism is undefined
 **What is not yet known:** What constitutes a "pattern match" to weapons development. Pattern space, matching method, false-positive handling, and edge case escalation path are all absent.
 **Why it matters:** The hardest constraint in the repository depends on a detection mechanism that has not been specified.
-**Resolution path:** Add Pattern Recognition Annex to `Ethical_Constraints.md`. Hook added to Component_Triage_System.md Station 0 (May 2026 revision) — flagging step now exists at triage entry. Plasma cutter paradox is the concrete test case. Full mechanism still needed.
+**Resolution path:** Add Pattern Recognition Annex to `Ethical_Constraints.md`. Hook added to Component_Triage_System.md Station 0. Plasma cutter paradox is the concrete test case. Full mechanism still needed.
 **Affected files:** `Ethical_Constraints.md`, `Component_Triage_System.md`
 **Depends on:** None
 **Owner:** Engineer / Skeptic/Auditor
@@ -310,8 +316,8 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 
 ### [UNK-015] — Human escalation path has no defined mechanism
 **What is not yet known:** How escalation to human review is performed — channel, recipient, response time, system behavior during hold, timeout behavior.
-**Why it matters:** "Escalate to human review" appears throughout the parent governance document without definition. In Leviathan deployments, an undefined escalation path means the primary safety valve may not function.
-**Resolution path:** Escalation Protocol section added to Ethical_Constraints.md v0.3. Communications layer detail routes to `leviathan_testing.md`. Pending: commitment confirmation.
+**Why it matters:** "Escalate to human review" appears throughout the parent governance document without definition.
+**Resolution path:** Escalation Protocol section added to Ethical_Constraints.md v0.3 draft. Pending commit confirmation.
 **Affected files:** `Ethical_Constraints.md`, `leviathan_testing.md`
 **Depends on:** UNK-006 (comms availability), UNK-008
 **Owner:** Autonomy / Engineer
@@ -327,7 +333,7 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-016] — Governance layer failure modes are unspecified
 **What is not yet known:** How the ethics substrate can fail, how failure would be detected, and what fallback behavior applies.
 **Why it matters:** A governance document that describes only normal operation fails the Lifecycle Truncation standard.
-**Resolution path:** Governance Failure Modes section added to Ethical_Constraints.md v0.3. Pending commit confirmation.
+**Resolution path:** Governance Failure Modes section added to Ethical_Constraints.md v0.3 draft. Pending commit confirmation.
 **Affected files:** `Ethical_Constraints.md`, `leviathan_testing.md`
 **Depends on:** None
 **Owner:** Skeptic/Auditor
@@ -342,8 +348,8 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 
 ### [UNK-017] — Life-preservation vs. Anti-Weaponization priority conflict unresolved
 **What is not yet known:** Whether an acute human life preservation claim can override the Anti-Weaponization Doctrine.
-**Why it matters:** "We need this capability to protect lives" is the most common historical justification for weapons development. Silence implies "no exception" — but that must be stated, not assumed.
-**Resolution path:** Explicit humanitarian framing clause added to Ethical_Constraints.md v0.3 (Anti-Weaponization Doctrine section). Pending commit confirmation.
+**Why it matters:** Silence implies "no exception" — but that must be stated, not assumed, because the assumption will be tested.
+**Resolution path:** Explicit humanitarian framing clause added to Ethical_Constraints.md v0.3 draft. Pending commit confirmation.
 **Affected files:** `Ethical_Constraints.md`
 **Depends on:** None
 **Owner:** Skeptic/Auditor / human governing party
@@ -359,7 +365,7 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-018] — Ethical log survival under unit loss or communication blackout
 **What is not yet known:** How refusal logs survive unit loss, hardware failure, or communication blackout in remote deployments.
 **Why it matters:** A unit that refuses and then fails may take the record of that refusal with it.
-**Resolution path:** Add Log Survival section to `Ethical_Constraints.md` or `leviathan_testing.md`. Route implementation to delay-tolerant networking section.
+**Resolution path:** Add Log Survival section to `Ethical_Constraints.md` or `leviathan_testing.md`.
 **Affected files:** `Ethical_Constraints.md`, `leviathan_testing.md`
 **Depends on:** UNK-010
 **Owner:** Engineer / Autonomy
@@ -375,7 +381,7 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ### [UNK-019] — Governance fail-safe behavior if ethics substrate fails
 **What is not yet known:** What the system does if the ethics substrate itself fails or produces systematic false negatives.
 **Why it matters:** A governance system with no defined fail-safe defaults to whatever the underlying system does.
-**Resolution path:** Explicit fail-safe behavior added to Ethical_Constraints.md v0.3. Pending commit confirmation.
+**Resolution path:** Explicit fail-safe behavior added to Ethical_Constraints.md v0.3 draft. Pending commit confirmation.
 **Affected files:** `Ethical_Constraints.md`
 **Depends on:** UNK-013, UNK-016
 **Owner:** Skeptic/Auditor
@@ -389,25 +395,25 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ---
 
 ### [UNK-020] — Auditor effectiveness metrics and competence verification
-**What is not yet known:** How to measure whether the audit process is adding value and whether an auditor possesses sufficient domain knowledge.
+**What is not yet known:** How to measure whether the audit process is adding value.
 **Why it matters:** A verification system without measured performance risks becoming Checklist Theater.
-**Resolution path:** Protocol Performance section added to Auditor_Protocols.md v0.4 as Placeholder. Activation deferred to UNK-004 trigger.
+**Resolution path:** Protocol Performance section added to Auditor_Protocols.md v0.4 as Placeholder. Activation deferred to UNK-004 trigger (registry v1.0).
 **Affected files:** `Auditor_Protocols.md`, `leviathan_testing.md`
 **Depends on:** UNK-004
 **Owner:** Skeptic/Auditor
-**Activation trigger:** First full audit cycle complete; or v0.4 revision of Auditor_Protocols.md
+**Activation trigger:** Registry v1.0 / first full audit cycle complete
 **Risk type:** Missing mechanism
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
 **Logged in version:** Auditor_Protocols.md multi-model audit cycle, May 2026
-**Status:** In Progress — Placeholder section added to Auditor_Protocols.md v0.4; metrics pending UNK-004 activation
+**Status:** In Progress — Placeholder section added to Auditor_Protocols.md v0.4; metrics pending v1.0
 
 ---
 
 ### [UNK-021] — Reconciliation between human override rights and Ethical_Constraints immutability
 **What is not yet known:** How documented human overrides of Auditor flags interact with non-overrideable doctrines in Ethical_Constraints.md.
-**Why it matters:** Auditor_Protocols grants humans override rights; Ethical_Constraints treats hard-line doctrines as non-overrideable. These are not yet reconciled.
-**Resolution path:** Scope clarification added to Auditor_Protocols.md v0.4 in both Governing Principle and Human Contributor Protocols sections. One sentence each, cross-linked.
+**Why it matters:** Auditor_Protocols grants humans override rights; Ethical_Constraints treats hard-line doctrines as non-overrideable. Not yet reconciled.
+**Resolution path:** Scope clarification added to Auditor_Protocols.md v0.4 in both Governing Principle and Human Contributor Protocols sections.
 **Affected files:** `Auditor_Protocols.md`, `Ethical_Constraints.md`
 **Depends on:** UNK-019, UNK-013
 **Owner:** Skeptic/Auditor / Synthesizer
@@ -420,30 +426,14 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 
 ---
 
-### [UNK-022] — Full Stop Review trigger conditions are underspecified
-**What is not yet known:** What specific conditions warrant invoking a Full Stop Review.
-**Why it matters:** Without defined trigger conditions, Full Stop Review is subject to both overuse and underuse.
-**Resolution path:** Three specific trigger conditions and invocation record format added to Auditor_Protocols.md v0.4.
-**Affected files:** `Auditor_Protocols.md`
-**Depends on:** None
-**Owner:** Skeptic/Auditor
-**Activation trigger:** Next revision of Auditor_Protocols.md; or any contributor attempts to invoke Full Stop Review
-**Risk type:** Assumption
-**Priority (Exploration):** Non-blocking
-**Priority (Promotion):** Blocking
-**Logged in version:** Auditor_Protocols.md multi-model audit cycle, May 2026
-**Status:** Resolved — addressed in Auditor_Protocols.md v0.4
-
----
-
 ### [UNK-023] — Audit trail schema is undefined
 **What is not yet known:** A standard reproducible format for recording what was checked, who checked it, what gates were passed or blocked.
 **Why it matters:** Prose audit comments cannot be queried, compared across cycles, or used to detect patterns. Prerequisite for UNK-020.
-**Resolution path:** Required fields list and worked example added to Auditor_Protocols.md v0.4 Observability section. JSON/YAML schema deferred to when tooling exists.
+**Resolution path:** Required fields list and worked example added to Auditor_Protocols.md v0.4. JSON/YAML schema deferred.
 **Affected files:** `Auditor_Protocols.md`
 **Depends on:** UNK-004, UNK-020
 **Owner:** Engineer / Skeptic/Auditor
-**Activation trigger:** Next revision of Auditor_Protocols.md; or first attempt to query audit history
+**Activation trigger:** First attempt to query audit history across multiple cycles
 **Risk type:** Missing mechanism
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
@@ -453,29 +443,29 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 ---
 
 ### [UNK-024] — "Sufficient for forge duty" threshold is undefined
-**What is not yet known:** A quantitative or contextual definition of acceptable degraded performance for components assigned to forge duty rather than original application. The 70% performance threshold in Station 1 does not distinguish Gate A (original function) from Gate C (reduced function) — both can satisfy 70% depending on which application context is being evaluated.
-**Why it matters:** This is the primary remaining Gate A/C boundary ambiguity after UNK-012 partial resolution. An undefined threshold means the same component can route to the Component Library (Gate A) or to Repurpose (Gate C) depending on operator interpretation. As Gen-1 forge operations accumulate, inconsistent routing will produce inconsistent component quality in the library. Directly feeds UNK-012 resolution.
-**Resolution path:** Define threshold as application-specific rather than a single percentage: (1) for original-application reuse (Gate A) — performance must meet the original equipment specification within a defined tolerance, labeled Analogous or Measured from Gen-1 data; (2) for forge-duty reuse (Gate C) — performance must meet the specific forge task requirement, defined per task class (ventilation, pumping, structural). A "Baseline Performance Table" for the 5 most common salvaged component classes (motors, bearings, inverters, pumps, structural members) would operationalize this. Populate from Gen-1 operational data after N≥50 observations per class.
-**Affected files:** `Component_Triage_System.md`, `Lazarus_forge_v0_flow.md`
+**What is not yet known:** A quantitative or contextual definition of acceptable degraded performance for components assigned to forge duty. The 70% threshold in Station 1 does not distinguish Gate A (original function) from Gate C (reduced function).
+**Why it matters:** Primary remaining Gate A/C boundary ambiguity after UNK-012 partial resolution. Inconsistent routing produces inconsistent component quality in the library.
+**Resolution path:** Bootstrap Doctrine in Components.md offers the best current candidate: "A component is sufficient if it allows the Forge loop to close." However, "the Forge loop" is not yet explicitly defined — adding one sentence defining the loop to the Bootstrap Doctrine section would make the sufficiency criterion falsifiable and directly resolve this unknown. Define as application-specific thresholds once Gen-1 operational data is available. Populate Baseline Performance Table after N≥50 observations per component class.
+**Affected files:** `Component_Triage_System.md`, `Lazarus_forge_v0_flow.md`, `Components.md`
 **Depends on:** None (UNK-012 depends on this)
 **Owner:** Engineer
 **Activation trigger:** Gen-1 forge begins triage operations; or Station 1 pass guidance is revised; or UNK-012 resolution resumes
-**Risk type:** Assumption — "70% performance" implies a single threshold that applies regardless of application context
+**Risk type:** Assumption
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
 **Logged in version:** Component_Triage_System.md multi-model audit cycle, May 2026
-**Status:** Open
+**Status:** In Progress — Bootstrap Doctrine candidate identified in Components.md; Forge loop definition needed to make it falsifiable
 
 ---
 
 ### [UNK-025] — Contamination routing protocol in triage is undefined
-**What is not yet known:** How chemically or biologically contaminated components are handled through the triage station sequence — whether there is a pre-station decontamination step, what constitutes acceptable decontamination, what happens to components that cannot be decontaminated, and how contamination type and degree are recorded on provenance tags.
-**Why it matters:** `Lazarus_forge_v0_flow.md` defines contamination level as a classification attribute. `Component_Triage_System.md` has no contamination handling path beyond a Station 0 visual flag. Chemically contaminated components passed through electrical or mechanical stations without decontamination risk operator safety and downstream Purification contamination. Three of four audit passes flagged this gap independently.
-**Resolution path:** Add a contamination handling protocol to `Component_Triage_System.md`: (1) Station 0 contamination check — identify type (chemical/biological) and severity; (2) contaminated items routed to decontamination hold before electrical or mechanical stations; (3) decontamination criteria — what constitutes safe for further triage; (4) items that cannot be decontaminated route directly to Material Recovery with contamination noted; (5) provenance tag must include contamination status and decontamination outcome. Cross-reference `Air_Scrubber_v0.md` for chemical handling and whatever safety protocol exists for hazardous materials.
+**What is not yet known:** How chemically or biologically contaminated components are handled through the triage station sequence — decontamination steps, acceptability criteria, routing for components that cannot be decontaminated, and provenance tag requirements.
+**Why it matters:** Contaminated components passed through electrical or mechanical stations without decontamination risk operator safety and downstream Purification contamination.
+**Resolution path:** Station 0 contamination check and Contaminated bin added to Component_Triage_System.md (May 2026 revision). Full decontamination protocol still needed. Cross-reference `Air_Scrubber_v0.md` for chemical handling.
 **Affected files:** `Component_Triage_System.md`, `Lazarus_forge_v0_flow.md`, `Air_Scrubber_v0.md`
 **Depends on:** None
 **Owner:** Engineer
-**Activation trigger:** Gen-1 forge begins triage operations; or any contaminated material enters the triage stream; or Component_Triage_System.md is revised
+**Activation trigger:** Gen-1 forge begins triage operations; or any contaminated material enters the triage stream
 **Risk type:** Missing mechanism
 **Priority (Exploration):** Non-blocking
 **Priority (Promotion):** Blocking
@@ -484,9 +474,25 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 
 ---
 
+### [UNK-026] — Graduation Rule detection circularity at v0
+**What is not yet known:** How the Graduation Rule's detection requirement is satisfied at v0, when the Advanced Sensing capability needed to detect component degradation is classified as Useful (non-critical) rather than Critical. A component cannot graduate until the Forge can detect its degradation — but detection capability may not yet exist when graduation decisions need to be made.
+**Why it matters:** This is a concrete architectural circularity in `Components.md` that feeds directly into UNK-012 (gate logic determinism). The Graduation Rule implies automation of a decision that requires sensing capability the forge doesn't yet have. At Gen-1 scale with a skilled human operator this gap is filled informally — but as automation increases, the absence of an explicit proxy mechanism becomes a real failure mode. Four audit passes on the component stack converged on this pattern.
+**Resolution path:** Two options: (1) elevate basic degradation detection (not Advanced Sensing — just threshold monitoring of critical components) to Critical status at v0, explicitly acknowledging it as a bootstrap requirement; or (2) explicitly state in the Bootstrap Doctrine that graduation decisions at v0 require human-in-the-loop verification as a proxy for automated detection, and that this proxy is a defined v0 operating condition, not a gap. Either answer closes the circularity. The second option is lower effort and more honest about v0 reality. Add one sentence to the Graduation Rule: *"At v0, graduation assessment requires human operator verification as a proxy for automated degradation detection."*
+**Affected files:** `Components.md`, `Lazarus_forge_v0_flow.md`, `Component_Triage_System.md`
+**Depends on:** None (feeds UNK-012)
+**Owner:** Engineer
+**Activation trigger:** Components.md next revision; or any automation of graduation decisions begins
+**Risk type:** Assumption — Graduation Rule implies detection capability exists when it may not
+**Priority (Exploration):** Non-blocking
+**Priority (Promotion):** Blocking
+**Logged in version:** Components.md audit cycle, May 2026
+**Status:** Open
+
+---
+
 ## Expiry Watch
 
-*(None flagged at v0.8 — all entries within first or second cycle. UNK-004 deferred by human decision.)*
+*(None flagged at v0.9 — all entries within first or second cycle. UNK-004 deferred; activates at registry v1.0.)*
 
 ---
 
@@ -508,11 +514,6 @@ UNK-004 (Expiry Rule) [DEFERRED — activates post-audit-cycle completion]
 **v0.4 — May 2026:** Third audit cycle (energy_v0.md). UNK-011 added.
 **v0.5 — May 2026:** Fourth audit cycle (Lazarus_forge_v0_flow.md). UNK-012 added. UNK-004 deferred.
 **v0.6 — May 2026:** Fifth audit cycle (Ethical_Constraints.md) — multi-model. UNK-013 through UNK-019 added.
-**v0.7 — May 2026:** Sixth audit cycle (Auditor_Protocols.md) — multi-model. UNK-020 through UNK-023 added.
-**v0.8 — May 2026:** Seventh audit cycle (Component_Triage_System.md) — multi-model: Claude, Gemini, Grok, ChatGPT.
-Two unknowns added: UNK-024 (forge duty threshold), UNK-025 (contamination routing protocol).
-UNK-012 status updated to In Progress — Gate Correspondence table and worked example added to Component_Triage_System.md; remaining gap feeds UNK-024.
-UNK-014 status updated to In Progress — hook added at Station 0 of Component_Triage_System.md.
-UNK-022 moved to Resolved Archive — addressed in Auditor_Protocols.md v0.4.
-Dependency Map updated: UNK-024 feeds UNK-012; UNK-025 affects Air_Scrubber_v0.md.
-Multiple UNK entries from v0.6/v0.7 updated to In Progress status — Ethical_Constraints.md v0.3 and Auditor_Protocols.md v0.4 drafts address them pending commit confirmation.
+**v0.7 — May 2026:** Sixth audit cycle (Auditor_Protocols.md) — multi-model. UNK-020 through UNK-023 added. UNK-022 resolved.
+**v0.8 — May 2026:** Seventh audit cycle (Component_Triage_System.md) — multi-model. UNK-024, UNK-025 added. UNK-012 and UNK-014 updated to In Progress.
+**v0.9 — May 2026:** Eighth audit cycle (Components.md). UNK-026 added (Graduation Rule detection circularity). UNK-012 updated with three remaining gaps. UNK-024 updated with Bootstrap Doctrine candidate resolution path. UNK-004 activation trigger updated to registry v1.0.
