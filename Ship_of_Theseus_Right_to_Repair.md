@@ -33,3 +33,51 @@ The Ship of Theseus provides a robust framework for defending Lazarus Forge unde
   - **Ethical/Policy Alignment**: Emphasizes sustainability—repair reduces waste (292M tons/year U.S., EPA 2023). Ties to FTC's anti-obsolescence stance.
 - **Implementation**: QR codes ($0.05) document provenance ("30% from wrecks"). For space: "Repair" asteroid regolith into habitats under COSPAR laws.
 - **Risks/Mitigations**: Brands may challenge "commercial repair" ($50K-$500K suits)—mitigate with expired patents (pre-2005, $1K check) and generic designs ("coupe kits").
+
+Auditor Notes:
+"Ship_of_Theseus_Right_to_Repair.md" is currently classified as to be determined. Audit for promotion blockers and consistency with the repository standard. Do not apply specification-level pressure to intentionally incomplete content.
+Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4.
+## EXPIRY WATCH
+Active Unknowns at v0.9 (May 2026) checked. No entries flagged as past two cycles. Proceeding with audit.
+## FALLACY CHECKLIST AUDIT
+### 1. [FALLACY] Semantic Drift / [GAP] Lifecycle Truncation
+ * **Finding**: The document conflates "repair" (restoring a specific instance) with "remanufacture" (creating a new instance from recycled material). While the Ship of Theseus is a strong *philosophical* metaphor, the legal transition from "repairing a motor" to "shredding a motor into 1g grains to print a new tub" is a massive leap in patent law.
+ * **Resolution Path**: Distinguish between **Instance Repair** (fixing the specific item) and **Lineage Reconstruction** (using material/grains to justify a new build). Add a "Failure Mode" section addressing legal rejection of the "1g grain" as sufficient for continuity.
+### 2. [GAP] The Turd Problem (Adversarial Reduction)
+ * **Finding**: The foundational claim is: *"Including 1g of original material makes a new product a legal repair of the old one."*
+ * **Adversarial Reduction**: If I add 1g of a crashed Boeing 747 to a 3D-printed lawn chair, is the chair a "repaired" airplane?
+ * **Resolution Path**: Define the "Functional Essence" threshold. Continuity must likely be tied to the **primary functional component** or **form factor**, not just any mass.
+### 3. [UNLOGGED UNKNOWN] Legal "Grain" Precedent
+ * **Finding**: The text cites *Lexmark v. Impression* and *Apple v. Corellium*, but these involve exhaustion of rights and interoperability, not material lineage via "grains."
+ * **Resolution Path**: Log a new unknown: **UNK-027: Legal viability of homeopathic material continuity (Grains) in patent defense.**
+### 4. [CONTRADICTION] Energy Density Paradox
+ * **Finding**: The document suggests "Component Triage" for motors/gears but then pivots to "Purify → Fabricate."
+ * **Resolution Path**: Clarify the decision matrix. Does the Forge spend more energy purifying a motor back into raw copper than it would simply replacing a bearing? Cross-ref energy_v0.md for triage costs.
+### 5. [FALLACY] Confidence Without Basis
+ * **Finding**: "QR codes ($0.05)" and "Suits ($50K-$500K)" are unlabeled.
+ * **Resolution Path**: Apply labels: **$0.05 (Estimated)**, **$50K-$500K (Analogous)**.
+## VERIFICATION GATES ASSESSMENT
+| Gate | Status | Findings / Notes |
+|---|---|---|
+| **1 — Fallacy Check** | **FAIL** | Issues with Semantic Drift and lifecycle definitions for the "Grain" system. |
+| **2 — Verification Artifacts** | **FAIL** | No falsifiable artifact provided to test the "1g grain" legal theory. |
+| **3 — Adversarial Pass** | **FAIL** | Needs a test case where a brand (e.g., Ford) sues despite the 1g grain presence. |
+| **4 — Scope Alignment** | **PASS** | Philosophy fits v0 "Exploration" status; legal strategy aligns with Trajectories_LF.md. |
+| **5 — Cross-Ref Integrity** | **FAIL** | References energy_v0.md and Lazarus_forge_v0_flow.md. Verify these exist in Discovery.md. |
+| **6 — Conflict Check** | **PASS** | No direct contradiction with existing hardware specs found. |
+## FINDINGS SUMMARY & RESOLUTIONS
+ * **[GAP]**: The "1g Grain" preservation (Section 3) lacks a technical specification on *how* the grain is embedded without compromising structural integrity of the new part.
+   * *Resolution*: Add a technical note on "Non-Structural Inclusion Zones" for grain placement.
+ * **[UNLOGGED UNKNOWN]**: The transition from "scrapped waste" to "owned material" is legally murky in many jurisdictions (waste ownership laws).
+   * *Resolution*: Log **UNK-028: Waste-to-Ownership transition legality across jurisdictions.**
+ * **[CROSS-REF FAILURE]**: Mention of "Gen 0 chamber (tortoise-like)" implies a specific hardware file not loaded or clearly identified in Discovery.md.
+   * *Resolution*: Label as [Planned File: Hardware_Gen0.md].
+## SIGN-OFF
+**Document**: Ship_of_Theseus_Right_to_Repair.md (to be determined audit, 2026-05-04)
+**Auditor**: Skeptic/Auditor — Gemini 3 Flash
+**Gates cleared**: 4, 6
+**Gates blocked**: 1, 2, 3, 5
+**Unknowns logged**: UNK-027, UNK-028
+**Overrides**: none
+**Sign-off**: The document provides a compelling philosophical narrative but relies on a "homeopathic" legal theory (material grains) that requires significant adversarial testing before promotion to Specification.
+Should I draft the entries for the two new unknowns (UNK-027 and UNK-028) for the Unknowns_LF.md registry?
