@@ -27,10 +27,10 @@ def fetch(filename):
     try:
         with urllib.request.urlopen(url) as r:
             content = r.read().decode("utf-8")
-        print(f"  ✓ {filename} ({len(content):,} chars)")
+        print(f" ✓ {filename} ({len(content):,} chars)")
         return content
     except Exception as e:
-        print(f"  ✗ {filename} — FAILED: {e}")
+        print(f" ✗ {filename} — FAILED: {e}")
         return f"[FETCH FAILED: {filename}]"
 
 print("Fetch helper ready.")
@@ -45,11 +45,7 @@ TARGET_FILE = "Components.md"
 
 # ── STEP 2: Set the audit focus (1-3 sentences) ───────────────────
 # What should the auditor pay particular attention to?
-FOCUS = """
-Audit for consistency with Component_Triage_System.md taxonomy and gate logic.
-Check for Lifecycle Truncation (Fallacy #8) — does the taxonomy describe only
-working-state components, or does it account for degraded, failed, and end-of-life paths?
-Note any findings relevant to UNK-012 (gate logic determinism) or UNK-024 (forge duty threshold).
+FOCUS = """ standard audit
 """.strip()
 
 # ── STEP 3: Add extra context files if needed ─────────────────────
@@ -57,17 +53,17 @@ Note any findings relevant to UNK-012 (gate logic determinism) or UNK-024 (forge
 # Add files here ONLY when the audit needs extra context beyond the kit.
 # Each file adds ~5-10k chars. Keep total under 50k where possible.
 EXTRA_FILES = [
-    # "Component_Triage_System.md",   # uncomment if auditing taxonomy consistency
-    # "Lazarus_forge_v0_flow.md",     # uncomment if gate logic is central
-    # "Ethical_Constraints.md",       # uncomment if ethics cross-ref needed
-    # "energy_v0.md",                 # uncomment if energy claims are central
-    # "Trajectories_LF.md",           # uncomment if scope questions arise
-    # "leviathan_testing.md",         # uncomment if Leviathan relevance flagged
+    # "Component_Triage_System.md", # uncomment if auditing taxonomy consistency
+    # "Lazarus_forge_v0_flow.md", # uncomment if gate logic is central
+    # "Ethical_Constraints.md", # uncomment if ethics cross-ref needed
+    # "energy_v0.md", # uncomment if energy claims are central
+    # "Trajectories_LF.md", # uncomment if scope questions arise
+    # "leviathan_testing.md", # uncomment if Leviathan relevance flagged
 ]
 
 # ── STEP 4: Set document status ───────────────────────────────────
 # Options: "Exploration" | "Draft" | "Specification"
-DOC_STATUS = "Exploration"
+DOC_STATUS = "to be determined"
 
 # ── FRAMING LINE ──────────────────────────────────────────────────
 # Copy this line and paste it at the TOP of the Claude conversation
@@ -78,11 +74,11 @@ FRAMING_LINE = (
     f"Do not apply specification-level pressure to intentionally incomplete content."
 )
 
-print(f"Target:  {TARGET_FILE}")
-print(f"Status:  {DOC_STATUS}")
-print(f"Extras:  {EXTRA_FILES if EXTRA_FILES else 'none'}")
+print(f"Target: {TARGET_FILE}")
+print(f"Status: {DOC_STATUS}")
+print(f"Extras: {EXTRA_FILES if EXTRA_FILES else 'none'}")
 print(f"\nFraming line (paste at top of Claude conversation):")
-print(f"  {FRAMING_LINE}")
+print(f" {FRAMING_LINE}")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -105,11 +101,11 @@ print(f"\nDone. {len(fetched)} file(s) loaded.")
 print(f"Total chars: {total_chars:,} (~{total_chars // 4:,} tokens estimated)")
 
 if total_chars > 60000:
-    print("\n⚠  WARNING: Approaching token ceiling. Consider removing an EXTRA_FILE.")
+    print("\n⚠ WARNING: Approaching token ceiling. Consider removing an EXTRA_FILE.")
 elif total_chars > 40000:
-    print("\n→  Moderate load. Should be fine for most free-tier sessions.")
+    print("\n→ Moderate load. Should be fine for most free-tier sessions.")
 else:
-    print("\n✓  Light load. Room to spare.")
+    print("\n✓ Light load. Room to spare.")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -132,7 +128,7 @@ sections.append(
     f"Prior contributions assumed:\n"
     f"- {TARGET_FILE} is classified as {DOC_STATUS}\n"
     f"- Forge_Audit_Kit.md contains the active Fallacy Checklist, Verification Gates,\n"
-    f"  AI Contribution Rules, and condensed Unknowns Registry (v0.8)\n"
+    f" AI Contribution Rules, and condensed Unknowns Registry (v0.8)\n"
     f"- Full reference files: Auditor_Protocols.md | Unknowns_LF.md\n"
     f"These assumptions are carried forward unless contradicted by new findings."
 )
@@ -144,7 +140,7 @@ sections.append(
     f"Apply the full Fallacy Checklist from Forge_Audit_Kit.md.\n"
     f"Use the Verification Gates to assess promotion readiness.\n"
     f"Open with an Expiry Watch — check the Active Unknowns table for any entries\n"
-    f"  past two cycles before proceeding.\n\n"
+    f" past two cycles before proceeding.\n\n"
     f"Audit focus:\n{FOCUS}\n\n"
     f"Label all findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN],\n"
     f"[CROSS-REF FAILURE]. For each finding, suggest a concrete resolution path.\n"
