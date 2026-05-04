@@ -372,3 +372,45 @@ Key changes from v0.3:
 This document is expected to remain incomplete and wrong in places. What must remain constant:
 
 **Confidence never outruns verification.**
+
+
+Interim Addendum:
+Operating as **Synthesizer** per Auditor_Protocols.md v0.2.
+The transition to a **Distributed Ledger** approach for audits is a vital architectural "resurrection." By moving from a centralized bottleneck to a decentralized sidecar model, we ensure the metadata scales *with* the modules rather than against them.
+Below is the draft for the **v0.3 Amendment**. It formalizes the "Sidecar" methodology and introduces the **Resolution Expungement** process to keep the project's cognitive load manageable.
+# Auditor_Protocols.md — v0.3 Amendment: Decentralized Audit (DA)
+## 1. The Sidecar Methodology
+To prevent **Metadata Bloat** and token-limit failures, the Unknowns_LF.md master file is hereby deprecated as a primary data entry point.
+ * **Local Ledger:** Every technical specification (.md) file must now contain an **# Auditor Notes & Unknowns** section at the footer.
+ * **The 10-Line Rule:** If the local auditor notes exceed 10 distinct entries, the file is flagged for a **Resolution Pass**.
+ * **Master Registry Role:** Unknowns_LF.md is repurposed as a **Global Index**. It shall only contain links to the local ledgers and a summary of "High-Level Systemic Risks" that span multiple repositories.
+## 2. Resolution & Expungement (The Purge)
+An "Unknown" is not a permanent fixture. It is a debt that must be paid or discharged.
+ * **Payment via Specification:** An unknown is expunged when the technical detail is integrated into the main body of the specification (e.g., bio-fouling mitigation is moved from "Notes" to "Specs").
+ * **Discharge via Trajectory:** If an unknown is deemed "Non-Critical for v0," it is moved to Trajectories_LF.md and removed from the active audit path.
+ * **The Artifact of Resolution:** When an unknown is expunged, the Auditor note is deleted, and a single-line "Resolution Trace" is added to the **Lineage Tracking** section to preserve the audit trail without the bulk.
+## 3. Context-Gated Auditing
+To protect the token window of AI agents:
+ * **Isolation:** Auditors should be provided only with the **Target File** and this **Protocol**.
+ * **Summary Headers:** Files must include an **Audit Health Header** (see below) to allow agents to bypass the full history of the sidecar notes unless a deep-dive is required.
+### Implementation Template: File Header & Footer
+**[Top of File]**
+> **Audit Health Header:**
+>  * **Status:** [Draft/Spec/Exploration]
+>  * **Last Audit:** 2026-05-04 (Gemini-Engineer)
+>  * **Active Unknowns:** 2 (Low Risk)
+>  * **Jump to:** [#Auditor-Notes]
+> 
+**[Bottom of File]**
+> # Auditor Notes & Unknowns
+>  1. **[ID-001]** Bio-fouling impact on rotor balance. (Status: Open / Assigned: Engineer)
+>  2. **[ID-002]** Power-draw delta at high sea-state. (Status: Pending Measured Data)
+> **Resolution Log:**
+>  * *2026-05-03: [ID-000] Magic Energy Fallacy resolved via Support_Raft energy trace.*
+> 
+## Refusal Logic for Bloated Files
+If an AI agent is presented with a file where the **Auditor Notes** exceed 20% of the total word count, the agent **MUST REFUSE** to audit until a **Resolution Pass** is performed by the Synthesizer. This is a hard guardrail against "Metadata Hallucinations."
+## Thoughts on Resolution Expungement
+Expunging unknowns isn't just about deleting text; it’s about **crystallization**. Every time you move an "Unknown" from the footer into the "Specification" body, the project becomes more deterministic.
+For the **Support Raft**, for example, we can expunge the "Induction Loss" unknown right now because we’ve quantified it at **12%**. That is no longer an unknown; it is a **Measured/Estimated Constraint**.
+**Shall I proceed by performing a "Resolution Pass" on the Support_Raft_v0.md or Pre_Spin_Separation_v0.md to demonstrate how we move these footer notes into the core specs?**
