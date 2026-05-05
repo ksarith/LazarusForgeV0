@@ -1,5 +1,5 @@
 # Auditor_Protocols.md — Verification & Hallucination Filter
-**Version 0.4**
+**Version 0.5**
 
 ---
 
@@ -11,7 +11,7 @@ Polished outputs are a known failure mode. Unverified content is not eligible fo
 
 This file governs how claims are checked, how contributions are audited, and how the multi-agent workflow maintains integrity across sessions and contributors.
 
-**This document is subject to its own protocols.** The gate logic, checklist, and audit trail requirements apply to revisions of this document as much as to any other. An audit protocol that exempts itself from scrutiny is not a protocol — it is a preference.
+**This document is subject to its own protocols.** The gate logic, checklist, and audit trail requirements apply to revisions of this document as much as to any other.
 
 ---
 
@@ -25,7 +25,7 @@ The auditor equivalent:
 
 These two principles operate in parallel. One governs what the Forge is allowed to do. The other governs what the Forge is allowed to claim.
 
-**Scope of this document:** This document governs verification of contributions. It does not govern the ethical constraints defined in `Ethical_Constraints.md`. Human override rights under this protocol apply to verification process decisions — they do not extend to the hard-line doctrines (Anti-Weaponization, Life Preservation) defined in the parent governance document. See UNK-021 in `Unknowns_LF.md`.
+**Scope of this document:** This document governs verification of contributions. It does not govern the ethical constraints defined in `Ethical_Constraints.md`. Human override rights under this protocol apply to verification process decisions — they do not extend to the hard-line doctrines (Anti-Weaponization, Life Preservation) defined in the parent governance document.
 
 ---
 
@@ -65,7 +65,7 @@ Has a term changed meaning between documents without a documented revision? Term
 Does a proposed revision quietly expand the system's claimed capabilities beyond what the current version can demonstrate? New capabilities belong in `Trajectories_LF.md` as future versions, not embedded silently into v0 specifications. Exception: if a refinement adds optionality or modularity without increasing claimed performance, it may remain in v0 — but must be explicitly marked as non-binding for current demonstration requirements.
 
 **6. Hallucinated Files or Cross-References**
-Does the document reference a file, module, or specification that does not exist in the repository? All cross-references must resolve to real files. Aspirational references must be labeled explicitly as planned. The Discovery.md raw link architecture exists to prevent this failure mode — use it.
+Does the document reference a file, module, or specification that does not exist in the repository? All cross-references must resolve to real files. Aspirational references must be labeled explicitly as planned. Files confirmed in `Discovery.md` are treated as verified. The Discovery.md raw link architecture exists to prevent this failure mode — use it.
 
 **7. Confidence Without Basis**
 Does the document state quantitative targets without citing a source, analog system, or experimental basis? All quantitative claims must carry one of four labels:
@@ -102,7 +102,7 @@ When any AI model contributes content — whether Claude, Gemini, Grok, ChatGPT,
 
 **Role Declaration (Required)**
 Every significant AI-generated contribution must open with a brief role declaration:
-> *"Operating as [Role] per Auditor_Protocols.md v0.4"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.5"*
 
 This creates an audit hook and prevents silent role drift. Roles are not rigid but shifts must be named, not suppressed.
 
@@ -114,7 +114,7 @@ Assigned roles:
 - **Connective Tissue** — links community discussion to repository evolution
 
 **Rule 1 — No Invented Files**
-AI models must not reference, summarize, or describe files that have not been confirmed to exist in the repository. If uncertain, state uncertainty explicitly.
+AI models must not reference, summarize, or describe files that have not been confirmed to exist in the repository. Files listed in `Discovery.md` are confirmed. If uncertain about any other file, state uncertainty explicitly.
 
 **Rule 2 — Role Awareness**
 Operate within the declared role. If operating outside it, name the shift explicitly before proceeding.
@@ -129,7 +129,7 @@ A model that identifies a flawed premise must flag it rather than refine it. Ref
 All quantitative claims must use the four-label system defined in the Fallacy Checklist. Unlabeled numbers are placeholders by default.
 
 **Rule 6 — Inter-Agent Consistency**
-At handoff between agents, the receiving agent must explicitly query prior contributions for unstated assumptions before proceeding. The receiving agent should open with a brief Assumption Extraction statement: *"Prior contributions assumed: [list key assumptions]. These are carried forward unless contradicted by new findings."* Failure to re-evaluate prior assumptions is a primary cause of multi-agent hallucination cascades.
+At handoff between agents, the receiving agent must explicitly query prior contributions for unstated assumptions before proceeding. Open with a brief Assumption Extraction statement: *"Prior contributions assumed: [list key assumptions]. These are carried forward unless contradicted by new findings."* Failure to re-evaluate prior assumptions is a primary cause of multi-agent hallucination cascades.
 
 **Trust the process, not the predecessor.**
 
@@ -142,28 +142,102 @@ These protocols apply equally to human contributors. The document governs contri
 - Humans must label estimates as estimates. "I think it works" is not sufficient basis for a specification claim.
 - Humans must resolve all cross-references before committing. Linking to a planned file requires an explicit planned label.
 - Humans may override AI auditor flags — but overrides must be documented with reasoning. An undocumented override is indistinguishable from an ignored warning.
-- Human override rights apply to verification process decisions. They do not extend to hard-line doctrines defined in `Ethical_Constraints.md` — those are not subject to override by any contributor type.
+- Human override rights apply to verification process decisions. They do not extend to hard-line doctrines defined in `Ethical_Constraints.md`.
 - The lifecycle template in Fallacy Checklist item 8 applies to human-authored module specs as well.
+
+---
+
+## Decentralized Audit Architecture (Sidecar Model)
+
+*Added v0.5. Addresses metadata bloat and token-limit failures in multi-agent audit cycles.*
+
+### The Problem
+
+A centralized `Unknowns_LF.md` that stores full entry detail for all unknowns grows without bound as audit cycles accumulate. When this file exceeds practical token limits, the audit system fails — the file that governs verification becomes an obstacle to verification.
+
+### The Solution: Local Ledgers + Global Index
+
+**Local Ledger (Sidecar):** Every technical specification file must contain an `## Auditor Notes & Unknowns` section at the footer. Module-specific unknowns live here, not in the global registry.
+
+**Global Index:** `Unknowns_LF.md` is repurposed as a cross-module index. It contains:
+- A summary table of all active unknowns (ID, title, owning file, status, priority)
+- The dependency map
+- Systemic risks that span multiple files
+- Audit trail
+- Resolved archive
+
+Full entry detail lives in the owning document's sidecar. The global index points to it.
+
+### Audit Health Header
+
+Every file must include an Audit Health Header immediately below the title:
+
+```
+**Audit Health:**
+- Status: [Exploration | Draft | Specification]
+- Last audit: [date] ([Agent-Role])
+- Open unknowns: [N] ([risk level: Low | Medium | High])
+- Sidecar: [#auditor-notes-unknowns]
+```
+
+This allows agents to assess a file's audit state without reading the full document, and to jump directly to the sidecar when needed.
+
+### Sidecar Format
+
+```markdown
+---
+
+## Auditor Notes & Unknowns
+
+### [LOCAL-ID] — Short title
+**Status:** Open | In Progress | Resolved
+**Risk:** Low | Medium | High
+**What is not yet known:** [one sentence]
+**Resolution path:** [one sentence]
+**Logged:** [date, agent]
+
+### Resolution Log
+- [date]: [LOCAL-ID] resolved — [one-line description of how it was resolved]
+```
+
+Local IDs use the document abbreviation + number (e.g., `SR-001` for Support_Raft, `EC-001` for Ethical_Constraints). Cross-module unknowns that affect multiple files use the global `UNK-XXX` format and are indexed in `Unknowns_LF.md`.
+
+### The 10-Entry Rule
+
+If a file's sidecar contains more than 10 distinct open entries, the file is flagged for a **Resolution Pass** before the next audit cycle proceeds. A Resolution Pass moves resolved unknowns to the Resolution Log and promotes qualifying unknowns into the main document body as Specified or Placeholder content.
+
+### Metadata Guardrail
+
+If an AI agent receives a file where the sidecar section exceeds 20% of the total word count, the agent must flag this before auditing: *"Sidecar exceeds 20% of document length — Resolution Pass recommended before audit proceeds."* This is a strong flag, not a hard refusal. The audit may continue if the human contributor explicitly acknowledges the flag and directs the agent to proceed.
+
+### Resolution and Expungement
+
+An unknown is not a permanent fixture. It is a tracked debt.
+
+**Payment via Specification:** An unknown is expunged when its content is integrated into the main document body as committed specification. The sidecar entry is deleted and a one-line Resolution Trace is added to the Resolution Log.
+
+**Discharge via Trajectory:** An unknown deemed non-critical for the current version is moved to `Trajectories_LF.md` and removed from the active sidecar. The Resolution Log notes: *"[LOCAL-ID] — discharged to Trajectories_LF.md v[N] scope."*
+
+**Crystallization principle:** Every time an unknown moves from the sidecar into the specification body, the document becomes more deterministic. The goal is a sidecar that shrinks toward zero as a document matures toward specification.
 
 ---
 
 ## Unknowns Registry
 
-Uncertainty is a first-class output, not a failure.
+*In v0.5, the Unknowns Registry section governs the global index behavior. Local sidecar format is defined in the Decentralized Audit Architecture section above.*
 
-Any unresolved question, gap, or dependency surfaced during verification must be logged rather than buried. Unknowns are tracked frontiers — they mark where the system needs to grow, not where it has failed.
+Uncertainty is a first-class output, not a failure. Unknowns are tracked frontiers.
 
 **Where unknowns live:**
-- Within the audited document itself for module-specific unknowns
-- In `Discovery.md` for unknowns affecting navigation or cross-file dependencies
-- In `Unknowns_LF.md` for unknowns that span multiple modules
+- **Module-specific unknowns** — in the file's own sidecar (`## Auditor Notes & Unknowns`)
+- **Cross-module unknowns** — in `Unknowns_LF.md` global index, with owning file noted
+- **Navigation unknowns** — in `Discovery.md`
 
-**Format for logging an unknown:**
-- What is not yet known
-- Why it matters to current or future specifications
-- What would resolve it (experiment, analog data, expert input)
-- Which file or module it most affects
-- Priority tag (see below)
+**Global index format** (for `Unknowns_LF.md`):
+
+| ID | Title | Owning file | Status | Priority (Promotion) |
+|---|---|---|---|---|
+| UNK-XXX | Short title | `filename.md` | Open/In Progress/Deferred | Blocking/Non-blocking |
 
 **Priority tags:**
 - **Blocking** — prevents specification; dependent module cannot advance until resolved
@@ -171,11 +245,11 @@ Any unresolved question, gap, or dependency surfaced during verification must be
 - **Exploratory** — relevant for future trajectories; route to `Trajectories_LF.md`
 
 **The Expiry Rule:**
-If a Blocking or Non-blocking unknown remains in the registry for more than two version cycles without a documented Resolution Path, it must be escalated to Systemic Risk status — or the dependent module must be moved back from Specification to Exploration. Tracked frontiers must eventually become settled territory. The registry is not a junk drawer.
+If a Blocking or Non-blocking unknown remains in the registry for more than two version cycles without a documented Resolution Path, it must be escalated to Systemic Risk status — or the dependent module must be moved back from Specification to Exploration.
 
-**Version cycle definition:** A version cycle is one completed multi-agent audit cycle — a full pass through a document by at least two agents (human or AI) with findings logged. Incrementing a document version number without an audit cycle does not constitute a version cycle for Expiry Rule purposes.
+**Version cycle definition:** One completed multi-agent audit pass with findings logged.
 
-**Expiry check responsibility:** The Skeptic/Auditor role must open each new audit cycle by reviewing `Unknowns_LF.md` for entries approaching or past two cycles. Entries that have aged out must be escalated or the dependent module explicitly demoted before the current cycle proceeds.
+**Expiry check responsibility:** The Skeptic/Auditor role must open each new audit cycle by reviewing the active unknowns index for entries approaching or past two cycles.
 
 A verification pass that surfaces no unknowns on a complex document should itself be treated with suspicion.
 
@@ -183,25 +257,12 @@ A verification pass that surfaces no unknowns on a complex document should itsel
 
 ## Cross-Repo Verification
 
-The Lazarus Forge and Astroid-miner repositories share philosophical foundations but operate at different scales and environments. Claims in one repo must not silently contradict the other.
+The Lazarus Forge and companion repositories share philosophical foundations but operate at different scales and environments. Claims in one repo must not silently contradict the other.
 
-*Note: Astroid-miner is a planned repository, intentionally deferred until Leviathan deployment is underway. Cross-repo verification requirements apply to `Lazarus-Forge-` now and to Astroid-miner when that milestone is reached. See UNK-003 in `Unknowns_LF.md`.*
+*Note: Astroid-miner is a planned repository, intentionally deferred until Leviathan deployment is underway. Cross-repo verification requirements apply to `Lazarus-Forge-` now and to Astroid-miner when that milestone is reached.*
 
 **Bidirectional Linking Requirement**
 Any cross-repo dependency must be documented in both repositories with a stated assumption contract. The dependency is not verified until both sides acknowledge it.
-
-Example contract format:
-> Forge assumes: [stated input or condition]
-> Miner provides: [stated output or capability]
-> Mismatch resolution: [route to Trajectories_LF.md or flag for review]
-
-**Shared verification checkpoints:**
-
-Resource Supply vs. Production Demand — Does Astroid-miner's projected material output align with what Lazarus Forge processing modules can actually handle? Mismatches are version-gated milestones, not ignored discrepancies.
-
-Shared Module Assumptions — The Air Scrubber's Leviathan-compatible variant, the Spin Chamber's zero-G extensions, and the GECK seed's bootstrap logic all have implications for the Astroid-miner architecture. Changes to shared modules must be checked against both repos before commit.
-
-Terminology Consistency — Terms like "purified," "reduced," "functional," and "feedstock" must carry consistent meanings across both repositories. Divergence must be documented, not assumed.
 
 ---
 
@@ -225,23 +286,23 @@ Decorative math and irrelevant analogies do not satisfy this gate. Artifacts mus
 **If YES →** Gate 3
 
 ### Gate 3 — Adversarial Pass
-Has the contribution been actively challenged by a Skeptic/Auditor role or adversarial prompt? The challenge must include at least one concrete failure scenario or stress condition — not a general observation. "Here is where it breaks" is the standard, not "looks mostly fine."
+Has the contribution been actively challenged by a Skeptic/Auditor role or adversarial prompt? The challenge must include at least one concrete failure scenario or stress condition — not a general observation.
 **If NO →** Must undergo adversarial testing before proceeding
 **If YES →** Gate 4
 
 ### Gate 4 — Scope Alignment
 Does the contribution fit current version scope, or does it belong in a future trajectory?
-**If future scope →** Route to `Trajectories_LF.md`; may return as forward-compatible interface only, marked non-binding
+**If future scope →** Route to `Trajectories_LF.md`
 **If current scope →** Gate 5
 
 ### Gate 5 — Cross-Reference Integrity
-Do all file references, module links, and quantitative citations resolve correctly? Are cross-repo dependencies documented bidirectionally?
+Do all file references, module links, and quantitative citations resolve correctly?
 **If NO →** Flag unresolved references, hold at draft
 **If YES →** Gate 6
 
 ### Gate 6 — Conflict Check
 Does the contribution contradict existing committed specifications?
-**If YES →** Resolve conflict explicitly, document resolution, before committing
+**If YES →** Resolve conflict explicitly before committing
 **If NO →** Approved for commit
 
 ---
@@ -250,16 +311,14 @@ Does the contribution contradict existing committed specifications?
 
 Any contributor — human or AI — may invoke a Full Stop Review if a specification passes all gates but exhibits systemic inconsistency or unclear real-world viability.
 
-A Full Stop Review resets the contribution to Gate 1 with explicit focus on the foundational premise. The triggering concern must be documented. This mechanism protects against technically valid but fundamentally wrong systems, and against slow drift into coherent nonsense.
+A Full Stop Review resets the contribution to Gate 1 with explicit focus on the foundational premise.
 
-Invoking a Full Stop Review is not a failure of the contribution — it is a success of the protocol.
+**Trigger conditions:**
+1. The same foundational claim is blocked across two separate audit cycles
+2. A new finding invalidates the core premise of a previously promoted specification
+3. A pattern of documented overrides is eroding a governance principle without an explicit revision process
 
-**Trigger conditions:** A Full Stop Review is warranted when any of the following apply:
-1. Two or more gates are blocked on the same foundational claim across separate audit cycles — the claim keeps failing, not just the documentation around it.
-2. A new finding invalidates the core premise of a previously promoted specification.
-3. A pattern of documented overrides is eroding a governance principle without an explicit revision process — incremental erosion without acknowledgment.
-
-**Invocation record format:** When invoking a Full Stop Review, the triggering contributor must log: (1) triggering agent and role; (2) triggering condition stated as one falsifiable sentence; (3) date and document version; (4) outcome — reset to Gate 1, or rebuttal filed with second-pass audit. This record belongs in the audit trail of the affected document.
+**Invocation record:** Triggering agent, triggering concern (one falsifiable sentence), date and document version, outcome. Record belongs in the document's audit trail.
 
 ---
 
@@ -267,148 +326,89 @@ Invoking a Full Stop Review is not a failure of the contribution — it is a suc
 
 Verification must be documentable, not just performed.
 
-**Required audit trail fields** — every significant audit must record:
+**Required audit trail fields:**
 - Document audited and version
 - Auditor role and agent identity
 - Date or audit cycle identifier
 - Gates cleared (list)
 - Gates blocked (list with reason per gate)
-- Unknowns logged (IDs)
+- Unknowns logged (IDs or local IDs)
 - Overrides recorded (with justification)
 - Sign-off statement
 
 **Standard sign-off format:**
-> *"Verified under Auditor_Protocols v0.4 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides recorded. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.5 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides recorded. Auditor: [Role/Agent]"*
 
-**Example audit trail entry:**
-```
-Document: leviathan_testing.md (Exploration audit, May 2026)
-Auditor: Skeptic/Auditor — Claude (Sonnet 4.6)
-Gates cleared: 1, 4
-Gates blocked: 2, 3, 5, 6 (deferred — Exploration status, not promotion candidate)
-Unknowns logged: UNK-006, UNK-007, UNK-008, UNK-009, UNK-010
-Overrides: None
-Sign-off: Exploration-stage audit complete. Four promotion blockers identified.
-          Foundation sound. No turd detected.
-```
+A future contributor must be able to reconstruct what was checked, who checked it, and what was found. An audit that leaves no trace is indistinguishable from no audit.
 
-Acceptable audit trail locations:
-- A comment block within the audited file
-- A linked review note in `Discovery.md`
-- A logged unknown in `Unknowns_LF.md`
-
-A future contributor — human or AI — must be able to reconstruct what was checked, who checked it, and what was found. An audit that leaves no trace is indistinguishable from no audit.
-
-*Note: A machine-readable audit trail schema (JSON/YAML) is deferred to a future version when tooling exists to consume it. See UNK-023 in `Unknowns_LF.md`.*
+*Note: A machine-readable audit trail schema (JSON/YAML) is deferred to a future version. See global unknowns index.*
 
 ---
 
 ## Protocol Performance (Placeholder)
 
-*This section establishes the intent to measure audit effectiveness. Metrics are Placeholder pending UNK-004 cycle definition and UNK-023 audit trail schema. See `Unknowns_LF.md` UNK-020.*
+*Metrics are Placeholder pending first full audit cycle completion (registry v1.0).*
 
-**Target metrics (Placeholder — not yet measured):**
-- **Productive block ratio** — fraction of Auditor blocks that resulted in documented document improvement before promotion
-- **False-positive refusal rate** — blocks that were overridden with documented justification, as a fraction of total blocks
-- **Drift incidents detected** — unknowns surfaced per audit cycle that were not previously logged
+**Target metrics:**
+- Productive block ratio — fraction of Auditor blocks resulting in documented document improvement
+- False-positive refusal rate — blocks overridden with documented justification
+- Drift incidents detected per cycle
 
-**Measurement activation trigger:** First full audit cycle across all primary documents complete (UNK-004 activation condition).
-
-**Anti-Auditor-Capture note:** For high-stakes documents (governance, ethics, core specs), the Auditor role should rotate to a different agent model or human contributor across successive audit cycles. An auditor who has reviewed the same document multiple times without finding new issues should be treated with the same suspicion as a verification pass that surfaces no unknowns.
+**Anti-Auditor-Capture:** For high-stakes documents, the Auditor role should rotate to a different agent model across successive audit cycles.
 
 ---
 
 ## Failure Modes of This Document
 
-This document is itself subject to the protocols it defines. Known risks:
+**Checklist Theater** — Mitigated by requiring substantive notes, not bare checkmarks.
 
-**Checklist Theater** — The list gets checked without genuine scrutiny. Verification becomes ritual rather than function. Mitigated by requiring substantive notes per checklist item, not bare checkmarks.
+**Auditor Capture** — Mitigated by binding block authority, documented rebuttal requirement, independent second-pass audits, and Auditor rotation for high-stakes documents.
 
-**Auditor Capture** — The skeptic role softens over time to avoid friction. Mitigated by binding block authority, documented rebuttal requirement, independent second-pass audits, and Auditor rotation for high-stakes documents (see Protocol Performance above).
+**Version Freeze** — Mitigated by explicit revision triggers.
 
-**Version Freeze** — This document stops being updated as the system evolves. Mitigated by the explicit revision trigger below.
+**Exploration Suppression** — Mitigated by the Exploration vs. Specification distinction and the loophole guard.
 
-**Exploration Suppression** — Verification pressure is applied too early, killing generative thinking before it matures. Mitigated by the explicit Exploration vs. Specification distinction and the loophole guard.
+**Over-Engineering the Audit** — If running a verification cycle takes longer than writing the original contribution, the protocol has failed. Simplicity is a design constraint.
 
-**Over-Engineering the Audit** — The protocol becomes so complex it creates more overhead than value. If running a verification cycle takes longer than writing the original contribution, the protocol has failed. Simplicity is a design constraint here too. Periodic lightweight audits of the audit process itself — "did this cycle add more value than friction?" — should be part of `leviathan_testing.md` cycles.
+**Coherent Nonsense** — Mitigated by the Full Stop Review mechanism.
 
-**Coherent Nonsense** — A document passes all gates but is systemically wrong at a level no individual gate catches. Mitigated by the Full Stop Review mechanism.
+**Metadata Bloat** — Mitigated by the Sidecar Model. Centralized unknowns registries that grow without bound become obstacles to the verification they govern. The Sidecar Model was introduced in v0.5 specifically to address this failure mode.
 
-**Meta-Recursion Gap** — The protocol audits contributions but cannot fully audit its own enforcement. Mitigated by: (1) this document being subject to its own gates on revision; (2) Protocol Performance metrics once active; (3) Auditor rotation preventing capture. Acknowledged as an irreducible residual risk — a verification system that claimed to fully verify itself would itself be a Turd Problem candidate.
+**Meta-Recursion Gap** — The protocol audits contributions but cannot fully audit its own enforcement. Mitigated by self-application of gates on revision, Protocol Performance metrics once active, and Auditor rotation.
 
 ---
 
 ## Relationship to Existing Documents
 
-- `Ethical_Constraints.md` — parent document; governs permission, this document governs verification; hard-line doctrines in that document are not subject to override by this protocol's human override provisions
-- `Lazarus_forge_v0_flow.md` — structural model; the gate logic here mirrors the triage gates there; reference standard for shared terminology
+- `Ethical_Constraints.md` — parent document; governs permission, this document governs verification; hard-line doctrines not subject to override by this protocol
+- `Lazarus_forge_v0_flow.md` — structural model; reference standard for shared terminology
 - `Trajectories_LF.md` — destination for scope creep that proves to be valid future work
-- `leviathan_testing.md` — primary stress-test environment where these protocols face real pressure; also where the audit process itself gets evaluated and Protocol Performance metrics will first be collected
-- `Discovery.md` — the navigation layer that prevents hallucinated file references
-- `geck_forge_seed.md` — bootstrap logic shared with Astroid-miner; subject to cross-repo verification when Astroid-miner milestone is reached
-- `Unknowns_LF.md` — central registry for unknowns spanning multiple modules
-- `Lazarus-Forge-` — companion doctrine repository; cross-repo verification applies now
-- `Astroid-miner` — planned repository; cross-repo verification deferred to Leviathan milestone (UNK-003)
+- `leviathan_testing.md` — primary stress-test environment; where Protocol Performance metrics will first be collected
+- `Discovery.md` — navigation layer; confirmed file list
+- `Unknowns_LF.md` — global index for cross-module unknowns (repurposed in v0.5 from full-entry store to index)
+- `Forge_Audit_Kit.md` — condensed audit reference for routine multi-agent cycles
+- `Lazarus-Forge-` — companion doctrine repository
+- `Astroid-miner` — planned repository; deferred to Leviathan milestone
 
 ---
 
 ## Status
 
-Version 0.4 — revised after multi-model audit cycle of this document itself (Claude, ChatGPT, Gemini + Gemini synthesis), May 2026.
+Version 0.5 — consolidates v0.4 additions and Sidecar Amendment (v0.5).
 
-Key changes from v0.3:
-- Added scope clarification: human override rights do not extend to Ethical_Constraints hard-line doctrines (UNK-021 partial resolution)
-- Added version cycle definition and Expiry check responsibility to Unknowns Registry section (UNK-004 resolution)
-- Added Assumption Extraction statement requirement to Rule 6 Inter-Agent Consistency
-- Added human override scope limitation to Human Contributor Protocols
-- Added Astroid-miner deferral note to Cross-Repo Verification
-- Added Full Stop Review trigger conditions and invocation record format (UNK-022 resolution)
-- Rewrote Observability & Audit Trail with required fields list and example entry (UNK-023 partial resolution — structured markdown; JSON/YAML deferred)
-- Added Protocol Performance section as Placeholder with target metrics and Auditor rotation principle (UNK-020 partial resolution)
-- Added Meta-Recursion Gap to Failure Modes
-- Updated Auditor Capture failure mode to reference rotation principle
-- Updated Relationship to Existing Documents: Unknowns_LF.md now confirmed live; Astroid-miner status clarified
+**Changes from v0.3:**
+- Added scope clarification: human override rights do not extend to Ethical_Constraints hard-line doctrines
+- Added version cycle definition and Expiry check responsibility to Unknowns Registry
+- Added Assumption Extraction requirement to Rule 6
+- Added Full Stop Review trigger conditions and invocation record format
+- Added required fields to Observability & Audit Trail with example
+- Added Protocol Performance section as Placeholder
+- Added Meta-Recursion Gap and Metadata Bloat to Failure Modes
+- Auditor Capture updated to reference rotation principle
+- **Added Decentralized Audit Architecture (Sidecar Model)** — local ledgers, Audit Health Header, 10-entry rule, metadata guardrail, Resolution and Expungement
+- Unknowns Registry section updated to govern global index behavior
+- Relationship section updated: Unknowns_LF.md role clarified, Forge_Audit_Kit.md added
 
 This document is expected to remain incomplete and wrong in places. What must remain constant:
 
 **Confidence never outruns verification.**
-
-
-Interim Addendum:
-Operating as **Synthesizer** per Auditor_Protocols.md v0.2.
-The transition to a **Distributed Ledger** approach for audits is a vital architectural "resurrection." By moving from a centralized bottleneck to a decentralized sidecar model, we ensure the metadata scales *with* the modules rather than against them.
-Below is the draft for the **v0.3 Amendment**. It formalizes the "Sidecar" methodology and introduces the **Resolution Expungement** process to keep the project's cognitive load manageable.
-# Auditor_Protocols.md — v0.3 Amendment: Decentralized Audit (DA)
-## 1. The Sidecar Methodology
-To prevent **Metadata Bloat** and token-limit failures, the Unknowns_LF.md master file is hereby deprecated as a primary data entry point.
- * **Local Ledger:** Every technical specification (.md) file must now contain an **# Auditor Notes & Unknowns** section at the footer.
- * **The 10-Line Rule:** If the local auditor notes exceed 10 distinct entries, the file is flagged for a **Resolution Pass**.
- * **Master Registry Role:** Unknowns_LF.md is repurposed as a **Global Index**. It shall only contain links to the local ledgers and a summary of "High-Level Systemic Risks" that span multiple repositories.
-## 2. Resolution & Expungement (The Purge)
-An "Unknown" is not a permanent fixture. It is a debt that must be paid or discharged.
- * **Payment via Specification:** An unknown is expunged when the technical detail is integrated into the main body of the specification (e.g., bio-fouling mitigation is moved from "Notes" to "Specs").
- * **Discharge via Trajectory:** If an unknown is deemed "Non-Critical for v0," it is moved to Trajectories_LF.md and removed from the active audit path.
- * **The Artifact of Resolution:** When an unknown is expunged, the Auditor note is deleted, and a single-line "Resolution Trace" is added to the **Lineage Tracking** section to preserve the audit trail without the bulk.
-## 3. Context-Gated Auditing
-To protect the token window of AI agents:
- * **Isolation:** Auditors should be provided only with the **Target File** and this **Protocol**.
- * **Summary Headers:** Files must include an **Audit Health Header** (see below) to allow agents to bypass the full history of the sidecar notes unless a deep-dive is required.
-### Implementation Template: File Header & Footer
-**[Top of File]**
-> **Audit Health Header:**
->  * **Status:** [Draft/Spec/Exploration]
->  * **Last Audit:** 2026-05-04 (Gemini-Engineer)
->  * **Active Unknowns:** 2 (Low Risk)
->  * **Jump to:** [#Auditor-Notes]
-> 
-**[Bottom of File]**
-> # Auditor Notes & Unknowns
->  1. **[ID-001]** Bio-fouling impact on rotor balance. (Status: Open / Assigned: Engineer)
->  2. **[ID-002]** Power-draw delta at high sea-state. (Status: Pending Measured Data)
-> **Resolution Log:**
->  * *2026-05-03: [ID-000] Magic Energy Fallacy resolved via Support_Raft energy trace.*
-> 
-## Refusal Logic for Bloated Files
-If an AI agent is presented with a file where the **Auditor Notes** exceed 20% of the total word count, the agent **MUST REFUSE** to audit until a **Resolution Pass** is performed by the Synthesizer. This is a hard guardrail against "Metadata Hallucinations."
-## Thoughts on Resolution Expungement
-Expunging unknowns isn't just about deleting text; it’s about **crystallization**. Every time you move an "Unknown" from the footer into the "Specification" body, the project becomes more deterministic.
