@@ -1,317 +1,186 @@
-Lazarus Forge — Trajectory (v0 → Interstellar)
+# Lazarus Forge — Trajectory (v0 → Interstellar)
 
 This document outlines the evolutionary trajectory of the Lazarus Forge as a system, with clear versioning compatible with Git-based development. Each version represents a capability threshold, not a finished product.
 
 The Forge is treated as a living industrial organism: it begins fragile, gains resilience, and eventually becomes location-independent.
 
+**Role of this document:** This is the scope routing destination for the repository. When a capability or feature is identified as beyond the current version's scope, it routes here. Version milestones are survival thresholds — not specifications. Component taxonomy and implementation specs for future versions do not exist in this document; they are defined in module documents when those versions become active.
+
+*Exit conditions are labeled **[Placeholder]** unless operational data or analog systems provide a basis for a higher confidence label. All exit conditions require external or proxy validation — see individual notes.*
 
 ---
 
-v0 — Proof of Persistence (Terrestrial Seed)
+## v0 — Proof of Persistence (Terrestrial Seed)
 
-Question answered: Can a Forge exist at all?
+**Question answered:** Can a Forge exist at all?
 
-Core Characteristics
+**Core Characteristics**
+- Single-location, Earth-bound
+- Human-supervised operation
+- Narrow material scope (1–2 metals)
+- Energy externally supplied
 
-Single-location, Earth-bound
+**Required Capabilities**
+- Melt, refine, and form basic metal stock
+- Recycle scrap into usable feedstock
+- Maintain thermal control without catastrophic failure
+- Document processes and outcomes
 
-Human-supervised operation
+**Outputs**
+- Rods, plates, wire, powder
+- Replacement parts for the Forge itself
 
-Narrow material scope (1–2 metals)
-
-Energy externally supplied
-
-
-Required Capabilities
-
-Melt, refine, and form basic metal stock
-
-Recycle scrap into usable feedstock
-
-Maintain thermal control without catastrophic failure
-
-Document processes and outcomes
-
-
-Outputs
-
-Rods, plates, wire, powder
-
-Replacement parts for the Forge itself
-
-
-Exit Condition
-
+**Exit Condition** [Placeholder]
 > The Forge can repair itself faster than it degrades.
 
-
-
+*Verification note: This exit condition cannot be self-reported by the Forge — the detector and the thing being detected are the same system at v0. Verification requires an external observer or proxy metric (e.g., mean time between failures trending downward over N cycles, tracked by human operator). See UNK-026 in `Unknowns_LF.md`. At v0, human-in-the-loop verification is the defined proxy, not a gap.*
 
 ---
 
-v1 — Self-Sustaining Industrial Node
+## v1 — Self-Sustaining Industrial Node
 
-Question answered: Can a Forge stay alive?
+**Question answered:** Can a Forge stay alive?
 
-Core Characteristics
+**Core Characteristics**
+- Modular subsystems
+- Semi-autonomous operation
+- Expanded alloy handling
+- On-site power generation (partial) — see `energy_v0.md` for power trajectory; UNK-011 tracks demand baseline
 
-Modular subsystems
+**Required Capabilities**
+- Closed-loop material recycling
+- Powderization and feedstock standardization
+- Component fabrication for adjacent systems
+- Environmental control (air, slag, heat)
 
-Semi-autonomous operation
+**Outputs**
+- Marketable industrial components
+- Standardized feedstock formats
+- Replacement modules
 
-Expanded alloy handling
-
-On-site power generation (partial)
-
-
-Required Capabilities
-
-Closed-loop material recycling
-
-Powderization and feedstock standardization
-
-Component fabrication for adjacent systems
-
-Environmental control (air, slag, heat)
-
-
-Outputs
-
-Marketable industrial components
-
-Standardized feedstock formats
-
-Replacement modules
-
-
-Exit Condition
-
+**Exit Condition** [Placeholder]
 > The Forge can operate profitably while reinvesting in itself.
 
-
-
+*"Profitably" definition [Placeholder]: Revenue or barter value generated from external outputs exceeds operating costs (energy, consumables, maintenance labor) while maintaining a reinvestment rate sufficient to sustain v1 capability. Economic model and baseline are not yet defined — see UNK-027 in `Unknowns_LF.md`.*
 
 ---
 
-v2 — Replicable Forge Network
+## v2 — Replicable Forge Network
 
-Question answered: Can a Forge reproduce?
+**Question answered:** Can a Forge reproduce?
 
-Core Characteristics
+**Core Characteristics**
+- G.E.C.K.-based seeding — see `geck_forge_seed.md` for G.E.C.K. definition and minimum viable seed configuration. Marine and environmental variants tracked in UNK-005.
+- Standardized interfaces
+- Distributed documentation and learning
+- Minimal expert intervention
 
-G.E.C.K.-based seeding
+**Required Capabilities**
+- Manufacture of Forge submodules
+- Deployment kits for new sites
+- Remote diagnostics and updates
+- Logistics-aware production planning
 
-Standardized interfaces
+**Outputs**
+- New Forge seeds
+- Infrastructure components
+- Network-level redundancy
 
-Distributed documentation and learning
-
-Minimal expert intervention
-
-
-Required Capabilities
-
-Manufacture of Forge submodules
-
-Deployment kits for new sites
-
-Remote diagnostics and updates
-
-Logistics-aware production planning
-
-
-Outputs
-
-New Forge seeds
-
-Infrastructure components
-
-Network-level redundancy
-
-
-Exit Condition
-
+**Exit Condition** [Placeholder]
 > A Forge can be built without the original builders present.
 
-
-
+*G.E.C.K. variant note: This exit condition applies to terrestrial deployments. Marine and off-world variants require additional seeding specifications not yet defined — see UNK-005.*
 
 ---
 
-v3 — Off-World Industrialization
+## v3 — Off-World Industrialization
 
-Question answered: Can a Forge leave Earth?
+**Question answered:** Can a Forge leave Earth?
 
-Core Characteristics
+**Core Characteristics**
+- Reduced gravity tolerance
+- Vacuum-compatible processes
+- Radiation-hardened control systems
+- Extreme material reuse
 
-Reduced gravity tolerance
+**Required Capabilities**
+- Regolith and asteroid material processing
+- Autonomous maintenance cycles — *autonomy architecture dependency: see UNK-008 in `Unknowns_LF.md`. Autonomous maintenance at v3 requires UNK-008 resolution. v3 exit condition is contingent on UNK-008.*
+- Energy scavenging (solar, nuclear, thermal)
+- Zero-waste material flows
 
-Vacuum-compatible processes
+**Outputs**
+- Structural elements for space construction
+- Refined metals from celestial bodies
+- Replacement parts for space assets
 
-Radiation-hardened control systems
-
-Extreme material reuse
-
-
-Required Capabilities
-
-Regolith and asteroid material processing
-
-Autonomous maintenance cycles
-
-Energy scavenging (solar, nuclear, thermal)
-
-Zero-waste material flows
-
-
-Outputs
-
-Structural elements for space construction
-
-Refined metals from celestial bodies
-
-Replacement parts for space assets
-
-
-Exit Condition
-
+**Exit Condition** [Placeholder]
 > The Forge can survive without Earth resupply.
 
-
-
-
 ---
 
-v4 — Autonomous Stellar Industry
+## v4 — Autonomous Stellar Industry
 
-Question answered: Can industry scale without humans nearby?
+**Question answered:** Can industry scale without humans nearby?
 
-Core Characteristics
+**Core Characteristics**
+- Fully autonomous operation — *contingent on UNK-008 (autonomy architecture) resolution. v4 exit condition cannot be satisfied without a defined and tested autonomy architecture.*
+- Adaptive process optimization
+- Long-duration reliability
 
-Fully autonomous operation
+**Required Capabilities**
+- Self-upgrading hardware and software
+- Material discovery and adaptation
+- Failure isolation and recovery
+- Long-term mission planning
 
-Adaptive process optimization
+**Outputs**
+- Space habitats
+- Propulsion structures
+- New Forge seeds
 
-Long-duration reliability
-
-
-Required Capabilities
-
-Self-upgrading hardware and software
-
-Material discovery and adaptation
-
-Failure isolation and recovery
-
-Long-term mission planning
-
-
-Outputs
-
-Space habitats
-
-Propulsion structures
-
-New Forge seeds
-
-
-Exit Condition
-
+**Exit Condition** [Placeholder]
 > The Forge can expand faster than it fails.
 
+---
 
+## v5 — Interstellar Propagation (Conceptual Horizon)
 
+**Question answered:** Can civilization carry itself forward?
+
+*Note: v5 is a conceptual horizon, not a testable milestone. No exit condition is defined — this is intentional. v5 represents the outer boundary of the trajectory, not a promotable version threshold. If a falsifiable exit condition for v5 ever becomes articulable, it should be added at that time.*
+
+**Core Characteristics**
+- Self-contained industrial ecosystems
+- Multi-generational operation
+- Minimal external instruction
+
+**Required Capabilities**
+- Interstellar transport compatibility
+- Total resource independence
+- Knowledge preservation across centuries
+
+**Outputs**
+- New industrial footholds
+- Long-term survivability of human capability
 
 ---
 
-v5 — Interstellar Propagation (Conceptual Boundary)
+## Design Doctrine Notes
 
-Question answered: Can civilization carry itself forward?
-
-Core Characteristics
-
-Self-contained industrial ecosystems
-
-Multi-generational operation
-
-Minimal external instruction
-
-
-Required Capabilities
-
-Interstellar transport compatibility
-
-Total resource independence
-
-Knowledge preservation across centuries
-
-
-Outputs
-
-New industrial footholds
-
-Long-term survivability of human capability
-
-
-
----
-
-Design Doctrine Notes
-
-Version numbers reflect survival thresholds, not feature lists
-
-Each version must be stable before advancement
-
-Skipping versions leads to systemic fragility
-
-Git commits should map to version criteria, not ambition
-
+- Version numbers reflect survival thresholds, not feature lists
+- Each version must be stable before advancement
+- Skipping versions leads to systemic fragility
+- Git commits should map to version criteria, not ambition
+- Capabilities listed under future versions are trajectory markers — component taxonomy and implementation specs for those versions do not exist until those versions become active
 
 > A Forge that cannot begin humbly will never reach the stars.
 
+---
 
-Auditor Notes:
-Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4.
-Repository: **LazarusForgeV0**
-## EXPIRY WATCH
-**Status:** No entries past two cycles.
-**Observations:** * **UNK-005** (Marine GECK) and **UNK-008** (Autonomy Architecture) are currently tracked in the registry.
- * **UNK-026** (Graduation Circularity) is active and directly relevant to the "Exit Conditions" defined in this document.
-## AUDIT FINDINGS: Trajectories_LF.md
-### [FALLACY] Semantic Drift / The Turd Problem (Checklist #4, #10)
-**Location:** v0 — Exit Condition: *"The Forge can repair itself faster than it degrades."*
-**Finding:** This is a conceptual paradox at the v0 (Terrestrial Seed) level. Per the v0 core characteristics, the system is "Human-supervised" and "Externally supplied." True self-repair (autogenous maintenance) is a v2/v3 capability.
-**Resolution Path:** Redefine v0 exit condition to: *"The Forge can produce 100% of its own mechanical wear-part replacements, verified by human installation."* This removes the "self-repair" automation fallacy while maintaining the goal of persistence.
-### [GAP] Unknown Correlation (UNK-008 / UNK-026)
-**Location:** v1 — Core Characteristics: *"Semi-autonomous operation."*
-**Finding:** There is no bridge between v0 (Human-supervised) and v1 (Semi-autonomous) regarding the autonomy architecture. This triggers **UNK-026** (Graduation Rule circularity): how do we detect if a system is "ready" for semi-autonomy if the architecture for that autonomy (UNK-008) is not yet specified?
-**Resolution Path:** Explicitly link v1 transition to the resolution of **UNK-008**. Add a requirement: *"Implementation of Autonomy Architecture v0.1 per UNK-008."*
-### [CROSS-REF FAILURE] Component Coverage (Fallacy #6)
-**Location:** v0 — Required Capabilities: *"Refine and form basic metal stock."*
-**Finding:** Audit of Components.md (referenced in task) suggests that current component definitions do not yet support the "Refining" stage—only "Melting/Forming."
-**Resolution Path:** Downgrade v0 capability to *"Forming and basic recycling"* or add a placeholder for a Refinery_v0.md component.
-### [FALLACY] Scope Creep (Checklist #5)
-**Location:** v2 — Core Characteristics: *"G.E.C.K.-based seeding."*
-**Finding:** The "Marine G.E.C.K. seed" (**UNK-005**) is listed as an "Exploratory" unknown, yet v2 treats G.E.C.K. seeding as a fundamental requirement. This places "Specification-level" pressure on an "Exploration-level" concept.
-**Resolution Path:** Add a "v1.5 - Seeding Research" milestone or label the v2 G.E.C.K. reference as **[SPECULATIVE]** to prevent it from blocking v1 promotion.
-### [FALLACY] Friction Blindness (Checklist #2)
-**Location:** v3 — Required Capabilities: *"Zero-waste material flows."*
-**Finding:** Violates the principle that real systems degrade. "Zero-waste" is a theoretical ideal that ignores slag accumulation, filter saturation, and microscopic loss during vacuum-compatible processing.
-**Resolution Path:** Change to *"99.x% material recovery and documented slag sequestration/repurposing."*
-## VERIFICATION GATES ASSESSMENT
-| Gate | Status | Auditor Notes |
-|---|---|---|
-| 1 — Fallacy Check | **FAIL** | Issues with "Magic Self-Repair" at v0 and "Zero-Waste" at v3. |
-| 2 — Artifacts | **PASS** | Exit conditions are falsifiable (if reworded for realism). |
-| 3 — Adversarial Pass | **FAIL** | System fails v0 "Self-repair" if human intervention is removed (contradicts "Human-supervised" label). |
-| 4 — Scope Alignment | **PASS** | High-level trajectory is consistent with the LazarusForge mission. |
-| 5 — Cross-Ref Integrity | **FAIL** | References to "Refining" (v0) and "G.E.C.K." (v2) lack backing in existing v0/v1 components. |
-| 6 — Conflict Check | **WARN** | Potential conflict with Ethical_Constraints.md (v4/v5 autonomy vs. human override rights). |
-## SIGN-OFF
-**Document:** Trajectories_LF.md (Exploration audit, 2026-05-04)
-**Auditor:** Skeptic/Auditor — Gemini 3 Flash
-**Gates cleared:** 2, 4
-**Gates blocked:** 1, 3, 5, 6
-**Unknowns logged:** UNK-005, UNK-008, UNK-026 (Re-validated)
-**Overrides:** None.
-**Sign-off:** Document is a viable strategic map but currently contains "Magic Self-Repair" and "Zero-Waste" fallacies that must be demoted to measurable technical targets before promotion to Specification.
-**Standard Sign-off: [LazarusForge-V0-AUDIT-COMPLETE]**
+## Audit Status
+
+Reviewed under Auditor_Protocols.md v0.4, Trajectories_LF.md first audit cycle, May 2026.
+Status: Exploration. Single-model audit pass: Claude (Sonnet 4.6).
+Key changes from prior version: Added role statement and exit condition labeling note to header; added v0 exit condition verification note (UNK-026 cross-ref); added v1 "profitably" definition placeholder (UNK-027 cross-ref); added G.E.C.K. cross-ref and UNK-005 note at v2; added UNK-008 autonomy dependency notes at v3 and v4; added v5 conceptual horizon label with explicit rationale for absent exit condition; added doctrine note clarifying version markers vs. specifications.
+Open unknowns: UNK-005 (marine G.E.C.K.), UNK-008 (autonomy architecture), UNK-026 (Graduation Rule detection circularity), UNK-027 (v1 profitability baseline). See `Unknowns_LF.md`.
