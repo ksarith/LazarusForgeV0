@@ -366,3 +366,53 @@ The Raft's final act is enabling its successor. Nothing is wasted.
 - The self-consuming end-of-region protocol is not a compromise — it is the design
 - The ocean punishes poor assumptions quickly and repeatedly — per `leviathan_testing.md`
 - Final versions often aren't final
+
+
+Operating as Skeptic/Auditor per Auditor_Protocols.md v0.4
+Repository: LazarusForgeV0
+## ASSUMPTION EXTRACTION
+Prior contributions assumed:
+ * Support_Raft_v0.md is classified as **to be determined**.
+ * Forge_Audit_Kit.md provides the active Fallacy Checklist and Verification Gates (v0.8).
+ * The current version cycle is pre-v1.0; Expiry Rule logic is noted but not yet blocking.
+ * The Raft is regional infrastructure; complexity is offloaded from mobile Leviathan units.
+## EXPIRY WATCH
+ * **UNK-004 (Expiry Rule Enforcement):** Verified as **Deferred (v1.0)**. Non-blocking for this cycle.
+ * **UNK-020/021 (Auditor Metrics/Overrides):** **In Progress**. No entries currently past two cycles in the active registry.
+ * **Result:** Proceed with audit.
+## AUDIT FINDINGS: Support_Raft_v0.md
+### [FALLACY] - Magic Energy (Checklist #1)
+ * **Finding:** While the document accounts for "Infrastructure Overhead," it labels **Ballast pump operation** as a [Placeholder]. In a SWATH design with "Variable Draft" and "Storm Mode" reconfiguration, ballast pumping is a primary energy draw, not a secondary one.
+ * **Resolution:** Provide an **Analogous** power draw estimate based on semi-submersible or research vessel ballast systems (e.g., kW per m³ of displacement shift) to ensure the energy trace survives a storm reconfiguration.
+### [GAP] - The "Turd Problem" (Checklist #10)
+ * **Finding:** The document is missing a single-sentence falsifiable reduction.
+ * **Resolution:** Append a "Foundational Claim" section.
+   * *Proposed Sentence:* "The Support Raft must provide a net positive energy and data surplus to the Leviathan swarm that exceeds the energy cost of its own hull maintenance and infrastructure overhead."
+### [CONTRADICTION] - Stasis Mode vs. Docking
+ * **Finding:** The text states "Docking charging suspended" in Stasis Mode, but also "Passive mechanical recovery capability... remain active." If a unit is recovered via magnetic grapple during Stasis, but cannot be charged, it creates a "dead-unit-clog" at the docking ports, preventing healthier units from potentially utilizing the minimal Heartbeat monitor.
+ * **Resolution:** Clarify the "Mechanical Triage" protocol. If charging is suspended, do recovered units stay in a "cold storage" rack rather than the active induction docks?
+### [UNLOGGED UNKNOWN] - Data Cache Sanitization
+ * **Finding:** The "Local Truth Cache" contains copies of Auditor_Protocols.md and Ethical_Constraints.md. If a Raft is physically compromised (Class A salvage by a third party), the exposure of internal governance logic is a risk.
+ * **Resolution:** Log a Non-blocking Unknown: "Encryption and physical-access-zeroing protocols for Local Truth Cache in the event of unauthorized boarding or hull breach."
+### [CROSS-REF FAILURE] - Material Separation Gate
+ * **Finding:** The document references Material_Separation_Gate_v0.md as an "optional hosted module," but the energy section says the Raft provides a "thermal sink for heat pipe output." If the Gate is optional, the Raft’s thermal management architecture must be modular or oversized.
+ * **Resolution:** Add a note in **Mechanical Design** confirming that the Raft's thermal rejection system (heat exchangers) is either expandable or baseline-rated for Gate-integrated heat loads.
+## VERIFICATION GATES ASSESSMENT
+| Gate | Status | Notes |
+|---|---|---|
+| **1 — Fallacy Check** | **PASS** | Substantive notes provided on energy and friction. |
+| **2 — Verification Artifacts** | **FAIL** | Document lacks a specific "Verification Artifact" (e.g., a testable math model for the shell shedding rate vs. energy cost). |
+| **3 — Adversarial Pass** | **PASS** | Stasis Mode and storm-mode transitions explicitly tested. |
+| **4 — Scope Alignment** | **PASS** | Firmly v0; complexity correctly deferred to Trajectories_LF.md. |
+| **5 — Cross-Ref Integrity** | **PASS** | Material_Separation_Gate_v0.md and leviathan_testing.md refs resolve. |
+| **6 — Conflict Check** | **PASS** | Aligns with Ethical_Constraints.md regarding environmental contribution. |
+## SIGN-OFF
+**Document:** Support_Raft_v0.md (to be determined audit, 2026-05-06)
+**Auditor:** Skeptic/Auditor — Gemini 3 Flash
+**Gates cleared:** 1, 3, 4, 5, 6
+**Gates blocked:** 2 (Requires at least one falsifiable artifact/formula for the Sacrificial Shell cycle efficiency).
+**Unknowns logged:** UNK-027 (Cache Sanitization), UNK-028 (Ballast Energy Scaling).
+**Overrides:** None.
+**Sign-off:** The Support Raft architecture is conceptually robust and addresses previous "Magic Energy" concerns, but requires a formal verification artifact for the sacrificial shell mechanics before promotion to v0.4.
+**One single relevant follow-up question:**
+Should I draft the mathematical verification artifact for the Sacrificial Shell shedding-to-energy-cost ratio to clear Gate 2?
