@@ -34,7 +34,8 @@ For a new reader or returning AI, read in this sequence:
 9. `geck_forge_seed.md` — Minimum viable seed for new Forge deployment (living document — updated actively)
 10. `energy_v0.md` — Energy strategy and accounting
 11. `Spin_Chamber_v0.md` — Core melting and separation module
-12. `Stratification_Chamber_v0.md` — Pre-purification separation module
+12. `Material_Separation_Gate_v0.md
+` — Pre-purification separation module
 13. `Air_Scrubber_v0.md` — Safety and containment subsystem
 14. `Support_Raft_v0.md` — Operational anchor for marine Leviathan deployments
 15. `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding
@@ -110,10 +111,9 @@ Core melting and separation module. Converts mixed metallic scrap into ranked ma
 
 ---
 
-**Stratification_Chamber_v0.md**
-`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Stratification_Chamber_v0.md`
+**Material_Separation_Gate_v0.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Material_Separation_Gate_v0.md`
-Pre-purification separation module operating between reduction and purification. Uses controlled rotation to divert material away from energy-intensive melting. Success is defined by avoided processing, not perfect separation. Target: ≥30% material diversion rate. `Material_Separation_Gate_v0.md` is a companion specification for the separation gate subsystem within this module.
+Pre-purification separation module operating between reduction and purification. Uses controlled rotation to divert material away from energy-intensive melting. Success is defined by avoided processing, not perfect separation. Target: ≥30% material diversion rate. 
 
 ---
 
