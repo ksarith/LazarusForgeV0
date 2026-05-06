@@ -341,3 +341,27 @@ The Raft's final act is enabling its successor. Nothing is wasted.
 - 2026-05-06: Cold storage rack concept added to Stasis Mode section — resolves dead-unit-clog contradiction identified by Gemini audit.
 - 2026-05-06: Foundational claim sentence added to Purpose section — addresses Gemini Gate 10 finding.
 - 2026-05-06: Ballast pump Analogous estimate added to Infrastructure Overhead — partial resolution of SR-009.
+
+Extra Auditor Notes:
+
+## Final Audit Summary: Support_Raft_v0.md (v0.4)
+**Date:** 2026-05-06
+**Auditor:** Skeptic/Auditor — Gemini 3 Flash
+**Classification:** Exploration / To Be Determined
+### **Key Findings & Logical Adjustments**
+ 1. **Stationary Logic Correction (Semantic Drift):** The primary justification for the **Sacrificial Shell System** has been decoupled from "drag reduction" (which implies mobility) and refocused on **System Transparency**. For a stationary SWATH platform, biofouling is a threat to **buoyancy-to-draft ratios** and **intake efficiency** (thermal heat sinks and induction pads) rather than movement speed.
+ 2. **Stasis Mode Architecture:** Resolved the "dead-unit-clog" paradox. Units recovered via passive mechanical means (magnetic grapples/tethers) during low-power Stasis are now routed to a **Cold Storage Rack**. This ensures that non-functional units do not physically block the induction charging ports needed by healthy units once power levels recover.
+ 3. **Energy Trace & Infrastructure Overhead:** Energy accounting is now "Bootstrap-Honest." It includes an **Analogous** estimate for ballast pump operation—a significant energy consumer in SWATH designs—and infrastructure heartbeats. The **Foundational Claim** now requires the Raft to provide a net energy/data surplus to the swarm to justify its own maintenance cost.
+ 4. **Modular Thermal Management:** The Raft’s thermal rejection system (heat exchangers) is now specified as **modular/expandable**. This ensures the platform can support the optional Material_Separation_Gate_v0.md without being oversized and inefficient when the Gate is absent.
+### **New Unknowns for v0.5/v1.0**
+ * **[SR-011] Shell ROI Efficiency:** Does the energy cost of a Leviathan unit performing a panel swap exceed the energy gained by the Raft’s restored intake efficiency?
+ * **[SR-012] Mechanical Bio-damping:** Quantitative impact of colonization on the moving parts of oscillating wave-surge converters.
+ * **[SR-013] Buoyancy Shift:** The mass limit of calcifying organisms before SWATH buoyancy-control systems are overwhelmed.
+ * **[SR-007] Cache Sanitization:** Security protocols for the **Local Truth Cache** to prevent governance data exposure if the Raft is scavenged or compromised.
+### **Verification Status**
+| Gate | Status | Requirement for Promotion |
+|---|---|---|
+| **Gate 1: Fallacy Check** | **PASS** | Logic moved from "Mobility" to "Stationary Intake." |
+| **Gate 2: Artifacts** | **PENDING** | Requires a mathematical ROI model for the Shell cycle. |
+| **Gate 3: Adversarial** | **PASS** | Cold storage rack handles the "dead-unit-clog" scenario. |
+**Final Sign-off:** The document is logically consistent with a stationary regional anchor role. The transition from "Exploration" to "Specification" requires a shift from **Analogous** energy estimates to **Measured** or **Calculated** data based on specific hull displacement and component power ratings.
