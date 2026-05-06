@@ -1,20 +1,15 @@
 # Lazarus Forge — G.E.C.K.
 **(Genesis / General Environmental Construction Kit)**
-**Version 0.2**
 
----
+**Audit Health:**
+- Status: Exploration
+- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
+- Open unknowns: 4 (Low-Medium)
+- Sidecar: [#auditor-notes--unknowns]
 
-## Purpose
-
-Define the minimum viable seed required to instantiate a new Lazarus Forge in a fresh location.
+> Purpose: Define the minimum viable seed required to instantiate a new Lazarus Forge in a fresh location.
 
 The G.E.C.K. is not a factory-in-a-box. It is a capability seed: enough tools, logic, and memory to grow a Forge using local material, salvage, and commerce.
-
----
-
-## Revision Note
-
-v0.2 — Added marine seed variant acknowledgment, dual-use annotations per `Components.md` standard, Memory & Doctrine Module updated to reference `Discovery.md` navigation architecture and `Auditor_Protocols.md`, Fabrication Module forward-linked to `Material_Separation_Gate_v0.md` as graduation target, scaling section extended to v5, Unknowns Registry added. Core modules, success criteria, exclusions, axioms, and closing line unchanged. Change only with demonstrated field experience.
 
 ---
 
@@ -45,13 +40,15 @@ Typical scenarios:
 - Disaster recovery zones
 - Frontier industrial sites
 - Early orbital / lunar deployments
-- Marine operational anchors requiring local fabrication capability
+- Marine deployments (see Marine Variant below)
 
 ---
 
 ## III. G.E.C.K. Capability Threshold (v0 → v1 Bridge)
 
 A G.E.C.K. must support v0 Forge operations immediately, and enable growth toward v1 using local means.
+
+The Forge loop that defines sufficiency: intake → triage → process → verify → learn → repeat. A G.E.C.K. is sufficient if it allows this loop to close, even in degraded or partial form. Components that allow the loop to close in a reduced application are Gate C passes — useful, not critical. Components whose absence breaks the loop entirely are critical.
 
 ---
 
@@ -63,8 +60,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Energy storage (batteries, capacitors)
 - Power conditioning and distribution
 
-**Reason:** No power, no learning.
-**Dual-Use: Low** — General power infrastructure with no specific weapons application.
+*Reason: No power, no learning.*
 
 ---
 
@@ -75,8 +71,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Hand tools
 - Marking and tagging system
 
-**Reason:** The Forge must recognize value before it destroys it.
-**Dual-Use: Low** — Triage and salvage capability is broadly applicable and non-specific.
+*Reason: The Forge must recognize value before it destroys it.*
 
 ---
 
@@ -86,8 +81,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Linear motion components (rails, screws, belts)
 - Basic bearings and couplings
 
-**Reason:** Motion enables every other capability.
-**Dual-Use: Medium** — Precision motion systems have broader application potential. Flag any motion capability expansion against `Ethical_Constraints.md` dual-use indicators before deployment in sensitive contexts.
+*Reason: Motion enables every other capability.*
 
 ---
 
@@ -97,10 +91,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Manual machining tools (drill press, grinder)
 - Welding or joining capability
 
-**Reason:** The seed must be able to repair and extend itself.
-**Dual-Use: Medium** — Directed energy and precision fabrication have broader application potential. Open parameter access is required for learning — log any capability expansion against `Ethical_Constraints.md` dual-use indicators.
-
-**Graduation target:** The Fabrication Module grows toward `Material_Separation_Gate_v0.md` as the first physical decision point in the full Forge loop. The gate is what the seed's fabrication capability eventually feeds. When the seed can produce rotor components, bearing assemblies, and collection zone geometry, the Fabrication Module has graduated.
+*Reason: The seed must be able to repair and extend itself.*
 
 ---
 
@@ -110,8 +101,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Basic temperature measurement
 - Insulation and containment
 
-**Reason:** Metallurgy begins with heat control.
-**Dual-Use: Low** — Thermal processing is standard industrial practice at seed scale.
+*Reason: Metallurgy begins with heat control.*
 
 ---
 
@@ -121,8 +111,7 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 - Scale
 - Simple optical inspection
 
-**Reason:** Discernment requires measurement.
-**Dual-Use: Low** — Measurement capability is broadly applicable but not specifically enabling for harmful use at this scale.
+*Reason: Discernment requires measurement.*
 
 ---
 
@@ -130,25 +119,10 @@ A G.E.C.K. must support v0 Forge operations immediately, and enable growth towar
 
 - Local compute
 - Durable storage media
-- Core Lazarus Forge documents (see navigation order below)
+- Core Lazarus Forge documents
 - Artifact and triage logs (digital or paper)
 
-**Reason:** Without memory, growth resets every generation.
-**Dual-Use: Low** — Scoped to Forge artifact memory and doctrine. Must not accumulate personal or location data about individuals.
-
-**Navigation order for deployed doctrine cache:**
-A deployed G.E.C.K. must carry documents in a form that allows re-entry after any gap in operation. The minimum doctrine cache, in reading order:
-
-1. `Discovery.md` — navigation map and file index
-2. `Lazarus_forge_v0_flow.md` — master decision flow
-3. `Ethical_Constraints.md` — permission framework; governs all operations
-4. `Auditor_Protocols.md` — verification framework; governs all claims
-5. `geck_forge_seed.md` — this document; self-referential by design
-6. `Components.md` — component taxonomy and bootstrap doctrine
-
-Remaining files are carried as reference. The six above are the minimum for safe autonomous re-entry after extended downtime or operator absence.
-
-**Tamper detection:** Cached documents must carry version identifiers. On re-entry, version hash is verified before any operation proceeds. Mismatched or corrupted cache triggers human review before operation resumes — consistent with `Support_Raft_v0.md` cache integrity protocol.
+*Reason: Without memory, growth resets every generation.*
 
 ---
 
@@ -158,8 +132,7 @@ Remaining files are carried as reference. The six above are the minimum for safe
 - Clear labeling
 - Simple operator instructions
 
-**Reason:** Early Forges are taught, not autonomous.
-**Dual-Use: Low** — Human interface and override capability reduces autonomous operation; this is the opposite of weaponization risk.
+*Reason: Early Forges are taught, not autonomous.*
 
 ---
 
@@ -169,7 +142,6 @@ Remaining files are carried as reference. The six above are the minimum for safe
 - Exotic alloys
 - Full autonomy
 - Space-rated hardware (unless mission-specific)
-- Marine pressure-rated hardware (unless marine variant — see Unknowns Registry)
 
 These emerge through growth, not seeding.
 
@@ -190,72 +162,124 @@ A deployed G.E.C.K. is considered successful when it can:
 
 Once self-replacement is proven, the Forge graduates:
 
-| Transition | Milestone |
-|---|---|
-| G.E.C.K. → v1 | Closed-loop material recycling demonstrated |
-| v1 → v2 | Reduced human dependency; multi-material capability |
-| v2 → v3 | In-situ resource utilization; unattended operation |
-| v3 → v4 | Off-world deployment; fabrication in non-terrestrial environment |
-| v4 → v5 | Interstellar propagation; self-replicating seed capability |
-
-Full trajectory rationale in `Trajectories_LF.md`. Skipping versions is explicitly discouraged — each transition must be earned, not assumed.
+- G.E.C.K. → v1 Forge: Closed-loop material recycling
+- v1 → v2: Reduced human dependency
+- v2 → v3: In-situ resource utilization
 
 ---
 
-## VIII. Variant Seeds
+## VIII. Marine Variant (Exploratory)
 
-The core G.E.C.K. defined above is terrestrial. Variant seeds for other deployment contexts are not specified here — they are derived from this document, not defined alongside it.
+*Status: Exploratory — not binding for v0 terrestrial demonstration. Routes to Trajectories_LF.md v1/v2 scope for full specification. See UNK-005 in Unknowns_LF.md.*
 
-**Marine G.E.C.K. (Planned):**
-The Support Raft operational anchor requires a minimal bootstrap configuration capable of initiating Forge capability in a marine environment without shore-based infrastructure. The Marine G.E.C.K. shares the core module structure but requires:
-- Pressure and corrosion-rated variants of motion, fabrication, and thermal modules
-- Marine power harvest integration (solar/wave) rather than terrestrial generation
-- Bio-fouling aware component selection
-- Leviathan unit interface capability from day one
+A marine G.E.C.K. seeds a Leviathan unit or Support Raft deployment from minimal resources in an open-ocean or coastal environment. The terrestrial module list applies with the following modifications and additions.
 
-This variant is logged as Exploratory in the Unknowns Registry. It is not specified here until terrestrial v0 is demonstrated. The seed does not speciate before it is proven.
+**Shared with terrestrial G.E.C.K. (largely unchanged):**
+- Memory & Doctrine Module — waterproofed, pressure-tolerant storage
+- Human Interface Module — simplified for intermittent operator contact
+- Sensing & Metrology Module — corrosion-resistant instruments
+
+**Modified modules:**
+
+*Power & Energy Module (marine):*
+- Primary: sealed battery bank, pressure-rated
+- Supplemental: solar panels with marine-grade mounting, wave energy if available
+- No combustion engines in submerged configurations
+- Induction charging pad for Leviathan unit recharge *(Placeholder — pad design not yet specified; see GK-003)*
+
+*Triage & Salvage Module (marine):*
+- Waterproof multimeter and test equipment
+- Marine salvage tools (cutting, lifting, retrieval)
+- Contamination assessment for marine-recovered materials (biofouling, salt, corrosion)
+- Tagging system rated for submersion
+
+*Fabrication Module (marine):*
+- Corrosion-resistant tooling preferred
+- Welding capability adapted for humid/salt environment
+- 3D printing materials must resist salt and UV degradation *(Placeholder)*
+
+**Marine-specific additions:**
+
+*Hull & Buoyancy Module (marine-critical):*
+- Minimum viable hull sufficient to support module payload
+- Passive buoyancy reserve — unit must surface safely without power
+- SWATH or pontoon configuration preferred for stability
+- Sacrificial anode system for galvanic corrosion protection *(Placeholder — material selection not yet specified; see GK-002)*
+
+*Biofouling Management Module (marine-critical):*
+- Sacrificial Shell System: designed colonization zones, scheduled shedding, structured reef substrate contribution per Support_Raft_v0.md doctrine
+- Fouling monitoring — detect colonization growth rate
+- Shedding mechanism — mechanical, chemical, or biological *(Placeholder — mechanism not yet specified)*
+
+**Marine G.E.C.K. success criteria:**
+- Unit remains positively buoyant under degraded conditions
+- Triage loop closes using marine-salvaged material
+- Self-replacement demonstrated for at least one hull-exposed component
+- Operational memory survives one full biofouling cycle
+
+**Marine G.E.C.K. explicit non-goals (v0):**
+- Full underwater operation — surface or near-surface only
+- Deep pressure tolerance — Leviathan-class depth is a separate program
+- Full energy independence — grid or tender-assisted charging is acceptable at v0
 
 ---
 
-## IX. Relationship to Existing Documents
+## IX. Guiding Axioms
 
-- `Components.md` — parent taxonomy; the GECK is the minimal subset of Critical Components required to start the loop
-- `Lazarus_forge_v0_flow.md` — the decision flow the GECK is designed to enable
-- `Ethical_Constraints.md` — governs all GECK operations; must be in doctrine cache
-- `Auditor_Protocols.md` — governs all claims made during GECK operation; must be in doctrine cache
-- `Material_Separation_Gate_v0.md` — graduation target for the Fabrication Module
-- `Support_Raft_v0.md` — marine context where GECK seed variant is most immediately needed
-- `leviathan_testing.md` — stress-test environment where GECK assumptions face real pressure
-- `Trajectories_LF.md` — full version roadmap that the GECK initiates
-
----
-
-## X. Unknowns Registry
-
-**Non-blocking:**
-- Minimum doctrine cache size for durable offline storage — what media format survives extended deployment in harsh environments? Resolution path: field testing and analog review of expedition documentation practices
-- Version hash verification mechanism for resource-constrained local compute. Resolution path: lightweight checksum implementation review
-
-**Exploratory:**
-- Marine G.E.C.K. variant specification — module adaptations for pressure, corrosion, bio-fouling, and marine power harvest. Route to `Support_Raft_v0.md` and `leviathan_testing.md`
-- Orbital / lunar G.E.C.K. variant — vacuum and radiation tolerant module adaptations. Route to `Trajectories_LF.md` v4 specification
-- Disaster response G.E.C.K. configuration — rapid deployment prioritization, triage-first module ordering. Route to future deployment scenario document
-
----
-
-## XI. Guiding Axioms
-
-> A seed that cannot grow is cargo.
-
-> Tools matter less than the order they are used.
-
-> Memory is the most compact machine.
+- A seed that cannot grow is cargo.
+- Tools matter less than the order they are used.
+- Memory is the most compact machine.
+- A marine seed that cannot float is not a seed.
 
 ---
 
 > The G.E.C.K. is not meant to impress. It is meant to survive.
 
+This document defines the minimal conditions for Forge genesis and should change only with demonstrated field experience.
+
 ---
 
-*This document defines the minimal conditions for Forge genesis and should change only with demonstrated field experience.*
+## Lessons Learned
 
+| Date | What was tried | What failed | What was learned |
+|---|---|---|---|
+| — | — | — | No operational entries yet — document is pre-deployment |
+
+*Priority entries to capture when marine variant is first deployed: (1) which terrestrial modules transferred cleanly vs. required significant modification; (2) actual biofouling cycle timeline vs. predicted; (3) which hull configuration provided adequate stability at minimum cost.*
+
+---
+
+## Auditor Notes & Unknowns
+
+### GK-001 — Forge loop not explicitly defined in prior versions
+**Status:** Resolved
+**Risk:** Low
+**What is not yet known:** N/A — resolved in this revision.
+**Resolution path:** Forge loop defined in Section III: intake → triage → process → verify → learn → repeat. This makes the sufficiency criterion in Bootstrap Doctrine falsifiable and directly addresses UNK-024.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+
+### GK-002 — Sacrificial anode material selection for marine hull
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** Which anode material (zinc, aluminum, magnesium) is appropriate for the marine G.E.C.K. hull given expected operating environment, salinity, and hull material.
+**Resolution path:** Standard marine engineering selection criteria apply — zinc for saltwater, magnesium for freshwater, aluminum as general-purpose. Selection is deployment-specific. Add material selection table to marine variant when first deployment environment is confirmed. Placeholder until then.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+
+### GK-003 — Induction charging pad design for Leviathan unit recharge
+**Status:** Open
+**Risk:** Low
+**What is not yet known:** Pad geometry, power transfer efficiency, alignment tolerance, and depth rating for the induction charging interface between Support Raft and Leviathan units.
+**Resolution path:** Exploratory — depends on Leviathan unit power envelope (UNK-006) and hull design. Route full specification to Trajectories_LF.md v1/v2 scope. Stub acknowledged here; design work defers to when Leviathan hardware design begins.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+
+### GK-004 — Marine 3D printing material durability in salt/UV environment
+**Status:** Open
+**Risk:** Low
+**What is not yet known:** Which AM materials are suitable for parts exposed to salt spray, UV, and biofouling pressure in a marine deployment context.
+**Resolution path:** Literature review of marine-grade polymers and coatings used in existing ocean buoy and AUV programs. MBARI and WHOI equipment specs are publicly available analog data. Placeholder until first marine deployment selects a specific AM system.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+
+### Resolution Log
+
+- 2026-05-04: **GK-001** — Resolved. Forge loop explicitly defined in Section III. Feeds UNK-024 resolution path and UNK-026 (Graduation Rule detection circularity — human proxy requirement now anchored to a defined loop, not an implicit one).
+- 2026-05-04: **UNK-005** — Partially resolved. Marine G.E.C.K. variant stub added (Section VIII). Hull & Buoyancy and Biofouling Management modules identified as marine-critical. Full specification deferred to Trajectories_LF.md v1/v2 scope. UNK-005 status updates to In Progress.
