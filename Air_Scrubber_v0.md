@@ -183,3 +183,60 @@ The Air Scrubber is not a filter.
 It is a boundary system that forces hazardous matter into managed forms, prevents accidental chemistry, and makes responsible operation possible at scale.
 
 A Forge that cannot clean up after itself is incomplete by definition.
+
+
+Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4.
+Repository: **LazarusForgeV0**
+## EXPIRY WATCH
+*Checked against Forge_Audit_Kit.md Active Unknowns (v0.9).*
+ * **Status:** No entries flagged. All current unknowns are within the permitted two-cycle window.
+ * **Observation:** UNK-011 (Forge power demand) and UNK-025 (Contamination routing) are highly relevant to this document.
+## ASSUMPTION EXTRACTION (Rule 6)
+Prior contributions assumed:
+ 1. Air_Scrubber_v0.md is in an exploratory "to be determined" state.
+ 2. The document establishes design philosophy over rigid mechanical specifications.
+ 3. The "Marine Extension" (Variant 4) is a valid trajectory for Leviathan-class integration.
+## FALLACY AUDIT: Air_Scrubber_v0.md
+### 1. [FALLACY] Magic Energy / Energy Density Paradox
+ * **Finding:** The "Energy Awareness" section estimates a total draw under 500W. However, Variant 4 (Underwater Bubble-Column) claims "10–100 atm range" for submerged diffusers while targeting a 20–50% uplift in draw.
+ * **Issue:** Compressing air to 100 atm (approx. 1,000 meters depth) is an energy-intensive process that far exceeds a "50% uplift" from a 150W surface fan. The physics of compression work at these depths contradicts the "modest energy ethos."
+ * **Resolution Path:** Label Variant 4 energy targets as **[Placeholder]**. Separate "Surface Forge" energy estimates from "Deep-Sea Leviathan" estimates to avoid masking the true cost of high-pressure gas injection.
+### 2. [GAP] Incomplete by Omission (Thermal Management)
+ * **Finding:** Stage C (Thermal Quench) is listed as an "Intent," but the document lacks a path for the *removed* heat.
+ * **Issue:** If the scrubber "rapidly lowers gas temperature," that energy must go somewhere. In a closed or mobile system (like a Forge seed), heat accumulation in the scrubbing liquid (Stage D) could lead to re-volatilization of captured contaminants.
+ * **Resolution Path:** Add a requirement for a heat rejection interface (radiator or ambient heat sink) under Stage C or D.
+### 3. [FALLACY] Friction Blindness
+ * **Finding:** Stage A (Sacrificial Mechanical Intercept) and Stage B (Ionization) are described as protecting downstream stages.
+ * **Issue:** The audit notes a lack of "backpressure monitoring" logic. As Stage A fouls (which it is designed to do), the fan draw must increase or the flow rate will drop, potentially violating the "Negative Pressure" safety boundary.
+ * **Resolution Path:** Explicitly link Stage A maintenance to a pressure-differential sensor requirement in the "Monitoring & Failure Doctrine."
+### 4. [UNLOGGED UNKNOWN] Wet Capture Waste Stream
+ * **Finding:** Section "Waste as a Managed Output" states liquids/sludges are "routed into controlled handling paths."
+ * **Issue:** The "handling path" for a mobile or remote Forge is currently a vacuum. Without a defined Waste_Management_v0.md or similar, the scrubber simply moves the hazard from air to water, creating a "Liquid Storage" bottleneck.
+ * **Resolution Path:** Log a new Unknown: *UNK-027: Saturation limits and storage requirements for scrubber liquor in remote/autonomous deployments.*
+### 5. [CROSS-REF FAILURE] Hallucinated Files
+ * **Finding:** References to leviathan_testing.md and geck_forge_seed.md.
+ * **Issue:** These files are not listed in the current provided context or known Discovery.md status provided in the Audit Kit.
+ * **Resolution Path:** Label these as **[Planned]** or **[Aspirational]** until their existence is verified in the repository manifest.
+## VERIFICATION GATES ASSESSMENT
+| Gate | Status | Notes |
+|---|---|---|
+| **1. Fallacy Check** | **FAIL** | Contradictions in deep-sea energy physics (Variant 4) and lack of heat rejection paths. |
+| **2. Verification Artifacts** | **PASS** | Falsifiable sentence: "If the scrubber cannot verify safe operation, the Forge does not run." |
+| **3. Adversarial Pass** | **PARTIAL** | "Loss of airflow" is addressed, but "Scrubber Saturation" (chemical bypass) is not. |
+| **4. Scope Alignment** | **PASS** | Fits v0 exploratory goals; Marine extensions correctly routed as extensions. |
+| **5. Cross-Ref Integrity** | **FAIL** | References to leviathan_testing.md are currently unresolvable. |
+| **6. Conflict Check** | **PASS** | Consistent with Ethical_Constraints.md (Life Preservation). |
+## AUDIT SUMMARY & BLOCKERS
+The document is an excellent conceptual framework but suffers from **"Depth-Scale Blindness."** The jump from surface-level scrubbing to 100 atm marine remediation (Variant 4) introduces physical variables (compression work, heat of compression) that break the current energy model.
+**Promotion Blockers:**
+ 1. Reconcile the energy draw of high-pressure compression in Variant 4 or move it to a Trajectories_LF.md future-spec.
+ 2. Add an explicit "Heat Rejection" requirement to the Stage C/D architecture.
+ 3. Clarify the status of leviathan_testing.md and geck_forge_seed.md.
+**Document:** Air_Scrubber_v0.md (standard audit, 2026-05-06)
+**Auditor:** Skeptic/Auditor — Gemini 3 Flash
+**Gates cleared:** 2, 4, 6
+**Gates blocked:** 1, 3, 5
+**Unknowns logged:** UNK-027 (Scrubber liquor saturation limits)
+**Overrides:** none
+**Sign-off:** The design doctrine is sound for surface operations, but the marine extension requires a physics-based energy reality check before promotion to Specification.
+**Does the "Waste as a Managed Output" section imply a specific connection to a nutrient recovery system for the G.E.C.K. variants, or is it strictly for hazard containment?**
