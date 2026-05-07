@@ -1,5 +1,13 @@
 # Air Scrubber v0 — Design Doctrine
 
+**Audit Health:**
+- Status: Exploration
+- Last audit: 2026-05-06 (Gemini Flash 3 — Skeptic/Auditor)
+- Open unknowns: 3 (Low-Medium)
+- Sidecar: [#auditor-notes--unknowns]
+
+---
+
 ## Purpose
 
 The Air Scrubber is a core stewardship subsystem of the Lazarus Forge. Its purpose is to prevent the release, accumulation, or uncontrolled transformation of hazardous airborne byproducts generated during Forge operation. The scrubber is not an accessory or afterthought; it is an enabling system without which the Forge shall not operate.
@@ -10,73 +18,55 @@ The Air Scrubber exists to:
 - Capture, stabilize, and channel byproducts into managed streams
 - Provide diagnostic insight into Forge chemistry and health
 
+The same pressure-differential principle that makes this system work also applies in reverse: **positive pressure** protects an enclosure by pushing air outward through every gap, preventing dust and contaminants from entering. Both directions of the same physics. See Variant 0.
+
 ---
 
 ## Design Philosophy
 
 **1. Capture Is Part of Production**
-All Forge processes assume byproduct generation. The Air Scrubber is designed as a continuation of the production path, not a cleanup step performed after the fact. No Forge mode assumes "clean exhaust." Every mode assumes containment.
+All Forge processes assume byproduct generation. The Air Scrubber is a continuation of the production path, not a cleanup step. Every mode assumes containment.
 
 **2. Interaction Is Forced, Not Hoped For**
-The system does not rely on dilution, dispersion, or passive escape. Airflow is deliberately manipulated to increase residence time, increase molecular and particulate interaction, and convert mobile hazards into capturable forms. The scrubber biases physics toward capture.
+Airflow is deliberately manipulated to increase residence time and convert mobile hazards into capturable forms.
 
 **3. Charge, Cool, Then Capture**
-Hazardous species are most difficult to manage when they are hot, fast-moving, and neutral. The scrubber architecture follows a consistent logic: charge airborne species to encourage attachment and agglomeration, cool the gas stream to reduce volatility and stabilize intermediates, then capture contaminants into liquid or solid phases. This ordering is intentional and forms the backbone of the system.
+Charge airborne species to encourage agglomeration → cool the gas stream to reduce volatility → capture into liquid or solid phases. This ordering is intentional.
 
 **4. Negative Pressure as a Safety Boundary**
-The Air Scrubber operates under slight negative pressure relative to its surroundings. Leaks draw air inward rather than expelling contaminants. Loss of airflow is treated as a critical fault. The Forge defaults to shutdown rather than uncontrolled exhaust. Containment is maintained even during partial failure.
+The scrubber operates under slight negative pressure relative to surroundings. Leaks draw air inward. Loss of airflow is a critical fault. The Forge defaults to shutdown rather than uncontrolled exhaust.
+
+**5. Know When the Bucket Is Full**
+A scrubbing system that has reached saturation while reporting "Airflow OK" is not a scrubber — it is a bypass. The system must monitor scrubbing liquid quality (pH, conductivity, turbidity) and trigger a Saturation Fault before chemical bypass occurs.
 
 ---
 
 ## Functional Architecture
 
 **Stage A — Sacrificial Mechanical Intercept**
-Intent: Protect downstream stages and define a human-safe interaction point.
-- Captures coarse particulates and debris
-- Prevents fouling of ionization and wet stages
-- Designed for frequent replacement or servicing
-
-This stage is treated as expendable by design.
+Captures coarse particulates and debris. Protects downstream stages. Designed for frequent replacement — treated as expendable by design.
 
 **Stage B — Ionization / Electrostatic Conditioning**
-Intent: Convert poorly behaved contaminants into cooperative ones.
-- Imparts charge to particulates, aerosols, and vapors
-- Encourages agglomeration and surface attachment
-- Increases downstream capture efficiency
-
-Ionization energy is moderated; the goal is interaction, not destruction. Ozone or unintended reactive species are considered fault conditions and must be monitored.
+Imparts charge to particulates, aerosols, and vapors. Encourages agglomeration and surface attachment. Ionization energy is moderated. Ozone or unintended reactive species are fault conditions and must be monitored.
 
 **Stage C — Thermal Quench / Cooling Zone**
-Intent: Reduce mobility, volatility, and reaction rates.
-
-- Rapidly lowers gas temperature
-- Encourages condensation of semi-volatile compounds
-- Stabilizes charged species long enough for capture
-
-Cooling may be active or passive but must be explicit in design.
+Rapidly lowers gas temperature. Encourages condensation of semi-volatile compounds. Stabilizes charged species long enough for capture. Cooling may be active or passive but must be explicit in design.
 
 **Stage D — Wet Scrubbing / Water Column**
-Intent: Perform bulk removal and phase transfer.
-- Absorbs soluble gases
-- Captures charged and agglomerated particulates
-- Condenses vapors into liquid form
-- Removes heat from the exhaust stream
+Absorbs soluble gases. Captures charged and agglomerated particulates. Water is operated in a recirculating loop with continuous monitoring.
 
-Water is operated in a recirculating loop with monitoring. The scrubber assumes that captured material is hazardous until proven otherwise.
+*Thermal sink requirement:* Hot exhaust from the Spin Chamber transfers heat to scrubbing water. Without a thermal rejection path, the water heats until it can no longer quench incoming gas. Stage D requires an explicit **thermal sink interface** — heat exchanger, radiator, or passive cooling surface — sized to the expected exhaust heat load. This is not optional.
+
+*Saturation monitoring requirement:* The scrubbing liquid must be monitored for pH shift, conductivity change, and turbidity. When values exceed defined thresholds, a **Saturation Fault** is triggered — scrubbing liquid must be replaced or regenerated before operations continue. A saturated scrubbing liquid is not a functioning scrubber. See AS-003.
 
 **Stage E — Polishing / Last-Chance Capture**
-Intent: Avoid reliance on any single mechanism.
-- Captures residual contaminants that escape primary stages
-- Provides redundancy against upstream variability
-- Serves as a final barrier before release
-
-The specific method is modular and may evolve without changing upstream philosophy.
+Captures residual contaminants that escape primary stages. Provides redundancy. Serves as a final barrier before release.
 
 ---
 
 ## Waste as a Managed Output
 
-Captured materials are not treated as disposable nuisances.
+Captured materials are not disposable nuisances.
 - Liquids, sludges, and solids are routed into controlled handling paths
 - Composition is monitored as a diagnostic signal
 - Outputs may become future feedstock or require immobilization
@@ -87,42 +77,58 @@ The Air Scrubber doubles as a sensor system for Forge chemistry.
 
 ## Wet Capture Variants
 
-All variants share the same intent: maximize gas–liquid interaction without creating uncontrolled backpressure or complexity. Selection is based on maturity, available materials, and hazard profile.
+**Variant 0 — Positive Pressure Enclosure Protection (Simplest)**
+
+The pressure-differential principle works in both directions. Where the scrubber uses negative pressure to contain hazards inside an enclosure, positive pressure protects a clean space by pushing air outward through every gap — dust and contaminants must fight the outward flow to enter.
+
+Applications:
+- Operator cab or control room in a dusty Forge environment
+- Critical electronics enclosures in high-particulate areas
+- Any sealed space where dust infiltration reduces reliability or safety
+
+*Implementation:* A blower draws outside air through a multi-stage filter (coarse pre-filter protecting a finer main filter) and pressurizes the protected space. The pre-filter is the sacrificial intercept — replaced frequently and cheaply so the main filter lasts. The protected space needs controlled exits (door seals, pressure relief vents) to maintain differential without over-pressurizing.
+
+*Field observation:* Cabin filters in vehicles operating in high-dust environments fail rapidly because unfiltered dust infiltrates through pressure differentials. A positive pressure system with a sacrificial pre-filter dramatically extends main filter life and protects both occupants and electronics. Standard practice in agricultural and construction equipment — proven at small scale.
+
+This is the lowest-complexity, highest-immediate-value variant for Forge operators working in dusty environments.
+
+---
 
 **Variant 1 — Aerated Pond-Style Bubbler (Baseline)**
-Simple tank with submerged porous diffuser. Gas forced through water via fine bubbles into scrubbing liquid. Aeration media increases bubble surface area and residence time. Prioritizes simplicity, robustness, and ease of inspection.
+Simple tank with submerged porous diffuser. Gas forced through water via fine bubbles. Prioritizes simplicity, robustness, and ease of inspection. **Primary v0 baseline.**
 
 **Variant 2 — Packed Column with Recirculation (Intermediate)**
 Vertical column with random packing or salvaged scrub media. Counter-current gas–liquid contact provides higher efficiency with modest increase in pressure drop.
 
 **Variant 3 — Conditioned Intake + Wet Polish (Future)**
-Upstream ionization or conditioning stage feeds a wet stage used primarily for capture and quench. Reserved for higher-energy or higher-uncertainty processes.
+Upstream ionization stage feeds a wet stage used primarily for capture and quench. Reserved for higher-energy or higher-uncertainty processes.
 
-**Variant 4 — High-Pressure / Underwater Bubble-Column (Leviathan-Compatible)**
+**Variant 4 — Shallow-Depth Marine Bubble-Column (Near-Term Marine)**
 
-*Environmental & Marine Extension:* While the baseline scrubber is designed for Forge fume and dust hazards, the bubble-column architecture naturally extends to marine environments. This enables in-situ oxygenation and volatile capture testing, validation under pressure and corrosion conditions, and feedback loops relevant to orbital volatile handling. All extensions remain subordinate to the core negative-pressure safety boundary and modest energy ethos.
+*Depth scope corrected per Gemini audit — previous claim of 10–100 atm is physically untenable at v0 power budgets. Compressing gas to 100 atm (1000m depth) requires massive compression work that a 100–150W system cannot provide. Variant 4 is scoped to shallow water (<5 atm / ~50m depth) for v0. Deep-sea variants (>50m) route to Trajectories_LF.md as a separate power-class problem.*
 
-For deployment in hypoxic or dead-zone environments:
-- Inject compressed air or oxygen-enriched mix through pressure-rated submerged diffusers (10–100 atm range)
-- In reverse-scrubbing mode, bubbles aerate low-DO water and capture volatiles (H₂S, CO₂) for surface analysis
+For shallow-water deployment (<5 atm):
+- Inject compressed air through pressure-rated submerged diffusers
+- Aerate low-DO water and capture volatiles (H₂S, CO₂) at surface
 - Integrate onboard sensors for real-time pH, DO, turbidity, and gas composition
-- Target bubble sizes 80–500 μm for optimal mass transfer; adjust column depth (1–3 m) to balance efficiency and pressure drop
-- Periodic back-flush or low-concentration surfactant dosing to counter biofouling
+- Target bubble sizes 80–500 μm *(Analogous — marine aeration literature)*
+- Column depth 1–3 m
 
-Quantitative targets: 10–30% DO saturation increase in <2 mg/L hypoxic water; energy draw <100 W per 1–2 m³ plume.
+Quantitative targets: 10–30% DO saturation increase in <2 mg/L hypoxic water *(Analogous)*; energy draw <100 W per 1–2 m³ plume *(Analogous)*.
 
-This variant turns the scrubber into a dual-purpose tool: hazard containment in Forge operations and environmental remediation in marine contexts.
+*Deep-sea Variant 4+ (>50m):* Requires a dedicated high-output compression module, pressure-rated hull integration, and power class beyond v0 budget. Route to Trajectories_LF.md v2/v3 scope.
 
 ---
 
 ## Energy Awareness
 
-Conceptual ballpark ranges (non-binding, Earth surface standard conditions):
-- Fan/compressor draw: 50–150 W
-- Ionization stage: 10–30 W
-- Wet-stage recirculation: 20–80 W
+Conceptual ballpark ranges — non-binding, Earth surface standard conditions:
+- Fan/compressor draw: 50–150 W *(Analogous)*
+- Ionization stage: 10–30 W *(Analogous)*
+- Wet-stage recirculation: 20–80 W *(Analogous)*
+- Thermal sink (heat exchanger / radiator): *(Placeholder — depends on Spin Chamber exhaust heat load; must be sized before Stage D specification)*
 
-Under high-pressure underwater loads, expect 20–50% uplift in air movement draw due to compression. Goal: stay below 500 W total system draw even in worst-case variants. Scrubber runtime may be logged per session as a diagnostic and optimization signal.
+Goal: stay below 500 W total system draw for surface and shallow-water variants *(Placeholder — not yet validated against Forge power budget; cross-reference `energy_v0.md` UNK-011)*. Deep-sea variants are a separate power class and not bounded by this figure.
 
 ---
 
@@ -130,14 +136,15 @@ Under high-pressure underwater loads, expect 20–50% uplift in air movement dra
 
 The scrubber is instrumented to detect:
 - Loss of airflow or pressure balance
-- Excessive ionization byproducts
-- Water chemistry drift
+- Excessive ionization byproducts (ozone)
+- **Scrubbing liquid saturation** (pH shift, conductivity, turbidity) — triggers Saturation Fault
+- **Scrubbing liquid temperature** — triggers Thermal Fault if Stage D heat load exceeds sink capacity
+- Water chemistry drift beyond baseline
 - Overflow, carryover, or uncontrolled misting
-- Detection of unintended reactive byproducts
 
-Indicators may be simple, redundant, and low-cost. Precision is less important than clarity.
+**Saturation Fault:** Operations suspend until scrubbing liquid is replaced or regenerated. A saturated system reporting "Airflow OK" is a false negative — the most dangerous failure mode for a scrubber.
 
-**Design rule:** If the scrubber cannot verify safe operation, the Forge does not run. A scrubber that cannot demonstrate containment is assumed unsafe.
+**Design rule:** If the scrubber cannot verify safe operation, the Forge does not run.
 
 ---
 
@@ -151,28 +158,15 @@ Human oversight is optional; stewardship is not.
 
 ## Integration Hooks
 
-The Air Scrubber receives exhaust directly from the Spin Chamber, Stratification Chamber, and any enclosure where hazardous aerosols or vapors may form.
-
-Feedback from scrubber behavior is actionable intelligence — not noise:
-- Rapid fouling implies upstream particulate overload
-- Water chemistry shifts imply unexpected feedstock reactions
-
-**Cross-module links:**
-- `Spin_Chamber_v0.md` / `Stratification_Chamber_v0.md` — primary exhaust sources; potential centrifugal pre-separation before scrubbing
-- `leviathan_testing.md` — testbed for underwater variants and swarm-scale aeration
-- `Component_Triage_System.md` — scrubber chemistry feedback refines classification heuristics
-- `energy_v0.md` — aggregate data refines draw estimates under variable loads
-- `geck_forge_seed.md` — bootstrap minimal scrubber seeds for remote deployment
+- `Spin_Chamber_v0.md` — primary exhaust source; thermal load on Stage D sized to Spin Chamber output
+- `Material_Separation_Gate_v0.md` — pre-purification separation exhaust source
+- `leviathan_testing.md` — testbed for shallow-water marine variants
+- `Component_Triage_System.md` — scrubber chemistry feedback refines classification heuristics; contamination handling (UNK-025)
+- `energy_v0.md` — aggregate data refines draw estimates; thermal sink power not yet included in demand baseline
+- `geck_forge_seed.md` — bootstrap minimal scrubber for remote deployment
 - `Ship_of_Theseus_Right_to_Repair.md` — scrubber as preservation enabler during artifact recovery
 
----
-
-## Next Steps
-
-- Prototype pressure-rated diffuser payloads for Leviathan proxies
-- Simulate bubble dynamics via open-source hydro tools before field deployment
-- Field test small-scale bubble-column in controlled tank or lake environment to baseline mass transfer rates
-- Explore integration with electrolytic stages for combined gas scrubbing and metal ion capture
+*Note: Stratification_Chamber_v0.md has been removed. Material_Separation_Gate_v0.md is its functional successor.*
 
 ---
 
@@ -184,59 +178,48 @@ It is a boundary system that forces hazardous matter into managed forms, prevent
 
 A Forge that cannot clean up after itself is incomplete by definition.
 
+And a scrubber that does not know when it is full is not a scrubber — it is a liability.
 
-Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4.
-Repository: **LazarusForgeV0**
-## EXPIRY WATCH
-*Checked against Forge_Audit_Kit.md Active Unknowns (v0.9).*
- * **Status:** No entries flagged. All current unknowns are within the permitted two-cycle window.
- * **Observation:** UNK-011 (Forge power demand) and UNK-025 (Contamination routing) are highly relevant to this document.
-## ASSUMPTION EXTRACTION (Rule 6)
-Prior contributions assumed:
- 1. Air_Scrubber_v0.md is in an exploratory "to be determined" state.
- 2. The document establishes design philosophy over rigid mechanical specifications.
- 3. The "Marine Extension" (Variant 4) is a valid trajectory for Leviathan-class integration.
-## FALLACY AUDIT: Air_Scrubber_v0.md
-### 1. [FALLACY] Magic Energy / Energy Density Paradox
- * **Finding:** The "Energy Awareness" section estimates a total draw under 500W. However, Variant 4 (Underwater Bubble-Column) claims "10–100 atm range" for submerged diffusers while targeting a 20–50% uplift in draw.
- * **Issue:** Compressing air to 100 atm (approx. 1,000 meters depth) is an energy-intensive process that far exceeds a "50% uplift" from a 150W surface fan. The physics of compression work at these depths contradicts the "modest energy ethos."
- * **Resolution Path:** Label Variant 4 energy targets as **[Placeholder]**. Separate "Surface Forge" energy estimates from "Deep-Sea Leviathan" estimates to avoid masking the true cost of high-pressure gas injection.
-### 2. [GAP] Incomplete by Omission (Thermal Management)
- * **Finding:** Stage C (Thermal Quench) is listed as an "Intent," but the document lacks a path for the *removed* heat.
- * **Issue:** If the scrubber "rapidly lowers gas temperature," that energy must go somewhere. In a closed or mobile system (like a Forge seed), heat accumulation in the scrubbing liquid (Stage D) could lead to re-volatilization of captured contaminants.
- * **Resolution Path:** Add a requirement for a heat rejection interface (radiator or ambient heat sink) under Stage C or D.
-### 3. [FALLACY] Friction Blindness
- * **Finding:** Stage A (Sacrificial Mechanical Intercept) and Stage B (Ionization) are described as protecting downstream stages.
- * **Issue:** The audit notes a lack of "backpressure monitoring" logic. As Stage A fouls (which it is designed to do), the fan draw must increase or the flow rate will drop, potentially violating the "Negative Pressure" safety boundary.
- * **Resolution Path:** Explicitly link Stage A maintenance to a pressure-differential sensor requirement in the "Monitoring & Failure Doctrine."
-### 4. [UNLOGGED UNKNOWN] Wet Capture Waste Stream
- * **Finding:** Section "Waste as a Managed Output" states liquids/sludges are "routed into controlled handling paths."
- * **Issue:** The "handling path" for a mobile or remote Forge is currently a vacuum. Without a defined Waste_Management_v0.md or similar, the scrubber simply moves the hazard from air to water, creating a "Liquid Storage" bottleneck.
- * **Resolution Path:** Log a new Unknown: *UNK-027: Saturation limits and storage requirements for scrubber liquor in remote/autonomous deployments.*
-### 5. [CROSS-REF FAILURE] Hallucinated Files
- * **Finding:** References to leviathan_testing.md and geck_forge_seed.md.
- * **Issue:** These files are not listed in the current provided context or known Discovery.md status provided in the Audit Kit.
- * **Resolution Path:** Label these as **[Planned]** or **[Aspirational]** until their existence is verified in the repository manifest.
-## VERIFICATION GATES ASSESSMENT
-| Gate | Status | Notes |
-|---|---|---|
-| **1. Fallacy Check** | **FAIL** | Contradictions in deep-sea energy physics (Variant 4) and lack of heat rejection paths. |
-| **2. Verification Artifacts** | **PASS** | Falsifiable sentence: "If the scrubber cannot verify safe operation, the Forge does not run." |
-| **3. Adversarial Pass** | **PARTIAL** | "Loss of airflow" is addressed, but "Scrubber Saturation" (chemical bypass) is not. |
-| **4. Scope Alignment** | **PASS** | Fits v0 exploratory goals; Marine extensions correctly routed as extensions. |
-| **5. Cross-Ref Integrity** | **FAIL** | References to leviathan_testing.md are currently unresolvable. |
-| **6. Conflict Check** | **PASS** | Consistent with Ethical_Constraints.md (Life Preservation). |
-## AUDIT SUMMARY & BLOCKERS
-The document is an excellent conceptual framework but suffers from **"Depth-Scale Blindness."** The jump from surface-level scrubbing to 100 atm marine remediation (Variant 4) introduces physical variables (compression work, heat of compression) that break the current energy model.
-**Promotion Blockers:**
- 1. Reconcile the energy draw of high-pressure compression in Variant 4 or move it to a Trajectories_LF.md future-spec.
- 2. Add an explicit "Heat Rejection" requirement to the Stage C/D architecture.
- 3. Clarify the status of leviathan_testing.md and geck_forge_seed.md.
-**Document:** Air_Scrubber_v0.md (standard audit, 2026-05-06)
-**Auditor:** Skeptic/Auditor — Gemini 3 Flash
-**Gates cleared:** 2, 4, 6
-**Gates blocked:** 1, 3, 5
-**Unknowns logged:** UNK-027 (Scrubber liquor saturation limits)
-**Overrides:** none
-**Sign-off:** The design doctrine is sound for surface operations, but the marine extension requires a physics-based energy reality check before promotion to Specification.
-**Does the "Waste as a Managed Output" section imply a specific connection to a nutrient recovery system for the G.E.C.K. variants, or is it strictly for hazard containment?**
+---
+
+## Lessons Learned
+
+| Date | What was tried | What failed | What was learned |
+|---|---|---|---|
+| May 2026 | Variant 4 marine claimed 10–100 atm range with 20–50% power uplift | Physically untenable — isothermal compression to 100 atm requires massive work; 150W compressor cannot overcome ambient hydrostatic pressure at 1000m | Deep-sea compression is a separate power class. Always calculate compression work before claiming depth range. v0 marine variants cap at <5 atm |
+| May 2026 | Stage D described without thermal sink | Hot exhaust from Spin Chamber heats scrubbing liquid until it cannot quench — hidden failure mode | Thermal sink is not optional; must be explicitly sized to exhaust heat load |
+| May 2026 | Positive pressure insight from dusty-environment cab filtration | Cabin filters fail rapidly under high dust load | Sacrificial pre-filter protecting main filter dramatically extends service life; positive pressure enclosure protection is Variant 0 — simplest and most immediately useful configuration |
+
+---
+
+## Auditor Notes & Unknowns
+
+### AS-001 — 500W power budget not validated against Forge demand baseline
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** Whether 500W worst-case scrubber draw (surface/shallow variants) is compatible with Forge power budget at bootstrap and nominal modes. Thermal sink power not yet included in this estimate.
+**Resolution path:** Cross-reference against energy_v0.md Power Demand stub. Flag if scrubber + thermal sink exceeds 20% of bootstrap budget.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+*Cross-module reference: UNK-011 in Unknowns_LF.md*
+
+### AS-002 — Marine bubble-column depth scope corrected; deep-sea variant deferred
+**Status:** In Progress
+**Risk:** Low
+**What is not yet known:** Detailed specification for deep-sea Variant 4+ (>50m / >5 atm). Shallow-water scope (<50m) is now defined for v0.
+**Resolution path:** Deep-sea variant routes to Trajectories_LF.md v2/v3 as a separate power-class problem requiring dedicated compression module. Shallow-water v0 variant is Analogous-grounded and physically sound.
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor; updated 2026-05-06, Gemini Flash 3
+
+### AS-003 — Scrubber waste stream and saturation fault
+**Status:** In Progress
+**Risk:** Medium
+**What is not yet known:** Saturation thresholds for scrubbing liquid (pH, conductivity, turbidity limits that trigger Saturation Fault); waste stream decision tree for captured material (feedstock vs. immobilization vs. disposal); thermal sink sizing for Stage D.
+**Resolution path:** Saturation Fault monitoring requirement added to Stage D and Monitoring sections (v0 revision). Threshold values are Placeholder — require first operational chemistry data to calibrate. Thermal sink sizing requires Spin Chamber exhaust heat load characterization. Waste stream decision tree: (1) test captured material for reuse potential; (2) if hazardous, immobilize per applicable regulations; (3) if inert, route to bulk material recovery. Cross-reference Component_Triage_System.md contamination handling (UNK-025).
+**Logged:** 2026-05-04, Claude — Skeptic/Auditor; upgraded to In Progress 2026-05-06, Gemini Flash 3
+*Cross-module reference: UNK-025 in Unknowns_LF.md*
+
+### Resolution Log
+- 2026-05-04: Stratification_Chamber_v0.md reference removed. Material_Separation_Gate_v0.md substituted.
+- 2026-05-06: Variant 4 depth scope corrected from 10–100 atm to <5 atm for v0. Deep-sea variants routed to Trajectories_LF.md. Magic Energy fallacy resolved for v0 scope.
+- 2026-05-06: Thermal sink requirement added to Stage D. Hidden thermal failure mode closed.
+- 2026-05-06: Saturation Fault monitoring requirement added to Stage D and Monitoring sections. Chemical bypass failure mode named and addressed.
+- 2026-05-06: Variant 0 (Positive Pressure Enclosure Protection) added. Derived from field observation — cab filtration in high-dust environment. Sacrificial pre-filter doctrine applied.
