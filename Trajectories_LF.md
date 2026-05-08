@@ -1,6 +1,12 @@
 # Lazarus Forge — Trajectory (v0 → Interstellar)
 
-This document outlines the evolutionary trajectory of the Lazarus Forge as a system, with clear versioning compatible with Git-based development. Each version represents a capability threshold, not a finished product.
+**Audit Health:**
+- Status: Exploration
+- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
+- Open unknowns: 1 (Blocking at promotion)
+- Sidecar: [#auditor-notes--unknowns]
+
+This document outlines the evolutionary trajectory of the Lazarus Forge as a system. Each version represents a capability threshold, not a finished product.
 
 The Forge is treated as a living industrial organism: it begins fragile, gains resilience, and eventually becomes location-independent.
 
@@ -26,14 +32,10 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 - Maintain thermal control without catastrophic failure
 - Document processes and outcomes
 
-**Outputs**
-- Rods, plates, wire, powder
-- Replacement parts for the Forge itself
-
 **Exit Condition** [Placeholder]
 > The Forge can repair itself faster than it degrades.
 
-*Verification note: This exit condition cannot be self-reported by the Forge — the detector and the thing being detected are the same system at v0. Verification requires an external observer or proxy metric (e.g., mean time between failures trending downward over N cycles, tracked by human operator). See UNK-026 in `Unknowns_LF.md`. At v0, human-in-the-loop verification is the defined proxy, not a gap.*
+*Verification note: This exit condition cannot be self-reported by the Forge — the detector and the thing being detected are the same system at v0. Verification requires an external observer or proxy metric (e.g., mean time between failures trending downward over N cycles, tracked by human operator). See UNK-026 / CO-001 in Components.md.*
 
 ---
 
@@ -45,7 +47,7 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 - Modular subsystems
 - Semi-autonomous operation
 - Expanded alloy handling
-- On-site power generation (partial) — see `energy_v0.md` for power trajectory; UNK-011 tracks demand baseline
+- On-site power generation (partial) — see `energy_v0.md`; UNK-011 / EV-001 tracks demand baseline
 
 **Required Capabilities**
 - Closed-loop material recycling
@@ -53,15 +55,10 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 - Component fabrication for adjacent systems
 - Environmental control (air, slag, heat)
 
-**Outputs**
-- Marketable industrial components
-- Standardized feedstock formats
-- Replacement modules
-
 **Exit Condition** [Placeholder]
 > The Forge can operate profitably while reinvesting in itself.
 
-*"Profitably" definition [Placeholder]: Revenue or barter value generated from external outputs exceeds operating costs (energy, consumables, maintenance labor) while maintaining a reinvestment rate sufficient to sustain v1 capability. Economic model and baseline are not yet defined — see UNK-027 in `Unknowns_LF.md`.*
+*"Profitably" definition [Placeholder — see TR-001]:* Revenue or barter value generated from external outputs exceeds operating costs while maintaining a reinvestment rate sufficient to sustain v1 capability. Economic model and baseline not yet defined.
 
 ---
 
@@ -70,26 +67,15 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 **Question answered:** Can a Forge reproduce?
 
 **Core Characteristics**
-- G.E.C.K.-based seeding — see `geck_forge_seed.md` for G.E.C.K. definition and minimum viable seed configuration. Marine and environmental variants tracked in UNK-005.
+- G.E.C.K.-based seeding — see `geck_forge_seed.md` for G.E.C.K. definition and minimum viable seed. Marine and environmental variants tracked in UNK-005 / GK-003.
 - Standardized interfaces
 - Distributed documentation and learning
 - Minimal expert intervention
 
-**Required Capabilities**
-- Manufacture of Forge submodules
-- Deployment kits for new sites
-- Remote diagnostics and updates
-- Logistics-aware production planning
-
-**Outputs**
-- New Forge seeds
-- Infrastructure components
-- Network-level redundancy
-
 **Exit Condition** [Placeholder]
 > A Forge can be built without the original builders present.
 
-*G.E.C.K. variant note: This exit condition applies to terrestrial deployments. Marine and off-world variants require additional seeding specifications not yet defined — see UNK-005.*
+*G.E.C.K. variant note: Applies to terrestrial deployments. Marine and off-world variants require additional seeding specifications — see UNK-005.*
 
 ---
 
@@ -105,14 +91,9 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 
 **Required Capabilities**
 - Regolith and asteroid material processing
-- Autonomous maintenance cycles — *autonomy architecture dependency: see UNK-008 in `Unknowns_LF.md`. Autonomous maintenance at v3 requires UNK-008 resolution. v3 exit condition is contingent on UNK-008.*
+- Autonomous maintenance cycles — *contingent on UNK-008 / LT-003 resolution in leviathan_testing.md*
 - Energy scavenging (solar, nuclear, thermal)
 - Zero-waste material flows
-
-**Outputs**
-- Structural elements for space construction
-- Refined metals from celestial bodies
-- Replacement parts for space assets
 
 **Exit Condition** [Placeholder]
 > The Forge can survive without Earth resupply.
@@ -124,20 +105,9 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 **Question answered:** Can industry scale without humans nearby?
 
 **Core Characteristics**
-- Fully autonomous operation — *contingent on UNK-008 (autonomy architecture) resolution. v4 exit condition cannot be satisfied without a defined and tested autonomy architecture.*
+- Fully autonomous operation — *contingent on UNK-008 / LT-003 (autonomy architecture) resolution*
 - Adaptive process optimization
 - Long-duration reliability
-
-**Required Capabilities**
-- Self-upgrading hardware and software
-- Material discovery and adaptation
-- Failure isolation and recovery
-- Long-term mission planning
-
-**Outputs**
-- Space habitats
-- Propulsion structures
-- New Forge seeds
 
 **Exit Condition** [Placeholder]
 > The Forge can expand faster than it fails.
@@ -148,21 +118,12 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 
 **Question answered:** Can civilization carry itself forward?
 
-*Note: v5 is a conceptual horizon, not a testable milestone. No exit condition is defined — this is intentional. v5 represents the outer boundary of the trajectory, not a promotable version threshold. If a falsifiable exit condition for v5 ever becomes articulable, it should be added at that time.*
+*Note: v5 is a conceptual horizon, not a testable milestone. No exit condition is defined — this is intentional. If a falsifiable exit condition ever becomes articulable, add it at that time.*
 
 **Core Characteristics**
 - Self-contained industrial ecosystems
 - Multi-generational operation
 - Minimal external instruction
-
-**Required Capabilities**
-- Interstellar transport compatibility
-- Total resource independence
-- Knowledge preservation across centuries
-
-**Outputs**
-- New industrial footholds
-- Long-term survivability of human capability
 
 ---
 
@@ -171,16 +132,33 @@ The Forge is treated as a living industrial organism: it begins fragile, gains r
 - Version numbers reflect survival thresholds, not feature lists
 - Each version must be stable before advancement
 - Skipping versions leads to systemic fragility
-- Git commits should map to version criteria, not ambition
 - Capabilities listed under future versions are trajectory markers — component taxonomy and implementation specs for those versions do not exist until those versions become active
 
 > A Forge that cannot begin humbly will never reach the stars.
 
 ---
 
-## Audit Status
+## Lessons Learned
 
-Reviewed under Auditor_Protocols.md v0.4, Trajectories_LF.md first audit cycle, May 2026.
-Status: Exploration. Single-model audit pass: Claude (Sonnet 4.6).
-Key changes from prior version: Added role statement and exit condition labeling note to header; added v0 exit condition verification note (UNK-026 cross-ref); added v1 "profitably" definition placeholder (UNK-027 cross-ref); added G.E.C.K. cross-ref and UNK-005 note at v2; added UNK-008 autonomy dependency notes at v3 and v4; added v5 conceptual horizon label with explicit rationale for absent exit condition; added doctrine note clarifying version markers vs. specifications.
-Open unknowns: UNK-005 (marine G.E.C.K.), UNK-008 (autonomy architecture), UNK-026 (Graduation Rule detection circularity), UNK-027 (v1 profitability baseline). See `Unknowns_LF.md`.
+| Date | What was tried | What failed | What was learned |
+|---|---|---|---|
+| May 2026 | Exit conditions written without confidence labels | Implied false precision — conditions read as verified targets | All exit conditions labeled [Placeholder]; verification notes added |
+| May 2026 | v5 written with same structural pattern as v0–v4 | Implied testable milestone status | v5 explicitly designated as conceptual horizon with rationale for absent exit condition |
+
+---
+
+## Auditor Notes & Unknowns
+
+### TR-001 — v1 profitability baseline undefined
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** What "profitably" means in the v1 exit condition. Specifically: what economic model applies, what the profit baseline is measured against, what counts as reinvestment, and at what rate reinvestment must occur to satisfy the condition.
+**Resolution path:** "Profitably" Placeholder added to v1 exit condition (this revision). Full economic model is a v0→v1 transition task. Inputs needed: (1) operating cost model from `energy_v0.md` — feeds from EV-001; (2) revenue model for external outputs; (3) reinvestment rate definition. Route economic model development to a dedicated `economics_v0.md` document when v0→v1 transition planning begins.
+**Logged:** Trajectories_LF.md audit cycle, May 2026
+*Cross-module reference: UNK-027 in Unknowns_LF.md*
+
+### Resolution Log
+- May 2026: All exit conditions labeled [Placeholder]. Verification notes added per condition.
+- May 2026: v5 designated as conceptual horizon — explicit rationale for absent exit condition.
+- May 2026: G.E.C.K. cross-references added at v2. UNK-008 / LT-003 autonomy dependency noted at v3 and v4.
+- May 2026: v0 exit condition verification note added — self-reporting circularity acknowledged, human proxy defined.
