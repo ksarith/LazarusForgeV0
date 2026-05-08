@@ -1,352 +1,165 @@
-# Lazarus Forge — Components Taxonomy
-**Version 0.3**
+# Lazarus Forge — Components (v0)
 
----
-
-## Purpose
-
-Define what a Forge must have to operate safely and truthfully (Critical), versus what amplifies capability, efficiency, or autonomy (Useful).
-
-This document supports v0–v5 navigation, procurement planning, and honest self-assessment.
+**Audit Health:**
+- Status: Exploration
+- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
+- Open unknowns: 1 (Blocking at promotion)
+- Sidecar: [#auditor-notes--unknowns]
 
 ---
 
 ## Framing
 
-Metal fabrication is the first milestone because it is the only self-sustaining path to structural capability. Once a Forge can produce reliable metal components from salvaged feedstock, every other physical system becomes constructable — the Support Raft hull, the Material Separation Gate rotor, the Leviathan chassis, the GECK seed structural components. None of them exist without this capability coming first.
+This document defines the **component taxonomy** for Lazarus Forge v0 through v3. It answers: what must exist, what helps, and what can wait.
 
-This document defines the minimum viable component set required to achieve that capability. It is not a complete description of the Forge ecosystem. It describes the enabling layer upon which all downstream systems depend. The scope is intentional, not incomplete.
+The scope is intentionally narrow: the metal fabrication enabling layer. Downstream systems (electronics, software, biological) are out of scope here. They have their own taxonomies.
 
 ---
 
 ## Definitions
 
-**Critical Components**
-Absence prevents safe operation, learning, or truthful output.
-Without these, the system is not a Lazarus Forge.
+**Critical** — Absence allows silent failure. The Forge cannot detect its own malfunction without this component. Loss is unrecoverable without outside intervention.
 
-**Useful Components**
-Increase throughput, resilience, autonomy, or scope.
-Absence does not invalidate the Forge, only limits it.
+**Useful** — Absence limits the Forge but does not invalidate it. The Forge continues operating in a degraded state.
+
+**Bootstrap** — A component present at genesis that is expected to fail, be replaced, and be improved upon. Bootstrap components are critical by function, not by quality.
 
 ---
 
-## Bootstrap Doctrine
+## I. Critical Components (v0)
 
-### Purpose
+A component is critical if its absence allows **silent failure** — the Forge operates but cannot detect that it is operating incorrectly.
 
-The Bootstrap Doctrine defines how a Lazarus Forge may begin operation **before** ideal components, refined materials, or industrial precision are available.
-
-It formalizes imperfect beginnings as a valid and expected state.
-
----
-
-### Core Principle
-
-> A component is sufficient if it allows the Forge loop to close.
-> A component is critical if its absence permits silent failure.
-
-Perfection is not required. **Closure is.**
-
----
-
-### Tier −1: Bootstrap / Seed Components
-
-Bootstrap components are not optimized, durable, or efficient.
-They exist solely to **enable the first self-improving loop**.
-
-Typical sources include:
-- Salvaged tools and appliances
-- Discarded electronics
-- Improvised mechanical assemblies
-- Manually operated systems
-
-Common examples:
-- High-torque DC motors or steppers (printers, tools)
-- Bearings, gears, rails, and fasteners from scrap
-- Repurposed power supplies, UPS units, or battery packs
-- Microcontrollers or single-board computers
-- Basic sensors (temperature, current, limit switches)
-
-These components are **expected to fail** and **expected to be replaced**.
-
-Failure is not a defect — **silence is**.
-
----
-
-### Proxy Components & Downgrade Paths
-
-For every ideal component listed in this document, a Forge may begin with:
-
-- Lower-precision analogs
-- Manual or semi-manual processes
-- Open-loop control where closed-loop is unavailable
-- Human-in-the-loop verification
-
-Examples:
-- Laser metal deposition → MIG/TIG wire deposition
-- Inert gas chamber → sealed glove-box or purge bag
-- Automated handling → manual fixtures with jigs
-- Inline metrology → destructive testing and observation
-
-Each proxy exists to be **measured, understood, and replaced**, not immortalized.
-
----
-
-### Graduation Rule
-
-A component graduates from bootstrap status when the Forge can:
-
-1. Detect its degradation or failure
-2. Repair or replace it using internal capabilities
-3. Improve its successor based on logged performance
-
-Once graduated, it becomes a normal Critical or Useful component.
-
----
-
-### Energy Awareness (Minimal v0 Rule)
-
-At bootstrap stage:
-- Exact efficiency is not required
-- **Energy visibility is**
-
-If energy draw cannot be observed or estimated, the Forge does not yet understand the component.
-
----
-
-### Relationship to GECK
-
-The GECK defines the **minimum viable seed** required to initiate this doctrine.
-
-Components listed here represent:
-- One possible implementation path
-- Not a mandate
-- Not an assumption of industrial access
-
-Over time, GECK becomes primary; this document becomes reference.
-
----
-
-## I. Critical Components (Non-Negotiable)
-
-### 1. Material Intake & Reduction
-- Scrap reduction tools (cutting, crushing, shredding)
-- Powderization method (mill / atomization / equivalent)
-- Particle size classification (sieves or classifiers)
-- Inert handling capability (argon or nitrogen)
-
-**Why critical:** Without controlled feedstock, artifacts inherit unknown failure.
-**Dual-Use: Low** — Reduction tools are broadly industrial; no specific weapons application.
-
----
+### 1. Feedstock Reduction
+Shredder, cutter, or mill capable of reducing mixed metal scrap to processable size. Without this, no material enters the system.
 
 ### 2. Atmosphere Control
-- Controlled build chamber (O₂ monitoring)
-- Inert gas supply and purge capability
-- Sealed powder handling containers
+Enclosure and gas management preventing uncontrolled oxidation, toxic accumulation, or explosive atmosphere. Without this, thermal processes are unsafe.
 
-**Why critical:** Oxidation is silent corruption, especially for steel and titanium.
-**Dual-Use: Low** — Atmosphere control is process-specific and protective in nature.
-
----
-
-### 3. Metal Additive Manufacturing Core
-- Metal AM system with open parameter access
-- Stable laser / energy source
-- Repeatable motion system
-
-**Why critical:** Closed systems block learning and invalidate lineage.
-**Dual-Use: Medium** — High-energy directed systems and precision motion have broader application potential. Open parameter access increases this risk slightly — log any capability expansion against `Ethical_Constraints.md` dual-use indicators.
-
----
+### 3. Metal AM / Forming
+At least one system capable of producing functional metal parts from Forge output stock. Without this, the Forge cannot replicate itself.
 
 ### 4. Thermal Processing
-- Heat treatment furnace (material-appropriate range)
-- Controlled cooldown / quench capability
-- Thermal logging (thermocouples + record)
+Controlled heat source capable of melting or sintering target materials. The Spin Chamber is the v0 implementation.
 
-**Why critical:** Printed ≠ finished. Thermal history is part of the artifact.
-**Dual-Use: Low** — Thermal processing is standard industrial practice with no specific weapons application at this scale.
+### 5. Metrology
+Measurement capability sufficient to verify output quality. Without this, the Forge cannot confirm it is producing usable material.
 
----
+### 6. Artifact Memory
+Persistent storage of process parameters, outcomes, and component provenance. Without this, learning resets every generation.
 
-### 5. Metrology & Verification
-- Dimensional measurement (scanner + hand tools)
-- Mass measurement (precision scale)
-- Surface inspection (optical microscopy)
-- Basic mechanical verification (hardness or proxy)
-
-**Why critical:** Discernment depends on detecting almost right.
-**Dual-Use: Low** — Measurement and verification capability is broadly applicable but not specifically enabling for harmful use.
+### 7. Human Override Interface
+Physical or digital mechanism for operator intervention at any process stage. Without this, autonomous failure cascades cannot be interrupted.
 
 ---
 
-### 6. Artifact Memory & Data Spine
+## II. Useful Components (Capability Amplifiers — Non-Critical)
 
-- Local compute capable of long-term storage
-- Artifact ID system (physical ↔ digital binding)
-- Versioned parameter records
-- Failure retention (never auto-delete)
+Absence does not invalidate the Forge, only limits it.
 
-**Why critical:** Without memory, resurrection collapses into repetition.
-**Dual-Use: Medium** — Artifact tracking and versioned records could be adapted for surveillance or targeting systems. Ensure data spine is scoped to Forge artifacts only and does not accumulate personal or location data about individuals.
-
----
-
-### 7. Human Override & Discernment Interface
-- Manual abort and override controls
-- Parameter bounds with operator authority
-- Failure annotation capability
-
-**Why critical:** Early discernment is human-taught, not inferred.
-**Dual-Use: Low** — Override interfaces reduce autonomous capability; this is the opposite of weaponization risk.
-
----
-
-## II. Useful Components (Capability Multipliers)
-
-### A. Automation & Handling
-- Robotic arms or gantries
-- Interchangeable end-effectors
-- Automated powder recycling loops
-
-**Value:** Consistency, reduced exposure, extended runtimes.
-**Dual-Use: Medium** — Robotic manipulation systems are broadly applicable. Flag any end-effector designs that increase kinetic or precision delivery capability against `Ethical_Constraints.md` dual-use indicators.
-
----
+### A. Closed-Loop Recycling
+Internal recovery of process waste (slag, failed prints, spent powder). Reduces external feedstock dependency over time.
 
 ### B. Advanced Sensing
-- Melt-pool monitoring
-- Acoustic or vibration sensing
-- In-process optical inspection
+Environmental monitoring, component health tracking, process optimization feedback. Enables automated graduation decisions — see CO-001.
 
-**Value:** Early anomaly detection and richer learning signals.
-**Dual-Use: Low** — Process-specific sensing with limited transferability to harmful applications.
-
----
-
-### C. Material Characterization
-- XRF / LIBS access (in-house or partner)
-- Particle morphology analysis
-- Contamination detection
-
-**Value:** Faster material progression and safer alloy exploration.
-**Dual-Use: Low** — Characterization capability is analytical and broadly scientific.
-
----
+### C. Compute & Autonomy
+Decision-making systems above basic threshold logic. Enables reduced human oversight over time.
 
 ### D. Energy Infrastructure
-- Energy storage (UPS / batteries)
-- Waste-heat recovery
-- Power quality conditioning
+On-site generation, storage, and distribution beyond grid bootstrap. See `energy_v0.md`.
 
-**Value:** Process stability and off-grid potential.
-**Dual-Use: Low** — Energy storage and conditioning are general infrastructure with no specific weapons application.
+### E. Logistics & Transport
+Material handling, sorting, and transfer automation. Enables higher throughput.
 
 ---
 
-### E. Network & Collaboration Layer
-- Secure data sharing between Forges
-- Anonymized failure signature exchange
-- Reputation and capability signaling
+## III. Downstream Systems (Out of Scope v0)
 
-**Value:** Distributed learning without centralization.
-**Dual-Use: Medium** — Networked capability signaling could be adapted for coordination of harmful activities. Ensure network layer is scoped to Forge-to-Forge learning exchange and does not enable command-and-control of external systems.
+- Electronics fabrication
+- Software development environment
+- Biological or chemical synthesis
+- Precision optics
 
----
-
-### F. Environmental Hardening (v2+)
-- Vacuum-tolerant components
-- Radiation-tolerant electronics
-- Extreme thermal cycling design
-
-**Value:** Enables remote, orbital, and lunar deployment.
-**Dual-Use: Medium** — Hardened autonomous systems operating in remote environments have obvious dual-use potential. Environmental hardening capability expansion should be reviewed against `Ethical_Constraints.md` before deployment in contested or sensitive zones.
-
----
-
-## III. Gateway to Downstream Capability Classes
-
-The metal fabrication core unlocks the ability to construct systems requiring:
-
-- Structural load-bearing assemblies
-- Rotational and fluid-handling machinery
-- Pressure-resistant enclosures
-- Modular frames and chassis systems
-- Mechanically coupled multi-component assemblies
-- Marine and subsurface structural components
-- Orbital and vacuum-rated hardware
-
-These represent capability classes, not specific implementations. This document does not define those systems. It defines the minimum viable substrate that makes them physically realizable.
-
-Downstream systems currently specified elsewhere:
-
-| System | File | Dependency on Metal Core |
-|---|---|---|
-| Material Separation Gate | `Material_Separation_Gate_v0.md` | Rotor, drum, bearing assemblies |
-| Spin Chamber | `Spin_Chamber_v0.md` | Induction coil housing, MHD chamber |
-| Air Scrubber | `Air_Scrubber_v0.md` | Stage housings, wet column vessel |
-| Support Raft | `Support_Raft_v0.md` | SWATH hull structure, struts, docking ports |
-| Leviathan Units | `leviathan_testing.md` | Chassis, pressure housings, manipulator arms |
-| GECK Seed | `geck_forge_seed.md` | All structural seed components |
-
-This table is illustrative and will grow. It introduces no requirements into this document.
+These emerge through growth, not seeding. They belong in future version taxonomies.
 
 ---
 
 ## IV. Version Mapping
 
-| Version | Milestone |
-|---|---|
-| v0 | Sections I.1–I.7 minimally satisfied (single material) |
-| v1 | Steel-class materials + closed-loop recycling |
-| v2 | Multi-material + unattended operation + networking |
-| v3 | In-situ resource processing + off-world operation |
-| v4 | Off-world deployment — fabrication in non-terrestrial environment |
-| v5 | Interstellar propagation — self-replicating seed capability |
+| Version | Material Scope | Key Capability Added |
+|---|---|---|
+| v0 | Aluminum, copper, basic steel | Proof of persistence — the loop closes |
+| v1 | Expanded alloys | Steel-class materials, closed-loop recycling |
+| v2 | Multi-material | Manufacture of Forge submodules |
+| v3 | Space-grade | Regolith and asteroid material processing |
 
-Full trajectory rationale in `Trajectories_LF.md`.
+*v3+ version milestones are trajectory markers — component taxonomy for those stages is not defined in this document.*
 
 ---
 
-## V. Operating Principle
+## V. Bootstrap Doctrine
 
-> A component is critical if its absence allows silent failure.
+**Core principle:** Imperfect beginnings are valid.
 
-Everything else is useful.
+A v0 Forge built from salvage, with degraded components and manual oversight, is still a Forge. The Bootstrap Doctrine establishes:
+
+- Bootstrap components are expected to fail
+- Failure is not a defect — silence is
+- Every failed bootstrap component is a learning event
+- Never auto-delete a failed component record
+
+**Sufficiency criterion:** A component is sufficient if it allows the Forge loop to close. The Forge loop: intake → triage → process → verify → learn → repeat. (Loop definition per `geck_forge_seed.md` Section III.)
+
+**Proxy/Downgrade paths:** When a critical component is unavailable at spec, a lower-capability substitute is acceptable if it allows the loop to close in degraded form. Document the substitution.
+
+**Graduation Rule:** A component graduates from Bootstrap to Specified when the Forge can: (1) detect its degradation, (2) repair or replace it internally, (3) improve its successor.
+
+*At v0, graduation assessment requires human operator verification as a proxy for automated degradation detection — see CO-001.*
 
 ---
 
 ## VI. Dual-Use Annotation Standard
 
-All components carry a dual-use annotation:
+Components with known dual-use potential are annotated:
 
-**Dual-Use: [Low | Medium | High]**
-**Rationale:** brief justification
+| Risk Level | Meaning | Action |
+|---|---|---|
+| Low | Minimal weaponization potential | No special handling |
+| Medium | Dual-use possible with modification | Log provenance, flag if pattern emerges |
+| High | Direct weaponization path exists | Full Stop — route to `Ethical_Constraints.md` |
 
-**Purpose:**
-- Surface ambiguity without restricting development
-- Enable downstream ethical review per `Ethical_Constraints.md`
-- Maintain awareness of capability transfer risk
-
-**Escalation:**
-- Low — no action required; standard logging
-- Medium — flag any capability expansion against `Ethical_Constraints.md` dual-use indicators before deployment
-- High — route to Full Stop Review before proceeding
-
-Absence of a flag does not imply absence of risk. No current component in this document is rated High — that rating would trigger immediate review before the component was included.
+*Note: No component in the current v0 taxonomy is rated High. High rating is expected to appear in downstream capability documents (Leviathan chassis, remote autonomous systems). Its absence here reflects current component scope, not a judgment that no Forge-adjacent capability warrants it.*
 
 ---
 
-## VII. Notes for Builders
+## VII. Operating Principle
 
-- Start with fewer materials, not fewer measurements
-- Preserve failures aggressively
-- Sell artifacts, not promises
-- Promote honestly by capability age, not hype
-- The gateway is metal — everything else follows from it
+> A component is critical if its absence allows silent failure.
+
+This single sentence governs all classification decisions. When in doubt, ask: if this component fails, does the Forge know?
 
 ---
 
-*This document is intended to evolve. Amend only with demonstrated capability.*
+## Lessons Learned
+
+| Date | What was tried | What failed | What was learned |
+|---|---|---|---|
+| May 2026 | Graduation Rule written without acknowledging detection dependency | At v0, Advanced Sensing is Useful not Critical — the Forge may not yet be able to detect its own component degradation | Human operator verification must be explicitly named as the v0 proxy for automated detection |
+
+---
+
+## Auditor Notes & Unknowns
+
+### CO-001 — Graduation Rule detection circularity at v0
+**Status:** In Progress
+**Risk:** Medium
+**What is not yet known:** How the Graduation Rule's detection requirement is satisfied at v0, when Advanced Sensing (needed to detect component degradation) is classified as Useful rather than Critical. A component cannot graduate until the Forge can detect its degradation — but that detection capability may not exist when graduation decisions need to be made.
+**Resolution path:** Option chosen: explicitly state in Bootstrap Doctrine (Section V) that graduation decisions at v0 require human operator verification as a proxy for automated detection. This is a defined v0 operating condition, not a gap. One sentence added: "At v0, graduation assessment requires human operator verification as a proxy for automated degradation detection." Also noted in Trajectories_LF.md v0 exit condition (UNK-026 cross-ref). Remaining: same note should be added to Lazarus_forge_v0_flow.md Bootstrap Doctrine reference.
+**Logged:** Components.md audit cycle, May 2026
+*Cross-module reference: UNK-026 in Unknowns_LF.md*
+
+### Resolution Log
+- May 2026: Bootstrap Doctrine updated — sufficiency criterion linked to Forge loop definition in geck_forge_seed.md. Human proxy for graduation detection added explicitly.
+- May 2026: v3+ trajectory marker note added to Version Mapping table.
+- May 2026: Dual-use annotation note added explaining absence of High-rated components.
