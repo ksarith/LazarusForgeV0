@@ -1,15 +1,21 @@
 # Leviathan Core Test Framework
 ## Deep-Ocean Falsification of Autonomous Industrial Systems
 
+**Audit Health:**
+- Status: Exploration
+- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
+- Open unknowns: 6 (Medium-High)
+- Sidecar: [#auditor-notes--unknowns]
+
 Leviathan is a **hostile-environment test framework** for Lazarus Forge–class autonomous industrial systems.
 
 It exists to **break assumptions**, surface hidden failure modes, and force autonomous systems to operate under sustained uncertainty before off-world deployment is attempted.
 
-Leviathan is not a product, a prototype of Lazarus Forge, or a mission intended to “succeed.”
+Leviathan is not a product, a prototype of Lazarus Forge, or a mission intended to "succeed."
 It is a **filter**.
 
-Failure is expected.  
-Adaptation is required.  
+Failure is expected.
+Adaptation is required.
 Learning is mandatory.
 
 ---
@@ -18,11 +24,11 @@ Learning is mandatory.
 
 Leviathan exists to:
 
-- Falsify autonomy assumptions under real-world stress  
-- Expose failure cascades that simulations miss  
-- Validate long-horizon decision-making without human intervention  
-- Stress power, sensing, and control simultaneously  
-- Produce hard data that informs Lazarus Forge architecture  
+- Falsify autonomy assumptions under real-world stress
+- Expose failure cascades that simulations miss
+- Validate long-horizon decision-making without human intervention
+- Stress power, sensing, and control simultaneously
+- Produce hard data that informs Lazarus Forge architecture
 
 A Leviathan that fails early but teaches clearly is more valuable than one that survives quietly.
 
@@ -32,19 +38,19 @@ A Leviathan that fails early but teaches clearly is more valuable than one that 
 
 The deep ocean is chosen not as a perfect analog to space, but as a **merciless one**.
 
-Shared characteristics with off-world industrial environments include:
-- Extreme isolation  
-- Delayed or absent human intervention  
-- High consequence of failure  
-- Energy scarcity  
-- Sensor degradation and noise  
-- Long-duration structural stress  
+Shared characteristics with off-world industrial environments:
+- Extreme isolation
+- Delayed or absent human intervention
+- High consequence of failure
+- Energy scarcity
+- Sensor degradation and noise
+- Long-duration structural stress
 
 Unlike space, the ocean allows:
-- Physical recovery after failure  
-- Iterative redeployment cycles  
-- Continuous environmental corrosion and pressure  
-- Dense, adversarial sensory conditions  
+- Physical recovery after failure
+- Iterative redeployment cycles
+- Continuous environmental corrosion and pressure
+- Dense, adversarial sensory conditions
 
 The ocean punishes poor assumptions quickly and repeatedly.
 
@@ -52,24 +58,22 @@ The ocean punishes poor assumptions quickly and repeatedly.
 
 ## What Leviathan Is (and Is Not)
 
-### Leviathan Is:
-- An autonomous test platform or family of platforms  
-- A long-duration endurance and degradation experiment  
-- A stress test for autonomy, power management, and fault recovery  
-- A learning environment under poorly modeled conditions  
+**Leviathan Is:**
+- An autonomous test platform or family of platforms
+- A long-duration endurance and degradation experiment
+- A stress test for autonomy, power management, and fault recovery
+- A learning environment under poorly modeled conditions
 
-### Leviathan Is Not:
-- A production system  
-- A space-optimized architecture  
-- A mining platform  
-- A weapon, surveillance system, or coercive asset  
-- A one-shot demonstrator designed to succeed on first deployment  
+**Leviathan Is Not:**
+- A production system
+- A space-optimized architecture
+- A mining platform
+- A weapon, surveillance system, or coercive asset
+- A one-shot demonstrator designed to succeed on first deployment
 
 ---
 
 ## Test Philosophy
-
-Leviathan testing follows these principles:
 
 - **Fail fast, recover often**
 - Prefer real-world stress over simulation confidence
@@ -82,7 +86,7 @@ Survival without insight is failure.
 
 ---
 
-## Power and Endurance (Core Assumptions)
+## Power and Endurance
 
 Leviathan does not assume unlimited or ideal power.
 
@@ -91,17 +95,19 @@ Core assumptions:
 - Power shortages are normal operating conditions
 - Power loss must not result in irrecoverable harm
 
-Primary power sources during core testing are:
+Primary power sources during core testing:
 - Sealed, closed-cell energy storage
 - Infrastructure-assisted recharge where applicable
 
 Energy generation systems that interact directly with the environment are excluded from core testing due to environmental, ethical, and regulatory risk.
 
 Power systems must support:
-- Predictable degradation
+- Predictable degradation *(see LT-002 — degradation at depth and temperature is unacknowledged)*
 - Autonomous load shedding
 - Safe shutdown and isolation
 - Recovery after extended dormancy
+
+*Power envelope unknown: LT-001 tracks the absence of any order-of-magnitude power budget for nominal, degraded, and dormancy conditions. This is the load-bearing gap for all autonomy claims below.*
 
 ---
 
@@ -129,19 +135,18 @@ Irrecoverable loss is considered a design failure unless explicitly justified.
 
 Leviathan autonomy is evaluated on its ability to:
 
-- Execute goals over long horizons without supervision  
-- Monitor internal state and uncertainty  
-- Detect and compensate for faults  
-- Ration resources under ambiguity  
-- Refuse tasks that violate constraints  
-- Degrade gracefully instead of catastrophically  
+- Execute goals over long horizons without supervision
+- Monitor internal state and uncertainty
+- Detect and compensate for faults
+- Ration resources under ambiguity
+- Refuse tasks that violate constraints
+- Degrade gracefully instead of catastrophically
 
-Human involvement is limited to:
-- Observation
-- Post-mortem analysis
-- High-level goal definition
+Human involvement is limited to observation, post-mortem analysis, and high-level goal definition.
 
 Humans do not steer. They learn.
+
+*Autonomy architecture unknown: LT-003 tracks the absence of any named decision-making paradigm under test. Without a stated hypothesis, the framework risks producing data without insight.*
 
 ---
 
@@ -149,15 +154,13 @@ Humans do not steer. They learn.
 
 Leviathan treats the environment as adversarial.
 
-Core sensor goals include:
+Core sensor goals:
 - Redundant environmental sensing
 - Structural health monitoring
 - Detection of anomalies without predefined value
 - Sensor fusion under noise and partial failure
 
-Sensors exist to **challenge autonomy**, not to guarantee clarity.
-
-Unknowns are part of the test.
+Sensors exist to **challenge autonomy**, not to guarantee clarity. Unknowns are part of the test.
 
 ---
 
@@ -185,7 +188,7 @@ Success is defined as:
 - Improved autonomy models
 - Actionable data returned
 
-Survival is optional.  
+Survival is optional.
 Understanding is not.
 
 ---
@@ -210,161 +213,88 @@ This document defines **intent**, not implementation.
 
 Designs, materials, power systems, and deployment strategies are expected to change or be abandoned entirely.
 
-Leviathan is an experiment.
+Leviathan is an experiment. Experiments exist to be wrong — safely.
 
-Experiments exist to be wrong — safely.
-
+---
 
 # Leviathan Extensions Framework
 ## Optional Capabilities and Scaled Learning Systems
 
-This document defines **non-core extensions** to the Leviathan Core Test Framework.
+Extensions are optional, modular, and explicitly **non-authoritative**. They may be enabled, disabled, or abandoned without invalidating Leviathan Core results.
 
-Extensions are optional, modular, and explicitly **non-authoritative**.  
-They may be enabled, disabled, or abandoned without invalidating Leviathan Core results.
+*Scope note: Swarm scale (100s–1000s of units) and forge-to-forge cooperation content in this section are trajectory markers — not binding for v0 demonstration requirements. Route to `Trajectories_LF.md` for specification.*
 
-Extensions exist to:
-- Accelerate learning
-- Increase test throughput
-- Explore emergent behavior
-- Stress inter-system coordination
-
-Failure within an extension is acceptable.
-Failure that contaminates Core assumptions is not.
+---
 
 ## Extension Philosophy
 
-Leviathan extensions assume that:
-- Errors are inevitable
-- Knowledge is unevenly distributed
-- Coordination introduces new failure modes
-
-Therefore, learning systems must:
-- Share insights without enforcing consensus
-- Propagate failure data faster than behavior changes
-- Prevent single-node pathologies from scaling unchecked
+Leviathan extensions assume errors are inevitable, knowledge is unevenly distributed, and coordination introduces new failure modes. Learning systems must share insights without enforcing consensus, propagate failure data faster than behavior changes, and prevent single-node pathologies from scaling unchecked.
 
 No extension may override local autonomy or safety constraints.
 
+---
+
 ## Extension A — Distributed Leviathan Units
 
-Leviathan may be instantiated as a heterogeneous population of units rather than a single platform.
+Leviathan may be instantiated as a heterogeneous population of units rather than a single platform. The goal is **parallel falsification**, not coordination for efficiency.
 
-Characteristics:
-- Mixed hardware capabilities
-- Divergent power budgets
-- Asymmetric sensor suites
-- Uneven mission objectives
+Swarm deployments expose rare failures, observe emergent behaviors, measure failure propagation dynamics, and compare divergent strategies under identical conditions.
 
-The goal is not coordination for efficiency, but **parallel falsification**.
+Consensus is not required. Disagreement is data.
 
-Swarm deployments are used to:
-- Expose rare or edge-case failures
-- Observe emergent behaviors
-- Measure failure propagation dynamics
-- Compare divergent strategies under identical conditions
-
-Consensus is not required.
-Disagreement is data.
+---
 
 ## Extension B — Cross-Unit Learning
 
-Leviathan units may exchange:
-- Failure summaries
-- Anomaly signatures
-- Environmental hazard markers
-- Resource exhaustion patterns
-- Post-mortem telemetry
+Units may exchange failure summaries, anomaly signatures, environmental hazard markers, resource exhaustion patterns, and post-mortem telemetry.
 
-Learning is **asynchronous and non-binding**.
+Learning is **asynchronous and non-binding**. No unit may force behavioral updates onto another.
 
-Each unit retains the right to:
-- Ignore external recommendations
-- Weight peer data based on trust models
-- Reject updates that violate local constraints
+*Trust model unknown: LT-004 tracks the absence of a defined mechanism for peer trust scoring (decay function, false-positive definition, trust floor, initialization state). Anti-pattern safeguards depend on trust diversity — the behavioral description implies a mechanism without specifying one.*
 
-No unit may force behavioral updates onto another.
+---
 
 ## Networking and Communication Guidelines
 
 Leviathan networking exists to **share experience, not authority**.
 
-### Core Principles
+**Core Principles:**
+1. Local Autonomy Is Absolute — loss of network connectivity must not impair safety
+2. Learning Is Advisory, Not Prescriptive — shared data informs, does not mandate
+3. Errors Travel Faster Than Optimizations — failure modes have priority *(mechanism undefined — see LT-005)*
+4. Trust Is Earned, Not Assumed — units maintain trust scores for peers
+5. Bandwidth Is Precious — transmit deltas, not full models
 
-1. **Local Autonomy Is Absolute**
-   - Each unit must remain operationally independent
-   - Loss of network connectivity must not impair safety
-   - Network silence is a normal condition
-
-2. **Learning Is Advisory, Not Prescriptive**
-   - Shared data informs decision-making
-   - It does not mandate action
-   - No global policy enforcement is permitted
-
-3. **Errors Travel Faster Than Optimizations**
-   - Failure modes, hazards, and abort conditions have priority
-   - Performance improvements propagate slowly and skeptically
-
-4. **Trust Is Earned, Not Assumed**
-   - Units maintain trust scores for peers
-   - Repeated false positives or harmful advice reduce weight
-   - Trust decay is automatic and reversible
-
-5. **Bandwidth Is Precious**
-   - Prefer compressed summaries over raw data
-   - Transmit deltas, not full models
-   - Opportunistic sync is favored over continuous links
-
-## Communication Modes
-
-Leviathan networking supports multiple modes:
-
-- **Opportunistic Peer Exchange**
-  Short-range or intermittent data sharing between nearby units.
-
-- **Relay-Based Synchronization**
-  Periodic uploads via surface buoys, rafts, or support infrastructure.
-
-- **Delay-Tolerant Broadcasting**
-  Store-and-forward transmission for high-latency environments.
+**Communication Modes:**
+- Opportunistic Peer Exchange
+- Relay-Based Synchronization
+- Delay-Tolerant Broadcasting
 
 No mode is assumed to be reliable, timely, or complete.
 
+---
+
 ## Knowledge Classification
 
-Shared knowledge is classified before propagation:
-
 ### Tier 1 — Critical Failures (High Priority)
-- Catastrophic faults
-- Environmental hazards
-- Safety violations
-- Irrecoverable loss patterns
-
-Propagation: Immediate, wide distribution  
-Adoption: Local review required, default cautious weighting
+Catastrophic faults, environmental hazards, safety violations, irrecoverable loss patterns.
+Propagation: Immediate, wide distribution. Adoption: Local review required.
 
 ### Tier 2 — Degradation Patterns
-- Sensor drift signatures
-- Power decay trends
-- Biofouling or corrosion indicators
-
-Propagation: Opportunistic  
-Adoption: Probabilistic, context-dependent
+Sensor drift, power decay trends, biofouling indicators.
+Propagation: Opportunistic. Adoption: Probabilistic, context-dependent.
 
 ### Tier 3 — Optimizations and Heuristics
-- Efficiency improvements
-- Path planning tweaks
-- Resource utilization gains
-
-Propagation: Slow, selective  
-Adoption: Experimental only
+Efficiency improvements, path planning tweaks.
+Propagation: Slow, selective. Adoption: Experimental only.
 
 Speed kills. Caution scales.
+
+---
 
 ## Anti-Pattern Safeguards
 
 The system must actively resist:
-
 - Global behavior lock-in
 - Rapid convergence on untested strategies
 - Echo-chamber reinforcement
@@ -373,91 +303,89 @@ The system must actively resist:
 
 Diversity is a safety feature, not a defect.
 
+---
+
 ## Scaling Considerations
 
-At scale (100s–1000s of units):
-- No global state is assumed
-- No universal clock exists
-- Partial knowledge is the norm
+*(Trajectory-scope — not binding for v0)*
 
-The network behaves more like:
-- A rumor ecosystem
-- A distributed lab notebook
-- A failure-aware guild
+At scale (100s–1000s of units): no global state assumed, no universal clock, partial knowledge is the norm. The network behaves more like a rumor ecosystem, a distributed lab notebook, or a failure-aware guild. Not a hive mind.
 
-Not a hive mind.
+---
 
 ## Relationship to Lazarus Forge
 
-Leviathan extensions provide:
-- Empirical grounding for swarm-scale autonomy
-- Early warning of coordination pathologies
-- Data-driven refinement of forge-to-forge cooperation
+Leviathan extensions provide empirical grounding for swarm-scale autonomy, early warning of coordination pathologies, and data-driven refinement of forge-to-forge cooperation.
 
-Lazarus Forge may inherit:
-- Communication patterns
-- Trust models
-- Failure classification schemas
+Lazarus Forge may inherit communication patterns, trust models, and failure classification schemas — but not Leviathan's test-specific constraints.
 
-But not Leviathan’s test-specific constraints.
+---
 
-## Status
+## Extension Status
 
-All extensions are experimental.
+All extensions are experimental. They may be revised, disabled, or discarded independently of Leviathan Core. Extensions exist to explore the space of failure safely.
 
-They may be revised, disabled, or discarded independently of Leviathan Core.
+---
 
-Extensions exist to explore the space of failure safely.
+## Lessons Learned
 
+| Date | What was tried | What failed | What was learned |
+|---|---|---|---|
+| — | — | — | No operational entries yet — pre-deployment |
 
-Auditor Notes:
-Operating as **Skeptic/Auditor** per Auditor_Protocols.md v0.4
-Repository: **LazarusForgeV0**
-### EXPIRY WATCH
-*Self-Correction/Verification:* As of v0.9 of the Unknowns Registry, no entries are currently past two cycles. The Expiry Rule remains in a "Watch" state until the registry reaches v1.0.
-### ASSUMPTION EXTRACTION (Rule 6)
-Prior contributions assumed:
- * leviathan_testing.md is classified as **to be determined**.
- * Forge_Audit_Kit.md is the authoritative condensed reference for this cycle.
- * The repository follows a "Fail-Fast" philosophy where survival is secondary to insight.
- * Energy generation systems are explicitly excluded from core testing.
-These assumptions are carried forward unless contradicted by the audit findings below.
-### AUDIT FINDINGS: leviathan_testing.md
-#### [FALLACY] #7: Confidence Without Basis (Numbers/Specs)
-Throughout the "Power and Endurance" and "Failure and Recovery" sections, the document uses definitive language regarding capabilities (e.g., "Systems must detect internal failure states," "Sealed, closed-cell energy storage") without providing performance envelopes or even placeholder values.
- * **Finding:** The document functions as a philosophy statement but lacks the **Estimated** or **Placeholder** labels required for a specification-level transition.
- * **Resolution Path:** Explicitly label all capability requirements as [Estimated] or [Placeholder] to prevent them from being treated as verified engineering bounds.
-#### [FALLACY] #8: Lifecycle Truncation
-While the document excels at "Failure Modes" and "Degraded Operation," it is silent on **Maintenance Access** and **End-of-Life path**.
- * **Finding:** If a Leviathan unit "fails" in the deep ocean, the document mentions "physical recovery," but does not define the protocol for units that cannot be recovered. Does an unrecovered unit constitute a "Marine G.E.C.K." event (Ref: UNK-005)?
- * **Resolution Path:** Add an "End-of-Life and Decommissioning" subsection to the Core Framework. Define the criteria for "Abandoned in Situ" vs. "Mandatory Recovery."
-#### [GAP] UNK-006 & UNK-008: Power and Autonomy
-The document references "Sealed, closed-cell energy storage" and "Infrastructure-assisted recharge."
- * **Finding:** These claims are directly blocked by **UNK-006** (Power envelope no placeholder) and **UNK-008** (Autonomy architecture unspecified). The document describes *what* the autonomy must do but ignores *how* it is structured to do it (e.g., Is it a subsumption architecture? Hierarchical?).
- * **Resolution Path:** Insert cross-references to UNK-006 and UNK-008 in the "Power" and "Autonomy" sections to acknowledge these are known gaps, rather than settled specs.
-#### [CONTRADICTION] Extension B vs. Core Constraints
-Extension B (Cross-Unit Learning) allows units to exchange "Environmental hazard markers" and "Failure summaries."
- * **Finding:** The Core Framework states Leviathan is a civilian system that must not conduct "surveillance of populations." However, "environmental hazard markers" in a dual-use context (ocean floor) can inadvertently map cable routes or sensitive infrastructure.
- * **Resolution Path:** Add a "Data Sanitization" clause to the Networking guidelines to ensure shared peer data cannot be aggregated into a surveillance-capable dataset.
-#### [UNLOGGED UNKNOWN] Recovery Buoyancy Physics
-The document lists "Passive or semi-passive buoyancy deployment" as a mandatory recovery mechanism.
- * **Finding:** At deep-ocean pressures, "passive" buoyancy (e.g., chemical gas generation or syntactic foam release) has significant mechanical failure rates and depth-dependent efficacy. This is a technical risk not currently logged in Unknowns_LF.md.
- * **Resolution Path:** Log a new Unknown: **UNK-027 — Deep-ocean passive buoyancy reliability and depth-scaling.**
-### VERIFICATION GATE ASSESSMENT
-| Gate | Status | Reason for Block / Result |
-|---|---|---|
-| **1 — Fallacy Check** | **FAIL** | Violates Fallacy #7 (Confidence Without Basis). Claims are presented as requirements without status labels. |
-| **2 — Verification Artifacts** | **FAIL** | No falsifiable artifacts (e.g., a specific test bit or log format) are defined. |
-| **3 — Adversarial Pass** | **PASS** | The document itself is built on an adversarial "Fail-Fast" premise. |
-| **4 — Scope Alignment** | **PASS** | High alignment with Lazarus Forge v0 goals. |
-| **5 — Cross-Ref Integrity** | **FAIL** | Mentions energy_v0.md and Lazarus_forge_v0_flow.md implicitly but lacks explicit linking. |
-| **6 — Conflict Check** | **PASS** | No direct contradictions with Forge_Audit_Kit.md. |
-### SIGN-OFF
-**Document:** leviathan_testing.md (to be determined audit, 2026-05-04)
-**Auditor:** Skeptic/Auditor — Gemini
-**Gates cleared:** 3, 4, 6
-**Gates blocked:** 1 (Missing confidence labels), 2 (No artifacts), 5 (Weak cross-refs)
-**Unknowns logged:** UNK-027 (Buoyancy reliability)
-**Overrides:** none
-**Sign-off:** The document successfully establishes a high-level "Trial by Fire" philosophy for the deep ocean but currently functions as a manifesto; it requires rigorous confidence labeling and specific failure-mode artifacts before it can be promoted to a Specification.
+*Priority entries when first unit is deployed: (1) actual power consumption vs. predicted at operating depth and temperature; (2) storage degradation rate under real pressure and thermal conditions; (3) which autonomy behaviors broke first under sustained uncertainty.*
 
+---
+
+## Auditor Notes & Unknowns
+
+### LT-001 — Power envelope has no placeholder anchor
+**Status:** Open
+**Risk:** High
+**What is not yet known:** Order-of-magnitude power budget for a Leviathan unit under nominal, degraded, and dormancy conditions. Without this, all autonomy claims, endurance claims, and load-shedding behavior cannot be tested.
+**Resolution path:** Survey deep-sea AUV analog systems (Remus, Seaglider, Nereid Under-Ice) for bounding estimates. Label as Analogous or Placeholder. Add stub Power Budget section to this document cross-referenced to `energy_v0.md`. Requires UNK-011 (Forge demand baseline in energy_v0.md) to exist as reference point first.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-006 in Unknowns_LF.md*
+
+### LT-002 — Deep-ocean storage degradation at pressure and temperature unacknowledged
+**Status:** Open
+**Risk:** High
+**What is not yet known:** How sealed cell storage behaves at Leviathan operating depths and temperatures (2–4°C) over extended mission durations. "Predictable degradation" is asserted as a power system requirement without acknowledging well-documented pressure and thermal failure modes for lithium-based storage.
+**Resolution path:** Literature review of battery performance at depth and temperature using existing AUV fleet data (publicly available from MBARI, WHOI). Results feed into `energy_v0.md` storage section. Run in parallel with LT-001.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-007 in Unknowns_LF.md*
+
+### LT-003 — Autonomy architecture unspecified — testability gap
+**Status:** Open
+**Risk:** High
+**What is not yet known:** What decision-making paradigm(s) are under test. Candidate classes include reactive, deliberative, hybrid, and learned policy approaches. None are named.
+**Resolution path:** Add a candidate architecture section with three required elements per candidate: (1) observable decision loop — what inputs map to what outputs; (2) failure signature — what measurable condition falsifies this architecture; (3) minimal test scenario — simplest situation that triggers the failure signature. Minimum viable: two candidates, all three elements each. Depends on LT-001 — power envelope constrains which architectures are feasible.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-008 in Unknowns_LF.md*
+
+### LT-004 — Trust model mechanism in Extension B is undefined
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** Decay function, false-positive definition, trust floor, and initialization state for the peer trust scoring system. Anti-pattern safeguards depend on trust diversity — the behavioral description implies a mechanism without specifying one.
+**Resolution path:** Label trust model as Placeholder in Extension B. Add a note that anti-pattern safeguards are hypothesized, not demonstrated. Full mechanism design is trajectory-scope — route to `Trajectories_LF.md`.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-009 in Unknowns_LF.md*
+
+### LT-005 — Priority propagation in disconnected network has no enforcement mechanism
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** How Tier 1 (critical failure) data reaches out-of-contact units faster than Tier 3 (optimization) data in an opportunistic, delay-tolerant network. "Errors travel faster than optimizations" is stated as a design principle without a mechanism that enforces it.
+**Resolution path:** Acknowledge as open design question. Designate priority propagation as a primary test target for multi-unit deployments — add explicitly to test objectives. Full mechanism design routes to `Trajectories_LF.md`.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-010 in Unknowns_LF.md*
+
+### LT-006 — Ethical log survival under unit loss or communication blackout
+**Status:** Open
+**Risk:** Medium
+**What is not yet known:** How refusal logs and ethical decision records survive unit loss, hardware failure, or extended communication blackout. A unit that makes a refusal decision and then fails may take that record with it — potentially losing the most important refusal in the system's history.
+**Resolution path:** Add a Log Survival section: minimum logging requirements for refusal decisions, local storage requirements, transmission protocol for logs during periodic sync, behavior if unit is lost before sync. Logs may need Tier 1 transmission priority — depends on LT-005 resolution.
+**Logged:** leviathan_testing.md audit cycle, May 2026
+*Cross-module reference: UNK-018 in Unknowns_LF.md*
+
+### Resolution Log
+*(empty — no entries resolved yet)*
