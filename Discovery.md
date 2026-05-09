@@ -105,6 +105,11 @@ Taxonomy of critical vs useful components across v0–v3. Includes Bootstrap Doc
 
 ---
 
+**Electronics.md** 'https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Electronics.md'
+How to harvest and utilize electrical components.
+
+---
+
 **geck_forge_seed.md** *(living document — updated actively)*
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/geck_forge_seed.md`
 Defines the minimum viable seed required to instantiate a new Forge in a resource-sparse location. Eight core modules from power through human interface. Success criterion: the seed can eventually rebuild itself. The G.E.C.K. is not meant to impress — it is meant to survive. A marine variant is flagged as an Exploratory Unknown (UNK-005).
