@@ -2,11 +2,12 @@
 
 **Audit Health:**
 - Status: Exploration
-- Last audit: 2026-05-04 (Multi-model — Claude, Gemini, Grok, ChatGPT)
+- Last audit: 2026-05-09 (ChatGPT — Synthesizer; Claude — Engineer)
 - Open unknowns: 3 (Medium)
 - Sidecar: [#auditor-notes--unknowns]
 
 > Role: Decision gateway between reuse and destruction.
+> The Forge is preserving machine work, precision, process history, and infrastructure inheritance — not just metal.
 
 The Component Triage System exists to answer one question with speed, honesty, and minimal energy:
 
@@ -14,7 +15,7 @@ The Component Triage System exists to answer one question with speed, honesty, a
 
 Everything that passes triage is preserved as embodied complexity. Everything that fails triage enters material recovery. Triage always occurs before any material enters destructive processing.
 
-*Note: This document implements the gate logic defined in `Lazarus_forge_v0_flow.md`, which is the reference standard for shared vocabulary. Where this document uses terms like "functional," "repair queue," or "scrap," those terms carry the meanings defined there.*
+*Note: This document implements the gate logic defined in `Lazarus_forge_v0_flow.md`, which is the reference standard for shared vocabulary.*
 
 ---
 
@@ -33,14 +34,61 @@ Human judgment informs classification — it does not bypass the Gate A–D rout
 Each test has a known energy/time cost. A component must justify deeper testing.
 
 **5. Traceability**
-Every triaged item receives a physical provenance tag at final disposition. Tag must record: component type, source, triage date, station outcomes, and final routing decision.
+Every triaged item receives a physical provenance tag at final disposition recording: component type, source, triage date, station outcomes, final routing decision, and any prior service or repair history.
 
 **6. Ethical Flag at Entry**
 Components matching known dual-use or weaponization patterns must be flagged at Station 0 for Oversight review per `Ethical_Constraints.md` before entering the Component Library.
 
+**7. Queues Are Active Allocations, Not Passive Storage**
+Triage queues are prioritized operational allocations competing for finite Forge resources: time, energy, tooling, storage volume, and operator attention. Queue priority should favor actions most likely to improve closure of the current Forge operational loop. Inactive queue items eventually consume more Forge resources than material recovery would reclaim.
+
+**8. Strategic Recoverability Is a Triage Axis**
+Triage operates on two axes simultaneously:
+- *Operational utility* — does this component help now?
+- *Strategic recoverability* — could this become impossible or extremely expensive to recreate later?
+
+Components requiring rare materials, specialized tooling, high precision manufacturing, or fragile supply chains should require higher confidence before irreversible material recovery is authorized.
+
 ---
 
-## II. Gate Correspondence
+## II. Triage Philosophy
+
+**What the Forge is optimizing for:**
+Preservation of recoverable industrial capability under constrained conditions — not salvage quantity, not efficiency alone.
+
+**False-positive doctrine:**
+The Forge preferentially tolerates false-positive retention (preserving a bad component) over false-negative destruction (destroying a recoverable one) during bootstrap phases. As the Forge matures, destruction confidence thresholds tighten.
+
+| Forge Stage | Preferred Error |
+|---|---|
+| Bootstrap | False-positive retention |
+| Transitional | Balanced |
+| Mature Industrial | False-negative rejection tolerance increases |
+
+Irreversible destruction should require higher confidence than temporary retention. This is not a hoarding doctrine — it is a calibrated asymmetry that acknowledges the cost of irreversibility during early-stage operations.
+
+**Forge-duty sufficiency:**
+A component is sufficient for Forge duty if it materially contributes to closure of the current operational loop, not whether it meets original manufacturer specifications. *(See TS-001)*
+
+**Embedded industrial capability:**
+The more advanced the artifact, the more condensed civilization may be inside it. A precision harmonic drive, a failed semiconductor component, or a rare alloy casting may be operationally useless today but strategically irreplaceable later. The operator is not merely evaluating component condition — they are evaluating embedded industrial capability.
+
+---
+
+## III. Strategic Recoverability Tiers
+
+| Tier | Meaning | Triage Implication |
+|---|---|---|
+| Common | Easily reproduced locally | Standard gate routing |
+| Constrained | Reproducible with moderate infrastructure | Elevated retention tolerance |
+| Strategic | Requires advanced tooling or supply chains | High confidence required before material recovery |
+| Critical | Currently irreproducible within Forge capability | Preservation strongly preferred; escalate to Human/AI Oversight Gate |
+
+These tiers influence queue priority, destruction authorization, provenance retention depth, and repurpose restrictions — without making the system bureaucratic.
+
+---
+
+## IV. Gate Correspondence
 
 Triage stations map to the gate logic in `Lazarus_forge_v0_flow.md`:
 
@@ -51,31 +99,50 @@ Triage stations map to the gate logic in `Lazarus_forge_v0_flow.md`:
 | Station partial — failure localized, within current tooling | Gate B pass | Repair & Learn queue |
 | Station partial — failure exceeds current tooling capability | Gate B fail → Gate C | Assess for downgrade or Triage Terminal |
 | Station fail — no function, material recovery value present | Gate D | Material Recovery (Reduction path) |
-| Station fail — no function, no material recovery value | Gate D + Human/AI Oversight | Triage Terminal |
+| Station fail — no function, no material recovery value | Gate D + Oversight | Triage Terminal |
 
-*Note on "sufficient for forge duty": this phrase means the component can perform a useful function within the Forge's current operational context, not necessarily its original application. If it only functions in a reduced application, it routes as Gate C, not Gate A. See TS-001 for threshold definition tracking.*
-
-*Worked example:* A pump motor rated 500W runs at 320W (64%) under standard pump load — Gate A fail. The same motor runs adequately driving a ventilation fan at 40% duty — Gate C pass (repurpose to ventilation duty).
+*Worked example:* A pump motor rated 500W runs at 320W under standard pump load — Gate A fail. The same motor drives a ventilation fan at 40% duty — Gate C pass (repurpose to ventilation duty).
 
 ---
 
-## III. Modular Triage Stations
+## V. Queue Economics
+
+Triage queues are not passive storage. They are dynamic resource-allocation decisions under constrained energy, time, and tooling conditions.
+
+**Queue entry requirements:**
+Every component entering a repair or repurpose queue must carry:
+- Entry date
+- Estimated recovery value (qualitative at v0: Low / Medium / High / Strategic)
+- Reassessment interval
+- Downgrade criteria (conditions under which the item drops to a lower queue or proceeds to material recovery)
+
+**Queue saturation behavior:**
+If a queue reaches capacity, the lowest-value items are reassessed before new items are admitted. Queue saturation is a signal that the Forge's repair or repurpose throughput is insufficient — log it as a Forge health indicator.
+
+**Queue decay:**
+Items that exceed their reassessment interval without action are automatically flagged for Human/AI Oversight Gate review. The default downgrade path is: repair queue → repurpose queue → material recovery. Human judgment required to hold above the default path.
+
+**Provenance granularity:**
+Provenance chains should preserve enough history to identify recurring failure patterns without imposing unsustainable logging burden. Minimum at v0: original source, triage date, station outcomes, any repair events. Richer provenance for Strategic and Critical tier components.
+
+---
+
+## VI. Modular Triage Stations
 
 ### Station 0 — Visual & Basic Mechanical
 
-**Purpose:** Rapid rejection of obvious failures. Contamination check. Dual-use flag.
+**Purpose:** Rapid rejection of obvious failures. Strategic tier assessment. Contamination check. Dual-use flag.
 
 - Visual inspection for cracks, burns, deformation, corrosion
-- Manual spin, shake, and resistance checks
-- Electrical continuity check where applicable
-- **Contamination check:** Identify chemical or biological contamination. Contaminated items tagged and routed to decontamination hold before further triage. See TS-002.
-- **Dual-use flag:** Flag components matching known high-risk patterns for Oversight review per Principle 6.
+- Initial strategic recoverability assessment — assign preliminary tier
+- Contamination check: chemical or biological contamination routes to decontamination hold before further triage *(see TS-002)*
+- Dual-use flag: components matching known high-risk patterns route to Oversight review
+
+Bins: Good / Maybe / Scrap / Contaminated / Flag / Strategic Hold
+
+*"Scrap" means Material Recovery — Reduction path. Not disposal.*
 
 Decision time: < 2 minutes per item
-
-Bins: Good / Maybe / Scrap / Contaminated / Flag
-
-*"Scrap" means Material Recovery — the component enters the Reduction path. It does not mean disposal.*
 
 ---
 
@@ -83,22 +150,14 @@ Bins: Good / Maybe / Scrap / Contaminated / Flag
 
 Priority items: motors, transformers, batteries, inverters, PCBs, solenoids
 
-**Motor Test Bench**
-- DC or AC supply, variable load
-- Measures: no-load current, stall torque (approximate), winding resistance, insulation resistance
+*Cross-reference: `Electronics.md` for detailed harvesting, desoldering, and integrity check protocols.*
 
 **Pass Guidance:**
 ≥ ~70% of expected performance or "sufficient for forge duty" *(Placeholder — see TS-001)*
 
-*Gate A vs Gate C distinction:* A motor at ≥70% performance in its original application context is a Gate A pass. A motor that only meets the threshold in a reduced forge application is a Gate C disposition — routes to Repurpose, not Component Library.
+Gate A vs Gate C distinction: performance in original application = Gate A. Performance only in reduced application = Gate C.
 
-**Battery Test**
-- Charge–discharge cycle
-- Accept partial capacity for stationary use *(Placeholder — minimum threshold pending operational data)*
-
-**Electronics Screening**
-- ESR and capacitance checks
-- Visual inspection for thermal damage
+Strategic tier override: a motor at 40% performance that requires rare-earth magnets may warrant Strategic Hold regardless of functional gate outcome.
 
 ---
 
@@ -106,21 +165,15 @@ Priority items: motors, transformers, batteries, inverters, PCBs, solenoids
 
 Priority items: bearings, gears, linear rails, pumps, structural members
 
-**Bearing Spin Rig**
-- Motorized spindle, vibration sensor (MEMS acceptable), audible and spectral noise assessment
-- *Note: Acoustic assessment requires separation from active Reduction zones — ambient noise produces false failure readings.*
+Acoustic assessment requires separation from active Reduction zones — ambient noise produces false failure readings.
 
-**Structural Metal**
-- Ultrasonic thickness measurement or bend/load testing jigs
-- *Ultrasonic gauges non-trivial to source at Gen-1 — load testing jigs are acceptable substitute*
+Ultrasonic thickness gauges non-trivial to source at Gen-1 — load testing jigs are acceptable substitute.
 
 ---
 
 ### Station 3 — Functional Subassembly Test
 
-Targets: gearboxes, power tools, pumps, fans
-
-Runtime: 5–15 minutes *(Placeholder — to be refined from Gen-1 operational data)*
+Runtime: 5–15 minutes *(Placeholder)*
 
 | Result | Condition | Routing |
 |---|---|---|
@@ -129,58 +182,90 @@ Runtime: 5–15 minutes *(Placeholder — to be refined from Gen-1 operational d
 | Partial | Failure exceeds current tooling | Assess for downgrade (Gate C) |
 | Fail | No function, material has recovery value | Material Recovery — Reduction (Gate D) |
 | Fail | No function, no recovery value | Triage Terminal |
-
-*Gate B condition:* "Within current tooling capability" means the Forge can actually perform the repair with present equipment. A conceptually possible repair that exceeds current tooling fails Gate B.
+| Any | Strategic or Critical tier | Escalate to Human/AI Oversight Gate regardless of functional result |
 
 ---
 
 ### Station 4 — Assisted Borderline Evaluation (Later-Stage Forge)
 
-Introduced gradually as data accumulates. Refines borderline calls from earlier stations. Does not override clear Pass or clear Fail outcomes from Stations 0–3. Borderline reclassifications must be logged with rationale.
+Refines borderline calls. Does not override clear Pass or clear Fail from Stations 0–3.
+
+**Anti-overfitting protection:** Assisted evaluation systems may recommend classifications but must preserve auditable reasoning paths and periodic human validation sampling. Historical bias reinforcement — bad historical classifications confirmed by pattern-matching — is a known failure mode. Require human review samples at defined intervals.
 
 ---
 
-## IV. Triage Terminal
+## VII. Triage Terminal
 
-**Every item reaching Material Recovery disposition must pass a structured hold review before irreversible processing begins.**
+Every item reaching Material Recovery disposition must pass a structured hold review before irreversible processing begins. This is the Human/AI Oversight Gate from `Lazarus_forge_v0_flow.md` at the triage exit.
 
-This is the Human/AI Oversight Gate from `Lazarus_forge_v0_flow.md` applied at the triage exit.
-
-- If a credible, active use case exists: assign with a defined review date
+- If a credible, active use case exists: assign with defined review date
+- If Strategic or Critical tier: require explicit human authorization before material recovery proceeds
 - If no genuine need exists: Material Recovery proceeds
 
-*Re-triage note:* Components that pass triage, enter service, and subsequently fail within the Forge re-enter triage at Station 0 with a provenance tag indicating prior service history.
+*Re-triage:* Components that fail in Forge service re-enter triage at Station 0 with provenance tag indicating prior service history. Recurring failures on same component type trigger pattern logging.
 
 ---
 
-## V. Data & Learning Loop
+## VIII. Failure Modes
 
-Each triage event records: component type, source, tests performed, energy/time spent, decision outcome, eventual fate.
-
-Numeric thresholds (70% performance, 5–15 min runtime) are Placeholder values — candidates for revision after N≥50 consistent triage decisions on similar component classes.
+| Failure Mode | Description | Mitigation |
+|---|---|---|
+| Contamination bypass | Contaminated component passes to electrical/mechanical stations | Station 0 contamination check mandatory before escalation |
+| Misclassified fatigue damage | Visually acceptable component fails under load | Station 3 runtime testing; provenance history review |
+| Queue saturation | Backlog exceeds Forge capacity to process | Queue decay protocol; reassessment triggers |
+| False functional validation | Component passes test but fails in service | Re-triage protocol; provenance pattern logging |
+| Unsafe repurpose routing | Component repurposed beyond safe degradation threshold | Strategic tier override at Triage Terminal |
+| Provenance loss | Component history lost between triage events | Mandatory tag system; re-triage if tag absent |
 
 ---
 
-## VI. Minimum Viable Triage (Gen-1 Forge)
+## IX. Data & Learning Loop
 
-A first-generation forge can operate with:
+Each triage event records: component type, source, strategic tier, tests performed, energy/time spent, decision outcome, eventual fate.
+
+Numeric thresholds (70% performance, 5–15 min runtime) are Placeholder — revise after N≥50 consistent decisions on similar component classes.
+
+Recurring failure patterns on specific component types are flagged for classification rule updates.
+
+---
+
+## X. Minimum Viable Triage (Gen-1 Forge)
+
 - One skilled human operator
 - Multimeter
 - 12V / 48V battery bank
-- Salvaged loads (lights, heaters, pumps)
+- Salvaged loads for testing
 - Handwritten performance board for known-good components
+- Strategic tier log (even a notebook column) for components assessed as Constrained or above
 
 ---
 
-## VII. Guiding Axioms
+## XI. Guiding Axioms
 
 - Test cheap. Destroy expensive.
 - A marginal component today beats a perfect ingot tomorrow.
 - Doubt means test deeper. Certainty means move fast.
 - Scrap means material recovery, not disposal.
 - Triage serves the gate logic — it does not replace it.
+- The rarer the capability embedded, the higher the confidence required to destroy it.
+- Queues are not storage. They are decisions deferred under resource constraint.
 
 > Triage is not about hoarding. It is about respecting embodied work already paid for by the universe.
+
+---
+
+## Interfaces
+
+| Interface | Direction | What crosses |
+|---|---|---|
+| Intake | → Triage | Raw salvage items with basic safety screening |
+| Material Recovery | Triage → | Failed items routed to Reduction path |
+| Component Library | Triage → | Passed items cataloged for Fabrication |
+| Repair & Learn queue | Triage ↔ | Partially functional items; outcomes feed back |
+| Ethical Constraints | Triage → | Dual-use flags escalate here |
+| Forge Flow | Reference | Gate logic and terminology standard |
+| Electronics.md | Reference | Electrical component harvesting protocols |
+| Air Scrubber | → Triage | Contamination handling; chemical waste from decontamination |
 
 ---
 
@@ -188,8 +273,9 @@ A first-generation forge can operate with:
 
 | Date | What was tried | What failed | What was learned |
 |---|---|---|---|
-| May 2026 | "Scrap" used as terminal bin label | Semantically drifted from flow document — operators may interpret as disposal rather than material recovery | Replaced with "Material Recovery" throughout; vocabulary note added; Scrap bin relabeled |
-| May 2026 | Station 3 routed Fail directly to disassembly/scrap | Missing the Human/AI Oversight Gate — items reached irreversible processing without structured review | Triage Terminal section added as mandatory hold before any Material Recovery begins |
+| May 2026 | "Scrap" used as terminal bin label | Operators may interpret as disposal rather than material recovery | Replaced with "Material Recovery"; vocabulary note added |
+| May 2026 | Station 3 routed Fail directly to disassembly | Missing Human/AI Oversight Gate | Triage Terminal added as mandatory hold |
+| May 2026 | Queues treated as passive storage | Risk of latent hoarding, decision fatigue, dead inventory | Queues are active allocations with decay, saturation behavior, and reassessment triggers |
 
 ---
 
@@ -198,32 +284,38 @@ A first-generation forge can operate with:
 ### TS-001 — "Sufficient for forge duty" threshold undefined
 **Status:** In Progress
 **Risk:** Medium
-**What is not yet known:** A quantitative or contextual definition of acceptable degraded performance for components assigned to forge duty rather than original application. The 70% threshold in Station 1 does not distinguish Gate A (original function) from Gate C (reduced function).
-**Resolution path:** Bootstrap Doctrine in Components.md offers candidate: "A component is sufficient if it allows the Forge loop to close." The Forge loop is now defined in geck_forge_seed.md Section III (intake → triage → process → verify → learn → repeat). This makes the sufficiency criterion falsifiable. Next step: define as application-specific thresholds once Gen-1 operational data is available. Populate Baseline Performance Table after N≥50 observations per component class.
+**What is not yet known:** Quantitative or contextual definition of acceptable degraded performance for forge-duty components.
+**Resolution path:** Working definition added: "A component is sufficient if it materially contributes to closure of the current operational loop, not whether it meets original manufacturer specifications." Populate Baseline Performance Table after N≥50 observations per component class.
 **Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
 *Cross-module reference: UNK-024 in Unknowns_LF.md*
 
 ### TS-002 — Contamination routing protocol incomplete
 **Status:** Open
 **Risk:** Medium
-**What is not yet known:** How chemically or biologically contaminated components are handled through the triage station sequence — decontamination criteria, routing for components that cannot be decontaminated, and provenance tag requirements for contamination status.
-**Resolution path:** Station 0 contamination check and Contaminated bin added (this revision). Full decontamination protocol still needed. Cross-reference `Air_Scrubber_v0.md` for chemical handling — the waste stream gap there and contamination handling here are the same problem from different directions.
+**What is not yet known:** Full decontamination criteria, routing for components that cannot be decontaminated, and provenance tag requirements for contamination status.
+**Resolution path:** Station 0 contamination check and Contaminated bin added. Full decontamination protocol still needed. Cross-reference `Air_Scrubber_v0.md` AS-003.
 **Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
 *Cross-module reference: UNK-025 in Unknowns_LF.md*
 
 ### TS-003 — Gate logic determinism at boundary cases
 **Status:** In Progress
 **Risk:** Medium
-**What is not yet known:** Whether gate logic produces deterministic routing for all item types at the Gate A/C and Gate C/D boundaries.
-**Resolution path:** Gate Correspondence table added (this revision). Motor worked example added. See FL-001 in Lazarus_forge_v0_flow.md for the primary tracking entry — this entry is a downstream instance of the same gap.
+**What is not yet known:** Deterministic routing for all item types at Gate A/C and Gate C/D boundaries.
+**Resolution path:** Gate Correspondence table added. Motor worked example added. Strategic tier override adds a new routing path that may create additional boundary cases — needs worked examples.
 **Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
 *Cross-module reference: UNK-012 in Unknowns_LF.md*
 
 ### Resolution Log
-- May 2026: Gate Correspondence table added — maps station outcomes to Gates A–D explicitly.
-- May 2026: Motor worked example added to Station 1 — 65% torque → Gate A fail, Gate C pass.
-- May 2026: Triage Terminal section added — Human/AI Oversight Gate now exists in this document.
-- May 2026: "Scrap" vocabulary replaced with "Material Recovery" throughout.
+- May 2026: Gate Correspondence table added.
+- May 2026: Motor worked example added to Station 1.
+- May 2026: Triage Terminal added — Human/AI Oversight Gate now present.
+- May 2026: "Scrap" replaced with "Material Recovery" throughout.
 - May 2026: Contamination check added to Station 0.
 - May 2026: Ethical Flag added as Principle 6.
-- May 2026: Re-triage path for in-service failures added to Triage Terminal.
+- May 2026: Re-triage path for in-service failures added.
+- May 2026: Queue Economics section added — queues as active allocations.
+- May 2026: Strategic Recoverability axis added — dual triage axes, tier classification.
+- May 2026: False-positive doctrine added — bootstrap asymmetry.
+- May 2026: Failure Modes section added.
+- May 2026: Interfaces section added.
+- May 2026: Station 4 anti-overfitting protection added.
