@@ -112,6 +112,11 @@ Salvaged electronics recovery, PCB fabrication, and logic integration. Covers no
 
 ---
 
+**Cognitive_Frameworks.md**
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Cognitive_Frameworks.md
+
+---
+
 **geck_forge_seed.md** *(living document — updated actively)*
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/geck_forge_seed.md`
 Defines the minimum viable seed required to instantiate a new Forge in a resource-sparse location. Eight core modules from power through human interface. Success criterion: the seed can eventually rebuild itself. Includes Marine Variant stub (Section VIII) — hull, buoyancy, and biofouling management modules for Leviathan and Support Raft deployments. The G.E.C.K. is not meant to impress — it is meant to survive.
