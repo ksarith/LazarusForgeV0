@@ -30,17 +30,18 @@ For a new reader or returning AI, read in this sequence:
 5. `Auditor_Protocols.md` — Verification and hallucination filter; governs all contributions
 6. `Forge_Audit_Kit.md` — Condensed audit reference for routine multi-agent cycles
 7. `Unknowns_LF.md` — Cross-module unknowns global index
-8. `Component_Triage_System.md` — Decision gateway between reuse and destruction
-9. `Components.md` — Critical vs useful components taxonomy
-10. `Electronics.md` — Salvaged electronics, PCB fabrication, and TMR integration
-11. `geck_forge_seed.md` — Minimum viable seed for new Forge deployment (living document)
-12. `energy_v0.md` — Energy strategy and accounting
-13. `Spin_Chamber_v0.md` — Core melting and separation module
-14. `Material_Separation_Gate_v0.md` — Pre-purification material diversion gate
-15. `Air_Scrubber_v0.md` — Safety and containment subsystem
-16. `Support_Raft_v0.md` — Operational anchor for marine Leviathan deployments
-17. `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding
-18. `leviathan_testing.md` — Deep-ocean autonomous test framework
+8. `Cognitive_Frameworks.md` — Distributed cognition and trust architectures
+9. `Component_Triage_System.md` — Decision gateway between reuse and destruction
+10. `Components.md` — Critical vs useful components taxonomy
+11. `Electronics.md` — Salvaged electronics, PCB fabrication, and TMR integration
+12. `geck_forge_seed.md` — Minimum viable seed for new Forge deployment (living document)
+13. `energy_v0.md` — Energy strategy and accounting
+14. `Spin_Chamber_v0.md` — Core melting and separation module
+15. `Material_Separation_Gate_v0.md` — Pre-purification material diversion gate
+16. `Air_Scrubber_v0.md` — Safety and containment subsystem
+17. `Support_Raft_v0.md` — Operational anchor for marine Leviathan deployments
+18. `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding
+19. `leviathan_testing.md` — Deep-ocean autonomous test framework
 
 ---
 
@@ -94,9 +95,15 @@ Embedded AI governance framework and parent document. Covers ownership recogniti
 
 ---
 
+**Cognitive_Frameworks.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Cognitive_Frameworks.md`
+Defines how Forge systems think safely under uncertainty. Covers cognitive reliability layers (Layer 0 mechanical truth through Layer 6 human governance), seven framework archetypes from Lone Intelligence to Simulation-Gated Cognition, confidence collapse states (Green through Black), split-brain doctrine, return-to-base doctrine, and human position in the supervisory stack. Includes Triple Modular Redundancy (TMR) architecture, the Ruler + Advisors model, and the principle that mechanical truth outranks software confidence. The goal is not perfect intelligence — it is survivable cognition.
+
+---
+
 **Component_Triage_System.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Component_Triage_System.md`
-Five-station triage workflow implementing the gate logic from Lazarus_forge_v0_flow.md. Includes Gate Correspondence table, worked Gate A/C boundary example, Triage Terminal (Human/AI Oversight Gate), contamination handling at Station 0, ethical flag at entry, and re-triage path for in-service failures.
+Five-station triage workflow implementing the gate logic from Lazarus_forge_v0_flow.md. Includes Gate Correspondence table, Strategic Recoverability axis (Common/Constrained/Strategic/Critical tiers), Queue Economics doctrine, false-positive tolerance framework, Triage Terminal (Human/AI Oversight Gate), contamination handling, ethical flag at entry, failure modes section, and interfaces section. The Forge preserves embedded industrial capability, not just metal.
 
 ---
 
@@ -109,11 +116,6 @@ Taxonomy of critical vs useful components across v0–v3. Includes Bootstrap Doc
 **Electronics.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Electronics.md`
 Salvaged electronics recovery, PCB fabrication, and logic integration. Covers non-destructive harvesting protocols (desoldering standards, component integrity checks), homemade PCB fabrication (CNC milling, laser etching, dead-bug wiring), Forge-Standard modular interface concept, Triple Modular Redundancy (TMR) for salvaged components and AI-agent consensus, and fault response integration with Support Raft. The nervous system of the Forge is built from the nervous systems we threw away.
-
----
-
-**Cognitive_Frameworks.md**
-https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Cognitive_Frameworks.md
 
 ---
 
@@ -155,7 +157,7 @@ Stationary operational anchor for mobile Leviathan units. Provides regional powe
 
 **Ship_of_Theseus_Right_to_Repair.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Ship_of_Theseus_Right_to_Repair.md`
-Philosophical and legal grounding. Uses the Ship of Theseus paradox to frame repair as identity preservation rather than reproduction. Builds a right-to-repair defense strategy including grain provenance tracking, QR documentation, and patent risk mitigation. The Grain system is the physical instantiation — every grain is a legal artifact and philosophical claim simultaneously.
+Philosophical and legal grounding. Uses the Ship of Theseus paradox to frame repair as identity preservation rather than reproduction. Builds a right-to-repair defense strategy including grain provenance tracking, QR documentation, and patent risk mitigation. The Grain system is the physical instantiation — every grain is a legal artifact and philosophical claim simultaneously. Cross-reference: Cognitive_Frameworks.md CF-003 for identity continuity during split-brain states.
 
 ---
 
