@@ -1,7 +1,7 @@
 # Forge_Audit_Kit.md
 **Condensed audit reference for LazarusForgeV0 multi-agent cycles.**
 **Replaces loading Auditor_Protocols.md + Unknowns_LF.md in routine audit prompts.**
-**Current as of: Auditor_Protocols v0.4 / Unknowns_LF v0.9 — May 2026**
+**Current as of: Auditor_Protocols v0.5 / Unknowns_LF v1.0 — May 2026**
 
 Full reference files: `Auditor_Protocols.md` | `Unknowns_LF.md`
 
@@ -13,6 +13,8 @@ Full reference files: `Auditor_Protocols.md` | `Unknowns_LF.md`
 > Confidence never outruns verification. — `Auditor_Protocols.md`
 
 **Scope boundary:** Human override rights apply to verification process decisions only. They do not extend to hard-line doctrines in `Ethical_Constraints.md` (Anti-Weaponization, Life Preservation).
+
+**Sidecar Model (v0.5):** Module-specific unknowns live in each file's own `## Auditor Notes & Unknowns` footer. This index lists cross-module unknowns only. Full entry detail is in the owning file's sidecar.
 
 ---
 
@@ -35,7 +37,7 @@ Apply to all specification-level claims. Bare checkmarks are not verification �
 **3. Energy Density Paradox** — Does a recovery step cost more than it produces? Justify as enabling investment or flag.
 **4. Semantic Drift** — Terms must mean the same thing everywhere. Cross-check against `Lazarus_forge_v0_flow.md`.
 **5. Scope Creep** — New capabilities belong in `Trajectories_LF.md`, not silently in v0 specs.
-**6. Hallucinated Files** — All cross-references must resolve to real files. Aspirational = labeled planned. Files confirmed in `Discovery.md` are treated as verified even when not loaded in the current prompt.
+**6. Hallucinated Files** — All cross-references must resolve to real files. Files confirmed in `Discovery.md` are treated as verified even when not loaded in the current prompt.
 **7. Confidence Without Basis** — All numbers must be labeled: **Measured** / **Estimated** / **Analogous** / **Placeholder**. Unlabeled = Placeholder.
 **8. Lifecycle Truncation** — Every module spec needs: Degraded Operation, Failure Modes, Maintenance Access, End-of-Life path.
 **9. Incomplete by Omission** — What critical subsystem is missing? Heat dissipation, waste streams, power draw, human interface?
@@ -47,10 +49,10 @@ Apply to all specification-level claims. Bare checkmarks are not verification �
 
 ## AI CONTRIBUTION RULES
 
-**Role declaration required:** *"Operating as [Role] per Auditor_Protocols.md v0.4"*
+**Role declaration required:** *"Operating as [Role] per Auditor_Protocols.md v0.5"*
 **Roles:** Synthesizer | Engineer | Skeptic/Auditor | Connective Tissue
 
-**Rule 1 — No Invented Files:** Never reference unconfirmed files. Files listed in `Discovery.md` are confirmed. State uncertainty for anything else.
+**Rule 1 — No Invented Files:** Never reference unconfirmed files. Files listed in `Discovery.md` are confirmed.
 **Rule 2 — Role Awareness:** Name role shifts before proceeding.
 **Rule 3 — Lineage Tracking:** Note what changed, why, and what it replaces.
 **Rule 4 — Refusal is Valid:** Flag flawed premises — do not refine them.
@@ -74,7 +76,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 | 5 — Cross-Reference Integrity | All file refs resolve? Cross-repo deps bidirectional? | Hold at draft |
 | 6 — Conflict Check | Contradicts existing committed specs? | Resolve conflict before committing |
 
-**Full Stop Review:** Invoke if a spec passes all gates but exhibits systemic inconsistency. Trigger conditions: (1) same foundational claim blocked across two separate cycles; (2) new finding invalidates a previously promoted spec; (3) pattern of overrides eroding a governance principle. Log: triggering agent, one falsifiable sentence, date, outcome.
+**Full Stop Review:** Trigger conditions: (1) same foundational claim blocked across two separate cycles; (2) new finding invalidates a previously promoted spec; (3) pattern of overrides eroding a governance principle. Log: triggering agent, one falsifiable sentence, date, outcome.
 
 *Full reference: `Auditor_Protocols.md` §Verification Gates / §Full Stop Review*
 
@@ -96,130 +98,158 @@ Sign-off: [one sentence summary]
 
 ## EXPIRY WATCH
 
-Open this section at the start of each audit cycle. Check for entries past two cycles.
+Open this section at the start of each audit cycle.
 
 **Version cycle definition:** One completed multi-agent audit pass with findings logged.
 **Expiry check owner:** Skeptic/Auditor role, at cycle opening.
-**v1.0 note:** Expiry Rule activates when registry reaches v1.0 — first full audit cycle across all primary documents complete.
+**Status: ACTIVE at v1.0** — check global index for entries approaching two cycles.
 
-*(No entries flagged at v0.9 — all within first or second cycle.)*
-
----
-
-## ACTIVE UNKNOWNS — Open / In Progress
-
-*Deferred and Resolved entries omitted. Full registry: `Unknowns_LF.md`*
+*(No entries past two cycles at v1.0.)*
 
 ---
 
-### Governance & Verification Cluster
+## SIDECAR ID REFERENCE
 
-| ID | Title | Owner | Priority (Promo) | Status |
+Unknowns now use local IDs in owning file sidecars. Cross-module unknowns are indexed here.
+
+| Prefix | Owning File |
+|---|---|
+| EV- | `energy_v0.md` |
+| LT- | `leviathan_testing.md` |
+| FL- | `Lazarus_forge_v0_flow.md` |
+| TS- | `Component_Triage_System.md` |
+| CO- | `Components.md` |
+| EC- | `Ethical_Constraints.md` |
+| AP- | `Auditor_Protocols.md` |
+| SC- | `Spin_Chamber_v0.md` |
+| AS- | `Air_Scrubber_v0.md` |
+| SR- | `Support_Raft_v0.md` |
+| GK- | `geck_forge_seed.md` |
+| ST- | `Ship_of_Theseus_Right_to_Repair.md` |
+| EL- | `Electronics.md` |
+| CF- | `Cognitive_Frameworks.md` |
+| TR- | `Trajectories_LF.md` |
+
+---
+
+## ACTIVE UNKNOWNS INDEX
+
+*Full entry detail in owning file sidecars. Full registry: `Unknowns_LF.md`*
+
+### Energy & Power
+
+| ID | Title | Owning File | Status | Priority |
 |---|---|---|---|---|
-| UNK-001 | Discovery.md update pending for Unknowns_LF.md | Connective Tissue | Non-blocking | Open |
-| UNK-004 | Expiry Rule enforcement mechanism | Skeptic/Auditor | Blocking | Deferred (v1.0) |
-| UNK-020 | Auditor effectiveness metrics | Skeptic/Auditor | Blocking | In Progress |
-| UNK-021 | Override vs. immutability reconciliation | Skeptic/Auditor | Blocking | In Progress |
-| UNK-023 | Audit trail schema | Engineer | Blocking | In Progress |
+| EV-001 | Forge power demand uncharacterized | `energy_v0.md` | In Progress | Blocking |
+| LT-001 | Leviathan power envelope | `leviathan_testing.md` | Open | Blocking |
+| LT-002 | Deep-ocean storage degradation | `leviathan_testing.md` | Open | Blocking |
 
----
+### Leviathan / Autonomy
 
-### Ethics & Governance Cluster
-
-| ID | Title | Owner | Priority (Promo) | Status |
+| ID | Title | Owning File | Status | Priority |
 |---|---|---|---|---|
-| UNK-013 | "Sufficient confidence" threshold undefined | Skeptic/Auditor | Blocking | Open |
-| UNK-014 | Anti-Weaponization pattern-matching undefined | Engineer | Blocking | In Progress |
-| UNK-015 | Human escalation path undefined | Autonomy/Engineer | Blocking | In Progress |
-| UNK-016 | Governance failure modes unspecified | Skeptic/Auditor | Blocking | In Progress |
-| UNK-017 | Life-preservation vs. Anti-Weaponization priority | Human governing party | Blocking | In Progress |
-| UNK-018 | Ethical log survival at depth | Engineer | Non-blocking | Open |
-| UNK-019 | Governance fail-safe behavior | Skeptic/Auditor | Blocking | In Progress |
+| LT-003 | Autonomy architecture unspecified | `leviathan_testing.md` | Open | Blocking |
+| LT-004 | Trust model mechanism undefined | `leviathan_testing.md` | Open | Blocking |
+| LT-005 | Priority propagation — no mechanism | `leviathan_testing.md` | Open | Blocking |
+| LT-006 | Ethical log survival at depth | `leviathan_testing.md` | Open | Non-blocking |
 
----
+### Gate Logic & Triage
 
-### Gate Logic & Triage Cluster
-
-| ID | Title | Owner | Priority (Promo) | Status |
+| ID | Title | Owning File | Status | Priority |
 |---|---|---|---|---|
-| UNK-012 | Gate logic determinism | Engineer | Blocking | In Progress |
-| UNK-024 | "Sufficient for forge duty" threshold | Engineer | Blocking | In Progress |
-| UNK-025 | Contamination routing protocol | Engineer | Blocking | Open |
-| UNK-026 | Graduation Rule detection circularity at v0 | Engineer | Blocking | Open |
+| FL-001 | Gate logic determinism | `Lazarus_forge_v0_flow.md` | In Progress | Blocking |
+| TS-001 | "Sufficient for forge duty" threshold | `Component_Triage_System.md` | In Progress | Blocking |
+| TS-002 | Contamination routing protocol | `Component_Triage_System.md` | Open | Blocking |
+| CO-001 | Graduation Rule detection circularity | `Components.md` | In Progress | Blocking |
 
----
+### Ethics & Governance
 
-### Energy & Power Cluster
-
-| ID | Title | Owner | Priority (Promo) | Status |
+| ID | Title | Owning File | Status | Priority |
 |---|---|---|---|---|
-| UNK-011 | Forge power demand uncharacterized | Energy | Blocking | In Progress |
-| UNK-007 | Deep-ocean storage degradation unacknowledged | Energy | Blocking | Open |
+| EC-001 | "Sufficient confidence" threshold | `Ethical_Constraints.md` | Open | Blocking |
+| EC-002 | Anti-Weaponization pattern-matching | `Ethical_Constraints.md` | Open | Blocking |
+| EC-003 | Human escalation path | `Ethical_Constraints.md` | In Progress | Blocking |
+| EC-004 | Governance failure modes | `Ethical_Constraints.md` | In Progress | Blocking |
+| EC-005 | Life-preservation vs. Anti-Weaponization | `Ethical_Constraints.md` | In Progress | Blocking |
+| EC-006 | Ethical log survival under unit loss | `Ethical_Constraints.md` | Open | Non-blocking |
+| EC-007 | Governance fail-safe | `Ethical_Constraints.md` | In Progress | Blocking |
 
----
+### Governance & Verification
 
-### Leviathan / Autonomy Cluster
-
-| ID | Title | Owner | Priority (Promo) | Status |
+| ID | Title | Owning File | Status | Priority |
 |---|---|---|---|---|
-| UNK-006 | Leviathan power envelope — no placeholder | Energy | Blocking | Open |
-| UNK-008 | Leviathan autonomy architecture unspecified | Autonomy | Blocking | Open |
-| UNK-009 | Trust model mechanism undefined | Autonomy | Blocking | Open |
-| UNK-010 | Priority propagation has no mechanism | Autonomy | Blocking | Open |
+| AP-001 | Auditor effectiveness metrics | `Auditor_Protocols.md` | Open | Blocking |
+| AP-002 | Override vs. immutability boundary | `Auditor_Protocols.md` | In Progress | Blocking |
+| AP-003 | Audit trail schema | `Auditor_Protocols.md` | Open | Blocking |
 
----
+### Cognition
 
-### Future / Deferred Cluster
+| ID | Title | Owning File | Status | Priority |
+|---|---|---|---|---|
+| CF-001 | Hardware watchdog minimum standard | `Cognitive_Frameworks.md` | Open | High |
+| CF-002 | Correlated AI failure modes | `Cognitive_Frameworks.md` | Open | High |
+| CF-003 | Identity continuity during split-brain | `Cognitive_Frameworks.md` | Open | Medium |
 
-| ID | Title | Status |
-|---|---|---|
-| UNK-003 | Cross-repo assumption contracts | Deferred (Leviathan milestone) |
-| UNK-005 | Marine G.E.C.K. seed variant | Open (Exploratory) |
+### Hardware Modules
+
+| ID | Title | Owning File | Status | Priority |
+|---|---|---|---|---|
+| SC-001 | RPM envelope not validated | `Spin_Chamber_v0.md` | Open | Blocking |
+| SC-002 | Segregation effectiveness at v0 scale | `Spin_Chamber_v0.md` | Open | Blocking |
+| AS-001 | 500W power budget not validated | `Air_Scrubber_v0.md` | Open | Medium |
+| AS-003 | Scrubber waste stream and saturation | `Air_Scrubber_v0.md` | In Progress | Medium |
+| SR-001 | Galvanic corrosion mitigation | `Support_Raft_v0.md` | Open | High |
+| SR-002 | Sacrificial shell material selection | `Support_Raft_v0.md` | Open | Medium |
+
+### Salvage & Fabrication
+
+| ID | Title | Owning File | Status | Priority |
+|---|---|---|---|---|
+| GK-002 | Sacrificial anode material | `geck_forge_seed.md` | Open | Medium |
+| ST-003 | Legal applicability by jurisdiction | `Ship_of_Theseus_Right_to_Repair.md` | Open | Medium |
+| EL-001 | Forge-Standard interface spec | `Electronics.md` | Open | Medium |
+| EL-003 | TMR voter implementation | `Electronics.md` | Open | Medium |
+| TR-001 | v1 profitability baseline | `Trajectories_LF.md` | Open | Blocking |
 
 ---
 
 ## DEPENDENCY MAP (condensed)
 
 ```
-UNK-011 -> UNK-006 -> UNK-008 -> UNK-009 / UNK-010 / UNK-015
-UNK-007 -> feeds UNK-006 (parallel)
-UNK-026 -> feeds UNK-012
-UNK-024 -> feeds UNK-012 (Forge loop definition needed)
-UNK-013 -> UNK-008 / UNK-019
-UNK-016 -> UNK-019
-UNK-023 -> UNK-020
-UNK-004 -> UNK-020 / UNK-023 (activates at v1.0)
+EV-001 -> LT-001 -> LT-003 -> LT-004 / LT-005
+LT-002 -> feeds LT-001 (parallel)
+CO-001 -> feeds FL-001
+TS-001 -> feeds FL-001
+EC-001 -> LT-003 / EC-007
+EC-004 -> EC-007
+CF-001 -> Electronics.md (watchdog design)
+CF-003 -> Ship_of_Theseus_Right_to_Repair.md (identity continuity)
+TR-001 -> depends on EV-001
+EL-001 -> depends on LT-001
+AP-001 -> AP-003 (metrics need schema first)
 ```
 
-*Full map with descriptions: `Unknowns_LF.md` §Dependency Map*
+*Full map: `Unknowns_LF.md` §Dependency Map*
 
 ---
 
 ## HOW TO USE THIS FILE
 
-**In Colab Cell 2, replace:**
+**In Colab Cell 2:**
 ```python
 FILES = [
     "[document_to_audit]",
-    "Auditor_Protocols.md",   # 25k chars
-    "Unknowns_LF.md",         # 32k chars
-]
-```
-
-**With:**
-```python
-FILES = [
-    "[document_to_audit]",
-    "Forge_Audit_Kit.md",     # ~9k chars
+    "Forge_Audit_Kit.md",     # ~10k chars
 ]
 ```
 
 **When to load full files instead:**
 - Auditing `Auditor_Protocols.md` itself → load `Auditor_Protocols.md`
 - Auditing `Unknowns_LF.md` itself → load `Unknowns_LF.md`
-- Onboarding a new agent or contributor → load both full files
-- Any finding that needs full unknown entry detail → load `Unknowns_LF.md`
+- Onboarding a new agent → load both full files
+- Need full unknown entry detail → load owning file or `Unknowns_LF.md`
 
-**Maintenance:** Update this file when `Unknowns_LF.md` version increments.
-Changes needed: update active unknowns tables, move resolved entries, update version header and Expiry Watch note.
-Fallacy Checklist, Gates, and Rules only change when `Auditor_Protocols.md` is revised.
+**Confirmed files in repository** (per `Discovery.md`):
+README.md, Lazarus_forge_v0_flow.md, Trajectories_LF.md, Ethical_Constraints.md, Auditor_Protocols.md, Forge_Audit_Kit.md, Unknowns_LF.md, Cognitive_Frameworks.md, Component_Triage_System.md, Components.md, Electronics.md, geck_forge_seed.md, energy_v0.md, Spin_Chamber_v0.md, Material_Separation_Gate_v0.md, Air_Scrubber_v0.md, Support_Raft_v0.md, Ship_of_Theseus_Right_to_Repair.md, leviathan_testing.md, File_Template.md, AUDIT_HARNESS.py
+
+**Maintenance:** Update when `Unknowns_LF.md` version increments — update active unknowns tables, sidecar ID reference, version header, and Expiry Watch note. Fallacy Checklist, Gates, and Rules only change when `Auditor_Protocols.md` is revised.
