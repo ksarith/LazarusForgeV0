@@ -43,7 +43,8 @@ At least one system capable of producing functional metal parts from Forge outpu
 Controlled heat source capable of melting or sintering target materials. The Spin Chamber is the v0 implementation.
 
 ### 5. Metrology
-Measurement capability sufficient to verify output quality. Without this, the Forge cannot confirm it is producing usable material.
+Measurement capability sufficient to verify output quality. Without this, the Forge cannot confirm it is producing usable material.  Baseline Observability
+Minimum instrumentation sufficient to detect unsafe process states and internal degradation. Examples: thermal probes, motor current sensing, airflow monitoring, cameras, encoder verification. Without this, the Forge cannot distinguish silent drift from normal operation.
 
 ### 6. Artifact Memory
 Persistent storage of process parameters, outcomes, and component provenance. Without this, learning resets every generation.
@@ -60,8 +61,7 @@ Absence does not invalidate the Forge, only limits it.
 ### A. Closed-Loop Recycling
 Internal recovery of process waste (slag, failed prints, spent powder). Reduces external feedstock dependency over time.
 
-### B. Advanced Sensing
-Environmental monitoring, component health tracking, process optimization feedback. Enables automated graduation decisions — see CO-001.
+### B. Advanced Sensing & Diagnostics — higher-order monitoring enabling predictive maintenance, autonomous quality assessment, and process optimization. Presupposes Baseline Observability.
 
 ### C. Compute & Autonomy
 Decision-making systems above basic threshold logic. Enables reduced human oversight over time.
