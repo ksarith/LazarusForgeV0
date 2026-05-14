@@ -1,7 +1,16 @@
 # LF_File_Template.md
 
 **Standard file structure for LazarusForgeV0 documents.**
-**Apply to all new files and retrofit to existing files during audit cycles.**
+Applies to all new files and retrofit audit cycles.
+
+This template is designed for:
+- Human readability
+- Machine parsing
+- Autonomous auditability
+- Institutional memory preservation
+- Semantic stability over long time horizons
+
+The repository is treated as a governed knowledge system, not merely a collection of markdown files.
 
 ---
 
@@ -10,61 +19,109 @@
 Every file in LazarusForgeV0 follows this structure:
 
 ```
-1. FILE STATE             — Machine-readable metadata table, top of file
-2. SCOPE BOUNDARY         — Hard limits on what this file owns
-3. FILE PURPOSE           — One paragraph of human-readable intent
-4. BODY                   — Clean content, no audit noise
-5. LESSONS LEARNED        — Operational memory, cumulative, never deleted
-6. ACTIVE DISPUTES        — Interpretation conflicts, separate from unknowns
-7. AUDITOR NOTES          — Active unknowns sidecar, shrinks toward zero
-8. ABANDONED PATHS        — Graveyard for dead ideas (optional)
+1. FILE STATE             — Machine-readable lifecycle metadata
+2. SCOPE BOUNDARY         — Hard ownership boundaries
+3. FILE PURPOSE           — Human-readable intent
+4. ASSUMPTIONS            — Temporary truths treated as valid
+5. BODY                   — Clean operational/specification content
+6. LESSONS LEARNED        — Operational memory, never deleted
+7. ACTIVE DISPUTES        — Interpretation conflicts
+8. AUDITOR NOTES          — Unknowns and resolution tracking
+9. ABANDONED PATHS        — Graveyard for disproven approaches
+10. DRIFT INDICATORS      — Automatic re-audit triggers
 ```
 
-The **Body** must stand alone. Footer sections are additive and never corrupt the content.
-A Specification-level body should be fully understandable without its footer.
+The Body must stand alone.
+Footer sections are additive and must never be required to understand core functionality.
+A Specification-level body should remain understandable even if all footer sections are removed.
 
 ---
 
-## 1. File State (Machine-Readable)
+## 1. File State
 
-Place immediately after the file title, before any content.
+Place immediately below the title.
 
 ```markdown
 ## File State
 
-| Field          | Value                                      |
-|----------------|--------------------------------------------|
-| Status         | Exploration / Draft / Specification        |
-| Body Stability | Volatile / Transitional / Stable           |
-| Spec Gates     | 0/6                                        |
-| Last Audit     | YYYY-MM-DD                                 |
-| Auditor        | [Agent — Role]                             |
-| Open Unknowns  | N (Low / Medium / High)                    |
-| Highest Risk   | Low / Medium / High                        |
-| Sidecar Link   | #auditor-notes--unknowns                   |
+| Field          | Value                                                               |
+|----------------|---------------------------------------------------------------------|
+| Status         | Exploration / Draft / Specification                                 |
+| Body Stability | Volatile / Transitional / Stable                                    |
+| Spec Gates     | 0/6                                                                 |
+| Verification Ref | Verification_Gates_LF.md                                          |
+| Last Audit     | YYYY-MM-DD                                                          |
+| Auditor        | [Agent — Role]                                                      |
+| Open Unknowns  | N                                                                   |
+| Active Disputes| N                                                                   |
+| Highest Risk   | Low / Medium / High                                                 |
+| Sidecar Link   | #auditor-notes--unknowns                                            |
+| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 ```
 
-**Status definitions:**
-- **Exploration** — Incomplete by design; ideas in progress; not yet pressured toward specification
-- **Draft** — Content is substantive; promotion to Specification is being actively worked
-- **Specification** — Has passed all six verification gates; claims are binding
+**The Ethical Anchor field is fixed and non-negotiable.** Its value must match the canonical
+string exactly in every file. Absence, alteration, or blank value is a mandatory drift
+indicator requiring human review. It is not a reference to an external document — it is a
+load-bearing principle that survives even if Ethical_Constraints.md is missing, corrupted,
+or deliberately omitted.
 
-**Body Stability definitions:**
-- **Volatile** — Expected to change significantly; aggressive restructuring is acceptable
-- **Transitional** — Stabilizing but still under revision; preserve intent, not wording
-- **Stable** — Wording should be preserved unless there is critical need to change it
+---
 
-**Spec Gates:** Tracks progress toward Specification. A file cannot be promoted to Specification
-without passing all six gates. Prevents premature promotion.
+### Status Definitions
 
-The File State table is the first thing an agent reads. It determines whether to load the full
-file, jump to the sidecar, or flag for a Resolution Pass before proceeding.
+**Exploration** — Incomplete by design. Ideas are being explored and should not be pressured
+toward premature specification.
+
+**Draft** — Substantive content exists and active convergence toward Specification is underway.
+
+**Specification** — All required verification gates passed. Claims are considered binding
+until revised through a full audit cycle.
+
+---
+
+### Body Stability Definitions
+
+**Volatile** — Major restructuring expected and acceptable.
+
+**Transitional** — Core intent stabilizing; wording may still evolve.
+
+**Stable** — Wording and structure should remain mostly preserved unless justified by audit
+or operational evidence.
+
+---
+
+### Spec Gates
+
+The repository uses six canonical verification gates defined in Verification_Gates_LF.md.
+
+| Gate | Requirement                  |
+|------|------------------------------|
+| G1   | Internal coherence           |
+| G2   | Physical plausibility        |
+| G3   | Testability                  |
+| G4   | Cross-module integration     |
+| G5   | Evidence grounding           |
+| G6   | Auditability                 |
+
+Modules may define additional local gates but may not remove canonical gates.
+A file cannot be promoted to Specification without passing all six.
+
+---
+
+### File State Purpose
+
+The File State block is the first thing an autonomous agent reads. It determines:
+- Whether the file is stable enough to trust
+- Whether the body should be edited
+- Whether the sidecar should be prioritized
+- Whether the file requires a Resolution Pass before audit proceeds
+- Whether the ethical anchor is intact
 
 ---
 
 ## 2. Scope Boundary
 
-Place immediately after File State. This is the second thing an agent reads.
+Place immediately after File State.
 
 ```markdown
 ## Scope Boundary
@@ -76,9 +133,10 @@ Place immediately after File State. This is the second thing an agent reads.
 - ...
 ```
 
-This section is the primary defense against specification bleed, duplicate ownership, and
-infinite document expansion. When in doubt about whether content belongs here, consult the
-Scope Boundary first. If it is not listed under DOES, it does not belong in this file's Body.
+The Scope Boundary is the repository's primary defense against specification bleed, duplicate
+ownership, uncontrolled expansion, and semantic overlap.
+
+If content is not listed under DOES, it does not belong in the Body.
 
 ---
 
@@ -87,130 +145,228 @@ Scope Boundary first. If it is not listed under DOES, it does not belong in this
 ```markdown
 ## File Purpose
 
-One clear paragraph explaining what this file exists to do and why it matters to the Forge.
+One paragraph explaining what this file exists to do and why it matters.
 ```
 
-Write this as if explaining to a new auditor who has never seen the repository. No jargon,
-no forward references. Just purpose.
+Write for a new auditor unfamiliar with the repository. Avoid jargon, philosophical arguments,
+forward references, and implementation detail.
+
+Purpose should explain:
+- What the file governs
+- Why it exists
+- What failure would occur if it disappeared
 
 ---
 
-## 4. Body
+## 4. Assumptions
 
-The document's actual content. Written as if the footer sections do not exist.
-
-**Rules:**
-- No audit notes, unknown references, or governance discussion in the Body
-- No dispute framing or philosophical argument — those go in Active Disputes
-- Cross-references to other Forge files use full GitHub raw URLs per Discovery.md convention
-- Quantitative claims carry confidence labels: **(Measured / Estimated / Simulated / Analogous / Placeholder)**
-- The Body must be readable and useful without the footer
-
-**Frozen content:** Once a section of the Body has passed a Specification gate and its claims
-are binding, mark it with a comment immediately above:
+Optional but strongly recommended for all files beyond brand-new stubs.
 
 ```markdown
-<!-- FROZEN: GATE 3 — 2026-05-07 — Do not edit without full audit cycle -->
-```
+## Assumptions
 
-Autonomous agents must not rewrite FROZEN sections. Human auditors must document the reason
-and reset the gate status if a FROZEN section must change.
+| ID      | Assumption | Basis | Confidence        | Expiry Trigger                      |
+|---------|------------|-------|-------------------|-------------------------------------|
+| ASM-001 | [statement]| [reason] | Low/Medium/High | [condition that invalidates this] |
+```
 
 ---
 
-## 5. Lessons Learned
+### Assumptions Doctrine
 
-Placed after the Body, before Active Disputes. Separated by a horizontal rule.
+Assumptions are not facts. They are temporary truths currently treated as operationally valid.
+
+Assumptions exist to expose:
+- Hidden premises
+- Simulation constraints
+- Environmental expectations
+- Resource availability assumptions
+- Provisional engineering simplifications
+
+**Unknowns** are things not yet known.
+**Assumptions** are things temporarily treated as true.
+
+These categories must remain separate. An assumption that can no longer be defended becomes
+an Unknown and must be migrated to the Auditor Notes sidecar.
+
+---
+
+## 5. Body
+
+The document's operational or specification content.
+The Body must be understandable without sidecars, dispute sections, governance commentary,
+or lessons learned.
+
+---
+
+### Body Rules
+
+- No governance notes
+- No audit commentary
+- No dispute framing
+- No speculative philosophy in Specification-level sections
+- Cross-file references use canonical filenames, not raw URLs
+- Quantitative claims must carry confidence labels:
+  **(Measured / Replicated / Simulated / Analogous / Placeholder)**
+
+---
+
+### Frozen Sections
+
+Once a section passes a verification gate and its claims are binding, mark it:
+
+```markdown
+<!-- FROZEN: Gate 3 — 2026-05-07 — Do not edit without full audit cycle -->
+```
+
+**Frozen Scope Rule:** A FROZEN marker applies to the nearest heading scope beneath it,
+including all subordinate subsections, until the next heading of equal or higher level.
+
+Autonomous agents must not modify frozen sections. If modification becomes necessary:
+1. Justification must be documented
+2. Relevant gate status resets
+3. Affected sections re-enter audit flow
+
+---
+
+### Canonical Vocabulary
+
+Files should preserve repository-defined terminology. Core terms with specialized meaning
+reference Canonical_Terms_LF.md. Agents must not casually redefine canonical terminology.
+
+---
+
+## 6. Lessons Learned
+
+Placed after the Body. Separated by a horizontal rule.
 
 ```markdown
 ---
 
 ## Lessons Learned
 
-Operational memory from building, testing, and failing with this module.
-Not governance. This is the Forge's record of what actually happened.
-
-| Date       | Evidence Type                          | What was tried       | What failed              | What was learned              | Confidence                              |
-|------------|----------------------------------------|----------------------|--------------------------|-------------------------------|-----------------------------------------|
-| YYYY-MM-DD | Bench Test / Field Test / Simulation / Modeling / Anecdotal | [description] | [what went wrong] | [the actual insight] | Measured / Replicated / Simulated / Anecdotal |
+| Date       | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------------|---------------|----------------|-------------|------------------|------------|---------------------|
+| YYYY-MM-DD | [type]        | [description]  | [failure]   | [insight]        | [level]    | Yes / No            |
 ```
 
-**Evidence Type** records *how* the finding was generated.
-**Confidence** records *how much to trust* the finding.
+---
 
-**What belongs here:**
-- Physical test outcomes — a thing was built, it behaved unexpectedly, here is why
-- Design decisions that were reversed and the reason for reversal
+### Evidence Types
+
+| Type        | Meaning                                      |
+|-------------|----------------------------------------------|
+| Bench Test  | Physical test in controlled conditions       |
+| Field Test  | Physical test in operational conditions      |
+| Simulation  | Computational or procedural model            |
+| Modeling    | Analytical or mathematical derivation        |
+| Audit Review| Finding generated through document audit     |
+| Anecdotal   | Informal observation, low evidentiary weight |
+
+---
+
+### Confidence Levels
+
+| Level      | Meaning                                              |
+|------------|------------------------------------------------------|
+| Measured   | Directly observed and recorded                       |
+| Replicated | Observed multiple times or by multiple parties       |
+| Simulated  | Derived from model, not direct observation           |
+| Analogous  | Inferred from similar systems or prior experience    |
+| Anecdotal  | Informal, single observation, treat with caution     |
+
+---
+
+### Lessons Learned Doctrine
+
+Lessons Learned entries are **permanent**. Do not delete entries because the system evolved.
+Historical failures are repository memory.
+
+What belongs here:
+- Physical test outcomes
+- Design decisions that were reversed and why
 - Material substitutions that worked or did not work
 - Operational conditions that were not anticipated
 
-**What does not belong here:**
+What does not belong here:
 - Governance findings → Auditor Notes
 - Future plans → Trajectories_LF.md
 - Unresolved questions → Auditor Notes sidecar
 - Interpretation conflicts → Active Disputes
 
-Lessons Learned is **permanent and cumulative.** Entries are never deleted.
 A module with no Lessons Learned entries is either brand new or has never been tested.
 
 ---
 
-## 6. Active Disputes
+## 7. Active Disputes
 
-Placed after Lessons Learned. Omit the section entirely only if there are zero disputes.
-If there are no current disputes, include the header with an empty table — the category
-must remain visible to prompt auditors to actively check for it rather than skip it.
+Placed after Lessons Learned. Include the header and empty table even if no disputes exist —
+the category must remain visible to prompt auditors to actively check rather than skip it.
 
 ```markdown
 ---
 
 ## Active Disputes
 
-Interpretation conflicts, competing architectural positions, unresolved design disagreements,
-and ethical disagreements. Distinct from Unknowns, which are reality gaps.
-
-> Unknowns = reality gap (we do not yet know what is true)
-> Disputes = interpretation conflict (we disagree about what is true or right)
-
-| ID     | Dispute Summary | Positions in Conflict | Risk   | Status      | Owner  |
-|--------|-----------------|-----------------------|--------|-------------|--------|
-| DS-001 | [summary]       | [position A vs B]     | Medium | Open        | [file] |
+| ID     | Summary | Positions in Conflict | Risk | Status | Owner |
+|--------|---------|-----------------------|------|--------|-------|
+| DS-001 | [summary] | [position A vs B]   | Medium | Open | [file] |
 ```
-
-Disputes that remain open across three consecutive audits must be escalated to the
-cross-module Unknowns_LF.md for repository-level resolution.
 
 ---
 
-## 7. Auditor Notes & Unknowns
+### Dispute Doctrine
 
-The sidecar. Placed after Active Disputes, last before Abandoned Paths.
+**Unknowns** are reality gaps — we do not yet know what is true.
+**Disputes** are interpretation conflicts — we disagree about what is true or right.
+
+These are not the same thing and must not be conflated.
+
+| Status     | Meaning                                              |
+|------------|------------------------------------------------------|
+| Open       | Active unresolved disagreement                       |
+| Escalated  | Requires repository-level intervention               |
+| Persistent | Healthy long-term tension expected to remain         |
+| Resolved   | Conflict closed                                      |
+
+Not all disputes should resolve. Some tensions are structurally healthy — efficiency vs.
+robustness, autonomy vs. operator control, decentralization vs. standardization.
+
+Disputes open across three consecutive audits must be escalated to Unknowns_LF.md for
+repository-level resolution.
+
+---
+
+## 8. Auditor Notes & Unknowns
+
+The sidecar. Placed after Active Disputes.
 
 ```markdown
 ---
 
 ## Auditor Notes & Unknowns
 
-### [FILE-PREFIX-NNN] — Short descriptive title
+### [FILE-PREFIX-NNN] — Short title
 
-| Field         | Value                                              |
-|---------------|----------------------------------------------------|
-| Status        | Open / In Progress / Resolved                      |
-| Risk          | Low / Medium / High                                |
-| Type          | Technical / Ethical / Architectural / Governance   |
-| Blocking      | Yes / No                                           |
-| Owner         | Module or file responsible for resolution          |
-| First Logged  | YYYY-MM-DD                                         |
-| Last Reviewed | YYYY-MM-DD                                         |
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open / In Progress / Resolved                    |
+| Risk          | Low / Medium / High                              |
+| Priority      | Minor / Major / Critical                         |
+| Type          | Technical / Ethical / Architectural / Governance |
+| Blocking      | Yes / No                                         |
+| Owner         | Responsible file or module                       |
+| First Logged  | YYYY-MM-DD                                       |
+| Last Reviewed | YYYY-MM-DD                                       |
 
 **Description:** One sentence stating the reality gap.
 
-**Why It Matters:** One sentence on the consequence if left unresolved.
+**Why It Matters:** One sentence on consequence if left unresolved.
 
 **Resolution Path:** Concrete closure criteria. One of:
-- *Payment via Specification* — unknown resolved; content moves into Body as committed spec
+- *Payment via Specification* — resolved; content moves into Body as committed spec
 - *Discharge via Trajectory* — real but out of scope; route to Trajectories_LF.md
-- *Discharge via Lessons Learned* — resolved by operational experience; lesson moves to LL
+- *Discharge via Lessons Learned* — resolved by operational experience; lesson recorded
 
 ---
 
@@ -219,80 +375,113 @@ The sidecar. Placed after Active Disputes, last before Abandoned Paths.
 - YYYY-MM-DD: [FILE-PREFIX-NNN] — One-line description of how it was resolved or discharged
 ```
 
+---
+
+### Unknowns Doctrine
+
+Unknowns must:
+- Describe reality gaps, not interpretation conflicts
+- Remain concrete and falsifiable
+- Avoid philosophical drift
+
 **Local ID format:** File abbreviation + three-digit number.
-Examples: `SC-001` (Spin Chamber), `EC-001` (Ethical Constraints), `SR-001` (Support Raft).
+Examples: `CO-001` (Components), `SC-001` (Spin Chamber), `GK-001` (G.E.C.K.).
 
-**Cross-module unknowns** use the global `UNK-XXX` format and are indexed in `Unknowns_LF.md`.
+**Cross-module unknowns** use the global `UNK-XXX` format and are indexed in Unknowns_LF.md.
 Reference them here but do not duplicate the full entry.
-
-**The 10-entry rule:** If open entries exceed 10, the file requires a Resolution Pass before
-the next audit cycle. Resolved entries move to the Resolution Log — they are not deleted.
-
-**Sidecar size guardrail:** If the sidecar exceeds 20% of total document word count, flag
-for Resolution Pass before auditing further.
 
 ---
 
-## 8. Abandoned Paths (Optional but strongly recommended)
+### Sidecar Governance Rules
 
-Place last. Omit if the file is brand new and no paths have been explored yet.
+**10-Entry Rule:** If open entries exceed 10, the file requires a Resolution Pass before
+the next audit cycle. Resolved entries move to the Resolution Log — they are not deleted.
+
+**20% Rule:** If the sidecar exceeds 20% of total document word count, halt expansion and
+prioritize consolidation or discharge before auditing further.
+
+**Aging Rule:** Unknowns unreviewed for more than 90 days trigger mandatory re-audit.
+
+---
+
+## 9. Abandoned Paths
+
+Optional but strongly recommended. Omit only if the file is brand new and no paths have
+been explored yet.
 
 ```markdown
 ---
 
 ## Abandoned Paths
 
-Rejected architectures, failed approaches, and disproven assumptions.
-Prevents cyclical rediscovery of dead ideas.
-
-| Date       | Path                   | Why Abandoned                    | Reconsider? |
-|------------|------------------------|----------------------------------|-------------|
-| YYYY-MM-DD | [description of path]  | [reason for abandonment]         | Yes / No    |
+| Date       | Path                  | Why Abandoned          | Reconsider? |
+|------------|-----------------------|------------------------|-------------|
+| YYYY-MM-DD | [description of path] | [reason for rejection] | Yes / No    |
 ```
-
-An entry marked `Reconsider: No` is a hard stop. An agent may not resurrect it without
-explicit human authorization and a new dated entry explaining the reason for reconsideration.
 
 ---
 
-## Drift Indicators
+### Abandoned Path Doctrine
 
-The following conditions should trigger a mandatory re-audit flag regardless of scheduled
-audit cycle:
+This section prevents cyclical rediscovery, repeated dead-end exploration, and resurrection
+of disproven assumptions.
 
-- Body content contradicts an entry in Lessons Learned
-- Open unknown count increases across three consecutive audits
-- Any unknown entry remains unreviewed for more than 90 days
-- A Specification-level claim lacks an evidence confidence label
+**Reconsider: Yes** — Path may be revisited with new evidence.
+
+**Reconsider: No** — Hard stop. Requires explicit human authorization, a new dated entry,
+and documented reason for reopening. Autonomous agents may not reopen hard-stopped paths
+independently.
+
+---
+
+## 10. Drift Indicators
+
+Drift Indicators are automatic re-audit triggers. They are not optional checklist items.
+
+---
+
+### Mandatory Re-Audit Conditions
+
+- Body contradicts Lessons Learned
+- Unknown count increases across three consecutive audits
+- Unknown remains unreviewed more than 90 days
+- Specification claim lacks a confidence label
+- Frozen section modified without a dated justification comment
 - Sidecar exceeds 20% of total document word count
-- A FROZEN section has been modified without a dated justification comment
-- Active Disputes table has entries older than two audit cycles without escalation
+- Persistent disputes silently disappear without resolution entry
+- Assumptions remain past their expiry trigger without review
+- Canonical terminology changes meaning across files
+- **Ethical Anchor field is absent, altered, or does not match the canonical string**
 
-Drift Indicators are not a checklist to complete — they are automatic triggers. Any agent
-performing an audit must check these before beginning and halt if multiple indicators are
-active simultaneously, flagging for human review.
+---
+
+### Compound Drift Rule
+
+If multiple Drift Indicators activate simultaneously, halt autonomous audit progression and
+escalate for human review. Compound instability is more dangerous than isolated instability.
 
 ---
 
 ## Retrofit Checklist
 
-When adding this structure to an existing file:
+When converting an existing file to this structure:
 
-- [ ] Add File State table below the title
+- [ ] Add File State table — include Ethical Anchor field with canonical string
 - [ ] Add Scope Boundary — be honest about what the file does and does not own
 - [ ] Add File Purpose paragraph
-- [ ] Review Body for inline audit notes — move to Auditor Notes sidecar
-- [ ] Review Body for inline "we tried X" notes — move to Lessons Learned
-- [ ] Review Body for interpretation conflicts — move to Active Disputes
-- [ ] Mark any Specification-gate-passing content with FROZEN comments
+- [ ] Extract hidden assumptions into Assumptions section
+- [ ] Remove governance commentary from Body
+- [ ] Remove speculative language from Specification-level sections
+- [ ] Move operational memory into Lessons Learned with Evidence Type and Confidence columns
+- [ ] Move interpretation conflicts into Active Disputes
+- [ ] Create Unknown entries for all known open reality gaps
+- [ ] Populate Abandoned Paths where applicable
+- [ ] Apply FROZEN markers to verified sections
+- [ ] Validate canonical terminology usage
+- [ ] Verify Drift Indicators before finalizing
 - [ ] Set Status honestly — most existing files are Exploration
-- [ ] Set Body Stability honestly — most existing files are Volatile
+- [ ] Set Body Stability honestly — most existing files are Volatile or Transitional
 - [ ] Set Spec Gates to reflect actual verification progress
-- [ ] Populate Lessons Learned (empty table is valid initially)
-- [ ] Populate Active Disputes (empty table is valid; do not omit the section)
-- [ ] Create initial Auditor Notes for all known open unknowns
-- [ ] Populate Abandoned Paths if applicable
-- [ ] Update File State with today's date and auditor
 
 ---
 
@@ -303,16 +492,19 @@ When adding this structure to an existing file:
 
 ## File State
 
-| Field          | Value                         |
-|----------------|-------------------------------|
-| Status         | Exploration                   |
-| Body Stability | Volatile                      |
-| Spec Gates     | 0/6                           |
-| Last Audit     | 2026-05-07                    |
-| Auditor        | Claude — Skeptic/Auditor      |
-| Open Unknowns  | 2 (Low)                       |
-| Highest Risk   | Low                           |
-| Sidecar Link   | #auditor-notes--unknowns      |
+| Field          | Value                                                               |
+|----------------|---------------------------------------------------------------------|
+| Status         | Exploration                                                         |
+| Body Stability | Volatile                                                            |
+| Spec Gates     | 0/6                                                                 |
+| Verification Ref | Verification_Gates_LF.md                                          |
+| Last Audit     | 2026-05-14                                                          |
+| Auditor        | Claude — Skeptic/Auditor                                            |
+| Open Unknowns  | 1                                                                   |
+| Active Disputes| 0                                                                   |
+| Highest Risk   | Low                                                                 |
+| Sidecar Link   | #auditor-notes--unknowns                                            |
+| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ## Scope Boundary
 
@@ -324,7 +516,14 @@ When adding this structure to an existing file:
 
 ## File Purpose
 
-Brief paragraph explaining what this file exists to do and why it matters.
+One clear paragraph explaining what this file exists to do and why it matters to the Forge.
+Written for a new auditor who has never seen the repository.
+
+## Assumptions
+
+| ID      | Assumption                        | Basis           | Confidence | Expiry Trigger                  |
+|---------|-----------------------------------|-----------------|------------|---------------------------------|
+| ASM-001 | Grid power available at bootstrap | v0 site context | Medium     | Off-grid deployment confirmed   |
 
 ---
 
@@ -334,17 +533,17 @@ Brief paragraph explaining what this file exists to do and why it matters.
 
 ## Lessons Learned
 
-| Date | Evidence Type | What was tried | What failed | What was learned | Confidence |
-|------|---------------|----------------|-------------|------------------|------------|
-| —    | —             | —              | —           | No entries yet   | —          |
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|---------------|----------------|-------------|------------------|------------|---------------------|
+| —    | —             | —              | —           | No entries yet   | —          | —                   |
 
 ---
 
 ## Active Disputes
 
-| ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
-|----|-----------------|-----------------------|------|--------|-------|
-| —  | No active disputes | — | — | — | — |
+| ID | Dispute Summary    | Positions in Conflict | Risk | Status | Owner |
+|----|--------------------|-----------------------|------|--------|-------|
+| —  | No active disputes | —                     | —    | —      | —     |
 
 ---
 
@@ -356,11 +555,12 @@ Brief paragraph explaining what this file exists to do and why it matters.
 |---------------|-------------------|
 | Status        | Open              |
 | Risk          | Low               |
+| Priority      | Minor             |
 | Type          | Technical         |
 | Blocking      | No                |
 | Owner         | This module       |
-| First Logged  | 2026-05-07        |
-| Last Reviewed | 2026-05-07        |
+| First Logged  | 2026-05-14        |
+| Last Reviewed | 2026-05-14        |
 
 **Description:** One sentence stating what is not yet known.
 
@@ -377,8 +577,24 @@ Brief paragraph explaining what this file exists to do and why it matters.
 
 ---
 
-**This template integrates structural machine-readability (File State, Scope Boundary, Drift
-Indicators), operational memory (Lessons Learned with evidence provenance), clean dispute
-separation (Active Disputes vs. Unknowns), protection against zombie ideas (Abandoned Paths),
-and semantic locking (FROZEN markers) — while preserving the resolution path taxonomy and
-lean audit discipline of the original.**
+## Meta-Doctrine
+
+This template exists to resist:
+- Institutional memory loss
+- Specification creep
+- Semantic drift
+- Zombie architectures
+- Audit theater
+- Uncontrolled autonomous rewriting
+- Hidden assumptions
+- Unresolved contradiction accumulation
+- Ethics erosion through document loss or deliberate omission
+
+The goal is not bureaucratic completeness.
+
+The goal is durable, auditable, reality-grounded engineering knowledge capable of surviving
+long operational timelines, multiple generations of contributors, and the absence of any
+single document — including Ethical_Constraints.md.
+
+> The attempt to do no harm is not contingent on the presence of a governance document.
+> It is the floor that survives everything else.
