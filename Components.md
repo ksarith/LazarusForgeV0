@@ -2,8 +2,8 @@
 
 **Audit Health:**
 - Status: Exploration
-- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
-- Open unknowns: 1 (Blocking at promotion)
+- Last audit: 2026-05-13 (Claude — Skeptic/Auditor)
+- Open unknowns: 1 (Partially resolved — see CO-001)
 - Sidecar: [#auditor-notes--unknowns]
 
 ---
@@ -43,13 +43,19 @@ At least one system capable of producing functional metal parts from Forge outpu
 Controlled heat source capable of melting or sintering target materials. The Spin Chamber is the v0 implementation.
 
 ### 5. Metrology
-Measurement capability sufficient to verify output quality. Without this, the Forge cannot confirm it is producing usable material.  Baseline Observability
+Measurement capability sufficient to verify output quality. Without this, the Forge cannot confirm it is producing usable material.
+
+*Metrology verifies output correctness. It is distinct from Baseline Observability, which verifies system state correctness. A Forge can produce bad parts while mechanically healthy, or produce good parts while internally degrading. Both failure modes require detection.*
+
+### 6. Baseline Observability
 Minimum instrumentation sufficient to detect unsafe process states and internal degradation. Examples: thermal probes, motor current sensing, airflow monitoring, cameras, encoder verification. Without this, the Forge cannot distinguish silent drift from normal operation.
 
-### 6. Artifact Memory
+*Baseline Observability verifies system state correctness. See note under Metrology (item 5) for distinction between the two.*
+
+### 7. Artifact Memory
 Persistent storage of process parameters, outcomes, and component provenance. Without this, learning resets every generation.
 
-### 7. Human Override Interface
+### 8. Human Override Interface
 Physical or digital mechanism for operator intervention at any process stage. Without this, autonomous failure cascades cannot be interrupted.
 
 ---
@@ -61,7 +67,8 @@ Absence does not invalidate the Forge, only limits it.
 ### A. Closed-Loop Recycling
 Internal recovery of process waste (slag, failed prints, spent powder). Reduces external feedstock dependency over time.
 
-### B. Advanced Sensing & Diagnostics — higher-order monitoring enabling predictive maintenance, autonomous quality assessment, and process optimization. Presupposes Baseline Observability.
+### B. Advanced Sensing & Diagnostics
+Higher-order monitoring enabling predictive maintenance, autonomous quality assessment, and process optimization. Presupposes Baseline Observability (Critical item 6). Without the observability floor, advanced diagnostics have no validated baseline to reason from.
 
 ### C. Compute & Autonomy
 Decision-making systems above basic threshold logic. Enables reduced human oversight over time.
@@ -115,7 +122,7 @@ A v0 Forge built from salvage, with degraded components and manual oversight, is
 
 **Graduation Rule:** A component graduates from Bootstrap to Specified when the Forge can: (1) detect its degradation, (2) repair or replace it internally, (3) improve its successor.
 
-*At v0, graduation assessment requires human operator verification as a proxy for automated degradation detection — see CO-001.*
+*At v0, graduation assessment uses Baseline Observability plus human operator verification together as the detection proxy. Baseline Observability (Critical item 6) provides the minimum instrumentation floor; human operators supply interpretive judgment above that floor. This is a defined v0 operating condition, not a gap. See CO-001.*
 
 ---
 
@@ -146,16 +153,20 @@ This single sentence governs all classification decisions. When in doubt, ask: i
 | Date | What was tried | What failed | What was learned |
 |---|---|---|---|
 | May 2026 | Graduation Rule written without acknowledging detection dependency | At v0, Advanced Sensing is Useful not Critical — the Forge may not yet be able to detect its own component degradation | Human operator verification must be explicitly named as the v0 proxy for automated detection |
+| May 2026 | Metrology and observability treated as a single category | Metrology verifies output correctness; Baseline Observability verifies system state correctness — these are distinct failure modes requiring separate detection | Split into two Critical items; distinction noted explicitly in both entries |
 
 ---
 
 ## Auditor Notes & Unknowns
 
 ### CO-001 — Graduation Rule detection circularity at v0
-**Status:** In Progress
-**Risk:** Medium
-**What is not yet known:** How the Graduation Rule's detection requirement is satisfied at v0, when Advanced Sensing (needed to detect component degradation) is classified as Useful rather than Critical. A component cannot graduate until the Forge can detect its degradation — but that detection capability may not exist when graduation decisions need to be made.
-**Resolution path:** Option chosen: explicitly state in Bootstrap Doctrine (Section V) that graduation decisions at v0 require human operator verification as a proxy for automated detection. This is a defined v0 operating condition, not a gap. One sentence added: "At v0, graduation assessment requires human operator verification as a proxy for automated degradation detection." Also noted in Trajectories_LF.md v0 exit condition (UNK-026 cross-ref). Remaining: same note should be added to Lazarus_forge_v0_flow.md Bootstrap Doctrine reference.
+**Status:** Partially Resolved
+**Risk:** Low (downgraded from Medium)
+**What was not known:** How the Graduation Rule's detection requirement is satisfied at v0, when Advanced Sensing (needed to detect component degradation) is classified as Useful rather than Critical. A component cannot graduate until the Forge can detect its degradation — but that detection capability may not exist when graduation decisions need to be made.
+**Resolution path:** Two-part resolution:
+1. Baseline Observability added as Critical item 6 — establishes a minimum instrumentation floor (thermal probes, current sensing, cameras, airflow, encoders) that must exist at v0. This is not Advanced Sensing; it is the detection substrate that Advanced Sensing builds upon.
+2. Bootstrap Doctrine updated — graduation at v0 uses Baseline Observability plus human operator judgment together as the proxy. Human operators supply interpretive judgment above the instrumentation floor.
+**Remaining:** Same note should be added to `Lazarus_forge_v0_flow.md` Bootstrap Doctrine reference. UNK-026 in `Unknowns_LF.md` should be updated to reflect partial resolution.
 **Logged:** Components.md audit cycle, May 2026
 *Cross-module reference: UNK-026 in Unknowns_LF.md*
 
@@ -163,3 +174,4 @@ This single sentence governs all classification decisions. When in doubt, ask: i
 - May 2026: Bootstrap Doctrine updated — sufficiency criterion linked to Forge loop definition in geck_forge_seed.md. Human proxy for graduation detection added explicitly.
 - May 2026: v3+ trajectory marker note added to Version Mapping table.
 - May 2026: Dual-use annotation note added explaining absence of High-rated components.
+- May 2026: Metrology and Baseline Observability split into separate Critical items (5 and 6). Distinction between output verification and system-state verification made explicit. CO-001 partially resolved — detection circularity addressed structurally rather than procedurally.
