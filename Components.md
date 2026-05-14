@@ -2,8 +2,8 @@
 
 **Audit Health:**
 - Status: Exploration
-- Last audit: 2026-05-13 (Claude — Skeptic/Auditor)
-- Open unknowns: 1 (Partially resolved — see CO-001)
+- Last audit: 2026-05-14 (Gemini 3 Flash — Skeptic/Auditor)
+- Open unknowns: 2 (CO-001 partially resolved; CO-002 open)
 - Sidecar: [#auditor-notes--unknowns]
 
 ---
@@ -52,8 +52,12 @@ Minimum instrumentation sufficient to detect unsafe process states and internal 
 
 *Baseline Observability verifies system state correctness. See note under Metrology (item 5) for distinction between the two.*
 
+*Power dependency: Baseline Observability instrumentation requires stable power to function reliably. Minimum requirement at v0: surge protection on all sensor and compute circuits. Brownout or spike events that corrupt sensor state defeat the purpose of this component. See also Artifact Memory (item 7).*
+
 ### 7. Artifact Memory
 Persistent storage of process parameters, outcomes, and component provenance. Without this, learning resets every generation.
+
+*Power dependency: Artifact Memory is vulnerable to power instability. Minimum requirement at v0: surge protection and graceful write handling to prevent corruption on unexpected power loss. Corrupted memory that appears valid is worse than lost memory — a silent corruption is a silent failure. See Baseline Observability (item 6).*
 
 ### 8. Human Override Interface
 Physical or digital mechanism for operator intervention at any process stage. Without this, autonomous failure cascades cannot be interrupted.
@@ -118,6 +122,8 @@ A v0 Forge built from salvage, with degraded components and manual oversight, is
 
 **Sufficiency criterion:** A component is sufficient if it allows the Forge loop to close. The Forge loop: intake → triage → process → verify → learn → repeat. (Loop definition per `geck_forge_seed.md` Section III.)
 
+**Wear and consumables:** Bootstrap components operate under high maintenance cadence. Blade dulling, nozzle clogging, bearing wear, and similar degradation are expected — not exceptional. Consumables, wear parts, and tooling redundancy are addressed in the G.E.C.K. manifest rather than this taxonomy. A G.E.C.K. is considered insufficient if it cannot support at least one full maintenance cycle for each Critical component. The taxonomy defines what must exist; the G.E.C.K. ensures it can keep existing.
+
 **Proxy/Downgrade paths:** When a critical component is unavailable at spec, a lower-capability substitute is acceptable if it allows the loop to close in degraded form. Document the substitution.
 
 **Graduation Rule:** A component graduates from Bootstrap to Specified when the Forge can: (1) detect its degradation, (2) repair or replace it internally, (3) improve its successor.
@@ -154,6 +160,8 @@ This single sentence governs all classification decisions. When in doubt, ask: i
 |---|---|---|---|
 | May 2026 | Graduation Rule written without acknowledging detection dependency | At v0, Advanced Sensing is Useful not Critical — the Forge may not yet be able to detect its own component degradation | Human operator verification must be explicitly named as the v0 proxy for automated detection |
 | May 2026 | Metrology and observability treated as a single category | Metrology verifies output correctness; Baseline Observability verifies system state correctness — these are distinct failure modes requiring separate detection | Split into two Critical items; distinction noted explicitly in both entries |
+| May 2026 | Power conditioning omitted from critical component notes | Brownout or surge can corrupt Artifact Memory and defeat Baseline Observability — two Critical components rendered unreliable by an unstated infrastructure assumption | Added power dependency notes to items 6 and 7; minimum: surge protection at v0 |
+| May 2026 | Wear and consumables left implicit in Bootstrap Doctrine | "Expected to fail" did not explicitly address maintenance cadence or where redundancy lives | Added explicit wear note to Bootstrap Doctrine; routed consumables and spare parts to G.E.C.K. manifest as the designated redundancy path |
 
 ---
 
@@ -170,8 +178,18 @@ This single sentence governs all classification decisions. When in doubt, ask: i
 **Logged:** Components.md audit cycle, May 2026
 *Cross-module reference: UNK-026 in Unknowns_LF.md*
 
+### CO-002 — Metrology Precision Thresholds
+**Status:** Open
+**Risk:** Low
+**What is not yet known:** The minimum viable tolerance required for a bootstrap part to be considered "functional enough" to continue the loop. Current wording ("sufficient to verify output quality") is correct in principle but unquantified. The threshold likely differs by material (aluminum vs. steel) and by part function (structural vs. non-structural).
+**Resolution path:** Define minimum acceptable tolerance per material class and part category at v0. Likely expressed as a dimensional tolerance (e.g., ±X mm) plus a functional test criterion (does the part fit and hold under expected load). Defer precise values to first fabrication trials — tolerance requirements emerge from actual loop closure attempts, not pre-specification.
+**Logged:** Gemini 3 Flash audit, 2026-05-14
+
 ### Resolution Log
 - May 2026: Bootstrap Doctrine updated — sufficiency criterion linked to Forge loop definition in geck_forge_seed.md. Human proxy for graduation detection added explicitly.
 - May 2026: v3+ trajectory marker note added to Version Mapping table.
 - May 2026: Dual-use annotation note added explaining absence of High-rated components.
 - May 2026: Metrology and Baseline Observability split into separate Critical items (5 and 6). Distinction between output verification and system-state verification made explicit. CO-001 partially resolved — detection circularity addressed structurally rather than procedurally.
+- May 2026: Power conditioning notes added to Baseline Observability (item 6) and Artifact Memory (item 7). Addresses Gemini audit Gate 1 blocker — power stability omission. Resolved as inline notes rather than new Critical item; scope is "protect these two components" not a new category.
+- May 2026: Wear and consumables note added to Bootstrap Doctrine. Explicitly routes redundancy and maintenance stock to G.E.C.K. manifest. Addresses Gemini audit Gate 1 blocker — friction/consumables omission. Clarifies division of labor: Components.md defines necessity, G.E.C.K. ensures continuity.
+- May 2026: CO-002 (Metrology Precision Thresholds) logged per Gemini audit finding.
