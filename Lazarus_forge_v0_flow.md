@@ -80,10 +80,13 @@ This document defines the minimal viable operational logic of the
 Lazarus Forge and serves as the reference standard for shared
 vocabulary across the entire repository. Terms defined or used
 here carry their meaning into all other documents unless
-explicitly noted otherwise. It is the governing document for
-all operational decisions and the authoritative source for
+explicitly noted otherwise. It is the intended governing document
+for operational decisions and the authoritative source for
 gate logic, outcome paths, and the want/need policy that
-prevents both hoarding and premature destruction.
+prevents both hoarding and premature destruction — but these
+claims are aspirational at Exploration stage. Promotion to
+Specification requires FL-001 resolution and full gate clearance
+before the governing role is binding rather than directional.
 
 The flow is intentionally conservative. Irreversibility is
 delayed as long as possible. Human judgment is explicit at
@@ -284,6 +287,29 @@ hypothetical future uses. Apply the want/need policy
 
 This gate prevents both hoarding and premature destruction.
 
+**Minimum criteria for "genuine need" (Exploration-level
+heuristics — must become testable before Specification):**
+
+A need is credible if at least one of the following applies:
+- Linked to an active fabrication queue item
+- Addresses a current tooling deficiency with no available
+  substitute
+- Replacement lead-time exceeds operational tolerance
+- Component scarcity is measured, not assumed
+- Failure-rate evidence suggests imminent need
+- Dependency chain importance is documented
+
+A want is not a need if:
+- The justification is speculative future use
+- No active queue item depends on it
+- A functional substitute already exists
+- The retention decision is driven by emotional value
+  rather than operational necessity
+
+*These criteria are heuristic at Exploration stage.
+Operator judgment remains valid. The purpose is to make
+the judgment auditable, not to remove it.*
+
 ---
 
 ## 4. Outcome Paths
@@ -316,6 +342,21 @@ a discrete object**
 - Reduction module specification not yet assigned — see
   FL-002, UNK-007
 - *This is the only fully irreversible step in the flow*
+
+**Reduction is intentionally under-specified until
+Reduction_v0.md exists.** Until that file is created:
+- Do not assume feedstock homogeneity after reduction
+- Do not assume automated reliability of any reduction method
+- Do not assume dust, fines, or contamination are handled
+  without explicit doctrine
+- Contamination discovered during reduction triggers
+  immediate stop and Human/AI Oversight Gate escalation
+- Emergency shutdown leaves material in whatever state
+  it is in — no assumption of safe intermediate states
+- The provisional feedstock envelope in
+  Material_Separation_Gate_v0.md Inputs section is the
+  best available downstream constraint until
+  Reduction_v0.md cross-validates it
 
 ### Purification
 - Spin Chamber or any mechanism achieving comparable
@@ -380,6 +421,20 @@ of "value" in measurable units; (b) accounting method
 for different recovery paths; (c) demand baseline from
 energy_v0.md. See ASM-006.*
 
+**KPI subordination note:**
+The KPI is a efficiency metric, not a governing principle.
+It is subordinate to irreversibility doctrine at all times.
+A system optimizing only this metric may prematurely reduce
+difficult repairs, reject rare low-energy components, or
+destroy high-complexity salvage to preserve throughput
+efficiency. These outcomes violate the core recovery
+philosophy even if they improve the KPI score.
+
+Irreversibility doctrine overrides efficiency optimization.
+Long-tail scarcity and strategic component value may justify
+low immediate energy efficiency. The KPI measures what the
+system does — the gates govern what the system should do.
+
 ---
 
 ## Termination Conditions
@@ -389,6 +444,52 @@ An item exits the system only when:
 - It is stored as stock
 - It is reduced to inert waste after all prior gates
   fail (see Defined Terms)
+
+---
+
+## Degraded Operation & Failure Modes
+
+The gate system does not assume ideal conditions.
+The following failure modes are expected over operational
+lifetime and must not cause silent routing errors:
+
+**Jammed triage** — Input backlog exceeds classification
+capacity. Resolution: route excess to Unknown Bulk hold,
+not to Reduction. Throughput pressure must never override
+gate logic. Log backlog rate as diagnostic signal.
+
+**Sensor drift** — Classification confidence degrades
+without obvious cause. Resolution: tighten thresholds,
+increase Unknown Bulk routing, identify and correct
+sensor issue before resuming normal operation. Mirrors
+Material_Separation_Gate_v0.md degraded mode doctrine.
+
+**Contamination discovery mid-process** — Contamination
+identified after gate routing has begun. Resolution:
+stop processing, escalate to Human/AI Oversight Gate,
+log new contamination category if not previously defined.
+Do not continue routing contaminated material downstream.
+
+**Tooling inventory stale** — Gate B evaluations become
+unreliable if tooling inventory is not maintained.
+Resolution: Gate B defaults to NO (routes to Gate C)
+when tooling inventory is uncertain. Conservative
+routing under uncertainty. See ASM-003.
+
+**Operator unavailable** — Human/AI Oversight Gate
+requires human presence. Resolution: hold items pending
+Oversight Gate review. Do not route to Reduction in
+operator absence unless automated shutdown doctrine
+explicitly permits it.
+
+**Component Library full or unmaintained** — Gate A
+outputs have no reliable destination. Resolution:
+treat as Gate C items until library capacity is restored.
+Do not route to Reduction because the library is full.
+
+*Degraded operation doctrine: when in doubt, hold.
+The system is designed to absorb uncertainty, not
+to resolve it through irreversible action.*
 
 ---
 
@@ -403,9 +504,136 @@ of this document — treat changes to it with extra care.
 Any term redefinition propagates across every file that
 inherits the definition.
 
+**Unknown ID naming convention:**
+This document uses two identifier systems — they are not
+interchangeable:
+- **Local sidecar IDs** (FL-001, FL-002) — module-level
+  unknowns with full detail in this file's sidecar
+- **Cross-module UNK-*** (UNK-007, UNK-008) — repository-level
+  navigation only, indexed in Unknowns_LF.md
+
+When referencing an unknown, use the local sidecar ID as
+primary. Use UNK-* only when the unknown has been formally
+escalated to cross-module status in Unknowns_LF.md.
+Legacy UNK-* identifiers are preserved as aliases only.
+
 ---
 
-## Lessons Learned
+## Boundary-Case Worked Examples
+
+These examples exist to resolve FL-001 — gate logic must
+produce deterministic routing, not operator-dependent
+outcomes. Each example shows the correct route and why.
+
+**Example 1 — Functional motor in non-functional assembly**
+Item: Cordless drill. Housing cracked, battery unsafe,
+chuck worn, but motor functional and copper windings intact.
+- Gate A: Drill as a whole — fails. Cannot perform original
+  function safely.
+- Gate C: Drill as a whole — disassembly warranted. Motor
+  is useful in reduced application. Housing and battery
+  route to Gate D.
+- Gate D: Housing — structural damage, no functional use,
+  material recoverable. Routes to Reduction.
+- Gate D: Battery — unsafe, not recoverable through
+  standard purification. Routes to contamination handling.
+- Gate A (re-entry): Motor — functional as a component.
+  Routes to Component Library.
+- Gate A (re-entry): Copper windings — functional as
+  material stock. Routes to Component Library or Repurpose.
+*Key principle: assemblies disassemble at Gate C.
+Components re-enter independently at Gate A.*
+
+**Example 2 — No function but recoverable material (Gate C/D boundary)**
+Item: Shattered cast iron pan. No functional use in any
+application. Material is cast iron — recoverable through
+Purification.
+- Gate A: Fails — no original function possible.
+- Gate B: Fails — not repairable.
+- Gate C: Fails — no useful function in reduced application.
+  A shattered pan cannot serve as a jig, fixture, or
+  structural member.
+- Gate D: Passes — material recovery value remains.
+  Cast iron routes to Reduction then Purification.
+*Key principle: Gate C tests function, Gate D tests
+material. An item can fail Gate C and pass Gate D.*
+
+**Example 3 — Ambiguous Oversight Gate (want vs. need)**
+Item: Vintage oscilloscope. Functional but obsolete.
+No active fabrication queue item requires it. A newer
+digital equivalent exists in the Component Library.
+- Gates A through D: All pass technically — item is
+  functional, repairable, repurposable, and material
+  is recoverable.
+- Human/AI Oversight Gate: Is there a genuine need?
+  Apply minimum criteria — no active queue dependency,
+  substitute exists, no measured scarcity, no failure
+  rate evidence. Retention is a want, not a need.
+- Route: Repurpose or Reduction depending on Component
+  Library capacity.
+*Key principle: Oversight Gate evaluates need against
+active operational requirements, not hypothetical value.*
+
+---
+
+## Adversarial Routing Scenarios
+
+These scenarios test gate logic under pressure conditions.
+A gate system that only works under cooperative conditions
+is not a gate system — it is a suggestion.
+
+**Scenario 1 — Throughput pressure**
+Situation: Input backlog is high. Operator is tempted to
+route ambiguous items directly to Reduction to clear the
+queue faster.
+Correct response: Route to Unknown Bulk hold. Log backlog
+rate. Throughput pressure is not a gate condition.
+Reduction requires gate failure, not queue management.
+
+**Scenario 2 — Emotionally valuable item**
+Situation: A family heirloom tool arrives in salvage.
+Functional but outside the Forge's current needs.
+Operator wants to retain it indefinitely.
+Correct response: Apply want/need criteria. If no active
+need exists, assign a defined review date. If review date
+passes without a need emerging, route to Reduction or
+return to owner if provenance allows. Emotional value
+does not override gate logic — but it is a legitimate
+signal to escalate to the Oversight Gate rather than
+auto-routing.
+
+**Scenario 3 — Contaminated high-value material**
+Situation: A large copper component arrives with suspected
+lead contamination (visible surface oxidation, unknown
+provenance). High material value tempts bypass of
+contamination screening.
+Correct response: Route to contamination assessment before
+any gate logic applies. If contamination is confirmed,
+route to Air_Scrubber_v0.md protocol and controlled
+processing. High value does not override contamination
+doctrine. The Air Scrubber exists precisely for this case.
+
+**Scenario 4 — Partially functional assembly under scarcity**
+Situation: A rare motor controller arrives. One channel
+is failed, two are functional. No substitute exists in
+the Component Library. Scarcity is real and measured.
+Correct response: Gate C — disassemble. Functional
+channels route to Component Library. Failed channel
+routes to Gate D. Scarcity justifies careful disassembly
+over bulk Reduction. Document scarcity evidence in
+the Component Library entry.
+
+**Scenario 5 — Operator disputes gate outcome**
+Situation: Two operators disagree about whether an item
+passes Gate C. One argues it has reduced-application
+value; the other argues it does not.
+Correct response: Escalate to Human/AI Oversight Gate.
+Log the disagreement and the resolution rationale.
+If the dispute reveals a genuine boundary ambiguity,
+log a new boundary-case worked example. Gate disputes
+are data — they feed FL-001 resolution.
+
+---
 
 | Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
 |------|---------------|----------------|-------------|------------------|------------|---------------------|
@@ -446,7 +674,7 @@ module enters scope.*
 | Blocking      | Yes — blocks promotion to Specification          |
 | Owner         | Lazarus_forge_v0_flow.md                         |
 | First Logged  | May 2026                                         |
-| Last Reviewed | 2026-05-15                                       |
+| Last Reviewed | 2026-05-16                                       |
 
 **Description:** Whether gate logic (A→B→C→D) produces
 deterministic routing for all item types at boundary cases
@@ -463,20 +691,32 @@ creates inconsistency across forge instances.
 - Motor worked example added to Component_Triage_System.md
   (65% torque → Gate A fail, Gate C pass) — partial
   resolution.
-- Assembly disassembly clarification added this session —
+- Assembly disassembly clarification added 2026-05-15 —
   Gate C decision on assembly spawns independent Gate A
   evaluations per component. See ASM-007 and Lessons
   Learned entry 2026-05-15.
-- Remaining: Gate C/D boundary worked example needed —
-  item with no functional use but recoverable material.
-- Remaining: Human/AI Oversight Gate edge cases needed —
-  what constitutes a genuine need vs. a want in
-  ambiguous cases.
-- Forge loop definition in geck_forge_seed.md Section III
-  feeds the sufficiency criterion.
+- Five boundary-case worked examples added 2026-05-16 —
+  functional motor in broken assembly, shattered cast iron
+  (Gate C/D boundary), ambiguous Oversight Gate want/need,
+  adversarial throughput pressure, operator dispute
+  escalation. See Boundary-Case Worked Examples section.
+- Five adversarial routing scenarios added 2026-05-16 —
+  throughput pressure, emotional value, contaminated
+  high-value material, scarcity under partial function,
+  operator dispute. See Adversarial Routing Scenarios section.
+- "Genuine need" minimum criteria added to Oversight Gate
+  2026-05-16 — linked fabrication queue, tooling deficiency,
+  lead-time, scarcity evidence, failure-rate, dependency chain.
+- Remaining: Gate C/D boundary worked example covers
+  shattered cast iron — additional complex assembly examples
+  may be needed before full determinism is claimed.
+- Remaining: Adversarial scenarios cover five cases —
+  real-world operation will surface new boundary conditions
+  that must be logged and resolved.
 - Payment via Specification — once all boundary cases
-  have worked examples and produce deterministic outcomes,
-  move validated gate logic to Body as Measured.
+  have worked examples producing deterministic outcomes
+  across multiple operators, move validated gate logic
+  to Body as Measured.
 - Cross-module reference: UNK-012 in Unknowns_LF.md
 
 ---
@@ -598,6 +838,15 @@ deferred, not closed.
   Material_Separation_Gate_v0.md Active Disputes. Owner
   confirmed as this file. Resolution deferred until second
   mechanical separation module enters scope.
+- 2026-05-16: FL-001 — Five boundary-case worked examples
+  added. Five adversarial routing scenarios added. Genuine
+  need minimum criteria added to Oversight Gate. KPI
+  subordination note added. Degraded operation subsection
+  added. Reduction under-specification explicitly stated.
+  Governing language softened in File Purpose. Unknown ID
+  naming convention documented. Status remains In Progress —
+  additional boundary cases expected from operational runs.
+  Last Reviewed updated to 2026-05-16.
 
 ---
 
