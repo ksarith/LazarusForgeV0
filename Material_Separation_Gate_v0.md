@@ -10,7 +10,7 @@
 > states. Enclosure integrity is a design requirement, not an
 > optional feature. Siting and clearance requirements are not yet
 > governed by a facility or area-of-operation document — tracked
-> under sidecar unknown GK-006.
+> under sidecar unknown MG-006.
 
 ---
 
@@ -69,7 +69,7 @@
 - Electromagnetic field bias for future versions
   (deferred — Trajectories_LF.md)
 - Facility siting, clearance, and area-of-operation requirements
-  (GK-006 — no file exists yet)
+  (MG-006 — no file exists yet)
 - Detailed sensor specifications or spectroscopy hardware
   (not yet assigned)
 - Powder feedstock handling
@@ -188,7 +188,7 @@ These constraints are not validated. They exist to reduce hidden
 dependency fragility until the Reduction module is assigned and
 its output envelope is formally defined. When the Reduction module
 specification exists, these placeholders must be cross-validated
-and either confirmed or revised. Cross-reference: ASM-001, GK-007.
+and either confirmed or revised. Cross-reference: ASM-001, MG-007.
 
 ---
 
@@ -259,7 +259,7 @@ as guarantees.*
   ensure light-but-dense materials are not prematurely diverted to
   the polymer stream. Example: aluminum foil can exhibit drag
   behavior similar to low-density polymer — geometry correction
-  *(Placeholder — correction algorithm not yet specified; see GK-004)*
+  *(Placeholder — correction algorithm not yet specified; see MG-004)*
   prevents silent misclassification into the wrong recovery stream
 
 **Degraded Mode:**
@@ -276,7 +276,7 @@ revealing the cause:
 
 - Sensor fouling presents as gradual Unknown Bulk rate increase
   without corresponding change in feedstock composition —
-  distinguish from GK-003 calibration drift by cleaning sensors
+  distinguish from MG-003 calibration drift by cleaning sensors
   and observing whether Unknown Bulk rate recovers
 - Sensor cleaning interval: *(Placeholder — to be established
   during Gen-0 testing; start with post-run cleaning and adjust
@@ -291,7 +291,7 @@ revealing the cause:
   high-RPM operation must be explicitly included in scrubber
   intake specification, not only exhaust gas handling
 - Rising Unknown Bulk rate is the primary sensor fouling
-  indicator — see GK-008
+  indicator — see MG-008
 
 ---
 
@@ -302,7 +302,7 @@ Auditor_Protocols.md:
 
 - If sensor cross-check confidence is **< 90%** *(Placeholder —
   threshold not yet validated against known feedstock samples;
-  see GK-003)*, material is ejected to the **Unknown Bulk** bin
+  see MG-003)*, material is ejected to the **Unknown Bulk** bin
 - Unknown Bulk is not discarded — it is logged, held, and routed
   to Component_Triage_System.md or Synthesizer review at next
   available cycle
@@ -432,7 +432,7 @@ Target for v0 exploration (not a guarantee):
   loss indicates sensor calibration failure, upstream reduction
   inconsistency, or feedstock outside the gate's classification
   envelope. This metric makes the retry loop cost visible and
-  falsifiable. Cross-reference: GK-003, energy_v0.md.
+  falsifiable. Cross-reference: MG-003, energy_v0.md.
 
 ---
 
@@ -475,7 +475,7 @@ failure if monitored.
   integrity must be verified before each operational run
 - Enclosure retention expectation: contain fragments from
   rotor failure at maximum operating RPM *(Placeholder —
-  containment specification not yet defined; see GK-006)*
+  containment specification not yet defined; see MG-006)*
 - Automatic RPM collapse condition: any vibration signature
   exceeding defined threshold triggers immediate RPM reduction
   to zero — do not attempt to hold speed through imbalance event
@@ -546,7 +546,7 @@ made here. Logged following ChatGPT audit 2026-05-15.*
 
 ## Auditor Notes & Unknowns
 
-### GK-001 — Quantitative energy reduction estimate not established
+### MG-001 — Quantitative energy reduction estimate not established
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -577,7 +577,7 @@ the energy-positive claim cannot be verified or falsified.
 
 ---
 
-### GK-002 — Optimal RPM exploration bands not characterized per feedstock
+### MG-002 — Optimal RPM exploration bands not characterized per feedstock
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -610,7 +610,7 @@ not be optimal across all input classes.
 
 ---
 
-### GK-003 — Confidence threshold calibration not empirically validated
+### MG-003 — Confidence threshold calibration not empirically validated
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -647,7 +647,7 @@ parameter in the gate.
 
 ---
 
-### GK-004 — Geometry correction algorithm not specified
+### MG-004 — Geometry correction algorithm not specified
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -684,7 +684,7 @@ without a specified algorithm.
 
 ---
 
-### GK-005 — Long-term aquatic biofouling impact on rotor balance
+### MG-005 — Long-term aquatic biofouling impact on rotor balance
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -714,7 +714,7 @@ bearing failure without obvious external symptoms.
 
 ---
 
-### GK-006 — Operational siting and area-of-operation requirements not defined
+### MG-006 — Operational siting and area-of-operation requirements not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -753,7 +753,7 @@ operator protocols.
 
 ---
 
-### GK-007 — Rotor jam and entanglement recovery behavior undefined
+### MG-007 — Rotor jam and entanglement recovery behavior undefined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -793,7 +793,7 @@ geometries but do not substitute for a clearing doctrine.
 
 ---
 
-### GK-008 — Sensor fouling from conductive or abrasive fines
+### MG-008 — Sensor fouling from conductive or abrasive fines
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -826,7 +826,7 @@ increasingly unreliable when the actual problem is maintenance.
 - Sensor housing design must include particulate ingress
   protection — specify before first operational run.
 - Rising Unknown Bulk rate is the primary detection signal —
-  distinguish fouling from calibration drift (GK-003) by
+  distinguish fouling from calibration drift (MG-003) by
   cleaning sensors and observing recovery.
 - Cross-reference Air_Scrubber_v0.md — particulate burden
   must be included in scrubber intake specification.
@@ -838,17 +838,17 @@ increasingly unreliable when the actual problem is maintenance.
 
 ### Resolution Log
 
-- 2026-05-15: GK-001 through GK-005 — Migrated from prose
+- 2026-05-15: MG-001 through MG-005 — Migrated from prose
   Unknowns Registry to structured sidecar format. Content
   preserved; format updated to template standard.
-- 2026-05-15: GK-006 — New entry. Siting and safety
+- 2026-05-15: MG-006 — New entry. Siting and safety
   requirements gap identified during retrofit audit.
   Mirrors SC-006 in Spin_Chamber_v0.md. Recommend
   cross-module UNK escalation alongside SC-006.
-- 2026-05-15: GK-007 — New entry. Rotor jam and entanglement
+- 2026-05-15: MG-007 — New entry. Rotor jam and entanglement
   recovery behavior undefined. Logged following Grok and
   ChatGPT independent audit convergence.
-- 2026-05-15: GK-008 — New entry. Sensor fouling from
+- 2026-05-15: MG-008 — New entry. Sensor fouling from
   conductive and abrasive fines. Silent failure mode
   identified by ChatGPT audit. Sensor fouling doctrine
   added to Sensor Cross-Check section.
@@ -877,14 +877,14 @@ Material Separation Gate:
 
 | Trigger | Reason |
 |---------|--------|
-| GK-003 remains unreviewed after first operational run | Confidence threshold governs every routing decision — operational data must feed back immediately |
-| RPM band revised without GK-002 resolution | Empirical RPM mapping is prerequisite for any band change |
+| MG-003 remains unreviewed after first operational run | Confidence threshold governs every routing decision — operational data must feed back immediately |
+| RPM band revised without MG-002 resolution | Empirical RPM mapping is prerequisite for any band change |
 | Bearing or rotor specified with non-standard components without documented justification | Standardization doctrine applies — bespoke components require explicit override |
-| Safety Advisory conditions change without GK-006 update | Enclosure requirements and advisory must stay synchronized |
-| Unknown Bulk rate rises without sensor calibration review | Rising Unknown Bulk is diagnostic signal — must trigger GK-003 and GK-004 review before operational changes |
+| Safety Advisory conditions change without MG-006 update | Enclosure requirements and advisory must stay synchronized |
+| Unknown Bulk rate rises without sensor calibration review | Rising Unknown Bulk is diagnostic signal — must trigger MG-003 and MG-004 review before operational changes |
 | Feedstock class expands beyond non-powdered reduced metallic without assumptions review | ASM-001 expiry trigger — particle envelope, RPM bands, and sensor calibration all change with feedstock class |
 | Replication scaling abandoned in favor of enlargement without ASM-006 review | Core scaling doctrine — override requires explicit audit and documented justification |
-| Geometry correction algorithm advanced without GK-004 resolution | Sensor cross-check cannot function as designed without specified algorithm |
+| Geometry correction algorithm advanced without MG-004 resolution | Sensor cross-check cannot function as designed without specified algorithm |
 | Lazarus_forge_v0_flow.md revises Purification stage definition without DS-001 review | Gate's position in system flow depends on flow document definition — any change must propagate here |
 
 ### Canonical Drift Triggers
