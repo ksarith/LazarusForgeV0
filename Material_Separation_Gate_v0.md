@@ -9,7 +9,8 @@
 > clear of personnel and sensitive components during all rotating
 > states. Enclosure integrity is a design requirement, not an
 > optional feature. Siting and clearance requirements are not yet
-> governed by a facility or area-of-operation document — see GK-006.
+> governed by a facility or area-of-operation document — tracked
+> under sidecar unknown GK-006.
 
 ---
 
@@ -23,8 +24,8 @@
 | Verification Ref | Forge_Audit_Kit.md                                                  |
 | Last Audit       | 2026-05-15                                                          |
 | Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 6                                                                   |
-| Active Disputes  | 0                                                                   |
+| Open Unknowns    | 8                                                                   |
+| Active Disputes  | 1                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
@@ -169,6 +170,26 @@ Chamber entirely.
 - Mixed alloys, fasteners, coatings, or contamination allowed
 - Known upstream envelope (particle size, mass range) — see ASM-001
 
+**Provisional v0 feedstock envelope (Placeholder):**
+The gate's RPM band, classification stability, geometry assumptions,
+and sensor calibration all depend on upstream reduction output
+being within a known envelope. Until the Reduction module is
+specified, the following provisional constraints apply:
+
+| Parameter | Provisional v0 Constraint | Basis |
+|---|---|---|
+| Max fragment dimension | ~50mm | *(Placeholder — drum geometry dependent)* |
+| Max fragment mass | ~500g | *(Placeholder — rotor balance dependent)* |
+| Prohibited geometries | Long thin rods, wire coils, flexible sheet >200mm | *(Placeholder — entanglement/jam risk)* |
+| Moisture tolerance | Dry or surface-damp only — no free liquid | *(Placeholder — sensor and bearing risk)* |
+| Tangling threshold | No flexible or fibrous material >100mm | *(Placeholder — rotor seizure risk)* |
+
+These constraints are not validated. They exist to reduce hidden
+dependency fragility until the Reduction module is assigned and
+its output envelope is formally defined. When the Reduction module
+specification exists, these placeholders must be cross-validated
+and either confirmed or revised. Cross-reference: ASM-001, GK-007.
+
 ---
 
 ## Core Subsystems (v0)
@@ -246,6 +267,31 @@ If one sensing channel fails or drifts out of calibration, the
 chamber may operate in single-sensor mode with elevated confidence
 thresholds and increased routing to Unknown Bulk. Degraded mode
 does not suspend operation — it tightens refusal criteria.
+
+**Sensor Fouling and Particulate Doctrine:**
+Mixed scrap at 1,000–5,000 RPM generates conductive dust, abrasive
+fines, and particulate that can coat optical sensors and silently
+degrade confidence scoring — inflating Unknown Bulk rate without
+revealing the cause:
+
+- Sensor fouling presents as gradual Unknown Bulk rate increase
+  without corresponding change in feedstock composition —
+  distinguish from GK-003 calibration drift by cleaning sensors
+  and observing whether Unknown Bulk rate recovers
+- Sensor cleaning interval: *(Placeholder — to be established
+  during Gen-0 testing; start with post-run cleaning and adjust
+  based on observed fouling rate)*
+- Enclosure cleaning doctrine: particulate accumulation inside
+  enclosure affects rotor balance and bearing performance —
+  enclosure cleaning is a maintenance task, not an optional one
+- Conductive dust creates electrical shorting risk for sensor
+  electronics — sensor housing must be sealed against
+  particulate ingress
+- Cross-link to Air_Scrubber_v0.md: particulate burden from
+  high-RPM operation must be explicitly included in scrubber
+  intake specification, not only exhaust gas handling
+- Rising Unknown Bulk rate is the primary sensor fouling
+  indicator — see GK-008
 
 ---
 
@@ -374,6 +420,20 @@ Target for v0 exploration (not a guarantee):
   upstream reduction inconsistency, not gate failure. Rising
   Unknown Bulk rate is diagnostic signal, not system fault.
 
+**Tertiary metric:**
+- **Net Diversion Efficiency** — proportion of Unknown Bulk
+  that is eventually routed to Class C thermal processing
+  anyway, after triage and retry. *(Placeholder — metric
+  not yet instrumented)*
+
+  If Unknown Bulk retry loops consistently result in Class C
+  routing, the gate is acting as a preprocessing tax rather
+  than a diversion benefit. A high Net Diversion Efficiency
+  loss indicates sensor calibration failure, upstream reduction
+  inconsistency, or feedstock outside the gate's classification
+  envelope. This metric makes the retry loop cost visible and
+  falsifiable. Cross-reference: GK-003, energy_v0.md.
+
 ---
 
 ## Lifecycle & Failure Modes
@@ -383,10 +443,47 @@ classification confidence thresholds tighten automatically. Gate
 continues at lower throughput rather than passing ambiguous material
 downstream.
 
+**Jam and Entanglement Doctrine:**
+Unknown-geometry feedstock makes rotor jam and entanglement
+credible operational conditions, not edge cases:
+
+- Jam detection trigger: sustained motor current increase without
+  corresponding RPM — indicates rotor resistance *(Placeholder —
+  threshold not yet defined)*
+- Automatic shutdown condition: motor current exceeds jam threshold
+  for more than 30 seconds *(Placeholder)* — stop rotor, isolate
+  power, do not attempt restart until cleared
+- Manual clearing protocol: lockout power before any physical
+  access to drum interior. No manual clearing during rotation
+  under any circumstances.
+- Post-jam inspection required before restart: check rotor
+  balance, bearing condition, and enclosure integrity
+- Feedstock geometries most likely to jam: wire coils, flexible
+  sheet, long thin rods — see provisional feedstock envelope
+  in Inputs section
+- Jam rate is a diagnostic signal for upstream reduction
+  consistency — rising jam rate indicates reduction output
+  is outside the gate's design envelope
+
 **Failure Modes & Detection** — Bearing wear presents as vibration
 signature changes before catastrophic failure. Spectroscopy drift
 presents as rising Unknown Bulk rate. Both are detectable before
 failure if monitored.
+
+**Enclosure Fail-Stop and Containment:**
+- Enclosure is the primary fragment containment barrier —
+  integrity must be verified before each operational run
+- Enclosure retention expectation: contain fragments from
+  rotor failure at maximum operating RPM *(Placeholder —
+  containment specification not yet defined; see GK-006)*
+- Automatic RPM collapse condition: any vibration signature
+  exceeding defined threshold triggers immediate RPM reduction
+  to zero — do not attempt to hold speed through imbalance event
+- Post-failure safe state: rotor stopped, power isolated,
+  enclosure intact, operator notified before any access
+- Containment failure is an unacceptable failure mode —
+  design enclosure with sacrificial energy-absorbing elements
+  rather than rigid containment alone
 
 **Maintenance Access** — Bearing replacement and collection zone
 clearing are primary service tasks. Modular drum design allows
@@ -437,13 +534,13 @@ Class A salvage priority.
 
 | ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
 |----|-----------------|-----------------------|------|--------|-------|
-| —  | No active disputes | — | — | — | — |
+| DS-001 | "Purification stage" terminology may cause semantic overlap with Spin_Chamber_v0.md | Position A: Gate sits within Purification stage per Lazarus_forge_v0_flow.md definition ("any mechanism achieving comparable separation output"). Position B: Gate does not purify in metallurgical terms — should be called "Mechanical Diversion Stage" or "Pre-Thermal Classification Stage" to avoid confusion | Low | Open | Lazarus_forge_v0_flow.md |
 
-*No interpretation conflicts are currently active. Design tensions
-exist (optimal confidence threshold, replication vs. enlargement
-scaling, sensor technology selection) but all are deferred pending
-operational data. Tracked as unknowns in sidecar, not disputes.
-Revisit after first operational run.*
+*DS-001 is a cross-module terminology question. Resolution belongs
+in Lazarus_forge_v0_flow.md — if the flow document's Purification
+definition is revised to exclude mechanical diversion, this file's
+position statement must be updated to match. No unilateral change
+made here. Logged following ChatGPT audit 2026-05-15.*
 
 ---
 
@@ -656,6 +753,89 @@ operator protocols.
 
 ---
 
+### GK-007 — Rotor jam and entanglement recovery behavior undefined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical                                        |
+| Blocking      | No                                               |
+| Owner         | Material_Separation_Gate_v0.md                   |
+| First Logged  | 2026-05-15                                       |
+| Last Reviewed | 2026-05-15                                       |
+
+**Description:** Rotor jam detection thresholds, automatic shutdown
+conditions, and manual clearing protocols are not yet defined.
+Unknown-geometry feedstock makes jam and entanglement credible
+operational conditions.
+
+**Why It Matters:** A jammed rotor without a defined response
+protocol risks operator injury during manual clearing, bearing
+damage from prolonged stall current, and enclosure integrity
+failure if the rotor seizes under load. The feedstock envelope
+provisional constraints (Inputs section) identify high-risk
+geometries but do not substitute for a clearing doctrine.
+
+**Resolution Path:**
+- Define motor current jam threshold based on drive system
+  specification — requires drive system to be specified first.
+- Establish automatic shutdown trigger: sustained current
+  above threshold for defined duration.
+- Document manual clearing protocol with explicit lockout
+  requirement before any physical access.
+- Provisional feedstock envelope constraints (Inputs section)
+  reduce jam frequency — treat as complementary, not substitute.
+- Payment via Specification — once jam thresholds, shutdown
+  triggers, and clearing protocol are defined and tested,
+  move to Lifecycle section as Measured.
+
+---
+
+### GK-008 — Sensor fouling from conductive or abrasive fines
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical                                        |
+| Blocking      | No                                               |
+| Owner         | Material_Separation_Gate_v0.md                   |
+| First Logged  | 2026-05-15                                       |
+| Last Reviewed | 2026-05-15                                       |
+
+**Description:** Mixed scrap at high RPM generates conductive dust
+and abrasive fines that can coat optical sensors and silently
+degrade confidence scoring, inflating Unknown Bulk rate without
+revealing the cause.
+
+**Why It Matters:** Sensor fouling is a silent failure mode —
+it degrades classification quality gradually rather than
+producing a clear fault signal. If fouling is mistaken for
+feedstock ambiguity, the response (tightening thresholds,
+increasing Unknown Bulk routing) treats the symptom rather
+than the cause. Over time this could make the gate appear
+increasingly unreliable when the actual problem is maintenance.
+
+**Resolution Path:**
+- Establish sensor cleaning interval during Gen-0 testing —
+  start with post-run cleaning and adjust based on observed
+  fouling rate.
+- Sensor housing design must include particulate ingress
+  protection — specify before first operational run.
+- Rising Unknown Bulk rate is the primary detection signal —
+  distinguish fouling from calibration drift (GK-003) by
+  cleaning sensors and observing recovery.
+- Cross-reference Air_Scrubber_v0.md — particulate burden
+  must be included in scrubber intake specification.
+- Payment via Specification — once fouling rate is
+  characterized and cleaning interval established, move
+  to Sensor Cross-Check section as Measured.
+
+---
+
 ### Resolution Log
 
 - 2026-05-15: GK-001 through GK-005 — Migrated from prose
@@ -664,7 +844,14 @@ operator protocols.
 - 2026-05-15: GK-006 — New entry. Siting and safety
   requirements gap identified during retrofit audit.
   Mirrors SC-006 in Spin_Chamber_v0.md. Recommend
-  cross-module UNK escalation.
+  cross-module UNK escalation alongside SC-006.
+- 2026-05-15: GK-007 — New entry. Rotor jam and entanglement
+  recovery behavior undefined. Logged following Grok and
+  ChatGPT independent audit convergence.
+- 2026-05-15: GK-008 — New entry. Sensor fouling from
+  conductive and abrasive fines. Silent failure mode
+  identified by ChatGPT audit. Sensor fouling doctrine
+  added to Sensor Cross-Check section.
 
 ---
 
@@ -698,6 +885,7 @@ Material Separation Gate:
 | Feedstock class expands beyond non-powdered reduced metallic without assumptions review | ASM-001 expiry trigger — particle envelope, RPM bands, and sensor calibration all change with feedstock class |
 | Replication scaling abandoned in favor of enlargement without ASM-006 review | Core scaling doctrine — override requires explicit audit and documented justification |
 | Geometry correction algorithm advanced without GK-004 resolution | Sensor cross-check cannot function as designed without specified algorithm |
+| Lazarus_forge_v0_flow.md revises Purification stage definition without DS-001 review | Gate's position in system flow depends on flow document definition — any change must propagate here |
 
 ### Canonical Drift Triggers
 
