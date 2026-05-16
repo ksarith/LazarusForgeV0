@@ -1,14 +1,122 @@
 # Lazarus Forge — v0 Operational Flow
 
-**Audit Health:**
-- Status: Exploration
-- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
-- Open unknowns: 1 (Blocking at promotion)
-- Sidecar: [#auditor-notes--unknowns]
+> ⚠️ **Operational Safety Advisory**
+> This document governs decision logic that leads to irreversible
+> actions. Reduction is the only fully irreversible step in the
+> Forge flow — once an item is shredded or milled, it cannot be
+> recovered as a discrete object. Gate logic errors at any stage
+> can accelerate material toward reduction prematurely.
+>
+> Approach gate decisions thoughtfully. When uncertain, the
+> system is designed to hold — not to proceed. Refusal and
+> deferral are first-class outputs at every gate. Human
+> judgment overrides automation at any point. The cost of
+> a missed recovery is permanent.
 
-This document defines the **minimal viable operational logic** of the Lazarus Forge and is the **reference standard for shared vocabulary** across the repository. Terms defined or used here carry their meaning into all other documents unless explicitly noted otherwise.
+---
 
-It is not a claim of full automation. It is a falsifiable flow that can be executed manually, semi-automatically, or automated later.
+## File State
+
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Exploration                                                         |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Forge_Audit_Kit.md                                                  |
+| Last Audit       | 2026-05-15                                                          |
+| Auditor          | Claude — Retrofit/Auditor                                           |
+| Open Unknowns    | 2                                                                   |
+| Active Disputes  | 1                                                                   |
+| Highest Risk     | Medium                                                              |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Scope Boundary
+
+**This file DOES define:**
+- Minimal viable operational logic of the Lazarus Forge v0
+- Reference standard for shared vocabulary across the repository —
+  terms defined here carry their meaning into all other documents
+  unless explicitly noted otherwise
+- v0 scope, inputs, and explicit non-goals
+- Defined Terms for all shared operational vocabulary
+- Eight sequential decision gates (Intake through Utilization)
+- Gate Correspondence table mapping triage outcomes to gates
+- Outcome paths and reversibility notes for each path
+- Fabrication priority order and want/need policy
+- Feedback and learning doctrine for v0
+- Primary KPI definition (value recovered per kWh consumed)
+- Termination conditions for items exiting the system
+- Human/AI Oversight Gate logic and want/need policy
+- Purification stage definition — governs DS-001 terminology dispute
+
+**This file DOES NOT define:**
+- Detailed hardware specifications for any module
+  (Spin_Chamber_v0.md, Material_Separation_Gate_v0.md, etc.)
+- Reduction module specification
+  (unassigned — FL-002, UNK-007)
+- Component triage station workflow detail
+  (Component_Triage_System.md)
+- Energy accounting and power demand
+  (energy_v0.md)
+- Autonomous operation logic or AI trust architecture
+  (Cognitive_Frameworks.md, Ethical_Constraints.md)
+- Version roadmap and exit conditions
+  (Trajectories_LF.md)
+- Cross-module unknowns global index
+  (Unknowns_LF.md)
+- Facility siting or area-of-operation requirements
+  (UNK-006 — no file exists yet)
+- Fabrication output specifications or wire qualification
+  (UNK-008 — no owner assigned)
+
+---
+
+## File Purpose
+
+This document defines the minimal viable operational logic of the
+Lazarus Forge and serves as the reference standard for shared
+vocabulary across the entire repository. Terms defined or used
+here carry their meaning into all other documents unless
+explicitly noted otherwise. It is the governing document for
+all operational decisions and the authoritative source for
+gate logic, outcome paths, and the want/need policy that
+prevents both hoarding and premature destruction.
+
+The flow is intentionally conservative. Irreversibility is
+delayed as long as possible. Human judgment is explicit at
+every gate. Automation is optional, not assumed. The system
+is designed to hold when uncertain — not to proceed.
+
+This document is not a claim of full automation or a promise
+of specific recovery rates. It is a falsifiable flow that
+can be executed manually, semi-automatically, or automated
+later. If this file disappeared, the repository would lose
+its shared vocabulary standard and governing decision logic —
+every module would be making gate decisions against different
+definitions of the same terms.
+
+---
+
+## Assumptions
+
+| ID      | Assumption | Basis | Confidence | Expiry Trigger |
+|---------|------------|-------|------------|----------------|
+| ASM-001 | Items entering the system have been safety-screened before gate logic applies — hazards, pressure, and charge assessed at Intake | Intake section — screening listed but prerequisites not defined | Medium | Intake safety screening formally specified |
+| ASM-002 | Human operator is available and capable of overriding gate decisions at any point in the flow | Human/AI Oversight Gate — override assumed available | Medium | Autonomous operation validated and human override formally optional |
+| ASM-003 | The Forge's current tooling inventory is known, maintained, and available as a live reference for Gate B evaluation | Gate B — "within current tooling capability" requires known tooling state | Medium | Tooling inventory specification and maintenance doctrine assigned to an owning file |
+| ASM-004 | A Component Library exists and is maintained to receive and track Gate A outputs | Outcome Paths — Component Library assumed to exist as a functional system | Medium | Component Library specification assigned to an owning file |
+| ASM-005 | Feedback from operational runs reaches classification rules in a timely enough cycle to improve gate decisions | Section 7 — learning assumed to close the loop | Low | Learning cycle time defined and validated against operational cadence |
+| ASM-006 | Value in the primary KPI is eventually definable in measurable units — directional validity assumed until then | KPI section — explicitly Placeholder | Low | KPI definition resolved per energy_v0.md and operational baseline |
+| ASM-007 | Gate logic applies to discrete items, not fixed assemblies. Assemblies may be disassembled — each resulting component re-enters the gate sequence independently at Gate A. Disassembly is itself a Gate C or Gate D decision on the assembly, not a bypass of sequential order | Gate logic architecture; fan/motor worked example | Medium | Parallel or non-sequential gate processing validated as superior at scale |
+
+*ASM-005 and ASM-006 are Low confidence — both depend on operational
+data that does not yet exist. ASM-003 and ASM-004 identify ownerless
+dependencies that should be assigned before first operational run.
+ASM-007 clarifies the scope of sequential gate logic and partially
+informs FL-001 resolution.*
 
 ---
 
@@ -30,23 +138,61 @@ It is not a claim of full automation. It is a falsifiable flow that can be execu
 
 ## Defined Terms
 
-**Functional** — Performs a useful role in a specific application context. An item is functional at Gate A if it works in its original application. An item is functional at Gate C if it can work in a reduced application.
+**Functional** — Performs a useful role in a specific application
+context. An item is functional at Gate A if it works in its
+original application. An item is functional at Gate C if it
+can work in a reduced application.
 
-**Equivalent function (Gate A)** — Performing the same task as the original in the same application context. If function is only achievable in a different or reduced application, the item does not pass Gate A — it routes to Gate C.
+**Equivalent function (Gate A)** — Performing the same task as
+the original in the same application context. If function is
+only achievable in a different or reduced application, the item
+does not pass Gate A — it routes to Gate C.
 
-**Within tooling capability (Gate B)** — Evaluated against the Forge's current tooling inventory, not projected future capability.
+**Within tooling capability (Gate B)** — Evaluated against the
+Forge's current tooling inventory, not projected future
+capability. Requires a known, maintained tooling inventory —
+see ASM-003.
 
-**Contamination level** — Type and degree of contamination sufficient to affect downstream processing. Relevant categories at v0: chemical, biological, and embedded materials requiring separation before reduction or purification.
+**Contamination level** — Type and degree of contamination
+sufficient to affect downstream processing or operator safety.
+Relevant categories at v0:
 
-**Inert waste** — Material with no remaining functional, structural, or material recovery value, sorted for conventional disposal.
+- Chemical — heavy metals (lead, cadmium, mercury), solvents,
+  coatings, flux residues. Present in consumer products often
+  without visible indication. Cross-reference Air_Scrubber_v0.md.
+- Biological/organic — oils, fluids, biological matter,
+  organic coatings that off-gas under heat or rotation
+- Embedded materials — fasteners, inserts, or components
+  requiring separation before reduction or purification
+- Energetic — batteries, capacitors, compressed gas vessels.
+  Must be identified and discharged at Intake before any
+  gate logic applies
+- Physical/radiological — radiation-emitting materials.
+  Rare but unacceptable in any processing stream. Triggers
+  immediate Human/AI Oversight Gate escalation
 
-**Want vs. Need (policy term)** — A want becomes a need when its absence limits a higher-priority function. This distinction governs the Human/AI Oversight Gate and Fabrication priority order.
+*This list is not exhaustive. Unforeseen contamination
+categories are expected over operational lifetime. When
+a new contamination type is encountered that does not fit
+existing categories, it routes to the Human/AI Oversight
+Gate and a new category is logged. The system is designed
+to learn from what it cannot yet classify.*
+
+**Inert waste** — Material with no remaining functional,
+structural, or material recovery value, sorted for
+conventional disposal.
+
+**Want vs. Need (policy term)** — A want becomes a need when
+its absence limits a higher-priority function. This distinction
+governs the Human/AI Oversight Gate and Fabrication priority
+order.
 
 ---
 
 ## Gate Correspondence
 
-Triage station outcomes map to these gates. See `Component_Triage_System.md` for the full mapping table.
+Triage station outcomes map to these gates. See
+Component_Triage_System.md for the full mapping table.
 
 | Gate | Test | Routes to |
 |---|---|---|
@@ -60,11 +206,14 @@ Triage station outcomes map to these gates. See `Component_Triage_System.md` for
 
 ## 1. Intake
 
-**Purpose:** Introduce salvage items into the system with minimal preprocessing.
+**Purpose:** Introduce salvage items into the system with
+minimal preprocessing.
 
 **Actions:**
 - Visual inspection
 - Basic safety screening (hazards, pressure, charge)
+- Energetic materials — batteries, capacitors, compressed
+  gas — must be identified and discharged before proceeding
 - Tagging (manual or digital)
 
 **Outputs:** Item enters Classification
@@ -73,7 +222,8 @@ Triage station outcomes map to these gates. See `Component_Triage_System.md` for
 
 ## 2. Classification & Triage
 
-**Purpose:** Determine the highest-value path before irreversible action.
+**Purpose:** Determine the highest-value path before
+irreversible action.
 
 **Classification Attributes (v0):**
 - Mechanical integrity
@@ -87,30 +237,47 @@ Classification may be **overridden by human operator**.
 
 ## 3. Decision Gates (Ordered, Mandatory)
 
+*Gate logic applies to discrete items, not fixed assemblies.
+Assemblies may be disassembled at Gate C or Gate D — each
+resulting component re-enters the gate sequence independently
+at Gate A. Disassembly is a Gate C decision on the assembly
+as a whole, not a bypass of sequential gate order. See ASM-007.*
+
 ### Gate A — Still Functional?
-**Test:** Performs original function, or equivalent function in the same application context
+**Test:** Performs original function, or equivalent function
+in the same application context
 **If YES →** Component Library
 **If NO →** Gate B
 
 ### Gate B — Repairable?
-**Test:** Failure is localized, accessible, and within current tooling capability
+**Test:** Failure is localized, accessible, and within current
+tooling capability — see ASM-003
 **If YES →** Repair & Learn
 **If NO →** Gate C
 
 ### Gate C — Graceful Downgrade Possible?
-**Test:** Can the item serve a useful function in a different or reduced application?
+**Test:** Can the item serve a useful function in a different
+or reduced application?
 **If YES →** Repurpose as Lower-Precision Component
 **If NO →** Gate D
 
-*Note: Gate C tests functional downgrade potential. Gate D tests material integrity. These are distinct tests.*
+*Note: Gate C tests functional downgrade potential. Gate D
+tests material integrity. These are distinct tests.
+Assemblies that cannot function as a whole may be disassembled
+here — each component re-enters at Gate A independently.*
 
 ### Gate D — Truly Exhausted?
-**Test:** Structural, chemical, or thermal damage prevents any functional use AND material is not recoverable through Purification
+**Test:** Structural, chemical, or thermal damage prevents
+any functional use AND material is not recoverable through
+Purification
 **If YES →** Reduction
 **If NO →** Human/AI Oversight Gate
 
 ### Human/AI Oversight Gate
-Review items that failed Gates A–D but where reduction feels premature. Evaluate against active needs only — not hypothetical future uses. Apply the want/need policy (see Defined Terms).
+Review items that failed Gates A–D but where reduction feels
+premature. Evaluate against active needs only — not
+hypothetical future uses. Apply the want/need policy
+(see Defined Terms).
 
 - If a genuine need exists: assign with a defined review date
 - If no genuine need exists: Reduction proceeds
@@ -125,6 +292,7 @@ This gate prevents both hoarding and premature destruction.
 - Catalog reusable parts
 - Track provenance and test results
 - Feeds Fabrication directly
+- Requires maintained Component Library — see ASM-004
 - *Reversibility: components remain individually recoverable*
 
 ### Repair & Learn
@@ -132,7 +300,8 @@ This gate prevents both hoarding and premature destruction.
 - Log failure mode and fix
 - Update heuristics
 - Outputs to Component Library or Repurpose
-- *Reversibility: disassembly may affect calibration or tolerances — log pre-repair state*
+- *Reversibility: disassembly may affect calibration or
+  tolerances — log pre-repair state*
 
 ### Repurpose (Lower Precision)
 - Assign to reduced-spec use cases
@@ -140,30 +309,43 @@ This gate prevents both hoarding and premature destruction.
 - Feeds Fabrication
 
 ### Reduction
-**Irreversible step — point of no return for the item as a discrete object**
+**Irreversible step — point of no return for the item as
+a discrete object**
 - Shredding, cutting, or milling
 - Size reduction only (no melting yet)
+- Reduction module specification not yet assigned — see
+  FL-002, UNK-007
 - *This is the only fully irreversible step in the flow*
 
 ### Purification
-- Spin chamber or any mechanism achieving comparable separation output
+- Spin Chamber or any mechanism achieving comparable
+  separation output — including the Material Separation
+  Gate as upstream mechanical diversion
 - Pass / fail logic
 - Fallback to powder or bulk stock if needed
-- *Equivalence criteria defined in `Spin_Chamber_v0.md`*
+- *Stage definition governs DS-001 terminology dispute —
+  see Active Disputes and Auditor Notes*
+- *Equivalence criteria defined in Spin_Chamber_v0.md*
 
 ---
 
 ## 5. Fabrication / Assembly
 
-**Inputs:** Salvaged components, purified stock, repurposed parts
+**Inputs:** Salvaged components, purified stock,
+repurposed parts
 
-**Outputs:** Tools, fixtures, replacement components, infrastructure for future Forge growth
+**Outputs:** Tools, fixtures, replacement components,
+infrastructure for future Forge growth
 
 Fabrication is **not terminal**.
 
-Priority order: (1) tools or components the Forge currently lacks, (2) infrastructure that expands Forge capability, (3) output for external use or exchange.
+Priority order:
+1. Tools or components the Forge currently lacks
+2. Infrastructure that expands Forge capability
+3. Output for external use or exchange
 
-Priority is evaluated using the want/need policy (see Defined Terms).
+Priority is evaluated using the want/need policy
+(see Defined Terms).
 
 ---
 
@@ -171,15 +353,18 @@ Priority is evaluated using the want/need policy (see Defined Terms).
 
 **Purpose:** Test real-world performance.
 
-**Metrics Captured:** Runtime, failure modes, load tolerance, maintenance frequency
+**Metrics Captured:** Runtime, failure modes, load
+tolerance, maintenance frequency
 
 ---
 
 ## 7. Feedback & Learning
 
-**Feedback Targets:** Classification rules, repair heuristics, tolerance thresholds, tooling priorities
+**Feedback Targets:** Classification rules, repair
+heuristics, tolerance thresholds, tooling priorities
 
-**Learning Mode (v0):** Human-readable logs, simple rule updates, no ML required
+**Learning Mode (v0):** Human-readable logs, simple
+rule updates, no ML required
 
 ---
 
@@ -187,9 +372,13 @@ Priority is evaluated using the want/need policy (see Defined Terms).
 
 **Primary KPI:** Value recovered per kWh consumed
 
-If this metric is not competitive at small scale, scaling is invalid.
+If this metric is not competitive at small scale,
+scaling is invalid.
 
-*KPI definition is Placeholder pending: (a) definition of "value" in measurable units; (b) accounting method for different recovery paths; (c) demand baseline from `energy_v0.md`.*
+*KPI definition is Placeholder pending: (a) definition
+of "value" in measurable units; (b) accounting method
+for different recovery paths; (c) demand baseline from
+energy_v0.md. See ASM-006.*
 
 ---
 
@@ -198,34 +387,257 @@ If this metric is not competitive at small scale, scaling is invalid.
 An item exits the system only when:
 - It is in active use
 - It is stored as stock
-- It is reduced to inert waste after all prior gates fail (see Defined Terms)
+- It is reduced to inert waste after all prior gates
+  fail (see Defined Terms)
 
 ---
 
 ## Notes
 
-This flow is intentionally conservative. Irreversibility is delayed. Human judgment is explicit. Automation is optional, not assumed.
+This flow is intentionally conservative. Irreversibility
+is delayed. Human judgment is explicit. Automation is
+optional, not assumed.
+
+The Defined Terms section is the most stable element
+of this document — treat changes to it with extra care.
+Any term redefinition propagates across every file that
+inherits the definition.
 
 ---
 
 ## Lessons Learned
 
-| Date | What was tried | What failed | What was learned |
-|---|---|---|---|
-| May 2026 | Gate A "equivalent function" left undefined | Created overlap with Gate C — same item could route to either | Gate A requires function in original application context; Gate C handles all reduced/different applications |
-| May 2026 | Gate C and Gate D described with near-identical language | Boundary between them was ambiguous | Gate C = functional downgrade test; Gate D = material integrity test. Explicitly distinct. |
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|---------------|----------------|-------------|------------------|------------|---------------------|
+| May 2026 | Audit Review | Gate A "equivalent function" left undefined | Created overlap with Gate C — same item could route to either | Gate A requires function in original application context; Gate C handles all reduced or different applications. Definitions must be mutually exclusive at every boundary | Analogous | No — definition is stable |
+| May 2026 | Audit Review | Gate C and Gate D described with near-identical language | Boundary between them was ambiguous — items could satisfy both or neither | Gate C = functional downgrade test; Gate D = material integrity test. Explicitly distinct. Gate C asks can it do something useful; Gate D asks is the material itself recoverable | Analogous | No — distinction is stable |
+| 2026-05-15 | Audit Review | Gate logic assumed to apply to assemblies as fixed units | Created ambiguity about disassembly — pulling a motor from a fan before reduction felt like a gate bypass | Gate logic applies to discrete items not fixed assemblies. Disassembly is a Gate C decision on the assembly — each resulting component re-enters at Gate A independently. Sequential order is preserved at the component level. See ASM-007 | Analogous | Yes — worked examples needed for complex multi-component assemblies |
+
+---
+
+## Active Disputes
+
+| ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
+|----|-----------------|-----------------------|------|--------|-------|
+| DS-001 | "Purification stage" terminology may cause semantic overlap with Spin_Chamber_v0.md and misrepresent the Material Separation Gate's function | Position A: Purification is correctly defined broadly — "Spin chamber or any mechanism achieving comparable separation output" — the Gate fits this definition and no rename is needed. Position B: The Gate does not purify in metallurgical terms; calling its stage Purification creates confusion about what the module does and risks semantic drift across the repository | Low | Open | Lazarus_forge_v0_flow.md |
+
+*DS-001 originates from ChatGPT audit of Material_Separation_Gate_v0.md
+(2026-05-15) and is logged there as a cross-reference. Resolution
+belongs here — if the Purification stage definition is revised,
+Material_Separation_Gate_v0.md File Purpose and position statement
+must be updated to match, and Unknowns_LF.md notified.
+Position A is the current standing definition. Position B requires
+a terminology change with repository-wide propagation.
+Recommended trigger for revisit: when a second mechanical separation
+module enters scope.*
 
 ---
 
 ## Auditor Notes & Unknowns
 
 ### FL-001 — Gate logic determinism unverified at boundary cases
-**Status:** In Progress
-**Risk:** Medium
-**What is not yet known:** Whether gate logic (A→B→C→D) produces deterministic routing for all item types. Key boundary cases: Gate A/C (item functional in reduced but not original application), Gate C/D (no function but material recovery value), Human/AI Oversight Gate edge cases.
-**Resolution path:** Gate Correspondence table added (this revision). Motor worked example added to Component_Triage_System.md (65% torque → Gate A fail, Gate C pass). Remaining: Gate C/D boundary worked example and Oversight Gate edge case still needed. Forge loop definition in geck_forge_seed.md Section III feeds the sufficiency criterion. See also TS-001 (forge duty threshold) in Component_Triage_System.md.
-**Logged:** Lazarus_forge_v0_flow.md audit cycle, May 2026
-*Cross-module reference: UNK-012 in Unknowns_LF.md*
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | In Progress                                      |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical                                        |
+| Blocking      | Yes — blocks promotion to Specification          |
+| Owner         | Lazarus_forge_v0_flow.md                         |
+| First Logged  | May 2026                                         |
+| Last Reviewed | 2026-05-15                                       |
+
+**Description:** Whether gate logic (A→B→C→D) produces
+deterministic routing for all item types at boundary cases
+has not been verified.
+
+**Why It Matters:** Non-deterministic gate logic means
+identical items could route differently depending on
+operator interpretation. This undermines the flow
+document's role as a reliable decision standard and
+creates inconsistency across forge instances.
+
+**Resolution Path:**
+- Gate Correspondence table added — partial resolution.
+- Motor worked example added to Component_Triage_System.md
+  (65% torque → Gate A fail, Gate C pass) — partial
+  resolution.
+- Assembly disassembly clarification added this session —
+  Gate C decision on assembly spawns independent Gate A
+  evaluations per component. See ASM-007 and Lessons
+  Learned entry 2026-05-15.
+- Remaining: Gate C/D boundary worked example needed —
+  item with no functional use but recoverable material.
+- Remaining: Human/AI Oversight Gate edge cases needed —
+  what constitutes a genuine need vs. a want in
+  ambiguous cases.
+- Forge loop definition in geck_forge_seed.md Section III
+  feeds the sufficiency criterion.
+- Payment via Specification — once all boundary cases
+  have worked examples and produce deterministic outcomes,
+  move validated gate logic to Body as Measured.
+- Cross-module reference: UNK-012 in Unknowns_LF.md
+
+---
+
+### FL-002 — Reduction module unassigned
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical / Architectural                        |
+| Blocking      | No                                               |
+| Owner         | Lazarus_forge_v0_flow.md                         |
+| First Logged  | 2026-05-15                                       |
+| Last Reviewed | 2026-05-15                                       |
+
+**Description:** The Reduction stage — shredding, cutting,
+or milling of items that have failed Gates A through D —
+has no owning specification file in the repository.
+
+**Why It Matters:** Reduction is the only fully irreversible
+step in the Forge flow. It is also the upstream dependency
+for the Material Separation Gate — the Gate's provisional
+feedstock envelope, RPM bands, sensor calibration, and jam
+risk all depend on knowing what Reduction produces. An
+unspecified Reduction module means the Gate is operating
+against an undefined input.
+
+**Resolution Path:**
+- Create Reduction_v0.md as a new specification file.
+- Minimum content for v0: output particle envelope
+  (max dimension, max mass, prohibited geometries),
+  moisture and contamination handling, size reduction
+  method (shredding vs. cutting vs. milling), and
+  safety doctrine for energetic or hazardous materials
+  encountered during reduction.
+- Until Reduction_v0.md exists, Material_Separation_Gate_v0.md
+  provisional feedstock envelope (Inputs section) stands
+  as the best available constraint.
+- Cross-module reference: UNK-007 in Unknowns_LF.md,
+  MG-007 in Material_Separation_Gate_v0.md.
+- Payment via Specification — once Reduction_v0.md exists
+  and its output envelope is cross-validated against
+  Material_Separation_Gate_v0.md Inputs section.
+
+---
+
+### DS-001 — Purification stage terminology (cross-reference)
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Low                                              |
+| Priority      | Minor                                            |
+| Type          | Architectural                                    |
+| Blocking      | No                                               |
+| Owner         | Lazarus_forge_v0_flow.md                         |
+| First Logged  | 2026-05-15                                       |
+| Last Reviewed | 2026-05-15                                       |
+
+**Description:** Whether "Purification stage" terminology
+accurately represents the Material Separation Gate's
+position in the flow, given that the Gate does not purify
+in metallurgical terms.
+
+**Why It Matters:** If the stage label causes semantic
+drift or confusion as more mechanical separation modules
+are added, repository-wide terminology propagation becomes
+costly. Current standing definition is deliberately broad
+and covers the Gate correctly — but the question is
+deferred, not closed.
+
+**Resolution Path:**
+- Full dispute entry lives in Material_Separation_Gate_v0.md
+  Active Disputes section.
+- Resolution belongs here — if Purification stage
+  definition is revised, Material_Separation_Gate_v0.md
+  File Purpose and position statement must be updated
+  to match.
+- Recommended trigger for revisit: when a second
+  mechanical separation module enters scope, at which
+  point the stage label question becomes practically
+  important.
+- Discharge via Specification — once definition is
+  confirmed stable or revised with repository-wide
+  propagation.
+
+---
 
 ### Resolution Log
-- May 2026: Gate A "equivalent function" defined — requires original application context. Gate C/D boundary clarified — functional vs. material integrity tests. Defined Terms section added. Reversibility notes added per outcome path. KPI labeled Placeholder.
+
+- May 2026: FL-001 — Gate A "equivalent function" defined —
+  requires original application context. Gate C/D boundary
+  clarified — functional vs. material integrity tests.
+  Defined Terms section added. Reversibility notes added
+  per outcome path. KPI labeled Placeholder. Gate
+  Correspondence table added.
+- May 2026: FL-001 — Motor worked example added to
+  Component_Triage_System.md (65% torque → Gate A fail,
+  Gate C pass). Partial resolution — boundary cases remain.
+- 2026-05-15: FL-001 — Assembly disassembly clarification
+  added. Gate logic applies to discrete items not fixed
+  assemblies. Disassembly is a Gate C decision on the
+  assembly — components re-enter at Gate A independently.
+  Sequential order preserved at component level. See
+  ASM-007 and Lessons Learned entry 2026-05-15. Status
+  remains In Progress — Gate C/D boundary worked example
+  and Oversight Gate edge cases still needed.
+- 2026-05-15: FL-001 — Reformatted from prose to structured
+  sidecar table format. Content preserved, provenance
+  dates maintained.
+- 2026-05-15: FL-002 — New entry. Reduction module
+  unassigned. Upstream dependency for Material Separation
+  Gate identified and indexed. Cross-referenced UNK-007
+  in Unknowns_LF.md.
+- 2026-05-15: DS-001 — New reference entry. Purification
+  stage terminology dispute logged. Full entry in
+  Material_Separation_Gate_v0.md Active Disputes. Owner
+  confirmed as this file. Resolution deferred until second
+  mechanical separation module enters scope.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| May 2026 | Gate A and Gate C defined with overlapping language | Identical items could route to either gate depending on interpretation — non-deterministic routing at the most common boundary case. Resolved by requiring Gate A to test original application context exclusively; Gate C handles all reduced or different applications | No — boundary is stable |
+| May 2026 | Gate C and Gate D described with near-identical language | Boundary ambiguity between functional downgrade and material integrity tests. Items could satisfy both or neither. Resolved by making the tests explicitly distinct — Gate C asks can it do something useful; Gate D asks is the material itself recoverable | No — distinction is stable |
+| May 2026 | Fully autonomous operation as a v0 goal | Automation is valid but not assumed at v0. Human judgment is explicit at every gate. Removing the autonomy assumption makes the flow executable manually from day one — a stronger bootstrap position | Reconsider at v3 when autonomous operation enters scope per Trajectories_LF.md |
+| May 2026 | Net-positive energy claims without measurement | Claiming net-positive economics before measurement is a Magic Energy fallacy. All energy claims labeled Placeholder until energy_v0.md baseline is established | No — measurement requirement is permanent doctrine |
+| 2026-05-15 | Contamination defined as a closed fixed list | A fixed list creates a false sense of completeness — unforeseen contamination types proceed through gate logic without a defined response. Replaced with an open learning system: unknown contamination routes to Human/AI Oversight Gate and a new category is logged | No — open learning system is the correct architecture |
+| 2026-05-15 | Gate logic applied to assemblies as fixed units | Created ambiguity about disassembly before reduction. Resolved by clarifying that gate logic applies to discrete items — assemblies may be disassembled at Gate C or D, with components re-entering at Gate A independently | No — component-level gate logic is stable |
+
+---
+
+## Drift Indicators
+
+The following conditions trigger mandatory re-audit of this file.
+All canonical drift indicators from File_Template.md apply.
+The following are additional local triggers specific to the
+Lazarus Forge operational flow document:
+
+### Local Drift Triggers
+
+| Trigger | Reason |
+|---------|--------|
+| Any module redefines a term from the Defined Terms section without updating this file | This document is the repository vocabulary standard — unauthorized redefinition causes silent semantic drift across all files that inherit the term |
+| Purification stage definition revised without DS-001 resolution and repository-wide propagation | DS-001 is the active terminology dispute — any change here must update Material_Separation_Gate_v0.md, Unknowns_LF.md, and any other file referencing the stage |
+| Gate logic modified without FL-001 resolution | FL-001 is In Progress — gate changes before boundary cases are resolved risk introducing new non-determinism |
+| Reduction module specified without FL-002 closure and cross-validation against Material_Separation_Gate_v0.md Inputs section | FL-002 and UNK-007 must resolve together — a Reduction spec that doesn't match the Gate's provisional feedstock envelope creates a hidden dependency failure |
+| Human/AI Oversight Gate removed or made optional | The Oversight Gate is the system's primary safeguard against premature irreversible action — removal requires explicit human authorization and full audit cycle |
+| Contamination category list revised without open learning system clause preserved | The open learning system clause is the doctrine that handles unforeseen contamination — removing it closes the list and creates blind spots |
+| Want/need policy definition changed without downstream file review | Want/need policy governs Fabrication priority and Oversight Gate decisions — changes propagate to Component_Triage_System.md and geck_forge_seed.md at minimum |
+| KPI definition promoted from Placeholder without energy_v0.md baseline established | KPI is explicitly Placeholder pending measurable value definition and energy accounting — premature promotion is a confidence without basis violation |
+| ASM-007 assembly disassembly clarification removed from body without Lessons Learned update | The clarification resolves a real ambiguity — silent removal would reopen the gate logic overlap that was deliberately closed |
+| Gate sequence made non-sequential or parallel without full audit cycle | Sequential gate order is the core architectural assumption — parallel processing changes the entire decision logic and must be treated as a major version change |
+
+### Canonical Drift Triggers
+
+*All mandatory re-audit conditions from File_Template.md
+Section 10 apply without exception. Local triggers above are
+additive, not substitutes.*
