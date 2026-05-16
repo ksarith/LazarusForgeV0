@@ -1,6 +1,6 @@
 # Unknowns_LF.md — Cross-Module Unknowns Global Index
-**Version 1.0 — First full audit cycle complete. All unknowns migrated to owning file sidecars.**
-**Expiry Rule now active. Protocol Performance metrics begin collecting.**
+**Version 1.1 — SC and MG sidecar entries added. Cross-module UNK-006 through UNK-008 logged.**
+**Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
 
@@ -14,13 +14,19 @@ Navigation unknowns → Discovery.md
 
 ---
 
-## What v1.0 Means
+## What v1.1 Means
 
-- First full audit cycle across all primary documents is complete
-- UNK-004 (Expiry Rule) activates — check this index at the opening of each audit cycle for entries approaching two cycles
-- Protocol Performance metrics begin collecting (see Auditor_Protocols.md Protocol Performance section)
-- Preparatory framing lines drop from audit prompts — documents stand on their own
-- The Sidecar Model is fully operational — new unknowns go into owning file sidecars first, cross-module entries are indexed here
+- Spin_Chamber_v0.md and Material_Separation_Gate_v0.md retrofitted
+  to File_Template.md structure and audited this cycle
+- SC-001 through SC-008 and MG-001 through MG-008 added to Hardware
+  Modules table
+- SC-001 status updated from Open to In Progress following RPM
+  safety calculation (2026-05-15)
+- Material Separation Gate prefix corrected from GK to MG to avoid
+  collision with geck_forge_seed.md GK prefix
+- UNK-006 through UNK-008 added as new cross-module unknowns
+- DS-001 logged in Material_Separation_Gate_v0.md — Purification
+  stage terminology dispute; owner is Lazarus_forge_v0_flow.md
 
 ---
 
@@ -53,6 +59,13 @@ EL-001 (forge standard interface) -> depends on LT-001
 
 AP-001 (auditor metrics) -> depends on UNK-004 (now active)
 AP-003 (audit trail schema) -> AP-001
+
+SC-001 (RPM envelope) -> SC-005 (drive system geometry)
+SC-002 (segregation effectiveness) — primary Gen-0 validation target
+SC-006 (siting) -> UNK-006 (master safety registry)
+MG-006 (siting) -> UNK-006 (master safety registry)
+UNK-007 (reduction module) -> MG-001, MG-002, MG-007
+UNK-008 (welding wire) -> SC-004
 ```
 
 ---
@@ -61,13 +74,13 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Energy & Power
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | EV-001 | Forge power demand uncharacterized | `energy_v0.md` | In Progress | Blocking |
 
 ### Leviathan / Autonomy
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | LT-001 | Power envelope — no placeholder anchor | `leviathan_testing.md` | Open | Blocking |
 | LT-002 | Deep-ocean storage degradation | `leviathan_testing.md` | Open | Blocking |
@@ -78,9 +91,10 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Gate Logic & Triage
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | FL-001 | Gate logic determinism | `Lazarus_forge_v0_flow.md` | In Progress | Blocking |
+| FL-002 | Reduction module unassigned — upstream dependency | `Lazarus_forge_v0_flow.md` | Open | Blocking |
 | TS-001 | "Sufficient for forge duty" threshold | `Component_Triage_System.md` | In Progress | Blocking |
 | TS-002 | Contamination routing protocol | `Component_Triage_System.md` | Open | Blocking |
 | TS-003 | Gate determinism (downstream) | `Component_Triage_System.md` | In Progress | Blocking |
@@ -88,7 +102,7 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Ethics & Governance
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | EC-001 | "Sufficient confidence" threshold | `Ethical_Constraints.md` | Open | Blocking |
 | EC-002 | Anti-Weaponization pattern-matching | `Ethical_Constraints.md` | Open | Blocking |
@@ -100,7 +114,7 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Governance & Verification
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | AP-001 | Auditor effectiveness metrics | `Auditor_Protocols.md` | Open | Blocking |
 | AP-002 | Override vs. immutability boundary | `Auditor_Protocols.md` | In Progress | Blocking |
@@ -108,12 +122,24 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Hardware Modules
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| SC-001 | RPM envelope not validated | `Spin_Chamber_v0.md` | Open | Blocking |
+| SC-001 | RPM envelope not validated | `Spin_Chamber_v0.md` | In Progress | Blocking |
 | SC-002 | Segregation effectiveness at v0 scale | `Spin_Chamber_v0.md` | Open | Blocking |
 | SC-003 | MHD damping effectiveness | `Spin_Chamber_v0.md` | Open | Exploratory |
 | SC-004 | Wire extrusion nozzle design | `Spin_Chamber_v0.md` | Open | Exploratory |
+| SC-005 | Drive system geometry — dynamic imbalance blocked | `Spin_Chamber_v0.md` | Open | Major |
+| SC-006 | Siting and area-of-operation requirements | `Spin_Chamber_v0.md` | Open | Major |
+| SC-007 | Extraction process may disrupt segregation gradients | `Spin_Chamber_v0.md` | Open | Major |
+| SC-008 | Graphite crucible carbon pickup in alloy | `Spin_Chamber_v0.md` | Open | Major |
+| MG-001 | Quantitative energy reduction not established | `Material_Separation_Gate_v0.md` | Open | Minor |
+| MG-002 | Optimal RPM bands not characterized per feedstock | `Material_Separation_Gate_v0.md` | Open | Major |
+| MG-003 | Confidence threshold not empirically validated | `Material_Separation_Gate_v0.md` | Open | Major |
+| MG-004 | Geometry correction algorithm not specified | `Material_Separation_Gate_v0.md` | Open | Major |
+| MG-005 | Aquatic biofouling impact on rotor balance | `Material_Separation_Gate_v0.md` | Open | Exploratory |
+| MG-006 | Siting and area-of-operation requirements | `Material_Separation_Gate_v0.md` | Open | Major |
+| MG-007 | Rotor jam and entanglement recovery undefined | `Material_Separation_Gate_v0.md` | Open | Major |
+| MG-008 | Sensor fouling from conductive or abrasive fines | `Material_Separation_Gate_v0.md` | Open | Major |
 | AS-001 | 500W power budget not validated | `Air_Scrubber_v0.md` | Open | Medium |
 | AS-002 | Marine bubble-column depth scope | `Air_Scrubber_v0.md` | In Progress | Low |
 | AS-003 | Scrubber waste stream and saturation | `Air_Scrubber_v0.md` | In Progress | Medium |
@@ -130,7 +156,7 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Salvage & Fabrication
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | GK-001 | Forge loop definition | `geck_forge_seed.md` | Resolved | — |
 | GK-002 | Sacrificial anode material | `geck_forge_seed.md` | Open | Medium |
@@ -146,13 +172,21 @@ AP-003 (audit trail schema) -> AP-001
 
 ### Trajectory
 
-| ID | Title | Owning file | Status | Priority (Promo) |
+| ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | TR-001 | v1 profitability baseline | `Trajectories_LF.md` | Open | Blocking |
 
+### Cross-Module
+
+| ID | Title | Owning Files | Status | Priority |
+|---|---|---|---|---|
+| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Spin_Chamber_v0.md` SC-006, `Material_Separation_Gate_v0.md` MG-006 | Open | Major |
+| UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Lazarus_forge_v0_flow.md` FL-002, `Material_Separation_Gate_v0.md` MG-007 | Open | Blocking |
+| UNK-008 | Welding wire specification and qualification — no owner assigned | `Spin_Chamber_v0.md` SC-004 | Open | Major |
+
 ### Future / Deferred
 
-| ID | Title | Owning file | Status |
+| ID | Title | Owning File | Status |
 |---|---|---|---|
 | UNK-003 | Cross-repo assumption contracts | `Auditor_Protocols.md` | Deferred (Leviathan milestone) |
 | UNK-005 | Marine G.E.C.K. seed variant | `geck_forge_seed.md` | In Progress (stub added) |
@@ -162,9 +196,10 @@ AP-003 (audit trail schema) -> AP-001
 
 ## Expiry Watch
 
-*Expiry Rule is now active at v1.0. Check this table at the opening of each audit cycle.*
+*Expiry Rule is active. Check this table at the opening of each audit cycle.*
 
-No entries past two cycles at v1.0 — all entries are new this cycle.
+No entries past two cycles at v1.1 — SC and MG entries are new this cycle.
+FL-001 and several EC entries are In Progress from prior cycle — watch at next cycle.
 
 ---
 
@@ -181,7 +216,8 @@ No entries past two cycles at v1.0 — all entries are new this cycle.
 
 ## Audit Trail
 
-**v0.1–v0.91:** See prior version history. Full entry detail for all unknowns now migrated to owning file sidecars per Auditor_Protocols.md v0.5 Sidecar Model.
+**v0.1–v0.91:** See prior version history. Full entry detail for all unknowns now migrated
+to owning file sidecars per Auditor_Protocols.md v0.5 Sidecar Model.
 
 **v1.0 — May 2026:**
 First full audit cycle across all primary documents complete.
@@ -189,5 +225,21 @@ All unknowns migrated to owning file sidecars.
 Global index restructured — summary tables only, full detail in owning files.
 UNK-004 (Expiry Rule) activates — Expiry Watch section now live.
 Electronics.md added — EL-001 through EL-004 logged.
-Expiry Rule now active. Protocol Performance metrics begin collecting.
+Protocol Performance metrics begin collecting.
 Preparatory framing lines drop from audit prompts from this version forward.
+
+**v1.1 — 2026-05-15:**
+Spin_Chamber_v0.md and Material_Separation_Gate_v0.md retrofitted to
+File_Template.md structure. Full audit passes completed by Claude,
+Grok, and ChatGPT — three independent auditor convergence on core findings.
+SC-001 through SC-008 added to Hardware Modules table.
+SC-001 status updated to In Progress — RPM safety calculation completed,
+safety factor ~32× confirmed, dynamic analysis deferred to SC-005.
+Material Separation Gate prefix corrected from GK to MG to avoid
+collision with geck_forge_seed.md prefix.
+MG-001 through MG-008 added to Hardware Modules table.
+FL-002 added to Gate Logic table — Reduction module unassigned.
+UNK-006 through UNK-008 added as new cross-module unknowns.
+DS-001 logged in Material_Separation_Gate_v0.md Active Disputes —
+Purification stage terminology; owner Lazarus_forge_v0_flow.md.
+Dependency map updated with SC, MG, and UNK entries.
