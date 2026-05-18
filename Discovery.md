@@ -41,6 +41,7 @@ Root
 
 Admin/                  — Governance, protocols, and doctrine
 Architecture/           — System architecture and foundational logic
+    ├── Forge_Net.md    — Decentralized network prerequisite for logistics
 Operations/             — Physical modules and operational systems
 Tests/                  — Test frameworks and deployment platforms
 ```
@@ -83,22 +84,24 @@ For a new reader or returning AI, read in this sequence:
 6. `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine cycles
 7. `Unknowns.md` — Cross-module unknowns global index
 8. `Architecture/Cognitive_Frameworks.md` — Distributed cognition and trust
-9. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
-10. `Architecture/Components.md` — Critical vs useful component taxonomy
-11. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
-12. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
-13. `Operations/Energy.md` — Energy strategy and accounting
-14. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
-15. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
-16. `Operations/Air_Scrubber.md` — Safety and containment subsystem
-17. `Tests/Support_Raft.md` — Operational anchor for marine deployments
-18. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
-19. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
+9. `Architecture/Forge_Net.md` — Decentralized network and logistics prerequisite
+10. `Operations/Gate_01_Intake.md` — System entry point, safety screening, identification
+11. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
+12. `Operations/Gate_03_Reduction.md` — Only fully irreversible step; doctrine before specification
+13. `Architecture/Components.md` — Critical vs useful component taxonomy
+14. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
+15. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
+16. `Operations/Energy.md` — Energy strategy and accounting
+17. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
+18. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
+19. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
+20. `Operations/Air_Scrubber.md` — Safety and containment subsystem
+21. `Tests/Support_Raft.md` — Operational anchor for marine deployments
+22. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
+23. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
 
 **Pending files (not yet created):**
-- `Operations/Gate_01_Intake.md`
-- `Operations/Gate_03_Reduction.md`
-- `Operations/Gate_06_Fabrication.md`
+- `Operations/Gate_07_Utilization.md`
 
 ---
 
@@ -198,6 +201,19 @@ before running.
 
 ### Architecture/
 
+**Forge_Net.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Forge_Net.md`
+Decentralized data and physical network infrastructure connecting forge
+instances into a resilient, self-improving ecology. Prerequisite for the
+logistics model. Defines local-primary cache doctrine, Wikipedia-style shared
+knowledge base, cognitive save states, cluster formation and governance
+emergence doctrine, positive reinforcement mechanisms, network security threat
+model, and data privacy classification tiers. FN-001 and FN-005 are hard
+prerequisites for first forge-to-forge connection. Exploration/Volatile —
+governance cannot be specified before first clusters form.
+
+---
+
 **Forge_flow.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Forge_flow.md`
 The master decision flow and **reference standard for shared vocabulary**.
@@ -253,6 +269,22 @@ Economics doctrine, false-positive tolerance framework, Triage Terminal,
 contamination handling, and ethical flag at entry. The Forge preserves
 embedded industrial capability, not just metal.
 *Formerly: Component_Triage_System.md*
+
+---
+
+**Gate_03_Reduction.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_03_Reduction.md`
+The only fully irreversible step in the Lazarus Forge flow.
+Receives items that have failed all recovery gates and reduces
+them to feedstock through shredding, cutting, or milling.
+Doctrine precedes specification — what Reduction must not do
+is clearer than what it should do at v0. Three hard prerequisites:
+Air Scrubber operational, human operator present, no energetic
+materials remaining. GR-002 (method selection) is the keystone
+that unblocks GR-001, GR-004, and indirectly GR-005. Highest
+Risk in the repository — irreversibility is the defining
+characteristic. Risk label reviewable after first operational
+cycle and GI-002/GI-003 resolution.
 
 ---
 
@@ -314,25 +346,45 @@ Placeholder, analog-sourced. Energy independence is not assumed at v0.
 
 ---
 
-**Gate_01_Intake.md** *(pending creation)*
-Pre-classification safety screening and tagging. Governs hazard identification,
-energetic material discharge, and item entry into the gate system.
+**Gate_01_Intake.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_01_Intake.md`
+System entry point for all items entering the Lazarus Forge.
+Governs safety screening (energetic, chemical, biological,
+radiological), physical document handling and scanning,
+reference database lookup, parts list generation, fastener
+and small component recovery, item tagging and provenance
+recording, and unknown item hold-and-inspect protocol.
+GI-002 (energetic discharge) and GI-003 (augmented detection)
+are hard prerequisites for first operational run. At v0,
+human judgment primary — automation is a future capability.
 
 ---
 
-**Gate_03_Reduction.md** *(pending creation)*
-The only fully irreversible step in the Forge flow. Shredding, cutting, or
-milling of items that have failed Gates A through D. Governs output envelope,
-prohibited inputs, contamination discovery protocol, and emergency shutdown
-doctrine. Upstream dependency for Gate_04_Separation_Mechanical.md.
-Cross-reference: FL-002, UNK-007.
+**Gate_03_Reduction.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_03_Reduction.md`
+The only fully irreversible step in the Lazarus Forge flow. Doctrine precedes
+specification — three hard prerequisites before Reduction begins: Air Scrubber
+operational, human operator present, no energetic materials remaining.
+GR-002 method selection is the keystone unknown. Highest Risk in the repository.
+Risk label reviewable after first operational cycle and GI-002/GI-003 resolution.
+*Formerly: pending creation — FL-002 and UNK-007 resolved by this file.*
 
 ---
 
-**Gate_06_Fabrication.md** *(pending creation)*
-Fabrication and assembly from salvaged components, purified stock, and
-repurposed parts. Governs fabrication priority order, want/need policy
-application, and feedback to gate classification rules.
+**Gate_06_Fabrication.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_06_Fabrication.md`
+Constructive stage of the Lazarus Forge. Arc welding is the v0 proof-of-concept
+gatekeeper. Add-to-excess and mill-to-spec is the primary dimensional control
+philosophy. Owns precision ceiling doctrine. Dynamic and adaptive — method set
+grows through formal qualification framework. PPE is a non-negotiable prerequisite.
+GF-005 identifies Gate_07_Utilization.md as the next required file.
+
+---
+
+**Gate_07_Utilization.md** *(pending creation)*
+Performance validation stage. Fabricated parts enter service and real-world
+performance is logged. Feedback path to Gate_06_Fabrication and Forge_Net.md.
+Cross-reference: GF-005 in Gate_06_Fabrication.md.
 
 ---
 
@@ -403,5 +455,5 @@ error. Divergence between them is logged, not ignored.
   fails, log it as a Cross-Reference Failure per Auditor_Protocols.md Rule 1.
 - `Astroid-miner` references are labeled planned — do not treat as active
   dependencies.
-- Three pending gate files (Gate_01_Intake.md, Gate_03_Reduction.md,
-  Gate_06_Fabrication.md) do not yet exist. Do not attempt to fetch them.
+- One pending gate file (Gate_07_Utilization.md) does not yet
+  exist. Do not attempt to fetch it.
