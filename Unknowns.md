@@ -1,5 +1,5 @@
 # Unknowns_LF.md — Cross-Module Unknowns Global Index
-**Version 1.1 — SC and MG sidecar entries added. Cross-module UNK-006 through UNK-008 logged.**
+**Version 1.4 — Gate_03_Reduction and Gate_06_Fabrication added. GR and GF entries logged.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -11,6 +11,48 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
 Navigation unknowns → Discovery.md
+
+---
+
+## What v1.4 Means
+
+- Operations/Gate_03_Reduction.md created — only irreversible
+  step, doctrine before specification, three hard prerequisites
+- Operations/Gate_06_Fabrication.md created — arc welding
+  gatekeeper, add-to-excess and mill-to-spec, precision ceiling
+- GR-001 through GR-005 added to Reduction section
+- GF-001 through GF-005 added to Fabrication section
+- GR-003 (waste disposal) flagged Critical — no owner in repository
+- FL-002 and UNK-007 effectively resolved by Gate_03_Reduction.md
+  creation — file now exists and owns the doctrine
+- Gate_07_Utilization.md identified as next pending file via GF-005
+- Dependency map updated with GR and GF entries
+- Discovery.md updated
+
+---
+
+## What v1.3 Means
+
+- Operations/Gate_01_Intake.md created — system entry
+  point, safety screening, identification, provenance
+- GI-001 through GI-005 added to Intake section
+- GI-002 (energetic discharge) and GI-003 (augmented
+  detection) are hard prerequisites for first operational
+  Intake run — highest safety priority in Operations cluster
+- Dependency map updated with GI entries
+- Discovery.md updated to reflect Gate_01_Intake.md addition
+
+---
+
+## What v1.2 Means
+
+- Architecture/Forge_Net.md created — decentralized network
+  and logistics prerequisite
+- FN-001 through FN-005 added to Network section
+- FN-001 and FN-005 are Hard prerequisites for first
+  forge-to-forge connection — highest priority in network cluster
+- Dependency map updated with FN entries
+- Discovery.md updated to reflect Forge_Net.md addition
 
 ---
 
@@ -64,8 +106,28 @@ SC-001 (RPM envelope) -> SC-005 (drive system geometry)
 SC-002 (segregation effectiveness) — primary Gen-0 validation target
 SC-006 (siting) -> UNK-006 (master safety registry)
 MG-006 (siting) -> UNK-006 (master safety registry)
+SC-006 (siting) -> UNK-006 (master safety registry)
+MG-006 (siting) -> UNK-006 (master safety registry)
 UNK-007 (reduction module) -> MG-001, MG-002, MG-007
 UNK-008 (welding wire) -> SC-004
+FN-001 (validation criteria) -> blocks first network connection
+FN-005 (privacy doctrine) -> blocks first network connection
+FN-002 (replication factor) -> depends on LT-002 (node loss rate)
+FN-003 (gaming detection) -> must deploy with FN positive reinforcement
+FN-004 (transport layer) -> informs FN-002 sync doctrine
+GI-002 (energetic discharge) -> blocks first operational Intake run
+GI-003 (augmented detection) -> blocks first unsupervised Intake run
+GI-001 (reference database) -> informs GI-003 detection protocol
+GI-004 (tagging schema) -> depends on Ship_of_Theseus grain system
+GI-005 (pre-Intake protocol) -> depends on GI-002 energetic doctrine
+GR-002 (method selection) -> unblocks GR-001, GR-004, GR-005
+GR-003 (waste disposal) -> no owner in repository — Critical gap
+GR-001 (output envelope) -> depends on GR-002, feeds MG inputs
+GR-004 (particulate) -> depends on GR-002, feeds Air_Scrubber sizing
+GR-005 (automation criteria) -> depends on FL-001, GI-002, GI-003, GR-001, GR-004
+GF-001 (wire diameter) -> depends on welding process selection, feeds SC-004
+GF-002 (precision ceiling) -> feeds all fabrication tolerance claims
+GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
 ```
 
 ---
@@ -94,7 +156,7 @@ UNK-008 (welding wire) -> SC-004
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | FL-001 | Gate logic determinism | `Lazarus_forge_v0_flow.md` | In Progress | Blocking |
-| FL-002 | Reduction module unassigned — upstream dependency | `Lazarus_forge_v0_flow.md` | Open | Blocking |
+| FL-002 | Reduction module unassigned — upstream dependency | `Architecture/Forge_flow.md` | Resolved | — |
 | TS-001 | "Sufficient for forge duty" threshold | `Component_Triage_System.md` | In Progress | Blocking |
 | TS-002 | Contamination routing protocol | `Component_Triage_System.md` | Open | Blocking |
 | TS-003 | Gate determinism (downstream) | `Component_Triage_System.md` | In Progress | Blocking |
@@ -170,6 +232,46 @@ UNK-008 (welding wire) -> SC-004
 | EL-003 | TMR voter implementation | `Electronics.md` | Open | Medium |
 | EL-004 | Chemical etch waste stream | `Electronics.md` | Open | Medium |
 
+### Reduction
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| GR-001 | Output envelope not validated against Gate_04 inputs | `Operations/Gate_03_Reduction.md` | Open | Major |
+| GR-002 | Reduction method not selected | `Operations/Gate_03_Reduction.md` | Open | Major |
+| GR-003 | Biological and chemical waste disposal doctrine not assigned | `Operations/Gate_03_Reduction.md` | Open | Critical |
+| GR-004 | Particulate generation rate and composition not characterized | `Operations/Gate_03_Reduction.md` | Open | Major |
+| GR-005 | Automation introduction criteria not defined | `Operations/Gate_03_Reduction.md` | Open | Major |
+
+### Fabrication
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| GF-001 | Welding wire diameter specification not defined | `Operations/Gate_06_Fabrication.md` | Open | Major |
+| GF-002 | Precision ceiling not characterized at v0 bootstrap | `Operations/Gate_06_Fabrication.md` | Open | Major |
+| GF-003 | Material removal hardware not specified | `Operations/Gate_06_Fabrication.md` | Open | Minor |
+| GF-004 | Fabrication energy consumption not characterized | `Operations/Gate_06_Fabrication.md` | Open | Minor |
+| GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Open | Minor |
+
+### Intake
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| GI-001 | Reference database content and coverage not defined | `Operations/Gate_01_Intake.md` | Open | Major |
+| GI-002 | Energetic material discharge doctrine not defined | `Operations/Gate_01_Intake.md` | Open | Critical |
+| GI-003 | Augmented hazard detection capability not specified | `Operations/Gate_01_Intake.md` | Open | Critical |
+| GI-004 | Intake tagging schema not cross-validated against grain system | `Operations/Gate_01_Intake.md` | Open | Major |
+| GI-005 | Pre-Intake protocol for special handling not defined | `Operations/Gate_01_Intake.md` | Open | Major |
+
+### Network
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| FN-001 | Data validation criteria not defined | `Architecture/Forge_Net.md` | Open | Critical |
+| FN-002 | Data replication factor not defined | `Architecture/Forge_Net.md` | Open | Major |
+| FN-003 | Gaming detection criteria not defined | `Architecture/Forge_Net.md` | Open | Major |
+| FN-004 | v0 Network transport layer not specified | `Architecture/Forge_Net.md` | Open | Major |
+| FN-005 | Data privacy and access control not specified | `Architecture/Forge_Net.md` | Open | Critical |
+
 ### Trajectory
 
 | ID | Title | Owning File | Status | Priority (Promo) |
@@ -181,7 +283,7 @@ UNK-008 (welding wire) -> SC-004
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
 | UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Spin_Chamber_v0.md` SC-006, `Material_Separation_Gate_v0.md` MG-006 | Open | Major |
-| UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Lazarus_forge_v0_flow.md` FL-002, `Material_Separation_Gate_v0.md` MG-007 | Open | Blocking |
+| UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Architecture/Forge_flow.md` FL-002, `Operations/Gate_04_Separation_Mechanical.md` MG-007 | Resolved | — |
 | UNK-008 | Welding wire specification and qualification — no owner assigned | `Spin_Chamber_v0.md` SC-004 | Open | Major |
 
 ### Future / Deferred
@@ -210,6 +312,8 @@ FL-001 and several EC entries are In Progress from prior cycle — watch at next
 | UNK-002 | Repo topology — Astroid-miner | Resolved — human confirmation; deferred to Leviathan milestone | May 2026 |
 | UNK-004 | Expiry Rule enforcement | Discharged — Sidecar Model addresses structurally | May 2026 |
 | UNK-022 | Full Stop Review trigger conditions | Resolved — added to Auditor_Protocols.md v0.5 | May 2026 |
+| FL-002 | Reduction module unassigned | Resolved — Operations/Gate_03_Reduction.md created. Doctrine, prohibited inputs, output envelope, contamination protocol, and emergency shutdown defined | 2026-05-15 |
+| UNK-007 | Reduction module upstream dependency | Resolved — Gate_03_Reduction.md creation closes the gap. Output envelope cross-validation with Gate_04 tracked under GR-001 | 2026-05-15 |
 | GK-001 | Forge loop definition | Resolved — defined in geck_forge_seed.md Section III | May 2026 |
 
 ---
@@ -228,7 +332,35 @@ Electronics.md added — EL-001 through EL-004 logged.
 Protocol Performance metrics begin collecting.
 Preparatory framing lines drop from audit prompts from this version forward.
 
-**v1.1 — 2026-05-15:**
+**v1.4 — 2026-05-15:**
+Operations/Gate_03_Reduction.md created — only irreversible step,
+doctrine before specification, three hard prerequisites, method
+selection as keystone unknown. GR-001 through GR-005 added.
+GR-003 (waste disposal) flagged Critical — no owner in repository.
+Operations/Gate_06_Fabrication.md created — arc welding gatekeeper,
+add-to-excess and mill-to-spec, precision ceiling ownership.
+GF-001 through GF-005 added. GF-005 identifies Gate_07_Utilization.md
+as next required file. FL-002 and UNK-007 updated to Resolved —
+Gate_03_Reduction.md creation closes the Reduction module gap.
+Dependency map updated. Discovery.md updated.
+
+**v1.3 — 2026-05-15:**
+Operations/Gate_01_Intake.md created — system entry point,
+safety screening, identification, parts list generation,
+fastener recovery, provenance tagging, unknown item protocol.
+GI-001 through GI-005 added to Intake section.
+GI-002 (energetic discharge) and GI-003 (augmented detection)
+flagged as hard prerequisites for first operational Intake run.
+Dependency map updated. Discovery.md updated.
+
+**v1.2 — 2026-05-15:**
+Architecture/Forge_Net.md created — decentralized network doctrine,
+data and physical infrastructure, cluster governance emergence,
+positive reinforcement, security threat model, privacy classification.
+FN-001 through FN-005 added to Network section.
+FN-001 (validation criteria) and FN-005 (privacy doctrine) flagged
+as hard prerequisites for first forge-to-forge connection.
+Dependency map updated. Discovery.md updated to include Forge_Net.md.
 Spin_Chamber_v0.md and Material_Separation_Gate_v0.md retrofitted to
 File_Template.md structure. Full audit passes completed by Claude,
 Grok, and ChatGPT — three independent auditor convergence on core findings.
