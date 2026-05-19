@@ -24,9 +24,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-15                                                          |
-| Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 5                                                                   |
+| Last Audit       | 2026-05-19                                                          |
+| Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-19)       |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -258,6 +258,48 @@ Spatter creates fire and burn risk.
   lead-painted metal without respiratory
   protection and forced ventilation
 
+**Unknown salvage alloy contamination defaults:**
+Arc welding unknown salvage metal is materially
+different from welding known commercial stock.
+The current fume doctrine names galvanized zinc
+but does not generalize. Salvage environments
+introduce additional hazards:
+
+- **Chromium-bearing alloys** — welding stainless
+  or chrome-plated material produces hexavalent
+  chromium fumes. Carcinogenic. Forced ventilation
+  and P100 respirator minimum.
+- **Cadmium coatings** — present on some hardware
+  and older plated fasteners. Acute cadmium
+  poisoning is rapid and severe. No welding of
+  cadmium-plated material without full respiratory
+  protection and outdoor/forced ventilation.
+- **Lead contamination** — old paint, solder,
+  bearing materials. Lead fumes are cumulative
+  toxins. Treat any old painted or soldered
+  material as lead-suspect.
+- **Oil-impregnated scrap** — combustion products
+  from welding oily material create respiratory
+  hazards and fire risk. Clean or degrease before
+  welding.
+- **Unknown thermal decomposition products** —
+  plastics, coatings, adhesives, and composite
+  materials produce unpredictable fumes under
+  welding heat.
+
+**Default doctrine for unknown salvage metal:**
+Treat all salvage metal as potentially contaminated
+until characterized. Initial fabrication trials
+with uncharacterized material must use:
+- Outdoor or forced-exhaust ventilation
+- Full respiratory protection — not just dust mask
+- Pre-cleaning and coating removal before welding
+- No welding of sealed vessels, batteries, coated
+  pressure systems, or chemically contaminated scrap
+
+Cross-reference: Operations/Gate_02_Triage.md
+contamination routing, GI-003 detection capability.
+
 **PPE is a prerequisite, not a preference:**
 First arc welding operation does not begin until
 PPE is confirmed available and fitted. See ASM-007.
@@ -271,18 +313,46 @@ Arc welding is the v0 proof-of-concept fabrication
 capability. It gates access to all subsequent
 fabrication method introduction.
 
-**Why arc welding first:**
+**Fabrication phases — resolving welding process ambiguity:**
+
+The file previously oscillated between MMA/stick
+and MIG/GMAW welding without committing. This
+changes power requirements, gas requirements,
+SC-004 criticality, and wire feedstock dependency.
+Three phases clarify the progression:
+
+| Phase | Process | Wire Source | SC-004 Dependency | Gate |
+|---|---|---|---|---|
+| A — Bootstrap | MMA/stick welding | External consumable electrodes — no wire feed required | Decoupled | Arc welding qualified with external consumables |
+| B — Internal wire trial | MIG/GMAW experimental | Externally sourced MIG wire | Optional | First internal wire samples tested against MIG requirements |
+| C — Closed loop | MIG/GMAW integrated | Internally produced via SC-004 | Foundational | Internal wire qualified; self-replication loop closes |
+
+**v0 baseline is Phase A.** MMA/stick welding with
+externally sourced electrodes. No wire feed required.
+No gas required for basic SMAW process. Lowest
+overhead, most bootstrap-compatible.
+
+Phase B begins when SC-004 produces first wire
+samples or when MIG equipment becomes available —
+whichever comes first. Phase B does not wait for
+Phase A to be complete for all applications, but
+Phase A qualification must precede Phase B trials.
+
+Phase C closes the self-replication loop. It is
+a milestone, not a v0 assumption.
+
+**Why MMA/stick first:**
 - Lowest overhead path to joining metal parts
 - No precision machining or expensive tooling
   required to begin
+- No shielding gas required for basic SMAW
 - Produces structural capability from variable-
   quality feedstock
 - Equipment is purchasable at bootstrap —
-  basic MMA (stick) welder is commercially
-  available at low cost
-- Skill is learnable — operator can develop
-  competency through practice on scrap material
-  before fabricating functional parts
+  basic MMA welder is commercially available
+  at low cost
+- Skill is learnable — operator develops
+  competency on scrap before functional parts
 
 **Arc welding qualification criteria (v0):**
 Arc welding is considered qualified when:
@@ -406,6 +476,29 @@ and actively improved.
   achieve. A file has a different ceiling than
   a CNC mill.
 
+**Measurement capability does not imply fabrication capability:**
+This distinction is load-bearing. A forge with
+±0.02mm caliper resolution cannot conclude it
+can fabricate to ±0.02mm. The precision ceiling
+is bounded by the worst-performing stage across
+the entire fabrication process:
+
+- Measurement resolution
+- Fixturing stability — how securely is the
+  workpiece held during removal?
+- Thermal expansion — material grows and shrinks
+  during and after welding
+- Operator repeatability — can the same operator
+  achieve the same result on the third attempt
+  as the first?
+- Part geometry — complex shapes are harder to
+  measure and hold than flat surfaces
+
+The precision ceiling is the achievable and
+verifiable tolerance under realistic operating
+conditions — not the theoretical limit of the
+best tool in the forge.
+
 **Precision ceiling doctrine:**
 - Do not fabricate parts requiring tolerance beyond
   the current ceiling — acknowledge the limitation
@@ -459,6 +552,39 @@ safety requirements.
    material preparation and downstream finishing?
 5. Energy requirements characterized and cross-
    referenced to Operations/Energy.md budget
+
+**Consumables lifecycle doctrine:**
+Fabrication capability can be lost operationally
+before it is lost theoretically. A forge with a
+welder and no electrodes has no fabrication
+capability. Consumables are load-bearing infrastructure.
+
+- **Electrode and consumable tracking** — maintain
+  a running inventory of welding electrodes,
+  grinding discs, cutting wheels, contact tips,
+  and measuring tool calibration status
+- **Duty cycle cooling** — welders have thermal
+  duty cycles. Continuous operation beyond rated
+  duty cycle degrades equipment and weld quality.
+  Respect cooling periods.
+- **Tool inspection intervals** — grinding discs
+  crack and fragment under stress. Inspect before
+  each use. Retire at first sign of damage.
+- **Calibration verification cadence** — measuring
+  tools drift. Calipers should be zero-checked
+  before each precision session. Damaged measuring
+  tools produce false confidence in tolerances.
+- **Salvage prioritization for consumables** —
+  grinding discs, contact tips, and electrodes
+  from salvage are acceptable if undamaged.
+  Measuring tools from salvage require calibration
+  verification before trust. Welding helmets from
+  salvage require lens integrity verification.
+- **Minimum operational stock** — define a minimum
+  consumable stock level below which fabrication
+  operations are suspended pending resupply.
+  *(Placeholder — stock levels defined during
+  first operational cycle)*
 
 **Method introduction sequence:**
 1. Identify need — what fabrication capability
@@ -587,6 +713,40 @@ the system.
 - Operator identifier
 - Outcome — passed, failed, reworked
 
+**Fabrication output tag:**
+Every fabricated part that enters service receives
+a physical output tag seeding its grain record in
+Admin/Ship_of_Theseus.md. The tag connects the
+part's service history back to its material origin.
+
+Minimum output tag content:
+- **Forge instance identifier** — which forge
+  produced this part
+- **Fabrication sequence number** — unique,
+  sequential, never reused
+- **Fabrication phase** — A (MMA bootstrap),
+  B (MIG trial), or C (closed-loop internal wire)
+- **Date and operator identifier**
+- **Material source reference** — which gate
+  output batch, which Spin Chamber run if thermal
+- **Wire feedstock batch identifier** — if MIG;
+  internal or external sourcing noted
+- **Method used**
+- **Precision ceiling applied at fabrication**
+- **Initial quality assessment** — pass, conditional,
+  rework
+
+When a part fails in service, this tag traces
+back to the forge, operator, feedstock batch,
+alloy source, and Spin Chamber run that produced
+it. Cross-forge quality patterns become visible
+in the network — if one forge's wire consistently
+produces inferior welds, the ecology learns it.
+
+Cross-reference: Admin/Ship_of_Theseus.md grain
+system, GI-006 chain-of-custody doctrine,
+Architecture/Forge_Net.md quality contribution.
+
 *A fabrication record that documents a failure
 is more valuable than one that documents a
 success without detail. Failures teach. Successes
@@ -635,7 +795,10 @@ without records teach nothing.*
 | 2026-05-15 | Audit Review | Wire production assumed to close self-replication loop automatically once SC-004 is validated | Wire quality from variable-alloy Spin Chamber output may not be sufficient for all arc welding applications. External wire sourcing at bootstrap is a valid and expected path | Purchase-what-cannot-be-produced doctrine applies to welding wire at bootstrap. Internal wire production is the goal, not the prerequisite. Arc welding with externally sourced wire still validates the fabrication capability even if wire is not yet internally produced | Analogous | Yes — validate internal wire quality against arc welding requirements once SC-004 is operational |
 | 2026-05-15 | Audit Review | Precision ceiling treated as fixed background condition — assumed known without active tracking | An untracked precision ceiling produces parts that appear correct but fail in service when actual ceiling is lower than assumed. Silent failure from overconfident tolerance claims is worse than acknowledged limitation | Precision ceiling is a first-class tracked metric, not a background assumption. It cannot exceed metrology capability. It must be documented honestly in fabrication records. Purchasing precision instruments at bootstrap is correct doctrine — precision is seeded deliberately, not bootstrapped from nothing | Analogous | Yes — establish actual v0 precision ceiling during first operational fabrication cycle |
 | 2026-05-15 | Audit Review | Add-to-excess framed as workaround for imprecise forming | Add-to-excess is not a workaround — it is the correct philosophy for a system working with variable feedstock and inherently imprecise forming methods | The weld gets close. The mill finds the truth. This is not a limitation to overcome — it is the correct approach for v0 capability levels. The philosophy should be stated as doctrine, not as a compromise | Analogous | No — add-to-excess and mill-to-spec is permanent v0 doctrine |
-| 2026-05-15 | Audit Review | Arc welding operator safety treated as assumed knowledge | UV radiation causes permanent eye damage in seconds without proper shielding. Fumes from unknown alloy base metal cause metal fume fever. These hazards are not obvious to operators without prior welding experience | Arc welding PPE is a non-negotiable prerequisite before first operation. Helmet shade, gloves, flame-resistant clothing, and ventilation must be confirmed available and fitted before the first arc is struck. Operator training on hazards precedes operator training on technique | Analogous | Yes — validate PPE availability and operator hazard training before first arc welding operation |
+| 2026-05-19 | Audit Review | File oscillated between MMA/stick and MIG/GMAW without committing to a baseline process | Ambiguity changed power requirements, gas requirements, SC-004 criticality, and wire dependency simultaneously — different readers could derive different bootstrap architectures | Welding process phase split added to Section 3 — Phase A (MMA bootstrap, no wire), Phase B (MIG trial with external wire), Phase C (closed-loop internal wire). v0 baseline is Phase A | Analogous | No — phase split is correct architecture |
+| 2026-05-19 | Audit Review | Fume doctrine named galvanized zinc but did not generalize to salvage contamination | Chromium, cadmium, lead, oil-impregnated scrap, and unknown coatings all produce different hazards. Unknown salvage metal defaults were absent | Unknown salvage alloy contamination defaults added to Section 2. All salvage metal treated as potentially contaminated until characterized. Initial trials require outdoor/forced ventilation and full respiratory protection | Analogous | Yes — validate against first fabrication operational cycle |
+| 2026-05-19 | Audit Review | Precision ceiling framed through metrology capability without explicitly separating measurement from fabrication capability | "I can measure ±0.02mm therefore I can fabricate ±0.02mm" is a real failure mode. Fixturing, thermal expansion, repeatability, and part geometry all affect achievable precision independently | Explicit disclaimer added to Section 5 — measurement capability does not imply fabrication capability. Ceiling bounded by worst-performing stage across the entire process | Analogous | No — distinction is permanent doctrine |
+| 2026-05-19 | Audit Review | Consumables lifecycle not addressed — fabrication capability treated as stable once equipment is acquired | A forge with a welder and no electrodes has no fabrication capability. Consumable depletion, tool wear, and calibration drift are operational failure modes that don't require equipment failure | Consumables lifecycle doctrine added to Section 6 — inventory tracking, duty cycle, tool inspection, calibration verification, salvage prioritization, minimum stock doctrine | Analogous | Yes — define minimum stock levels during first operational cycle |
 
 ---
 
@@ -880,9 +1043,124 @@ over time has no closing mechanism.
 
 ---
 
+### GF-006 — Structural adequacy criteria undefined
+for v0 fabrication qualification
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical                                        |
+| Blocking      | No                                               |
+| Owner         | Operations/Gate_06_Fabrication.md                |
+| First Logged  | 2026-05-19                                       |
+| Last Reviewed | 2026-05-19                                       |
+
+**Description:** Section 3 qualification criteria
+reference "adequate strength for v0 structural
+applications" but no operational definition exists
+for structural adequacy — load classes, acceptable
+weld defects, fatigue expectations, or safety factor
+assumptions.
+
+**Why It Matters:** Without even coarse structural
+classes, "qualified weld" risks semantic drift
+between operators and across forge instances.
+A weld qualified for a bracket is not necessarily
+qualified for a load-bearing frame member. The
+distinction matters before parts enter service.
+
+**Resolution Path:**
+- Define minimum destructive testing doctrine —
+  what coupon geometry, what loading method,
+  what pass/fail criterion for Phase A qualification?
+- Define coarse load classes at v0:
+  - Static non-load-bearing (brackets, covers)
+  - Static structural (frames, supports)
+  - Dynamic or cyclic (anything that moves or vibrates)
+  - Safety-critical (operator protection, containment)
+- Define safety factor assumptions per class —
+  even rough values reduce ambiguity.
+- Define acceptable weld defect limits by class —
+  porosity acceptable in a bracket may not be
+  acceptable in a structural frame.
+- Cross-reference: Admin/Trajectories.md for
+  higher precision qualification in later versions.
+- Payment via Specification — once structural
+  classes and minimum qualification criteria are
+  defined and tested, move to Section 3 as Analogous.
+
+---
+
+### GF-007 — Fabrication-area fire suppression
+and hot-work doctrine undefined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | High                                             |
+| Priority      | Critical                                         |
+| Type          | Technical / Safety                               |
+| Blocking      | No                                               |
+| Owner         | Operations/Gate_06_Fabrication.md                |
+| First Logged  | 2026-05-19                                       |
+| Last Reviewed | 2026-05-19                                       |
+
+**Description:** Operator PPE is well-covered but
+facility-level fire mitigation for arc welding
+operations is not defined. Spark containment,
+fuel separation, extinguisher class requirements,
+ventilation/fire interaction, and hot-work shutdown
+procedures are all absent.
+
+**Why It Matters:** Arc welding creates credible
+ignition hazards in salvage environments where
+upstream operations may have introduced oil residue,
+plastics, dust, battery remnants, and solvents.
+A salvage forge is not a clean commercial workshop —
+the fire risk profile is materially different.
+
+**Resolution Path:**
+- Define spark containment — welding curtains,
+  spark-resistant flooring or covers, minimum
+  clearance from combustibles.
+- Define fuel separation radius — minimum distance
+  between active welding and oil, solvent, plastic,
+  or combustible dust.
+- Define extinguisher class requirements — Class B
+  for flammable liquids, Class D for metal fires
+  from aluminum or magnesium fines. Both may be
+  needed in a salvage forge environment.
+- Define hot-work shutdown — what must be cleared,
+  cooled, and confirmed before leaving a welding
+  area unattended.
+- Ventilation/fire interaction — forced ventilation
+  can feed rather than suppress a fire. Define
+  shutdown sequence for ventilation in fire event.
+- Consider as seed for future facility/siting
+  file alongside UNK-006.
+- Payment via Specification — once fire doctrine
+  is defined and validated, move to Section 2
+  as Analogous.
+- Cross-reference: UNK-006 siting requirements,
+  Operations/Air_Scrubber.md.
+
+---
+
 ### Resolution Log
 
-*(empty — no entries resolved yet)*
+- 2026-05-19: GF-006, GF-007 — New entries logged
+  following ChatGPT audit 2026-05-19. Structural
+  adequacy criteria and fire suppression doctrine
+  both identified as gaps. Welding process phase
+  split (A/B/C) added to Section 3 resolving
+  MMA vs MIG ambiguity. Unknown salvage alloy
+  contamination defaults added to Section 2.
+  Precision ceiling overclaiming disclaimer added
+  to Section 5. Consumables lifecycle doctrine
+  added to Section 6. Fabrication output tag
+  added to Section 8.
 
 ---
 
