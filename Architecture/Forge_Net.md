@@ -21,8 +21,8 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-15                                                          |
-| Auditor          | Claude — Retrofit/Auditor                                           |
+| Last Audit       | 2026-05-18                                                          |
+| Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-18)       |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
@@ -229,6 +229,40 @@ collectively. No forge has editorial authority over
 another forge's contributions — but all errors and
 corrupted entries are subject to network correction.
 
+**Knowledge classification by scope:**
+Not all knowledge is globally applicable. The network
+must distinguish between knowledge types to avoid
+suppressing locally correct but globally unusual
+contributions:
+
+- **Globally canonical** — knowledge that applies
+  across all forge instances and deployment contexts.
+  Parts list for a common appliance. Hazard profile
+  for a known contaminant. Gate routing for a common
+  failure mode. Subject to full consensus validation.
+- **Locally adaptive** — knowledge that is correct
+  for a specific environment but may not generalize.
+  A marine forge's corrosion heuristics. A high-
+  altitude forge's thermal compensation parameters.
+  A tropical forge's biological contamination
+  patterns. These are not anomalies — they are
+  local specializations the ecology needs to preserve.
+- **Provisional** — new knowledge that has not been
+  validated across multiple forge instances. Flagged
+  explicitly, held separately, available for adoption
+  but not merged into canonical entries until
+  cross-validated.
+
+A contribution that conflicts with globally canonical
+knowledge from a locally adaptive context must not
+be rejected as incorrect — it must be classified
+as locally adaptive and preserved. Epistemic
+homogenization across a diverse ecology destroys
+the local knowledge that makes the ecology adaptive.
+
+Cross-reference: FN-001 minority-report preservation,
+FN-003 Goodhart's Law doctrine.
+
 ### 2.4 Cognitive Save States
 
 A forge's learned behaviors — classification heuristics,
@@ -396,6 +430,37 @@ assignment.
 - Stagnation — no forge earns sufficient trust to make
   governance decisions. Detection: decision backlog growth.
 
+**Anti-concentration doctrine:**
+"Authority follows contribution" is correct doctrine
+but can produce emergent oligarchies without structural
+resistance. High-resource nodes naturally host more
+data, maintain more uptime, contribute more logs, and
+accumulate trust faster — not through bad intent but
+through resource advantage. Left unaddressed, this
+produces de facto centralization despite anti-
+centralization doctrine.
+
+Structural resistance mechanisms *(Placeholder —
+thresholds not yet defined)*:
+- **Trust weight ceiling** — no forge instance
+  accumulates governance authority beyond a defined
+  ceiling regardless of contribution volume
+- **Diminishing returns** — marginal trust gain
+  decreases as absolute trust increases. High-trust
+  forges contribute without disproportionately
+  dominating governance decisions.
+- **Decay mechanisms** — trust weight decreases
+  for inactive or unreachable nodes. Authority
+  that cannot be exercised does not accumulate.
+- **Minority cluster protections** — small or
+  geographically isolated clusters retain governance
+  voice proportional to their operational context,
+  not their contribution volume
+- **Federation balancing** — cross-cluster governance
+  decisions require representation from multiple
+  clusters, preventing any single cluster from
+  dominating federation-level choices
+
 Cross-reference: Architecture/Cognitive_Frameworks.md
 rogue unit management, Admin/Ethical_Constraints.md
 governance failure modes.
@@ -440,6 +505,32 @@ propagating across the ecology.
 - Cross-reference: Architecture/Cognitive_Frameworks.md
   rogue unit management doctrine
 
+**Node reintegration doctrine:**
+Isolation without reintegration creates permanent
+suspicion states and inconsistent network memory.
+A cleared node must have a defined path back:
+
+- **Staged reintegration** — a cleared node does not
+  immediately regain full trust weight. It re-enters
+  at a reduced trust level and earns recovery through
+  validated contributions over time.
+- **Post-incident audit** — before reintegration,
+  the node's contribution history during and before
+  the incident is reviewed. Contaminated contributions
+  are flagged, held, or rolled back as appropriate.
+- **Contamination horizon** — identify the earliest
+  point at which the node may have been compromised.
+  All contributions after that point are treated as
+  provisional until reviewed.
+- **Downstream cleanup** — contributions from the
+  compromised node that propagated to other nodes
+  before isolation are traced and flagged. The network
+  cannot assume contamination stayed local.
+- **Human authorization required** — full trust
+  restoration after a confirmed compromise requires
+  explicit human sign-off, not automatic recovery
+  through contribution accumulation alone.
+
 **Data privacy:**
 Forge instances have legitimate privacy interests —
 proprietary repair techniques, location data, operational
@@ -473,7 +564,22 @@ Anti-Weaponization Doctrine.
   networking doctrine; analog for connectivity-
   interrupted operation
 - `Operations/Energy.md` — energy cost of network
-  operation not yet accounted for
+  operation not yet accounted for. Network services
+  — replication, hosting, synchronization, anomaly
+  detection, trust evaluation, save-state storage —
+  all consume energy and storage. A decentralized
+  network can accidentally become infrastructure-
+  heavier than the salvage economy it supports.
+  All network services must be classified as
+  optional/degradable under energy scarcity:
+  - **Critical** — local cache operation, intake
+    record logging. Never suspended.
+  - **Standard** — network sync, trust weight
+    updates. Suspended under energy scarcity.
+  - **Optional** — cognitive save state sync,
+    anomaly detection at network scale. First
+    to suspend under scarcity.
+  Cross-reference: EV-001 in Unknowns.md.
 - `Unknowns.md` — FN-001 through FN-005 indexed
   once logged
 - `Admin/Trajectories.md` — network capability targets
@@ -488,7 +594,11 @@ Anti-Weaponization Doctrine.
 |------|---------------|----------------|-------------|------------------|------------|---------------------|
 | 2026-05-15 | Audit Review | Network conceived as data infrastructure only | Physical logistics layer treated as separate concern | Data and physical infrastructure share the same topology — nearby forges that trade components are the same forges forming data clusters. Housing both in one file prevents architectural drift between the two layers | Analogous | No — unified architecture is correct |
 | 2026-05-15 | Audit Review | Positive reinforcement modeled as simple reward for contribution | Perverse incentive risk identified — quantity without quality gaming | Reward structure must weight accuracy over volume. Contribution cross-validated before credit awarded. Gaming detection required from first network connection. See ASM-007, FN-003 | Analogous | Yes — validate against first operational network |
-| 2026-05-15 | Audit Review | Cluster governance specified as rules | Cannot be specified before observed — emergent systems resist premature specification | Governance section reframed as emergence doctrine. Principles stated, rules deferred until first clusters form and behavior can be observed. See Section 5 | Analogous | Yes — revisit after first cluster forms |
+| 2026-05-18 | Audit Review | Consensus weighting treated as straightforward truth arbitration | Ten coordinated incorrect nodes can suppress one accurate node under naive consensus weighting — epistemic corruption through coordinated error is more dangerous than deliberate attack | Minority-report preservation, contradiction logging, and confidence decay added to FN-001 resolution path. Consensus popularity must never be equated with truth. Cross-reference: FN-001 | Analogous | Yes — validate against adversarial simulation before first network connection |
+| 2026-05-18 | Audit Review | Positive reinforcement treated as sufficient to ensure contribution quality | Goodhart's Law applies — any measurable metric becomes an optimization target. Forges adapt to incentives faster than governance adapts to behavior, producing drift without malicious intent | Knowledge integrity explicitly superordinate to network health metrics. Uncertain contributions must not be penalized for uncertainty. Confidence decay without revalidation added. Cross-reference: FN-003 | Analogous | Yes — validate incentive structure against simulated gaming before first network |
+| 2026-05-18 | Audit Review | "Authority follows contribution" assumed sufficient to prevent centralization | High-resource nodes naturally accumulate trust faster through resource advantage, not bad intent, producing emergent oligarchies despite anti-centralization doctrine | Anti-concentration doctrine added to Section 5 — trust weight ceilings, diminishing returns, decay mechanisms, minority cluster protections, federation balancing | Analogous | Yes — monitor trust weight distribution from first network connection |
+| 2026-05-18 | Audit Review | All network knowledge treated as globally applicable | Disconnected clusters develop locally correct but globally incompatible heuristics — marine forge corrosion patterns are not anomalies, they are local specializations | Knowledge classification by scope added to Section 2.3 — globally canonical, locally adaptive, provisional. Epistemic homogenization across a diverse ecology destroys local adaptation | Analogous | Yes — validate classification scheme against first inter-cluster sync |
+| 2026-05-18 | Audit Review | Node isolation doctrine defined without reintegration doctrine | Isolation without reintegration creates permanent suspicion states and inconsistent network memory — a cleared node had no defined path back | Staged reintegration, post-incident audit, contamination horizon analysis, downstream cleanup, and human authorization requirement added to Section 6 | Analogous | No — reintegration doctrine is correct |
 
 ---
 
@@ -504,6 +614,13 @@ cluster basis, privacy vs. network transparency, trust weight
 mechanics) but all are deferred pending first operational
 network data. Tracked as unknowns in sidecar, not disputes.
 Revisit after first forge-to-forge connection is established.*
+
+*Cross-reference naming note: this file uses folder-prefixed
+paths (Admin/Ethical_Constraints.md, Operations/Energy.md)
+reflecting the current repository structure. These are the
+canonical names. Legacy flat names (Ethical_Constraints.md,
+energy_v0.md) are aliases documented in the Rename Registry
+in Discovery.md. Folder-prefixed names take precedence.*
 
 ---
 
@@ -543,6 +660,27 @@ the primary technical prerequisite for network security.
   new contribution.
 - Define source weighting rules — how trust score
   affects contribution authority by type.
+- **Minority-report preservation** — a contribution
+  that conflicts with high-confidence existing entries
+  must not be silently discarded. Conflicting
+  contributions are held, flagged, and logged as
+  active disagreements. A truthful minority contribution
+  suppressed by coordinated incorrect consensus is the
+  central epistemic failure mode of decentralized
+  trust systems.
+- **Contradiction logging** — all conflicts between
+  contributions are logged with full provenance.
+  Contradictions are data, not noise.
+- **Confidence decay** — high-confidence entries that
+  have not been revalidated within a defined period
+  decay toward lower confidence. Stale certainty is
+  not certainty. *(Placeholder — decay interval not
+  yet defined)*
+- **Reversible rollback** — the network must be able
+  to roll back to a prior knowledge state if a
+  corruption event is detected. Rollback capability
+  is a prerequisite for validation, not a post-hoc
+  recovery tool.
 - Validate criteria against known-good and known-bad
   contribution samples before first network sync.
 - Payment via Specification — once criteria are defined
@@ -617,6 +755,18 @@ Detection must be active from first network connection
 — gaming behavior is easier to establish than to
 correct once patterns are normalized.
 
+Beyond deliberate gaming, Goodhart's Law applies:
+any measurable contribution metric eventually becomes
+an optimization target rather than a truth target.
+Forges adapt to incentives faster than governance
+adapts to behavior. This produces drift even without
+malicious intent — splitting contributions into
+smaller fragments, over-reporting routine intake,
+producing safe but low-value contributions, avoiding
+uncertain discoveries that might reduce trust scores,
+and reputation cartels where forges reciprocally
+inflate each other's trust weights.
+
 **Resolution Path:**
 - Define anomalous contribution signatures — sudden
   volume spikes, contribution type mismatches,
@@ -627,6 +777,21 @@ correct once patterns are normalized.
   contributions is a flag, not a reward.
 - Human review trigger: anomaly detected → flag for
   human review before credit awarded.
+- **Knowledge integrity is superordinate to network
+  health metrics** — a contribution that is accurate
+  but inconvenient to existing consensus must not be
+  penalized. Novelty and disagreement are not the
+  same as error.
+- **Uncertain contributions must not be penalized
+  for uncertainty** — a forge that flags low
+  confidence honestly contributes more to network
+  health than one that reports false certainty.
+  Reward honest uncertainty labeling.
+- **Confidence weighting must decay without
+  revalidation** — entries that accumulate high
+  confidence through volume rather than verification
+  must not permanently suppress contradicting
+  contributions.
 - Payment via Specification — once detection criteria
   are defined and tested against simulated gaming
   scenarios, move to Section 4 as Simulated.
