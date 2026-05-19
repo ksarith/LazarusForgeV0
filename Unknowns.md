@@ -1,5 +1,5 @@
 # Unknowns_LF.md — Cross-Module Unknowns Global Index
-**Version 1.4 — Gate_03_Reduction and Gate_06_Fabrication added. GR and GF entries logged.**
+**Version 1.5 — Audit cycle 2026-05-19. GI-006, GI-007, GR-006 through GR-008, GF-006, GF-007 logged.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -14,9 +14,27 @@ Navigation unknowns → Discovery.md
 
 ---
 
-## What v1.4 Means
+## What v1.5 Means
 
-- Operations/Gate_03_Reduction.md created — only irreversible
+- Audit cycle 2026-05-19 complete — Gate_01_Intake,
+  Gate_03_Reduction, and Gate_06_Fabrication audited
+  by ChatGPT with full Forge_Audit_Kit loaded
+- GI-006 (chain of custody) and GI-007 (digital
+  contamination) added to Intake section
+- GI-007 flagged Critical — digital contamination
+  propagates via Forge_Net.md integration
+- GR-006 (jam clearing), GR-007 (equipment retirement),
+  GR-008 (operator decision support) added to Reduction
+- GR-007 flagged Critical — no retirement threshold defined
+- GF-006 (structural adequacy) and GF-007 (fire suppression)
+  added to Fabrication section
+- GF-007 flagged Critical — arc welding fire hazards
+  unmitigated at facility level in salvage environments
+- AUDIT_HARNESS.py updated to v3 with file registry
+
+---
+
+## What v1.4 Means
   step, doctrine before specification, three hard prerequisites
 - Operations/Gate_06_Fabrication.md created — arc welding
   gatekeeper, add-to-excess and mill-to-spec, precision ceiling
@@ -120,14 +138,21 @@ GI-003 (augmented detection) -> blocks first unsupervised Intake run
 GI-001 (reference database) -> informs GI-003 detection protocol
 GI-004 (tagging schema) -> depends on Ship_of_Theseus grain system
 GI-005 (pre-Intake protocol) -> depends on GI-002 energetic doctrine
-GR-002 (method selection) -> unblocks GR-001, GR-004, GR-005
+GI-006 (chain of custody) -> depends on GI-004 tagging schema
+GI-007 (digital contamination) -> depends on Forge_Net.md FN-001, Electronics.md
+GR-002 (method selection) -> unblocks GR-001, GR-004, GR-005, GR-006
 GR-003 (waste disposal) -> no owner in repository — Critical gap
 GR-001 (output envelope) -> depends on GR-002, feeds MG inputs
 GR-004 (particulate) -> depends on GR-002, feeds Air_Scrubber sizing
 GR-005 (automation criteria) -> depends on FL-001, GI-002, GI-003, GR-001, GR-004
+GR-006 (jam clearing) -> depends on GR-002 method selection
+GR-007 (equipment retirement) -> depends on GR-003 waste disposal
+GR-008 (operator decision support) -> compensates for GI-002, GI-003 until resolved
 GF-001 (wire diameter) -> depends on welding process selection, feeds SC-004
 GF-002 (precision ceiling) -> feeds all fabrication tolerance claims
 GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
+GF-006 (structural adequacy) -> depends on GF-002 precision ceiling
+GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 ```
 
 ---
@@ -241,6 +266,9 @@ GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
 | GR-003 | Biological and chemical waste disposal doctrine not assigned | `Operations/Gate_03_Reduction.md` | Open | Critical |
 | GR-004 | Particulate generation rate and composition not characterized | `Operations/Gate_03_Reduction.md` | Open | Major |
 | GR-005 | Automation introduction criteria not defined | `Operations/Gate_03_Reduction.md` | Open | Major |
+| GR-006 | Mechanical jam clearing doctrine not defined | `Operations/Gate_03_Reduction.md` | Open | Major |
+| GR-007 | Contaminated equipment retirement threshold not defined | `Operations/Gate_03_Reduction.md` | Open | Critical |
+| GR-008 | Operator decision support minimum standard not defined | `Operations/Gate_03_Reduction.md` | Open | Major |
 
 ### Fabrication
 
@@ -251,6 +279,8 @@ GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
 | GF-003 | Material removal hardware not specified | `Operations/Gate_06_Fabrication.md` | Open | Minor |
 | GF-004 | Fabrication energy consumption not characterized | `Operations/Gate_06_Fabrication.md` | Open | Minor |
 | GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Open | Minor |
+| GF-006 | Structural adequacy criteria undefined for v0 qualification | `Operations/Gate_06_Fabrication.md` | Open | Major |
+| GF-007 | Fabrication-area fire suppression and hot-work doctrine undefined | `Operations/Gate_06_Fabrication.md` | Open | Critical |
 
 ### Intake
 
@@ -261,6 +291,8 @@ GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
 | GI-003 | Augmented hazard detection capability not specified | `Operations/Gate_01_Intake.md` | Open | Critical |
 | GI-004 | Intake tagging schema not cross-validated against grain system | `Operations/Gate_01_Intake.md` | Open | Major |
 | GI-005 | Pre-Intake protocol for special handling not defined | `Operations/Gate_01_Intake.md` | Open | Major |
+| GI-006 | Intake chain-of-custody integrity not defined | `Operations/Gate_01_Intake.md` | Open | Major |
+| GI-007 | Digital contamination and hostile firmware handling not defined | `Operations/Gate_01_Intake.md` | Open | Critical |
 
 ### Network
 
@@ -331,6 +363,20 @@ UNK-004 (Expiry Rule) activates — Expiry Watch section now live.
 Electronics.md added — EL-001 through EL-004 logged.
 Protocol Performance metrics begin collecting.
 Preparatory framing lines drop from audit prompts from this version forward.
+
+**v1.5 — 2026-05-19:**
+Audit cycle complete on Gate_01_Intake, Gate_03_Reduction,
+and Gate_06_Fabrication using AUDIT_HARNESS.py v3.
+GI-006 (chain of custody) and GI-007 (digital contamination)
+added — GI-007 Critical given Forge_Net.md integration risk.
+GR-006 (jam clearing), GR-007 (equipment retirement — Critical),
+and GR-008 (operator decision support) added following structural
+gaps identified in Reduction audit. GF-006 (structural adequacy)
+and GF-007 (fire suppression — Critical) added following
+Fabrication audit. Welding process phase split A/B/C added to
+Gate_06. Unknown salvage alloy contamination defaults added.
+Digital contamination category added to Gate_01 safety screening.
+Dependency map updated. Seven new unknowns total this cycle.
 
 **v1.4 — 2026-05-15:**
 Operations/Gate_03_Reduction.md created — only irreversible step,
