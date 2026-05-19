@@ -285,6 +285,8 @@ that unblocks GR-001, GR-004, and indirectly GR-005. Highest
 Risk in the repository — irreversibility is the defining
 characteristic. Risk label reviewable after first operational
 cycle and GI-002/GI-003 resolution.
+*Formerly: pending creation — FL-002 and UNK-007 resolved by
+this file's creation.*
 
 ---
 
@@ -357,17 +359,6 @@ recording, and unknown item hold-and-inspect protocol.
 GI-002 (energetic discharge) and GI-003 (augmented detection)
 are hard prerequisites for first operational run. At v0,
 human judgment primary — automation is a future capability.
-
----
-
-**Gate_03_Reduction.md**
-`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_03_Reduction.md`
-The only fully irreversible step in the Lazarus Forge flow. Doctrine precedes
-specification — three hard prerequisites before Reduction begins: Air Scrubber
-operational, human operator present, no energetic materials remaining.
-GR-002 method selection is the keystone unknown. Highest Risk in the repository.
-Risk label reviewable after first operational cycle and GI-002/GI-003 resolution.
-*Formerly: pending creation — FL-002 and UNK-007 resolved by this file.*
 
 ---
 
