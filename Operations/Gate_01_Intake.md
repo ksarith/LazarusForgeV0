@@ -21,9 +21,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-15                                                          |
-| Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 5                                                                   |
+| Last Audit       | 2026-05-19                                                          |
+| Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-19)       |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -145,7 +145,55 @@ Gate_01_Intake before any gate logic is applied. No item
 proceeds to Classification and Triage without completing
 Intake. No exceptions.
 
-**Intake sequence (v0 — human-judgment primary):**
+**Operator cognitive fatigue doctrine:**
+Intake is cognitively expensive — ambiguity-heavy,
+judgment-dependent, and interruption-heavy. A fatigued
+operator is a systemic hazard propagation vector at
+the system's first safety barrier.
+
+- **Shift duration guidance** — sustained Intake
+  operation beyond 2–3 hours without a break
+  degrades judgment quality. *(Placeholder —
+  validated against first operational cycle)*
+- **Second-review triggers** — after three
+  consecutive unknown or ambiguous items, a
+  second operator reviews the next item before
+  routing. Repeated ambiguity indicates either
+  unusual feedstock or operator fatigue.
+- **Mandatory escalation after repeated unknowns**
+  — five consecutive unknown items without
+  resolution triggers escalation to Human/AI
+  Oversight Gate regardless of individual item
+  status. Pattern recognition, not just item
+  assessment.
+- **Stop Intake authority** — any operator may
+  suspend Intake operations without justification
+  required. Queue accumulation never overrides
+  operator judgment. Items in hold are safe.
+  Items routed incorrectly are not.
+
+**Intake backlog collapse doctrine:**
+Intake can become a bottleneck under real salvage
+conditions. Queue collapse is not theoretical — it
+is an expected operational condition.
+
+- **Maximum unresolved hold threshold** — when
+  hold queue exceeds available physical storage,
+  new intake is suspended until hold queue clears.
+  *(Placeholder — threshold defined by physical
+  facility capacity)*
+- **Hold queue triage** — items in hold are
+  reviewed in hazard priority order, not arrival
+  order. Energetic and radiological holds are
+  resolved before ambiguous-identity holds.
+- **Physical quarantine overflow** — if quarantine
+  space is saturated, intake of new items suspected
+  to require quarantine is suspended. Accept only
+  items that can be cleared or routed immediately.
+- **Intake shutdown criteria** — intake stops when:
+  hold queue is full, quarantine is saturated, or
+  operator capacity is exhausted. Shutdown is not
+  failure. Resuming with backlog is failure.
 
 1. Visual inspection — gross condition, obvious hazards,
    visible contamination, structural integrity
@@ -175,6 +223,30 @@ held at Intake until the blocking condition is resolved.
 Intake is not a throughput gate — it is a safety gate.
 Speed is never a success metric here.
 
+**Degraded operation doctrine:**
+Intake assumes digital infrastructure — scanning,
+database lookup, digital record retention, network
+sync — but must survive without it. Power loss,
+network outage, or equipment failure must not stop
+Intake from performing its core safety function.
+
+| Condition | Degraded Response |
+|---|---|
+| Power loss during Intake | Switch to paper fallback intake log. Physical tag items manually. Sync digital records when power restores. |
+| Database unavailable | Operator-assisted lookup only. Flag items as database-unverified. Do not skip safety screening. |
+| Scanner unavailable | Log document presence in paper record. Scan when equipment restores. Physical document retained. |
+| Network unavailable | Continue local logging. Queue network contributions. Do not delay Intake for sync. |
+| Digital record system unavailable | Paper log is primary. Minimum record: item description, hazard status, tag number, date, operator. |
+
+*Minimum survivable Intake operation: visual safety
+screening, physical tagging, paper log entry. These
+three functions must be executable without any
+digital infrastructure. Everything else degrades
+gracefully — safety screening does not.*
+
+Cross-reference: Operations/Energy.md,
+Architecture/Forge_Net.md sync doctrine.
+
 ---
 
 ## 2. Safety Screening
@@ -193,6 +265,7 @@ the cost of a hold.
 | Biological/organic | Oils, fluids, biological matter | Staining, odor, visible growth | Visual inspection — moderate reliability |
 | Radiological | Radiation-emitting materials | Warning markings only — no visual indicator without markings | Visual inspection — very low reliability. See GI-003 |
 | Unknown | Any item that cannot be screened with confidence | No obvious indicators | Route to hold immediately |
+| Digital/firmware | Malware-bearing storage devices, compromised firmware, infected embedded systems, hostile control boards | No visual indicator — presence of storage media, network interfaces, or programmable controllers is the trigger | Isolate from all networked systems before any connection attempt — see GI-007 |
 
 **Screening doctrine:**
 - Screen before any disassembly begins — disassembly
@@ -204,6 +277,14 @@ the cost of a hold.
 - Chemical and radiological hazards beyond visual
   detection require augmented detection capability —
   see GI-003
+- **Digital hazard screening** — any item containing
+  storage media, network interfaces, or programmable
+  controllers must be treated as potentially hostile
+  before any connection to forge systems. Do not
+  plug in, power up connected to forge network, or
+  allow firmware execution without isolation protocol.
+  Cross-reference: GI-007, Operations/Electronics.md,
+  Architecture/Forge_Net.md
 - New hazard categories not listed above route to
   Human/AI Oversight Gate and trigger a new category
   entry per Architecture/Forge_flow.md contamination
@@ -312,6 +393,25 @@ Gate A — knowing what's inside before opening the item.
   explicitly included — not ignored as bulk material.
   See Section 6.
 
+**Parts list scope constraint:**
+The parts list is a helpful approximation, not
+structural certainty. Explicit limits at v0:
+- No guarantee of completeness — hidden assemblies,
+  non-standard modifications, and undocumented
+  variants are not captured
+- No inferred hidden assemblies — only what is
+  known from documentation or direct operator
+  knowledge is listed
+- No automation assumption — the list is generated
+  by human judgment, not machine vision or
+  predictive modeling
+- No dependency on database completeness — if the
+  database has no entry, the parts list is blank
+  until the operator fills it from knowledge
+- "Gate A intelligence arriving before Gate A"
+  means helpful context, not predictive certainty.
+  Gate A makes the actual routing decision.
+
 **Parts list minimum content:**
 - Item identifier (linked to intake tag)
 - Assembly model and manufacturer if known
@@ -389,6 +489,27 @@ Admin/Ship_of_Theseus.md grain system requirements
 before either is treated as stable. See ASM-006,
 GI-004.
 
+**Chain of custody integrity:**
+The tag is the physical link between the item and
+its record. Tag loss or detachment breaks the
+provenance chain at its first link. Provisional
+doctrine pending GI-006 resolution:
+- Tags must be physically durable and attached
+  securely — not adhesive labels on oily or wet
+  surfaces, not paper tags on items that will
+  be moved repeatedly
+- If a tag is lost before the item completes
+  gate routing: stop, re-identify the item
+  against intake records, re-tag before routing
+- Duplicate identifier prevention — tag numbers
+  are sequential and never reused, even after
+  an item is fully processed
+- Record/item reconciliation — at handoff to
+  Gate_02_Triage, the physical tag is verified
+  against the digital record before the item
+  proceeds. Mismatches are held, not routed.
+- Cross-reference: GI-006, Admin/Ship_of_Theseus.md
+
 ---
 
 ## 8. Unknown Item Protocol
@@ -420,6 +541,36 @@ Gate.
    made without context risk misrouting hazardous
    or high-value items
 
+**Intake-to-Triage contamination authority boundary:**
+Intake and Gate_02_Triage share responsibility for
+contaminated items but with distinct roles:
+- **Intake owns** initial containment and hazard
+  flagging — the item is held, labeled, and
+  physically isolated here
+- **Gate_02_Triage owns** routing classification —
+  once Intake has established the hazard state,
+  Triage determines the downstream path
+- **Human/AI Oversight Gate owns** unresolved
+  hazard arbitration — contaminated-but-valuable
+  items requiring partial disassembly or deferred
+  classification escalate here, not to Triage
+
+**Oversight Gate escalation capacity:**
+The unknown item protocol assumes Oversight is
+available when needed. No doctrine exists for
+Oversight saturation. Provisional guidance:
+- Items awaiting Oversight review remain in hold —
+  they do not route forward while waiting
+- If Oversight queue exceeds defined threshold,
+  new escalations are logged and queued; priority
+  order is safety-critical first, then age of hold
+  *(Placeholder — threshold defined operationally)*
+- Items in safe indefinite hold do not expire —
+  a correctly held item is always better than a
+  prematurely routed one
+- Cross-reference: Architecture/Forge_flow.md
+  Human/AI Oversight Gate doctrine
+
 **Unknown item as network contribution:**
 An unidentified item that is eventually identified
 through human expertise or extended research is a
@@ -437,7 +588,11 @@ item benefits from this forge's work.
 | 2026-05-15 | Audit Review | Intake conceived as simple safety screen and tag | Scope expanded significantly during drafting — document lookup, parts list generation, fastener recovery, unknown item protocol, and network contribution all surfaced as load-bearing functions | Intake is not a trivial entry gate. It is the system's first and only opportunity to catch hazards, establish provenance, and seed the network with knowledge. Underspecifying Intake underspecifies everything downstream | Analogous | No — expanded scope is correct |
 | 2026-05-15 | Audit Review | Visual inspection assumed sufficient for hazard detection | Chemical and radiological hazards have no reliable visual indicators. Lead, radiation, and many solvents are invisible to unaided inspection | Visual inspection is necessary but not sufficient for complete hazard screening at v0. Augmented detection capability is required before unsupervised Intake operation. See GI-003 | Analogous | Yes — validate detection capability before first unsupervised run |
 | 2026-05-15 | Audit Review | Fasteners treated as bulk material defaulting to Reduction | Fasteners are among the most practically useful recoverable items and are routinely lost to shredding in conventional scrapping | Fastener and small component recovery doctrine added — Class A salvage by default, not bulk Reduction. Formal registry deferred to v1+ when volume justifies overhead. The junk drawer instinct is correct | Analogous | Yes — validate recovery overhead vs. value at first operational scale |
-| 2026-05-15 | Audit Review | Unknown items assumed to escalate directly to Human/AI Oversight Gate | Direct escalation skips a hold and inspect opportunity that may resolve the unknown without consuming Oversight Gate capacity | Hold and inspect protocol added before escalation. Partial identification during hold reduces Oversight Gate load and produces higher-quality intake records. Unknown items that get identified are high-value network contributions | Analogous | No — hold and inspect is correct doctrine |
+| 2026-05-19 | Audit Review | Digital hazards not included in safety screening categories | Items with storage media, network interfaces, or programmable controllers can carry malware or hostile firmware invisible to physical inspection. Given Forge_Net.md integration, digital contamination propagates faster and further than physical contamination | Digital contamination added as explicit hazard category in Section 2. Isolation before any forge system connection required. GI-007 logged | Analogous | Yes — validate isolation protocol before first electronics intake |
+| 2026-05-19 | Audit Review | Intake assumed to have continuous digital infrastructure availability | Power loss, network outage, and equipment failure are real operational conditions. Safety screening must survive without digital infrastructure | Degraded operation doctrine added to Section 1. Minimum survivable Intake: visual screening, physical tagging, paper log. Everything else degrades gracefully | Analogous | No — degraded doctrine is correct |
+| 2026-05-19 | Audit Review | Operator cognitive fatigue not acknowledged as a hazard | Intake is the first safety barrier and is cognitively expensive. Fatigued operator is a hazard propagation vector, not just a performance issue | Cognitive fatigue doctrine added — shift guidance, second-review triggers, stop-intake authority. Backlog collapse doctrine added | Analogous | Yes — validate thresholds against first operational cycle |
+| 2026-05-19 | Audit Review | Parts list generation framed as Gate A intelligence without explicit scope limits | "Intelligence arriving before Gate A" risks implying predictive modeling capability that does not exist at v0 | Parts list scope constraint added — no hidden assemblies, no automation, no database dependency, helpful approximation not structural certainty | Analogous | No — scope constraint is permanent |
+| 2026-05-19 | Audit Review | Chain of custody between physical item and digital record not formally addressed | Tag loss breaks the provenance chain at its first link. The grain system depends on an unbroken chain from Intake forward | Provisional chain-of-custody doctrine added to Section 7. GI-006 logged. Record/item reconciliation at Gate_02 handoff added | Analogous | Yes — validate against grain system requirements when GI-004 and GI-006 resolve |
 
 ---
 
@@ -723,9 +878,119 @@ primary source of workplace incidents.
 
 ---
 
+### GI-006 — Intake chain-of-custody integrity
+not defined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical / Governance                           |
+| Blocking      | No                                               |
+| Owner         | Operations/Gate_01_Intake.md                     |
+| First Logged  | 2026-05-19                                       |
+| Last Reviewed | 2026-05-19                                       |
+
+**Description:** Intake establishes provenance,
+hazard status, and grain initiation for every item.
+No formal chain-of-custody doctrine exists to ensure
+the physical item and its digital record stay linked
+through the entire gate flow.
+
+**Why It Matters:** Without chain integrity, provenance
+can be corrupted, hazard-cleared items can be swapped
+for unchecked ones, and records can drift from the
+physical objects they describe. The grain system in
+Ship_of_Theseus.md depends on an unbroken provenance
+chain — Intake is where that chain starts.
+
+**Resolution Path:**
+- Define tag physical durability requirements —
+  material, attachment method, environmental
+  resistance for storage and handling conditions.
+- Define re-identification protocol for lost tags —
+  how is an untagged item matched back to its
+  intake record?
+- Define duplicate identifier prevention — tag
+  numbers are sequential and never reused.
+- Define record/item reconciliation at Gate_02
+  handoff — physical tag verified against digital
+  record before routing.
+- Cross-validate with Admin/Ship_of_Theseus.md
+  grain system requirements — GI-006 and GI-004
+  may resolve together.
+- Payment via Specification — once chain-of-custody
+  doctrine is defined and tested, move to Section 7
+  as Analogous.
+
+---
+
+### GI-007 — Digital contamination and hostile
+firmware handling not defined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | High                                             |
+| Priority      | Critical                                         |
+| Type          | Technical / Security                             |
+| Blocking      | No                                               |
+| Owner         | Operations/Gate_01_Intake.md                     |
+| First Logged  | 2026-05-19                                       |
+| Last Reviewed | 2026-05-19                                       |
+
+**Description:** Items containing storage media,
+network interfaces, or programmable controllers may
+carry malware, hostile firmware, or compromised
+embedded systems. No isolation or handling protocol
+exists for digital contamination at Intake.
+
+**Why It Matters:** Given Forge_Net.md network
+integration, a compromised device connected to forge
+systems before isolation could propagate malware to
+the reference database, corrupt cognitive save states,
+or compromise network trust scoring. Digital
+contamination is invisible, fast-propagating, and
+potentially irreversible at the network level. Physical
+contamination hazards are better understood — digital
+hazards are not yet acknowledged in the system.
+
+**Resolution Path:**
+- Define digital hazard indicators at Intake —
+  presence of storage media, network interfaces,
+  wireless capability, or programmable controllers
+  triggers isolation protocol before any connection.
+- Define isolation protocol — air-gapped assessment
+  before any forge system connection. No exceptions
+  for "probably safe" items.
+- Define assessment capability — what tools and
+  expertise are required to clear a device for
+  connection? This may require external expertise
+  at v0 bootstrap.
+- Cross-reference: Operations/Electronics.md,
+  Architecture/Forge_Net.md, Architecture/
+  Cognitive_Frameworks.md rogue unit doctrine.
+- Payment via Specification — once isolation protocol
+  is defined and tested, move to Section 2 as
+  Analogous.
+
+---
+
 ### Resolution Log
 
-*(empty — no entries resolved yet)*
+- 2026-05-19: GI-006, GI-007 — New entries logged
+  following ChatGPT audit 2026-05-19. Chain-of-
+  custody integrity and digital contamination both
+  identified as structurally important gaps given
+  Forge_Net.md integration. Provisional chain-of-
+  custody doctrine added to Section 7. Digital
+  contamination category added to Section 2 hazard
+  table. Degraded operation doctrine added to
+  Section 1. Cognitive fatigue and backlog collapse
+  doctrine added to Section 1. Intake-to-Triage
+  authority boundary added to Section 8. Parts list
+  scope constraint added to Section 5.
 
 ---
 
