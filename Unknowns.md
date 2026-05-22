@@ -1,5 +1,5 @@
-# Unknowns_LF.md — Cross-Module Unknowns Global Index
-**Version 1.5 — Audit cycle 2026-05-19. GI-006, GI-007, GR-006 through GR-008, GF-006, GF-007 logged.**
+# Unknowns.md — Cross-Module Unknowns Global Index
+**Version 1.6 — Audit cycle 2026-05-20. GU-001 through GU-004 (Utilization) and EL-005 through EL-008 (Electronics) logged. GF-005 resolved.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -11,6 +11,27 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
 Navigation unknowns → Discovery.md
+
+---
+
+## What v1.6 Means
+
+- Audit cycle 2026-05-20 complete — Gate_07_Utilization.md
+  created and audited by Claude (Retrofit/Auditor) and
+  ChatGPT (Skeptic/Auditor)
+- GU-001 through GU-004 added to new Utilization section —
+  performance metric schema, retirement handoff cross-validation,
+  quality certification ownership, and silent failure detection
+- Electronics.md retrofitted to File_Template.md structure
+  and audited 2026-05-09 (multi-agent), actioned 2026-05-19
+- EL-005 through EL-008 added to Salvage & Fabrication section —
+  toxic dust profile (Critical), firmware trust validation
+  (Critical), correlated TMR failure modes, and counterfeit
+  detection doctrine
+- GF-005 resolved — Gate_07_Utilization.md now exists and
+  owns the utilization stage doctrine
+- Stale filename references corrected throughout index —
+  canonical names per Discovery.md Rename Registry
 
 ---
 
@@ -35,6 +56,8 @@ Navigation unknowns → Discovery.md
 ---
 
 ## What v1.4 Means
+
+- Operations/Gate_03_Reduction.md created — only irreversible
   step, doctrine before specification, three hard prerequisites
 - Operations/Gate_06_Fabrication.md created — arc welding
   gatekeeper, add-to-excess and mill-to-spec, precision ceiling
@@ -76,24 +99,24 @@ Navigation unknowns → Discovery.md
 
 ## What v1.1 Means
 
-- Spin_Chamber_v0.md and Material_Separation_Gate_v0.md retrofitted
-  to File_Template.md structure and audited this cycle
+- Gate_05_Separation_Thermal.md and Gate_04_Separation_Mechanical.md
+  retrofitted to File_Template.md structure and audited this cycle
 - SC-001 through SC-008 and MG-001 through MG-008 added to Hardware
   Modules table
 - SC-001 status updated from Open to In Progress following RPM
   safety calculation (2026-05-15)
 - Material Separation Gate prefix corrected from GK to MG to avoid
-  collision with geck_forge_seed.md GK prefix
+  collision with Geck_forge_seed.md GK prefix
 - UNK-006 through UNK-008 added as new cross-module unknowns
-- DS-001 logged in Material_Separation_Gate_v0.md — Purification
-  stage terminology dispute; owner is Lazarus_forge_v0_flow.md
+- DS-001 logged in Gate_04_Separation_Mechanical.md — Purification
+  stage terminology dispute; owner is Architecture/Forge_flow.md
 
 ---
 
 ## Dependency Map
 
 ```
-EV-001 (energy_v0.md) -> LT-001 (leviathan_testing.md)
+EV-001 (Operations/Energy.md) -> LT-001 (Tests/Leviathan_testing.md)
   -> LT-003 (autonomy architecture)
      -> LT-004 (trust model)
      -> LT-005 (priority propagation)
@@ -116,14 +139,16 @@ EC-007 (governance fail-safe) — In Progress
 TR-001 (v1 profitability) -> depends on EV-001
 
 EL-001 (forge standard interface) -> depends on LT-001
+EL-005 (toxic dust profile) -> feeds Air_Scrubber.md sizing and filter selection
+EL-006 (firmware trust) -> prerequisite for first salvaged MCU integration
+EL-007 (correlated TMR failure) -> depends on first TMR prototype
+EL-008 (counterfeit detection) -> cross-reference EL-006 firmware trust
 
 AP-001 (auditor metrics) -> depends on UNK-004 (now active)
 AP-003 (audit trail schema) -> AP-001
 
 SC-001 (RPM envelope) -> SC-005 (drive system geometry)
 SC-002 (segregation effectiveness) — primary Gen-0 validation target
-SC-006 (siting) -> UNK-006 (master safety registry)
-MG-006 (siting) -> UNK-006 (master safety registry)
 SC-006 (siting) -> UNK-006 (master safety registry)
 MG-006 (siting) -> UNK-006 (master safety registry)
 UNK-007 (reduction module) -> MG-001, MG-002, MG-007
@@ -136,10 +161,10 @@ FN-004 (transport layer) -> informs FN-002 sync doctrine
 GI-002 (energetic discharge) -> blocks first operational Intake run
 GI-003 (augmented detection) -> blocks first unsupervised Intake run
 GI-001 (reference database) -> informs GI-003 detection protocol
-GI-004 (tagging schema) -> depends on Ship_of_Theseus grain system
+GI-004 (tagging schema) -> depends on Admin/Ship_of_Theseus.md grain system
 GI-005 (pre-Intake protocol) -> depends on GI-002 energetic doctrine
 GI-006 (chain of custody) -> depends on GI-004 tagging schema
-GI-007 (digital contamination) -> depends on Forge_Net.md FN-001, Electronics.md
+GI-007 (digital contamination) -> depends on Architecture/Forge_Net.md FN-001, Operations/Electronics.md
 GR-002 (method selection) -> unblocks GR-001, GR-004, GR-005, GR-006
 GR-003 (waste disposal) -> no owner in repository — Critical gap
 GR-001 (output envelope) -> depends on GR-002, feeds MG inputs
@@ -150,9 +175,12 @@ GR-007 (equipment retirement) -> depends on GR-003 waste disposal
 GR-008 (operator decision support) -> compensates for GI-002, GI-003 until resolved
 GF-001 (wire diameter) -> depends on welding process selection, feeds SC-004
 GF-002 (precision ceiling) -> feeds all fabrication tolerance claims
-GF-005 (Utilization gap) -> Gate_07_Utilization.md needs creation
+GF-005 (Utilization gap) -> Resolved — Gate_07_Utilization.md created
 GF-006 (structural adequacy) -> depends on GF-002 precision ceiling
 GF-007 (fire suppression) -> seed for UNK-006 facility siting file
+GU-001 (performance metric schema) -> depends on FN-001 Forge_Net contribution format
+GU-002 (retirement handoff) -> depends on Operations/Gate_02_Triage.md intake requirements
+GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging, Architecture/Components.md Baseline Observability
 ```
 
 ---
@@ -163,99 +191,103 @@ GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| EV-001 | Forge power demand uncharacterized | `energy_v0.md` | In Progress | Blocking |
+| EV-001 | Forge power demand uncharacterized | `Operations/Energy.md` | In Progress | Blocking |
 
 ### Leviathan / Autonomy
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| LT-001 | Power envelope — no placeholder anchor | `leviathan_testing.md` | Open | Blocking |
-| LT-002 | Deep-ocean storage degradation | `leviathan_testing.md` | Open | Blocking |
-| LT-003 | Autonomy architecture unspecified | `leviathan_testing.md` | Open | Blocking |
-| LT-004 | Trust model mechanism undefined | `leviathan_testing.md` | Open | Blocking |
-| LT-005 | Priority propagation — no mechanism | `leviathan_testing.md` | Open | Blocking |
-| LT-006 | Ethical log survival at depth | `leviathan_testing.md` | Open | Non-blocking |
+| LT-001 | Power envelope — no placeholder anchor | `Tests/Leviathan_testing.md` | Open | Blocking |
+| LT-002 | Deep-ocean storage degradation | `Tests/Leviathan_testing.md` | Open | Blocking |
+| LT-003 | Autonomy architecture unspecified | `Tests/Leviathan_testing.md` | Open | Blocking |
+| LT-004 | Trust model mechanism undefined | `Tests/Leviathan_testing.md` | Open | Blocking |
+| LT-005 | Priority propagation — no mechanism | `Tests/Leviathan_testing.md` | Open | Blocking |
+| LT-006 | Ethical log survival at depth | `Tests/Leviathan_testing.md` | Open | Non-blocking |
 
 ### Gate Logic & Triage
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| FL-001 | Gate logic determinism | `Lazarus_forge_v0_flow.md` | In Progress | Blocking |
+| FL-001 | Gate logic determinism | `Architecture/Forge_flow.md` | In Progress | Blocking |
 | FL-002 | Reduction module unassigned — upstream dependency | `Architecture/Forge_flow.md` | Resolved | — |
-| TS-001 | "Sufficient for forge duty" threshold | `Component_Triage_System.md` | In Progress | Blocking |
-| TS-002 | Contamination routing protocol | `Component_Triage_System.md` | Open | Blocking |
-| TS-003 | Gate determinism (downstream) | `Component_Triage_System.md` | In Progress | Blocking |
-| CO-001 | Graduation Rule detection circularity | `Components.md` | In Progress | Blocking |
+| TS-001 | "Sufficient for forge duty" threshold | `Operations/Gate_02_Triage.md` | In Progress | Blocking |
+| TS-002 | Contamination routing protocol | `Operations/Gate_02_Triage.md` | Open | Blocking |
+| TS-003 | Gate determinism (downstream) | `Operations/Gate_02_Triage.md` | In Progress | Blocking |
+| CO-001 | Graduation Rule detection circularity | `Architecture/Components.md` | In Progress | Blocking |
 
 ### Ethics & Governance
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| EC-001 | "Sufficient confidence" threshold | `Ethical_Constraints.md` | Open | Blocking |
-| EC-002 | Anti-Weaponization pattern-matching | `Ethical_Constraints.md` | Open | Blocking |
-| EC-003 | Human escalation path | `Ethical_Constraints.md` | In Progress | Blocking |
-| EC-004 | Governance failure modes lifecycle | `Ethical_Constraints.md` | In Progress | Blocking |
-| EC-005 | Life-preservation vs. Anti-Weaponization | `Ethical_Constraints.md` | In Progress | Blocking |
-| EC-006 | Ethical log survival under unit loss | `Ethical_Constraints.md` | Open | Non-blocking |
-| EC-007 | Governance fail-safe | `Ethical_Constraints.md` | In Progress | Blocking |
+| EC-001 | "Sufficient confidence" threshold | `Admin/Ethical_Constraints.md` | Open | Blocking |
+| EC-002 | Anti-Weaponization pattern-matching | `Admin/Ethical_Constraints.md` | Open | Blocking |
+| EC-003 | Human escalation path | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
+| EC-004 | Governance failure modes lifecycle | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
+| EC-005 | Life-preservation vs. Anti-Weaponization | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
+| EC-006 | Ethical log survival under unit loss | `Admin/Ethical_Constraints.md` | Open | Non-blocking |
+| EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
 
 ### Governance & Verification
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| AP-001 | Auditor effectiveness metrics | `Auditor_Protocols.md` | Open | Blocking |
-| AP-002 | Override vs. immutability boundary | `Auditor_Protocols.md` | In Progress | Blocking |
-| AP-003 | Audit trail schema | `Auditor_Protocols.md` | Open | Blocking |
+| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Blocking |
+| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Blocking |
+| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Blocking |
 
 ### Hardware Modules
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| SC-001 | RPM envelope not validated | `Spin_Chamber_v0.md` | In Progress | Blocking |
-| SC-002 | Segregation effectiveness at v0 scale | `Spin_Chamber_v0.md` | Open | Blocking |
-| SC-003 | MHD damping effectiveness | `Spin_Chamber_v0.md` | Open | Exploratory |
-| SC-004 | Wire extrusion nozzle design | `Spin_Chamber_v0.md` | Open | Exploratory |
-| SC-005 | Drive system geometry — dynamic imbalance blocked | `Spin_Chamber_v0.md` | Open | Major |
-| SC-006 | Siting and area-of-operation requirements | `Spin_Chamber_v0.md` | Open | Major |
-| SC-007 | Extraction process may disrupt segregation gradients | `Spin_Chamber_v0.md` | Open | Major |
-| SC-008 | Graphite crucible carbon pickup in alloy | `Spin_Chamber_v0.md` | Open | Major |
-| MG-001 | Quantitative energy reduction not established | `Material_Separation_Gate_v0.md` | Open | Minor |
-| MG-002 | Optimal RPM bands not characterized per feedstock | `Material_Separation_Gate_v0.md` | Open | Major |
-| MG-003 | Confidence threshold not empirically validated | `Material_Separation_Gate_v0.md` | Open | Major |
-| MG-004 | Geometry correction algorithm not specified | `Material_Separation_Gate_v0.md` | Open | Major |
-| MG-005 | Aquatic biofouling impact on rotor balance | `Material_Separation_Gate_v0.md` | Open | Exploratory |
-| MG-006 | Siting and area-of-operation requirements | `Material_Separation_Gate_v0.md` | Open | Major |
-| MG-007 | Rotor jam and entanglement recovery undefined | `Material_Separation_Gate_v0.md` | Open | Major |
-| MG-008 | Sensor fouling from conductive or abrasive fines | `Material_Separation_Gate_v0.md` | Open | Major |
-| AS-001 | 500W power budget not validated | `Air_Scrubber_v0.md` | Open | Medium |
-| AS-002 | Marine bubble-column depth scope | `Air_Scrubber_v0.md` | In Progress | Low |
-| AS-003 | Scrubber waste stream and saturation | `Air_Scrubber_v0.md` | In Progress | Medium |
-| SR-001 | Galvanic corrosion mitigation | `Support_Raft_v0.md` | Open | High |
-| SR-002 | Sacrificial shell material selection | `Support_Raft_v0.md` | Open | Medium |
-| SR-003 | Battery buffer sizing | `Support_Raft_v0.md` | Open | Medium |
-| SR-004 | Induction charging pad design | `Support_Raft_v0.md` | Open | Medium |
-| SR-005 | Chicken-and-egg end-of-region | `Support_Raft_v0.md` | Open | Medium |
-| SR-006 | Cold storage rack design | `Support_Raft_v0.md` | Open | Low |
-| SR-007 | Cache sanitization on hull compromise | `Support_Raft_v0.md` | Open | Medium |
-| SR-008 | Dynamic positioning vs. mooring | `Support_Raft_v0.md` | Open | Low |
-| SR-009 | Ballast pump energy draw | `Support_Raft_v0.md` | Open | Medium |
-| SR-010 | Thermal management modularity | `Support_Raft_v0.md` | Open | Low |
+| SC-001 | RPM envelope not validated | `Operations/Gate_05_Separation_Thermal.md` | In Progress | Blocking |
+| SC-002 | Segregation effectiveness at v0 scale | `Operations/Gate_05_Separation_Thermal.md` | Open | Blocking |
+| SC-003 | MHD damping effectiveness | `Operations/Gate_05_Separation_Thermal.md` | Open | Exploratory |
+| SC-004 | Wire extrusion nozzle design | `Operations/Gate_05_Separation_Thermal.md` | Open | Exploratory |
+| SC-005 | Drive system geometry — dynamic imbalance blocked | `Operations/Gate_05_Separation_Thermal.md` | Open | Major |
+| SC-006 | Siting and area-of-operation requirements | `Operations/Gate_05_Separation_Thermal.md` | Open | Major |
+| SC-007 | Extraction process may disrupt segregation gradients | `Operations/Gate_05_Separation_Thermal.md` | Open | Major |
+| SC-008 | Graphite crucible carbon pickup in alloy | `Operations/Gate_05_Separation_Thermal.md` | Open | Major |
+| MG-001 | Quantitative energy reduction not established | `Operations/Gate_04_Separation_Mechanical.md` | Open | Minor |
+| MG-002 | Optimal RPM bands not characterized per feedstock | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| MG-003 | Confidence threshold not empirically validated | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| MG-004 | Geometry correction algorithm not specified | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| MG-005 | Aquatic biofouling impact on rotor balance | `Operations/Gate_04_Separation_Mechanical.md` | Open | Exploratory |
+| MG-006 | Siting and area-of-operation requirements | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| MG-007 | Rotor jam and entanglement recovery undefined | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| MG-008 | Sensor fouling from conductive or abrasive fines | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major |
+| AS-001 | 500W power budget not validated | `Operations/Air_Scrubber.md` | Open | Medium |
+| AS-002 | Marine bubble-column depth scope | `Operations/Air_Scrubber.md` | In Progress | Low |
+| AS-003 | Scrubber waste stream and saturation | `Operations/Air_Scrubber.md` | In Progress | Medium |
+| SR-001 | Galvanic corrosion mitigation | `Tests/Support_Raft.md` | Open | High |
+| SR-002 | Sacrificial shell material selection | `Tests/Support_Raft.md` | Open | Medium |
+| SR-003 | Battery buffer sizing | `Tests/Support_Raft.md` | Open | Medium |
+| SR-004 | Induction charging pad design | `Tests/Support_Raft.md` | Open | Medium |
+| SR-005 | Chicken-and-egg end-of-region | `Tests/Support_Raft.md` | Open | Medium |
+| SR-006 | Cold storage rack design | `Tests/Support_Raft.md` | Open | Low |
+| SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | Medium |
+| SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | Low |
+| SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | Medium |
+| SR-010 | Thermal management modularity | `Tests/Support_Raft.md` | Open | Low |
 
 ### Salvage & Fabrication
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| GK-001 | Forge loop definition | `geck_forge_seed.md` | Resolved | — |
-| GK-002 | Sacrificial anode material | `geck_forge_seed.md` | Open | Medium |
-| GK-003 | Induction charging pad design | `geck_forge_seed.md` | Open | Low |
-| GK-004 | Marine AM material durability | `geck_forge_seed.md` | Open | Low |
-| ST-001 | Grain storage and tracking protocol | `Ship_of_Theseus_Right_to_Repair.md` | Open | Low |
-| ST-002 | QR documentation standard | `Ship_of_Theseus_Right_to_Repair.md` | Open | Low |
-| ST-003 | Legal applicability by jurisdiction | `Ship_of_Theseus_Right_to_Repair.md` | Open | Medium |
-| EL-001 | Forge-Standard interface spec | `Electronics.md` | Open | Medium |
-| EL-002 | PCB trace width for v0 tooling | `Electronics.md` | Open | Low |
-| EL-003 | TMR voter implementation | `Electronics.md` | Open | Medium |
-| EL-004 | Chemical etch waste stream | `Electronics.md` | Open | Medium |
+| GK-001 | Forge loop definition | `Architecture/Geck_forge_seed.md` | Resolved | — |
+| GK-002 | Sacrificial anode material | `Architecture/Geck_forge_seed.md` | Open | Medium |
+| GK-003 | Induction charging pad design | `Architecture/Geck_forge_seed.md` | Open | Low |
+| GK-004 | Marine AM material durability | `Architecture/Geck_forge_seed.md` | Open | Low |
+| ST-001 | Grain storage and tracking protocol | `Admin/Ship_of_Theseus.md` | Open | Low |
+| ST-002 | QR documentation standard | `Admin/Ship_of_Theseus.md` | Open | Low |
+| ST-003 | Legal applicability by jurisdiction | `Admin/Ship_of_Theseus.md` | Open | Medium |
+| EL-001 | Forge-Standard interface spec | `Operations/Electronics.md` | Open | Medium |
+| EL-002 | PCB trace width for v0 tooling | `Operations/Electronics.md` | Open | Low |
+| EL-003 | TMR voter implementation | `Operations/Electronics.md` | Open | Medium |
+| EL-004 | Chemical etch waste stream | `Operations/Electronics.md` | Open | Medium |
+| EL-005 | Toxic dust and BFR emission profile not characterized | `Operations/Electronics.md` | Open | Critical |
+| EL-006 | Firmware trust and reflashing validation not defined | `Operations/Electronics.md` | Open | Critical |
+| EL-007 | Correlated failure modes in homogeneous salvage TMR not characterized | `Operations/Electronics.md` | Open | Major |
+| EL-008 | Counterfeit salvage component detection doctrine not defined | `Operations/Electronics.md` | Open | Major |
 
 ### Reduction
 
@@ -278,7 +310,7 @@ GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 | GF-002 | Precision ceiling not characterized at v0 bootstrap | `Operations/Gate_06_Fabrication.md` | Open | Major |
 | GF-003 | Material removal hardware not specified | `Operations/Gate_06_Fabrication.md` | Open | Minor |
 | GF-004 | Fabrication energy consumption not characterized | `Operations/Gate_06_Fabrication.md` | Open | Minor |
-| GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Open | Minor |
+| GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Resolved | — |
 | GF-006 | Structural adequacy criteria undefined for v0 qualification | `Operations/Gate_06_Fabrication.md` | Open | Major |
 | GF-007 | Fabrication-area fire suppression and hot-work doctrine undefined | `Operations/Gate_06_Fabrication.md` | Open | Critical |
 
@@ -304,27 +336,36 @@ GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 | FN-004 | v0 Network transport layer not specified | `Architecture/Forge_Net.md` | Open | Major |
 | FN-005 | Data privacy and access control not specified | `Architecture/Forge_Net.md` | Open | Critical |
 
+### Utilization
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| GU-001 | Performance metric schema not defined | `Operations/Gate_07_Utilization.md` | Open | Major |
+| GU-002 | Retirement handoff protocol not cross-validated with Gate_02_Triage | `Operations/Gate_07_Utilization.md` | Open | Major |
+| GU-003 | Formal quality certification and standards compliance unowned | `Operations/Gate_07_Utilization.md` | Open | Minor |
+| GU-004 | Silent failure detection capability not defined | `Operations/Gate_07_Utilization.md` | Open | Major |
+
 ### Trajectory
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| TR-001 | v1 profitability baseline | `Trajectories_LF.md` | Open | Blocking |
+| TR-001 | v1 profitability baseline | `Admin/Trajectories.md` | Open | Blocking |
 
 ### Cross-Module
 
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
-| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Spin_Chamber_v0.md` SC-006, `Material_Separation_Gate_v0.md` MG-006 | Open | Major |
+| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Operations/Gate_05_Separation_Thermal.md` SC-006, `Operations/Gate_04_Separation_Mechanical.md` MG-006 | Open | Major |
 | UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Architecture/Forge_flow.md` FL-002, `Operations/Gate_04_Separation_Mechanical.md` MG-007 | Resolved | — |
-| UNK-008 | Welding wire specification and qualification — no owner assigned | `Spin_Chamber_v0.md` SC-004 | Open | Major |
+| UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` SC-004 | Open | Major |
 
 ### Future / Deferred
 
 | ID | Title | Owning File | Status |
 |---|---|---|---|
-| UNK-003 | Cross-repo assumption contracts | `Auditor_Protocols.md` | Deferred (Leviathan milestone) |
-| UNK-005 | Marine G.E.C.K. seed variant | `geck_forge_seed.md` | In Progress (stub added) |
-| UNK-001 | Discovery.md Unknowns_LF.md entry | `Discovery.md` | In Progress |
+| UNK-003 | Cross-repo assumption contracts | `Admin/Auditor_Protocols.md` | Deferred (Leviathan milestone) |
+| UNK-005 | Marine G.E.C.K. seed variant | `Architecture/Geck_forge_seed.md` | In Progress (stub added) |
+| UNK-001 | Discovery.md Unknowns.md entry | `Discovery.md` | In Progress |
 
 ---
 
@@ -332,8 +373,8 @@ GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 
 *Expiry Rule is active. Check this table at the opening of each audit cycle.*
 
-No entries past two cycles at v1.1 — SC and MG entries are new this cycle.
-FL-001 and several EC entries are In Progress from prior cycle — watch at next cycle.
+FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
+GF-005 resolved this cycle — removed from watch.
 
 ---
 
@@ -346,78 +387,20 @@ FL-001 and several EC entries are In Progress from prior cycle — watch at next
 | UNK-022 | Full Stop Review trigger conditions | Resolved — added to Auditor_Protocols.md v0.5 | May 2026 |
 | FL-002 | Reduction module unassigned | Resolved — Operations/Gate_03_Reduction.md created. Doctrine, prohibited inputs, output envelope, contamination protocol, and emergency shutdown defined | 2026-05-15 |
 | UNK-007 | Reduction module upstream dependency | Resolved — Gate_03_Reduction.md creation closes the gap. Output envelope cross-validation with Gate_04 tracked under GR-001 | 2026-05-15 |
-| GK-001 | Forge loop definition | Resolved — defined in geck_forge_seed.md Section III | May 2026 |
+| GK-001 | Forge loop definition | Resolved — defined in Architecture/Geck_forge_seed.md Section III | May 2026 |
+| GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created 2026-05-19. After action review doctrine, performance logging, failure mode capture, feedback paths, and retirement handoff defined | 2026-05-20 |
 
 ---
 
 ## Audit Trail
 
-**v0.1–v0.91:** See prior version history. Full entry detail for all unknowns now migrated
-to owning file sidecars per Auditor_Protocols.md v0.5 Sidecar Model.
+**v0.1–v0.91:** See prior version history. Full entry detail for all unknowns now migrated to owning file sidecars per Auditor_Protocols.md v0.5 Sidecar Model.
 
 **v1.0 — May 2026:**
-First full audit cycle across all primary documents complete.
-All unknowns migrated to owning file sidecars.
-Global index restructured — summary tables only, full detail in owning files.
-UNK-004 (Expiry Rule) activates — Expiry Watch section now live.
-Electronics.md added — EL-001 through EL-004 logged.
-Protocol Performance metrics begin collecting.
-Preparatory framing lines drop from audit prompts from this version forward.
+First full audit cycle across all primary documents complete. All unknowns migrated to owning file sidecars. Global index restructured — summary tables only, full detail in owning files. UNK-004 (Expiry Rule) activates — Expiry Watch section now live. Electronics.md added — EL-001 through EL-004 logged. Protocol Performance metrics begin collecting. Preparatory framing lines drop from audit prompts from this version forward.
 
 **v1.5 — 2026-05-19:**
-Audit cycle complete on Gate_01_Intake, Gate_03_Reduction,
-and Gate_06_Fabrication using AUDIT_HARNESS.py v3.
-GI-006 (chain of custody) and GI-007 (digital contamination)
-added — GI-007 Critical given Forge_Net.md integration risk.
-GR-006 (jam clearing), GR-007 (equipment retirement — Critical),
-and GR-008 (operator decision support) added following structural
-gaps identified in Reduction audit. GF-006 (structural adequacy)
-and GF-007 (fire suppression — Critical) added following
-Fabrication audit. Welding process phase split A/B/C added to
-Gate_06. Unknown salvage alloy contamination defaults added.
-Digital contamination category added to Gate_01 safety screening.
-Dependency map updated. Seven new unknowns total this cycle.
+Audit cycle complete on Gate_01_Intake, Gate_03_Reduction, and Gate_06_Fabrication using AUDIT_HARNESS.py v3. GI-006 (chain of custody) and GI-007 (digital contamination) added — GI-007 Critical given Forge_Net.md integration risk. GR-006 (jam clearing), GR-007 (equipment retirement — Critical), and GR-008 (operator decision support) added following structural gaps identified in Reduction audit. GF-006 (structural adequacy) and GF-007 (fire suppression — Critical) added following Fabrication audit. Welding process phase split A/B/C added to Gate_06. Unknown salvage alloy contamination defaults added. Digital contamination category added to Gate_01 safety screening. Dependency map updated. Seven new unknowns total this cycle.
 
-**v1.4 — 2026-05-15:**
-Operations/Gate_03_Reduction.md created — only irreversible step,
-doctrine before specification, three hard prerequisites, method
-selection as keystone unknown. GR-001 through GR-005 added.
-GR-003 (waste disposal) flagged Critical — no owner in repository.
-Operations/Gate_06_Fabrication.md created — arc welding gatekeeper,
-add-to-excess and mill-to-spec, precision ceiling ownership.
-GF-001 through GF-005 added. GF-005 identifies Gate_07_Utilization.md
-as next required file. FL-002 and UNK-007 updated to Resolved —
-Gate_03_Reduction.md creation closes the Reduction module gap.
-Dependency map updated. Discovery.md updated.
-
-**v1.3 — 2026-05-15:**
-Operations/Gate_01_Intake.md created — system entry point,
-safety screening, identification, parts list generation,
-fastener recovery, provenance tagging, unknown item protocol.
-GI-001 through GI-005 added to Intake section.
-GI-002 (energetic discharge) and GI-003 (augmented detection)
-flagged as hard prerequisites for first operational Intake run.
-Dependency map updated. Discovery.md updated.
-
-**v1.2 — 2026-05-15:**
-Architecture/Forge_Net.md created — decentralized network doctrine,
-data and physical infrastructure, cluster governance emergence,
-positive reinforcement, security threat model, privacy classification.
-FN-001 through FN-005 added to Network section.
-FN-001 (validation criteria) and FN-005 (privacy doctrine) flagged
-as hard prerequisites for first forge-to-forge connection.
-Dependency map updated. Discovery.md updated to include Forge_Net.md.
-Spin_Chamber_v0.md and Material_Separation_Gate_v0.md retrofitted to
-File_Template.md structure. Full audit passes completed by Claude,
-Grok, and ChatGPT — three independent auditor convergence on core findings.
-SC-001 through SC-008 added to Hardware Modules table.
-SC-001 status updated to In Progress — RPM safety calculation completed,
-safety factor ~32× confirmed, dynamic analysis deferred to SC-005.
-Material Separation Gate prefix corrected from GK to MG to avoid
-collision with geck_forge_seed.md prefix.
-MG-001 through MG-008 added to Hardware Modules table.
-FL-002 added to Gate Logic table — Reduction module unassigned.
-UNK-006 through UNK-008 added as new cross-module unknowns.
-DS-001 logged in Material_Separation_Gate_v0.md Active Disputes —
-Purification stage terminology; owner Lazarus_forge_v0_flow.md.
-Dependency map updated with SC, MG, and UNK entries.
+**v1.6 — 2026-05-20:**
+Gate_07_Utilization.md created and audited — after action review doctrine, performance logging, failure mode capture, four feedback paths, and retirement handoff defined. GU-001 through GU-004 added to new Utilization section. Electronics.md retrofitted to File_Template.md structure (multi-agent audit 2026-05-09, actioned 2026-05-19) — EL-005 through EL-008 added to Salvage & Fabrication section. EL-005 (toxic dust) and EL-006 (firmware trust) flagged Critical. GF-005 resolved and moved to archive — Gate_07_Utilization.md creation closes the utilization stage gap. Stale filename references corrected throughout index to canonical names per Discovery.md Rename Registry. Dependency map updated with GU and EL entries.
