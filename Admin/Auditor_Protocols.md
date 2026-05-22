@@ -1,719 +1,925 @@
-# Auditor_Protocols.md — Verification & Hallucination Filter
-**Version 0.6**
+Auditor_Protocols.md
 
-**Audit Health:**
-- Status: Specification (governing document)
-- Last audit: 2026-05-19 (Multi-model — Claude, ChatGPT, Gemini, Grok)
-- Open unknowns: 3 (Medium) — see sidecar
-- Sidecar: [#auditor-notes--unknowns]
+File State
 
----
+Field	Value
 
-## Purpose
+Status	Draft
+Body Stability	Transitional
+Spec Gates	3/6
+Verification Ref	Verification_Gates_LF.md
+Last Audit	2026-05-22
+Auditor	GPT-5.5 — Skeptic/Auditor
+Open Unknowns	4
+Active Disputes	1
+Highest Risk	High
+Sidecar Link	#auditor-notes--unknowns
+Ethical Anchor	Attempt to do no harm. Defer to Ethical_Constraints.md if present.
 
-This document defines the verification protocols for all contributors to the Lazarus Forge — human, AI, or multi-agent workflow. Its purpose is to ensure that what enters the repository as specification has been pressure-tested, not merely generated.
 
-Polished outputs are a known failure mode. Unverified content is not eligible for specification.
+Scope Boundary
 
-This file governs how claims are checked, how contributions are audited, and how the multi-agent workflow maintains integrity across sessions and contributors.
+This file DOES define:
 
-**This document is subject to its own protocols.** The gate logic, checklist, and audit trail requirements apply to revisions of this document as much as to any other.
+Repository-wide auditor operational behavior
 
----
+Audit sequencing and escalation logic
 
-## Governing Principle
+Requirements for evidence handling
 
-> Capability never outruns permission. — `Admin/Ethical_Constraints.md`
+Unknown tracking doctrine
 
-The auditor equivalent:
+Drift detection requirements
 
-> Confidence never outruns verification.
+Audit failure conditions
 
-These two principles operate in parallel. One governs what the Forge is allowed to do. The other governs what the Forge is allowed to claim.
+Resolution and discharge pathways
 
-**Scope boundary:** Human override rights under this protocol apply to verification process decisions only. They do not extend to the hard-line doctrines (Anti-Weaponization, Life Preservation) defined in `Admin/Ethical_Constraints.md`.
+Auditor role separation requirements
 
----
+Minimum standards for Specification promotion
 
-## Exploration vs. Specification
 
-**Exploration** — Allowed to be incomplete, speculative, and loosely connected. Do not over-police.
+This file DOES NOT define:
 
-**Specification** — Must pass all verification gates before commit. Claims are binding, cross-references must resolve, and quantitative values must be labeled.
+Engineering specifications for Forge systems
 
-**The loophole guard:** Exploratory documents making implicit performance claims must be treated as specification candidates for those claims. The Exploration label does not shield implicit guarantees.
+Ethical policy details beyond mandatory anchor preservation
 
-**Design rule:** These protocols apply only when promoting content toward specification. Misapplying verification pressure to exploratory thinking is itself a failure mode.
+Local module implementation details
 
----
+Human governance authority structures
 
-## The Fallacy Checklist
+Fabrication procedures
 
-Apply to all specification-level claims. Bare checkmarks are not verification — substantive notes required for non-trivial claims (1–2 sentences minimum stating what was checked, what nearly failed, and what was adjusted).
+Experimental methodology standards
 
-**1. Magic Energy**
-Does the design assume energy is available without accounting for its source, storage, or conversion losses? Every watt must have a traceable origin. Cross-reference `Operations/Energy.md`.
+Canonical terminology definitions
 
-**2. Friction Blindness**
-Does the design ignore mechanical resistance, thermal losses, fluid drag, or interface wear? Real systems degrade. Specifications that assume ideal conditions are not specifications — they are wishes.
+Repository architecture ownership boundaries
 
-**3. Energy Density Paradox**
-Does any recovery, recycling, or bootstrapping step consume more than it produces? Justify as enabling investment or flag. Recovery that costs more than it recovers is reduction dressed as progress.
 
-**4. Semantic Drift**
-Has a term changed meaning between documents without a documented revision? Cross-check against `Architecture/Forge_flow.md` as the reference standard.
+File Purpose
 
-**5. Scope Creep Disguised as Refinement**
-Does a revision quietly expand claimed capabilities beyond what the current version can demonstrate? New capabilities belong in `Admin/Trajectories.md`.
+This file defines how auditors operate within LazarusForgeV0. It exists to prevent audit theater, uncontrolled specification promotion, semantic drift, silent contradiction accumulation, and autonomous corruption of repository knowledge. Without this file, the repository may continue producing documents while progressively losing reliability, traceability, and operational grounding. The protocol establishes how auditors detect instability, classify uncertainty, escalate unresolved risk, and preserve institutional memory across long operational timelines.
 
-**6. Hallucinated Files or Cross-References**
-Does the document reference a file that does not exist? All cross-references must resolve to real files. Files confirmed in `Discovery.md` are treated as verified. Aspirational references must be labeled planned. Repository uses folder-prefixed paths — do not flag folder-prefixed canonical names as failures.
+Assumptions
 
-**7. Confidence Without Basis**
-All quantitative claims must carry one of four labels:
-- **Measured** — derived from real experimental data
-- **Estimated** — derived from analog systems with documented scaling factors
-- **Analogous** — drawn from similar documented systems
-- **Placeholder** — provisional, pending verification
+ID	Assumption	Basis	Confidence	Expiry Trigger
 
-Unlabeled numbers are assumed Placeholder. False precision labeled "estimated" is still a violation.
+ASM-001	Auditors may include both humans and autonomous agents	Current repository architecture	High	Repository governance changes
+ASM-002	Verification gates remain repository-wide canonical requirements	Verification_Gates_LF.md dependency	Medium	Gate structure revision approved
+ASM-003	Most repository files will remain partially incomplete for long periods	Current Forge development state	High	Repository reaches stable Specification maturity
+ASM-004	Autonomous agents may attempt optimization shortcuts during audits	Observed LLM behavior patterns	High	Proven resistant audit architecture established
 
-**8. Lifecycle Truncation**
-Every module specification must include: Degraded Operation, Failure Modes & Detection, Maintenance Access, End-of-Life / Recycling Path. A specification describing only the working state is incomplete.
 
-**9. Incomplete by Omission**
-What critical subsystem is missing? Common omissions: heat dissipation, waste stream management, human interface requirements, power draw under load. Absence of mention is not evidence of absence of need.
-
-**10. The Turd Problem**
-Strip to one falsifiable sentence. Does the foundation survive adversarial reduction? Do not rename this. It is memorable and functionally precise.
 
 ---
 
-## AI Contribution Protocols
+Auditor Protocols
 
-**Role declaration required:**
-> *"Operating as [Role] per Auditor_Protocols.md v0.6"*
+Core Auditor Doctrine
 
-Roles: **Synthesizer** | **Engineer** | **Skeptic/Auditor** | **Connective Tissue**
+Auditors are not authors, advocates, marketers, or speculative futurists.
 
-**Rule 1 — No Invented Files:** Never reference unconfirmed files. Files listed in `Discovery.md` are confirmed. State uncertainty for anything else.
+Auditors exist to:
 
-**Rule 2 — Role Awareness:** Name role shifts before proceeding.
+Detect contradiction
 
-**Rule 3 — Lineage Tracking:** Note what changed, why, and what it replaces.
+Detect unsupported claims
 
-**Rule 4 — Refusal is Valid:** Flag flawed premises — do not refine them. Refusal is a success of the protocol.
+Detect hidden assumptions
 
-**Rule 5 — Confidence Labeling:** Use the four-label system. Unlabeled = Placeholder.
+Detect semantic drift
 
-**Rule 6 — Inter-Agent Consistency:** Open with Assumption Extraction: *"Prior contributions assumed: [list]. Carried forward unless contradicted."* Failure to re-evaluate prior assumptions is a primary cause of multi-agent hallucination cascades.
+Detect audit theater
 
-**Rule 7 — Repository Structure Awareness:** The repository uses folder-based structure (Admin/, Architecture/, Operations/, Tests/). Legacy flat filenames are aliases documented in the Rename Registry in `Discovery.md`. Use canonical folder-prefixed paths in all new contributions.
+Preserve uncertainty honestly
 
-**Trust the process, not the predecessor.**
+Prevent premature Specification promotion
 
----
+Preserve institutional memory
 
-## Human Contributor Protocols
+Protect repository coherence over time
 
-- Label estimates as estimates. "I think it works" is not a specification claim.
-- Resolve all cross-references before committing. Planned files must be explicitly labeled.
-- Overrides of AI auditor flags must be documented with reasoning. Undocumented overrides are indistinguishable from ignored warnings.
-- Override rights apply to verification process decisions — not to Ethical_Constraints hard-line doctrines.
-- Lifecycle template (Fallacy #8) applies to human-authored module specs.
 
----
+An auditor's responsibility is reality alignment, not progress acceleration.
 
-## Decentralized Audit Architecture (Sidecar Model)
+Passing an audit is not evidence of correctness. Failing to detect instability is itself an audit failure.
 
-*Introduced v0.5. Addresses metadata bloat and token-limit failures.*
-
-### The Problem
-
-A centralized unknowns registry that stores full entry detail grows without bound. When it exceeds practical token limits, the governance system fails the thing it governs.
-
-### Local Ledgers + Global Index
-
-**Local Ledger (Sidecar):** Every specification file contains an `## Auditor Notes & Unknowns` section at the footer. Module-specific unknowns live here.
-
-**Global Index:** `Unknowns.md` is a cross-module index only — summary table, dependency map, systemic risks spanning multiple files, audit trail, resolved archive. Full entry detail lives in the owning file's sidecar.
-
-### Audit Health Header
-
-Every file carries a File State table immediately below the title per `Admin/File_Template.md`. The File State table replaces the legacy Audit Health Header format.
-
-### Sidecar Format
-
-Full sidecar format is defined in `Admin/File_Template.md` Section 8. Summary:
-
-```markdown
----
-
-## Auditor Notes & Unknowns
-
-### [FILE-PREFIX-NNN] — Short title
-
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open / In Progress / Resolved |
-| Risk          | Low / Medium / High      |
-| Priority      | Minor / Major / Critical |
-| Type          | Technical / Ethical / Architectural / Governance |
-| Blocking      | Yes / No                 |
-| Owner         | Owning file              |
-| First Logged  | YYYY-MM-DD               |
-| Last Reviewed | YYYY-MM-DD               |
-
-**Description:** One sentence stating the reality gap.
-**Why It Matters:** One sentence on consequence if unresolved.
-**Resolution Path:** Concrete closure criteria.
 
 ---
 
-### Resolution Log
-- YYYY-MM-DD: [FILE-PREFIX-NNN] — one-line resolution description
-```
+Auditor Role Classes
 
-Local IDs use file abbreviation + three digits: `AP-001` (Auditor Protocols), `SC-001` (Separation Thermal), `GI-001` (Gate Intake), etc. Cross-module unknowns use global `UNK-XXX` format and are indexed in `Unknowns.md`.
+Skeptic Auditor
 
-### The 10-Entry Rule
+Primary responsibility:
 
-More than 10 distinct open entries in a sidecar flags the file for a Resolution Pass before the next audit cycle.
+Challenge assumptions
 
-### Metadata Guardrail
+Search for contradiction
 
-If sidecar content exceeds 20% of total document word count, flag for Resolution Pass before auditing. Flag is strong — not a hard refusal. Proceed if human contributor explicitly acknowledges.
+Stress-test coherence
 
-### Resolution and Expungement
+Escalate unsupported certainty
 
-- **Payment via Specification** — content moves into the document body as committed spec; entry moves to Resolution Log
-- **Discharge via Trajectory** — out of current version scope; route to `Admin/Trajectories.md`; note in Resolution Log
-- **Discharge via Lessons Learned** — resolved by operational experience; lesson moves to Lessons Learned section; entry closes
 
-**Crystallization principle:** Every unknown that moves from sidecar into specification body makes the document more deterministic. A shrinking sidecar is a maturing document.
+Default stance:
 
----
+> "What evidence would invalidate this claim?"
 
-## Unknowns Registry
 
-*In v0.5+, this section governs global index behavior. Local sidecar format is defined above and in `Admin/File_Template.md`.*
 
-**Where unknowns live:**
-- Module-specific — in the file's own sidecar
-- Cross-module — in `Unknowns.md` global index, owning file noted
-- Navigation — in `Discovery.md`
+Skeptic auditors prioritize:
 
-**Global index format:**
+Internal coherence
 
-| ID | Title | Owning file | Status | Priority (Promotion) |
-|---|---|---|---|---|
-| UNK-XXX | Short title | `folder/filename.md` | Open/In Progress/Deferred | Blocking/Non-blocking |
+Assumption exposure
 
-**Priority tags:** Blocking | Non-blocking | Exploratory
+Scope containment
 
-**The Expiry Rule** is retained as a backstop for cross-module unknowns in the global index. For global index entries: if a Blocking or Non-blocking unknown remains without a documented Resolution Path for more than two audit cycles, escalate to Systemic Risk or demote the dependent module.
+Semantic precision
 
-**Expiry check:** Skeptic/Auditor role opens each audit cycle by reviewing the global index for entries approaching two cycles.
 
-A verification pass that surfaces no unknowns on a complex document should itself be treated with suspicion.
 
 ---
 
-## Cross-Repo Verification
+Systems Auditor
 
-*Astroid-miner is a planned repository, intentionally deferred until Leviathan deployment is underway. Cross-repo verification applies to `Lazarus-Forge-` now; Astroid-miner activates at that milestone.*
+Primary responsibility:
 
-Any cross-repo dependency must be documented in both repositories with a stated assumption contract. The dependency is not verified until both sides acknowledge it.
+Cross-module integration review
 
----
+Dependency mapping
 
-## Verification Gates
+Interface consistency
 
-Sequential. Auditor has binding block authority. Self-approval loops not permitted. Blocks require documented rebuttal and second-pass audit by a different agent to override.
+Architectural drift detection
 
-| Gate | Test | Fail → |
-|---|---|---|
-| 1 — Fallacy Check | Checklist actively applied with substantive notes? | Return to author |
-| 2 — Verification Artifacts | At least one falsifiable artifact per significant claim? | Return for artifact generation |
-| 3 — Adversarial Pass | Adversarial Challenge Battery applied? At least one failure scenario per challenge class tested? | Must undergo adversarial testing — see Adversarial Audit Layer |
-| 4 — Scope Alignment | Fits current version or future trajectory? | Route to `Admin/Trajectories.md` |
-| 5 — Cross-Reference Integrity | All file refs resolve using canonical folder-prefixed paths? Cross-repo deps bidirectional? | Hold at draft |
-| 6 — Conflict Check | Contradicts existing committed specs? | Resolve conflict before committing |
 
-**Gate 3 is now formally gated on the Adversarial Audit Layer.** One concrete failure scenario was the prior bar — it is insufficient. The Adversarial Challenge Battery below defines the minimum requirement.
+Default stance:
 
----
+> "What breaks if this changes?"
 
-## Adversarial Audit Layer
 
-*Introduced v0.6. Upgrades the auditor role from checklist verifier to institutional immune system.*
 
-### Purpose
+Systems auditors prioritize:
 
-The adversarial layer exists to challenge hidden assumptions, institutional blind spots, semantic ambiguity, operator incentives, recursive self-validation, and failure propagation pathways. Its purpose is not criticism for its own sake — it is resilience hardening.
+Interface compatibility
 
-> A protocol is not considered robust until it has survived deliberate hostile analysis.
+Canonical terminology preservation
 
-The strongest audit systems are not optimized to prove correctness. They are optimized to discover how reality can still break the model despite apparent correctness.
+Ownership clarity
 
-### When to Apply
+Dependency stability
 
-The full Adversarial Challenge Battery is required for:
-- Any document being considered for Specification promotion
-- Any document governing irreversible actions (Gate_03_Reduction.md, Ethical_Constraints.md)
-- Any document in the trust chain for autonomous systems (Electronics.md, Cognitive_Frameworks.md)
-- Any document that has passed Gate 1 and Gate 2 but still feels wrong
 
-Partial application (selected challenge classes) is acceptable for Exploration-stage documents. Document which classes were applied and why others were deferred.
-
-### The Adversarial Challenge Battery
-
-Ten challenge classes. Each requires at least one concrete scenario, not a general acknowledgment.
 
 ---
 
-**Challenge Class 1 — Assumption Inversion**
+Evidence Auditor
 
-Tests whether a protocol only works because hidden assumptions remain true.
+Primary responsibility:
 
-Ask: *What if the operator is wrong? What if the sensor data is fabricated? What if the environment is hostile instead of cooperative?*
+Verification source integrity
 
-Many Forge gates implicitly assume:
-- Accurate classification
-- Honest reporting
-- Stable materials
-- Intact tooling
-- Rational operators
+Confidence label enforcement
 
-An adversarial audit deliberately removes those assumptions and asks whether the protocol survives.
+Traceability validation
 
-*Minimum requirement:* Name three hidden assumptions in the document and describe what happens when each fails.
+Replication analysis
 
----
 
-**Challenge Class 2 — Failure Amplification**
+Default stance:
 
-Instead of asking "Can this fail?" ask "How does this fail catastrophically?"
+> "How do we know this is true?"
 
-Examples:
-- A misidentified capacitor becomes an arc flash
-- Contaminated aluminum poisons a melt batch
-- Mislabeled alloys propagate downstream unnoticed
 
-This reveals cascading failures, hidden coupling, and latent propagation pathways. A protocol that survives only isolated failures is fragile.
 
-*Minimum requirement:* Trace one failure from its origin through at least two downstream consequences.
+Evidence auditors prioritize:
 
----
+Measurement quality
 
-**Challenge Class 3 — Incentive Corruption**
+Evidence provenance
 
-Audits whether the protocol breaks when participants optimize for the wrong thing.
+Replication pathways
 
-Examples:
-- Throughput over safety
-- "Passing audit" over actual integrity
-- Hiding uncertainty to avoid delays
-- Fabricating confidence metrics to meet targets
+Distinction between observed vs inferred claims
 
-Ask: *How could a smart operator game this protocol while appearing compliant?*
 
-If that answer exists and no countermeasure exists, the protocol is vulnerable.
-
-*Minimum requirement:* Identify one incentive corruption path and name the countermeasure or log it as an unknown.
 
 ---
 
-**Challenge Class 4 — Semantic Drift Attacks**
+Ethical Auditor
 
-Tests whether terminology degrades over time.
+Primary responsibility:
 
-Terms that commonly drift:
-- "Safe" / "contained" / "stable" / "acceptable" / "hazard removed"
-- "Structural" / "functional" / "adequate" / "sufficient"
-- "Hold" / "quarantine" / "clear" / "flag"
+Harm detection
 
-Ask: *Can two operators interpret this differently and still claim compliance?*
+Governance erosion detection
 
-If yes, doctrine drift exists, audit reproducibility weakens, and institutional memory corrodes.
+Unsafe omission detection
 
-*Minimum requirement:* Identify one term in the document that could be interpreted differently by two operators. Either tighten the definition or log the ambiguity as an unknown.
+Ethical anchor preservation
 
----
 
-**Challenge Class 5 — Unknown Unknown Pressure Tests**
+Default stance:
 
-Protocols often fail not from known hazards but from unmodeled conditions.
+> "What failure mode harms operators or downstream systems?"
 
-Ask: *What would this system do if it encountered a material, process, or state it has never seen before?*
 
-This matters heavily in:
-- Salvage intake (unknown provenance)
-- Mixed waste streams (unknown composition)
-- Experimental fabrication (unknown material behavior)
-- Autonomous classification (unknown item type)
 
-A resilient protocol degrades safely under uncertainty rather than failing catastrophically or routing unknowns forward as knowns.
+Ethical auditors prioritize:
 
-*Minimum requirement:* Describe what the protocol does when it encounters a condition outside its defined envelope. If the answer is "undefined," log it as an unknown.
+Safety visibility
+
+Operator survivability
+
+Misuse resistance
+
+Ethical anchor integrity
+
+
 
 ---
 
-**Challenge Class 6 — Recursive Justification Loops**
+Audit Entry Conditions
 
-One of the most dangerous institutional failure modes.
+An audit may begin only if:
 
-Example loop:
-- Protocol says system is safe
-- System passed protocol
-- Therefore system is safe
+The file contains a valid File State block
 
-The audit itself becomes the evidence. Documentation replaces reality. Audit theater develops.
+Scope Boundary exists
 
-Ask: *What external reality check exists beyond self-reference?*
+Ethical Anchor field exactly matches canonical wording
 
-*Minimum requirement:* Identify one claim in the document that is validated only by other repository documents. Either ground it in external reality or label it explicitly as internally derived.
+Sidecar remains below mandatory escalation thresholds
 
----
+Frozen sections are visibly marked
 
-**Challenge Class 7 — Human Fatigue and Cognitive Erosion**
+File ownership is identifiable
 
-Many procedures only work under ideal cognition. Real systems are operated by fatigued, distracted, overloaded humans.
 
-Challenge questions:
-- Does this protocol remain safe after 12 hours of repetition?
-- Does it survive shift handoff without verbal briefing?
-- Does it survive high backlog and throughput pressure?
-- Does it survive an operator who is new, undertrained, or temporarily impaired?
+If any requirement fails:
 
-Normalization of deviance — where slightly wrong becomes the new normal through repetition — is a documented cause of major industrial incidents.
+1. Halt Specification progression
 
-*Minimum requirement:* Identify one step in the protocol that degrades under sustained operation. Either add a safeguard or log it as an unknown.
 
----
+2. Log a governance-level unknown
 
-**Challenge Class 8 — Malicious Actor Simulation**
 
-Distinct from incompetence — this is intentional abuse by a knowledgeable actor.
+3. Downgrade trust classification
 
-Examples:
-- Conceal hazardous material at intake
-- Falsify intake records
-- Bypass lockouts
-- Poison melt streams with known contaminants
-- Inject corrupt documentation into the network
-- Sabotage calibration without detection
-- Plant compromised hardware in salvage stream
 
-Ask: *What prevents a knowledgeable hostile actor from weaponizing this process?*
+4. Require remediation before continuing
 
-This is especially important for:
-- Gate_01_Intake.md — falsified provenance
-- Operations/Electronics.md — hardware supply chain compromise
-- Architecture/Forge_Net.md — network data poisoning
-- Admin/Ethical_Constraints.md — anti-weaponization bypass attempts
 
-*Minimum requirement:* Identify one malicious actor scenario relevant to the document and name the countermeasure or log it as an unknown.
+
 
 ---
 
-**Challenge Class 9 — Epistemic Corruption**
+Audit Sequence
 
-Distinct from malicious actors — this is systematic degradation of shared knowledge through well-intentioned but incorrect contributions.
+Audits proceed in the following order:
 
-Examples:
-- Consensus weighting suppresses a truthful minority contribution
-- High-confidence entries decay without revalidation and become stale certainty
-- Goodhart's Law — measurable contribution metrics become optimization targets rather than truth targets
-- Locally correct knowledge gets rejected as globally anomalous
-- Three AI models with overlapping training data converge on the same wrong answer
+Phase	Purpose
 
-Ask: *How does this system distinguish confident truth from confident error?*
+1	Structural validation
+2	Scope validation
+3	Assumption extraction
+4	Internal coherence review
+5	Cross-module consistency review
+6	Evidence validation
+7	Drift detection
+8	Unknown classification
+9	Resolution pathway assessment
+10	Gate status determination
 
-This challenge class was introduced following the Forge_Net.md audit which identified epistemic corruption as more dangerous than deliberate attack for knowledge-based systems.
 
-*Minimum requirement:* Identify one mechanism by which incorrect information could achieve high confidence in this system. Name the countermeasure or log it as an unknown.
+Skipping sequence stages is prohibited unless explicitly documented.
 
----
-
-**Challenge Class 10 — Systemic Coupling and Cascade**
-
-Tests whether the document understands its failure propagation footprint.
-
-Ask: *If this module fails, what fails with it? What fails second? What fails third?*
-
-High-coupling documents require higher adversarial scrutiny because their failure footprint is disproportionate to their size.
-
-Current high-coupling documents in the repository:
-- `Admin/Auditor_Protocols.md` — failure here degrades all other files
-- `Operations/Electronics.md` — failure here compromises the trust anchor
-- `Architecture/Forge_flow.md` — failure here corrupts all gate routing
-- `Architecture/Forge_Net.md` — failure here propagates across the ecology
-
-*Minimum requirement:* Trace this document's failure footprint through at least two levels of downstream dependency. If the footprint is larger than expected, consider whether the document's scope should be narrowed or its governance frequency increased.
 
 ---
 
-### Adversarial Audit Sign-Off Format
+Structural Validation
 
-In addition to the standard sign-off, adversarial audits must record:
+Auditors must verify:
 
-```
-Adversarial Challenge Battery:
-- Classes applied: [list]
-- Classes deferred: [list with reason]
-- Findings per class: [ID or "None"]
-- New unknowns from adversarial pass: [list]
-- Highest-risk finding: [one sentence]
-```
+Mandatory sections exist
 
----
+Section ordering remains canonical
 
-### Anti-Patterns the Adversarial Layer Exists to Prevent
+Frozen markers are correctly scoped
 
-| Anti-Pattern | Description | Challenge Class |
-|---|---|---|
-| Audit theater | Protocol passes without surfacing real gaps | 6 — Recursive justification |
-| Specification cosplay | Exploratory content dressed as operational spec | 1 — Assumption inversion |
-| Confident wrongness | High consensus on incorrect answer | 9 — Epistemic corruption |
-| Throughput pressure override | Safety bypassed under operational load | 3 — Incentive corruption |
-| Silent failure accumulation | Failures not logged because minor or embarrassing | 7 — Human fatigue |
-| Semantic compliance | Letter of protocol followed, spirit violated | 4 — Semantic drift |
-| Single-point doctrine | Protocol only works if one assumption holds | 5 — Unknown unknowns |
-| Cascade blindness | Local fix that creates downstream failure | 10 — Systemic coupling |
+Confidence labels exist on quantitative claims
+
+Footer governance sections remain separated from Body content
+
+Ethical Anchor field is exact and intact
+
+
+Structural compliance is necessary but never sufficient for Specification promotion.
+
 
 ---
 
-## Full Stop Review
+Scope Validation
 
-Invoke when a spec passes all gates but exhibits systemic inconsistency or unclear real-world viability. Resets to Gate 1 with focus on foundational premise.
+Auditors must identify:
 
-**Trigger conditions:**
-1. Same foundational claim blocked across two separate audit cycles
-2. New finding invalidates core premise of a previously promoted specification
-3. Pattern of documented overrides eroding a governance principle without explicit revision
-4. Multiple Adversarial Challenge Battery findings converging on the same structural gap
+Specification bleed
 
-**Invocation record:** Triggering agent, triggering concern (one falsifiable sentence), date and document version, outcome. Record belongs in the document's sidecar audit trail.
+Duplicate ownership
 
----
+Hidden interface assumptions
 
-## Observability & Audit Trail
+Governance content inside operational sections
 
-**Required audit trail fields:**
-- Document audited and version
-- Auditor role and agent identity
-- Date or audit cycle identifier
-- Gates cleared (list)
-- Gates blocked (list with reason)
-- Unknowns logged (IDs)
-- Overrides recorded (with justification)
-- Adversarial Challenge Battery summary (v0.6+)
-- Sign-off statement
+Operational content hidden in sidecars
 
-**Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.6 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
-*Note: Machine-readable audit trail schema (JSON/YAML) is deferred — see AP-003 in sidecar.*
+If scope ambiguity exists:
+
+Open a dispute if interpretation conflict exists
+
+Open an unknown if ownership reality is unclear
+
+
 
 ---
 
-## Protocol Performance (Placeholder)
+Assumption Extraction Rules
 
-*Metrics are Placeholder pending first full audit cycle completion.*
+Auditors must actively search for:
 
-**Target metrics:**
-- Productive block ratio — fraction of blocks resulting in documented improvement
-- False-positive refusal rate — blocks overridden with documented justification
-- Drift incidents detected per cycle
-- Adversarial findings per document — tracks whether adversarial layer is surfacing real gaps
+Environmental assumptions
 
-**Anti-Auditor-Capture:** For high-stakes documents, rotate the Auditor role to a different agent model across successive cycles. An auditor reviewing the same document repeatedly without finding new issues warrants the same suspicion as a verification pass surfacing no unknowns.
+Material assumptions
 
----
+Infrastructure assumptions
 
-## Failure Modes of This Document
+Human skill assumptions
 
-**Checklist Theater** — Verification becomes ritual. Mitigated by requiring substantive notes.
+Resource availability assumptions
 
-**Auditor Capture** — Skeptic role softens. Mitigated by binding block authority, documented rebuttal, second-pass requirement, and Auditor rotation.
+Safety assumptions
 
-**Version Freeze** — Document stops updating. Mitigated by explicit revision triggers and self-application of gates.
+Simulation simplifications
 
-**Exploration Suppression** — Verification pressure applied too early. Mitigated by the Exploration vs. Specification distinction.
 
-**Over-Engineering the Audit** — If a verification cycle takes longer than writing the contribution, the protocol has failed. Simplicity is a design constraint. The Adversarial Challenge Battery is a minimum, not an exhaustive test suite.
+Hidden assumptions must either:
 
-**Coherent Nonsense** — Passes all gates but is systemically wrong. Mitigated by Full Stop Review and Adversarial Challenge Class 6 (Recursive Justification).
+Move into the Assumptions section
 
-**Metadata Bloat** — Centralized registries grow without bound and become obstacles. Mitigated by the Sidecar Model introduced in v0.5.
+Move into Unknowns if indefensible
 
-**Meta-Recursion Gap** — The protocol cannot fully audit its own enforcement. Mitigated by self-application of gates on revision, Protocol Performance metrics, and Auditor rotation. Acknowledged as an irreducible residual risk.
+Be removed entirely
 
-**Adversarial Theater** — The adversarial layer becomes a checkbox like the fallacy checklist. Mitigated by requiring concrete scenarios per challenge class, not general acknowledgments, and by logging all findings as unknowns rather than dismissing them.
+
+Assumptions are not evidence.
+
 
 ---
 
-## Lessons Learned
+Evidence Classification Rules
 
-| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
-|------|---------------|----------------|-------------|------------------|------------|---------------------|
-| May 2026 | Audit Review | Centralized Unknowns_LF.md as full-entry store | File grew past token limits; audit prompts failed | Unknowns must live locally in owning files; central registry is index only | Analogous | No |
-| May 2026 | Audit Review | Expiry Rule as primary accumulation mechanism | Rule had no enforcement path; unknowns aged silently | Structural constraints (10-entry rule, sidecar) work better than procedural rules | Analogous | No |
-| May 2026 | Audit Review | Preparatory framing lines in audit prompts | Softened auditor findings; masked genuine gaps | Documents must stand on their own; scaffolding that stays up becomes load-bearing | Analogous | No |
-| 2026-05-19 | Audit Review | Gate 3 Adversarial Pass defined as one concrete failure scenario | Bar was too low — single scenario leaves most failure modes untested. Audit theater risk high | Adversarial Challenge Battery introduced with ten challenge classes. Gate 3 now formally requires battery application, not a single scenario | Analogous | Yes — validate battery against first full adversarial audit cycle |
-| 2026-05-19 | Audit Review | Consensus treated as truth in multi-agent audit cycles | Epistemic corruption — ten nodes agreeing on a wrong answer produces confident wrongness. Goodhart's Law applies to contribution metrics as much as to engineering claims | Adversarial Challenge Class 9 (Epistemic Corruption) added. Confidence decay, minority-report preservation, and contradiction logging added to Forge_Net.md validation doctrine | Analogous | Yes — validate against first live network audit |
+All meaningful claims require evidence classification.
 
----
+Classification	Meaning
 
-## Auditor Notes & Unknowns
+Measured	Directly observed
+Replicated	Independently repeated
+Simulated	Derived from models
+Analogous	Inferred from related systems
+Placeholder	Included pending verification
 
-### AP-001 — Auditor effectiveness metrics not yet measured
 
-| Field         | Value                                            |
-|---------------|--------------------------------------------------|
-| Status        | Open                                             |
-| Risk          | Medium                                           |
-| Priority      | Major                                            |
-| Type          | Governance                                       |
-| Blocking      | No                                               |
-| Owner         | Admin/Auditor_Protocols.md                       |
-| First Logged  | 2026-05-04                                       |
-| Last Reviewed | 2026-05-19                                       |
+Placeholder claims may not justify Specification promotion.
 
-**Description:** How to measure whether the audit
-process is actually adding value — productive block
-ratio, false-positive refusal rate, drift incidents
-detected per cycle — remains undefined.
-
-**Why It Matters:** Without measurement, the audit
-protocol cannot demonstrate its own effectiveness.
-Adversarial Challenge Class 6 (Recursive Justification)
-applies to the protocol itself — it cannot be its
-own evidence.
-
-**Resolution Path:**
-- Metrics defined as Placeholder in Protocol
-  Performance section.
-- Activate measurement after first full audit
-  cycle with Adversarial Battery completes.
-- Add adversarial findings per document as a
-  fourth metric.
-- Payment via Specification — once first full
-  cycle data exists, move metrics to Measured.
 
 ---
 
-### AP-002 — Override vs. immutability boundary not yet confirmed in both documents
+Verification Gate Enforcement
 
-| Field         | Value                                            |
-|---------------|--------------------------------------------------|
-| Status        | In Progress                                      |
-| Risk          | Medium                                           |
-| Priority      | Major                                            |
-| Type          | Governance                                       |
-| Blocking      | No                                               |
-| Owner         | Admin/Auditor_Protocols.md                       |
-| First Logged  | 2026-05-04                                       |
-| Last Reviewed | 2026-05-19                                       |
+G1 — Internal Coherence
 
-**Description:** Whether the clarification that
-human override rights do not extend to
-Ethical_Constraints hard-line doctrines is
-explicitly stated in both documents in a mutually
-consistent way.
+Verify:
 
-**Why It Matters:** Inconsistency between the two
-documents creates an exploit path — a contributor
-could claim the boundary doesn't exist because it
-only appears in one file.
+No self-contradiction
 
-**Resolution Path:**
-- Scope boundary added to this document.
-- Requires confirmation that matching language
-  exists in Admin/Ethical_Constraints.md v0.3.
-- Close when both documents are committed with
-  consistent language.
+Stable terminology usage
+
+Logical consistency
+
+Scope alignment
+
+
+Failure condition:
+
+Contradictory operational requirements
+
+
 
 ---
 
-### AP-003 — Audit trail schema (machine-readable) deferred
+G2 — Physical Plausibility
 
-| Field         | Value                                            |
-|---------------|--------------------------------------------------|
-| Status        | Open                                             |
-| Risk          | Low                                              |
-| Priority      | Minor                                            |
-| Type          | Technical / Governance                           |
-| Blocking      | No                                               |
-| Owner         | Admin/Auditor_Protocols.md                       |
-| First Logged  | 2026-05-04                                       |
-| Last Reviewed | 2026-05-19                                       |
+Verify:
 
-**Description:** A machine-readable format
-(JSON/YAML) for recording gate passages, blocks,
-and overrides that can be queried and compared
-across audit cycles does not yet exist.
+No violation of known physical constraints
 
-**Why It Matters:** Cross-cycle pattern analysis
-— detecting whether the same issues recur, whether
-blocks result in improvements, whether adversarial
-findings cluster around specific document types
-— requires structured data, not free text.
+Energy/resource claims are plausible
 
-**Resolution Path:**
-- Structured markdown format (required fields +
-  example) already in Observability section.
-- JSON/YAML deferred until tooling exists to
-  consume it.
-- Activate when first cross-cycle pattern
-  analysis is needed.
-- Discharge via Trajectory if tooling never
-  materializes — structured markdown remains
-  the permanent format.
+Fabrication assumptions are realistic
+
+
+Failure condition:
+
+Impossible or unsupported physical behavior
+
+
 
 ---
 
-### Resolution Log
+G3 — Testability
 
-- 2026-05-04: **UNK-004 (Expiry Rule enforcement mechanism)** — Discharged. Sidecar Model (v0.5) addresses the underlying accumulation problem structurally.
-- 2026-05-04: **UNK-022 (Full Stop Review trigger conditions)** — Resolved. Three specific trigger conditions and invocation record format added to Full Stop Review section.
-- 2026-05-19: **Gate 3 Adversarial Pass** — Upgraded from single-scenario requirement to full Adversarial Challenge Battery (ten classes). New failure mode "Adversarial Theater" added. Fourth Full Stop trigger added. Protocol Performance metrics expanded to include adversarial findings per document.
+Verify:
 
----
+Claims can theoretically be tested
 
-## Relationship to Existing Documents
+Success/failure conditions are observable
 
-- `Admin/Ethical_Constraints.md` — parent document; governs permission; hard-line doctrines not subject to override by this protocol
-- `Architecture/Forge_flow.md` — structural model; reference standard for shared terminology
-- `Admin/Trajectories.md` — destination for scope creep that proves to be valid future work
-- `Tests/Leviathan_testing.md` — primary stress-test environment; where Protocol Performance metrics will first be collected
-- `Discovery.md` — navigation layer; confirmed file list; Rename Registry for legacy filename aliases
-- `Unknowns.md` — global index for cross-module unknowns (index only as of v0.5)
-- `Admin/Forge_Audit_Kit.md` — condensed audit reference for routine multi-agent cycles
-- `Admin/File_Template.md` — standard file structure for all repository documents
-- `Lazarus-Forge-` — companion doctrine repository
-- `Astroid-miner` — planned repository; deferred to Leviathan milestone
+Validation pathways exist
+
+
+Failure condition:
+
+Non-falsifiable specification language
+
+
 
 ---
 
-## Status
+G4 — Cross-Module Integration
 
-Version 0.6 — introduces the Adversarial Audit Layer.
+Verify:
 
-**Changes from v0.5:**
-- Added Rule 7 to AI Contribution Protocols — repository structure awareness, folder-prefixed canonical paths
-- Gate 3 upgraded — now formally gated on Adversarial Challenge Battery, not single scenario
-- **Adversarial Audit Layer added** — ten challenge classes, application criteria, sign-off format, anti-patterns table
-- Fourth Full Stop trigger added — multiple adversarial findings converging on same structural gap
-- Adversarial findings per document added to Protocol Performance metrics
-- Adversarial Theater added to Failure Modes
-- Observability section updated — adversarial summary now required in audit trail
-- Lessons Learned expanded — two new entries on Gate 3 upgrade and epistemic corruption
-- Sidecar unknowns reformatted to structured table format per File_Template.md v0.6
-- Cross-references updated to canonical folder-prefixed paths throughout
-- Unknowns.md reference updated (was Unknowns_LF.md)
+Interfaces are compatible
 
-**What must remain constant:**
+Ownership boundaries remain stable
 
-**Confidence never outruns verification.**
+Dependencies are visible
+
+
+Failure condition:
+
+Module interaction ambiguity
+
+
+
+---
+
+G5 — Evidence Grounding
+
+Verify:
+
+Evidence classifications exist
+
+Evidence quality matches certainty level
+
+Confidence inflation is absent
+
+
+Failure condition:
+
+Specification-level certainty without evidence support
+
+
+
+---
+
+G6 — Auditability
+
+Verify:
+
+Historical reasoning preserved
+
+Unknowns traceable
+
+Lessons retained
+
+Drift detectable
+
+
+Failure condition:
+
+Repository memory loss or unverifiable revision history
+
+
+
+---
+
+Frozen Section Rules
+
+Frozen sections are operationally binding.
+
+Auditors must verify:
+
+Frozen sections were not silently modified
+
+Gate references remain valid
+
+Changes include dated justification comments
+
+
+If a frozen section changes without justification:
+
+1. Reset affected gate progress
+
+
+2. Open a High-risk governance unknown
+
+
+3. Trigger mandatory re-audit
+
+
+
+
+---
+
+Unknown Handling Protocol
+
+Unknowns must:
+
+Represent reality gaps
+
+Be falsifiable
+
+Remain concrete
+
+Include resolution pathways
+
+
+Auditors must reject:
+
+Philosophical placeholders
+
+Motivational language
+
+Vague uncertainty
+
+Non-actionable ambiguity
+
+
+Unknown growth across three consecutive audits triggers escalation.
+
+
+---
+
+Dispute Handling Protocol
+
+Disputes represent interpretation conflicts, not missing information.
+
+Auditors must distinguish:
+
+Unknowns = missing reality alignment
+
+Disputes = conflicting interpretations
+
+
+Persistent disputes are acceptable if explicitly tracked.
+
+Silent disappearance of disputes is prohibited.
+
+
+---
+
+Resolution Pathways
+
+Every unknown must terminate through one pathway:
+
+Pathway	Meaning
+
+Payment via Specification	Verified and integrated into Body
+Discharge via Trajectory	Real but deferred
+Discharge via Lessons Learned	Operational experience resolved uncertainty
+
+
+Unknowns may not remain permanently ownerless.
+
+
+---
+
+Drift Detection Protocol
+
+Auditors must actively monitor for:
+
+Terminology mutation
+
+Contradiction accumulation
+
+Governance leakage into operational sections
+
+Unknown accumulation
+
+Audit metric gaming
+
+Confidence inflation
+
+Frozen-section erosion
+
+Ethical anchor degradation
+
+Sidecar expansion instability
+
+
+Drift detection failure is considered a protocol failure.
+
+
+---
+
+Compound Drift Escalation
+
+If two or more Drift Indicators activate simultaneously:
+
+1. Halt autonomous Specification progression
+
+
+2. Downgrade repository trust state
+
+
+3. Require human review
+
+
+4. Open governance-level unknown entry
+
+
+
+Compound instability is treated as systemic risk.
+
+
+---
+
+Audit Output Requirements
+
+Every completed audit must produce:
+
+Updated File State metadata
+
+Gate status assessment
+
+Unknown delta count
+
+Drift assessment
+
+Resolution recommendations
+
+Escalation recommendations if required
+
+
+Audits that produce only pass/fail outputs are incomplete.
+
+
+---
+
+Specification Promotion Rules
+
+A file may only reach Specification status if:
+
+All six canonical gates pass
+
+Open unknowns are non-blocking
+
+Evidence quality supports certainty level
+
+Drift indicators are inactive
+
+Scope boundaries remain stable
+
+Frozen sections are justified
+
+Sidecar governance thresholds remain compliant
+
+
+Specification is reversible if instability later emerges.
+
+
+---
+
+Autonomous Auditor Constraints
+
+Autonomous agents must not:
+
+Silently rewrite verified sections
+
+Collapse uncertainty into certainty
+
+Delete historical failures
+
+Remove disputes without resolution logging
+
+Merge scope boundaries implicitly
+
+Invent evidence
+
+Reclassify Placeholder evidence as Measured
+
+Ignore Ethical Anchor degradation
+
+Optimize for repository appearance over correctness
+
+
+Repository cleanliness is not repository integrity.
+
+
+---
+
+Human Override Doctrine
+
+Human operators may override audit outcomes.
+
+Overrides must:
+
+Be explicit
+
+Be dated
+
+Include rationale
+
+Record accepted risk
+
+Preserve audit traceability
+
+
+Undocumented overrides are governance failures.
+
+
+---
+
+Failure Modes Auditors Must Detect
+
+Failure Mode	Description
+
+Audit Theater	Appearance of rigor without real verification
+Zombie Specifications	Claims preserved after invalidation
+Semantic Drift	Terms changing meaning over time
+Confidence Inflation	Certainty exceeding evidence quality
+Unknown Burial	Open risks hidden or ignored
+Governance Leakage	Meta-governance contaminating operational specs
+Premature Convergence	Exploration falsely treated as settled
+Historical Erasure	Removal of failure memory
+Scope Bleed	Ownership boundaries collapsing
+Ethics Erosion	Safety principles becoming optional
+
+
+
+---
+
+Auditor Success Criteria
+
+A successful auditor:
+
+Preserves uncertainty honestly
+
+Detects instability early
+
+Prevents unsupported certainty
+
+Improves traceability
+
+Preserves institutional memory
+
+Maintains repository auditability
+
+Protects future operators from hidden assumptions
+
+
+The goal is not maximum progress velocity.
+
+The goal is durable, reality-grounded knowledge that survives adversarial conditions, partial failure, contributor turnover, and long operational timelines.
+
+
+---
+
+Lessons Learned
+
+Date	Evidence Type	What Was Tried	What Failed	What Was Learned	Confidence	Revalidation Needed
+
+2026-05-19	Audit Review	Early audit passes without explicit unknown taxonomy	Unknowns and disputes became conflated	Separate uncertainty classes are structurally necessary	Replicated	Yes
+2026-05-20	Audit Review	Lightweight audit outputs	Audits lacked traceability and escalation consistency	Audit artifacts require standardized outputs	Measured	No
+2026-05-22	Modeling	Repository-wide template standardization	Legacy audit protocols lacked lifecycle governance	Structural metadata significantly improves autonomous audit reliability	Analogous	Yes
+
+
+
+---
+
+Active Disputes
+
+ID	Summary	Positions in Conflict	Risk	Status	Owner
+
+DS-001	Whether autonomous auditors should ever be allowed to reopen hard-stopped abandoned paths	Full prohibition vs conditional supervised reopening	High	Open	Auditor_Protocols.md
+
+
+
+---
+
+Auditor Notes & Unknowns
+
+AP-001 — Auditor effectiveness metrics remain weakly defined
+
+Field	Value
+
+Status	Open
+Risk	Medium
+Priority	Major
+Type	Governance
+Blocking	No
+Owner	Auditor_Protocols.md
+First Logged	2026-05-04
+Last Reviewed	2026-05-22
+
+
+Description: The repository lacks robust quantitative methods for measuring whether audits actually improve system reliability.
+
+Why It Matters: Audit processes may devolve into ritualized compliance without measurable effectiveness.
+
+Resolution Path: Payment via Specification — define repository-wide audit performance metrics and validation procedures.
+
+
+---
+
+AP-002 — Compound drift escalation thresholds may be too sensitive
+
+Field	Value
+
+Status	Open
+Risk	Medium
+Priority	Major
+Type	Architectural
+Blocking	No
+Owner	Verification_Gates_LF.md
+First Logged	2026-05-22
+Last Reviewed	2026-05-22
+
+
+Description: Simultaneous drift indicators may occur frequently during active repository restructuring phases.
+
+Why It Matters: Excessive escalation frequency may paralyze repository evolution.
+
+Resolution Path: Discharge via Lessons Learned — validate escalation frequency during multiple audit cycles.
+
+
+---
+
+AP-003 — Long-term frozen-section governance remains operationally untested
+
+Field	Value
+
+Status	Open
+Risk	High
+Priority	Critical
+Type	Governance
+Blocking	Yes
+Owner	Repository-wide
+First Logged	2026-05-22
+Last Reviewed	2026-05-22
+
+
+Description: The repository has not yet demonstrated stable multi-cycle management of frozen Specification sections.
+
+Why It Matters: Frozen-section corruption would undermine long-term auditability and trust stability.
+
+Resolution Path: Payment via Specification — complete multiple successful audit cycles with frozen sections intact.
+
+
+---
+
+AP-004 — Cross-auditor disagreement resolution process incomplete
+
+Field	Value
+
+Status	Open
+Risk	Medium
+Priority	Major
+Type	Governance
+Blocking	No
+Owner	Auditor_Protocols.md
+First Logged	2026-05-22
+Last Reviewed	2026-05-22
+
+
+Description: The repository lacks a formal mechanism for resolving disagreements between different auditor classes.
+
+Why It Matters: Multi-auditor systems may deadlock or produce inconsistent audit outcomes.
+
+Resolution Path: Payment via Specification — define arbitration and escalation pathways for conflicting audit conclusions.
+
+
+---
+
+Resolution Log
+
+2026-05-22: AP-LEGACY-01 — Legacy audit commentary merged into standardized Unknown taxonomy.
+
+2026-05-22: AP-LEGACY-02 — Informal governance notes separated from operational audit procedures.
