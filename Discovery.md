@@ -1,6 +1,6 @@
 # Discovery.md — LazarusForgeV0
 **Navigation layer for the active working repository.**
-**Last updated: 2026-05-15**
+**Last updated: 2026-05-20**
 
 ---
 
@@ -69,6 +69,7 @@ using this table.
 | Support_Raft_v0.md | Support_Raft.md | Tests/ | 2026-05-15 |
 | leviathan_testing.md | Leviathan_testing.md | Tests/ | 2026-05-15 |
 | Ship_of_Theseus_Right_to_Repair.md | Ship_of_Theseus.md | Admin/ | 2026-05-15 |
+| Electronics.md (root) | Electronics.md | Operations/ | 2026-05-20 |
 
 ---
 
@@ -96,12 +97,13 @@ For a new reader or returning AI, read in this sequence:
 18. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
 19. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
 20. `Operations/Air_Scrubber.md` — Safety and containment subsystem
-21. `Tests/Support_Raft.md` — Operational anchor for marine deployments
-22. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
-23. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
+21. `Operations/Gate_07_Utilization.md` — After action review; performance logging; fabrication feedback loop
+22. `Tests/Support_Raft.md` — Operational anchor for marine deployments
+23. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
+24. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
 
 **Pending files (not yet created):**
-- `Operations/Gate_07_Utilization.md`
+- *(none — all gate files now exist)*
 
 ---
 
@@ -116,14 +118,14 @@ scope, and the primary KPI. Honest about what v0 does and does not claim.
 
 ---
 
-**Unknowns.md** — v1.1
+**Unknowns.md** — v1.6
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Unknowns.md`
-Cross-module unknowns global index. v1.1 adds SC-001 through SC-008 and
-MG-001 through MG-008 following Separation Thermal and Separation Mechanical
-retrofit audits. Full entry detail lives in each owning file's sidecar.
-Contains active unknowns summary tables by cluster, dependency map, expiry
-watch, and resolved archive. UNK-006 through UNK-008 are new cross-module
-entries from the 2026-05-15 audit cycle.
+Cross-module unknowns global index. v1.6 adds GU-001 through GU-004 (Utilization)
+and EL-005 through EL-008 (Electronics) following Gate_07 creation and
+Electronics.md retrofit. GF-005 resolved — Gate_07_Utilization.md creation closes
+the utilization stage gap. Stale filename references corrected to canonical names
+throughout. Contains active unknowns summary tables by cluster, dependency map,
+expiry watch, and resolved archive.
 
 ---
 
@@ -261,6 +263,20 @@ survivable cognition.
 
 ### Operations/
 
+**Gate_01_Intake.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_01_Intake.md`
+System entry point for all items entering the Lazarus Forge.
+Governs safety screening (energetic, chemical, biological,
+radiological), physical document handling and scanning,
+reference database lookup, parts list generation, fastener
+and small component recovery, item tagging and provenance
+recording, and unknown item hold-and-inspect protocol.
+GI-002 (energetic discharge) and GI-003 (augmented detection)
+are hard prerequisites for first operational run. At v0,
+human judgment primary — automation is a future capability.
+
+---
+
 **Gate_02_Triage.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_02_Triage.md`
 Five-station triage workflow implementing the gate logic from Forge_flow.md.
@@ -283,10 +299,7 @@ Air Scrubber operational, human operator present, no energetic
 materials remaining. GR-002 (method selection) is the keystone
 that unblocks GR-001, GR-004, and indirectly GR-005. Highest
 Risk in the repository — irreversibility is the defining
-characteristic. Risk label reviewable after first operational
-cycle and GI-002/GI-003 resolution.
-*Formerly: pending creation — FL-002 and UNK-007 resolved by
-this file's creation.*
+characteristic.
 
 ---
 
@@ -317,6 +330,30 @@ to File_Template.md structure and audited by Claude, Grok, and ChatGPT
 
 ---
 
+**Gate_06_Fabrication.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_06_Fabrication.md`
+Constructive stage of the Lazarus Forge. Arc welding is the v0 proof-of-concept
+gatekeeper. Add-to-excess and mill-to-spec is the primary dimensional control
+philosophy. Owns precision ceiling doctrine. Dynamic and adaptive — method set
+grows through formal qualification framework. PPE is a non-negotiable prerequisite.
+GF-005 resolved — Gate_07_Utilization.md now exists.
+
+---
+
+**Gate_07_Utilization.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_07_Utilization.md`
+After action review stage of the Lazarus Forge. Where fabricated parts and
+recovered components meet operational reality — the system learns whether what
+it made worked, how long it lasted, how it failed, and what that means for the
+next fabrication cycle. Defines performance logging minimum content, failure
+mode capture and classification, four feedback paths (Gate_06_Fabrication,
+Forge_Net, Forge_flow classification rules, Components.md), and retirement
+handoff doctrine to Gate_02_Triage. A part in service without a utilization
+record is an opportunity lost. GU-001 through GU-004 in sidecar. Audited by
+Claude (Retrofit/Auditor) 2026-05-19 and ChatGPT (Skeptic/Auditor) 2026-05-20.
+
+---
+
 **Air_Scrubber.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Air_Scrubber.md`
 Safety and containment subsystem. Five-stage architecture: sacrificial
@@ -331,9 +368,17 @@ cannot verify safe operation, the Forge does not run.
 **Electronics.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Electronics.md`
 Salvaged electronics recovery, PCB fabrication, and logic integration.
-Covers non-destructive harvesting protocols, homemade PCB fabrication,
-Forge-Standard modular interface concept, Triple Modular Redundancy for
-salvaged components, and fault response integration with Support Raft.
+Trust-anchor document for the forge's governance substrate — ethics
+enforcement, hardware watchdogs, TMR voting, sensor truth, and AI
+containment all depend on the integrity of the systems this file governs.
+Covers non-destructive harvesting protocols and firmware trust doctrine
+(Logic-Zero wipe required before any salvaged programmable device enters
+forge systems), homemade PCB fabrication, Forge-Standard modular interface,
+TMR hardware implementation with architectural diversity requirement,
+hardware watchdog doctrine (discrete hardware, no programmable firmware),
+MAC vs TMR distinction, dual-use awareness, and fault response integration
+with Support Raft. EL-001 through EL-008 in sidecar. Retrofitted to
+File_Template.md structure — multi-agent audit 2026-05-09, actioned 2026-05-19.
 *Formerly: Electronics.md (root)*
 
 ---
@@ -345,37 +390,6 @@ biogas, solar, and thermal recovery. Power Demand stub with three operating
 modes (Bootstrap ~2–5 kW, Nominal ~15–40 kW, Degraded ~1–3 kW) — all
 Placeholder, analog-sourced. Energy independence is not assumed at v0.
 *Formerly: energy_v0.md*
-
----
-
-**Gate_01_Intake.md**
-`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_01_Intake.md`
-System entry point for all items entering the Lazarus Forge.
-Governs safety screening (energetic, chemical, biological,
-radiological), physical document handling and scanning,
-reference database lookup, parts list generation, fastener
-and small component recovery, item tagging and provenance
-recording, and unknown item hold-and-inspect protocol.
-GI-002 (energetic discharge) and GI-003 (augmented detection)
-are hard prerequisites for first operational run. At v0,
-human judgment primary — automation is a future capability.
-
----
-
-**Gate_06_Fabrication.md**
-`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_06_Fabrication.md`
-Constructive stage of the Lazarus Forge. Arc welding is the v0 proof-of-concept
-gatekeeper. Add-to-excess and mill-to-spec is the primary dimensional control
-philosophy. Owns precision ceiling doctrine. Dynamic and adaptive — method set
-grows through formal qualification framework. PPE is a non-negotiable prerequisite.
-GF-005 identifies Gate_07_Utilization.md as the next required file.
-
----
-
-**Gate_07_Utilization.md** *(pending creation)*
-Performance validation stage. Fabricated parts enter service and real-world
-performance is logged. Feedback path to Gate_06_Fabrication and Forge_Net.md.
-Cross-reference: GF-005 in Gate_06_Fabrication.md.
 
 ---
 
@@ -430,8 +444,8 @@ error. Divergence between them is logged, not ignored.
 - `Admin/Forge_Audit_Kit.md` is the starting point for routine audit cycles
   — load it instead of full Auditor_Protocols.md and Unknowns.md to stay
   within token limits.
-- `Unknowns.md` is now v1.1 — Expiry Rule is active. Check the index at
-  the opening of each audit cycle.
+- `Unknowns.md` is now v1.6 — Expiry Watch active. FL-001 and several EC
+  entries approaching two-cycle threshold — check at next audit opening.
 - Role declaration is required: *"Operating as [Role] per
   Auditor_Protocols.md v0.5"*
 - `Architecture/Geck_forge_seed.md` is the most actively updated file —
@@ -446,5 +460,4 @@ error. Divergence between them is logged, not ignored.
   fails, log it as a Cross-Reference Failure per Auditor_Protocols.md Rule 1.
 - `Astroid-miner` references are labeled planned — do not treat as active
   dependencies.
-- One pending gate file (Gate_07_Utilization.md) does not yet
-  exist. Do not attempt to fetch it.
+- All gate files now exist (Gate_01 through Gate_07). No pending gate files remain.
