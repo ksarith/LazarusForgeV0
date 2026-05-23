@@ -151,6 +151,10 @@ Governance Failure Modes, and refusal as a first-class action. Capability
 never outruns permission.
 
 ---
+**Governance_Charter.md**
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Governance_Charter.md
+
+---
 
 **File_Template.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/File_Template.md`
