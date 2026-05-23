@@ -47,6 +47,7 @@ FILE_REGISTRY = {
     "Ship_of_Theseus.md":               "Admin/Ship_of_Theseus.md",
     "Trajectories.md":                  "Admin/Trajectories.md",
     "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
+    "Governance_Charter.md":            "Admin/Governance_Charter.md",
 
     # Architecture
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
@@ -65,6 +66,7 @@ FILE_REGISTRY = {
     "Gate_04_Separation_Mechanical.md": "Operations/Gate_04_Separation_Mechanical.md",
     "Gate_05_Separation_Thermal.md":    "Operations/Gate_05_Separation_Thermal.md",
     "Gate_06_Fabrication.md":           "Operations/Gate_06_Fabrication.md",
+    "Gate_07_Utilization.md":           "Operations/Gate_07_Utilization.md",
 
     # Tests
     "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
@@ -113,7 +115,7 @@ for short, path in sorted(FILE_REGISTRY.items()):
 # ─────────────────────────────────────────────────────────────────────
 
 # ── STEP 1: Set the file you are auditing ──────────────────────────
-TARGET_FILE = "Gate_01_Intake.md"
+TARGET_FILE = "Governance_Charter.md"
 
 # ── STEP 2: Set the audit focus (1-3 sentences) ───────────────────
 FOCUS = """
