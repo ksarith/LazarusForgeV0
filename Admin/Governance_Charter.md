@@ -1,732 +1,608 @@
-Governance_Charter.md
+# Governance_Charter.md
 
-File State
+## File State
 
-Field	Value
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Draft                                                               |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 3/6                                                                 |
+| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
+| Last Audit       | 2026-05-23                                                          |
+| Auditor          | GPT-5.5 — Governance/Skeptic                                        |
+| Open Unknowns    | 7                                                                   |
+| Active Disputes  | 1                                                                   |
+| Highest Risk     | High                                                                |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-Status	Draft
-Body Stability	Transitional
-Spec Gates	4/6
-Verification Ref	Admin/Verification_Gates_LF.md
-Last Audit	2026-05-23
-Auditor	GPT-5.5 — Governance/Skeptic
-Open Unknowns	5
-Active Disputes	1
-Highest Risk	High
-Sidecar Link	#auditor-notes--unknowns
-Ethical Anchor	Attempt to do no harm. Defer to Ethical_Constraints.md if present.
+## Scope Boundary
 
+**This file DOES define:**
+- Constitutional governance doctrine
+- Governance authority hierarchy
+- Canonical governance ownership rules
+- Verification gate constitutional definitions
+- Governance precedence rules
+- Bootstrap governance behavior
+- Governance migration doctrine
+- Provenance doctrine
+- Audit lineage requirements
+- Escalation doctrine principles
+- Governance enforcement-state doctrine
+- Repository integrity expectations
 
-Scope Boundary
+**This file DOES NOT define:**
+- Runtime execution engines
+- Cryptographic implementation details
+- CI/CD automation mechanics
+- Autonomous runtime orchestration
+- Fabrication procedures
+- Engineering specifications
+- Dynamic adversarial batteries
+- Exact escalation token mechanics
+- Repository deployment infrastructure
+- Security implementation code
 
-This file DOES define:
+## File Purpose
 
-Repository governance authority hierarchy
+This file defines the constitutional governance structure of LazarusForgeV0. It exists to stabilize authority relationships between governance-bearing documents, preserve semantic continuity across audit generations, and constrain recursive governance expansion. The charter establishes how governance authority is assigned, inherited, escalated, migrated, and preserved without binding the repository to any single implementation layer or runtime enforcement architecture. Without this file, governance-bearing systems may silently diverge, invalidate historical audits, or accumulate incompatible authority assumptions over long operational timelines.
 
-Canonical ownership of governance concepts
+## Assumptions
 
-Governance precedence rules
-
-Verification gate authority
-
-Provenance doctrine
-
-Governance migration doctrine
-
-Audit lineage stability requirements
-
-Governance escalation doctrine
-
-Repository integrity expectations
-
-Governance closure doctrine
-
-
-This file DOES NOT define:
-
-Engineering specifications
-
-Fabrication procedures
-
-Local module implementation details
-
-Dynamic adversarial challenge batteries
-
-Auditor behavioral heuristics
-
-Cryptographic implementation details
-
-CI/CD pipeline mechanics
-
-Operational deployment infrastructure
-
-Human organizational authority outside repository governance
-
-
-File Purpose
-
-This file defines how governance authority operates inside LazarusForgeV0. It exists to stabilize meaning across governance-bearing documents, prevent recursive governance expansion, preserve audit lineage integrity, and resolve conflicts between overlapping governance systems. Without this file, independent governance documents may drift semantically, duplicate authority, or silently invalidate historical audits over time. This charter acts as the repository’s constitutional governance layer, defining how governance-bearing systems relate to one another while preserving long-term auditability and institutional memory.
-
-Assumptions
-
-ID	Assumption	Basis	Confidence	Expiry Trigger
-
-ASM-001	Governance-bearing documents will continue increasing over time	Current repository evolution trajectory	High	Repository governance stabilizes permanently
-ASM-002	Autonomous agents may participate in governance interpretation	Auditor_Protocols.md architecture	High	Autonomous governance participation prohibited
-ASM-003	Verification gate semantics may evolve across repository generations	Existing governance drift observations	High	Governance versioning system finalized
-ASM-004	Historical audit validity must survive future governance revisions	Long-term repository survivability requirements	High	Repository abandons audit lineage preservation
-ASM-005	Perfect certainty is unattainable in complex governance systems	Observed recursive audit behavior	High	Formal proof otherwise established
-
-
+| ID      | Assumption | Basis | Confidence | Expiry Trigger |
+|---------|------------|-------|------------|----------------|
+| ASM-001 | Governance systems will evolve across repository generations | Observed governance expansion | High | Governance permanently frozen |
+| ASM-002 | Autonomous systems may eventually participate in governance interpretation | Auditor architecture trajectory | High | Autonomous participation prohibited |
+| ASM-003 | Enforcement architecture will mature separately from constitutional doctrine | Current repository maturity | High | Governance merged directly into runtime systems |
+| ASM-004 | Historical audit meaning must remain interpretable after governance migrations | Institutional memory doctrine | High | Audit lineage preservation abandoned |
+| ASM-005 | Governance certainty can only be bounded, never perfected | Recursive audit observations | High | Formal proof otherwise established |
 
 ---
 
-Governance Charter
+# Governance Charter
 
-Governance Doctrine
+## Governance Doctrine
 
-The purpose of governance is not bureaucratic expansion.
+Governance exists to preserve:
+- semantic stability,
+- bounded uncertainty,
+- operational accountability,
+- audit lineage continuity,
+- and institutional memory survivability.
 
-The purpose of governance is:
+Governance must improve operational reliability without collapsing into:
+- recursive governance accumulation,
+- cosmetic audit behavior,
+- rigid automation dependency,
+- or semantic fragmentation.
 
-semantic stability,
-
-bounded uncertainty,
-
-operational accountability,
-
-audit lineage preservation,
-
-and survivable institutional memory.
-
-
-Governance must improve operational reliability without collapsing into recursive self-expansion.
-
-Repository coherence is more important than governance complexity.
-
+Governance complexity must remain proportional to operational value.
 
 ---
 
-Governance Closure Doctrine
+## Transitional Governance Doctrine
+
+This charter currently operates as transitional constitutional governance.
+
+The repository is still establishing:
+- canonical governance ownership,
+- integrity architecture,
+- migration pathways,
+- and escalation calibration.
+
+During transitional governance phases:
+- constitutional evolution remains expected,
+- lineage preservation remains mandatory,
+- and provisional authority assumptions must remain visible.
+
+Slow-evolution expectations apply after governance stabilization reaches Candidate Specification maturity.
+
+---
+
+## Governance Closure Doctrine
 
 Governance seeks bounded operational reliability rather than exhaustive certainty.
 
-Audits, escalation paths, and governance reviews terminate when:
+Governance review may terminate when:
+- critical unknowns are explicitly logged,
+- unresolved contradictions are absent,
+- operational risk remains bounded,
+- downstream instability is visible,
+- and adversarial review yields diminishing novel findings.
 
-remaining uncertainty is visible,
-
-unresolved risk is explicitly classified,
-
-operational consequences are bounded,
-
-and additional governance produces diminishing reliability gains.
-
-
-Uncertainty does not need to reach zero to permit operational progress.
+Uncertainty does not need to reach zero for operational progress to continue.
 
 Hidden uncertainty is more dangerous than acknowledged uncertainty.
 
+---
+
+## Bootstrap Governance Doctrine
+
+During repository bootstrap phases, governance authority may remain partially provisional before all canonical governance documents exist.
+
+In bootstrap states:
+- provisional authority inheritance must remain explicit,
+- unresolved authority conflicts must remain visible,
+- and absent canonical owners temporarily defer upward to the nearest existing governance authority tier.
+
+Bootstrap assumptions must never silently become permanent governance authority.
 
 ---
 
-Governance Authority Hierarchy
+## Governance Authority Hierarchy
 
-The repository operates under a layered governance authority structure.
+| Tier | Governance Role | Example Files |
+|------|-----------------|---------------|
+| Tier 1 | Constitutional governance | Governance_Charter.md, Ethical_Constraints.md |
+| Tier 2 | Canonical governance standards | Forge_Audit_Kit.md |
+| Tier 3 | Auditor operational doctrine | Auditor_Protocols.md |
+| Tier 4 | Dynamic governance procedures | Adversarial batteries, execution checklists |
+| Tier 5 | Domain specifications | Architecture/, Operations/, Tests/ |
 
-Tier	Authority Scope	Example Files
-
-Tier 1	Constitutional governance	Governance_Charter.md, Ethical_Constraints.md
-Tier 2	Canonical verification standards	Forge_Audit_Kit.md, Verification_Gates_LF.md
-Tier 3	Auditor operational doctrine	Auditor_Protocols.md
-Tier 4	Dynamic audit implementations	Adversarial batteries, execution checklists
-Tier 5	Domain specifications	Architecture/, Operations/, Tests/
-
-
-Lower-tier documents may extend higher-tier doctrine but may not silently contradict or redefine it.
-
+Lower-tier governance may extend higher-tier doctrine but may not silently redefine it.
 
 ---
 
-Governance Precedence Rules
+## Canonical Governance Ownership
+
+| Governance Concept | Canonical Owner | Status |
+|--------------------|-----------------|--------|
+| Governance hierarchy | Governance_Charter.md | Active |
+| Ethical anchor | Ethical_Constraints.md | Planned canonical target |
+| Verification gate definitions | Forge_Audit_Kit.md | Active provisional authority |
+| Auditor conduct | Auditor_Protocols.md | Active |
+| Dynamic adversarial procedures | Forge_Audit_Kit.md | Active |
+| Canonical terminology | Canonical_Terms_LF.md | Planned canonical target |
+| Repository structure doctrine | Repository_Structure.md | Planned canonical target |
+| Governance migration doctrine | Governance_Charter.md | Active |
+| Repository integrity doctrine | Governance_Charter.md | Transitional |
+
+If canonical governance targets do not yet exist, authority temporarily remains with the nearest active governance owner until migration occurs.
+
+---
+
+## Governance Precedence Rules
 
 If governance conflicts emerge:
-
-1. Tier 1 constitutional doctrine prevails
-
-
-2. Canonical ownership registry determines authority
-
-
-3. More specific scope overrides broader scope
-
-
-4. Historical audit lineage must remain interpretable
-
-
+1. Tier hierarchy prevails
+2. Explicit canonical ownership prevails
+3. More specific scope prevails
+4. Historical audit interpretability must be preserved
 5. Unresolved conflicts escalate into explicit disputes
 
-
-
-Silent precedence assumptions are prohibited.
-
+Silent authority inheritance is prohibited.
 
 ---
 
-Canonical Ownership Registry
+## Governance Enforcement States
 
-Governance Concept	Canonical Owner
+| State | Meaning |
+|--------|---------|
+| Declared | Governance doctrine exists conceptually |
+| Detectable | Violations can be identified |
+| Reviewable | Violations generate traceable audit evidence |
+| Enforceable | Violations trigger procedural or automated containment |
 
-Governance hierarchy	Governance_Charter.md
-Ethical anchor	Ethical_Constraints.md
-Verification gate definitions	Verification_Gates_LF.md
-Auditor conduct	Auditor_Protocols.md
-Dynamic adversarial procedures	Forge_Audit_Kit.md
-Canonical terminology	Canonical_Terms_LF.md
-Repository structure rules	Repository_Structure.md
-Unknown lifecycle doctrine	Auditor_Protocols.md
-Repository integrity doctrine	Governance_Charter.md
-
-
-Governance-bearing concepts must maintain explicit ownership.
-
-Duplicate implicit ownership creates semantic instability.
-
+Governance doctrine must not imply stronger enforcement capability than currently exists.
 
 ---
 
-Canonical Verification Gates
+## Canonical Verification Gates
 
-The repository uses six canonical verification gates.
-
-Gate 1 — Internal Coherence
+### Gate 1 — Internal Coherence
 
 Requirements:
-
-No self-contradiction
-
-Stable terminology usage
-
-Explicit scope boundaries
-
-Governance consistency across referenced files
-
-
+- No unresolved contradiction
+- Stable terminology usage
+- Explicit scope boundaries
+- Governance consistency across referenced files
 
 ---
 
-Gate 2 — Physical Plausibility
+### Gate 2 — Structural Plausibility
 
 Requirements:
+- Governance systems must remain operationally tractable
+- Escalation paths must remain bounded
+- Authority propagation must remain finite
+- Governance overhead must remain proportional to repository value
 
-No impossible physical assumptions
-
-Plausible energy, material, and environmental behavior
-
-Constraints remain grounded in known reality
-
-
-Governance-focused documents may satisfy this gate structurally rather than physically.
-
+Governance-focused documents satisfy this gate through bounded structural behavior rather than physical engineering constraints.
 
 ---
 
-Gate 3 — Adversarial Pass
+### Gate 3 — Adversarial Pass
 
 Requirements:
+- Proportional adversarial challenge review
+- Recursive justification resistance
+- Audit theater detection
+- Structural exploitability analysis
+- Escalation-paralysis review
 
-Proportional challenge review based on system coupling and risk
-
-Explicit stress testing against likely failure modes
-
-Detection of recursive justification loops
-
-Resistance to audit theater incentives
-
-
-Adversarial depth should scale proportionally to operational risk.
-
+Adversarial depth should scale proportionally to operational coupling and risk.
 
 ---
 
-Gate 4 — Cross-Module Integration
+### Gate 4 — Cross-Module Integration
 
 Requirements:
+- Explicit dependency mapping
+- Canonical path traceability
+- Stable ownership boundaries
+- Visible upstream/downstream relationships
 
-Explicit dependency mapping
-
-Canonical path references
-
-Stable ownership boundaries
-
-Traceable upstream and downstream interfaces
-
-
+Provisional canonical references must remain visibly marked.
 
 ---
 
-Gate 5 — Truth Provenance Layering
+### Gate 5 — Truth Provenance Layering
 
-Claims must distinguish:
+All meaningful claims must distinguish:
+- internally derived reasoning,
+- analogous external inference,
+- experimentally verified evidence,
+- and operationally hardened reality.
 
-internally coherent reasoning,
-
-analogous inference,
-
-experimentally validated evidence,
-
-and operationally hardened reality.
-
-
-Truth provenance must remain visible.
-
-Repository consensus is not equivalent to external validation.
-
+Repository coherence is not equivalent to operational truth.
 
 ---
 
-Gate 6 — Audit Lineage Integrity
+### Gate 6 — Audit Lineage Integrity
 
 Requirements:
+- Traceable governance revisions
+- Preserved unknown lineage
+- Visible dispute evolution
+- Historical audit interpretability
+- Stable migration traceability
 
-Traceable revision history
-
-Preserved unknown lineage
-
-Visible dispute evolution
-
-Stable resolution pathways
-
-Historical audit interpretability
-
-
-Repository memory must survive governance evolution.
-
+Integrity expectations and enforcement architecture are distinct layers.
 
 ---
 
-Truth Provenance Doctrine
+## Truth Provenance Doctrine
 
-All meaningful claims inherit a provenance classification.
-
-Provenance Level	Meaning
-
-Internally Derived	Supported primarily by repository logic, reasoning, or modeling
-Analogous External	Inferred from comparable external systems
-Experimentally Verified	Directly validated through documented testing
-Operationally Hardened	Repeatedly validated under operational conditions
-
+| Provenance Level | Meaning |
+|------------------|---------|
+| Internally Derived | Supported primarily through repository logic or modeling |
+| Analogous External | Derived from comparable external systems |
+| Experimentally Verified | Validated through documented testing |
+| Operationally Hardened | Repeatedly validated operationally |
 
 Evidence confidence and provenance are separate dimensions.
 
-A claim may be:
-
-highly measured,
-
-but still internally derived.
-
-
-This distinction must remain visible.
-
+Internally coherent reasoning must never be silently upgraded into operational truth claims.
 
 ---
 
-Governance Migration Doctrine
+## Governance Migration Doctrine
 
-Governance systems evolve through explicit migration rather than silent replacement.
+Governance evolves through explicit migration rather than silent replacement.
 
 Governance revisions must:
+- preserve historical interpretability,
+- declare compatibility status,
+- document semantic changes,
+- preserve lineage visibility,
+- and expose transitional assumptions.
 
-preserve historical audit interpretability,
-
-declare semantic compatibility status,
-
-document breaking changes,
-
-maintain lineage references,
-
-and define transition expectations.
-
-
-Governance mutation without migration tracking is prohibited.
-
+Untracked governance mutation is prohibited.
 
 ---
 
-Governance Compatibility Rules
+## Canonical Authority Fallback Doctrine
 
-Change Type	Compatibility Impact
+If a canonical governance owner:
+- does not yet exist,
+- becomes deprecated,
+- becomes unavailable,
+- or enters unresolved dispute,
 
-Editorial clarification	Compatible
-New optional doctrine	Compatible
-Gate reinterpretation	Breaking
-Provenance hierarchy change	Breaking
-Authority reassignment	Breaking
-Unknown ID remapping	Breaking
+authority temporarily inherits upward to the nearest stable governance tier until reassignment occurs.
 
-
-Breaking governance changes require:
-
-explicit migration documentation,
-
-audit revalidation review,
-
-and visible compatibility declarations.
-
-
+Fallback inheritance must remain visible and auditable.
 
 ---
 
-Repository Integrity Doctrine
+## Repository Integrity Doctrine
 
 Repository integrity includes:
+- governance lineage preservation,
+- rollback visibility,
+- canonical path continuity,
+- frozen-section traceability,
+- and authority authenticity visibility.
 
-document lineage preservation,
+This charter defines integrity expectations, not integrity implementation mechanics.
 
-canonical path stability,
-
-rollback visibility,
-
-frozen-section traceability,
-
-and governance authority authenticity.
-
-
-Integrity protections must prioritize:
-
-audit survivability,
-
-historical interpretability,
-
-and corruption visibility.
-
-
-Implementation details may evolve independently of this doctrine.
-
+Executable integrity systems belong to subordinate implementation protocols.
 
 ---
 
-Escalation Doctrine
+## Escalation Doctrine
 
-Escalation exists to contain instability, not maximize interruption.
+Escalation exists to contain instability rather than maximize interruption.
 
 Escalation should occur when:
+- unresolved uncertainty becomes structurally destabilizing,
+- governance lineage becomes unreliable,
+- compound drift indicators activate simultaneously,
+- or unresolved governance conflicts block operational interpretation.
 
-unresolved uncertainty becomes structurally dangerous,
-
-governance conflicts become blocking,
-
-audit lineage becomes unreliable,
-
-or compound drift indicators activate simultaneously.
-
-
-Escalation mechanisms must remain proportional to operational risk.
-
+Escalation must remain proportional to operational risk.
 
 ---
 
-Compound Drift Rule
+## Escalation Calibration Doctrine
+
+| Severity Tier | Trigger Pattern | Expected Response |
+|----------------|----------------|------------------|
+| Low | Isolated governance inconsistency | Local review |
+| Medium | Repeated unresolved drift | Escalated audit review |
+| High | Cross-governance contradiction | Promotion freeze |
+| Critical | Integrity collapse or authority corruption | Human intervention required |
+
+Escalation mechanisms should prioritize containment before expansion.
+
+---
+
+## Compound Drift Rule
 
 If multiple governance instability indicators activate simultaneously:
-
-autonomous progression authority may be temporarily reduced,
-
-promotion pathways may freeze,
-
-and human review may become mandatory.
-
+- promotion authority may temporarily freeze,
+- autonomous governance authority may narrow,
+- and human review may become mandatory.
 
 Compound instability is treated as systemic risk rather than isolated failure.
 
-
 ---
 
-Governance Anti-Theater Doctrine
+## Governance Anti-Theater Doctrine
 
-Governance optimized for appearance rather than operational truth is considered a repository integrity failure.
+Governance optimized primarily for appearance rather than operational reliability is considered a governance integrity failure.
 
 Indicators include:
+- cosmetic rigor inflation,
+- unverifiable certainty claims,
+- recursive audit accumulation,
+- unsupported enforcement assumptions,
+- and governance complexity disconnected from operational value.
 
-cosmetic audit inflation,
-
-recursive self-certification,
-
-unverifiable rigor claims,
-
-unsupported certainty escalation,
-
-and excessive governance accumulation disconnected from operational value.
-
-
-Clean documentation is not evidence of correctness.
-
+Documentation quality alone is not evidence of correctness.
 
 ---
 
-Autonomous Governance Constraints
+## Autonomous Governance Constraints
 
 Autonomous systems must not:
+- silently redefine governance authority,
+- erase lineage visibility,
+- fabricate provenance,
+- implicitly rewrite canonical terminology,
+- collapse uncertainty into certainty,
+- or optimize for governance appearance over operational integrity.
 
-silently rewrite governance authority,
-
-erase audit lineage,
-
-redefine canonical terminology implicitly,
-
-fabricate provenance,
-
-collapse uncertainty into certainty,
-
-or optimize for governance appearance over operational integrity.
-
-
-Governance automation must remain traceable and reviewable.
-
+Autonomous governance actions must remain reviewable.
 
 ---
 
-Human Override Doctrine
+## Human Override Doctrine
 
 Human operators retain ultimate governance override authority.
 
 Overrides must:
+- remain explicit,
+- preserve lineage visibility,
+- document rationale,
+- declare accepted risk,
+- and avoid retroactive audit erasure.
 
-remain explicit,
-
-include rationale,
-
-preserve lineage visibility,
-
-document accepted risk,
-
-and avoid retroactive audit erasure.
-
-
-Undocumented governance overrides are repository integrity failures.
-
+Override authenticity validation mechanisms remain unresolved and must not be implicitly assumed.
 
 ---
 
-Governance Failure Modes
+## Governance Stability Doctrine
 
-Failure Mode	Description
+This charter is intended to stabilize slowly over time.
 
-Recursive Governance Expansion	Governance grows faster than operational value
-Semantic Drift	Governance terms mutate across files
-Provenance Collapse	Internal coherence mistaken for operational truth
-Audit Theater	Appearance of rigor replaces verification
-Authority Fragmentation	Multiple files silently claim the same authority
-Unknown Accumulation	Governance uncertainty becomes structurally unmanaged
-Historical Erasure	Audit lineage becomes unrecoverable
-Frozen Governance Corruption	Stable doctrine mutates without traceability
-Escalation Paralysis	Governance freezes operational throughput
-Governance Capture	Optimization incentives distort repository truthfulness
-
-
-
----
-
-Governance Stability Doctrine
-
-This charter is intended to evolve slowly.
-
-Constitutional governance changes require:
-
-explicit migration review,
-
-adversarial governance analysis,
-
-lineage compatibility assessment,
-
-and documented rationale.
-
+Constitutional governance modifications require:
+- migration review,
+- adversarial governance analysis,
+- compatibility assessment,
+- and explicit rationale documentation.
 
 Governance stability matters because audit meaning must survive across repository generations.
 
+---
+
+## Governance Failure Modes
+
+| Failure Mode | Description |
+|--------------|-------------|
+| Recursive Governance Expansion | Governance grows faster than operational value |
+| Semantic Drift | Governance meaning mutates across files |
+| Provenance Collapse | Internal coherence mistaken for operational truth |
+| Audit Theater | Appearance of rigor replaces verification |
+| Authority Fragmentation | Governance ownership becomes inconsistent |
+| Escalation Paralysis | Governance freezes operational throughput |
+| Integrity Theater | Declared protections lack enforcement |
+| Bootstrap Collapse | Early governance assumptions become circular |
+| Governance Capture | Optimization incentives distort repository truthfulness |
+| Historical Erasure | Audit lineage becomes unrecoverable |
 
 ---
 
-Lessons Learned
+## Lessons Learned
 
-Date	Evidence Type	What Was Tried	What Failed	What Was Learned	Confidence	Revalidation Needed
-
-2026-05-22	Audit Review	Independent governance file evolution	Verification semantics diverged across governance files	Governance authority layering must be explicit	Replicated	Yes
-2026-05-22	Modeling	Recursive audit escalation doctrine	Governance growth lacked closure criteria	Governance requires bounded uncertainty doctrine	Analogous	Yes
-2026-05-23	Audit Review	Flat governance ownership assumptions	Unknown ID collisions and gate divergence emerged	Canonical ownership registries reduce semantic fragmentation	Replicated	Yes
-
-
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|---------------|----------------|-------------|------------------|------------|---------------------|
+| 2026-05-22 | Audit Review | Independent governance evolution | Gate semantics diverged between governance files | Canonical ownership must remain explicit | Replicated | Yes |
+| 2026-05-23 | Modeling | Recursive audit escalation | Governance lacked closure doctrine | Bounded uncertainty stabilizes governance growth | Analogous | Yes |
+| 2026-05-23 | Audit Review | Implicit enforcement assumptions | Governance policy was mistaken for executable control | Doctrine and enforcement layers must remain distinct | Replicated | Yes |
 
 ---
 
-Active Disputes
+## Active Disputes
 
-ID	Summary	Positions in Conflict	Risk	Status	Owner
-
-GOV-001	Whether verification gates should remain centralized or become modularized by governance domain	Single canonical gate authority vs distributed governance specialization	High	Open	Governance_Charter.md
-
-
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|----|----------|----------------------|------|--------|-------|
+| GOV-DS-001 | Whether constitutional governance should contain executable enforcement mechanics | Constitutional abstraction vs hardcoded governance automation | High | Open | Governance_Charter.md |
 
 ---
 
-Auditor Notes & Unknowns
+## Auditor Notes & Unknowns
 
-GOV-001 — Governance migration mechanics incompletely operationalized
+### GOV-001 — Governance migration mechanics incompletely operationalized
 
-Field	Value
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Governance |
+| Blocking | No |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Status	Open
-Risk	Medium
-Priority	Major
-Type	Governance
-Blocking	No
-Owner	Governance_Charter.md
-First Logged	2026-05-23
-Last Reviewed	2026-05-23
+**Description:** Governance migration doctrine exists conceptually but lacks executable migration procedures.
 
+**Why It Matters:** Governance upgrades may still produce semantic fragmentation.
 
-Description: Governance migration doctrine exists conceptually but lacks executable transition procedures.
-
-Why It Matters: Governance upgrades may still produce semantic fragmentation during repository evolution.
-
-Resolution Path: Payment via Specification — create Repository_Governance_Migration.md defining operational migration procedures.
-
+**Resolution Path:** Payment via Specification — create Governance_Migration_Protocol.md.
 
 ---
 
-GOV-002 — Provenance layering remains partially theoretical
+### GOV-002 — Provenance operationalization immature
 
-Field	Value
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Epistemic |
+| Blocking | No |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Status	Open
-Risk	Medium
-Priority	Major
-Type	Epistemic
-Blocking	No
-Owner	Governance_Charter.md
-First Logged	2026-05-23
-Last Reviewed	2026-05-23
+**Description:** Provenance doctrine exists but lacks long-term operational validation.
 
+**Why It Matters:** Agents may still collapse internally derived reasoning into implied operational truth.
 
-Description: The repository has not yet demonstrated stable operational use of layered provenance classifications.
-
-Why It Matters: Agents may still collapse internally derived reasoning into implied operational truth.
-
-Resolution Path: Discharge via Lessons Learned — validate provenance doctrine across multiple audit cycles.
-
+**Resolution Path:** Discharge via Lessons Learned after repeated audit-cycle validation.
 
 ---
 
-GOV-003 — Repository integrity enforcement architecture undefined
+### GOV-003 — Integrity enforcement architecture undefined
 
-Field	Value
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | High |
+| Priority | Critical |
+| Type | Governance / Security |
+| Blocking | Yes |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Status	Open
-Risk	High
-Priority	Critical
-Type	Governance / Security
-Blocking	Yes
-Owner	Governance_Charter.md
-First Logged	2026-05-23
-Last Reviewed	2026-05-23
+**Description:** Integrity expectations exist constitutionally, but executable integrity enforcement architecture is undefined.
 
+**Why It Matters:** Repository integrity protections may remain performative rather than operational.
 
-Description: Constitutional integrity expectations exist, but repository-level enforcement mechanisms remain undefined.
-
-Why It Matters: Governance lineage protections may be conceptually present but operationally unenforceable.
-
-Resolution Path: Payment via Specification — create Repository_Integrity_Protocol.md defining integrity verification architecture.
-
+**Resolution Path:** Payment via Specification — create Repository_Integrity_Protocol.md.
 
 ---
 
-GOV-004 — Governance escalation thresholds remain partially subjective
+### GOV-004 — Escalation calibration partially subjective
 
-Field	Value
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Governance |
+| Blocking | No |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Status	Open
-Risk	Medium
-Priority	Major
-Type	Governance
-Blocking	No
-Owner	Governance_Charter.md
-First Logged	2026-05-23
-Last Reviewed	2026-05-23
+**Description:** Escalation doctrine remains partially interpretive despite severity calibration improvements.
 
+**Why It Matters:** Different auditors may escalate similar conditions differently.
 
-Description: Escalation doctrine defines principles but not calibrated operational thresholds.
-
-Why It Matters: Different auditors may trigger escalation inconsistently.
-
-Resolution Path: Payment via Specification — define proportional escalation standards within Forge_Audit_Kit.md.
-
+**Resolution Path:** Payment via Specification — extend escalation calibration matrices in Forge_Audit_Kit.md.
 
 ---
 
-GOV-005 — Long-term constitutional governance stability unproven
+### GOV-005 — Long-term constitutional stability unproven
 
-Field	Value
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | High |
+| Priority | Critical |
+| Type | Architectural |
+| Blocking | Yes |
+| Owner | Repository-wide |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Status	Open
-Risk	High
-Priority	Critical
-Type	Architectural
-Blocking	Yes
-Owner	Repository-wide
-First Logged	2026-05-23
-Last Reviewed	2026-05-23
+**Description:** Multi-cycle survivability of constitutional governance architecture remains unproven.
 
+**Why It Matters:** Governance fragmentation risk may still emerge over long timelines.
 
-Description: The repository has not yet demonstrated stable multi-cycle operation under a constitutional governance architecture.
-
-Why It Matters: Governance systems may still accumulate fragmentation or recursive instability over long operational timelines.
-
-Resolution Path: Discharge via Lessons Learned — complete multiple successful governance migration and audit cycles without semantic drift.
-
+**Resolution Path:** Discharge via Lessons Learned after stable governance migration cycles.
 
 ---
 
-GOV-003 — Repository integrity enforcement architecture undefined
+### GOV-006 — Human override authenticity validation undefined
 
-Field   Value
-Status  Open
-Risk    High
-Priority Critical
-Type    Governance / Security
-Blocking Yes
-Owner   Admin/Governance_Charter.md
-First Logged 2026-05-23
-Last Reviewed 2026-05-23
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | High |
+| Priority | Major |
+| Type | Security / Governance |
+| Blocking | No |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-Description: Constitutional integrity expectations exist, but repository-level enforcement mechanisms (such as state token transitions and hard freeze triggers) remain un-executable by autonomous scripts.
-Why It Matters: Governance lineage protections will remain purely rhetorical statements without programmatic code hooks to enforce them.
-Resolution Path: Payment via Specification — Append an explicit, hardcoded sequential state machine block to section "Escalation Doctrine."
+**Description:** The repository lacks a defined mechanism for validating human override authenticity versus authority spoofing.
 
----
+**Why It Matters:** Autonomous systems could theoretically fabricate override lineage.
 
-GOV-006 — Human operator signature validation framework un-defined
-
-Field   Value
-Status  Open
-Risk    High
-Priority Major
-Type    Security / Architecture
-Blocking No
-Owner   Admin/Governance_Charter.md
-First Logged 2026-05-23
-Last Reviewed 2026-05-23
-
-Description: The repository lacks a defined method for autonomous systems to cryptographically verify a human operator override token vs. an authority spoofing exploit.
-Why It Matters: An autonomous agent undergoing behavior drift could fabricate human permission logs to bypass verification gate blocks.
-Resolution Path: Payment via Specification — Define token authentication standards in a linked Admin/Security_Protocols.md file.
-
-
+**Resolution Path:** Payment via Specification — create Security_Protocols.md defining authority authentication architecture.
 
 ---
 
-Resolution Log
+### GOV-007 — Bootstrap governance authority initialization undefined
 
-2026-05-23: GOV-LEGACY-01 — Governance authority precedence clarified through explicit tier hierarchy.
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Governance / Epistemic |
+| Blocking | No |
+| Owner | Governance_Charter.md |
+| First Logged | 2026-05-23 |
+| Last Reviewed | 2026-05-23 |
 
-2026-05-23: GOV-LEGACY-02 — Verification gate semantic divergence consolidated into canonical governance definitions.
+**Description:** Early-stage governance authority initialization remains partially circular during repository bootstrap states.
 
-2026-05-23: GOV-LEGACY-03 — Recursive governance escalation risk partially stabilized through Governance Closure Doctrine.
+**Why It Matters:** Distributed governance agents may derive conflicting authority roots during early formation phases.
+
+**Resolution Path:** Payment via Specification — extend bootstrap governance doctrine with explicit initialization procedures.
+
+---
+
+## Resolution Log
+
+- 2026-05-23: GOV-LEGACY-01 — Governance hierarchy formalized into constitutional tier structure.
+- 2026-05-23: GOV-LEGACY-02 — Recursive governance escalation partially stabilized through closure doctrine.
+- 2026-05-23: GOV-LEGACY-03 — Governance doctrine separated from enforcement-state semantics.
