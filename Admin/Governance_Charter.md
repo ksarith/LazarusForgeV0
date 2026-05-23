@@ -685,6 +685,44 @@ Resolution Path: Discharge via Lessons Learned — complete multiple successful 
 
 ---
 
+GOV-003 — Repository integrity enforcement architecture undefined
+
+Field   Value
+Status  Open
+Risk    High
+Priority Critical
+Type    Governance / Security
+Blocking Yes
+Owner   Admin/Governance_Charter.md
+First Logged 2026-05-23
+Last Reviewed 2026-05-23
+
+Description: Constitutional integrity expectations exist, but repository-level enforcement mechanisms (such as state token transitions and hard freeze triggers) remain un-executable by autonomous scripts.
+Why It Matters: Governance lineage protections will remain purely rhetorical statements without programmatic code hooks to enforce them.
+Resolution Path: Payment via Specification — Append an explicit, hardcoded sequential state machine block to section "Escalation Doctrine."
+
+---
+
+GOV-006 — Human operator signature validation framework un-defined
+
+Field   Value
+Status  Open
+Risk    High
+Priority Major
+Type    Security / Architecture
+Blocking No
+Owner   Admin/Governance_Charter.md
+First Logged 2026-05-23
+Last Reviewed 2026-05-23
+
+Description: The repository lacks a defined method for autonomous systems to cryptographically verify a human operator override token vs. an authority spoofing exploit.
+Why It Matters: An autonomous agent undergoing behavior drift could fabricate human permission logs to bypass verification gate blocks.
+Resolution Path: Payment via Specification — Define token authentication standards in a linked Admin/Security_Protocols.md file.
+
+
+
+---
+
 Resolution Log
 
 2026-05-23: GOV-LEGACY-01 — Governance authority precedence clarified through explicit tier hierarchy.
