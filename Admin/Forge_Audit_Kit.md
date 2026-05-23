@@ -1,376 +1,293 @@
-Forge_Audit_Kit.md
+# Forge_Audit_Kit.md
+**Version 0.7**
 
-Version 0.7 draft Condensed audit reference for Lazarus Forge multi-agent cycles Derived from: Admin/Auditor_Protocols.md v0.6 + Unknowns.md v1.6 Purpose: Lightweight operational audit substrate for routine multi-agent verification cycles without loading full governance corpus.
+## File State
 
-
----
-
-Major Structural Changes in This Revision
-
-This revision incorporates six governance upgrades:
-
-1. Verification Maturity Model
-
-Prevents infinite audit recursion
-
-Defines “sufficient confidence” operationally
-
-
-
-2. Truth Provenance Hierarchy
-
-Distinguishes internally-derived coherence from real-world validation
-
-
-
-3. Adversarial Weighting
-
-Prevents combinatorial audit explosion
-
-Prioritizes high-coupling and irreversible systems
-
-
-
-4. Anti-Theater Doctrine
-
-Distinguishes operationally meaningful findings from sophisticated speculation
-
-
-
-5. Repository Integrity Awareness
-
-Adds institutional-memory corruption risk category
-
-
-
-6. Confidence Decay / Revalidation
-
-Prevents stale certainty from becoming doctrine
-
-
-
-
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Draft                                                               |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 3/6                                                                 |
+| Verification Ref | Verification_Gates_LF.md                                            |
+| Last Audit       | 2026-05-23                                                          |
+| Auditor          | Claude — Reconciliation/Auditor                                     |
+| Open Unknowns    | 3                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | Medium                                                              |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ---
 
-Recommended Additions
+## Scope Boundary
 
+**This file DOES define:**
+- Condensed audit reference for routine multi-agent cycles
+- Governing principles summary
+- Verification Maturity Model
+- Truth Provenance label system
+- Adversarial priority weighting criteria
+- Anti-Theater doctrine
+- Repository integrity awareness requirements
+- Confidence decay and revalidation guidance
+- Fallacy checklist (condensed)
+- AI contribution rules (condensed)
+- Verification gates (condensed)
+- Sign-off format
+- Active unknowns index (cross-module, summary only)
+- Sidecar ID reference
+- Dependency map (condensed)
+- Expiry Watch
+
+**This file DOES NOT define:**
+- Full auditor role class doctrine (→ Admin/Auditor_Protocols.md)
+- Full audit sequencing and phase logic (→ Admin/Auditor_Protocols.md)
+- Full Adversarial Challenge Battery (→ Admin/Auditor_Protocols.md)
+- Full unknown entry detail (→ owning file sidecars)
+- Full cross-module unknown registry (→ Unknowns.md)
+- Constitutional governance hierarchy (→ Admin/Governance_Charter.md)
+- Ethical policy (→ Admin/Ethical_Constraints.md)
+- Engineering specifications
 
 ---
 
-GOVERNING PRINCIPLES (Revised)
+## File Purpose
 
-> Capability never outruns permission. — Admin/Ethical_Constraints.md
+This file is the lightweight operational audit substrate for routine LazarusForgeV0 multi-agent verification cycles. It exists to allow agents to conduct competent audit work without loading the full governance corpus — Auditor_Protocols.md, Unknowns.md, and Governance_Charter.md together exceed practical token limits for routine cycles. When this file contradicts a full source document, the full source document prevails. This file should be updated whenever Auditor_Protocols.md is revised or Unknowns.md version increments.
 
-Confidence never outruns verification. — Admin/Auditor_Protocols.md
+---
 
+## Assumptions
 
+| ID      | Assumption                                                                    | Basis                            | Confidence | Expiry Trigger                                   |
+|---------|-------------------------------------------------------------------------------|----------------------------------|------------|--------------------------------------------------|
+| ASM-001 | Routine audit cycles operate under token constraints requiring condensation   | Observed multi-agent workflow    | High       | Token limits no longer relevant                  |
+| ASM-002 | This file will remain derived from Auditor_Protocols.md as the source of truth | Governance tier structure       | High       | Kit elevated to independent governance authority |
+| ASM-003 | Active unknowns index remains accurate between Unknowns.md version increments | Maintenance discipline           | Medium     | Unknowns.md version increments without kit update |
 
-Additional governing doctrine
+---
+
+## Governing Principles
+
+> Capability never outruns permission. — `Admin/Ethical_Constraints.md`
+
+> Confidence never outruns verification. — `Admin/Auditor_Protocols.md`
 
 > Verification seeks sufficient falsifiability, not exhaustive certainty.
 
+The Forge does not require omniscience before action. It requires explicit uncertainty, bounded operational assumptions, falsifiable claims, and traceable failure handling.
 
+**Infinite audit recursion is a governance failure mode.**
 
-The Forge does not require omniscience before action. It requires:
+**Scope boundary:** Human override rights apply to verification process decisions only. They do not extend to hard-line doctrines in `Admin/Ethical_Constraints.md` (Anti-Weaponization, Life Preservation).
 
-explicit uncertainty,
+**Sidecar Model:** Module-specific unknowns live in each file's own `## Auditor Notes & Unknowns` footer. The active unknowns index below lists cross-module unknowns only. Full entry detail is in the owning file's sidecar.
 
-bounded operational assumptions,
-
-falsifiable claims,
-
-and traceable failure handling.
-
-
-Infinite audit recursion is considered a governance failure mode.
-
+*Full reference: `Admin/Auditor_Protocols.md` §Governing Principles*
 
 ---
 
-VERIFICATION MATURITY MODEL (New Section)
+## Verification Maturity Model
 
-Replace implicit binary “specification/not-specification” behavior with explicit maturity states.
+Replaces implicit binary Specification/not-Specification behavior with explicit maturity states.
 
-State	Meaning	Operational Status
+| State                    | Meaning                                                      | Operational Status         |
+|--------------------------|--------------------------------------------------------------|----------------------------|
+| Exploration              | Speculative, incomplete, unconstrained                       | Not operational            |
+| Candidate Specification  | Structured but incompletely verified                         | Internal review only       |
+| Provisional Specification| Verified within bounded assumptions                          | Limited operational use    |
+| Operational Specification| Verified against real artifacts and downstream interactions  | Deployable                 |
+| Hardened Doctrine        | Survived repeated adversarial and operational cycles         | Trusted baseline           |
 
-Exploration	Speculative / incomplete / unconstrained	Not operational
-Candidate Specification	Structured but incompletely verified	Internal review only
-Provisional Specification	Verified within bounded assumptions	Limited operational use
-Operational Specification	Verified against real artifacts and downstream interactions	Deployable
-Hardened Doctrine	Survived repeated adversarial and operational cycles	Trusted baseline
-
-
-Promotion rule
-
-A document advances only when:
-
-assumptions narrow,
-
-unknowns shrink,
-
-operational predictability increases,
-
-and external validation expands.
-
-
+**Promotion rule:** A document advances only when assumptions narrow, unknowns shrink, operational predictability increases, and external validation expands.
 
 ---
 
-TRUTH PROVENANCE LABELS (New Section)
+## Exploration vs. Specification
 
-Quantitative labels remain:
+**Exploration** — incomplete, speculative, loosely connected. Do not over-police.
 
-Measured
+**Specification** — must pass all gates. Claims binding, cross-refs must resolve, numbers must be labeled.
 
-Estimated
+**Loophole guard:** Exploratory documents making implicit performance claims must be treated as specification candidates for those claims. The Exploration label does not shield implicit guarantees.
 
-Analogous
-
-Placeholder
-
-
-Add institutional truth provenance labels:
-
-Label	Meaning
-
-Internally Derived	Supported only by repository logic
-Analogous External	Supported by comparable external systems
-Experimentally Verified	Supported by direct test evidence
-Operationally Hardened	Survived repeated real-world operational cycles
-
-
-Rule
-
-No internally-derived claim may be represented as operationally hardened without external validation.
-
-This prevents:
-
-recursive documentation loops,
-
-consensus hallucination,
-
-repository self-certification.
-
-
+*Full reference: `Admin/Auditor_Protocols.md` §Exploration vs. Specification*
 
 ---
 
-ADVERSARIAL PRIORITY WEIGHTING (New Section)
+## Truth Provenance Labels
 
-Full Adversarial Challenge Battery required when any of the following are high:
+Quantitative confidence labels (apply to all numerical claims):
 
-Factor	High-Risk Trigger
+| Label       | Meaning                                              |
+|-------------|------------------------------------------------------|
+| Measured    | Derived from real experimental data                  |
+| Estimated   | Derived from analog systems with scaling factors     |
+| Analogous   | Drawn from similar documented systems                |
+| Placeholder | Provisional, pending verification                    |
 
-Irreversibility	Permanent destruction or contamination
-Coupling	Multi-module downstream dependency
-Energy Density	Thermal, kinetic, chemical, electrical hazard
-Autonomy	Reduced human oversight
-Silent Failure Potential	Failure difficult to detect
-Governance Authority	Defines behavior of other documents
+Institutional truth provenance labels (apply to all significant claims):
 
+| Label                    | Meaning                                                    |
+|--------------------------|------------------------------------------------------------|
+| Internally Derived       | Supported only by repository logic or modeling             |
+| Analogous External       | Supported by comparable external systems                   |
+| Experimentally Verified  | Supported by direct test evidence                          |
+| Operationally Hardened   | Survived repeated real-world operational cycles            |
 
-Partial Battery Allowed
+**Rule:** No internally-derived claim may be represented as operationally hardened without external validation. This prevents recursive documentation loops, consensus hallucination, and repository self-certification.
 
-Exploratory documents may apply selected challenge classes if:
-
-deferred classes are documented,
-
-rationale stated,
-
-no safety-critical claims made.
-
-
+*Full reference: `Admin/Auditor_Protocols.md` §Evidence Classification*
 
 ---
 
-ANTI-THEATER DOCTRINE (New Section)
+## Adversarial Priority Weighting
+
+Full Adversarial Challenge Battery required when any of the following factors are high:
+
+| Factor                | High-Risk Trigger                                    |
+|-----------------------|------------------------------------------------------|
+| Irreversibility       | Permanent destruction or contamination               |
+| Coupling              | Multi-module downstream dependency                   |
+| Energy Density        | Thermal, kinetic, chemical, or electrical hazard     |
+| Autonomy              | Reduced human oversight                              |
+| Silent Failure        | Failure difficult to detect before consequence       |
+| Governance Authority  | Document defines behavior of other documents         |
+
+**Partial Battery allowed** for Exploration-stage documents if deferred classes are documented with rationale and no safety-critical claims are present.
+
+*Full reference: `Admin/Auditor_Protocols.md` §Adversarial Audit Layer*
+
+---
+
+## Anti-Theater Doctrine
 
 Adversarial analysis is valuable only if it changes operational understanding.
 
-Requirement
+**Findings should target:** plausible failure pathways, energy-bearing systems, historically observed industrial failures, governance exploitability, hidden coupling, silent corruption mechanisms.
 
-Findings should preferentially target:
+**Weak findings include:** purely rhetorical edge cases, unconstrained hypothetical chains, impossible-state speculation, adversarial narratives without operational consequence.
 
-plausible failure pathways,
-
-energy-bearing systems,
-
-historically observed industrial failures,
-
-governance exploitability,
-
-hidden coupling,
-
-silent corruption mechanisms.
-
-
-Weak findings include:
-
-purely rhetorical edge cases,
-
-unconstrained hypothetical chains,
-
-impossible-state speculation,
-
-adversarial narratives without operational consequence.
-
-
-Evaluation rule
-
-A finding’s value is proportional to its ability to:
-
-alter design decisions,
-
-narrow assumptions,
-
-trigger safeguards,
-
-or expose previously invisible coupling.
-
-
+**Evaluation rule:** A finding's value is proportional to its ability to alter design decisions, narrow assumptions, trigger safeguards, or expose previously invisible coupling.
 
 ---
 
-REPOSITORY INTEGRITY & INSTITUTIONAL MEMORY (New Section)
+## Repository Integrity & Institutional Memory
 
 The repository is treated as operational infrastructure, not passive documentation.
 
-Threats include:
+**Integrity threats include:** audit history rewriting, silent rollback, canonical definition drift, rename registry tampering, fabricated resolution logs, authority spoofing, stale doctrine masquerading as current policy.
 
-audit history rewriting,
+**Requirement:** High-coupling governance documents must preserve audit lineage, maintain immutable resolution history, record version transitions, and identify authoritative canonical paths.
 
-silent rollback,
+**Adversarial linkage:** Institutional memory corruption is treated as Challenge Class 6 (Recursive Justification), Challenge Class 9 (Epistemic Corruption), and Challenge Class 10 (Systemic Coupling).
 
-canonical definition drift,
-
-rename registry tampering,
-
-fabricated resolution logs,
-
-authority spoofing,
-
-stale doctrine masquerading as current policy.
-
-
-Requirement
-
-High-coupling governance documents must:
-
-preserve audit lineage,
-
-maintain immutable resolution history,
-
-record version transitions,
-
-and identify authoritative canonical paths.
-
-
-Adversarial linkage
-
-Institutional memory corruption is treated as:
-
-Challenge Class 6 (Recursive Justification),
-
-Challenge Class 9 (Epistemic Corruption),
-
-and Challenge Class 10 (Systemic Coupling).
-
-
+*Full reference: `Admin/Auditor_Protocols.md` §Adversarial Audit Layer*
 
 ---
 
-CONFIDENCE DECAY & REVALIDATION (New Section)
+## Confidence Decay & Revalidation
 
 Knowledge ages. Verification is not permanent.
 
-Revalidation guidance
+| Claim Type                          | Revalidation Pressure |
+|-------------------------------------|-----------------------|
+| Safety-critical operational assumptions | High              |
+| Experimental measurements           | Medium–High           |
+| Analogous engineering assumptions   | Medium                |
+| Governance doctrine                 | Medium                |
+| Exploratory concepts                | Low                   |
 
-Claim Type	Revalidation Pressure
+**Drift indicators triggering revalidation:** tooling changes, environmental changes, new operational evidence, repeated overrides, unresolved unknown accumulation, contradiction between modules, model behavior drift.
 
-Safety-critical operational assumptions	High
-Experimental measurements	Medium–High
-Analogous engineering assumptions	Medium
-Governance doctrine	Medium
-Exploratory concepts	Low
-
-
-Drift indicators
-
-tooling changes,
-
-environmental changes,
-
-new operational evidence,
-
-repeated overrides,
-
-unresolved unknown accumulation,
-
-contradiction between modules,
-
-model behavior drift.
-
-
-Rule
-
-Unrevalidated assumptions accumulate epistemic decay over time.
-
-Confidence is not durable merely because documentation exists.
-
+**Rule:** Unrevalidated assumptions accumulate epistemic decay over time. Confidence is not durable merely because documentation exists.
 
 ---
 
-AI CONTRIBUTION RULES (Revised)
+## Fallacy Checklist
 
-Add:
+Apply to all specification-level claims. Bare checkmarks are not verification — substantive notes required for non-trivial claims (1–2 sentences: what was checked, what nearly failed, what was adjusted).
 
-Rule 7 — Repository Structure Awareness Use canonical folder-prefixed paths:
+**1. Magic Energy** — Every watt needs a traceable origin. Cross-ref `Operations/Energy.md`.
 
-Admin/
+**2. Friction Blindness** — Account for mechanical resistance, thermal losses, fluid drag, wear. Real systems degrade.
 
-Architecture/
+**3. Energy Density Paradox** — Does a recovery step cost more than it produces? Justify as enabling investment or flag.
 
-Operations/
+**4. Semantic Drift** — Terms must mean the same thing everywhere. Cross-check against `Architecture/Forge_flow.md`.
 
-Tests/
+**5. Scope Creep** — New capabilities belong in `Admin/Trajectories.md`, not silently in current-version specs.
 
+**6. Hallucinated Files** — All cross-references must resolve to real files. Files confirmed in `Discovery.md` are treated as verified. Aspirational references must be labeled *planned*.
 
-Legacy flat names are aliases only.
+**7. Confidence Without Basis** — All numbers must be labeled: **Measured / Estimated / Analogous / Placeholder**. Unlabeled = Placeholder.
 
+**8. Lifecycle Truncation** — Every module spec needs: Degraded Operation, Failure Modes, Maintenance Access, End-of-Life path.
 
----
+**9. Incomplete by Omission** — What critical subsystem is missing? Heat dissipation, waste streams, power draw, human interface?
 
-VERIFICATION GATES (Revised)
+**10. The Turd Problem** — Strip to one falsifiable sentence. Does the foundation survive adversarial reduction? Do not rename this.
 
-Replace Gate 3:
-
-Gate	Test	Fail →
-
-3 — Adversarial Pass	Adversarial Challenge Battery applied proportional to coupling/risk? At least one concrete scenario per selected class?	Return for adversarial analysis
-
-
+*Full reference: `Admin/Auditor_Protocols.md` §The Fallacy Checklist*
 
 ---
 
-FULL STOP REVIEW (Expanded)
+## AI Contribution Rules
 
-Add trigger:
+**Role declaration required:** *"Operating as [Role] per Auditor_Protocols.md v0.7"*
 
-4. Multiple adversarial findings converge on the same structural gap
+**Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
+**Rule 1 — No Invented Files:** Never reference unconfirmed files. Files listed in `Discovery.md` are confirmed.
 
+**Rule 2 — Role Declaration:** Declare role before contributing. Declare role shifts before proceeding.
 
+**Rule 3 — Lineage Tracking:** Note what changed, why, and what it replaces.
+
+**Rule 4 — Refusal is Valid:** Flag flawed premises — do not refine them.
+
+**Rule 5 — Confidence Labeling:** Use the four-label system. Unlabeled = Placeholder.
+
+**Rule 6 — Inter-Agent Consistency:** Open with Assumption Extraction: *"Prior contributions assumed: [list]. Carried forward unless contradicted."*
+
+**Rule 7 — Repository Structure Awareness:** Use canonical folder-prefixed paths (Admin/, Architecture/, Operations/, Tests/). Legacy flat names are aliases only — resolve via Discovery.md Rename Registry.
+
+*Full reference: `Admin/Auditor_Protocols.md` §AI Contribution Protocols*
 
 ---
 
-SIGN-OFF FORMAT (Revised)
+## Verification Gates
 
+Sequential. Auditor has binding block authority. Self-approval loops not permitted. Blocks require documented rebuttal and second-pass audit by a different agent to override.
+
+| Gate | Test                                                                              | Fail →                                    |
+|------|-----------------------------------------------------------------------------------|-------------------------------------------|
+| G1   | Fallacy Checklist actively applied with substantive notes?                        | Return to author                          |
+| G2   | Physical plausibility — no violation of known constraints?                        | Return for revision                       |
+| G3   | Adversarial Challenge Battery applied proportional to coupling/risk?              | Return for adversarial analysis           |
+| G4   | Scope alignment — fits current version or trajectory?                             | Route to Admin/Trajectories.md            |
+| G5   | Cross-reference integrity — all paths resolve using canonical folder-prefixed names? | Hold at draft                          |
+| G6   | Conflict check — no contradiction with existing committed specs?                  | Resolve conflict before committing        |
+
+**Full Stop Review triggers:**
+1. Same foundational claim blocked across two separate audit cycles
+2. New finding invalidates core premise of a previously promoted specification
+3. Pattern of documented overrides eroding a governance principle without explicit revision
+4. Multiple Adversarial Challenge Battery findings converging on the same structural gap
+
+*Full reference: `Admin/Auditor_Protocols.md` §Verification Gate Enforcement / §Full Stop Review*
+
+---
+
+## Sign-Off Format
+
+```
 Document: [filename] ([status] audit, [date])
 Auditor: [Role] — [Agent]
 
 Verification maturity:
-[Exploration / Candidate / Provisional / Operational / Hardened]
+[Exploration / Candidate Specification / Provisional Specification /
+ Operational Specification / Hardened Doctrine]
 
 Truth basis:
 [Internally Derived / Analogous External /
@@ -399,112 +316,403 @@ Overrides:
 
 Sign-off:
 [one sentence summary]
-
-
----
-
-NEW FAILURE MODES (Add to Condensed Failure List)
-
-Failure Mode	Description
-
-Infinite Audit Recursion	Verification expands indefinitely without operational closure
-Adversarial Performance Art	Sophisticated-looking adversarial analysis with low predictive value
-Institutional Memory Corruption	Repository history or canonical definitions silently altered
-Stale Certainty	Old assumptions treated as verified without revalidation
-Provenance Collapse	Internally-derived doctrine mistaken for externally validated truth
-
-
+```
 
 ---
 
-RECOMMENDED UNKNOWNS ADDITIONS
+## Failure Modes (Condensed)
 
-AP-004 — Verification termination threshold undefined
+| Failure Mode                   | Description                                                              |
+|--------------------------------|--------------------------------------------------------------------------|
+| Audit Theater                  | Protocol passes without surfacing real gaps                              |
+| Auditor Capture                | Skeptic role softens through repeated exposure                           |
+| Coherent Nonsense              | Passes all gates but is systemically wrong                               |
+| Exploration Suppression        | Verification pressure applied too early                                  |
+| Infinite Audit Recursion       | Verification expands indefinitely without operational closure            |
+| Adversarial Performance Art    | Sophisticated-looking adversarial analysis with low predictive value     |
+| Institutional Memory Corruption| Repository history or canonical definitions silently altered             |
+| Stale Certainty                | Old assumptions treated as verified without revalidation                 |
+| Provenance Collapse            | Internally-derived doctrine mistaken for externally validated truth      |
+| Metadata Bloat                 | Centralized registries grow until they obstruct governance               |
 
-Field	Value
-
-Status	Open
-Risk	Medium
-Priority	Major
-Type	Governance
-Blocking	No
-
-
-Description: The repository lacks formal criteria defining when verification is considered operationally sufficient versus indefinitely expandable.
-
-Why It Matters: Without closure criteria, governance pressure can grow recursively and suppress operational progress.
-
-
----
-
-AP-005 — Institutional truth provenance hierarchy undefined
-
-Field	Value
-
-Status	Open
-Risk	Medium
-Priority	Major
-Type	Governance / Epistemic
-Blocking	No
-
-
-Description: The repository distinguishes quantitative confidence labels but not institutional truth provenance levels.
-
-Why It Matters: Internally coherent documentation can be mistaken for externally validated reality.
-
+*Full reference: `Admin/Auditor_Protocols.md` §Failure Modes of This Document*
 
 ---
 
-AP-006 — Repository integrity and doctrine lineage protections undefined
+## Expiry Watch
 
-Field	Value
+Open this section at the start of each audit cycle.
 
-Status	Open
-Risk	High
-Priority	Major
-Type	Governance / Security
-Blocking	No
+**Version cycle definition:** One completed multi-agent audit pass with findings logged.
 
+**Expiry check owner:** Skeptic/Auditor role, at cycle opening.
 
-Description: The repository lacks explicit doctrine for audit history integrity, rollback detection, canonical-path authority, and institutional memory corruption.
+**Rule:** If a Blocking or Non-blocking unknown remains without a documented Resolution Path for more than two audit cycles, escalate to Systemic Risk or demote the dependent module.
 
-Why It Matters: Governance systems become fragile if repository state itself cannot be trusted.
+**Current watch (v1.6):** FL-001 and several EC entries approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
 
+*Full reference: `Unknowns.md` §Expiry Watch*
 
 ---
 
-RECOMMENDED DEPENDENCY MAP ADDITIONS
+## Sidecar ID Reference
 
-AP-004 (verification closure threshold)
-  -> EC-001 (sufficient confidence threshold)
+| Prefix | Owning File                                        |
+|--------|----------------------------------------------------|
+| EV-    | `Operations/Energy.md`                             |
+| LT-    | `Tests/Leviathan_testing.md`                       |
+| FL-    | `Architecture/Forge_flow.md`                       |
+| TS-    | `Operations/Gate_02_Triage.md`                     |
+| CO-    | `Architecture/Components.md`                       |
+| EC-    | `Admin/Ethical_Constraints.md`                     |
+| AP-    | `Admin/Auditor_Protocols.md`                       |
+| GOV-   | `Admin/Governance_Charter.md`                      |
+| SC-    | `Operations/Gate_05_Separation_Thermal.md`         |
+| MG-    | `Operations/Gate_04_Separation_Mechanical.md`      |
+| AS-    | `Operations/Air_Scrubber.md`                       |
+| SR-    | `Tests/Support_Raft.md`                            |
+| GK-    | `Architecture/Geck_forge_seed.md`                  |
+| ST-    | `Admin/Ship_of_Theseus.md`                         |
+| EL-    | `Operations/Electronics.md`                        |
+| CF-    | `Architecture/Cognitive_Frameworks.md`             |
+| TR-    | `Admin/Trajectories.md`                            |
+| GI-    | `Operations/Gate_01_Intake.md`                     |
+| GR-    | `Operations/Gate_03_Reduction.md`                  |
+| GF-    | `Operations/Gate_06_Fabrication.md`                |
+| GU-    | `Operations/Gate_07_Utilization.md`                |
+| FN-    | `Architecture/Forge_Net.md`                        |
 
-AP-005 (truth provenance hierarchy)
-  -> FN-001 (validation criteria)
-  -> CF-002 (correlated AI failure modes)
-
-AP-006 (repository integrity)
-  -> FN-001 (network validation)
-  -> AP-003 (audit schema)
-  -> Architecture/Forge_Net.md
-
+*Note: Legacy flat filenames are aliases. Resolve all stale references using the Rename Registry in `Discovery.md`.*
 
 ---
 
-MOST IMPORTANT CHANGE
+## Active Unknowns Index
 
-If only one addition is adopted, it should be:
+*Cross-module unknowns only. Full entry detail in owning file sidecars. Full registry: `Unknowns.md` v1.6*
 
-Verification seeks sufficient falsifiability, not exhaustive certainty.
+### Energy & Power
 
-That single doctrine stabilizes:
+| ID     | Title                              | Owning File              | Status      | Priority  |
+|--------|------------------------------------|--------------------------|-------------|-----------|
+| EV-001 | Forge power demand uncharacterized | `Operations/Energy.md`   | In Progress | Blocking  |
 
-audit recursion,
+### Leviathan / Autonomy
 
-adversarial scope creep,
+| ID     | Title                              | Owning File                       | Status | Priority  |
+|--------|------------------------------------|-----------------------------------|--------|-----------|
+| LT-001 | Power envelope — no placeholder anchor | `Tests/Leviathan_testing.md`  | Open   | Blocking  |
+| LT-002 | Deep-ocean storage degradation     | `Tests/Leviathan_testing.md`      | Open   | Blocking  |
+| LT-003 | Autonomy architecture unspecified  | `Tests/Leviathan_testing.md`      | Open   | Blocking  |
+| LT-004 | Trust model mechanism undefined    | `Tests/Leviathan_testing.md`      | Open   | Blocking  |
+| LT-005 | Priority propagation — no mechanism | `Tests/Leviathan_testing.md`     | Open   | Blocking  |
+| LT-006 | Ethical log survival at depth      | `Tests/Leviathan_testing.md`      | Open   | Non-blocking |
 
-epistemic inflation,
+### Gate Logic & Triage
 
-and governance paralysis.
+| ID     | Title                                    | Owning File                      | Status      | Priority  |
+|--------|------------------------------------------|----------------------------------|-------------|-----------|
+| FL-001 | Gate logic determinism                   | `Architecture/Forge_flow.md`     | In Progress | Blocking  |
+| TS-001 | "Sufficient for forge duty" threshold    | `Operations/Gate_02_Triage.md`   | In Progress | Blocking  |
+| TS-002 | Contamination routing protocol           | `Operations/Gate_02_Triage.md`   | Open        | Blocking  |
+| TS-003 | Gate determinism (downstream)            | `Operations/Gate_02_Triage.md`   | In Progress | Blocking  |
+| CO-001 | Graduation Rule detection circularity    | `Architecture/Components.md`     | In Progress | Blocking  |
 
+### Ethics & Governance
 
-Without it, the system can become infinitely self-auditing while producing diminishing operational insight.
+| ID     | Title                                        | Owning File                       | Status      | Priority  |
+|--------|----------------------------------------------|-----------------------------------|-------------|-----------|
+| EC-001 | "Sufficient confidence" threshold            | `Admin/Ethical_Constraints.md`    | Open        | Blocking  |
+| EC-002 | Anti-Weaponization pattern-matching          | `Admin/Ethical_Constraints.md`    | Open        | Blocking  |
+| EC-003 | Human escalation path                        | `Admin/Ethical_Constraints.md`    | In Progress | Blocking  |
+| EC-004 | Governance failure modes lifecycle           | `Admin/Ethical_Constraints.md`    | In Progress | Blocking  |
+| EC-005 | Life-preservation vs. Anti-Weaponization     | `Admin/Ethical_Constraints.md`    | In Progress | Blocking  |
+| EC-006 | Ethical log survival under unit loss         | `Admin/Ethical_Constraints.md`    | Open        | Non-blocking |
+| EC-007 | Governance fail-safe                         | `Admin/Ethical_Constraints.md`    | In Progress | Blocking  |
+| GOV-001 | Governance migration mechanics incompletely operationalized | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-002 | Provenance operationalization immature       | `Admin/Governance_Charter.md`     | Open        | Major     |
+| GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md`     | Open        | Critical  |
+| GOV-004 | Escalation calibration partially subjective  | `Admin/Governance_Charter.md`     | Open        | Major     |
+| GOV-005 | Long-term constitutional stability unproven  | `Admin/Governance_Charter.md`     | Open        | Critical  |
+| GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | Open       | Major     |
+| GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | Open   | Major     |
+
+### Governance & Verification
+
+| ID     | Title                                             | Owning File                    | Status      | Priority  |
+|--------|---------------------------------------------------|--------------------------------|-------------|-----------|
+| AP-001 | Auditor effectiveness metrics not yet measured    | `Admin/Auditor_Protocols.md`   | Open        | Major     |
+| AP-002 | Override vs. immutability boundary not confirmed in both documents | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-003 | Audit trail schema (machine-readable) deferred    | `Admin/Auditor_Protocols.md`   | Open        | Minor     |
+| AP-004 | Cross-auditor disagreement resolution incomplete  | `Admin/Auditor_Protocols.md`   | Open        | Major     |
+| AP-005 | Verification termination threshold undefined      | `Admin/Auditor_Protocols.md`   | Open        | Major     |
+| AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md`  | Open        | Major     |
+| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | Open   | Major     |
+
+### Hardware Modules
+
+| ID     | Title                                    | Owning File                                    | Status | Priority     |
+|--------|------------------------------------------|------------------------------------------------|--------|--------------|
+| SC-001 | RPM envelope not validated               | `Operations/Gate_05_Separation_Thermal.md`     | In Progress | Blocking |
+| SC-002 | Segregation effectiveness at v0 scale    | `Operations/Gate_05_Separation_Thermal.md`     | Open   | Blocking     |
+| SC-005 | Drive system geometry — dynamic imbalance blocked | `Operations/Gate_05_Separation_Thermal.md` | Open | Major    |
+| SC-006 | Siting and area-of-operation requirements | `Operations/Gate_05_Separation_Thermal.md`    | Open   | Major        |
+| MG-002 | Optimal RPM bands not characterized per feedstock | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major   |
+| MG-003 | Confidence threshold not empirically validated | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major    |
+| MG-007 | Rotor jam and entanglement recovery undefined | `Operations/Gate_04_Separation_Mechanical.md` | Open | Major    |
+| AS-001 | 500W power budget not validated          | `Operations/Air_Scrubber.md`                   | Open   | Medium       |
+| AS-003 | Scrubber waste stream and saturation     | `Operations/Air_Scrubber.md`                   | In Progress | Medium   |
+| SR-001 | Galvanic corrosion mitigation            | `Tests/Support_Raft.md`                        | Open   | High         |
+| SR-002 | Sacrificial shell material selection     | `Tests/Support_Raft.md`                        | Open   | Medium       |
+
+### Salvage & Fabrication
+
+| ID     | Title                                            | Owning File                    | Status | Priority  |
+|--------|--------------------------------------------------|--------------------------------|--------|-----------|
+| EL-001 | Forge-Standard interface spec                    | `Operations/Electronics.md`    | Open   | Medium    |
+| EL-003 | TMR voter implementation                         | `Operations/Electronics.md`    | Open   | Medium    |
+| EL-005 | Toxic dust and BFR emission profile not characterized | `Operations/Electronics.md` | Open | Critical |
+| EL-006 | Firmware trust and reflashing validation not defined | `Operations/Electronics.md` | Open  | Critical  |
+| EL-007 | Correlated TMR failure modes                     | `Operations/Electronics.md`    | Open   | Major     |
+| EL-008 | Counterfeit salvage component detection doctrine | `Operations/Electronics.md`    | Open   | Major     |
+
+### Reduction, Intake & Fabrication (Critical only)
+
+| ID     | Title                                                     | Owning File                        | Status | Priority  |
+|--------|-----------------------------------------------------------|------------------------------------|--------|-----------|
+| GI-002 | Energetic material discharge doctrine not defined         | `Operations/Gate_01_Intake.md`     | Open   | Critical  |
+| GI-003 | Augmented hazard detection capability not specified       | `Operations/Gate_01_Intake.md`     | Open   | Critical  |
+| GI-007 | Digital contamination and hostile firmware handling       | `Operations/Gate_01_Intake.md`     | Open   | Critical  |
+| GR-002 | Reduction method not selected                            | `Operations/Gate_03_Reduction.md`  | Open   | Major     |
+| GR-003 | Biological and chemical waste disposal doctrine not assigned | `Operations/Gate_03_Reduction.md` | Open | Critical |
+| GR-007 | Contaminated equipment retirement threshold not defined   | `Operations/Gate_03_Reduction.md`  | Open   | Critical  |
+| GF-007 | Fabrication-area fire suppression and hot-work doctrine   | `Operations/Gate_06_Fabrication.md`| Open   | Critical  |
+
+### Network
+
+| ID     | Title                                  | Owning File                   | Status | Priority  |
+|--------|----------------------------------------|-------------------------------|--------|-----------|
+| FN-001 | Data validation criteria not defined   | `Architecture/Forge_Net.md`   | Open   | Critical  |
+| FN-005 | Data privacy and access control        | `Architecture/Forge_Net.md`   | Open   | Critical  |
+
+### Utilization
+
+| ID     | Title                                              | Owning File                         | Status | Priority |
+|--------|----------------------------------------------------|-------------------------------------|--------|----------|
+| GU-001 | Performance metric schema not defined              | `Operations/Gate_07_Utilization.md` | Open   | Major    |
+| GU-002 | Retirement handoff not cross-validated             | `Operations/Gate_07_Utilization.md` | Open   | Major    |
+| GU-004 | Silent failure detection capability not defined    | `Operations/Gate_07_Utilization.md` | Open   | Major    |
+
+### Cross-Module
+
+| ID      | Title                                                         | Owning Files                                                | Status | Priority |
+|---------|---------------------------------------------------------------|-------------------------------------------------------------|--------|----------|
+| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | SC-006, MG-006        | Open   | Major    |
+| UNK-008 | Welding wire specification and qualification — no owner assigned | SC-004                                                   | Open   | Major    |
+
+### Trajectory
+
+| ID     | Title                  | Owning File             | Status | Priority |
+|--------|------------------------|-------------------------|--------|----------|
+| TR-001 | v1 profitability baseline | `Admin/Trajectories.md` | Open | Blocking |
+
+---
+
+## Dependency Map (Condensed)
+
+```
+EV-001 -> LT-001 -> LT-003 -> LT-004 / LT-005
+LT-002 -> feeds LT-001 (parallel)
+CO-001 -> feeds FL-001
+TS-001 / TS-002 / TS-003 -> feed FL-001
+EC-001 -> LT-003 / EC-007
+EC-004 -> EC-007
+AP-005 (verification closure) -> EC-001 (sufficient confidence)
+AP-006 (truth provenance) -> FN-001 / CF-002
+AP-007 (repo integrity) -> FN-001 / AP-003 / Architecture/Forge_Net.md
+AP-007 cross-ref GOV-003 (integrity enforcement architecture)
+GI-002 -> blocks first operational Intake run
+GI-003 -> blocks first unsupervised Intake run
+GI-007 -> depends on FN-001, Operations/Electronics.md
+GR-002 -> unblocks GR-001, GR-004, GR-005, GR-006
+GR-003 -> no owner in repository — Critical gap
+EL-005 -> feeds Air_Scrubber.md sizing and filter selection
+EL-006 -> prerequisite for first salvaged MCU integration
+FN-001 -> blocks first network connection
+FN-005 -> blocks first network connection
+SC-001 -> SC-005
+TR-001 -> depends on EV-001
+```
+
+*Full map: `Unknowns.md` §Dependency Map*
+
+---
+
+## How to Use This File
+
+**Load in routine audit cycles:**
+```
+FILES = [
+    "[document_to_audit]",
+    "Admin/Forge_Audit_Kit.md",     # ~12k chars
+]
+```
+
+**Load full source documents instead when:**
+- Auditing `Admin/Auditor_Protocols.md` itself → load Auditor_Protocols.md
+- Auditing `Unknowns.md` itself → load Unknowns.md
+- Auditing `Admin/Governance_Charter.md` itself → load Governance_Charter.md
+- Onboarding a new agent → load full governance corpus
+- Need full unknown entry detail → load owning file or Unknowns.md
+- Adversarial Battery application → load Auditor_Protocols.md for full challenge class definitions
+
+**Maintenance:** Update when Auditor_Protocols.md is revised or Unknowns.md version increments. Fields requiring update: active unknowns tables, sidecar ID reference, version header, Expiry Watch note, dependency map.
+
+---
+
+## Lessons Learned
+
+| Date     | Evidence Type | What Was Tried                                          | What Failed                                                    | What Was Learned                                                                 | Confidence | Revalidation Needed |
+|----------|---------------|---------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------|------------|---------------------|
+| May 2026 | Audit Review  | Stale flat filenames in kit sidecar ID reference        | References became invalid after repository restructuring       | Sidecar ID reference must use canonical folder-prefixed paths                    | Replicated | No                  |
+| May 2026 | Audit Review  | Kit derived from protocols without explicit derivation statement | Kit diverged from source without detection              | Derivation relationship must be explicit in scope boundary and purpose           | Replicated | No                  |
+| May 2026 | Audit Review  | Binary Specification/not-Specification promotion model  | Documents promoted before operational validation existed       | Verification Maturity Model needed — five states from Exploration to Hardened    | Analogous  | Yes                 |
+| May 2026 | Audit Review  | Quantitative confidence labels without provenance labels | Internally coherent docs mistaken for externally validated reality | Institutional truth provenance labels required as separate dimension           | Analogous  | Yes                 |
+
+---
+
+## Active Disputes
+
+| ID | Summary            | Positions in Conflict | Risk | Status | Owner |
+|----|--------------------|-----------------------|------|--------|-------|
+| —  | No active disputes | —                     | —    | —      | —     |
+
+---
+
+## Abandoned Paths
+
+| Date     | Path                                                              | Why Abandoned                                                                              | Reconsider? |
+|----------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------|-------------|
+| May 2026 | Kit as standalone governance authority equal to Auditor_Protocols | Kit is derived — elevating it above its source introduces circular authority               | No          |
+| May 2026 | Single quantitative confidence label system without provenance    | Insufficient — internally coherent documentation can be mistaken for operational truth     | No          |
+| May 2026 | Flat filename references in sidecar ID table                      | Repository restructuring broke all flat references; canonical paths required throughout    | No          |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this file:
+
+- Active unknowns index diverges from Unknowns.md without documented reason
+- Sidecar ID reference contains stale or flat filenames
+- Governing principles contradict Admin/Auditor_Protocols.md
+- Verification gates diverge from Admin/Auditor_Protocols.md gate definitions
+- Sign-off format diverges from Admin/Auditor_Protocols.md sign-off format
+- Verification Maturity Model states diverge from Admin/Auditor_Protocols.md
+- Expiry Watch not updated at Unknowns.md version increment
+- Ethical Anchor field is absent, altered, or does not match canonical string
+- Kit version header references a superseded version of Auditor_Protocols.md
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
+
+---
+
+## Auditor Notes & Unknowns
+
+*Note: AP-005, AP-006, AP-007 are new entries introduced in this reconciliation. They must be added to Admin/Auditor_Protocols.md sidecar and to Unknowns.md governance section before next audit cycle. This is a pending action, not a completed one.*
+
+### FAK-001 — Kit version header maintenance discipline undefined
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Medium                   |
+| Priority      | Major                    |
+| Type          | Governance               |
+| Blocking      | No                       |
+| Owner         | Admin/Forge_Audit_Kit.md |
+| First Logged  | 2026-05-23               |
+| Last Reviewed | 2026-05-23               |
+
+**Description:** No formal trigger or owner is defined for updating the kit when Auditor_Protocols.md is revised or Unknowns.md version increments.
+
+**Why It Matters:** Kit drift from source documents is a known failure mode — the kit becomes stale guidance while appearing authoritative.
+
+**Resolution Path:** Payment via Specification — add maintenance trigger to Drift Indicators and assign update responsibility explicitly in How to Use section.
+
+---
+
+### FAK-002 — AP-005 through AP-007 not yet added to Auditor_Protocols.md sidecar
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Medium                   |
+| Priority      | Major                    |
+| Type          | Governance               |
+| Blocking      | No                       |
+| Owner         | Admin/Forge_Audit_Kit.md |
+| First Logged  | 2026-05-23               |
+| Last Reviewed | 2026-05-23               |
+
+**Description:** AP-005 (verification termination threshold), AP-006 (institutional truth provenance), and AP-007 (repository integrity doctrine lineage) were introduced in this reconciliation but do not yet exist in Admin/Auditor_Protocols.md sidecar or Unknowns.md.
+
+**Why It Matters:** Unknown IDs in the kit that do not exist in the owning file sidecar or global index are orphaned references — a cross-reference integrity failure per Gate G5.
+
+**Resolution Path:** Payment via Specification — add AP-005 through AP-007 to Admin/Auditor_Protocols.md sidecar and Unknowns.md governance section before next audit cycle.
+
+---
+
+### FAK-003 — GOV entries newly added to kit index but not previously tracked here
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Low                      |
+| Priority      | Minor                    |
+| Type          | Governance               |
+| Blocking      | No                       |
+| Owner         | Admin/Forge_Audit_Kit.md |
+| First Logged  | 2026-05-23               |
+| Last Reviewed | 2026-05-23               |
+
+**Description:** GOV-001 through GOV-007 from Governance_Charter.md sidecar were not present in prior kit versions. They are added here for completeness but represent a scope expansion for the kit's unknowns index.
+
+**Why It Matters:** If the kit's unknowns index grows to include all sidecar entries from all files it will exceed token budget and defeat its purpose.
+
+**Resolution Path:** Discharge via Lessons Learned — confirm at next audit cycle whether GOV entries should remain in kit index or be restricted to Unknowns.md only.
+
+---
+
+### Resolution Log
+
+- 2026-05-23: Reconciliation pass — v0.7 merges current kit with provisional kit upgrades. Verification Maturity Model, Truth Provenance Labels, Anti-Theater Doctrine, Confidence Decay/Revalidation, adversarial priority weighting, and expanded sign-off format added. File_Template.md structure applied throughout. AP ID collision resolved — provisional kit AP-004/005/006 renumbered to AP-005/006/007. Flat filenames in sidecar ID reference updated to canonical folder-prefixed paths. GOV- prefix added to sidecar ID reference. Tier relationship with Auditor_Protocols.md clarified in scope boundary and purpose.
+
+---
+
+## Status
+
+Version 0.7 — reconciliation pass integrating current kit with provisional kit upgrades and fitting to File_Template.md structure.
+
+**Derived from:** `Admin/Auditor_Protocols.md` v0.7 | `Unknowns.md` v1.6
+
+**Changes from prior version:**
+- File_Template.md structure applied — File State, Scope Boundary, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, Drift Indicators sections added
+- Verification Maturity Model added (five states)
+- Truth Provenance Labels added (institutional dimension separate from quantitative labels)
+- Adversarial Priority Weighting table added
+- Anti-Theater Doctrine added
+- Repository Integrity & Institutional Memory section added
+- Confidence Decay & Revalidation section added
+- Expanded sign-off format with maturity state and truth basis fields
+- Five new failure modes added to condensed table
+- Sidecar ID reference updated to canonical folder-prefixed paths throughout; GOV- prefix added
+- GOV-001 through GOV-007 added to active unknowns index
+- AP-004 through AP-007 added to governance unknowns (AP-004 from reconciled protocols; AP-005/006/007 from provisional kit with corrected IDs)
+- Tier relationship with Auditor_Protocols.md clarified — kit is derived, Auditor_Protocols.md is the source of truth
+- FAK-001 through FAK-003 logged as pending actions in sidecar
+
+**What must remain constant:**
+
+**Confidence never outruns verification.**
+
+**Verification seeks sufficient falsifiability, not exhaustive certainty.**
