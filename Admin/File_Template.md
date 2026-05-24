@@ -19,21 +19,62 @@ The repository is treated as a governed knowledge system, not merely a collectio
 Every file in LazarusForgeV0 follows this structure:
 
 ```
-1. FILE STATE             — Machine-readable lifecycle metadata
-2. SCOPE BOUNDARY         — Hard ownership boundaries
-3. FILE PURPOSE           — Human-readable intent
-4. ASSUMPTIONS            — Temporary truths treated as valid
-5. BODY                   — Clean operational/specification content
-6. LESSONS LEARNED        — Operational memory, never deleted
-7. ACTIVE DISPUTES        — Interpretation conflicts
-8. AUDITOR NOTES          — Unknowns and resolution tracking
-9. ABANDONED PATHS        — Graveyard for disproven approaches
-10. DRIFT INDICATORS      — Automatic re-audit triggers
+0. OPERATIONAL SAFETY ADVISORY  — Optional. Physical hazard notice, shown before all else
+1. FILE STATE                    — Machine-readable lifecycle metadata
+2. SCOPE BOUNDARY                — Hard ownership boundaries
+3. FILE PURPOSE                  — Human-readable intent
+4. ASSUMPTIONS                   — Temporary truths treated as valid
+5. BODY                          — Clean operational/specification content
+6. LESSONS LEARNED               — Operational memory, never deleted
+7. ACTIVE DISPUTES               — Interpretation conflicts
+8. AUDITOR NOTES                 — Unknowns and resolution tracking
+9. ABANDONED PATHS               — Graveyard for disproven approaches
+10. DRIFT INDICATORS             — Automatic re-audit triggers
 ```
 
 The Body must stand alone.
 Footer sections are additive and must never be required to understand core functionality.
 A Specification-level body should remain understandable even if all footer sections are removed.
+
+---
+
+## 0. Operational Safety Advisory
+
+**Optional. Include in any file governing physical operations, hazardous processes,
+or systems where operator error causes irreversible harm.**
+
+Place immediately below the title, before the File State table. It is the first
+thing any operator or agent reads — including those who read nothing else.
+
+```markdown
+> ⚠️ **Operational Safety Advisory**
+> [One to six sentences. Name the specific hazard. State the consequence.
+> Name the prerequisite or constraint. Reference the relevant unknown ID
+> if the mitigation is still unresolved. End with a decision rule that
+> works under pressure: "When in doubt, [hold / stop / do not proceed]."]
+```
+
+### Safety Advisory Doctrine
+
+**Specificity is required.** A generic warning is ignored. Name the actual
+hazard for this gate or module — arc flash, molten metal, fragment ejection,
+energetic discharge, toxic fume. An operator who has read only this section
+must know what can kill or maim them and what to do about it.
+
+**Reference open unknowns.** If the hazard mitigation is unresolved, say so
+and name the unknown ID. This is honest about what is not yet protected against.
+
+**End with a decision rule.** The last sentence should give the operator a
+clear action under uncertainty: *"When in doubt, hold."* *"When in doubt, stop."*
+*"The cost of a missed hazard is always higher than the cost of a hold."*
+This survives fatigue, time pressure, and incomplete information.
+
+**Governance files omit this section.** The safety advisory is for physical
+operations. Admin/, Architecture/, and navigation files do not require it.
+
+**The advisory does not replace body content.** Detailed safety procedures,
+PPE requirements, and mitigation doctrine belong in the Body. The advisory is
+a pre-read flag, not a specification.
 
 ---
 
@@ -466,6 +507,7 @@ escalate for human review. Compound instability is more dangerous than isolated 
 
 When converting an existing file to this structure:
 
+- [ ] **If physical operations file:** Add Operational Safety Advisory above File State — specific hazard, consequence, prerequisite, decision rule, open unknown reference if applicable
 - [ ] Add File State table — include Ethical Anchor field with canonical string
 - [ ] Add Scope Boundary — be honest about what the file does and does not own
 - [ ] Add File Purpose paragraph
@@ -489,6 +531,12 @@ When converting an existing file to this structure:
 
 ```markdown
 # Module Name
+
+> ⚠️ **Operational Safety Advisory**
+> *(Include for physical operations files only. Omit for governance, architecture,
+> and navigation files. Name the specific hazard, state the consequence, name the
+> prerequisite or constraint, reference open unknown ID if mitigation is unresolved,
+> end with a decision rule under pressure.)*
 
 ## File State
 
@@ -589,6 +637,7 @@ This template exists to resist:
 - Hidden assumptions
 - Unresolved contradiction accumulation
 - Ethics erosion through document loss or deliberate omission
+- Silent hazard omission in physical operations files
 
 The goal is not bureaucratic completeness.
 
