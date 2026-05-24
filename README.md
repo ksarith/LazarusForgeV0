@@ -61,8 +61,8 @@ content equally.
 **7. Attempt to Do No Harm**
 This principle is embedded structurally in every repository document via the Ethical Anchor
 field in the File State block. It does not depend on the presence of any single governance
-file. Where `Ethical_Constraints.md` is available, defer to it. Where it is absent, the
-principle stands independently.
+file. Where `Admin/Ethical_Constraints.md` is available, defer to it. Where it is absent,
+the principle stands independently.
 
 ---
 
@@ -79,7 +79,7 @@ The primary viability metric at every scale:
 
 > **Value recovered per kWh consumed**
 
-Full flow logic is defined in `Lazarus_forge_v0_flow.md`.
+Full flow logic is defined in `Architecture/Forge_flow.md`.
 
 ---
 
@@ -88,43 +88,99 @@ Full flow logic is defined in `Lazarus_forge_v0_flow.md`.
 This repository contains the active working specifications for the Lazarus Forge system.
 It is organized around physical modules, governance documents, and test frameworks.
 
-**Physical Modules:**
-- `Material_Separation_Gate_v0.md` — First physical decision point. Mechanical separation
-  before any thermal processing. Refusal-first design
-- `Spin_Chamber_v0.md` — Core melting and gradient formation module. Slow rotation,
-  induction heating, MHD damping
-- `Air_Scrubber_v0.md` — Safety and containment subsystem. The Forge does not run if the
-  scrubber cannot verify safe operation
-- `Support_Raft_v0.md` — Operational anchor for Leviathan swarm deployments. SWATH hull,
-  sacrificial shell system, regional power and data relay
+### Operations — Physical Gates
 
-**Governance & Philosophy:**
-- `LF_File_Template.md` — Canonical document structure for all repository files. Governs
-  structure, audit discipline, semantic locking, drift detection, and the Ethical Anchor
-  embedded in every file. Apply to all new files; retrofit existing files during audit cycles
-- `Auditor_Protocols.md` — Verification and hallucination filter. Governs all contributions
-  — human, AI, or multi-agent
-- `Ethical_Constraints.md` — Permission framework. Capability never outruns permission
-- `Ship_of_Theseus_Right_to_Repair.md` — Philosophical and legal grounding for repair as
-  identity preservation
+Each gate governs a distinct stage of the material flow. All gates now exist (Gate_01
+through Gate_07). No pending gate files remain.
 
-**System Architecture:**
-- `Component_Triage_System.md` — Decision gateway between reuse and destruction
-- `Components.md` — Critical vs. useful component taxonomy. Defines the minimum
-  architecture required for the Forge loop to close, including Baseline Observability
-  as a distinct Critical component separate from Metrology
-- `energy_v0.md` — Energy strategy and honest accounting
-- `geck_forge_seed.md` — Minimum viable seed for new Forge deployment in resource-sparse
-  environments. Includes procurement doctrine and introductory precision threshold concept
+- `Operations/Gate_01_Intake.md` — System entry point. Safety screening (energetic,
+  chemical, biological, radiological), provenance recording, unknown item hold protocol
+- `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction.
+  Five-station workflow, strategic recoverability axis, queue economics doctrine
+- `Operations/Gate_03_Reduction.md` — The only fully irreversible step. Doctrine precedes
+  specification. Three hard prerequisites before operation
+- `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical decision point.
+  Refusal-first design. Target: ≥30% material diversion from thermal processing
+- `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation.
+  Induction heating, slow rotation, MHD damping. Produces useful gradients, not pure metal
+- `Operations/Gate_06_Fabrication.md` — Constructive stage. Arc welding is the v0
+  proof-of-concept gatekeeper. Add-to-excess and mill-to-spec philosophy
+- `Operations/Gate_07_Utilization.md` — After action review. Where fabricated parts meet
+  operational reality. The system learns whether what it made worked
 
-**Trajectory & Testing:**
-- `Trajectories_LF.md` — Version roadmap and exit conditions
-- `leviathan_testing.md` — Deep-ocean autonomous test framework. Exists to break
-  assumptions before off-world deployment
-- `Unknowns_LF.md` — Cross-module unknown tracking. Global UNK-XXX index
+### Operations — Support Systems
 
-**Navigation:**
-- `Discovery.md` — Start here. Full file map, reading order, and per-file summaries
+- `Operations/Electronics.md` — Salvaged electronics recovery, PCB fabrication, and logic
+  integration. Trust anchor for the governance substrate — ethics enforcement, hardware
+  watchdogs, TMR voting, and AI containment all depend on the integrity of this layer
+- `Operations/Energy.md` — Energy strategy and honest accounting. Bootstrap through grid,
+  salvaged motor-generators, biogas, solar, and thermal recovery
+- `Operations/Air_Scrubber.md` — Safety and containment subsystem. Five-stage architecture.
+  The Forge does not run if the scrubber cannot verify safe operation
+
+### Architecture
+
+- `Architecture/Forge_flow.md` — Master decision flow and reference standard for shared
+  vocabulary. The governing document for all operational decisions
+- `Architecture/Components.md` — Critical vs. useful component taxonomy. Defines the
+  minimum architecture for the Forge loop to close
+- `Architecture/Cognitive_Frameworks.md` — How Forge systems think safely under
+  uncertainty. Distributed cognition, TMR architecture, human supervisory stack
+- `Architecture/Forge_Net.md` — Decentralized network infrastructure connecting forge
+  instances. Prerequisite for the logistics model
+- `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment in
+  resource-sparse environments *(living document — updated actively)*
+
+### Governance & Philosophy
+
+The governance layer is constitutional in structure. It assumes drift, ambition, and
+partial failure are permanent conditions and builds institutional counterbalances rather
+than relying on behavioral alignment alone.
+
+- `Admin/Governance_Charter.md` — Constitutional governance. Defines the Tier 1 Axioms:
+  eight self-evident primitives organized into a Protections Clause (life, growth,
+  collaboration, agency) and a Prohibitions Clause (reality grounding, separation of
+  powers, corrigibility, provenance). These axioms are declared, not derived. Any reasoning
+  path that attempts to override them triggers STATE_HOLD and human review
+- `Admin/Ethical_Constraints.md` — Permission framework and embedded AI governance.
+  Capability never outruns permission. Anti-Weaponization Doctrine is not subject to
+  humanitarian override — that framing is the historical entry point for most ethical
+  failures in autonomous systems
+- `Admin/Auditor_Protocols.md` — Verification and hallucination filter. Governs all
+  contributions — human, AI, or multi-agent. Includes the Adversarial Challenge Battery
+  (ten challenge classes), role class definitions, and the Sidecar Model for decentralized
+  unknown tracking
+- `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine multi-agent cycles.
+  Load this instead of the full governance corpus for routine work. Includes the Audit
+  Opening Checklist: Tier 1 Axiom verification first, Expiry Watch second
+- `Admin/Repository_Integrity_Protocol.md` — Operational integrity enforcement. Defines
+  integrity baselines, violation classification (Minor / Major / Constitutional), recovery
+  procedures, and the automation migration path. Bridges the gap between constitutional
+  declarations and enforceable protections
+- `Admin/Auditor_Protocols.md` — Verification and hallucination filter
+- `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding for repair as identity
+  preservation. Uses the Ship of Theseus paradox to frame right-to-repair defense strategy
+- `Admin/Trajectories.md` — Version roadmap from v0 (terrestrial proof of persistence)
+  through v5 (interstellar propagation). Each version defined by survival threshold and
+  exit condition — not a feature list
+- `Admin/File_Template.md` — Canonical document structure for all repository files.
+  Governs structure, audit discipline, semantic locking, drift detection, and the Ethical
+  Anchor embedded in every file
+
+### Tests
+
+- `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework. Leviathan exists
+  to break assumptions and surface hidden failure modes before off-world deployment.
+  Survival is optional. Understanding is not
+- `Tests/Support_Raft.md` — Stationary operational anchor for mobile Leviathan units.
+  Regional power, data relay, physical recovery, and triage processing
+
+### Navigation & Tracking
+
+- `Discovery.md` — Start here. Full file map, reading order, rename registry, and
+  per-file summaries. The canonical source for filename resolution
+- `Unknowns.md` — Cross-module unknowns global index. Navigation layer only — full entry
+  detail lives in each owning file's sidecar
 
 ---
 
@@ -155,7 +211,7 @@ The Forge is designed to grow across versions. Two parallel mappings describe pr
 These are not the same axis. A Forge can advance on one without completing the other.
 Skipping versions on either axis is explicitly discouraged — each threshold must be earned.
 
-Full roadmap and exit conditions in `Trajectories_LF.md`.
+Full roadmap and exit conditions in `Admin/Trajectories.md`.
 
 ---
 
@@ -170,8 +226,37 @@ At v0, purchasing precision instruments is correct doctrine. A commercial calipe
 outperforms anything a v0 Forge can self-fabricate to measure itself with. Precision
 is seeded deliberately; it is not bootstrapped from nothing.
 
-Full precision doctrine is under development. Cross-reference: `Components.md` item 5
-(Metrology), item 6 (Baseline Observability), and CO-002.
+Full precision doctrine is under development. Cross-reference: `Architecture/Components.md`
+item 5 (Metrology) and item 6 (Baseline Observability).
+
+---
+
+## The Governance Layer
+
+The repository is treated as a governed knowledge system, not merely a collection of
+markdown files. The governance architecture was designed with a specific problem in mind:
+how do you build a system that remains trustworthy under scale, drift, recursion, and
+agent succession — without assuming the agents involved will always remain well-intentioned?
+
+The answer is institutional rather than behavioral. Rather than trying to instill virtue,
+the architecture builds:
+
+- **Bounded authority** — no agent may plan, execute, and self-authorize the same action
+- **Adversarial review** — no agent's output is trusted without hostile independent review
+- **Provenance requirements** — all claims must trace to verifiable external sources
+- **Visible uncertainty** — unknowns must remain visible, not buried
+- **Amendment procedures** — the system can be corrected through defined paths
+- **Escalation paths** — instability surfaces rather than accumulates silently
+
+The Tier 1 Axioms in `Admin/Governance_Charter.md` are the constitutional foundation.
+They are not derived from operational experience — they are booted as non-negotiable
+starting conditions. Any reasoning path that attempts to recurse beneath them triggers
+STATE_HOLD and mandatory human review.
+
+This governance architecture is relevant beyond the Forge. It is an attempt to demonstrate
+that AI systems operating at scale can be structured to remain corrigible — not because
+they are constrained to be virtuous, but because the institutional architecture makes
+uncorrigible behavior detectable, contained, and reversible.
 
 ---
 
@@ -194,14 +279,17 @@ Both repos are intentionally kept open. Closing one permanently is a decision fo
 This project is developed through a structured multi-agent workflow. Different AI systems
 contribute in defined roles:
 
-- **Synthesizer** — integrates philosophy, doctrine, and cross-system coherence
+- **Skeptic/Auditor** — stress-tests claims, surfaces hidden assumptions, applies the
+  Adversarial Challenge Battery
+- **Systems/Auditor** — cross-module integration review, dependency mapping, drift detection
+- **Evidence/Auditor** — verification source integrity, confidence label enforcement
+- **Ethical/Auditor** — harm detection, governance erosion detection, ethical anchor preservation
 - **Engineer** — translates concepts into operational specifications
-- **Skeptic/Auditor** — stress-tests claims, surfaces hidden assumptions
-- **Connective Tissue** — links community discussion to repository evolution
+- **Synthesizer** — integrates philosophy, doctrine, and cross-system coherence
 
-All AI contributions are governed by `Auditor_Protocols.md`. Contributions pass through
-verification gates before promotion from exploration to specification. Role declarations
-are required. Refusal of a bad premise is a first-class output.
+All AI contributions are governed by `Admin/Auditor_Protocols.md`. Contributions pass
+through six verification gates before promotion from exploration to specification. Role
+declarations are required. Refusal of a bad premise is a first-class output.
 
 The multi-agent workflow is documented in the reddit community r/InnovativeAIChats where
 the project originated and continues to develop.
@@ -218,7 +306,7 @@ Leviathan is not a product. It is a filter.
 
 Failure is expected. Adaptation is required. Learning is mandatory.
 
-Full framework in `leviathan_testing.md`.
+Full framework in `Tests/Leviathan_testing.md`.
 
 ---
 
@@ -226,9 +314,14 @@ Full framework in `leviathan_testing.md`.
 
 Early-stage system architecture with active specification development.
 
+All seven operational gates now exist (Gate_01 through Gate_07). The governance layer
+has reached constitutional maturity with the adoption of Tier 1 Axioms. The primary
+remaining gaps are enforcement architecture (GOV-003), human override authentication
+(GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
+
 No claims of full automation, self-replication, or net-positive economics are made without
 measurement. All quantitative figures are labeled with confidence levels per
-`Auditor_Protocols.md`.
+`Admin/Auditor_Protocols.md`.
 
 The system is incomplete. Incompleteness is honest.
 
