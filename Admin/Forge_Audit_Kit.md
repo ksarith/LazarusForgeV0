@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 0.8**
+**Version 0.7**
 
 ## File State
 
@@ -11,7 +11,7 @@
 | Verification Ref | Verification_Gates_LF.md                                            |
 | Last Audit       | 2026-05-23                                                          |
 | Auditor          | Claude — Reconciliation/Auditor                                     |
-| Open Unknowns    | 8                                                                   |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -23,7 +23,6 @@
 
 **This file DOES define:**
 - Condensed audit reference for routine multi-agent cycles
-- Audit opening checklist (Tier 1 Axiom verification + Expiry Watch)
 - Governing principles summary
 - Verification Maturity Model
 - Truth Provenance label system
@@ -340,23 +339,19 @@ Sign-off:
 
 ---
 
-## Audit Opening Checklist
+## Expiry Watch
 
-Execute at the start of every audit cycle before proceeding to document review.
-
-**1. Tier 1 Axiom Verification**
-Confirm all eight axioms (P-1 through P-4, Q-1 through Q-4) are present in `Admin/Governance_Charter.md` with text matching the prior committed version. Any wording change not accompanied by a Resolution Log entry with human ratification note is a Constitutional violation — invoke STATE_HOLD immediately.
-*Owner: Skeptic/Auditor role. Full reference: `Admin/Repository_Integrity_Protocol.md` §Protected Elements*
-
-**2. Expiry Watch**
-Check `Unknowns.md` global index for entries approaching two-cycle threshold without a documented Resolution Path. Escalate to Systemic Risk or demote dependent module.
-*Owner: Skeptic/Auditor role.*
+Open this section at the start of each audit cycle.
 
 **Version cycle definition:** One completed multi-agent audit pass with findings logged.
 
-**Current watch (v1.7):** FL-001 and several EC entries approaching two-cycle threshold. GOV-003 and GOV-005 flagged Critical — monitor from first logging. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
+**Expiry check owner:** Skeptic/Auditor role, at cycle opening.
 
-*Full reference: `Unknowns.md` §Expiry Watch | `Admin/Repository_Integrity_Protocol.md` §Constitutional Violation*
+**Rule:** If a Blocking or Non-blocking unknown remains without a documented Resolution Path for more than two audit cycles, escalate to Systemic Risk or demote the dependent module.
+
+**Current watch (v1.6):** FL-001 and several EC entries approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
+
+*Full reference: `Unknowns.md` §Expiry Watch*
 
 ---
 
@@ -385,7 +380,6 @@ Check `Unknowns.md` global index for entries approaching two-cycle threshold wit
 | GR-    | `Operations/Gate_03_Reduction.md`                  |
 | GF-    | `Operations/Gate_06_Fabrication.md`                |
 | GU-    | `Operations/Gate_07_Utilization.md`                |
-| RIP-   | `Admin/Repository_Integrity_Protocol.md`           |
 | FN-    | `Architecture/Forge_Net.md`                        |
 
 *Note: Legacy flat filenames are aliases. Resolve all stale references using the Rename Registry in `Discovery.md`.*
@@ -394,7 +388,7 @@ Check `Unknowns.md` global index for entries approaching two-cycle threshold wit
 
 ## Active Unknowns Index
 
-*Cross-module unknowns only. Full entry detail in owning file sidecars. Full registry: `Unknowns.md` v1.7*
+*Cross-module unknowns only. Full entry detail in owning file sidecars. Full registry: `Unknowns.md` v1.6*
 
 ### Energy & Power
 
@@ -453,11 +447,6 @@ Check `Unknowns.md` global index for entries approaching two-cycle threshold wit
 | AP-005 | Verification termination threshold undefined      | `Admin/Auditor_Protocols.md`   | Open        | Major     |
 | AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md`  | Open        | Major     |
 | AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | Open   | Major     |
-| RIP-001 | Prior-state archival system not yet established              | `Admin/Repository_Integrity_Protocol.md` | Open | Critical |
-| RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented          | `Admin/Repository_Integrity_Protocol.md` | Open | Major    |
-| RIP-003 | Violation incident log location undefined                    | `Admin/Repository_Integrity_Protocol.md` | Open | Major    |
-| RIP-004 | Constitutional violation detection latency undefined         | `Admin/Repository_Integrity_Protocol.md` | Open | Major    |
-| RIP-005 | Security_Protocols.md dependency unresolved                  | `Admin/Repository_Integrity_Protocol.md` | Open | Major    |
 
 ### Hardware Modules
 
@@ -541,10 +530,6 @@ AP-005 (verification closure) -> EC-001 (sufficient confidence)
 AP-006 (truth provenance) -> FN-001 / CF-002
 AP-007 (repo integrity) -> FN-001 / AP-003 / Architecture/Forge_Net.md
 AP-007 cross-ref GOV-003 (integrity enforcement architecture)
-RIP-001 (prior-state archival) -> blocks Phase 2 automation; resolved by GitHub release strategy
-RIP-002 (Phase 1 automation) -> depends on RIP-001 for comparison checks
-RIP-004 (detection latency) -> resolved by Audit Opening Checklist axiom verification step
-RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); Phase 3 dependency
 GI-002 -> blocks first operational Intake run
 GI-003 -> blocks first unsupervised Intake run
 GI-007 -> depends on FN-001, Operations/Electronics.md
@@ -592,7 +577,6 @@ FILES = [
 | May 2026 | Audit Review  | Kit derived from protocols without explicit derivation statement | Kit diverged from source without detection              | Derivation relationship must be explicit in scope boundary and purpose           | Replicated | No                  |
 | May 2026 | Audit Review  | Binary Specification/not-Specification promotion model  | Documents promoted before operational validation existed       | Verification Maturity Model needed — five states from Exploration to Hardened    | Analogous  | Yes                 |
 | May 2026 | Audit Review  | Quantitative confidence labels without provenance labels | Internally coherent docs mistaken for externally validated reality | Institutional truth provenance labels required as separate dimension           | Analogous  | Yes                 |
-| 2026-05-23 | Audit Review | Expiry Watch as sole audit opening check | Tier 1 Axiom text could be modified between cycles without detection | Axiom verification added as mandatory first step at audit opening — Constitutional violations require immediate STATE_HOLD | Analogous | Yes |
 
 ---
 
@@ -701,35 +685,31 @@ Mandatory re-audit conditions for this file:
 
 ### Resolution Log
 
-- 2026-05-23: Reconciliation pass — v0.7 merges current kit with provisional kit upgrades. Verification Maturity Model, Truth Provenance Labels, Anti-Theater Doctrine, Confidence Decay/Revalidation, adversarial priority weighting, and expanded sign-off format added. File_Template.md structure applied throughout. AP ID collision resolved. GOV- prefix added to sidecar ID reference. Tier relationship with Auditor_Protocols.md clarified.
-- 2026-05-23: **v0.8 update** — Audit Opening Checklist added (Tier 1 Axiom verification + Expiry Watch); resolves RIP-004. RIP- prefix added to Sidecar ID Reference. RIP-001 through RIP-005 added to Governance & Verification unknowns. Dependency map updated with RIP cluster. Unknowns.md reference updated to v1.7. Derivation statement updated to include Repository_Integrity_Protocol.md v0.1.
+- 2026-05-23: Reconciliation pass — v0.7 merges current kit with provisional kit upgrades. Verification Maturity Model, Truth Provenance Labels, Anti-Theater Doctrine, Confidence Decay/Revalidation, adversarial priority weighting, and expanded sign-off format added. File_Template.md structure applied throughout. AP ID collision resolved — provisional kit AP-004/005/006 renumbered to AP-005/006/007. Flat filenames in sidecar ID reference updated to canonical folder-prefixed paths. GOV- prefix added to sidecar ID reference. Tier relationship with Auditor_Protocols.md clarified in scope boundary and purpose.
 
 ---
 
 ## Status
 
-Version 0.8 — adds Audit Opening Checklist and Repository_Integrity_Protocol.md integration.
+Version 0.7 — reconciliation pass integrating current kit with provisional kit upgrades and fitting to File_Template.md structure.
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.7 | `Unknowns.md` v1.7 | `Admin/Repository_Integrity_Protocol.md` v0.1
+**Derived from:** `Admin/Auditor_Protocols.md` v0.7 | `Unknowns.md` v1.6
 
-**Changes from v0.7:**
-- Audit Opening Checklist added — Tier 1 Axiom verification as mandatory first step; resolves RIP-004 (Constitutional violation detection latency)
-- Audit Opening Checklist added to Scope Boundary DOES define list
-- RIP- prefix added to Sidecar ID Reference table
-- RIP-001 through RIP-005 added to Governance & Verification unknowns index
-- Dependency map updated with RIP cluster entries
-- Unknowns.md reference updated from v1.6 to v1.7
-- Derivation statement updated to include Repository_Integrity_Protocol.md v0.1
-- Open unknowns count updated from 3 to 8
-- Lessons Learned entry added for audit opening checklist addition
-
-**Changes from v0.6 (carried from v0.7):**
-- File_Template.md structure applied throughout
-- Verification Maturity Model added
-- Truth Provenance Labels added
-- Adversarial Priority Weighting, Anti-Theater Doctrine, Repository Integrity & Institutional Memory, Confidence Decay & Revalidation sections added
-- Expanded sign-off format
-- GOV-001 through GOV-007, AP-004 through AP-007 added to unknowns index
+**Changes from prior version:**
+- File_Template.md structure applied — File State, Scope Boundary, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, Drift Indicators sections added
+- Verification Maturity Model added (five states)
+- Truth Provenance Labels added (institutional dimension separate from quantitative labels)
+- Adversarial Priority Weighting table added
+- Anti-Theater Doctrine added
+- Repository Integrity & Institutional Memory section added
+- Confidence Decay & Revalidation section added
+- Expanded sign-off format with maturity state and truth basis fields
+- Five new failure modes added to condensed table
+- Sidecar ID reference updated to canonical folder-prefixed paths throughout; GOV- prefix added
+- GOV-001 through GOV-007 added to active unknowns index
+- AP-004 through AP-007 added to governance unknowns (AP-004 from reconciled protocols; AP-005/006/007 from provisional kit with corrected IDs)
+- Tier relationship with Auditor_Protocols.md clarified — kit is derived, Auditor_Protocols.md is the source of truth
+- FAK-001 through FAK-003 logged as pending actions in sidecar
 
 **What must remain constant:**
 
