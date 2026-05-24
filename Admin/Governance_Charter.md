@@ -627,7 +627,7 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                    |
 |---------------|--------------------------|
-| Status        | Open                     |
+| Status        | In Progress              |
 | Risk          | High                     |
 | Priority      | Critical                 |
 | Type          | Governance / Security    |
@@ -640,7 +640,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Repository integrity protections remain performative rather than operational until enforcement architecture exists. This is the primary maturation gap between a governance document and a governance system.
 
-**Resolution Path:** Payment via Specification — create Repository_Integrity_Protocol.md. Cross-reference AP-007 (repository integrity doctrine lineage) — constitutional enforcement and operational auditor doctrine are distinct but linked layers.
+**Resolution Path:** Repository_Integrity_Protocol.md v0.1 created as executing resolution path — defines integrity baselines, violation classification ladder, recovery procedures, and automation migration path. Full Enforceability requires Security_Protocols.md (Phase 3). Cross-reference AP-007 (repository integrity doctrine lineage) — constitutional enforcement and operational auditor doctrine are distinct but linked layers.
 
 ---
 
@@ -736,7 +736,8 @@ Mandatory re-audit conditions for this document:
 - 2026-05-23: **Tier ordering corrected** — Forge_Audit_Kit.md moved from Tier 2 to Tier 3. Auditor_Protocols.md confirmed as Tier 2 (canonical verification doctrine). Abandoned Paths entry logged.
 - 2026-05-23: **Tier 1 Axioms adopted** — Eight axioms organized into Protections Clause (P-1 through P-4) and Prohibitions Clause (Q-1 through Q-4). Humanitarian override exception for P-1 explicitly abandoned. Axiom Erosion, Axiom Theater, and Constitutional Capture added to Governance Failure Modes.
 - 2026-05-23: **GOV-002 status moved to In Progress** — Axiom Q-4 (Provenance and Anti-Deception) provides constitutional anchoring. AP-006 cross-reference active.
-- 2026-05-23: **Axiom-driven unknown status movements recorded** — EC-001 narrowed by Axiom Q-1; EC-003 narrowed by Axiom P-4; AP-004 narrowed by Axiom Q-2; AP-007 narrowed by Axiom Q-4; GOV-002 moved to In Progress by Axiom Q-4. Full analysis in Unknowns.md v1.7.
+- 2026-05-23: **GOV-003 moved to In Progress** — Repository_Integrity_Protocol.md v0.1 created as executing resolution path. Defines integrity baselines, violation classification ladder (Minor / Major / Constitutional), recovery procedures, and three-phase automation migration path. Full Enforceability deferred to Security_Protocols.md Phase 3.
+- 2026-05-23: **README.md updated** — canonical folder-prefixed filenames throughout, governance layer section added explaining institutional vs. behavioral alignment architecture, all seven gates listed, Tier 1 Axioms described.
 - 2026-05-23: **Abandoned Paths and Drift Indicators sections added** per File_Template.md structure. Assumptions table updated with ASM-006.
 
 ---
