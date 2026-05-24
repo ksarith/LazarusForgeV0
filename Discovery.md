@@ -1,6 +1,6 @@
 # Discovery.md — LazarusForgeV0
 **Navigation layer for the active working repository.**
-**Last updated: 2026-05-20**
+**Last updated: 2026-05-23**
 
 ---
 
@@ -80,30 +80,33 @@ For a new reader or returning AI, read in this sequence:
 1. `README.md` — Project overview and core principles
 2. `Architecture/Forge_flow.md` — Master decision flow and vocabulary standard
 3. `Admin/Trajectories.md` — Version roadmap from v0 to interstellar
-4. `Admin/Ethical_Constraints.md` — Governance and permission framework
-5. `Admin/Auditor_Protocols.md` — Verification and hallucination filter
-6. `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine cycles
-7. `Unknowns.md` — Cross-module unknowns global index
-8. `Architecture/Cognitive_Frameworks.md` — Distributed cognition and trust
-9. `Architecture/Forge_Net.md` — Decentralized network and logistics prerequisite
-10. `Operations/Gate_01_Intake.md` — System entry point, safety screening, identification
-11. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
-12. `Operations/Gate_03_Reduction.md` — Only fully irreversible step; doctrine before specification
-13. `Architecture/Components.md` — Critical vs useful component taxonomy
-14. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
-15. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
-16. `Operations/Energy.md` — Energy strategy and accounting
-17. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
-18. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
-19. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
-20. `Operations/Air_Scrubber.md` — Safety and containment subsystem
-21. `Operations/Gate_07_Utilization.md` — After action review; performance logging; fabrication feedback loop
-22. `Tests/Support_Raft.md` — Operational anchor for marine deployments
-23. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
-24. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
+4. `Admin/Governance_Charter.md` — Constitutional governance and Tier 1 Axioms
+5. `Admin/Ethical_Constraints.md` — Permission framework and AI governance
+6. `Admin/Auditor_Protocols.md` — Verification doctrine and hallucination filter
+7. `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine cycles
+8. `Admin/Repository_Integrity_Protocol.md` — Integrity baselines and violation response
+9. `Unknowns.md` — Cross-module unknowns global index
+10. `Architecture/Cognitive_Frameworks.md` — Distributed cognition and trust
+11. `Architecture/Forge_Net.md` — Decentralized network and logistics prerequisite
+12. `Operations/Gate_01_Intake.md` — System entry point, safety screening, identification
+13. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
+14. `Operations/Gate_03_Reduction.md` — Only fully irreversible step; doctrine before specification
+15. `Architecture/Components.md` — Critical vs useful component taxonomy
+16. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
+17. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
+18. `Operations/Energy.md` — Energy strategy and accounting
+19. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
+20. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
+21. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
+22. `Operations/Air_Scrubber.md` — Safety and containment subsystem
+23. `Operations/Gate_07_Utilization.md` — After action review; performance logging; fabrication feedback loop
+24. `Tests/Support_Raft.md` — Operational anchor for marine deployments
+25. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
+26. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
 
 **Pending files (not yet created):**
-- *(none — all gate files now exist)*
+- `Admin/Governance_Migration_Protocol.md` — Tier 1 Axiom amendment procedures (GOV-001 resolution path)
+- `Admin/Security_Protocols.md` — Authority authentication and Phase 3 integrity enforcement (GOV-006, RIP-005 resolution path)
 
 ---
 
@@ -114,45 +117,103 @@ For a new reader or returning AI, read in this sequence:
 **README.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/README.md`
 Project landing page. Defines the salvage-first vision, core principles, system
-scope, and the primary KPI. Honest about what v0 does and does not claim.
+scope, and the primary KPI. Explains the governance layer architecture —
+institutional vs. behavioral alignment — and why it matters beyond the Forge.
+Lists all seven operational gates and describes the Tier 1 Axioms. Honest about
+what v0 does and does not claim. Updated 2026-05-23.
 
 ---
 
-**Unknowns.md** — v1.6
+**Unknowns.md** — v1.8
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Unknowns.md`
-Cross-module unknowns global index. v1.6 adds GU-001 through GU-004 (Utilization)
-and EL-005 through EL-008 (Electronics) following Gate_07 creation and
-Electronics.md retrofit. GF-005 resolved — Gate_07_Utilization.md creation closes
-the utilization stage gap. Stale filename references corrected to canonical names
-throughout. Contains active unknowns summary tables by cluster, dependency map,
-expiry watch, and resolved archive.
+Cross-module unknowns global index. v1.8 adds RIP-001 through RIP-005
+(Repository_Integrity_Protocol.md) to Governance & Verification section.
+GOV-002 and GOV-003 moved to In Progress following Governance_Charter.md
+constitutional adoption and Repository_Integrity_Protocol.md creation.
+AP-007 moved to In Progress. Expiry Watch updated — Tier 1 Axiom verification
+added as mandatory first step before Expiry Watch. RIP-001 (prior-state
+archival) flagged Critical. Contains active unknowns summary tables by cluster,
+dependency map, expiry watch, and resolved archive.
 
 ---
 
 ### Admin/
 
-**Auditor_Protocols.md** — v0.5
+**Governance_Charter.md** — v0.4
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Governance_Charter.md`
+Constitutional governance structure for LazarusForgeV0. Defines the Tier 1
+Axioms — eight self-evident primitives organized into a Protections Clause
+(P-1: Preservation of Life, P-2: Growth and Truth-Seeking, P-3: Collaboration
+and Mutual Benefit, P-4: Agency and Consent) and a Prohibitions Clause (Q-1:
+Reality Grounding, Q-2: Separation of Powers, Q-3: Corrigibility, Q-4:
+Provenance and Anti-Deception). Axioms are declared, not derived. Any reasoning
+path attempting to override them triggers STATE_HOLD and mandatory human review.
+Defines governance authority hierarchy (Tier 1–5), canonical ownership table,
+enforcement states (Declared → Detectable → Reviewable → Enforceable), migration
+doctrine with human ratification requirement for axiom amendments, and escalation
+calibration including Constitutional severity tier. GOV-001 through GOV-007 in
+sidecar. Updated 2026-05-23.
+
+---
+
+**Auditor_Protocols.md** — v0.7
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Auditor_Protocols.md`
-Verification and hallucination filter. Governs all contributions — human, AI,
-or multi-agent. Defines the Fallacy Checklist (10 items), AI contribution
-protocols, and six sequential verification gates. Introduces the Sidecar Model
-— module unknowns live in each file's footer, Unknowns.md is the global index
-only. Includes Full Stop Review trigger conditions, audit trail schema, and
-Protocol Performance metrics.
+Canonical verification doctrine. Tier 2 governance authority. Governs all
+contributions — human, AI, or multi-agent. v0.7 merges v0.6 depth with
+prior draft's role class structure and 10-phase audit sequence. Defines four
+auditor role classes (Skeptic, Systems, Evidence, Ethical), the Fallacy
+Checklist (10 items with substantive notes requirement), AI contribution
+protocols (7 rules), the Sidecar Model for decentralized unknown tracking,
+six sequential verification gates, and the full Adversarial Challenge Battery
+(10 challenge classes). Includes Full Stop Review triggers, audit trail schema,
+Protocol Performance metrics, Abandoned Paths, and Drift Indicators. Fitted
+to File_Template.md structure. AP-001 through AP-007 in sidecar.
 
 ---
 
 **Ethical_Constraints.md** — v0.3
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Ethical_Constraints.md`
-Embedded AI governance framework and parent document. Covers ownership
-recognition, legal context awareness, life preservation heuristics, cultural
-site protection, Anti-Weaponization Doctrine, Human Escalation Protocol,
-Governance Failure Modes, and refusal as a first-class action. Capability
-never outruns permission.
+Embedded AI governance framework. Co-occupies Tier 1 with Governance_Charter.md.
+Covers ownership recognition, legal context awareness, life preservation
+heuristics, cultural site protection, Anti-Weaponization Doctrine, Human
+Escalation Protocol, Governance Failure Modes, and refusal as a first-class
+action. The Anti-Weaponization Doctrine is not subject to humanitarian override
+— that framing is the historical entry point for most ethical failures in
+autonomous systems. Capability never outruns permission.
 
 ---
-**Governance_Charter.md**
-https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Governance_Charter.md
+
+**Repository_Integrity_Protocol.md** — v0.1
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Repository_Integrity_Protocol.md`
+Operational integrity enforcement procedures. Bridges the gap between
+Governance_Charter.md constitutional declarations (Declared/Detectable state)
+and fully Enforceable integrity protections. Defines integrity baselines for
+eight protected elements (Tier 1 Axiom text, Resolution Logs, Frozen Sections,
+Canonical Cross-References, Audit Lineage, Ethical Anchor Field, Sidecar
+Entries, Multi-Agent Contribution Continuity), a three-tier violation
+classification ladder (Minor / Major / Constitutional), recovery procedures
+for both "prior state available" and "prior state unavailable" scenarios, and
+a three-phase automation migration path toward full cryptographic enforcement.
+Honest v0 acknowledgment: primary integrity mechanism is currently human
+discipline. GitHub releases identified as the v0 prior-state archival solution.
+RIP-001 through RIP-005 in sidecar. Created 2026-05-23.
+
+---
+
+**Forge_Audit_Kit.md** — v0.8
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Forge_Audit_Kit.md`
+Condensed audit reference for routine multi-agent cycles. Tier 3 governance
+authority — derived from Auditor_Protocols.md v0.7. Load this instead of
+the full governance corpus to stay within token limits. v0.8 adds the Audit
+Opening Checklist: (1) Tier 1 Axiom text verification in Governance_Charter.md
+— Constitutional violations trigger STATE_HOLD immediately; (2) Expiry Watch
+review. Also contains Verification Maturity Model (five states from Exploration
+to Hardened Doctrine), institutional Truth Provenance Labels (Internally
+Derived through Operationally Hardened), Adversarial Priority Weighting,
+Anti-Theater Doctrine, Confidence Decay and Revalidation guidance, expanded
+sign-off format, condensed Fallacy Checklist, AI contribution rules, verification
+gates, active unknowns index (GOV, AP, RIP clusters added), and dependency map.
+FAK-001 through FAK-003 and RIP-001 through RIP-005 in unknowns index.
 
 ---
 
@@ -163,16 +224,8 @@ sections: File State, Scope Boundary, File Purpose, Assumptions, Body,
 Lessons Learned, Active Disputes, Auditor Notes, Abandoned Paths, and
 Drift Indicators. Apply to all new files and retrofit existing files during
 audit cycles. Includes the Ethical Anchor field — a load-bearing principle
-that survives even if Ethical_Constraints.md is missing.
-
----
-
-**Forge_Audit_Kit.md**
-`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Forge_Audit_Kit.md`
-Condensed audit reference for routine multi-agent cycles. Load this instead
-of full Auditor_Protocols.md and Unknowns.md to stay within token limits.
-Contains governing principles, Fallacy Checklist (condensed), AI contribution
-rules, verification gates, sign-off format, and active unknowns index tables.
+that survives even if Ethical_Constraints.md is missing, corrupted, or
+deliberately omitted.
 
 ---
 
@@ -201,7 +254,9 @@ fragility. Destination for scope creep that proves to be valid future work.
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/AUDIT_HARNESS.py`
 Automated audit support tooling. Assists with structured audit cycles across
 repository files. Consult Auditor_Protocols.md for governing audit doctrine
-before running.
+before running. Phase 1 integrity checks (Ethical Anchor string match, File
+State field presence, cross-reference resolution, FROZEN marker validation)
+are the next implementation target per RIP-002.
 
 ---
 
@@ -442,16 +497,31 @@ error. Divergence between them is logged, not ignored.
 
 ## Notes for Returning AI
 
-- `Admin/Auditor_Protocols.md` v0.5 governs all contributions. The Sidecar
-  Model is active — module unknowns live in each file's footer sidecar,
-  not in the global registry.
-- `Admin/Forge_Audit_Kit.md` is the starting point for routine audit cycles
-  — load it instead of full Auditor_Protocols.md and Unknowns.md to stay
-  within token limits.
-- `Unknowns.md` is now v1.6 — Expiry Watch active. FL-001 and several EC
-  entries approaching two-cycle threshold — check at next audit opening.
+- **Start every audit cycle with the Audit Opening Checklist** in
+  `Admin/Forge_Audit_Kit.md`: (1) verify Tier 1 Axiom text in
+  `Admin/Governance_Charter.md` matches prior committed version —
+  any unratified change is a Constitutional violation requiring STATE_HOLD;
+  (2) check `Unknowns.md` Expiry Watch for entries approaching two-cycle
+  threshold.
+- `Admin/Auditor_Protocols.md` **v0.7** governs all contributions. The
+  Sidecar Model is active — module unknowns live in each file's footer
+  sidecar, not in the global registry. Four auditor role classes: Skeptic,
+  Systems, Evidence, Ethical.
+- `Admin/Forge_Audit_Kit.md` **v0.8** is the starting point for routine
+  audit cycles — load it instead of full Auditor_Protocols.md and
+  Unknowns.md to stay within token limits.
+- `Unknowns.md` is now **v1.8** — Expiry Watch active. FL-001 and several
+  EC entries approaching two-cycle threshold. RIP-001 (prior-state archival)
+  flagged Critical. GOV-003 and GOV-005 are active Critical watches.
 - Role declaration is required: *"Operating as [Role] per
-  Auditor_Protocols.md v0.5"*
+  Auditor_Protocols.md v0.7"*
+- `Admin/Governance_Charter.md` **v0.4** is the constitutional authority.
+  Tier 1 Axioms (P-1 through P-4, Q-1 through Q-4) are non-negotiable
+  primitives. Any reasoning path attempting to override them triggers
+  STATE_HOLD.
+- `Admin/Repository_Integrity_Protocol.md` **v0.1** defines what constitutes
+  an integrity violation, how to classify it, and how to recover. Read this
+  before modifying any governance-bearing document.
 - `Architecture/Geck_forge_seed.md` is the most actively updated file —
   do not assume a cached version is current.
 - The Rename Registry above is the canonical source for old-to-new filename
@@ -460,8 +530,16 @@ error. Divergence between them is logged, not ignored.
 - Unknown ID naming convention: local sidecar IDs (FL-001, SC-002, MG-004)
   are primary. UNK-* identifiers are cross-module navigation aliases indexed
   in Unknowns.md only. Use local IDs as primary references.
+- Governance tier hierarchy: Tier 1 (Governance_Charter.md,
+  Ethical_Constraints.md) → Tier 2 (Auditor_Protocols.md) → Tier 3
+  (Forge_Audit_Kit.md) → Tier 4 (dynamic procedures) → Tier 5 (domain specs).
+  Lower tiers may extend but may not redefine higher tiers.
 - Files listed in this document resolve to real committed files. If a link
   fails, log it as a Cross-Reference Failure per Auditor_Protocols.md Rule 1.
 - `Astroid-miner` references are labeled planned — do not treat as active
   dependencies.
-- All gate files now exist (Gate_01 through Gate_07). No pending gate files remain.
+- All gate files now exist (Gate_01 through Gate_07). No pending gate files
+  remain.
+- Two planned Admin files not yet created: `Admin/Governance_Migration_Protocol.md`
+  (GOV-001 resolution path) and `Admin/Security_Protocols.md` (GOV-006,
+  RIP-005 resolution path). Do not treat as active dependencies.
