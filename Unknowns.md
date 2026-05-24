@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 1.7 — Audit cycle 2026-05-23. GOV-001 through GOV-007 (Governance_Charter.md) and AP-004 through AP-007 (Auditor_Protocols.md) added. Tier ordering corrected — Auditor_Protocols.md is Tier 2, Forge_Audit_Kit.md is Tier 3.**
+**Version 1.8 — Audit cycle 2026-05-23. RIP-001 through RIP-005 (Repository_Integrity_Protocol.md) added. GOV-002 and GOV-003 moved to In Progress. AP-007 moved to In Progress. RIP-004 logged In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -11,6 +11,35 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
 Navigation unknowns → Discovery.md
+
+---
+
+## What v1.8 Means
+
+- Repository_Integrity_Protocol.md v0.1 created — resolves
+  GOV-003 resolution path; bridges constitutional integrity
+  declarations and operational enforcement procedures
+- RIP-001 through RIP-005 added to Governance & Verification
+  section — prior-state archival (Critical), AUDIT_HARNESS.py
+  Phase 1 automation, violation incident log location,
+  Constitutional violation detection latency, and
+  Security_Protocols.md dependency
+- RIP-004 logged In Progress — Forge_Audit_Kit.md v0.8
+  Audit Opening Checklist adds Tier 1 Axiom verification
+  as mandatory first step; closes detection latency gap
+- GOV-002 moved to In Progress — Axiom Q-4 provides
+  constitutional anchoring
+- GOV-003 moved to In Progress — Repository_Integrity_Protocol.md
+  is the executing resolution path
+- AP-007 moved to In Progress — Repository_Integrity_Protocol.md
+  provides operational doctrine backing
+- README.md updated — canonical folder-prefixed filenames
+  throughout; governance layer section added explaining
+  institutional vs. behavioral alignment architecture;
+  all seven gates listed; Tier 1 Axioms described
+- RIP-001 added to Expiry Watch — Critical priority,
+  GitHub releases identified as v0 resolution path
+- Dependency map updated with RIP cluster
 
 ---
 
@@ -170,7 +199,7 @@ EC-007 (governance fail-safe) — In Progress
 
 GOV-001 (governance migration mechanics) -> no blocking dependency; resolved by Governance_Migration_Protocol.md creation
 GOV-002 (provenance operationalization) -> depends on AP-006 (truth provenance hierarchy)
-GOV-003 (integrity enforcement architecture) -> AP-007 (repository integrity doctrine) — distinct but linked
+GOV-003 (integrity enforcement architecture) -> In Progress — Repository_Integrity_Protocol.md created as resolution path; AP-007 (repository integrity doctrine) — distinct but linked
 GOV-004 (escalation calibration) -> AP-004 (cross-auditor disagreement resolution)
 GOV-005 (constitutional stability) -> discharge via Lessons Learned after stable migration cycles
 GOV-006 (human override authenticity) -> depends on Security_Protocols.md (planned)
@@ -183,6 +212,10 @@ AP-005 (verification termination threshold) -> EC-001 (sufficient confidence thr
 AP-006 (truth provenance hierarchy) -> FN-001 (validation criteria) / CF-002 (correlated AI failure modes)
 AP-007 (repository integrity doctrine) -> FN-001 / AP-003 / Architecture/Forge_Net.md
 AP-007 cross-ref GOV-003 — constitutional enforcement vs. operational auditor doctrine
+RIP-001 (prior-state archival) -> blocks Phase 2 automation; GitHub releases satisfy at v0
+RIP-002 (Phase 1 automation) -> depends on RIP-001 for comparison checks
+RIP-004 (detection latency) -> In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist axiom verification step
+RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); Phase 3 dependency
 
 TR-001 (v1 profitability) -> depends on EV-001
 
@@ -272,8 +305,8 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | EC-006 | Ethical log survival under unit loss | `Admin/Ethical_Constraints.md` | Open | Non-blocking |
 | EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
 | GOV-001 | Governance migration mechanics incompletely operationalized | `Admin/Governance_Charter.md` | Open | Major |
-| GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | Open | Major |
-| GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | Open | Critical |
+| GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | In Progress | Major |
+| GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | In Progress | Critical |
 | GOV-004 | Escalation calibration partially subjective | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-005 | Long-term constitutional stability unproven | `Admin/Governance_Charter.md` | Open | Critical |
 | GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | Open | Major |
@@ -289,7 +322,12 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | AP-004 | Cross-auditor disagreement resolution incomplete | `Admin/Auditor_Protocols.md` | Open | Major |
 | AP-005 | Verification termination threshold undefined | `Admin/Auditor_Protocols.md` | Open | Major |
 | AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| RIP-001 | Prior-state archival system not yet established | `Admin/Repository_Integrity_Protocol.md` | Open | Critical |
+| RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
+| RIP-003 | Violation incident log location undefined | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
+| RIP-004 | Constitutional violation detection latency undefined | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
+| RIP-005 | Security_Protocols.md dependency unresolved | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 
 ### Hardware Modules
 
@@ -429,11 +467,15 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 
 *Expiry Rule is active. Check this table at the opening of each audit cycle.*
 
+**Tier 1 Axiom verification is the mandatory first step** — confirm axiom text in `Admin/Governance_Charter.md` matches prior committed version before proceeding to Expiry Watch. Any unratified change is a Constitutional violation.
+
 FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
 
-GOV-003 and GOV-005 are flagged Critical — monitor from first logging. Both require multi-cycle operational evidence to discharge; neither has a fast resolution path.
+GOV-003 now In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path — requires operational cycles.
 
-GF-005 resolved this cycle — removed from watch.
+**RIP-001 (prior-state archival) — Critical.** GitHub releases identified as v0 resolution path. Confirm release cadence is established before closing this entry.
+
+GF-005 resolved in v1.6 — removed from watch.
 
 ---
 
@@ -465,4 +507,7 @@ Audit cycle complete on Gate_01_Intake, Gate_03_Reduction, and Gate_06_Fabricati
 Gate_07_Utilization.md created and audited — after action review doctrine, performance logging, failure mode capture, four feedback paths, and retirement handoff defined. GU-001 through GU-004 added to new Utilization section. Electronics.md retrofitted to File_Template.md structure (multi-agent audit 2026-05-09, actioned 2026-05-19) — EL-005 through EL-008 added to Salvage & Fabrication section. EL-005 (toxic dust) and EL-006 (firmware trust) flagged Critical. GF-005 resolved and moved to archive — Gate_07_Utilization.md creation closes the utilization stage gap. Stale filename references corrected throughout index to canonical names per Discovery.md Rename Registry. Dependency map updated with GU and EL entries.
 
 **v1.7 — 2026-05-23:**
-Admin reconciliation cycle complete. Auditor_Protocols.md v0.7, Forge_Audit_Kit.md v0.7, and Governance_Charter.md reviewed and reconciled to File_Template.md structure. Governance tier ordering corrected — Auditor_Protocols.md is Tier 2 (canonical verification doctrine), Forge_Audit_Kit.md is Tier 3 (operational condensation derived from Tier 2). GOV-001 through GOV-007 added to Ethics & Governance section from Governance_Charter.md sidecar. AP-004 (cross-auditor disagreement) added from Auditor_Protocols.md reconciliation. AP-005 (verification termination threshold), AP-006 (institutional truth provenance hierarchy), AP-007 (repository integrity doctrine lineage) added from Forge_Audit_Kit.md reconciliation — IDs assigned to avoid collision with AP-004. GOV-003 and GOV-005 flagged Critical and added to Expiry Watch. Dependency map updated with GOV and new AP cluster entries.
+Admin reconciliation cycle complete. Auditor_Protocols.md v0.7, Forge_Audit_Kit.md v0.7, and Governance_Charter.md reviewed and reconciled to File_Template.md structure. Governance tier ordering corrected — Auditor_Protocols.md is Tier 2, Forge_Audit_Kit.md is Tier 3. GOV-001 through GOV-007 added to Ethics & Governance section. AP-004 through AP-007 added to Governance & Verification section. GOV-003 and GOV-005 flagged Critical and added to Expiry Watch. Dependency map updated with GOV and AP cluster entries.
+
+**v1.8 — 2026-05-23:**
+Repository_Integrity_Protocol.md v0.1 created — GOV-003 resolution path executing. RIP-001 through RIP-005 added to Governance & Verification section. RIP-004 logged In Progress — Forge_Audit_Kit.md v0.8 Audit Opening Checklist closes Constitutional violation detection latency gap. GOV-002 and GOV-003 moved to In Progress. AP-007 moved to In Progress. Expiry Watch updated — Tier 1 Axiom verification added as mandatory first step, RIP-001 added as Critical watch item. README.md updated — canonical filenames throughout, governance layer section added, all seven gates listed. Dependency map updated with RIP cluster.
