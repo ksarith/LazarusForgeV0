@@ -11,7 +11,7 @@
 | Verification Ref | Verification_Gates_LF.md                                            |
 | Last Audit       | 2026-05-23                                                          |
 | Auditor          | Claude — Reconciliation/Auditor                                     |
-| Open Unknowns    | 4                                                                   |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -897,12 +897,76 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-005 — Verification termination threshold undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Medium                     |
+| Priority      | Major                      |
+| Type          | Governance                 |
+| Blocking      | No                         |
+| Owner         | Admin/Auditor_Protocols.md |
+| First Logged  | 2026-05-23                 |
+| Last Reviewed | 2026-05-23                 |
+
+**Description:** The repository lacks formal criteria defining when verification is considered operationally sufficient versus indefinitely expandable.
+
+**Why It Matters:** Without closure criteria, governance pressure can grow recursively and suppress operational progress — infinite audit recursion is itself a governance failure mode.
+
+**Resolution Path:** Payment via Specification — define closure criteria anchored to the governing principle "Verification seeks sufficient falsifiability, not exhaustive certainty." Cross-reference EC-001 (sufficient confidence threshold) for alignment.
+
+---
+
+### AP-006 — Institutional truth provenance hierarchy undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Medium                     |
+| Priority      | Major                      |
+| Type          | Governance / Epistemic     |
+| Blocking      | No                         |
+| Owner         | Admin/Auditor_Protocols.md |
+| First Logged  | 2026-05-23                 |
+| Last Reviewed | 2026-05-23                 |
+
+**Description:** The repository distinguishes quantitative confidence labels but not institutional truth provenance levels — the distinction between internally derived coherence and externally validated reality.
+
+**Why It Matters:** Internally coherent documentation can be mistaken for operationally hardened truth, producing provenance collapse and recursive justification loops.
+
+**Resolution Path:** Payment via Specification — formalize the four institutional provenance labels (Internally Derived / Analogous External / Experimentally Verified / Operationally Hardened) into the Evidence Classification section. Cross-reference FN-001 and CF-002.
+
+---
+
+### AP-007 — Repository integrity and doctrine lineage protections undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | High                       |
+| Priority      | Major                      |
+| Type          | Governance / Security      |
+| Blocking      | No                         |
+| Owner         | Admin/Auditor_Protocols.md |
+| First Logged  | 2026-05-23                 |
+| Last Reviewed | 2026-05-23                 |
+
+**Description:** The repository lacks explicit operational doctrine for audit history integrity, rollback detection, canonical-path authority, and institutional memory corruption at the auditor protocol level.
+
+**Why It Matters:** Governance systems become fragile if repository state itself cannot be trusted — stale doctrine can masquerade as current policy, fabricated resolution logs can close unknowns without evidence, and silent rollback can erase lineage.
+
+**Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture) — that entry covers constitutional enforcement; this entry covers operational auditor doctrine. Distinct but linked.
+
+---
+
 ### Resolution Log
 
 - 2026-05-04: **UNK-004 (Expiry Rule enforcement mechanism)** — Discharged. Sidecar Model addresses the underlying accumulation problem structurally.
 - 2026-05-04: **UNK-022 (Full Stop Review trigger conditions)** — Resolved. Three specific trigger conditions and invocation record format added. Fourth trigger added at v0.6.
 - 2026-05-19: **Gate 3 Adversarial Pass** — Upgraded from single-scenario requirement to full Adversarial Challenge Battery (ten classes).
 - 2026-05-23: **Reconciliation pass** — v0.7 merges v0.6 depth with older draft's role class structure, 10-phase audit sequence, and evidence classification table. Abandoned Paths and Drift Indicators sections added per File_Template.md. Assumptions table added. Failure Modes reformatted to table.
+- 2026-05-23: **AP-005 through AP-007 added** — verification termination threshold, institutional truth provenance hierarchy, and repository integrity doctrine lineage introduced from Forge_Audit_Kit.md v0.7 reconciliation. IDs assigned to avoid collision with AP-004 (cross-auditor disagreement resolution).
 
 ---
 
@@ -941,6 +1005,7 @@ Version 0.7 — reconciliation pass integrating v0.6 and prior draft into File_T
 - Dispute handling protocol formalized with canonical table
 - All sidecar unknowns reviewed and Last Reviewed dates updated
 - Governance_Charter.md added to Relationship section
+- AP-005 through AP-007 added to sidecar — verification termination threshold, institutional truth provenance hierarchy, repository integrity doctrine lineage
 
 **What must remain constant:**
 
