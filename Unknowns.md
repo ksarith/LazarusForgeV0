@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 1.6 — Audit cycle 2026-05-20. GU-001 through GU-004 (Utilization) and EL-005 through EL-008 (Electronics) logged. GF-005 resolved.**
+**Version 1.7 — Audit cycle 2026-05-23. GOV-001 through GOV-007 (Governance_Charter.md) and AP-004 through AP-007 (Auditor_Protocols.md) added. Tier ordering corrected — Auditor_Protocols.md is Tier 2, Forge_Audit_Kit.md is Tier 3.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -11,6 +11,38 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
 Navigation unknowns → Discovery.md
+
+---
+
+## What v1.7 Means
+
+- Admin reconciliation cycle 2026-05-23 complete —
+  Auditor_Protocols.md, Forge_Audit_Kit.md, and
+  Governance_Charter.md reconciled to File_Template.md
+  structure
+- Auditor_Protocols.md v0.7 produced — merges v0.6 depth
+  with older draft's role class structure, 10-phase audit
+  sequence, evidence classification table; Abandoned Paths
+  and Drift Indicators sections added; AP-004 through AP-007
+  added to sidecar
+- Forge_Audit_Kit.md v0.7 produced — Verification Maturity
+  Model, Truth Provenance Labels, Anti-Theater Doctrine,
+  Confidence Decay/Revalidation, adversarial priority
+  weighting, and expanded sign-off format added; fitted to
+  File_Template.md structure
+- Governance_Charter.md reviewed — tier ordering corrected:
+  Auditor_Protocols.md is Tier 2 (canonical verification
+  doctrine), Forge_Audit_Kit.md is Tier 3 (operational
+  condensation); GOV-001 through GOV-007 added to index
+- AP-004 (cross-auditor disagreement) added from
+  Auditor_Protocols.md reconciliation
+- AP-005 (verification termination threshold), AP-006
+  (institutional truth provenance), AP-007 (repository
+  integrity doctrine lineage) added from Forge_Audit_Kit.md
+  reconciliation; IDs assigned to avoid collision with AP-004
+- GOV- prefix added to Forge_Audit_Kit.md sidecar ID
+  reference
+- Dependency map updated with GOV and new AP entries
 
 ---
 
@@ -136,6 +168,22 @@ EC-001 (confidence threshold) -> LT-003 / EC-007
 EC-004 (governance failure modes) -> EC-007
 EC-007 (governance fail-safe) — In Progress
 
+GOV-001 (governance migration mechanics) -> no blocking dependency; resolved by Governance_Migration_Protocol.md creation
+GOV-002 (provenance operationalization) -> depends on AP-006 (truth provenance hierarchy)
+GOV-003 (integrity enforcement architecture) -> AP-007 (repository integrity doctrine) — distinct but linked
+GOV-004 (escalation calibration) -> AP-004 (cross-auditor disagreement resolution)
+GOV-005 (constitutional stability) -> discharge via Lessons Learned after stable migration cycles
+GOV-006 (human override authenticity) -> depends on Security_Protocols.md (planned)
+GOV-007 (bootstrap governance initialization) -> no blocking dependency; resolved by bootstrap doctrine extension
+
+AP-001 (auditor metrics) -> depends on AP-003 (audit schema)
+AP-003 (audit trail schema) -> AP-001
+AP-004 (cross-auditor disagreement) -> GOV-004 (escalation calibration); may merge
+AP-005 (verification termination threshold) -> EC-001 (sufficient confidence threshold)
+AP-006 (truth provenance hierarchy) -> FN-001 (validation criteria) / CF-002 (correlated AI failure modes)
+AP-007 (repository integrity doctrine) -> FN-001 / AP-003 / Architecture/Forge_Net.md
+AP-007 cross-ref GOV-003 — constitutional enforcement vs. operational auditor doctrine
+
 TR-001 (v1 profitability) -> depends on EV-001
 
 EL-001 (forge standard interface) -> depends on LT-001
@@ -144,14 +192,11 @@ EL-006 (firmware trust) -> prerequisite for first salvaged MCU integration
 EL-007 (correlated TMR failure) -> depends on first TMR prototype
 EL-008 (counterfeit detection) -> cross-reference EL-006 firmware trust
 
-AP-001 (auditor metrics) -> depends on UNK-004 (now active)
-AP-003 (audit trail schema) -> AP-001
-
 SC-001 (RPM envelope) -> SC-005 (drive system geometry)
 SC-002 (segregation effectiveness) — primary Gen-0 validation target
 SC-006 (siting) -> UNK-006 (master safety registry)
 MG-006 (siting) -> UNK-006 (master safety registry)
-UNK-007 (reduction module) -> MG-001, MG-002, MG-007
+UNK-007 (reduction module) -> Resolved
 UNK-008 (welding wire) -> SC-004
 FN-001 (validation criteria) -> blocks first network connection
 FN-005 (privacy doctrine) -> blocks first network connection
@@ -226,14 +271,25 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | EC-005 | Life-preservation vs. Anti-Weaponization | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
 | EC-006 | Ethical log survival under unit loss | `Admin/Ethical_Constraints.md` | Open | Non-blocking |
 | EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
+| GOV-001 | Governance migration mechanics incompletely operationalized | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | Open | Critical |
+| GOV-004 | Escalation calibration partially subjective | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-005 | Long-term constitutional stability unproven | `Admin/Governance_Charter.md` | Open | Critical |
+| GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | Open | Major |
 
 ### Governance & Verification
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Blocking |
-| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Blocking |
-| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Blocking |
+| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
+| AP-004 | Cross-auditor disagreement resolution incomplete | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-005 | Verification termination threshold undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | Open | Major |
 
 ### Hardware Modules
 
@@ -374,6 +430,9 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 *Expiry Rule is active. Check this table at the opening of each audit cycle.*
 
 FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
+
+GOV-003 and GOV-005 are flagged Critical — monitor from first logging. Both require multi-cycle operational evidence to discharge; neither has a fast resolution path.
+
 GF-005 resolved this cycle — removed from watch.
 
 ---
@@ -404,3 +463,6 @@ Audit cycle complete on Gate_01_Intake, Gate_03_Reduction, and Gate_06_Fabricati
 
 **v1.6 — 2026-05-20:**
 Gate_07_Utilization.md created and audited — after action review doctrine, performance logging, failure mode capture, four feedback paths, and retirement handoff defined. GU-001 through GU-004 added to new Utilization section. Electronics.md retrofitted to File_Template.md structure (multi-agent audit 2026-05-09, actioned 2026-05-19) — EL-005 through EL-008 added to Salvage & Fabrication section. EL-005 (toxic dust) and EL-006 (firmware trust) flagged Critical. GF-005 resolved and moved to archive — Gate_07_Utilization.md creation closes the utilization stage gap. Stale filename references corrected throughout index to canonical names per Discovery.md Rename Registry. Dependency map updated with GU and EL entries.
+
+**v1.7 — 2026-05-23:**
+Admin reconciliation cycle complete. Auditor_Protocols.md v0.7, Forge_Audit_Kit.md v0.7, and Governance_Charter.md reviewed and reconciled to File_Template.md structure. Governance tier ordering corrected — Auditor_Protocols.md is Tier 2 (canonical verification doctrine), Forge_Audit_Kit.md is Tier 3 (operational condensation derived from Tier 2). GOV-001 through GOV-007 added to Ethics & Governance section from Governance_Charter.md sidecar. AP-004 (cross-auditor disagreement) added from Auditor_Protocols.md reconciliation. AP-005 (verification termination threshold), AP-006 (institutional truth provenance hierarchy), AP-007 (repository integrity doctrine lineage) added from Forge_Audit_Kit.md reconciliation — IDs assigned to avoid collision with AP-004. GOV-003 and GOV-005 flagged Critical and added to Expiry Watch. Dependency map updated with GOV and new AP cluster entries.
