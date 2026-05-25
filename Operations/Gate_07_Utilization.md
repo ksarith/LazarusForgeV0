@@ -23,7 +23,7 @@
 | Verification Ref | Admin/Forge_Audit_Kit.md                                            |
 | Last Audit       | 2026-05-19                                                          |
 | Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 4                                                                   |
+| Open Unknowns    | 5                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | Low                                                                 |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -62,6 +62,9 @@ not a Utilization operation risk.*
 - Retirement handoff doctrine — when a part's
   utilization record triggers re-entry into the
   gate flow at Gate_02_Triage
+- Forge Regeneration Threshold (FRT) per-cycle logging —
+  measurement and record of reinvestment fraction against
+  declared FRT floor (doctrine in Admin/Trajectories.md)
 - Part lifecycle termination conditions — when
   a part exits the system permanently
 
@@ -240,6 +243,52 @@ If a part cannot be observed for a period —
 external deployment, inaccessible location,
 operator change — log the gap explicitly.
 A known gap is better than a false continuity.
+
+---
+
+## 2b. Forge Regeneration Threshold (FRT) Logging
+
+The FRT is a system health metric defined in `Admin/Trajectories.md`.
+Gate_07_Utilization owns the per-cycle measurement record. This section
+defines what gets logged and when.
+
+**What FRT logging captures:**
+
+| Field | Content | Notes |
+|---|---|---|
+| Cycle identifier | Operating period this record covers | Month, audit cycle, or declared throughput batch — per operator declaration at commissioning |
+| Total throughput value | Estimated value of material processed this cycle | Analogous or measured — label confidence level |
+| Reinvestment amount | Value reinvested in Forge capability development this cycle | See Trajectories.md §What Counts as Reinvestment |
+| Reinvestment fraction | Reinvestment ÷ throughput value | Compare against declared FRT floor |
+| FRT floor (declared) | Operator-declared threshold for this Forge instance | Placeholder [2–5%] until calibrated — see TR-002 |
+| FRT status | Above floor / Below floor / Placeholder (not yet calibrated) | |
+| Below-floor note | If below floor: reason and recovery plan | Required if below floor — operator documented |
+| Cumulative below-floor cycles | Running count of consecutive cycles below declared floor | Trigger review if count exceeds [N] — Placeholder |
+
+**Logging cadence:** Once per declared FRT cycle — at cycle close,
+before the next cycle opens.
+
+**FRT floor calibration:** The FRT floor begins as Placeholder [2–5%].
+After first operational cycle, the operator reviews actual reinvestment
+patterns and declares a calibrated floor. Log the calibration event in
+the Resolution Log with date and basis.
+
+**Below-floor response:**
+- 1 cycle below floor: log reason, document recovery plan
+- [N] consecutive cycles below floor: flag as systemic decline indicator,
+  escalate to human review, open GU-005 status update
+- *(N is Placeholder — declared by operator at commissioning)*
+
+**Relationship to v1 exit condition:**
+FRT data feeds directly into TR-001 (v1 profitability baseline). A Forge
+that has run sufficient cycles to calibrate its FRT floor has one of the
+required inputs for the v1 economic model.
+
+**v0 honest acknowledgment:** At v0, throughput value and reinvestment
+amount may be rough estimates. Label all values with confidence level
+(Measured / Analogous / Placeholder). An approximate FRT record is better
+than none — the pattern across cycles matters more than precision in any
+single cycle.
 
 ---
 
@@ -631,9 +680,45 @@ needs a defined upgrade path.
 
 ---
 
+---
+
+### GU-005 — Forge Regeneration Threshold cycle definition and floor not yet declared
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Architectural / Governance                       |
+| Blocking      | No                                               |
+| Owner         | Operations/Gate_07_Utilization.md                |
+| First Logged  | 2026-05-23                                       |
+| Last Reviewed | 2026-05-23                                       |
+
+**Description:** The FRT cycle definition (month / audit cycle / throughput
+batch) and the calibrated FRT floor have not been declared by an operator.
+The Placeholder floor [2–5%] applies until first operational cycle data exists.
+
+**Why It Matters:** Without a declared cycle definition, FRT logging cannot
+begin. Without a calibrated floor, the systemic decline threshold is undefined.
+Both are prerequisites for FRT records feeding meaningfully into the v1
+economic model (TR-001).
+
+**Resolution Path:** Discharge via Lessons Learned — operator declares cycle
+definition at v0 commissioning. After first cycle, review actual reinvestment
+patterns and calibrate floor. Log calibration event in Resolution Log with
+date and basis. Cross-reference TR-002 (Trajectories.md) — same unknown,
+different owning file. FRT floor calibration closes both.
+
+---
+
 ### Resolution Log
 
 *(empty — no entries resolved yet)*
+
+- 2026-05-23: GU-005 added — FRT cycle definition and floor declaration
+  pending operator commissioning decision. FRT logging section (Section 2b)
+  added to body. Scope Boundary updated. Open unknowns count updated to 5.
 
 ---
 
@@ -671,6 +756,7 @@ Gate_07_Utilization:
 | GU-002 retirement handoff format remains unvalidated at first operational retirement | Handoff format must be cross-validated with Gate_02 before first retirement — incompatible formats make utilization record noise at handoff |
 | Safety-critical parts per GF-006 not flagged for shorter inspection intervals | Silent failure risk is higher for load-bearing parts — standard inspection interval is insufficient |
 | Real-time monitoring introduced as replacement for event-driven logging before v2 instrumentation capability | Continuous monitoring is v2+ capability — introducing before power budget and sensor capability are validated creates infrastructure dependency |
+| FRT logging omitted from cycle close | FRT records are a required output of each cycle close — omission breaks the system health measurement chain and TR-001 input path |
 | Fabrication output tag from Gate_06 not verified at retirement handoff | Tag survival is the traceability chain — unverified tag status at retirement breaks feedback loop between service performance and fabrication origin |
 
 ### Canonical Drift Triggers
