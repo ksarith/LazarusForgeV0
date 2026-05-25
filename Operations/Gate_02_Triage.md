@@ -1,21 +1,106 @@
-# Lazarus Forge — Component Triage System
+# Gate_02_Triage.md
 
-**Audit Health:**
-- Status: Exploration
-- Last audit: 2026-05-09 (ChatGPT — Synthesizer; Claude — Engineer)
-- Open unknowns: 3 (Medium)
-- Sidecar: [#auditor-notes--unknowns]
+> ⚠️ **Operational Safety Advisory**
+> Triage handles items of unknown provenance, unknown contamination status,
+> and unknown energetic content. A component that passes visual inspection
+> may still carry chemical contamination, residual charge, or embedded
+> hazardous material not visible at Station 0. Contamination bypass —
+> a contaminated component passing to electrical or mechanical stations —
+> is the highest-risk triage failure mode. Station 0 contamination check
+> is mandatory before escalation; it cannot be skipped under throughput
+> pressure. Dual-use and weaponization flags must be assessed before any
+> component enters the Component Library. **When in doubt, hold at Station 0.
+> The cost of a missed hazard is always higher than the cost of a hold.**
 
-> Role: Decision gateway between reuse and destruction.
-> The Forge is preserving machine work, precision, process history, and infrastructure inheritance — not just metal.
+---
 
-The Component Triage System exists to answer one question with speed, honesty, and minimal energy:
+## File State
 
-**Can this component or subassembly still function — or be restored to function — at lower total cost than fabricating a new one?**
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Draft                                                               |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 2/6                                                                 |
+| Verification Ref | Verification_Gates_LF.md                                            |
+| Last Audit       | 2026-05-09                                                          |
+| Auditor          | ChatGPT — Synthesizer; Claude — Engineer                            |
+| Open Unknowns    | 3                                                                   |
+| Active Disputes  | 1                                                                   |
+| Highest Risk     | High                                                                |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-Everything that passes triage is preserved as embodied complexity. Everything that fails triage enters material recovery. Triage always occurs before any material enters destructive processing.
+---
 
-*Note: This document implements the gate logic defined in `Lazarus_forge_v0_flow.md`, which is the reference standard for shared vocabulary.*
+## Scope Boundary
+
+**This file DOES define:**
+- Core triage principles and philosophy
+- False-positive tolerance doctrine and bootstrap asymmetry
+- Strategic Recoverability tier classification
+- Gate correspondence table linking triage outcomes to Forge_flow.md gates
+- Queue economics doctrine — queues as active allocations
+- Five modular triage stations (Station 0 through Station 4)
+- Triage Terminal and Human/AI Oversight Gate behavior
+- Failure modes and mitigations specific to triage
+- Data and learning loop requirements
+- Minimum viable triage configuration for Gen-1 Forge
+- Guiding axioms
+- Interface map to upstream and downstream modules
+
+**This file DOES NOT define:**
+- Master gate logic and shared vocabulary
+  (→ `Architecture/Forge_flow.md`)
+- Decontamination protocols and air handling
+  (→ `Operations/Air_Scrubber.md`, AS-003)
+- Electrical component harvesting protocols
+  (→ `Operations/Electronics.md`)
+- Material Recovery and Reduction methods
+  (→ `Operations/Gate_03_Reduction.md`)
+- Anti-Weaponization pattern-matching mechanism
+  (→ `Admin/Ethical_Constraints.md`, EC-002)
+- Component taxonomy and graduation rules
+  (→ `Architecture/Components.md`)
+- Retirement routing decisions for parts returning from service
+  (→ this file receives them from `Operations/Gate_07_Utilization.md`;
+  routing decisions made here)
+- FRT reinvestment accounting
+  (→ `Operations/Gate_07_Utilization.md`, `Admin/Trajectories.md`)
+
+---
+
+## File Purpose
+
+Gate_02_Triage is the decision gateway between reuse and destruction. It
+exists to answer one question with speed, honesty, and minimal energy:
+can this component or subassembly still function — or be restored to
+function — at lower total cost than fabricating a new one?
+
+The Forge is preserving machine work, precision, process history, and
+infrastructure inheritance — not just metal. Everything that passes triage
+is preserved as embodied complexity. Everything that fails triage enters
+material recovery. Triage always occurs before any material enters
+destructive processing.
+
+Without this file, the repository lacks the doctrine required to operate
+the decision gateway that determines whether material is saved or destroyed.
+Premature destruction is irreversible; this file is the primary defense
+against it.
+
+---
+
+## Assumptions
+
+| ID      | Assumption                                                                              | Basis                              | Confidence | Expiry Trigger                                              |
+|---------|-----------------------------------------------------------------------------------------|------------------------------------|------------|-------------------------------------------------------------|
+| ASM-001 | Human operator judgment is the primary triage authority at v0                          | Current automation capability      | High       | Automated classification demonstrated reliable at v0 scale  |
+| ASM-002 | Station 0 contamination check reliably identifies visible contamination                | Standard industrial practice       | Medium     | Invisible contamination (chemical, radiological) confirmed present in intake stream |
+| ASM-003 | Components entering triage have passed basic safety screening at Gate_01_Intake        | Sequential gate doctrine           | High       | Gate_01 bypassed or abbreviated                             |
+| ASM-004 | Queue saturation is detectable before it causes resource deadlock                      | Queue economics doctrine           | Medium     | First operational queue saturation event observed           |
+| ASM-005 | Numeric thresholds (70% performance, 5–15 min runtime) are reasonable starting points | Analogous — industrial triage practice | Low     | N≥50 consistent decisions per component class reached       |
+| ASM-006 | Dual-use and weaponization patterns are recognizable by a trained operator at Station 0 | Current EC-002 status — Placeholder | Low       | EC-002 pattern-matching mechanism defined                   |
+
+---
 
 ---
 
@@ -28,7 +113,7 @@ Never destroy or disassemble a component if a non-invasive test can establish vi
 Begin with the fastest, lowest-energy test. Escalate only when value is plausible.
 
 **3. Human–Machine Hybrid**
-Human judgment informs classification — it does not bypass the Gate A–D routing sequence defined in `Lazarus_forge_v0_flow.md`.
+Human judgment informs classification — it does not bypass the Gate A–D routing sequence defined in `Architecture/Forge_flow.md`.
 
 **4. Energy & Time Accounting**
 Each test has a known energy/time cost. A component must justify deeper testing.
@@ -90,7 +175,7 @@ These tiers influence queue priority, destruction authorization, provenance rete
 
 ## IV. Gate Correspondence
 
-Triage stations map to the gate logic in `Lazarus_forge_v0_flow.md`:
+Triage stations map to the gate logic in `Architecture/Forge_flow.md`:
 
 | Triage Outcome | Flow Gate | Routing |
 |---|---|---|
@@ -196,7 +281,7 @@ Refines borderline calls. Does not override clear Pass or clear Fail from Statio
 
 ## VII. Triage Terminal
 
-Every item reaching Material Recovery disposition must pass a structured hold review before irreversible processing begins. This is the Human/AI Oversight Gate from `Lazarus_forge_v0_flow.md` at the triage exit.
+Every item reaching Material Recovery disposition must pass a structured hold review before irreversible processing begins. This is the Human/AI Oversight Gate from `Architecture/Forge_flow.md` at the triage exit.
 
 - If a credible, active use case exists: assign with defined review date
 - If Strategic or Critical tier: require explicit human authorization before material recovery proceeds
@@ -271,41 +356,139 @@ Recurring failure patterns on specific component types are flagged for classific
 
 ## Lessons Learned
 
-| Date | What was tried | What failed | What was learned |
-|---|---|---|---|
-| May 2026 | "Scrap" used as terminal bin label | Operators may interpret as disposal rather than material recovery | Replaced with "Material Recovery"; vocabulary note added |
-| May 2026 | Station 3 routed Fail directly to disassembly | Missing Human/AI Oversight Gate | Triage Terminal added as mandatory hold |
-| May 2026 | Queues treated as passive storage | Risk of latent hoarding, decision fatigue, dead inventory | Queues are active allocations with decay, saturation behavior, and reassessment triggers |
+| Date     | Evidence Type | What Was Tried                                       | What Failed                                                              | What Was Learned                                                                                           | Confidence | Revalidation Needed |
+|----------|---------------|------------------------------------------------------|--------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|------------|---------------------|
+| May 2026 | Audit Review  | "Scrap" used as terminal bin label                   | Operators may interpret as disposal rather than material recovery        | Replaced with "Material Recovery"; vocabulary note added                                                   | Replicated | No                  |
+| May 2026 | Audit Review  | Station 3 routed Fail directly to disassembly        | Missing Human/AI Oversight Gate — irreversible action without hold       | Triage Terminal added as mandatory hold before any material recovery proceeds                              | Replicated | No                  |
+| May 2026 | Audit Review  | Queues treated as passive storage                    | Risk of latent hoarding, decision fatigue, dead inventory accumulation   | Queues are active allocations with decay, saturation behavior, and reassessment triggers                   | Replicated | No                  |
+| May 2026 | Audit Review  | Single triage axis (operational utility only)        | Strategically irreplaceable components destroyed at same confidence threshold as common components | Strategic Recoverability added as second triage axis; four-tier classification system | Analogous  | Yes                 |
+
+---
+
+## Active Disputes
+
+| ID     | Summary                                                                                   | Positions in Conflict                                                        | Risk   | Status | Owner                    |
+|--------|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------|--------|--------------------------|
+| DS-001 | Whether retirement handoff from Gate_07_Utilization should trigger automatic re-triage or require operator decision | Automatic re-entry at Station 0 vs. operator-initiated re-triage only | Medium | Open   | Operations/Gate_02_Triage.md |
+
+---
+
+## Abandoned Paths
+
+| Date     | Path                                                                  | Why Abandoned                                                                                           | Reconsider? |
+|----------|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| May 2026 | Direct Reduction routing for Station 3 Fail without Triage Terminal  | Irreversible action without Human/AI Oversight Gate — permanently abandoned; Triage Terminal is mandatory | No          |
+| May 2026 | Single operational utility axis for triage decisions                  | Strategic recoverability is a distinct dimension — optimizing only for current utility destroys future capability | No |
+| May 2026 | Queues as passive storage without decay or saturation doctrine        | Passive queues become dead inventory under resource pressure — active allocation doctrine is permanent   | No          |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Station 0 contamination check made optional or skippable under throughput pressure
+- Triage Terminal removed or bypassed for any item class
+- Dual-use flag assessment removed from Station 0
+- Strategic Recoverability tier classification removed or collapsed to single axis
+- Queue decay protocol removed or decay interval extended without operational basis
+- False-positive doctrine reversed — destruction confidence lowered below retention confidence during bootstrap
+- Gate Correspondence table diverges from `Architecture/Forge_flow.md` gate definitions
+- Stale flat filenames present in cross-references
+- Human/AI Oversight Gate requirement removed for Strategic or Critical tier components
+- DS-001 resolved without explicit audit cycle and cross-validation with Gate_07_Utilization.md
+- Ethical Anchor field absent, altered, or does not match canonical string
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt
+autonomous audit progression and escalate for human review.
 
 ---
 
 ## Auditor Notes & Unknowns
 
 ### TS-001 — "Sufficient for forge duty" threshold undefined
-**Status:** In Progress
-**Risk:** Medium
-**What is not yet known:** Quantitative or contextual definition of acceptable degraded performance for forge-duty components.
-**Resolution path:** Working definition added: "A component is sufficient if it materially contributes to closure of the current operational loop, not whether it meets original manufacturer specifications." Populate Baseline Performance Table after N≥50 observations per component class.
-**Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
-*Cross-module reference: UNK-024 in Unknowns_LF.md*
+
+| Field         | Value                          |
+|---------------|--------------------------------|
+| Status        | In Progress                    |
+| Risk          | Medium                         |
+| Priority      | Major                          |
+| Type          | Technical                      |
+| Blocking      | Yes                            |
+| Owner         | Operations/Gate_02_Triage.md   |
+| First Logged  | May 2026                       |
+| Last Reviewed | 2026-05-23                     |
+
+**Description:** Quantitative or contextual definition of acceptable degraded
+performance for forge-duty components remains incompletely defined.
+
+**Why It Matters:** Without a calibrated threshold, triage decisions at the
+Gate A/C boundary rely entirely on operator judgment — reproducibility and
+cross-operator consistency cannot be verified.
+
+**Resolution Path:** Working definition added: "A component is sufficient if
+it materially contributes to closure of the current operational loop." Populate
+Baseline Performance Table after N≥50 observations per component class.
+Cross-reference `Architecture/Forge_flow.md` FL-001 (gate logic determinism).
+
+---
 
 ### TS-002 — Contamination routing protocol incomplete
-**Status:** Open
-**Risk:** Medium
-**What is not yet known:** Full decontamination criteria, routing for components that cannot be decontaminated, and provenance tag requirements for contamination status.
-**Resolution path:** Station 0 contamination check and Contaminated bin added. Full decontamination protocol still needed. Cross-reference `Air_Scrubber_v0.md` AS-003.
-**Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
-*Cross-module reference: UNK-025 in Unknowns_LF.md*
+
+| Field         | Value                          |
+|---------------|--------------------------------|
+| Status        | Open                           |
+| Risk          | Medium                         |
+| Priority      | Major                          |
+| Type          | Technical                      |
+| Blocking      | No                             |
+| Owner         | Operations/Gate_02_Triage.md   |
+| First Logged  | May 2026                       |
+| Last Reviewed | 2026-05-23                     |
+
+**Description:** Full decontamination criteria, routing for components that
+cannot be decontaminated, and provenance tag requirements for contamination
+status remain undefined.
+
+**Why It Matters:** Contamination bypass is the highest-risk triage failure
+mode — a contaminated component reaching electrical or mechanical stations
+creates secondary contamination and potential operator harm.
+
+**Resolution Path:** Station 0 contamination check and Contaminated bin added.
+Full decontamination protocol still needed. Cross-reference
+`Operations/Air_Scrubber.md` AS-003 (scrubber waste stream and saturation).
+
+---
 
 ### TS-003 — Gate logic determinism at boundary cases
-**Status:** In Progress
-**Risk:** Medium
-**What is not yet known:** Deterministic routing for all item types at Gate A/C and Gate C/D boundaries.
-**Resolution path:** Gate Correspondence table added. Motor worked example added. Strategic tier override adds a new routing path that may create additional boundary cases — needs worked examples.
-**Logged:** Component_Triage_System.md multi-model audit cycle, May 2026
-*Cross-module reference: UNK-012 in Unknowns_LF.md*
+
+| Field         | Value                          |
+|---------------|--------------------------------|
+| Status        | In Progress                    |
+| Risk          | Medium                         |
+| Priority      | Major                          |
+| Type          | Technical                      |
+| Blocking      | Yes                            |
+| Owner         | Operations/Gate_02_Triage.md   |
+| First Logged  | May 2026                       |
+| Last Reviewed | 2026-05-23                     |
+
+**Description:** Deterministic routing for all item types at Gate A/C and
+Gate C/D boundaries remains incomplete. Strategic tier override creates
+additional boundary cases requiring worked examples.
+
+**Why It Matters:** Non-deterministic boundary cases produce inconsistent
+triage outcomes across operators and audit cycles — institutional memory
+cannot accumulate reliable patterns.
+
+**Resolution Path:** Gate Correspondence table added. Motor worked example
+added. Additional worked examples needed for Strategic tier override paths.
+Cross-reference `Architecture/Forge_flow.md` FL-001.
+
+---
 
 ### Resolution Log
+
 - May 2026: Gate Correspondence table added.
 - May 2026: Motor worked example added to Station 1.
 - May 2026: Triage Terminal added — Human/AI Oversight Gate now present.
@@ -319,3 +502,4 @@ Recurring failure patterns on specific component types are flagged for classific
 - May 2026: Failure Modes section added.
 - May 2026: Interfaces section added.
 - May 2026: Station 4 anti-overfitting protection added.
+- 2026-05-23: Retrofitted to File_Template.md structure. Safety Advisory, File State table, Scope Boundary, File Purpose, Assumptions table, Abandoned Paths, Drift Indicators added. DS-001 (retirement handoff dispute) added to Active Disputes. Stale flat filenames corrected to canonical folder-prefixed paths throughout. Lessons Learned reformatted to full table with Evidence Type and Confidence columns. Sidecar unknowns reformatted to structured table format.
