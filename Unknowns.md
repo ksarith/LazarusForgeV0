@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 1.8 — Audit cycle 2026-05-23. RIP-001 through RIP-005 (Repository_Integrity_Protocol.md) added. GOV-002 and GOV-003 moved to In Progress. AP-007 moved to In Progress. RIP-004 logged In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist.**
+**Version 1.9 — Audit cycle 2026-05-25. Governance_Charter.md v0.5 (Gemini audit). GOV-007 moved to In Progress. GOV-008 and GOV-009 added. Trajectories.md retrofitted — TR-002 added. Gate_07_Utilization.md FRT logging added — GU-005 added. Air_Scrubber.md retrofitted — AS-004 added. GOV-007 In Progress exit condition dependency on GOV-008 flagged in Expiry Watch.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -11,6 +11,41 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
 Navigation unknowns → Discovery.md
+
+---
+
+## What v1.9 Means
+
+- Governance_Charter.md v0.5 produced — Gemini Skeptic/Auditor
+  findings actioned; Gate 2 blocked by bootstrapping paradox,
+  then unblocked by Genesis Phase Protocol addition
+- GOV-007 moved to In Progress — Genesis Phase Protocol is the
+  executing resolution path; human operator as independent
+  verification anchor until multi-agent quorum established
+- GOV-008 added — minimum hardware and agent quorum for bootstrap
+  compliance; Genesis Phase exit condition depends on this
+- GOV-009 added — bounded framework for external resource
+  consumption and environmental interaction; Axiom P-1 and P-3
+  gesture at this but do not operationalize it
+- GOV-006 resolution path tightened — interim authentication
+  requirement now codified in Human Override Doctrine: dual human
+  confirmation or external cryptographic anchor required for
+  Constitutional-class overrides until Security_Protocols.md
+  reaches Provisional Specification
+- Trajectories.md retrofitted to File_Template.md structure —
+  TR-002 added (FRT floor value not yet calibrated)
+- Gate_07_Utilization.md updated — FRT per-cycle logging section
+  added; GU-005 added (FRT cycle definition and floor not yet
+  declared)
+- Air_Scrubber.md retrofitted to File_Template.md structure —
+  AS-004 added (noise exposure limits and hearing conservation
+  program undefined)
+- Gate_02_Triage.md retrofitted — no new unknowns; TS-002
+  cross-reference corrected to canonical path
+- File_Template.md updated — Section 0 (Operational Safety
+  Advisory) added
+- Dependency map updated with GOV-008, GOV-009, TR-002, GU-005,
+  AS-004, and GOV cluster cleanup
 
 ---
 
@@ -202,8 +237,10 @@ GOV-002 (provenance operationalization) -> depends on AP-006 (truth provenance h
 GOV-003 (integrity enforcement architecture) -> In Progress — Repository_Integrity_Protocol.md created as resolution path; AP-007 (repository integrity doctrine) — distinct but linked
 GOV-004 (escalation calibration) -> AP-004 (cross-auditor disagreement resolution)
 GOV-005 (constitutional stability) -> discharge via Lessons Learned after stable migration cycles
-GOV-006 (human override authenticity) -> depends on Security_Protocols.md (planned)
-GOV-007 (bootstrap governance initialization) -> no blocking dependency; resolved by bootstrap doctrine extension
+GOV-006 (human override authenticity) -> depends on Security_Protocols.md (planned); interim authentication requirement now codified in Governance_Charter.md Human Override Doctrine
+GOV-007 (bootstrap governance initialization) -> In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008 (minimum agent quorum definition)
+GOV-008 (minimum hardware/agent quorum) -> GOV-007 exit condition; depends on Security_Protocols.md (planned) for attestation mechanism
+GOV-009 (bounded resource consumption framework) -> cross-ref Tests/Leviathan_testing.md, Tests/Support_Raft.md for physical deployment constraints
 
 AP-001 (auditor metrics) -> depends on AP-003 (audit schema)
 AP-003 (audit trail schema) -> AP-001
@@ -215,9 +252,14 @@ AP-007 cross-ref GOV-003 — constitutional enforcement vs. operational auditor 
 RIP-001 (prior-state archival) -> blocks Phase 2 automation; GitHub releases satisfy at v0
 RIP-002 (Phase 1 automation) -> depends on RIP-001 for comparison checks
 RIP-004 (detection latency) -> In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist axiom verification step
-RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); Phase 3 dependency
+RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); GOV-008 (attestation mechanism); Phase 3 dependency
 
 TR-001 (v1 profitability) -> depends on EV-001
+TR-002 (FRT floor calibration) -> depends on first operational cycle data; feeds TR-001
+
+GU-005 (FRT cycle definition and floor) -> operator declaration at commissioning; feeds TR-002 and TR-001
+
+AS-004 (noise exposure limits) -> depends on first operational SPL measurement; cross-ref planned Safety_Protocols.md
 
 EL-001 (forge standard interface) -> depends on LT-001
 EL-005 (toxic dust profile) -> feeds Air_Scrubber.md sizing and filter selection
@@ -310,7 +352,9 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | GOV-004 | Escalation calibration partially subjective | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-005 | Long-term constitutional stability unproven | `Admin/Governance_Charter.md` | Open | Critical |
 | GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | Open | Major |
-| GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | In Progress | Major |
+| GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-009 | Bounded framework for external resource consumption and environmental interaction | `Admin/Governance_Charter.md` | Open | Major |
 
 ### Governance & Verification
 
@@ -352,6 +396,7 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | AS-001 | 500W power budget not validated | `Operations/Air_Scrubber.md` | Open | Medium |
 | AS-002 | Marine bubble-column depth scope | `Operations/Air_Scrubber.md` | In Progress | Low |
 | AS-003 | Scrubber waste stream and saturation | `Operations/Air_Scrubber.md` | In Progress | Medium |
+| AS-004 | Noise exposure limits and hearing conservation program undefined | `Operations/Air_Scrubber.md` | Open | Major |
 | SR-001 | Galvanic corrosion mitigation | `Tests/Support_Raft.md` | Open | High |
 | SR-002 | Sacrificial shell material selection | `Tests/Support_Raft.md` | Open | Medium |
 | SR-003 | Battery buffer sizing | `Tests/Support_Raft.md` | Open | Medium |
@@ -438,12 +483,14 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | GU-002 | Retirement handoff protocol not cross-validated with Gate_02_Triage | `Operations/Gate_07_Utilization.md` | Open | Major |
 | GU-003 | Formal quality certification and standards compliance unowned | `Operations/Gate_07_Utilization.md` | Open | Minor |
 | GU-004 | Silent failure detection capability not defined | `Operations/Gate_07_Utilization.md` | Open | Major |
+| GU-005 | FRT cycle definition and floor not yet declared | `Operations/Gate_07_Utilization.md` | Open | Major |
 
 ### Trajectory
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | TR-001 | v1 profitability baseline | `Admin/Trajectories.md` | Open | Blocking |
+| TR-002 | FRT floor value not yet calibrated | `Admin/Trajectories.md` | Open | Major |
 
 ### Cross-Module
 
@@ -471,7 +518,9 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 
 FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
 
-GOV-003 now In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path — requires operational cycles.
+GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path — requires operational cycles.
+
+GOV-007 moved to In Progress — Genesis Phase Protocol executing. Full resolution depends on GOV-008 (minimum hardware/agent quorum definition). GOV-008 exit condition not yet met — monitor at next audit opening.
 
 **RIP-001 (prior-state archival) — Critical.** GitHub releases identified as v0 resolution path. Confirm release cadence is established before closing this entry.
 
@@ -511,3 +560,6 @@ Admin reconciliation cycle complete. Auditor_Protocols.md v0.7, Forge_Audit_Kit.
 
 **v1.8 — 2026-05-23:**
 Repository_Integrity_Protocol.md v0.1 created — GOV-003 resolution path executing. RIP-001 through RIP-005 added to Governance & Verification section. RIP-004 logged In Progress — Forge_Audit_Kit.md v0.8 Audit Opening Checklist closes Constitutional violation detection latency gap. GOV-002 and GOV-003 moved to In Progress. AP-007 moved to In Progress. Expiry Watch updated — Tier 1 Axiom verification added as mandatory first step, RIP-001 added as Critical watch item. README.md updated — canonical filenames throughout, governance layer section added, all seven gates listed. Dependency map updated with RIP cluster.
+
+**v1.9 — 2026-05-25:**
+Governance_Charter.md v0.5 produced — Gemini Skeptic/Auditor findings actioned. GOV-007 moved to In Progress — Genesis Phase Protocol is the executing resolution path. GOV-008 added (minimum hardware/agent quorum for bootstrap compliance — Genesis Phase exit condition). GOV-009 added (bounded framework for external resource consumption and environmental interaction). GOV-006 resolution path tightened — interim authentication requirement codified in Human Override Doctrine. Trajectories.md retrofitted to File_Template.md structure — TR-002 added (FRT floor value not yet calibrated). Gate_07_Utilization.md updated with FRT per-cycle logging section — GU-005 added (FRT cycle definition and floor not yet declared). Air_Scrubber.md retrofitted — AS-004 added (noise exposure limits and hearing conservation program undefined). Gate_02_Triage.md retrofitted — no new unknowns, stale cross-reference corrected. File_Template.md updated — Section 0 (Operational Safety Advisory) added. Dependency map updated with new entries and GOV cluster cleanup.
