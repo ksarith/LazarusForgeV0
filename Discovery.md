@@ -543,3 +543,8 @@ error. Divergence between them is logged, not ignored.
 - Two planned Admin files not yet created: `Admin/Governance_Migration_Protocol.md`
   (GOV-001 resolution path) and `Admin/Security_Protocols.md` (GOV-006,
   RIP-005 resolution path). Do not treat as active dependencies.
+
+
+  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Canonical_Terms.md
+
+  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Security_Protocols.md
