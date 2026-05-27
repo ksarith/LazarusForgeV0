@@ -551,3 +551,6 @@ error. Divergence between them is logged, not ignored.
 
 
 https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Plastics.md
+Plastics.md
+Salvaged polymer processing and pyrolytic fuel recovery. Defines the triage hierarchy for plastics: direct reuse → mechanical repurposing (filament/RepRap stock) → thermal depolymerization for mixed or degraded bulk. Pyrolysis framework covers three stages: oxygen-excluded batch reactor (350°C–450°C), multi-stage condensation array producing synthetic crude oil, and non-condensable syngas routing. PL-001 (halogenated polymer contamination — HCl/dioxin release from PVC) is Critical and Blocking before any hot operational run. PL-002 (reactor over-pressurization) is Major and Blocking. Air Scrubber operation is a non-negotiable prerequisite. Exploration/Volatile — integration hooks, Assumptions table format, and Lessons Learned format require retrofit to File_Template.md standard before next audit cycle.
+New file — 2026-05-26
