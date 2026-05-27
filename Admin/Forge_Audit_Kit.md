@@ -736,3 +736,203 @@ Version 0.8 — adds Audit Opening Checklist and Repository_Integrity_Protocol.m
 **Confidence never outruns verification.**
 
 **Verification seeks sufficient falsifiability, not exhaustive certainty.**
+
+
+# Forge_Audit_Kit.md — Semantic Stability Additions
+# Version 0.9 insertable blocks
+# Two discrete additions: (1) Audit Opening Checklist step 3, (2) Fallacy 4 expansion
+# Apply these to the existing Forge_Audit_Kit.md v0.8 body
+
+---
+
+## ADDITION 1 — Audit Opening Checklist: Step 3 (Semantic Stability Check)
+
+Insert after the existing Step 2 (Expiry Watch) in the Audit Opening Checklist section.
+
+---
+
+**3. Semantic Stability Check**
+Scan the document under audit for any of the following high-drift-risk terms.
+If found in specification-level content, verify usage matches the canonical
+definition in `Admin/Canonical_Terms.md` before proceeding. Flag violations
+as [FALLACY 4 — Semantic Drift] findings.
+
+| Term                                  | Drift Risk                                         | Canonical Resolution                                  |
+|---------------------------------------|----------------------------------------------------|-------------------------------------------------------|
+| Recycling                             | Used where Value Preservation or Material Recovery is correct | `Admin/Canonical_Terms.md` §Anti-Drift Guardrails |
+| Autonomous Decision-Making (unbound)  | Obscures human override visibility; Axiom P-4 exposure | `Admin/Canonical_Terms.md` §Anti-Drift Guardrails |
+| High-RPM (applied to Gate_04)         | Terminology bleed from Gate_05 Spin Chamber        | `Admin/Canonical_Terms.md` §Operational Flow         |
+| Canonical (unqualified)               | Five distinct usages; ambiguity creates cross-ref failures | `Admin/Canonical_Terms.md` §Disambiguation        |
+| Safe / Contained / Stable / Sufficient / Hold / Clear | Context-dependent; two operators may interpret differently | Tighten definition or log as unknown per Challenge Class 4 |
+| Scrap                                 | Imprecise; conflates material states               | `Admin/Canonical_Terms.md` §Anti-Drift Guardrails    |
+| Specification (applied to Exploration content) | Implicit promotion without gate passage   | `Admin/Auditor_Protocols.md` §Exploration vs. Specification |
+
+**Resolution routing:**
+- Term found in Exploration content: note but do not block.
+- Term found in Draft or Specification content: flag as [FALLACY 4], require
+  correction or explicit justification before gate passage.
+- Term conflict between two files: route to `Admin/Canonical_Terms.md` as
+  resolution authority unless the conflict involves operational routing
+  semantics (route to `Architecture/Forge_flow.md`) or tier definitions
+  (route to `Admin/Governance_Charter.md`).
+
+*Owner: Skeptic/Auditor role. Full reference: `Admin/Canonical_Terms.md`*
+
+---
+
+## ADDITION 2 — Fallacy Checklist: Fallacy 4 Expansion
+
+Replace the existing Fallacy 4 entry in the Fallacy Checklist section with
+the following expanded version.
+
+**Current text (v0.8):**
+> **4. Semantic Drift** — Terms must mean the same thing everywhere.
+> Cross-check against `Architecture/Forge_flow.md`.
+
+**Replace with:**
+
+**4. Semantic Drift**
+Terms must mean the same thing across all files and all agent contributions.
+Drift occurs when a term changes meaning between documents, between audit
+cycles, or between agent sessions without a documented revision.
+
+*Primary detection:* Run the Semantic Stability Check (Audit Opening
+Checklist Step 3) before beginning document review. Terms flagged there
+carry forward as active drift candidates for this check.
+
+*Cross-check routing:*
+- Operational routing vocabulary → `Architecture/Forge_flow.md`
+- Cross-file consistency and anti-drift enforcement → `Admin/Canonical_Terms.md`
+- Governance tier vocabulary → `Admin/Governance_Charter.md`
+
+*Conflict resolution:* If two files use the same term differently, the
+resolution authority is determined by domain. Conflicts must be logged as
+Active Disputes in `Admin/Canonical_Terms.md` — never silently resolved
+by choosing one file over the other without documentation.
+
+*High-risk drift patterns observed in this repository:*
+- Gate_04 / Gate_05 separation vocabulary (centrifugal vs. thermal; RPM scope)
+- "Canonical" used without qualification
+- "Autonomous" used without bounding clauses
+- Status labels (Exploration / Draft / Specification) applied inconsistently
+- "Recycling" used where material state distinctions are required
+
+*Full reference: `Admin/Canonical_Terms.md` | `Architecture/Forge_flow.md`*
+
+---
+
+## ADDITION 3 — Sidecar ID Reference: New Prefixes
+
+Insert the following two rows into the Sidecar ID Reference table.
+Add after the RIP- row.
+
+| Prefix | Owning File                          |
+|--------|--------------------------------------|
+| SEC-   | `Admin/Security_Protocols.md`        |
+| CT-    | `Admin/Canonical_Terms.md`           |
+
+---
+
+## ADDITION 4 — Active Unknowns Index: New Entries
+
+Insert the following under the Governance & Verification section of the
+Active Unknowns Index. Add after the RIP-005 row.
+
+| ID     | Title                                        | Owning File                       | Status | Priority |
+|--------|----------------------------------------------|-----------------------------------|--------|----------|
+| SEC-001 | Quorum recovery under terminal network division | `Admin/Security_Protocols.md`  | Open   | Major    |
+| SEC-002 | Key revocation and compromise response doctrine undefined | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-003 | Key rotation period undefined                | `Admin/Security_Protocols.md`     | Open   | Major    |
+| CT-001  | Legacy script integration name mapping       | `Admin/Canonical_Terms.md`        | Open   | Minor    |
+| CT-002  | Component Library schema standard undefined  | `Admin/Canonical_Terms.md`        | Open   | Major    |
+| CT-003  | Dependency_Priority_Map.md needed before v1  | `Admin/Canonical_Terms.md`        | Open   | Minor    |
+
+---
+
+## ADDITION 5 — Lessons Learned: New Entry
+
+Insert the following row into the Lessons Learned table.
+
+| Date       | Evidence Type | What Was Tried                                              | What Failed                                                                 | What Was Learned                                                                                                          | Confidence | Revalidation Needed |
+|------------|---------------|-------------------------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|------------|---------------------|
+| 2026-05-27 | Audit Review  | Fallacy 4 (Semantic Drift) without a named term watchlist   | High-drift-risk terms not systematically checked; drift caught reactively   | Semantic Stability Check at audit opening with named term list converts reactive detection to proactive prevention         | Analogous  | Yes                 |
+
+---
+
+## ADDITION 6 — Scope Boundary: Update DOES define list
+
+Add the following entry to the "This file DOES define" list in the
+Scope Boundary section:
+
+- Semantic Stability Check — audit opening vocabulary verification step
+  cross-referencing `Admin/Canonical_Terms.md` as resolution authority
+
+---
+
+## ADDITION 7 — Dependency Map: New entries
+
+Add the following lines to the Dependency Map (Condensed) section:
+
+```
+SEC-001 (quorum recovery) -> GOV-008 (minimum quorum definition) — blocking dependency
+SEC-002 (key revocation) -> SEC-001 (partition affects propagation)
+SEC-002 -> GOV-006 (override node revocation requires additional safeguards)
+SEC-003 (key rotation) -> SEC-002 (rotation and revocation must be consistent)
+CT-002 (component library schema) -> Operations/Gate_02_Triage.md (blocks Spec promotion)
+CT-002 -> Architecture/Components.md (cross-validation required)
+CT-003 (dependency priority map) -> discharge via Admin/Trajectories.md v0->v1 transition
+```
+
+---
+
+## VERSION HEADER UPDATE
+
+Update the File State table:
+- Open Unknowns: 14 (adds 6 new entries: SEC-001 through SEC-003, CT-001 through CT-003)
+- Last Audit: 2026-05-27
+- Auditor: Claude — Skeptic/Auditor
+
+Update the Status section version to v0.9 and add to Changes list:
+
+**Changes from v0.8:**
+- Semantic Stability Check added to Audit Opening Checklist as mandatory
+  Step 3 — named drift-risk term watchlist with canonical resolution routing
+- Fallacy 4 (Semantic Drift) expanded — detection routing, conflict resolution
+  doctrine, and high-risk drift patterns specific to this repository added
+- SEC- and CT- prefixes added to Sidecar ID Reference table
+- SEC-001 through SEC-003 and CT-001 through CT-003 added to Active Unknowns Index
+- Dependency map updated with SEC and CT cluster entries
+- Lessons Learned entry added for semantic stability check addition
+- Scope Boundary updated to include Semantic Stability Check
+- Derived from statement updated to include Security_Protocols.md v0.2
+  and Canonical_Terms.md v0.2
+
+---
+
+## PLACEMENT NOTES FOR HUMAN OPERATOR
+
+Audit Opening Checklist currently has:
+  1. Tier 1 Axiom Verification
+  2. Expiry Watch
+  → Insert Step 3 (Semantic Stability Check) here
+
+Fallacy Checklist Fallacy 4:
+  → Replace existing one-liner with expanded version above
+
+Sidecar ID Reference table:
+  → Add SEC- and CT- rows after RIP- row
+
+Active Unknowns Index — Governance & Verification section:
+  → Add six new rows after RIP-005
+
+Lessons Learned table:
+  → Add one new row
+
+Scope Boundary — DOES define:
+  → Add one bullet
+
+Dependency Map:
+  → Add seven new lines
+
+File State and Status section:
+  → Update version, unknowns count, audit date, auditor, changes list
