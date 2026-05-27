@@ -1,6 +1,6 @@
 # Discovery.md — LazarusForgeV0
 **Navigation layer for the active working repository.**
-**Last updated: 2026-05-23**
+**Last updated: 2026-05-27**
 
 ---
 
@@ -70,6 +70,7 @@ using this table.
 | leviathan_testing.md | Leviathan_testing.md | Tests/ | 2026-05-15 |
 | Ship_of_Theseus_Right_to_Repair.md | Ship_of_Theseus.md | Admin/ | 2026-05-15 |
 | Electronics.md (root) | Electronics.md | Operations/ | 2026-05-20 |
+| Canonical_Terms_LF.md | Canonical_Terms.md | Admin/ | 2026-05-26 |
 
 ---
 
@@ -85,28 +86,30 @@ For a new reader or returning AI, read in this sequence:
 6. `Admin/Auditor_Protocols.md` — Verification doctrine and hallucination filter
 7. `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine cycles
 8. `Admin/Repository_Integrity_Protocol.md` — Integrity baselines and violation response
-9. `Unknowns.md` — Cross-module unknowns global index
-10. `Architecture/Cognitive_Frameworks.md` — Distributed cognition and trust
-11. `Architecture/Forge_Net.md` — Decentralized network and logistics prerequisite
-12. `Operations/Gate_01_Intake.md` — System entry point, safety screening, identification
-13. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
-14. `Operations/Gate_03_Reduction.md` — Only fully irreversible step; doctrine before specification
-15. `Architecture/Components.md` — Critical vs useful component taxonomy
-16. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
-17. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
-18. `Operations/Energy.md` — Energy strategy and accounting
-19. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
-20. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
-21. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
-22. `Operations/Air_Scrubber.md` — Safety and containment subsystem
-23. `Operations/Gate_07_Utilization.md` — After action review; performance logging; fabrication feedback loop
-24. `Tests/Support_Raft.md` — Operational anchor for marine deployments
-25. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
-26. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
+9. `Admin/Security_Protocols.md` — Cryptographic trust and multi-agent node security
+10. `Unknowns.md` — Cross-module unknowns global index
+11. `Architecture/Cognitive_Frameworks.md` — Distributed cognition and trust
+12. `Architecture/Forge_Net.md` — Decentralized network and logistics prerequisite
+13. `Operations/Gate_01_Intake.md` — System entry point, safety screening, identification
+14. `Operations/Gate_02_Triage.md` — Decision gateway between reuse and destruction
+15. `Operations/Gate_03_Reduction.md` — Only fully irreversible step; doctrine before specification
+16. `Operations/Plastics.md` — Salvaged polymer processing and pyrolytic fuel recovery
+17. `Architecture/Components.md` — Critical vs useful component taxonomy
+18. `Operations/Electronics.md` — Salvaged electronics and PCB fabrication
+19. `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment
+20. `Operations/Energy.md` — Energy strategy and accounting
+21. `Operations/Gate_04_Separation_Mechanical.md` — Pre-thermal mechanical diversion
+22. `Operations/Gate_05_Separation_Thermal.md` — Core melting and gradient formation
+23. `Operations/Gate_06_Fabrication.md` — Constructive stage; arc welding gatekeeper; precision ceiling
+24. `Operations/Air_Scrubber.md` — Safety and containment subsystem
+25. `Operations/Gate_07_Utilization.md` — After action review; performance logging; fabrication feedback loop
+26. `Tests/Support_Raft.md` — Operational anchor for marine deployments
+27. `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding
+28. `Admin/Canonical_Terms.md` — Standard repository nomenclature and anti-drift vocabulary guardrails
+29. `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework
 
 **Pending files (not yet created):**
 - `Admin/Governance_Migration_Protocol.md` — Tier 1 Axiom amendment procedures (GOV-001 resolution path)
-- `Admin/Security_Protocols.md` — Authority authentication and Phase 3 integrity enforcement (GOV-006, RIP-005 resolution path)
 
 ---
 
@@ -200,6 +203,24 @@ RIP-001 through RIP-005 in sidecar. Created 2026-05-23.
 
 ---
 
+**Security_Protocols.md** — v0.1 Draft
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Security_Protocols.md`
+Cryptographic trust and multi-agent node security. Defines multi-signature
+human override verification requirements (GOV-006 resolution path), Phase 3
+automated commit signing and frozen-section hash verification (RIP-005
+resolution path), and zero-trust firmware baseline for salvaged logic units
+(EL-006 cross-reference). Requires dual-token or multi-party hardware
+confirmation for any Tier 1 Constitutional Axiom override — no single-operator
+bypass permitted. Override assertions are transactional and ephemeral; they do
+not persist across agent sessions. SEC-001 (quorum recovery under terminal
+network partition) is Blocking. Body Stability Volatile — key revocation
+doctrine, Relationship section, and standard Drift Indicators require addition
+before next audit cycle.
+*Resolves [PLANNED] designation from Governance_Charter.md and
+Repository_Integrity_Protocol.md.*
+
+---
+
 **Forge_Audit_Kit.md** — v0.8
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Forge_Audit_Kit.md`
 Condensed audit reference for routine multi-agent cycles. Tier 3 governance
@@ -226,6 +247,25 @@ Drift Indicators. Apply to all new files and retrofit existing files during
 audit cycles. Includes the Ethical Anchor field — a load-bearing principle
 that survives even if Ethical_Constraints.md is missing, corrupted, or
 deliberately omitted.
+
+---
+
+**Canonical_Terms.md** — v0.1 Draft
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Canonical_Terms.md`
+Standard repository nomenclature and anti-drift vocabulary guardrails.
+Defines authoritative mappings for architectural terms, operational gate
+names, marine subsystem terminology, and governance tier labels. Includes
+explicit term exclusions to prevent semantic creep across multi-agent cycles
+— "Recycling" is banned in favor of "Value Preservation" or "Material
+Recovery" depending on context; "Autonomous Decision-Making" requires bounding
+clauses. CT-001 (legacy script name mapping against AUDIT_HARNESS.py) and
+CT-002 (Component Library schema standard, Blocking at Gate 2 promotion) in
+sidecar. Body Stability Volatile — Gate_04/Gate_05 terminology requires
+correction, Tier 4 definition requires alignment with Governance_Charter.md,
+Lessons Learned table format and standard Drift Indicators require retrofit
+before next audit cycle.
+*Resolves [PLANNED] designation as Canonical_Terms_LF.md in
+Governance_Charter.md, Forge_Audit_Kit.md, and Auditor_Protocols.md.*
 
 ---
 
@@ -359,6 +399,23 @@ materials remaining. GR-002 (method selection) is the keystone
 that unblocks GR-001, GR-004, and indirectly GR-005. Highest
 Risk in the repository — irreversibility is the defining
 characteristic.
+
+---
+
+**Plastics.md**
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Plastics.md`
+Salvaged polymer processing and pyrolytic fuel recovery. Defines the triage
+hierarchy for plastics: direct reuse → mechanical repurposing (filament/RepRap
+stock) → thermal depolymerization for mixed or degraded bulk. Pyrolysis
+framework covers three stages: oxygen-excluded batch reactor (350°C–450°C),
+multi-stage condensation array producing synthetic crude oil, and non-condensable
+syngas routing. PL-001 (halogenated polymer contamination — HCl/dioxin release
+from PVC) is Critical and Blocking before any hot operational run. PL-002
+(reactor over-pressurization) is Major and Blocking. Air Scrubber operation
+is a non-negotiable prerequisite. Exploration/Volatile — integration hooks,
+Assumptions table format, and Lessons Learned format require retrofit to
+File_Template.md standard before next audit cycle.
+*New file — 2026-05-26*
 
 ---
 
@@ -527,6 +584,8 @@ error. Divergence between them is logged, not ignored.
 - The Rename Registry above is the canonical source for old-to-new filename
   mappings. If a reference in any file points to an old name, resolve it
   using the Rename Registry before flagging as a cross-reference failure.
+  All prior references to `Canonical_Terms_LF.md` are resolved via the
+  Rename Registry entry added 2026-05-26.
 - Unknown ID naming convention: local sidecar IDs (FL-001, SC-002, MG-004)
   are primary. UNK-* identifiers are cross-module navigation aliases indexed
   in Unknowns.md only. Use local IDs as primary references.
@@ -540,17 +599,7 @@ error. Divergence between them is logged, not ignored.
   dependencies.
 - All gate files now exist (Gate_01 through Gate_07). No pending gate files
   remain.
-- Two planned Admin files not yet created: `Admin/Governance_Migration_Protocol.md`
-  (GOV-001 resolution path) and `Admin/Security_Protocols.md` (GOV-006,
-  RIP-005 resolution path). Do not treat as active dependencies.
-
-
-  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Canonical_Terms.md
-
-  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Security_Protocols.md
-
-
-https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Plastics.md
-Plastics.md
-Salvaged polymer processing and pyrolytic fuel recovery. Defines the triage hierarchy for plastics: direct reuse → mechanical repurposing (filament/RepRap stock) → thermal depolymerization for mixed or degraded bulk. Pyrolysis framework covers three stages: oxygen-excluded batch reactor (350°C–450°C), multi-stage condensation array producing synthetic crude oil, and non-condensable syngas routing. PL-001 (halogenated polymer contamination — HCl/dioxin release from PVC) is Critical and Blocking before any hot operational run. PL-002 (reactor over-pressurization) is Major and Blocking. Air Scrubber operation is a non-negotiable prerequisite. Exploration/Volatile — integration hooks, Assumptions table format, and Lessons Learned format require retrofit to File_Template.md standard before next audit cycle.
-New file — 2026-05-26
+- `Admin/Security_Protocols.md` and `Admin/Canonical_Terms.md` now exist —
+  see Admin/ summaries above. One planned Admin file not yet created:
+  `Admin/Governance_Migration_Protocol.md` (GOV-001 resolution path).
+  Do not treat as an active dependency.
