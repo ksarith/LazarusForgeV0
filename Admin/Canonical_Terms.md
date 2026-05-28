@@ -571,3 +571,73 @@ Version 0.2 — structural revision pass (2026-05-27).
 **Governance_Charter.md governs tier authority.**
 **This file governs cross-file vocabulary consistency.**
 **Conflicts between them are logged here — never silently resolved.**
+
+
+
+
+
+
+ADDENDUM FOR: Canonical_Terms.md
+TARGET SECTION: Auditor Notes & Unknowns sidecar + Resolution Log
+INTEGRATION PRIORITY: Medium — CT-004 is a gate blocker for
+                      Security_Protocols.md Section III promotion
+===============================================================
+
+## ADDENDUM — Canonical_Terms.md — 2026-05-28
+
+### New sidecar unknown
+
+Add after CT-003 in the Auditor Notes & Unknowns section:
+
+---
+
+### CT-004 — Trusted Initialization Environment Definition Required
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | High                     |
+| Priority      | Major                    |
+| Type          | Security / Technical     |
+| Blocking      | Yes (Security_Protocols.md Section III.2 promotion) |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-05-28               |
+| Last Reviewed | 2026-05-28               |
+
+**Description:** `Admin/Security_Protocols.md` Section III requires key-pair
+generation within a "trusted initialization environment" but the term is
+undefined. Ambiguity exists across four dimensions: physical custody
+requirements, software verification requirements, network isolation
+requirements, and attestation method.
+
+**Why It Matters:** Ambiguous trust boundaries in key generation are a
+primary attack surface. The term must have a canonical definition before
+Security_Protocols.md Section III can be promoted. Until resolved, the
+most restrictive interpretation applies — see SEC-005 in
+`Admin/Security_Protocols.md` for the interim restriction.
+
+**Resolution Path:** Payment via Specification — define trusted
+initialization environment in the Body of this file under a new
+subsection in Section 4 (Governance and Audit Terms) or Section 5
+(Anti-Drift Guardrails). Minimum required elements: (1) physical custody
+requirements; (2) software verification requirements; (3) network isolation
+requirements; (4) attestation method or witnessing requirement.
+Cross-reference SEC-005 in `Admin/Security_Protocols.md` — that entry
+is the consuming unknown; closing CT-004 here closes SEC-005 there.
+
+---
+
+### Resolution Log entry
+
+Add to Resolution Log:
+
+- 2026-05-28: CT-004 logged — trusted initialization environment definition
+  required by `Admin/Security_Protocols.md` Section III.2; Blocking for
+  that section's promotion. Originated from ChatGPT Skeptic/Auditor audit
+  of Security_Protocols.md v0.2.
+
+### File State update
+
+Update Open Unknowns count: 3 → 4.
+
+
