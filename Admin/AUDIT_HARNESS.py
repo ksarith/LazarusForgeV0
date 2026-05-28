@@ -1,14 +1,13 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v3
-Google Colab notebook cells — paste each block into a separate cell.
-
-CHANGES FROM v2:
-  - File registry added — maps short filenames to full repo paths.
-    The repository moved from flat to folder-based structure.
-    All paths now resolve correctly regardless of folder location.
-  - Forge_Audit_Kit.md now correctly fetched from Admin/ folder.
-  - Protocol version updated to v0.5.
-  - Discovery.md fetch added to EXTRA_FILES options for orientation audits.
+LAZARUS FORGE — AUDIT HARNESS v4
+...
+CHANGES FROM v3:
+  - Security_Protocols.md added to registry (Admin/)
+  - Canonical_Terms.md added to registry (Admin/)
+  - Canonical_Terms_LF.md alias added for legacy reference resolution
+  - Plastics.md added to registry (Operations/)
+  - Protocol version remains v0.5 pending Auditor_Protocols.md update
+"""
 
 USAGE:
   1. Cell 1 — run once per session (fetch helper + registry)
@@ -48,7 +47,10 @@ FILE_REGISTRY = {
     "Trajectories.md":                  "Admin/Trajectories.md",
     "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
     "Governance_Charter.md":            "Admin/Governance_Charter.md",
-
+    "Canonical_Terms_LF.md":            "Admin/Canonical_Terms.md",
+    "Security_Protocols.md":            "Admin/Security_Protocols.md",
+    "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
+    
     # Architecture
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
     "Components.md":                    "Architecture/Components.md",
@@ -67,6 +69,7 @@ FILE_REGISTRY = {
     "Gate_05_Separation_Thermal.md":    "Operations/Gate_05_Separation_Thermal.md",
     "Gate_06_Fabrication.md":           "Operations/Gate_06_Fabrication.md",
     "Gate_07_Utilization.md":           "Operations/Gate_07_Utilization.md",
+    "Plastics.md":                      "Operations/Plastics.md",
 
     # Tests
     "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
