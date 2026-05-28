@@ -563,3 +563,99 @@ Repository_Integrity_Protocol.md v0.1 created — GOV-003 resolution path execut
 
 **v1.9 — 2026-05-25:**
 Governance_Charter.md v0.5 produced — Gemini Skeptic/Auditor findings actioned. GOV-007 moved to In Progress — Genesis Phase Protocol is the executing resolution path. GOV-008 added (minimum hardware/agent quorum for bootstrap compliance — Genesis Phase exit condition). GOV-009 added (bounded framework for external resource consumption and environmental interaction). GOV-006 resolution path tightened — interim authentication requirement codified in Human Override Doctrine. Trajectories.md retrofitted to File_Template.md structure — TR-002 added (FRT floor value not yet calibrated). Gate_07_Utilization.md updated with FRT per-cycle logging section — GU-005 added (FRT cycle definition and floor not yet declared). Air_Scrubber.md retrofitted — AS-004 added (noise exposure limits and hearing conservation program undefined). Gate_02_Triage.md retrofitted — no new unknowns, stale cross-reference corrected. File_Template.md updated — Section 0 (Operational Safety Advisory) added. Dependency map updated with new entries and GOV cluster cleanup.
+
+
+ADDENDUM FOR: Unknowns.md
+TARGET SECTION: Ethics & Governance table + Cross-Module table +
+                Dependency Map + Audit Trail + What vX.X Means
+INTEGRATION PRIORITY: High — SEC-007 is Critical
+===============================================================
+
+## ADDENDUM — Unknowns.md — 2026-05-28
+
+### Status Updates (apply to existing rows)
+
+In the Ethics & Governance table, update the following rows:
+
+| ID | Change |
+|----|--------|
+| GOV-006 | Status: Open → In Progress (Security_Protocols.md v0.2 is executing resolution path) |
+| RIP-005 | Status: Open → In Progress (Security_Protocols.md v0.2 is executing resolution path) |
+
+### New Rows — Ethics & Governance table
+
+Add after the GOV-009 row:
+
+| ID      | Title                                          | Owning File                      | Status | Priority |
+|---------|------------------------------------------------|----------------------------------|--------|----------|
+| SEC-001 | Quorum recovery under terminal partition       | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-002 | Key revocation doctrine undefined              | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-003 | Key rotation period undefined                  | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-004 | Key lifecycle doctrine incomplete              | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-005 | Trusted initialization environment undefined   | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-006 | Timestamp trust under degraded clock           | `Admin/Security_Protocols.md`   | Open   | Major    |
+| SEC-007 | External root-of-trust architecture undefined  | `Admin/Security_Protocols.md`   | Open   | Critical |
+
+### New Rows — Governance & Verification table
+
+Add after CT-003 row:
+
+| ID      | Title                                          | Owning File                  | Status | Priority |
+|---------|------------------------------------------------|------------------------------|--------|----------|
+| CT-004  | Trusted initialization environment definition  | `Admin/Canonical_Terms.md`   | Open   | Major    |
+
+### New Cross-Module Entry
+
+Add to Cross-Module table:
+
+| ID      | Title                                                              | Owning Files                                                        | Status | Priority |
+|---------|--------------------------------------------------------------------|---------------------------------------------------------------------|--------|----------|
+| UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
+
+### Dependency Map additions
+
+Add the following lines to the Dependency Map section:
+
+```
+SEC-001 (quorum recovery) -> GOV-008 (minimum quorum definition) — blocking dependency
+SEC-002 (key revocation) -> SEC-001 (partition affects propagation)
+SEC-002 -> GOV-006 (override node revocation requires additional safeguards)
+SEC-003 (key rotation) -> SEC-002 (rotation and revocation must be consistent)
+SEC-004 (key lifecycle) -> SEC-002 / SEC-003 (all three form coherent lifecycle)
+SEC-005 (trusted init environment) -> CT-004 (canonical definition required)
+SEC-006 (timestamp trust) -> SEC-001 (partition is primary degraded-clock context)
+SEC-007 (external root-of-trust) -> GOV-003 / GOV-005 / RIP-001 (cross-module Critical)
+UNK-009 -> SEC-007 / GOV-003 / GOV-005 / RIP-001 (cross-module spanning)
+CT-002 (component library schema) -> Operations/Gate_02_Triage.md
+CT-003 (dependency priority map) -> discharge via Admin/Trajectories.md v0->v1
+CT-004 (trusted init environment) -> SEC-005 (resolution dependency)
+PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run
+PL-002 (reactor over-pressurization) -> blocks first hot pyrolysis run
+```
+
+### Expiry Watch update
+
+Add to Expiry Watch section:
+
+SEC-007 flagged Critical from first logging — monitor. UNK-009 (external
+root-of-trust cross-module) flagged Critical — no fast resolution path;
+requires architectural decision above repository level.
+
+### Audit Trail entry
+
+Add to Audit Trail section:
+
+**v1.9 — 2026-05-28:**
+Security_Protocols.md v0.3 audit actioned. GOV-006 and RIP-005 moved to
+In Progress — Security_Protocols.md is executing resolution path for both.
+SEC-001 through SEC-007 added to Ethics & Governance section. CT-004
+(trusted initialization environment) added to Governance & Verification
+section. UNK-009 (external root-of-trust cross-module) added to Cross-Module
+table as Critical. Dependency map updated with SEC, CT-004, PL, and UNK-009
+entries. PL-001 and PL-002 (Plastics.md) added to Reduction/Intake/Fabrication
+section. Expiry Watch updated.
+
+### Version header update
+
+Update version reference to v1.9.
+
