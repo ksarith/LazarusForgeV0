@@ -48,7 +48,9 @@ FILE_REGISTRY = {
     "Trajectories.md":                  "Admin/Trajectories.md",
     "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
     "Governance_Charter.md":            "Admin/Governance_Charter.md",
-
+    "Security_Protocols.md":            "Admin/Security_Protocols.md",
+    "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
+  
     # Architecture
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
     "Components.md":                    "Architecture/Components.md",
@@ -67,7 +69,8 @@ FILE_REGISTRY = {
     "Gate_05_Separation_Thermal.md":    "Operations/Gate_05_Separation_Thermal.md",
     "Gate_06_Fabrication.md":           "Operations/Gate_06_Fabrication.md",
     "Gate_07_Utilization.md":           "Operations/Gate_07_Utilization.md",
-
+    "Plastics.md":                      "Operations/Plastics.md",
+  
     # Tests
     "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
     "Support_Raft.md":                  "Tests/Support_Raft.md",
