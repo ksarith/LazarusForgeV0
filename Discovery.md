@@ -603,3 +603,7 @@ error. Divergence between them is logged, not ignored.
   see Admin/ summaries above. One planned Admin file not yet created:
   `Admin/Governance_Migration_Protocol.md` (GOV-001 resolution path).
   Do not treat as an active dependency.
+
+
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Verification_Gates_LF.md
+
