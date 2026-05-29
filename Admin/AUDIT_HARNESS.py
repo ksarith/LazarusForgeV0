@@ -50,6 +50,7 @@ FILE_REGISTRY = {
     "Governance_Charter.md":            "Admin/Governance_Charter.md",
     "Security_Protocols.md":            "Admin/Security_Protocols.md",
     "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
+    "Verification_Gates_LF.md":         "Admin/Verification_Gates_LF.md",
   
     # Architecture
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
