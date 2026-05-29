@@ -390,3 +390,59 @@ stage. G3 through G6 require formal audit pass.
 
 **These gates exist to prevent premature promotion, not to obstruct
 legitimate progress.**
+
+Battery depth scales with operational consequence. Governance-only documents
+may defer physical hazard classes where no operational claims are present.
+Thermal, mechanical, and autonomy-bearing documents require full Battery
+regardless of document status.
+Override records must persist in a reviewable audit trail location defined
+by repository integrity doctrine. Deferred to `Admin/Repository_Integrity_Protocol.md`
+and `Admin/Security_Protocols.md` for implementation specifics.
+**Repeated Override Pressure**
+Repeated unresolved gate overrides on the same document trigger mandatory
+re-audit. Two-cycle unresolved gate disputes escalate to Full Stop Review
+consideration. This is not a duplication of the Expiry Watch system in
+`Admin/Forge_Audit_Kit.md` — it is a local gate-aging awareness requirement
+so that gate enforcement doctrine remains coherent if this file is loaded
+independently of the kit.
+| ASM-004 | "Canonical" in this file refers to repository governance intent, not cryptographically enforced implementation | Honest v0 acknowledgment — Analogous External | High | Phase 3 cryptographic enforcement implemented per `Admin/Security_Protocols.md` |
+### VG-001 — Gate Definition Synchronization Authority Chain Undefined
+
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | High                            |
+| Priority      | Major                           |
+| Type          | Governance                      |
+| Blocking      | No (Exploration); Yes (Specification promotion) |
+| Owner         | Admin/Verification_Gates_LF.md  |
+| First Logged  | 2026-05-29                      |
+| Last Reviewed | 2026-05-29                      |
+
+**Description:** The three-layer gate definition chain (Auditor_Protocols.md
+→ Verification_Gates_LF.md → Forge_Audit_Kit.md) has no explicit
+synchronization authority sequence, no drift reconciliation owner, no
+conflict escalation path, and no promotion freeze condition for gate
+divergence.
+
+**Why It Matters:** Derived governance compression layers accumulate drift
+pressure at the derivation boundaries. Without a governed synchronization
+mechanism, gate definitions in the three files can silently diverge — each
+appearing internally coherent while disagreeing on what a gate actually
+requires.
+
+**Resolution Path:** Payment via Specification — define: (1) update
+trigger when Auditor_Protocols.md gate definitions change; (2) reconciliation
+owner (Skeptic/Auditor role); (3) conflict escalation path if derived files
+diverge; (4) promotion freeze condition if divergence is detected. Cross-
+reference AP-007 (repository integrity doctrine), GOV-003 (integrity
+enforcement architecture), RIP-001 (prior-state archival).
+- 2026-05-29: ChatGPT Skeptic/Auditor findings actioned. Gate 3 hazard-class
+  proportionality clarification added. Override retention requirement added
+  to Gate Enforcement Rules. Repeated override escalation doctrine added.
+  ASM-004 (canonical status clarification) added to Assumptions. VG-001
+  logged — gate synchronization authority chain undefined. Open Unknowns
+  updated to 1.
+Open Unknowns: 0 → 1
+Last Audit: 2026-05-29
+Auditor: ChatGPT — Skeptic/Auditor (findings actioned by Claude)
