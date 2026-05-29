@@ -620,3 +620,19 @@ Review triggers, and gate enforcement rules. No sidecar unknowns at v0.1.
 Spec Gates 2/6 — G3 through G6 require formal audit pass against
 Auditor_Protocols.md before claiming.
 *New file — 2026-05-28*
+
+
+
+
+---
+
+**Engineering.md** — Draft  
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Engineering.md`  
+Foundational principles document for the entire Forge. Condenses core engineering knowledge from first principles through high-performance methods, with emphasis on safety margins, materials behavior, structural basics, systems thinking, and Forge-specific parameters (Arkansas climate derating, salvaged material considerations, common safety factors). Serves as the intellectual backbone referenced by all fabrication and structural modules. High risk due to foundational role. Status: **Draft**, Body Stability: **Volatile**. Multiple open unknowns (EN-001 through EN-005) focused on salvaged materials, local environmental data, and validation protocols. Created 2026-05-29.
+
+---
+
+**Woodworking.md** — Draft  
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Woodworking.md`  
+End-to-end reference for wood processing from tree harvesting through green wood drying, milling (hand/power/CNC), heat treatment, joinery, finishing, and waste valorization (including basic paper making). Strong emphasis on salvaged urban timber, species selection for southern US/Arkansas, dust toxicity, and integration with CNC fabrication and Air_Scrubber systems. Balances low-tech hand skills with modern router/CNC workflows. Status: **Draft**, Body Stability: **Volatile**. Open unknowns (WW-001 through WW-004) center on local drying schedules, salvaged timber performance, and dust hazards. Created 2026-05-29.
+
