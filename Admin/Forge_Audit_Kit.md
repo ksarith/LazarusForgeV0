@@ -761,3 +761,5 @@ Update Open Unknowns: 6 → 6 (no new FAK unknowns; index additions only).
 Update Last Audit: 2026-05-28.
 Update Unknowns.md reference in Status section: v1.8 → v1.9.
 
+VG-001 -> AP-007 / GOV-003 / RIP-001 (synchronization governance)
+| VG-001 | Gate synchronization authority chain undefined | `Admin/Verification_Gates_LF.md` | Open | Major |
