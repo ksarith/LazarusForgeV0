@@ -238,6 +238,9 @@ FAK-001 through FAK-003 and RIP-001 through RIP-005 in unknowns index.
 
 ---
 
+
+---
+
 **File_Template.md**
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/File_Template.md`
 Standard file structure for all LazarusForgeV0 documents. Defines ten
@@ -606,4 +609,14 @@ error. Divergence between them is logged, not ignored.
 
 
 https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Verification_Gates_LF.md
-
+**Verification_Gates_LF.md** — v0.1 Draft
+`https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Verification_Gates_LF.md`
+Canonical source for the six verification gates required for document
+promotion. Every file's Verification Ref field resolves here. Gates match
+`Admin/Auditor_Protocols.md` §Verification Gate Enforcement exactly —
+Auditor_Protocols.md remains the source of truth; this file is the stable
+extracted reference. Defines pass criteria, failure routing, Full Stop
+Review triggers, and gate enforcement rules. No sidecar unknowns at v0.1.
+Spec Gates 2/6 — G3 through G6 require formal audit pass against
+Auditor_Protocols.md before claiming.
+*New file — 2026-05-28*
