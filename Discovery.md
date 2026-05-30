@@ -40,10 +40,40 @@ Root
 ├── Unknowns.md         — Cross-module unknowns global index
 
 Admin/                  — Governance, protocols, and doctrine
+    ├── Governance_Charter.md
+    ├── Auditor_Protocols.md
+    ├── Ethical_Constraints.md
+    ├── Repository_Integrity_Protocol.md
+    ├── Security_Protocols.md
+    ├── Forge_Audit_Kit.md
+    ├── File_Template.md
+    ├── Canonical_Terms.md
+    ├── Verification_Gates_LF.md
+    ├── Ship_of_Theseus.md
+    ├── Trajectories.md
+    └── AUDIT_HARNESS.py
 Architecture/           — System architecture and foundational logic
     ├── Forge_Net.md    — Decentralized network prerequisite for logistics
+    ├── Forge_flow.md
+    ├── Geck_forge_seed.md
+    ├── Components.md
+    ├── Cognitive_Frameworks.md
+    └── Engineering.md
 Operations/             — Physical modules and operational systems
+    ├── Gate_01_Intake.md
+    ├── Gate_02_Triage.md
+    ├── Gate_03_Reduction.md
+    ├── Gate_04_Separation_Mechanical.md
+    ├── Gate_05_Separation_Thermal.md
+    ├── Gate_06_Fabrication.md
+    ├── Gate_07_Utilization.md
+    ├── Plastics.md
+    ├── Electronics.md
+    ├── Energy.md
+    └── Woodworking.md
 Tests/                  — Test frameworks and deployment platforms
+    ├── Support_Raft.md
+    └── Leviathan_testing.md
 ```
 
 ---
