@@ -51,6 +51,12 @@ Consistent with the *Salvage Before Reduction* principle, timber enters a sourci
  2. **Pallet and packaging wood** — widely available, often kiln-dried, usable for smaller stock. Inspect for heat treatment stamps (HT) vs. methyl bromide treatment (MB — **reject** for indoor use).
  3. **Standing tree harvest** — only when salvage sources are insufficient for the application. Requires felling doctrine.
  4. **Commercial lumber** — purchased per *purchase-what-cannot-be-produced* doctrine when salvage stock cannot meet dimensional or quality requirements.
+
+**Ingrown Foreign Matter (IFM) Screening Protocol**
+​Salvaged urban and storm timber carries a high probability of containing embedded metal or stone (fences, spikes, wire, overgrown signage). Processing unverified salvage stock carries terminal risk to tooling and high kinetic hazard to the operator.
+​Visual Triage: Scan log surfaces for localized swelling, unnatural bark patterns, or metallic staining (iron tannin reactions manifest as deep blue/black streaks in oaks).
+​Electromagnetic Screening: Every piece of salvage timber must pass a dual-axis metal detector scan prior to hitting any powered blade (bandsaw, jointer, planer, or CNC). Flag and isolate any deep-signal zones.
+​The "Bike-in-a-Tree" Rule: If a log segment shows deep, unextractable structural contamination, it is immediately downgraded from fabrication feedstock and routed to high-clearance mechanical splitters for firewood, or bypassed directly to biochar reduction.
 ### Standard Functional Typologies (Biome-Agnostic)
 Rather than limiting documentation to specific regional flora, timber is classified by structural archetype:
  * **High-Density Siliceous/Interlocked Hardwoods:** (e.g., White Oak equivalents, Hickory equivalents). Chosen for extreme shock resistance, tool handles, high-stress structural joints, and rot-resistant outdoor deployments.
@@ -114,6 +120,8 @@ Green wood milled to final dimension will warp, check, and crack as it dries. Th
  * Dehumidifier kiln: Closed insulation loop, requires dedicated power draw.
  * Do not accelerate drying beyond the wood's specific fiber saturation threshold — surface checking and case-hardening (dry shell trapping a wet core) both result from premature ambient relative humidity drops.
 ## 5. Milling — Hand Tools, Power Tools, and CNC
+​⚠️ Pre-Milling Gatekeeper: Hard Inclusions
+Prior to the first face pass on a jointer or resaw on a bandsaw, verify the piece has cleared the IFM Screening Protocol. Hitting embedded steel or stone with high-speed tool steel or carbide cutters induces instantaneous tool fracturing, projectile ejection, and severe machine damage.
 ### Hand Tools
 Hand tools are the baseline capability — they function without power, develop operator material sense, and handle operations that power tools cannot safely perform on irregular stock.
  * *Core kit minimum:* hand saw, jack plane, smoothing plane, chisels (1/4", 1/2", 3/4", 1"), marking gauge, combination square, mallet.
