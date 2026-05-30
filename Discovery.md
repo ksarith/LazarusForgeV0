@@ -377,8 +377,7 @@ vocabulary across the repository.
 Foundational engineering principles document for the entire Forge. Condenses
 core mechanical, structural, materials, and systems engineering knowledge
 with emphasis on safety margins, failure mode discipline, and Forge-specific
-parameters — Arkansas climate derating, salvaged material considerations,
-and common safety factors (2–3× static non-critical through 6×+ for
+parameters — Salvaged material considerations and common safety factors (2–3× static non-critical through 6×+ for
 fatigue/uncertain materials). Covers nine sections from core principles
 through high-performance engineering. Serves as the intellectual backbone
 referenced by all fabrication and structural modules. EN-001 (validated
