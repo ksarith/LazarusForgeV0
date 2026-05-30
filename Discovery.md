@@ -535,9 +535,7 @@ cannot verify safe operation, the Forge does not run.
 End-to-end timber processing from tree harvesting through green wood
 handling, drying, milling, CNC fixturing, heat treatment, joinery,
 finishing, and waste valorization including basic paper making. Strong
-emphasis on salvaged urban and storm timber, Arkansas and humid southern
-US species selection, and climate-appropriate drying doctrine (approximately
-one year per inch under local humidity). Felling safety doctrine included —
+emphasis on salvaged urban and storm timber, southernUS species selection, and climate-appropriate drying doctrine (approximately one year per inch under local humidity). Felling safety doctrine included —
 lethal risk from falling trees and chainsaw kickback; never fell alone.
 Fine wood dust is explosive at concentration and causes permanent
 respiratory damage — source capture dust extraction required at all
