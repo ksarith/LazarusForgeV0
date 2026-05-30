@@ -283,6 +283,20 @@ Fine wood dust suspended in air is explosive. Do not allow dust to accumulate on
 **Description:** Precise exposure limits and synergistic effects when milling mixed local species simultaneously are not characterized. Sensitizer species mixed with inert species may produce combined exposures that exceed single-species thresholds at lower individual concentrations.
 **Why It Matters:** Chronic wood dust exposure causes occupational asthma, nasal cancer, and sensitization reactions that can become debilitating. Mixed exposure profiles are harder to evaluate than single-species profiles.
 **Resolution Path:** Until WW-004 is resolved, treat all mixed-species milling as requiring P100 half-face respirator minimum — do not rely on N95 alone. Cross-reference Operations/Air_Scrubber.md for source capture requirements.
+WW-005 — Non-destructive testing (NDT) standards for IFM detection are unvalidated
+Field Value
+Status Open
+Risk High
+Priority Critical
+Type Technical / Safety
+Blocking Yes (for processing raw urban salvage)
+Owner Operations/Woodworking.md
+First Logged 2026-05-30
+Last Reviewed 2026
+Description: The precise workflow and hardware sensitivity requirements for detecting deeply embedded ferrous and non-ferrous objects within dense hardwood logs have not been calibrated for the v0 shop environment.
+​Why It Matters: Undetected metal striking high-speed cutting machinery creates an immediate operator shrapnel hazard and can cause catastrophic failure of bootstrap tooling that cannot be easily fabricated or replaced.
+​Resolution Path: Source or fabricate a reliable deep-penetration wand metal detector. Establish a clear "Scan-and-Mark" workflow for all incoming urban salvage logs. Validate detection depth limits using a known control sample (e.g., a 16d nail driven into a test block).
+
 ## Drift Indicators
 Mandatory re-audit conditions for this document:
 | Trigger | Reason |
@@ -296,3 +310,5 @@ Mandatory re-audit conditions for this document:
 | Geographic proper nouns or localized tracking vectors injected | Violates biome-agnostic system intent and breaches operational opacity guardrails |
 | Structural design cuts elements directly across natural curved fibers | Short-grain structural vulnerability — forces curved components into failure |
 | Ethical Anchor field absent, altered, or does not match canonical string | Load-bearing integrity requirement — applies to all files |
+
+| Raw salvage or urban timber processed through powered milling machinery without documented electromagnetic screening | Violates the IFM Screening Protocol; introduces catastrophic kinetic risk to operator and tooling. |
