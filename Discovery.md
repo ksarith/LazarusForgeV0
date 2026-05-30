@@ -36,44 +36,46 @@ The repository is organized into four functional layers plus root navigation fil
 ```
 Root
 ├── README.md           — Project overview and core principles
-├── Discovery.md        — This file. Start here.
+├── Discovery.md        — Active working repository navigation layer
 ├── Unknowns.md         — Cross-module unknowns global index
 
 Admin/                  — Governance, protocols, and doctrine
-    ├── Governance_Charter.md
-    ├── Auditor_Protocols.md
-    ├── Ethical_Constraints.md
-    ├── Repository_Integrity_Protocol.md
-    ├── Security_Protocols.md
-    ├── Forge_Audit_Kit.md
-    ├── File_Template.md
-    ├── Canonical_Terms.md
-    ├── Verification_Gates_LF.md
-    ├── Ship_of_Theseus.md
-    ├── Trajectories.md
-    └── AUDIT_HARNESS.py
+    ├── Governance_Charter.md            — Constitutional tier; 8 Axioms
+    ├── Auditor_Protocols.md             — Verification doctrine; 10-phase sequence
+    ├── Ethical_Constraints.md           — Embedded AI governance & anti-weaponization
+    ├── Repository_Integrity_Protocol.md  — Baseline enforcement & violation recovery
+    ├── Security_Protocols.md            — Cryptographic trust & multi-agent node security
+    ├── Engineer_Protocols.md            — Operational execution standards for engineers
+    ├── Forge_Audit_Kit.md               — Condensed routine multi-agent cycle reference
+    ├── Verification_Gates_LF.md         — Stable extraction of the 6 document promotion gates
+    ├── File_Template.md                 — 10-section layout standard & Ethical Anchor field
+    ├── Canonical_Terms.md               — Anti-drift vocabulary & term exclusions
+    ├── Ship_of_Theseus.md               — Right-to-repair philosophical/legal defense
+    ├── Trajectories.md                  — Multi-era version roadmap (v0 to interstellar)
+    └── AUDIT_HARNESS.py                 — Automated script supporting verification
 Architecture/           — System architecture and foundational logic
-    ├── Forge_Net.md    — Decentralized network prerequisite for logistics
-    ├── Forge_flow.md
-    ├── Geck_forge_seed.md
-    ├── Components.md
-    ├── Cognitive_Frameworks.md
-    └── Engineering.md
+    ├── Forge_flow.md                    — Master decision flow & reference vocabulary
+    ├── Forge_Net.md                     — Decentralized data/physical network logistics
+    ├── Geck_forge_seed.md               — Minimum viable seed specification
+    ├── Components.md                    — Critical vs useful component taxonomy
+    ├── Cognitive_Frameworks.md          — Distributed cognition & survival under uncertainty
+    └── Engineering.md                   — First-principles intellectual backbone
 Operations/             — Physical modules and operational systems
-    ├── Gate_01_Intake.md
-    ├── Gate_02_Triage.md
-    ├── Gate_03_Reduction.md
-    ├── Gate_04_Separation_Mechanical.md
-    ├── Gate_05_Separation_Thermal.md
-    ├── Gate_06_Fabrication.md
-    ├── Gate_07_Utilization.md
-    ├── Plastics.md
-    ├── Electronics.md
-    ├── Energy.md
-    └── Woodworking.md
+    ├── Gate_01_Intake.md                — Entry safety screening & provenance tagging
+    ├── Gate_02_Triage.md                — 5-station value preservation decision engine
+    ├── Gate_03_Reduction.md             — Irreversible mechanical sizing (feedstock milling)
+    ├── Gate_04_Separation_Mechanical.md — Centrifugal stratification & fail-to-bin diversion
+    ├── Gate_05_Separation_Thermal.md    — Core induction melting & gradient extraction
+    ├── Gate_06_Fabrication.md           — Arc welding & mill-to-spec constructive ceiling
+    ├── Gate_07_Utilization.md           — After-action loop & failure data capture
+    ├── Plastics.md                      — Polymer triage & 3-stage pyrolysis framework
+    ├── Woodworking.md                   — Salvaged urban timber milling & drying schedules
+    ├── Electronics.md                   — Salvaged PCB harvesting & Logic-Zero firmware trust
+    ├── Energy.md                        — Incremental power bootstrap & load profiles
+    └── Air_Scrubber.md                  — 5-stage negative-pressure containment subsystem
 Tests/                  — Test frameworks and deployment platforms
-    ├── Support_Raft.md
-    └── Leviathan_testing.md
+    ├── Support_Raft.md                  — Stationary marine deployment anchor
+    └── Leviathan_testing.md             — Deep-ocean autonomous stress-testing
 ```
 
 ---
