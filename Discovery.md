@@ -693,3 +693,7 @@ navigation error. Divergence between them is logged, not ignored.
 - `Architecture/Engineering.md` owner fields in sidecar unknowns use
   short filename — should be corrected to `Architecture/Engineering.md`
   at next revision.
+
+
+new file added
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Mechanical_Structures.md
