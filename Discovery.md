@@ -1269,4 +1269,415 @@ Suggested Reading Order. Should be reflected in Discovery.md update.
 *This addendum covers Admin/ only. Operations/, Architecture/, and Tests/
 files will follow in subsequent batches. Reconcile against existing
 Discovery.md content before committing — do not treat this as a
-replacement, only as an addendum.*
+replacement, only as an addenDraft.
+
+# Discovery.md — Addendum: Architecture/ Scope Entries
+## Compiled from Architecture batch (6 files)
+## Status: Draft — for reconciliation with existing Discovery.md content
+## Compiled: 2026-05-31
+
+---
+
+> **Integration Note:** Continues the format established in
+> Discovery_Addendum_Admin.md. Same four-field scope structure:
+> In-Scope, Out-of-Scope, Upstream Dependencies, Downstream
+> Recipients. Derived directly from each file's own Scope Boundary
+> and Relationship sections. Reconcile against existing Discovery.md
+> confirmed file list before committing.
+
+---
+
+## Architecture/ Directory — Scope Map
+
+---
+
+### `Architecture/Engineering.md`
+**Purpose:** Single durable source of engineering truth and judgment
+for all Forge activities. Equips contributors with condensed principles,
+safety discipline, and practical parameters for designing under real-world
+constraints — salvaged materials, limited tools, variable climate.
+
+**In-Scope:**
+- Foundational engineering principles, rules of thumb, and decision
+  frameworks for the entire LazarusForge
+- Core mechanical, structural, and systems engineering fundamentals
+- Materials behavior overview and selection guidance
+- Forge-specific parameters and safety factors
+- Arkansas/southern US climate considerations and derating guidance
+- Progressive path from basic to high-performance engineering
+
+**Out-of-Scope:**
+- Detailed calculations or design procedures for specific subsystems
+  (→ `Architecture/Structural_Engineering.md` [PLANNED],
+  `Architecture/Mechanical_Systems.md` [PLANNED])
+- Domain-specific fabrication techniques
+  (→ `Operations/Woodworking.md` [PLANNED],
+  `Operations/Metals.md` [PLANNED])
+- Software engineering or electronics design (→ dedicated files)
+- Full regulatory compliance or professional licensure requirements
+
+**Upstream Dependencies:**
+- `Admin/Ethical_Constraints.md` — safety constraints govern all
+  engineering decisions
+- `Admin/Engineer_Protocols.md` — procedural layer for how engineering
+  contributors apply these principles
+
+**Downstream Recipients:**
+- All Operations/ and Architecture/ domain files — engineering
+  principles and safety factors apply throughout
+- `Architecture/Structural_Engineering.md` [PLANNED],
+  `Architecture/Mechanical_Systems.md` [PLANNED] — detailed
+  domain files defer to this file for foundational principles
+
+**Open Blocking Unknowns:** EN-001 (validated safety factors for
+salvaged materials — Critical, blocks structural specification)
+
+---
+
+### `Architecture/Components.md`
+**Purpose:** Defines the minimum component architecture required for
+a Lazarus Forge to function and persist. Answers three questions: what
+must exist (Critical), what helps (Useful), and what can wait (Bootstrap).
+Governs all component classification decisions across the repository.
+
+**In-Scope:**
+- Component taxonomy for Lazarus Forge v0 through v3
+- Classification criteria (Critical, Useful, Bootstrap) with definitions
+- Bootstrap Doctrine and Graduation Rule
+- Dual-use annotation standard for components
+- Version mapping by material scope and capability
+
+**Out-of-Scope:**
+- Electronics, software, biological, or optical fabrication systems
+  (→ downstream version taxonomies)
+- Detailed engineering specifications for individual components
+  (→ respective domain files)
+- Energy infrastructure beyond grid bootstrap minimum
+  (→ `Operations/Energy.md`)
+- G.E.C.K. manifest or redundancy stock
+  (→ `Architecture/Geck_forge_seed.md`)
+- Cross-module governance or repository-level unknowns
+  (→ `Unknowns.md`)
+
+**Upstream Dependencies:**
+- `Architecture/Forge_flow.md` — operational gate logic that components
+  are classified against
+- `Architecture/Geck_forge_seed.md` — G.E.C.K. manifest is the
+  redundancy and consumables path for Critical components
+- `Admin/Ethical_Constraints.md` — dual-use annotation High rating
+  routes to Anti-Weaponization Doctrine there
+
+**Downstream Recipients:**
+- `Architecture/Geck_forge_seed.md` — Bootstrap Doctrine sufficiency
+  criterion links to Forge loop defined there (Section III)
+- `Operations/Gate_02_Triage.md` — component classification governs
+  triage routing decisions
+- All Operations/ gate files — Critical component list defines what
+  must be present for the Forge to function
+
+**Open Blocking Unknowns:** CO-002 (Metrology precision thresholds —
+Non-blocking; deferred to first fabrication trials)
+
+---
+
+### `Architecture/Forge_Net.md`
+**Purpose:** Defines the decentralized data and physical infrastructure
+connecting individual forge instances into a resilient, self-improving
+ecology. Prerequisite for all inter-forge logistics, knowledge sharing,
+and coordinated resource allocation.
+
+**In-Scope:**
+- Philosophy and doctrine for decentralized forge networking
+  (local-primary, network-sync-secondary)
+- Data layer architecture: local cache, network sync, shared knowledge
+  base (Wikipedia model with knowledge scope classification), cognitive
+  save states, data validation layer
+- Physical infrastructure layer: proximity-based cluster formation,
+  resource sharing doctrine, data hosting
+- Positive reinforcement mechanisms and perverse incentive guards
+- Cluster governance emergence doctrine and anti-concentration mechanisms
+- Trust weighting and federation principles
+- Failure, node loss, and node reintegration doctrine
+- Network security threat model and defensive doctrine
+- Data privacy classification tiers and access control doctrine
+- Integration hooks to `Operations/Gate_01_Intake.md` as primary data
+  contribution point
+
+**Out-of-Scope:**
+- Physical networking hardware specifications (not yet assigned)
+- Specific database software or implementation (not yet assigned)
+- Detailed cluster governance rules or voting mechanisms
+  (emergent — cannot be specified before observed)
+- Delay-tolerant networking protocol detail
+  (→ `Tests/Leviathan_testing.md`)
+- Rogue node identification and containment
+  (→ `Architecture/Cognitive_Frameworks.md`)
+- Energy cost of network operation (→ `Operations/Energy.md`)
+- Inter-forge physical logistics and trade routing (downstream)
+- Positive reinforcement economic accounting (downstream)
+- Data privacy and access control implementation (→ FN-005; unassigned)
+
+**Upstream Dependencies:**
+- `Operations/Gate_01_Intake.md` — primary data contribution point;
+  every intake record is a potential network knowledge artifact
+- `Architecture/Cognitive_Frameworks.md` — rogue node management,
+  TMR architecture for knowledge validation, trust model
+- `Admin/Ethical_Constraints.md` — Anti-Weaponization Doctrine governs
+  data classification and network access control
+- `Tests/Leviathan_testing.md` — delay-tolerant networking doctrine;
+  analog for connectivity-interrupted operation
+- `Operations/Energy.md` — energy cost of network services
+
+**Downstream Recipients:**
+- Inter-forge logistics and trade routing files (downstream; depend on
+  this file)
+- `Admin/Trajectories.md` — network capability targets by version;
+  v1 target includes cognitive save state portability
+
+**Open Blocking Unknowns:** FN-001 (data validation criteria — Critical;
+prerequisite for first network connection), FN-005 (data privacy and
+access control — Critical; prerequisite for first network connection)
+
+---
+
+### `Architecture/Forge_flow.md`
+**Purpose:** Defines the minimal viable operational logic of the Lazarus
+Forge and serves as the **reference standard for shared vocabulary across
+the entire repository**. Terms defined here carry their meaning into all
+other documents unless explicitly noted otherwise. Authoritative source
+for gate logic, outcome paths, and the want/need policy.
+
+**In-Scope:**
+- Minimal viable operational logic of the Lazarus Forge v0
+- Reference standard for shared vocabulary — all Defined Terms here
+  are repository-wide unless explicitly overridden
+- v0 scope, inputs, and explicit non-goals
+- Eight sequential decision gates (Intake through Utilization)
+- Gate Correspondence table mapping triage outcomes to gates
+- Outcome paths and reversibility notes
+- Human/AI Oversight Gate logic and want/need policy
+- Fabrication priority order
+- Feedback and learning doctrine for v0
+- Primary KPI definition (value recovered per kWh consumed)
+- Termination conditions
+- Purification stage definition (governs DS-001 terminology dispute)
+
+**Out-of-Scope:**
+- Detailed hardware specifications for any module
+  (→ `Operations/Spin_Chamber_v0.md`,
+  `Operations/Material_Separation_Gate_v0.md`, etc.)
+- Reduction module specification (→ unassigned; FL-002, UNK-007)
+- Component triage station workflow detail
+  (→ `Operations/Component_Triage_System.md`)
+- Energy accounting and power demand (→ `Operations/Energy.md`)
+- Autonomous operation logic or AI trust architecture
+  (→ `Architecture/Cognitive_Frameworks.md`,
+  `Admin/Ethical_Constraints.md`)
+- Version roadmap and exit conditions (→ `Admin/Trajectories.md`)
+- Cross-module unknowns global index (→ `Unknowns.md`)
+- Facility siting or area-of-operation requirements
+  (→ UNK-006; no file exists yet)
+
+**Upstream Dependencies:**
+- `Admin/Canonical_Terms.md` — vocabulary consistency; this file
+  is the operational routing vocabulary standard that Canonical_Terms
+  defers to for gate logic terms
+- `Admin/Ethical_Constraints.md` — Human/AI Oversight Gate escalation
+  path; irreversible action constraints
+- `Architecture/Components.md` — component classifications inform
+  gate routing decisions
+
+**Downstream Recipients:**
+- **All repository files** — Defined Terms section is the vocabulary
+  standard for the entire repository
+- `Operations/` gate files — each gate specification derives its
+  operational logic and vocabulary from this file
+- `Architecture/Forge_Net.md` — shared gate decision logs are a
+  primary network knowledge artifact
+- `Admin/Canonical_Terms.md` — Section 2 gate definitions in
+  Canonical_Terms are derived from this file; conflicts escalate
+  to Canonical_Terms as Active Disputes
+
+**Open Blocking Unknowns:** FL-001 (gate logic determinism at boundary
+cases — In Progress; blocks Specification promotion), FL-002 (Reduction
+module unassigned — no owning file for the only fully irreversible step)
+
+**Active Dispute:** DS-001 — "Purification stage" terminology. Owned
+here. Resolution recommended when second mechanical separation module
+enters scope.
+
+---
+
+### `Architecture/Geck_forge_seed.md`
+**Purpose:** Defines the smallest coherent set of tools, data, and
+doctrine capable of instantiating a new Lazarus Forge from a standing
+start in an unfamiliar location. The canonical module list, procurement
+rationale, and success criteria for G.E.C.K. deployment.
+
+**In-Scope:**
+- Minimum viable seed required to instantiate a new Lazarus Forge
+- Core G.E.C.K. module list (8 modules) and criticality rationale
+- Procurement doctrine — when purchasing is the correct bootstrap
+  strategy
+- Precision as a capability threshold concept (introductory; full
+  treatment deferred to `Precision_LF.md` [PLANNED])
+- Marine variant module list and success criteria (exploratory)
+- G.E.C.K. success criteria and scaling pathway to v1
+
+**Out-of-Scope:**
+- Detailed engineering specifications for any G.E.C.K. module
+- Full precision doctrine or precision tracking methodology
+  (→ `Precision_LF.md` [PLANNED])
+- Leviathan chassis or deep-marine systems (→ `Admin/Trajectories.md`)
+- Energy infrastructure beyond portable generation minimum
+  (→ `Operations/Energy.md`)
+- Component taxonomy or classification criteria
+  (→ `Architecture/Components.md`)
+
+**Upstream Dependencies:**
+- `Architecture/Components.md` — Critical component list; G.E.C.K.
+  must support all Critical components and their maintenance cycles
+- `Architecture/Forge_flow.md` — Forge loop definition (Section III
+  here) feeds Bootstrap Doctrine sufficiency criterion in Components.md
+- `Admin/Ethical_Constraints.md` — purchased components must still be
+  logged and assessed for dual-use potential per Components.md standards
+
+**Downstream Recipients:**
+- `Architecture/Components.md` — Forge loop definition used as
+  Bootstrap Doctrine sufficiency anchor
+- `Admin/Trajectories.md` — marine variant and v2/v3 seeding
+  specifications route there
+- `Precision_LF.md` [PLANNED] — full precision doctrine to be
+  developed; this file is the originating reference
+
+**Open Blocking Unknowns:** GK-005 (Precision_LF.md home document
+not yet created — Non-blocking at Exploration)
+
+---
+
+### `Architecture/Cognitive_Frameworks.md`
+**Purpose:** Defines how Forge systems think safely under uncertainty.
+Establishes cognitive reliability architectures, distributed trust
+models, redundancy and arbitration frameworks for autonomous Forge
+systems that must operate in degraded, adversarial, and partially
+corrupted environments.
+
+**In-Scope:**
+- Cognitive reliability layers (Layer 0 Mechanical through Layer 6
+  Human governance)
+- Framework taxonomy (A through G) — from Lone Intelligence to
+  Simulation-Gated Cognition
+- Confidence collapse states (Green through Black)
+- Return-to-base doctrine and trigger conditions
+- Split-brain doctrine and default response
+- Human position in the stack — mutual stabilization model
+- Hardware/software supervisory hierarchies
+- Rogue node identification and containment
+- AI consensus structures and diversity requirements
+
+**Out-of-Scope:**
+- PCB fabrication or specific MCU wiring
+  (→ `Operations/Electronics.md`)
+- Mechanical actuator details (→ domain files)
+- Ethical policy itself
+  (→ `Admin/Ethical_Constraints.md`)
+- Individual Leviathan mission logic
+  (→ `Tests/Leviathan_testing.md`)
+- Networking implementation details
+  (→ `Architecture/Forge_Net.md`)
+- Cryptographic protocol specifics
+  (→ `Admin/Security_Protocols.md`)
+- Full autonomous governance law (→ future files)
+
+**Upstream Dependencies:**
+- `Admin/Ethical_Constraints.md` — hard-line doctrines (particularly
+  CF-DS-002 human override scope dispute) govern what no cognition
+  layer may override
+- `Operations/Electronics.md` — TMR hardware implementation and
+  watchdog circuit design (CF-001 owner)
+- `Admin/Auditor_Protocols.md` — multi-agent audit cycle is a
+  real-world implementation of Framework D/E consensus
+
+**Downstream Recipients:**
+- `Architecture/Forge_Net.md` — rogue node management and trust
+  model referenced there; TMR architecture for knowledge validation
+- `Tests/Leviathan_testing.md` — primary stress-test environment
+  for all frameworks; confidence collapse states are test targets
+- `Operations/Support_Raft_v0.md` — Framework F natural
+  implementation; Guardian Protocol is Framework G prototype
+- `Admin/Trajectories.md` — Framework G (Simulation-Gated
+  Cognition) routes to v2/v3 scope
+
+**Open Blocking Unknowns:** CF-001 (hardware watchdog minimum
+standard — High; blocks any Specification-level autonomous
+architecture), CF-002 (correlated AI failure modes — High)
+
+**Active Disputes:** CF-DS-001 (centralized vs. distributed
+cognition), CF-DS-002 (human override authority scope)
+
+---
+
+## Cross-Cutting Notes for Discovery.md Integration
+
+**Planned files referenced across this batch** (must carry [PLANNED]
+label in Discovery.md until created):
+- `Architecture/Structural_Engineering.md` — referenced by
+  `Architecture/Engineering.md`
+- `Architecture/Mechanical_Systems.md` — referenced by
+  `Architecture/Engineering.md`
+- `Precision_LF.md` (path TBD) — referenced by
+  `Architecture/Geck_forge_seed.md` and `Architecture/Components.md`
+- `Operations/Woodworking.md` — referenced by
+  `Architecture/Engineering.md`
+- `Operations/Metals.md` — referenced by
+  `Architecture/Engineering.md`
+- `Operations/Reduction_v0.md` — FL-002 resolution target; no owner
+  assigned; this is the only fully irreversible step in the Forge
+  flow and currently has no owning file
+
+**Critical path gap flagged:** `Operations/Reduction_v0.md` does not
+exist and is the upstream dependency for `Operations/
+Material_Separation_Gate_v0.md`. FL-002 notes this explicitly. Should
+appear in Discovery.md as a [PLANNED] file with a risk annotation,
+not just a standard planned entry.
+
+**Forge_flow.md vocabulary authority:** This file is the operational
+vocabulary reference standard for the entire repository. Discovery.md
+should note this explicitly in the routing table — any contributor
+encountering an undefined operational term should be routed to
+`Architecture/Forge_flow.md` §Defined Terms before consulting
+`Admin/Canonical_Terms.md`.
+
+**Architecture/ reading order implication:** Based on dependency
+chains, the natural reading order within Architecture/ is:
+1. `Architecture/Forge_flow.md` — vocabulary and gate logic first
+2. `Architecture/Components.md` — what must exist
+3. `Architecture/Geck_forge_seed.md` — how to seed it
+4. `Architecture/Engineering.md` — how to build it
+5. `Architecture/Cognitive_Frameworks.md` — how it thinks
+6. `Architecture/Forge_Net.md` — how instances connect
+
+**Verification Ref inconsistency noted:** `Architecture/Forge_Net.md`
+has `Verification Ref: Admin/Forge_Audit_Kit.md` while all other
+files in this batch point to `Verification_Gates_LF.md`. Should be
+reconciled — `Verification_Gates_LF.md` is the canonical target per
+that file's own purpose statement.
+
+**Architecture/ summary for Discovery.md routing table:**
+
+| File | Status | Tier/Role |
+|------|--------|-----------|
+| `Architecture/Forge_flow.md` | Exploration | Vocabulary standard + gate logic |
+| `Architecture/Components.md` | Exploration | Component taxonomy |
+| `Architecture/Geck_forge_seed.md` | Exploration | Deployment seeding |
+| `Architecture/Engineering.md` | Draft | Engineering principles |
+| `Architecture/Cognitive_Frameworks.md` | Exploration | Cognition doctrine |
+| `Architecture/Forge_Net.md` | Exploration | Network doctrine |
+
+---
+
+*This addendum covers Architecture/ only. Operations/ and Tests/
+files will follow in subsequent batches. Reconcile against existing
+Discovery.md content before committing — additive only, not a
+replacement.*
+
