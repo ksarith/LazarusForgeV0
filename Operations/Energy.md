@@ -358,3 +358,25 @@ Mandatory re-audit conditions for this document:
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt
 autonomous audit progression and escalate for human review.
+
+---
+
+## ## Amendments, Field Notes, & Power Interlocks
+
+### ### 1. Real-World Generation Interlocks
+* **The Tar Minimization Rule:** Open-loop biomass gasification is strictly prohibited for raw processing unless a multi-stage mechanical particulate filter and oil-bubbler quenching system are placed inline. Unscrubbed syngas will gum internal combustion valves within <12 operational hours, triggering a critical mechanical power failure cascade.
+* **The Parasitic Biogas Threshold [Ref: EV-002]:** Biogas generation cannot be accounted for as a net-positive primary energy source unless the ambient thermal temperature of the digestate tank exceeds $35^\circ\text{C}$ via passive solar or uncalibrated thermal recovery streams. The electrical cost of continuous mechanical mixing and gas compression must not exceed $22\%$ of the total calculated methane output value.
+
+### ### 2. Calibrated Power Mode Profiles [Ref: EV-001]
+To prevent logic-loop crashes from supply-rail sag, all autonomous processing actions must align with verified hardware power envelopes:
+
+| Operational Mode | Target Consumption Floor | Tolerable Voltage Ripple | Mandated Power Source Allocation | Actionable Sag Protocol |
+| :--- | :--- | :--- | :--- | :--- |
+| **Logic/Watchdog** | $< 15\text{ W}$ baseline | $\pm 1\%$ | Primary TEG Bank / Small Isolated Lead-Acid Buffer | Maintain state indefinitely; broadcast keep-alive telemetry. |
+| **Mechanical Milling** | $1.5\text{ kW}$ peak | $\pm 5\%$ | Active Hydro-Engine / Main Battery Bank ($\text{SoH} > 70\%$) | Cycle spindle speed down $50\%$; halt axis travel stepper logic. |
+| **Thermal Melt (G5)** | $8.0\text{ kW}$ burst | $\pm 10\%$ | Direct Generator / Dedicated Biomass Syngas Loop | Trigger immediate safety clamp; dump molten charge to dry safe crucible. |
+
+### ### 3. Electrochemical Battery Containment Protocol [Ref: EV-003]
+* **Physical Isolation:** Salvaged lithium-ion or lead-acid cell packs must live in an isolated, external, pressure-vented enclosure separated from primary computational nodes by a minimum $2\text{-hour}$ fire-rated containment barrier.
+* **The Over-Extraction Guard:** Discharge cut-off parameters must be locked via hard-coded physical voltage dividers at $3.0\text{V}$ per cell for lithium-class chemistry to suppress internal copper shunting and subsequent self-heating runaway during subsequent recharge cycles. 
+* **The Scrubber Prerequisite:** If any cell temperature probe registers $>55^\circ\text{C}$, the main battery disconnect relay must open, and the `Air_Scrubber.md` variant 0 positive-pressure loop must immediately lock into max-flow mode to purge hydrofluoric acid gas byproducts away from human operators.
