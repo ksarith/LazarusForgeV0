@@ -2115,3 +2115,436 @@ Remaining Operations/ domain files and Tests/ will follow in subsequent
 batches. Reconcile against existing Discovery.md before committing —
 additive only, not a replacement. File-local Scope Boundary sections
 remain authoritative where conflicts exist.*
+
+# Discovery.md — Addendum Section 4: Operations/Domain & Tests/
+## Covers: Electronics · Energy · Air_Scrubber · Plastics · Woodworking · Support_Raft · Leviathan_testing
+## Status: Draft — append to Discovery_Addendum_Consolidated.md before reconciliation
+## Compiled: 2026-05-31
+
+---
+
+> **Preamble — Single Source of Truth Rule** (repeat for standalone use)
+> Scope entries here are navigation summaries only. File-local Scope
+> Boundary sections remain authoritative. Where this addendum and a
+> file's own Scope Boundary conflict, the file wins.
+
+---
+
+## Section 4 — Operations/Domain Files
+
+---
+
+### `Operations/Electronics.md`
+**Purpose:** Trust-anchor document for all electronic systems in the
+Forge. Governs recovery, validation, fabrication, and integration of
+electronic components. Ethics enforcement, hardware watchdogs, TMR
+voting, sensor truth, and AI containment all depend on the integrity
+of what this file governs. Treats salvaged electronics as potential
+threat vectors, not just convenient parts.
+**In-Scope:** Non-destructive harvesting protocols and desoldering
+standards; firmware trust doctrine and Logic-Zero wipe protocol;
+PCB fabrication methods at v0 (CNC milling, laser etching, toner
+transfer, dead-bug wiring); soldering standards; Forge-Standard
+interface adapter layer; TMR hardware implementation (wiring, voter
+circuit, component selection, architectural diversity requirement);
+hardware watchdog doctrine (heartbeat enforcement, neutral-state
+enforcement); dual-use awareness and annotation standard; toxic
+dust and BFR emission profile doctrine; counterfeit and remarked
+component detection doctrine.
+**Out-of-Scope:** TMR as architectural philosophy or framework
+taxonomy (→ `Architecture/Cognitive_Frameworks.md` Framework D);
+ethical policy governing dual-use escalation
+(→ `Admin/Ethical_Constraints.md`); confidence collapse states and
+split-brain doctrine (→ `Architecture/Cognitive_Frameworks.md`);
+air scrubber hardware specification or waste stream chemistry
+(→ `Operations/Air_Scrubber.md`); component taxonomy
+(→ `Architecture/Components.md`); Leviathan mission logic
+(→ `Tests/Leviathan_testing.md`); cryptographic key management
+(→ EL-006 — not yet assigned); Forge-Net implementation
+(→ `Architecture/Forge_Net.md`); facility siting for electronics
+work areas (→ UNK-006).
+**Upstream:** `Architecture/Cognitive_Frameworks.md` (CF-001, CF-002);
+`Admin/Ethical_Constraints.md`; `Operations/Gate_02_Triage.md`
+(Station 1 — electrical triage); `Architecture/Forge_flow.md`.
+**Downstream:** `Operations/Air_Scrubber.md` (etch waste, flux fumes,
+BFR dust, milling particulate); `Operations/Gate_05_Separation_Thermal.md`
+(recovered copper and trace metals); `Tests/Leviathan_testing.md`
+(TMR and fault response as primary test targets); `Operations/Support_Raft.md`
+(fault response integration); `Admin/Security_Protocols.md`
+(Logic-Zero wipe is Layer 1 prerequisite for node cluster admission);
+`Architecture/Cognitive_Frameworks.md` (CF-001 watchdog standard).
+> ⚠️ *8 open unknowns. Highest Risk: High. EL-006 (cryptographic key
+> management) unassigned.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Energy.md`
+**Purpose:** Energy strategy for the Lazarus Forge at v0. Defines an
+incremental path from external grid dependency toward partial
+self-sufficiency. Primary function is as a cross-reference anchor —
+the Power Demand stub allows all other files to integrate energy
+accounting against a common baseline before actual figures are measured.
+**In-Scope:** Energy lifecycle progression and design philosophy;
+energy source categories and their v0 roles; energy storage doctrine;
+Power Demand stub with three operating modes (cross-reference anchor);
+primary and secondary performance metrics; explicit non-goals for v0.
+**Out-of-Scope:** Hardware specifications for generators, solar arrays,
+or battery banks; biogas digester engineering or sizing; battery
+thermal containment or fire suppression
+(→ EV-003; `Operations/Air_Scrubber.md`); Leviathan power envelope
+(→ `Tests/Leviathan_testing.md` LT-001); deep-environment battery
+degradation (→ `Tests/Leviathan_testing.md` LT-002); per-module
+energy accounting (→ each owning Operations/ file); grid connection
+or utility interface specifications.
+**Upstream:** `Admin/Trajectories.md` (EV-001 feeds v1 cost model);
+`Operations/Gate_07_Utilization.md` (operational energy data).
+**Downstream:** All Operations/ gate files (Power Demand stub is the
+shared energy accounting baseline); `Tests/Leviathan_testing.md`
+(LT-001 depends on this stub existing); `Admin/Trajectories.md`
+(TR-001 v1 profitability model); `Operations/Plastics.md`
+(pyrolytic oil and syngas as candidate energy inputs);
+`Operations/Woodworking.md` (biochar and wood gas as candidate inputs).
+> ⚠️ *3 open unknowns. EV-001 (Forge demand baseline) In Progress —
+> blocks v1 operating cost model.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Air_Scrubber.md`
+**Purpose:** Enabling system for all Forge operations. Without it,
+the Forge does not operate. Defines doctrine, functional architecture,
+and operational requirements preventing release or accumulation of
+hazardous airborne byproducts generated during Forge operation.
+**In-Scope:** Air Scrubber design philosophy and doctrine; five-stage
+functional architecture (Stages A–E); wet capture variants (Variant
+0–4); Saturation Fault and Thermal Fault monitoring requirements;
+negative pressure safety boundary doctrine; noise hazard acknowledgment;
+energy awareness and power budget estimates; waste as a managed output;
+integration hooks to upstream and downstream modules; marine
+shallow-water variant (Variant 4, v0 scope).
+**Out-of-Scope:** Spin Chamber exhaust heat load
+(→ `Operations/Gate_05_Separation_Thermal.md`); Forge power budget
+and demand baseline (→ `Operations/Energy.md`); deep-sea compression
+module (→ `Admin/Trajectories.md` v2/v3); contamination routing and
+waste stream final disposition (→ `Operations/Gate_02_Triage.md`);
+scrubber bootstrap minimum for remote deployment
+(→ `Architecture/Geck_forge_seed.md`); saturation threshold
+calibration values (Placeholder — requires operational data); noise
+exposure limits and hearing conservation program
+(→ planned `Safety_Protocols.md` [PLANNED]).
+**Upstream:** `Operations/Gate_05_Separation_Thermal.md` (primary
+exhaust source); `Operations/Gate_04_Separation_Mechanical.md`
+(pre-purification exhaust); `Operations/Electronics.md` (etch waste,
+flux fumes, BFR dust, milling particulate);
+`Operations/Plastics.md` (off-gas, syngas combustion stage, HCl);
+`Operations/Woodworking.md` (dust, toxic species off-gas).
+**Downstream:** `Tests/Leviathan_testing.md` (shallow-water marine
+variant testbed); `Operations/Gate_02_Triage.md` (scrubber chemistry
+feedback); `Operations/Energy.md` (thermal sink power demand);
+`Architecture/Geck_forge_seed.md` (bootstrap minimal scrubber).
+> ⚠️ *3 open unknowns. Highest Risk: High. AS-003 (saturation
+> threshold calibration) blocks chemistry validation.*
+> ✓ *Verification Ref correctly set to `Verification_Gates_LF.md`.
+> Spec Gates: 2/6 — most advanced gate file in Operations/.*
+
+---
+
+### `Operations/Plastics.md`
+**Purpose:** Processing path for salvaged plastics. Defines the triage
+hierarchy routing polymers toward highest-value recovery, and the
+pyrolytic fuel recovery framework for what mechanical repurposing
+cannot handle. Pyrolysis is positioned as last-resort recovery, not
+primary recycling method.
+**In-Scope:** Triage routing doctrine for salvaged industrial and
+consumer polymers; conceptual framework for low-pressure, oxygen-free
+thermal depolymerization (pyrolysis); high-level design requirements
+for batch-fed reaction chamber and condenser array; safety and chemical
+containment boundaries for off-gas treatment; char and solid residue
+handling doctrine.
+**Out-of-Scope:** Precise temperature profiles for individual polymer
+blends; mechanical blueprints for extrusion screws or filament-drawing
+rigs; refining or fractional distillation specifications; Air Scrubber
+hardware or alkaline buffering stage design
+(→ `Operations/Air_Scrubber.md`); energetic or radiological hazard
+screening (→ `Operations/Gate_01_Intake.md`); contamination routing
+beyond plastic stream identification
+(→ `Operations/Gate_02_Triage.md`); energy accounting for pyrolysis
+operation (→ `Operations/Energy.md`).
+**Upstream:** `Operations/Gate_01_Intake.md` (halogenated polymer
+detection); `Operations/Gate_02_Triage.md` (upstream routing decision
+for all plastics); `Operations/Gate_03_Reduction.md` (bulk plastic
+shredding before reactor loading); `Operations/Air_Scrubber.md`
+(primary safety dependency — off-gas capture, HCl neutralization,
+syngas combustion upstream of scrubber inlet).
+**Downstream:** `Operations/Gate_06_Fabrication.md` (filament drawing
+— mechanical repurposing path); `Operations/Energy.md` (pyrolytic oil
+and syngas as candidate energy inputs); `Operations/Gate_05_Separation_Thermal.md`
+(waste heat from Spin Chamber as candidate bootstrap heat source);
+`Operations/Gate_02_Triage.md` (char residue classification).
+> ⚠️ *5 open unknowns. One Critical priority (PL-001 — halogenated
+> polymer detection at triage). Highest Risk: High.*
+> ⚠️ *Syngas combustion upstream of Air Scrubber inlet is permanent
+> doctrine — direct routing is an abandoned path logged as a
+> Lessons Learned entry.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Woodworking.md`
+**Purpose:** Full processing chain for wood within the Lazarus Forge —
+from standing tree or salvage source through to finished functional or
+structural object. Emphasizes salvaged and urban timber, irregular and
+green stock, and low-to-high technology methods for self-reliant
+fabrication in variable high-humidity environments.
+**In-Scope:** Timber sourcing hierarchy (salvage, urban, storm-fall,
+standing tree); felling and chainsaw safety doctrine; green wood
+handling, rough dimensioning, anisotropic behavior, and drying
+doctrine; structural deployment of woodgrain; power tool and hand tool
+milling workflows for irregular salvage stock; CNC/router fixturing for
+slabs and live-edge material; heat treatment and surface modification;
+joinery, adhesive selection, and assembly doctrine; finishing doctrine
+for indoor and outdoor applications; waste valorization hierarchy
+through to basic papermaking; dust and species-specific hazard doctrine
+by climate zone.
+**Out-of-Scope:** CNC toolpath generation, G-code, or CAM software
+workflows; full shop-wide dust extraction system design
+(→ `Operations/Air_Scrubber.md`); structural engineering calculations
+for load-bearing wooden members; commercial lumber grading standards
+or large-scale industrial forestry.
+**Upstream:** `Operations/Gate_02_Triage.md` (salvage timber condition
+assessment follows triage logic); `Operations/Gate_03_Reduction.md`
+(low-value wood waste routing to biochar or compost);
+`Architecture/Engineering.md` (foundational structural principles).
+**Downstream:** `Operations/Gate_06_Fabrication.md` (wood as
+fabrication feedstock); `Operations/Air_Scrubber.md` (dust extraction,
+toxic species off-gas management); `Operations/Energy.md` (biochar and
+wood gas as candidate energy inputs); `Admin/Trajectories.md`
+(gasification, large-scale processing, structural engineering
+calculations — v1+ scope).
+> ⚠️ *4 open unknowns. Highest Risk: High. Draft status, 0/6 gates.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+> ℹ️ *This file was previously listed as [PLANNED] in
+> Architecture/Engineering.md Out-of-Scope — now exists. Update
+> Engineering.md reference accordingly.*
+
+---
+
+## Section 5 — Tests/
+
+---
+
+### `Operations/Support_Raft.md`
+*(Note: File is `Support_Raft_v0.md` internally — confirm canonical
+filename for Discovery.md. Listed under Operations/ based on file
+location; may belong under Tests/ given Leviathan relationship.
+Confirm directory placement.)*
+
+**Purpose:** Stationary operational anchor for mobile Leviathan units
+operating in open-ocean or high-flow environments. Provides regional
+power, data relay, physical recovery, and triage processing
+infrastructure — offloading complexity from mobile units so they remain
+lightweight and mission-focused. The Raft does not move. Leviathan
+units do. Complexity that lives on the Raft stays off the units.
+**In-Scope:** SWATH hull architecture and variable draft doctrine;
+Sacrificial Shell System (biofouling management via deployable
+colonization panels); induction charging dock array and charging
+doctrine; Local Truth Cache architecture and local decision authority
+during comms blackout; Stasis Mode doctrine and cold storage rack;
+power generation hierarchy (wave-surge, solar, thermal gradient);
+infrastructure overhead and bootstrap-honest energy accounting;
+Material Separation Gate as optional hosted module; marine-specific
+challenges (biofouling, corrosion, depth pressure, storm survival);
+end-of-region lifecycle and self-consuming protocol; foundational
+claim: net positive energy and data surplus to the swarm.
+**Out-of-Scope:** Leviathan unit internal architecture
+(→ `Tests/Leviathan_testing.md`); Marine GECK seed specification
+(→ `Architecture/Geck_forge_seed.md`); detailed Material Separation
+Gate operation (→ `Operations/Gate_04_Separation_Mechanical.md`);
+storm-survival protocol and multi-Raft coordination
+(→ `Admin/Trajectories.md` v1+); swarm-scale coordination logic
+(→ `Tests/Leviathan_testing.md` Extensions).
+**Upstream:** `Operations/Gate_04_Separation_Mechanical.md` (optional
+hosted module); `Tests/Leviathan_testing.md` (stress-test environment
+for docking, panel swap, biofouling); `Operations/Energy.md` (baseline
+energy philosophy); `Admin/Ethical_Constraints.md` (cached and
+governing; marine regulatory unknowns route here);
+`Architecture/Geck_forge_seed.md` (marine GECK seed variant);
+`Admin/Trajectories.md` (v1+ coordination).
+**Downstream:** `Tests/Leviathan_testing.md` (Raft as TMR resolution
+infrastructure and recovery anchor); `Operations/Electronics.md`
+(fault response integration).
+> ⚠️ *10 open unknowns across Low–High risk range. SR-001 (galvanic
+> corrosion mitigation) is High priority — blocks v1 design.*
+> ⚠️ *SR-011, SR-012, SR-013 logged in final audit summary but not
+> yet in main unknown registry — confirm they are in sidecar.*
+> ℹ️ *Uses older audit health format rather than standard File State
+> table — consider template retrofit on next audit pass.*
+> ℹ️ *Induction loss estimate corrected from 12% (laboratory) to
+> 20–40% (real subsea conditions) — logged in Lessons Learned.*
+
+---
+
+### `Tests/Leviathan_testing.md`
+**Purpose:** Hostile-environment test framework for Lazarus Forge–class
+autonomous industrial systems. Exists to break assumptions, surface
+hidden failure modes, and force autonomous systems to operate under
+sustained uncertainty before off-world deployment is attempted.
+Leviathan is a filter, not a product. Failure is expected. Learning
+is mandatory.
+**In-Scope:** Core test philosophy (fail fast, recover often; sensors
+lie; record everything worth regretting); power and endurance test
+doctrine; failure and recovery requirements; autonomy and control
+test objectives (long-horizon execution, fault detection, graceful
+degradation, constraint refusal); sensor and environmental interaction
+doctrine; ethical and environmental constraints for test operations;
+success criteria (reduced uncertainty, identified failure modes,
+invalidated assumptions); Leviathan Extensions Framework (A: distributed
+units; B: cross-unit learning; networking and communication guidelines;
+knowledge classification tiers 1–3; anti-pattern safeguards);
+relationship to Lazarus Forge (findings inform architecture, not become
+the architecture).
+**Out-of-Scope:** Production system design or space-optimized
+architecture; mining platform design; surveillance or coercive
+capabilities (explicit prohibition); one-shot demonstrator design;
+full trust model mechanism for Extension B (→ LT-004 — routes to
+`Admin/Trajectories.md`); priority propagation enforcement mechanism
+(→ LT-005 — routes to `Admin/Trajectories.md`); swarm-scale
+(100s–1000s) coordination specification (→ `Admin/Trajectories.md`);
+Raft architecture (→ `Operations/Support_Raft.md`); delay-tolerant
+networking protocol detail (referenced by `Architecture/Forge_Net.md`
+as a dependency here).
+**Upstream:** `Architecture/Cognitive_Frameworks.md` (frameworks under
+test; confidence collapse states are test targets);
+`Admin/Ethical_Constraints.md` (ethical constraints govern test
+operations absolutely — experiment aborted if conflict arises);
+`Operations/Energy.md` (LT-001 depends on Power Demand stub);
+`Operations/Support_Raft.md` (Raft as recovery and TMR resolution
+infrastructure); `Operations/Electronics.md` (TMR and fault response
+are primary test targets).
+**Downstream:** `Architecture/Cognitive_Frameworks.md` (findings
+inform autonomy architecture); `Architecture/Forge_Net.md`
+(delay-tolerant networking doctrine); `Operations/Energy.md`
+(LT-002 feeds battery degradation data back to storage section);
+`Admin/Trajectories.md` (trust model and priority propagation
+mechanism design — LT-004, LT-005).
+> ⚠️ *6 open unknowns. LT-001 (power envelope — no placeholder
+> anchor) and LT-002 (deep-ocean storage degradation) are High risk
+> and load-bearing for all autonomy claims.*
+> ⚠️ *LT-003 (autonomy architecture unspecified) is High risk —
+> without a named decision-making paradigm under test, the framework
+> risks producing data without insight.*
+> ⚠️ *LT-006 (ethical log survival under unit loss) is Medium risk
+> with governance implications — refusal logs may be lost with unit.*
+> ℹ️ *Uses older audit health format — consider template retrofit
+> on next audit pass.*
+> ℹ️ *No Lessons Learned entries yet — pre-deployment.*
+
+---
+
+## Section 6 — Complete Repository Status Summary
+
+*For Discovery.md routing table. Compiled across all batches.*
+
+### Verification Ref Corrections Required
+All files below point to `Admin/Forge_Audit_Kit.md` instead of the
+canonical `Admin/Verification_Gates_LF.md`:
+
+| File | Current Ref |
+|------|-------------|
+| `Operations/Gate_01_Intake.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Gate_03_Reduction.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Gate_04_Separation_Mechanical.md` | Forge_Audit_Kit.md (also missing Admin/ prefix) |
+| `Operations/Gate_06_Fabrication.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Gate_07_Utilization.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Electronics.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Energy.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Plastics.md` | Admin/Forge_Audit_Kit.md |
+| `Operations/Woodworking.md` | Admin/Forge_Audit_Kit.md |
+| `Architecture/Forge_Net.md` | Admin/Forge_Audit_Kit.md |
+
+**Recommended:** Single batch correction pass across all ten files.
+
+---
+
+### Planned / Unverified Files — Final Status
+
+| File | Status | Blocking |
+|------|--------|----------|
+| `Admin/Governance_Migration_Protocol.md` | PLANNED | GOV-001 |
+| `Admin/Repository_Structure.md` | PLANNED | — |
+| `Admin/Forge_Audit_Kit.md` | Verify exists | Many Verification Refs point here |
+| `Admin/File_Template.md` | Verify exists | VG suggested reading order |
+| `Admin/AUDIT_HARNESS.py` | Verify exists | RIP Phase 1/2 automation |
+| `economics_v0.md` | PLANNED | TR-001 blocks v0→v1 |
+| `Precision_LF.md` | PLANNED | GK-005 — path TBD |
+| `Safety_Protocols.md` | PLANNED | AS noise/hearing conservation |
+| `Architecture/Structural_Engineering.md` | **RETIRE** | Absorbed by Mechanical_Structures.md |
+| `Architecture/Mechanical_Systems.md` | **RETIRE** | Absorbed by Mechanical_Structures.md |
+| `/Archive/` directory | NOT YET CREATED | RIP-001 Critical |
+| `Operations/Component_Triage_System.md` | Verify exists | Referenced by Gate_04 |
+| `Operations/Spin_Chamber_v0.md` | Verify exists | Referenced by Gate_04 scope |
+| `Operations/Material_Separation_Gate_v0.md` | Verify exists | Referenced by Gate_04/05 |
+
+---
+
+### Cross-Module Unknowns Requiring `Unknowns.md` Entries
+
+| Unknown | Referenced By | Status |
+|---------|--------------|--------|
+| UNK-006 — Facility siting | Gates 01, 03, 04, 05, 06, Electronics, Woodworking | No owning file — 7 dependents |
+| UNK-008 — Welding wire chemical qualification | Gate_06 | Not yet assigned |
+| FL-002 — Reduction module no owning file | Forge_flow, Gate_04 | Gate_03 may resolve — verify |
+| EC-002 — Anti-Weaponization pattern-matching | Ethical_Constraints, Gate_02 | No mechanism defined |
+| EL-006 — Cryptographic key management for electronics | Electronics | Not yet assigned |
+| GF-003 — Machining and milling hardware specification | Gate_06 | Not yet assigned |
+
+---
+
+### Repository-Wide Maturity Snapshot
+
+| File | Status | Spec Gates | Highest Risk |
+|------|--------|-----------|--------------|
+| `Admin/Governance_Charter.md` | Active | — | Critical (GOV-003, 005) |
+| `Admin/Ethical_Constraints.md` | Active | — | Critical (EC-001, 002, 003) |
+| `Admin/Auditor_Protocols.md` | Active | — | Medium |
+| `Admin/Verification_Gates_LF.md` | Draft | — | Low |
+| `Admin/Canonical_Terms.md` | Active | — | Medium |
+| `Admin/Engineer_Protocols.md` | Draft | — | Low |
+| `Admin/Security_Protocols.md` | Draft | — | Critical (SEC-007) |
+| `Admin/Repository_Integrity_Protocol.md` | Draft | — | Critical (RIP-001) |
+| `Admin/Ship_of_Theseus.md` | Exploration | — | Low |
+| `Admin/Trajectories.md` | Exploration | — | Medium |
+| `Architecture/Forge_flow.md` | Exploration | — | High (FL-001, FL-002) |
+| `Architecture/Components.md` | Exploration | — | Low |
+| `Architecture/Geck_forge_seed.md` | Exploration | — | Low |
+| `Architecture/Engineering.md` | Draft | — | Critical (EN-001) |
+| `Architecture/Mechanical_Structures.md` | Draft | 1/6 | High |
+| `Architecture/Cognitive_Frameworks.md` | Exploration | — | High (CF-001, CF-002) |
+| `Architecture/Forge_Net.md` | Exploration | — | Critical (FN-001, FN-005) |
+| `Operations/Gate_01_Intake.md` | Exploration | 0/6 | Medium |
+| `Operations/Gate_02_Triage.md` | Draft | 2/6 | High |
+| `Operations/Gate_03_Reduction.md` | Exploration | 0/6 | High |
+| `Operations/Gate_04_Separation_Mechanical.md` | Exploration | 0/6 | Medium |
+| `Operations/Gate_05_Separation_Thermal.md` | Exploration | 0/6 | Medium |
+| `Operations/Gate_06_Fabrication.md` | Exploration | 0/6 | Medium |
+| `Operations/Gate_07_Utilization.md` | Exploration | 0/6 | Low |
+| `Operations/Electronics.md` | Exploration | 0/6 | High |
+| `Operations/Energy.md` | Exploration | 0/6 | Medium |
+| `Operations/Air_Scrubber.md` | Draft | 2/6 | High |
+| `Operations/Plastics.md` | Exploration | 0/6 | High |
+| `Operations/Woodworking.md` | Draft | 0/6 | High |
+| `Operations/Support_Raft.md` | Exploration | — | High |
+| `Tests/Leviathan_testing.md` | Exploration | — | High |
+| `Challenges/Water.md` | New | — | — |
+
+---
+
+*This completes the full repository scope addendum across all known
+files. Append to Discovery_Addendum_Consolidated.md or integrate
+directly into Discovery.md after reconciliation.*
+*File-local Scope Boundary sections remain authoritative in all cases.*
