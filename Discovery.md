@@ -1409,3 +1409,709 @@ files will follow in subsequent batches. Reconcile against existing
 Discovery.md content before committing — additive only, not a
 replacement.*
 
+# Discovery.md — Consolidated Scope Addendum
+## Covers: Admin/ (10 files) · Architecture/ (7 files) · Operations/Gates (7 files)
+## Status: Draft — attach as addendum; reconcile before committing to Discovery.md
+## Compiled: 2026-05-31
+
+---
+
+> **Preamble — Single Source of Truth Rule**
+> Scope entries in this addendum are navigation summaries only.
+> File-local Scope Boundary sections remain authoritative.
+> Where this addendum and a file's own Scope Boundary conflict,
+> the file wins. Update this addendum when files change; do not
+> update files to match this addendum.
+
+---
+
+> **How to use this addendum**
+> "Where does this belong?" → find the owning file here.
+> "What files does this decision affect?" → check Downstream Recipients.
+> "What must exist before this file can be promoted?" → check Upstream
+> Dependencies and Open Blocking notes.
+> Full detail always lives in the file itself.
+
+---
+
+## Section 1 — Admin/
+
+---
+
+### `Admin/Governance_Charter.md`
+**Purpose:** Constitutional root. Defines governance hierarchy, Tier 1
+Axioms, authority relationships, and amendment doctrine.
+**In-Scope:** Tier 1 axioms (P-1–P-4, Q-1–Q-4); governance tiers 1–5;
+bootstrap and genesis doctrine; escalation and migration doctrine;
+autonomous governance constraints; human override doctrine.
+**Out-of-Scope:** Runtime execution; cryptographic implementation
+(→ `Admin/Security_Protocols.md`); canonical terminology
+(→ `Admin/Canonical_Terms.md`); auditor behavior
+(→ `Admin/Auditor_Protocols.md`).
+**Upstream:** None — constitutional root.
+**Downstream:** All repository files; `Admin/Auditor_Protocols.md`;
+`Admin/Security_Protocols.md`; `Admin/Governance_Migration_Protocol.md`
+[PLANNED]; `Admin/Canonical_Terms.md`.
+> ⚠️ *GOV-003 (integrity enforcement), GOV-005 (constitutional stability),
+> GOV-006 (human override authenticity) are Critical open unknowns.*
+
+---
+
+### `Admin/Ethical_Constraints.md`
+**Purpose:** Co-Tier 1 control substrate. Determines whether actions are
+permitted before determining how to execute them. Hard constraints only —
+commandments, not guidelines.
+**In-Scope:** Anti-Weaponization Doctrine (hardest constraint); Life
+Preservation Heuristics; ownership and legal permissibility framework;
+high-permission environment constraints; refusal as first-class action;
+Pacifist Operating Posture fallback.
+**Out-of-Scope:** Constitutional hierarchy (→ `Admin/Governance_Charter.md`);
+auditor behavior (→ `Admin/Auditor_Protocols.md`); runtime enforcement code.
+**Upstream:** None — co-Tier 1 with Governance_Charter.
+**Downstream:** All repository files (Ethical Anchor field);
+`Admin/Governance_Charter.md`; `Tests/Leviathan_testing.md`.
+> ⚠️ *EC-001 (confidence threshold), EC-002 (Anti-Weaponization
+> pattern-matching), EC-003 (human escalation path) all open.*
+
+---
+
+### `Admin/Auditor_Protocols.md`
+**Purpose:** Tier 2 operational doctrine for how auditors behave.
+Prevents audit theater, scope creep, semantic drift, and silent
+contradiction accumulation.
+**In-Scope:** Auditor role classes; 10-phase audit sequence; Fallacy
+Checklist; decentralized Sidecar Model; Unknowns governance; verification
+gate enforcement; adversarial audit layer; Full Stop Review triggers;
+autonomous auditor constraints.
+**Out-of-Scope:** Engineering specifications; ethical policy detail
+(→ `Admin/Ethical_Constraints.md`); governance authority structure
+(→ `Admin/Governance_Charter.md`); canonical terms
+(→ `Admin/Canonical_Terms.md`).
+**Upstream:** `Admin/Governance_Charter.md`; `Admin/Ethical_Constraints.md`.
+**Downstream:** `Admin/Forge_Audit_Kit.md`; `Admin/Verification_Gates_LF.md`;
+all repository files.
+> ⚠️ *AP-004 (cross-auditor disagreement resolution) open.*
+
+---
+
+### `Admin/Verification_Gates_LF.md`
+**Purpose:** Single canonical source for the six promotion gates (G1–G6).
+Every file's Verification Ref field points here.
+**In-Scope:** Gate definitions G1–G6 with pass criteria; failure routing;
+Full Stop Review triggers; enforcement rules (sequential, binding,
+self-approval prohibition).
+**Out-of-Scope:** Full auditor role doctrine (→ `Admin/Auditor_Protocols.md`);
+full adversarial battery (→ `Admin/Auditor_Protocols.md`); condensed audit
+reference (→ `Admin/Forge_Audit_Kit.md`); cryptographic gate enforcement
+(→ `Admin/Security_Protocols.md`).
+**Upstream:** `Admin/Auditor_Protocols.md` (source of truth; conflicts
+resolve there); `Admin/Governance_Charter.md`.
+**Downstream:** All repository files (Verification Ref field);
+`Admin/Forge_Audit_Kit.md`; `Admin/Security_Protocols.md` (Phase 3).
+> ⚠️ *VG-001 (synchronization authority chain) blocks Specification
+> promotion. Suggested Reading Order: place after `Admin/File_Template.md`.*
+> ⚠️ **Verification Ref fix needed:** Several gate files still point to
+> `Admin/Forge_Audit_Kit.md` — correct target is this file.
+
+---
+
+### `Admin/Canonical_Terms.md`
+**Purpose:** Single source of truth for repository vocabulary.
+Prevents semantic drift across multi-agent cycles.
+**In-Scope:** Authoritative vocabulary mappings; conflict resolution rules;
+anti-drift guardrails; banned terms and approved replacements.
+**Out-of-Scope:** Component blueprints; API schemas; ethical policy
+(→ `Admin/Ethical_Constraints.md`); operational routing semantics
+(→ `Architecture/Forge_flow.md` is authoritative for gate logic terms;
+conflicts escalate here as Active Disputes); governance tier authority
+(→ `Admin/Governance_Charter.md`).
+**Upstream:** `Admin/Governance_Charter.md`; `Architecture/Forge_flow.md`;
+`Discovery.md` Rename Registry.
+**Downstream:** All repository files; `Admin/Auditor_Protocols.md`
+(Fallacy 4 enforcement); `Admin/Security_Protocols.md` (CT-004 pending).
+> ⚠️ *CT-002 (Component Library Schema) blocks
+> `Operations/Gate_02_Triage.md` promotion.
+> CT-004 (Trusted Initialization Environment) blocks
+> `Admin/Security_Protocols.md` Section III.2 promotion.*
+
+---
+
+### `Admin/Engineer_Protocols.md`
+**Purpose:** Cognitive and procedural protocols for engineering
+contributors. Fills the gap between governance (what is permitted)
+and domain specifications (what is built).
+**In-Scope:** Pragmatic question framework; assumption challenge triggers;
+anti-reinvention rules; failure-harvesting doctrine; Engineer ↔ Auditor
+dispute resolution.
+**Out-of-Scope:** Specific engineering calculations (→ domain files);
+audit procedures (→ `Admin/Auditor_Protocols.md`); auditor role classes
+(→ `Admin/Auditor_Protocols.md`).
+**Upstream:** `Admin/Auditor_Protocols.md`; `Admin/Ethical_Constraints.md`;
+`Discovery.md`.
+**Downstream:** All engineering contributors; all Operations/ and
+Architecture/ domain files.
+> ⚠️ *EP-004 (engineering authority boundary) undefined.*
+
+---
+
+### `Admin/Security_Protocols.md`
+**Purpose:** Cryptographic enforcement layer. Bridges constitutional
+governance declarations and operational integrity procedures.
+**In-Scope:** Multi-signature human override verification (GOV-006
+resolution); automated code-signing protocols; node identity verification;
+key rotation cycles; degraded-operation security doctrine; authentication
+event logging (SEC-REG-001).
+**Out-of-Scope:** Component infiltration prevention for salvaged hardware
+(→ `Operations/Electronics.md`); OS firewall or network firmware rules;
+physical facility access; constitutional doctrine
+(→ `Admin/Governance_Charter.md`).
+**Upstream:** `Admin/Governance_Charter.md`; `Admin/Repository_Integrity_Protocol.md`;
+`Admin/Canonical_Terms.md` (CT-004 prerequisite);
+`Operations/Electronics.md` (Logic-Zero wipe prerequisite).
+**Downstream:** `Admin/Repository_Integrity_Protocol.md` (Phase 3);
+`Admin/Governance_Charter.md` (GOV-006 resolution);
+all governance files (signing eligibility).
+> ⚠️ *SEC-001 (quorum under network partition), SEC-007 (external
+> root-of-trust architecture) are Critical. CT-004 blocks Section III.2.*
+
+---
+
+### `Admin/Repository_Integrity_Protocol.md`
+**Purpose:** Operational integrity enforcement procedures. Bridges
+constitutional integrity requirements and fully enforced protections.
+**In-Scope:** Integrity baseline definitions; violation detection
+(human-in-the-loop at v0); violation classification (Minor/Major/
+Constitutional) and response ladder; recovery procedures; automation
+migration path (Phase 1→2→3); incident logging.
+**Out-of-Scope:** Cryptographic authentication implementation
+(→ `Admin/Security_Protocols.md`); constitutional doctrine
+(→ `Admin/Governance_Charter.md`); CI/CD automation mechanics.
+**Upstream:** `Admin/Governance_Charter.md` (GOV-003 originating unknown);
+`Admin/Auditor_Protocols.md` (Challenge Classes 6, 9, 10);
+`Admin/Ethical_Constraints.md`.
+**Downstream:** `Admin/Forge_Audit_Kit.md` (RIP-004 addition to opening
+checklist); `Admin/AUDIT_HARNESS.py`; `Admin/Security_Protocols.md`
+(Phase 3); `Unknowns.md`; `Discovery.md` (Archive directory — RIP-001).
+> ⚠️ *RIP-001 (prior-state archival system not established) is Critical.
+> Archive directory has not yet been created — add [PLANNED] entry to
+> Discovery.md when established.*
+
+---
+
+### `Admin/Ship_of_Theseus_Right_to_Repair.md`
+**Purpose:** Philosophical and legal load-bearing argument for the
+Forge's repair-first doctrine. Ethical and legal defense framework for
+treating Forge outputs as restorations.
+**In-Scope:** Ship of Theseus paradox as repair-first grounding;
+right-to-repair legal defense strategy; grain preservation system as
+provenance mechanism; Bootstrap Doctrine and Graduation Rule continuity;
+QR code provenance framework (placeholder).
+**Out-of-Scope:** Full triage workflow (→ `Operations/Gate_02_Triage.md`);
+grain storage protocol (→ ST-001 pending); QR standard (→ ST-002 pending);
+jurisdiction-specific legal verification (→ ST-003 — human decision);
+G.E.C.K. seeding specs (→ `Architecture/Geck_forge_seed.md`).
+**Upstream:** `Operations/Gate_02_Triage.md`; `Architecture/Components.md`.
+**Downstream:** `Operations/Gate_02_Triage.md`;
+`Architecture/Geck_forge_seed.md`.
+> ⚠️ *ST-003 (legal applicability by jurisdiction) blocks commercial
+> operation. Non-blocking for Exploration.*
+
+---
+
+### `Admin/Trajectories.md`
+**Purpose:** Defines the evolutionary trajectory v0 through v5. Scope
+routing destination for all out-of-version capabilities.
+**In-Scope:** Version trajectory with survival thresholds and exit
+conditions; FRT doctrine and floor value ([2–5%] placeholder); revenue
+allocation framework; scope routing destination for future capabilities.
+**Out-of-Scope:** Component taxonomy for future versions (→ module files
+when versions become active); detailed economic model
+(→ `economics_v0.md` [PLANNED]); FRT measurement
+(→ `Operations/Gate_07_Utilization.md`); component procurement
+(→ `Architecture/Geck_forge_seed.md`).
+**Upstream:** `Admin/Governance_Charter.md`; `Operations/Energy.md`;
+`Architecture/Geck_forge_seed.md`.
+**Downstream:** All operational and architecture files (scope routing);
+`Operations/Gate_07_Utilization.md`; `economics_v0.md` [PLANNED].
+> ⚠️ *TR-001 (v1 profitability baseline) blocks v0→v1 transition.*
+
+---
+
+## Section 2 — Architecture/
+
+---
+
+> **Vocabulary authority note:** `Architecture/Forge_flow.md` is the
+> operational vocabulary standard for the entire repository. For any
+> undefined operational term, consult `Architecture/Forge_flow.md`
+> §Defined Terms before `Admin/Canonical_Terms.md`. This is the only
+> file in the repository that is simultaneously an operational document
+> and a vocabulary standard for all others.
+
+---
+
+### `Architecture/Forge_flow.md`
+**Purpose:** Minimal viable operational logic of the Lazarus Forge AND
+repository-wide vocabulary reference standard. Authoritative for gate
+logic, outcome paths, and the want/need policy.
+**In-Scope:** v0 gate logic (8 sequential decision gates); Gate
+Correspondence table; outcome paths and reversibility; Human/AI Oversight
+Gate logic; want/need policy; fabrication priority order; primary KPI
+definition; termination conditions; all Defined Terms (repository-wide).
+**Out-of-Scope:** Hardware specifications (→ individual Operations/ files);
+Reduction module specification (→ FL-002 — no owning file yet); component
+triage workflow (→ `Operations/Gate_02_Triage.md`); energy accounting
+(→ `Operations/Energy.md`); autonomous logic (→ `Architecture/Cognitive_Frameworks.md`);
+version roadmap (→ `Admin/Trajectories.md`).
+**Upstream:** `Admin/Canonical_Terms.md`; `Admin/Ethical_Constraints.md`;
+`Architecture/Components.md`.
+**Downstream:** All repository files (Defined Terms); all Operations/ gate
+files; `Architecture/Forge_Net.md`; `Admin/Canonical_Terms.md`.
+> ⚠️ *FL-001 (gate logic determinism at boundary cases) blocks
+> Specification promotion.*
+> ⚠️ *FL-002 (Reduction module — no owning file) is a critical gap:
+> the only fully irreversible step in the flow has no owning specification.
+> See `Operations/Gate_03_Reduction.md` — now exists as Exploration.
+> FL-002 should be reviewed for resolution.*
+
+---
+
+### `Architecture/Components.md`
+**Purpose:** Minimum component architecture for a functioning and
+persistent Lazarus Forge. Governs all component classification decisions.
+**In-Scope:** Component taxonomy (Critical, Useful, Bootstrap) with
+definitions; Bootstrap Doctrine and Graduation Rule; dual-use annotation
+standard; version mapping v0–v3.
+**Out-of-Scope:** Electronics, software, biological, or optical systems
+(→ downstream versions); detailed engineering specs (→ domain files);
+energy infrastructure (→ `Operations/Energy.md`); G.E.C.K. manifest
+(→ `Architecture/Geck_forge_seed.md`).
+**Upstream:** `Architecture/Forge_flow.md`; `Architecture/Geck_forge_seed.md`;
+`Admin/Ethical_Constraints.md`.
+**Downstream:** `Architecture/Geck_forge_seed.md`;
+`Operations/Gate_02_Triage.md`; all Operations/ gate files.
+> ⚠️ *CO-002 (metrology precision thresholds) deferred to first
+> fabrication trials.*
+
+---
+
+### `Architecture/Geck_forge_seed.md`
+**Purpose:** Smallest coherent set of tools, data, and doctrine capable
+of instantiating a new Lazarus Forge from a standing start.
+**In-Scope:** Minimum viable seed definition; 8 core G.E.C.K. modules
+and criticality rationale; procurement doctrine; precision as capability
+threshold (introductory); marine variant module list (exploratory);
+success criteria and scaling pathway.
+**Out-of-Scope:** Detailed engineering specs for any G.E.C.K. module;
+full precision doctrine (→ `Precision_LF.md` [PLANNED]);
+Leviathan chassis (→ `Admin/Trajectories.md`); energy infrastructure
+(→ `Operations/Energy.md`); component taxonomy (→ `Architecture/Components.md`).
+**Upstream:** `Architecture/Components.md`; `Architecture/Forge_flow.md`;
+`Admin/Ethical_Constraints.md`.
+**Downstream:** `Architecture/Components.md` (Bootstrap Doctrine anchor);
+`Admin/Trajectories.md`; `Precision_LF.md` [PLANNED].
+> ⚠️ *GK-005 (Precision_LF.md not yet created) non-blocking at Exploration.*
+
+---
+
+### `Architecture/Engineering.md`
+**Purpose:** Single durable source of foundational engineering truth and
+judgment for all Forge activities. Broad principles layer.
+**In-Scope:** Foundational engineering principles; rules of thumb;
+core mechanical, structural, and systems engineering fundamentals;
+materials behavior overview; Forge-specific safety factors; Arkansas
+climate derating; progressive engineering path.
+**Out-of-Scope:** Detailed calculations for specific subsystems;
+CNC kinematic protection protocols or salvaged gantry rigidity doctrine
+(→ `Architecture/Mechanical_Structures.md`); fabrication techniques
+(→ domain files); software or electronics design (→ dedicated files).
+**Upstream:** `Admin/Ethical_Constraints.md`; `Admin/Engineer_Protocols.md`.
+**Downstream:** All Operations/ and Architecture/ domain files;
+`Architecture/Mechanical_Structures.md`.
+> ⚠️ *EN-001 (validated safety factors for salvaged materials) is Critical
+> — blocks structural specification.*
+> ℹ️ *Reciprocal scope note needed in this file: add
+> `Architecture/Mechanical_Structures.md` to its Out-of-Scope section.*
+
+---
+
+### `Architecture/Mechanical_Structures.md`
+**Purpose:** Structural, mechanical, and kinematic engineering doctrine
+for salvaged-component fabrication machinery. Extends
+`Architecture/Engineering.md` principles into the specific constraints
+of salvaged frames, mismatched rails, and abrasive Forge environments.
+**In-Scope:** Gantry rigidity and damp-filling criteria; thermal expansion
+compensation rules; kinematic interlock matrix (Kinematic Fault 01,
+Resonance Mitigation, E-Stop Lockout, Alignment Fault); bearing
+contamination protection doctrine; sacrificial shear coupling mandate;
+positive-pressure spindle purge; falsifiable MTBMF metric.
+**Out-of-Scope:** Foundational engineering principles and safety factor
+doctrine (→ `Architecture/Engineering.md`); G-code or part geometries;
+motor driver schematics (→ `Operations/Electronics.md` [PLANNED]);
+chemistry profiles (→ `Operations/Air_Scrubber.md`); Air Scrubber
+back-pressure specs (→ `Operations/Air_Scrubber.md`).
+**Upstream:** `Architecture/Engineering.md`; `Admin/Ethical_Constraints.md`;
+`Admin/Mechanical_Structures.md` (Verification Ref:
+`Admin/Verification_Gates_LF.md`).
+**Downstream:** All fabrication machinery specifications that require
+gantry or kinematic doctrine.
+> ⚠️ *ME-001 (resonance mapping on mismatched rails) makes interlock
+> thresholds provisional — tagged in matrix.*
+> ℹ️ *Replaces the planned `Architecture/Structural_Engineering.md` and
+> `Architecture/Mechanical_Systems.md` entries — those planned files
+> should be retired from Discovery.md.*
+
+---
+
+### `Architecture/Cognitive_Frameworks.md`
+**Purpose:** Defines how Forge systems think safely under uncertainty.
+Cognitive reliability architectures, distributed trust, and redundancy
+frameworks for autonomous systems in degraded or adversarial environments.
+**In-Scope:** Cognitive reliability layers (Layer 0–6); framework taxonomy
+(A–G); confidence collapse states (Green–Black); return-to-base doctrine;
+split-brain doctrine; rogue node identification and containment; AI
+consensus structures and diversity requirements.
+**Out-of-Scope:** PCB fabrication (→ `Operations/Electronics.md`);
+ethical policy itself (→ `Admin/Ethical_Constraints.md`); individual
+Leviathan mission logic (→ `Tests/Leviathan_testing.md`); networking
+implementation (→ `Architecture/Forge_Net.md`); cryptographic protocols
+(→ `Admin/Security_Protocols.md`).
+**Upstream:** `Admin/Ethical_Constraints.md`; `Operations/Electronics.md`;
+`Admin/Auditor_Protocols.md`.
+**Downstream:** `Architecture/Forge_Net.md`; `Tests/Leviathan_testing.md`;
+`Operations/Support_Raft_v0.md`; `Admin/Trajectories.md`.
+> ⚠️ *CF-001 (hardware watchdog minimum standard) blocks any
+> Specification-level autonomous architecture.*
+> ⚠️ *CF-DS-001 (centralized vs. distributed cognition) and CF-DS-002
+> (human override authority scope) are active disputes.*
+
+---
+
+### `Architecture/Forge_Net.md`
+**Purpose:** Decentralized data and physical infrastructure connecting
+forge instances into a resilient, self-improving ecology.
+**In-Scope:** Local-primary/network-sync-secondary doctrine; data layer
+architecture (local cache, shared knowledge base, cognitive save states,
+validation layer); cluster formation and resource sharing; trust weighting
+and federation; failure, loss, and reintegration doctrine; network security
+threat model; data privacy classification tiers.
+**Out-of-Scope:** Physical networking hardware specs (not yet assigned);
+specific database software; detailed cluster governance rules (emergent);
+delay-tolerant networking protocol detail (→ `Tests/Leviathan_testing.md`);
+rogue node management (→ `Architecture/Cognitive_Frameworks.md`);
+energy cost of network operation (→ `Operations/Energy.md`).
+**Upstream:** `Operations/Gate_01_Intake.md`; `Architecture/Cognitive_Frameworks.md`;
+`Admin/Ethical_Constraints.md`; `Tests/Leviathan_testing.md`;
+`Operations/Energy.md`.
+**Downstream:** Inter-forge logistics files (downstream, depend on this);
+`Admin/Trajectories.md`.
+> ⚠️ *FN-001 (data validation criteria) and FN-005 (data privacy and
+> access control) are Critical — both block first network connection.*
+> ℹ️ *Verification Ref in this file points to `Admin/Forge_Audit_Kit.md`
+> — should be corrected to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+## Section 3 — Operations/Gates
+
+> **Gate flow reading order:** G01 → G02 → G03 → G04 → G05 → G06 → G07
+> All gate logic and shared vocabulary derives from
+> `Architecture/Forge_flow.md`. Gate files define how; Forge_flow defines
+> what and when.
+
+---
+
+### `Operations/Gate_01_Intake.md`
+**Purpose:** Entry point for all items entering the Forge. Makes
+information available for downstream recovery decisions — does not make
+recovery decisions itself.
+**In-Scope:** Entry protocol for all incoming items; safety screening
+(hazards, energetics, biological, chemical, radiological); physical
+document handling; reference database lookup doctrine; item tagging and
+provenance recording; parts list generation; fastener and small component
+recovery; unknown item hold-and-inspect protocol; handoff to Gate_02.
+**Out-of-Scope:** Classification and triage workflow
+(→ `Operations/Gate_02_Triage.md`); reference database content or schema
+(→ `Architecture/Forge_Net.md`); network sync protocol
+(→ `Architecture/Forge_Net.md`); energetic material disposal doctrine
+(→ GI-002 — not yet assigned); air handling (→ `Operations/Air_Scrubber.md`);
+facility siting (→ UNK-006 — no file exists yet).
+**Upstream:** `Architecture/Forge_Net.md` (reference database);
+`Admin/Ethical_Constraints.md`; `Architecture/Forge_flow.md`.
+**Downstream:** `Operations/Gate_02_Triage.md`; `Architecture/Forge_Net.md`
+(intake records as network knowledge artifacts).
+> ⚠️ *7 open unknowns. GI-001 (reference database content) and GI-002
+> (energetic discharge doctrine) are highest risk.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Gate_02_Triage.md`
+**Purpose:** Decision gateway between reuse and destruction. Determines
+whether a component can still function or be restored at lower cost than
+fabricating new.
+**In-Scope:** Triage principles and philosophy; false-positive tolerance
+doctrine; Strategic Recoverability tier classification; Gate Correspondence
+table; queue economics doctrine; five triage stations (Station 0–4);
+Triage Terminal and Human/AI Oversight Gate behavior; failure modes and
+mitigations; minimum viable triage configuration.
+**Out-of-Scope:** Master gate logic and shared vocabulary
+(→ `Architecture/Forge_flow.md`); decontamination and air handling
+(→ `Operations/Air_Scrubber.md`); electrical component harvesting
+(→ `Operations/Electronics.md`); material recovery and reduction methods
+(→ `Operations/Gate_03_Reduction.md`); Anti-Weaponization pattern-matching
+(→ `Admin/Ethical_Constraints.md`); component taxonomy
+(→ `Architecture/Components.md`); FRT reinvestment accounting
+(→ `Operations/Gate_07_Utilization.md`).
+**Upstream:** `Operations/Gate_01_Intake.md`; `Architecture/Forge_flow.md`;
+`Architecture/Components.md`; `Admin/Ethical_Constraints.md`.
+**Downstream:** `Operations/Gate_03_Reduction.md`;
+`Operations/Gate_04_Separation_Mechanical.md`;
+`Operations/Gate_06_Fabrication.md`;
+`Admin/Ship_of_Theseus_Right_to_Repair.md`.
+> ⚠️ *CT-002 (Component Library Schema) is a blocking unknown.
+> 1 active dispute. Highest Risk: High.*
+
+---
+
+### `Operations/Gate_03_Reduction.md`
+**Purpose:** The only fully irreversible step in the Forge operational
+flow. Receives items that have exhausted all recovery paths and reduces
+them to feedstock. Irreversibility governs every design decision here.
+**In-Scope:** Reduction doctrine — when permitted and what prerequisites
+must be met; output envelope; prohibited inputs; method selection doctrine
+(shredding, cutting, milling); contamination discovery protocol; dust and
+particulate handling; emergency shutdown doctrine and safe states; handoff
+to Gate_04; integration with Air Scrubber.
+**Out-of-Scope:** Gate logic routing items to Reduction
+(→ `Architecture/Forge_flow.md`); upstream hazard screening
+(→ `Operations/Gate_01_Intake.md`); specific machine selection
+(→ GR-002 — not yet assigned); dust collection hardware
+(→ `Operations/Air_Scrubber.md`); purification processing of output
+(→ `Operations/Gate_04_Separation_Mechanical.md`,
+`Operations/Gate_05_Separation_Thermal.md`); energy accounting
+(→ `Operations/Energy.md`); facility siting (→ UNK-006);
+biological or chemical waste disposal beyond containment
+(→ GR-003 — not yet assigned).
+**Upstream:** `Operations/Gate_02_Triage.md`; `Architecture/Forge_flow.md`;
+`Operations/Gate_01_Intake.md`; `Operations/Air_Scrubber.md`.
+**Downstream:** `Operations/Gate_04_Separation_Mechanical.md`;
+`Operations/Air_Scrubber.md`.
+> ⚠️ *5 open unknowns. Highest Risk: High. FL-002 resolution candidate —
+> this file may now satisfy the "no owning file for Reduction" gap.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Gate_04_Separation_Mechanical.md`
+**Purpose:** Upstream mechanical decision point in the Purification stage.
+Diverts usable material away from the energy-intensive Spin Chamber where
+possible. Refusal-first: uncertain material is held, not passed downstream.
+**In-Scope:** Design intent and operating philosophy; physical subsystem
+descriptions (rotor, sensors, collection zones, fail-to-bin protocol);
+RPM exploration band and stratification behavior; sensor cross-check and
+confidence scoring; output classification (Class A, B, C, Unknown Bulk,
+Fail); falsifiable performance metrics (Material Diversion Rate, Unknown
+Bulk Rate); Bootstrap Proxy Mode; lifecycle and degraded operation behavior.
+**Out-of-Scope:** Upstream feedstock reduction (→ `Operations/Gate_03_Reduction.md`);
+thermal processing of Class C output
+(→ `Operations/Gate_05_Separation_Thermal.md`); component triage of
+Unknown Bulk (→ `Operations/Gate_02_Triage.md`); air handling
+(→ `Operations/Air_Scrubber.md`); energy accounting
+(→ `Operations/Energy.md`); marine thermal sink integration
+(→ `Operations/Support_Raft_v0.md`); electromagnetic field bias
+(→ `Admin/Trajectories.md` — future version); detailed sensor specs
+(→ not yet assigned); powder feedstock handling (explicit non-goal,
+all versions).
+**Upstream:** `Operations/Gate_03_Reduction.md`; `Architecture/Forge_flow.md`;
+`Operations/Air_Scrubber.md`.
+**Downstream:** `Operations/Gate_05_Separation_Thermal.md`;
+`Operations/Gate_02_Triage.md` (Unknown Bulk);
+`Operations/Gate_06_Fabrication.md` (Class A direct path).
+> ⚠️ *8 open unknowns. 1 active dispute. Verification Ref points to
+> `Forge_Audit_Kit.md` — correct to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Gate_05_Separation_Thermal.md`
+**Purpose:** Primary thermal processing module (Spin Chamber). Converts
+metallic feedstock into ranked material streams through induction heating,
+slow rotation, and electromagnetic field stabilization.
+**In-Scope:** Operating principle and design intent; physical geometry and
+scale envelope (v0); materials selection (crucible and outer shell);
+rotation system parameters; heating strategy and thermal operating bands;
+electromagnetic field approach; atmosphere control; extraction interfaces
+and output categories; wire extrusion interface (planned — welding wire
+pathway); instrumentation and control philosophy; failure philosophy.
+**Out-of-Scope:** Upstream feedstock preparation
+(→ `Operations/Gate_03_Reduction.md`); mechanical separation decisions
+(→ `Operations/Gate_04_Separation_Mechanical.md`); wire extrusion nozzle
+design (→ `Admin/Trajectories.md` — future version); welding wire
+qualification (→ downstream, not yet assigned); self-replication
+architecture (→ `Architecture/Forge_flow.md`,
+`Architecture/Geck_forge_seed.md`); facility siting (→ SC-006 — UNK-006);
+MHD auxiliary coil detail (→ `Admin/Trajectories.md`); drive system
+geometry (→ SC-005 prerequisite); energy accounting
+(→ `Operations/Energy.md`).
+**Upstream:** `Operations/Gate_04_Separation_Mechanical.md`;
+`Architecture/Forge_flow.md`; `Operations/Energy.md`.
+**Downstream:** `Operations/Gate_06_Fabrication.md`; wire extrusion
+interface (future).
+> ⚠️ *5 open unknowns including one Critical (SC-005 — drive system
+> geometry prerequisite for dynamic analysis).*
+
+---
+
+### `Operations/Gate_06_Fabrication.md`
+**Purpose:** Constructive stage — where recovered and purified material
+becomes functional parts, tools, and infrastructure. Arc welding is the
+v0 proof-of-concept gatekeeper and entry point for all subsequent
+fabrication method introduction.
+**In-Scope:** Fabrication doctrine and priority order; arc welding as v0
+proof-of-concept gatekeeper; add-to-excess and mill-to-spec philosophy;
+welding wire feedstock requirements and qualification criteria; precision
+ceiling doctrine; operator safety (PPE, shielding, ventilation); method
+introduction and qualification criteria; feedback loop to Component
+Library; integration with upstream Gate_04 and Gate_05 outputs.
+**Out-of-Scope:** Wire extrusion nozzle design
+(→ `Operations/Gate_05_Separation_Thermal.md`); welding wire chemical
+qualification (→ UNK-008 — not yet assigned); laser/powder welding,
+casting, pressing, forging (→ `Admin/Trajectories.md` — future versions);
+machining and milling hardware specification (→ GF-003 — not yet assigned);
+energy accounting (→ `Operations/Energy.md`); facility siting beyond
+operator PPE (→ UNK-006); Component Library specification
+(→ `Architecture/Components.md`); utilization performance metrics
+(→ `Operations/Gate_07_Utilization.md`).
+**Upstream:** `Operations/Gate_04_Separation_Mechanical.md`;
+`Operations/Gate_05_Separation_Thermal.md`; `Architecture/Components.md`;
+`Architecture/Forge_flow.md`.
+**Downstream:** `Operations/Gate_07_Utilization.md`;
+`Architecture/Components.md` (fabricated parts feed Component Library).
+> ⚠️ *7 open unknowns. 1 active dispute. GF-003 (machining hardware)
+> and UNK-008 (wire qualification) are unassigned.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+### `Operations/Gate_07_Utilization.md`
+**Purpose:** After-action review stage. Where fabricated parts and
+recovered components meet operational reality. Produces the record
+that makes all future decisions better.
+**In-Scope:** After-action review doctrine; performance logging minimum
+content; failure mode capture and routing; maintenance frequency tracking;
+feedback to Gate_06_Fabrication (precision ceiling improvement); feedback
+to Forge_Net (network knowledge); feedback to Forge_flow (classification
+rule improvement); retirement handoff doctrine to Gate_02_Triage; FRT
+per-cycle logging (measurement only — doctrine in Trajectories.md); part
+lifecycle termination conditions.
+**Out-of-Scope:** Retirement routing decisions
+(→ `Operations/Gate_02_Triage.md`); fabrication methods or precision
+ceiling (→ `Operations/Gate_06_Fabrication.md`); component taxonomy
+(→ `Architecture/Components.md`); network contribution validation
+(→ `Architecture/Forge_Net.md`); gate logic
+(→ `Architecture/Forge_flow.md`); energy accounting
+(→ `Operations/Energy.md`); formal quality certification (→ GU-003 —
+not yet assigned).
+**Upstream:** `Operations/Gate_06_Fabrication.md`; `Architecture/Forge_flow.md`;
+`Admin/Trajectories.md` (FRT doctrine).
+**Downstream:** `Operations/Gate_02_Triage.md` (retirement re-entry);
+`Operations/Gate_06_Fabrication.md` (feedback loop);
+`Architecture/Forge_Net.md` (utilization data as network knowledge);
+`Architecture/Forge_flow.md` (classification rule improvement).
+> ⚠️ *5 open unknowns. 1 active dispute. TR-001 (v1 profitability
+> baseline) blocks FRT model refinement.*
+> ℹ️ *Verification Ref points to `Admin/Forge_Audit_Kit.md` — correct
+> to `Admin/Verification_Gates_LF.md`.*
+
+---
+
+## Cross-Cutting Notes for Discovery.md Integration
+
+### Planned Files — Status Summary
+
+| File | Status | Notes |
+|------|--------|-------|
+| `Admin/Governance_Migration_Protocol.md` | PLANNED | GOV-001 resolution target |
+| `Admin/Repository_Structure.md` | PLANNED | — |
+| `Admin/Forge_Audit_Kit.md` | Verify exists | Referenced by many files |
+| `Admin/File_Template.md` | Verify exists | Referenced by Verification_Gates_LF |
+| `Admin/AUDIT_HARNESS.py` | Verify exists | RIP Phase 1/2 automation target |
+| `economics_v0.md` | PLANNED | TR-001 blocks; v0→v1 transition |
+| `Precision_LF.md` | PLANNED | Path TBD; GK-005 originator |
+| `Architecture/Structural_Engineering.md` | **RETIRE** | Absorbed by Mechanical_Structures.md |
+| `Architecture/Mechanical_Systems.md` | **RETIRE** | Absorbed by Mechanical_Structures.md |
+| `Operations/Air_Scrubber.md` | PLANNED/verify | Referenced by Gates 01–04 |
+| `Operations/Electronics.md` | PLANNED/verify | Referenced by multiple files |
+| `Operations/Energy.md` | PLANNED/verify | Referenced by all gate files |
+| `Operations/Support_Raft_v0.md` | PLANNED/verify | Referenced by Cognitive_Frameworks |
+| `Operations/Component_Triage_System.md` | PLANNED/verify | Referenced by Gate_04 |
+| `/Archive/` directory | NOT YET CREATED | RIP-001 Critical — add when established |
+
+---
+
+### Verification Ref Corrections Required
+
+The following files have Verification Ref pointing to `Admin/Forge_Audit_Kit.md`
+rather than the canonical `Admin/Verification_Gates_LF.md`. Flag for correction
+on next audit pass:
+
+- `Operations/Gate_01_Intake.md`
+- `Operations/Gate_03_Reduction.md`
+- `Operations/Gate_06_Fabrication.md`
+- `Operations/Gate_07_Utilization.md`
+- `Architecture/Forge_Net.md`
+
+Additionally: `Operations/Gate_04_Separation_Mechanical.md` points to
+`Forge_Audit_Kit.md` (missing `Admin/` path prefix).
+
+---
+
+### UNK-006 — Facility Siting
+
+Referenced as unresolved by Gates 01, 03, 04, 05, and 06. No file exists.
+Should be logged in `Unknowns.md` as a cross-module unknown with those
+five gates as dependents if not already tracked.
+
+---
+
+### Governance Tier Summary
+
+| Tier | File | Status |
+|------|------|--------|
+| Tier 1 | `Admin/Governance_Charter.md` | Active |
+| Tier 1 | `Admin/Ethical_Constraints.md` | Active |
+| Tier 2 | `Admin/Auditor_Protocols.md` | Active |
+| Tier 3 | `Admin/Forge_Audit_Kit.md` | Verify |
+| Support | `Admin/Canonical_Terms.md` | Active |
+| Support | `Admin/Verification_Gates_LF.md` | Active (Draft) |
+| Support | `Admin/Security_Protocols.md` | Active (Draft) |
+| Support | `Admin/Repository_Integrity_Protocol.md` | Active (Draft) |
+| Support | `Admin/Engineer_Protocols.md` | Active (Draft) |
+| Support | `Admin/Ship_of_Theseus_Right_to_Repair.md` | Exploration |
+| Support | `Admin/Trajectories.md` | Exploration |
+
+### Architecture Reading Order
+
+1. `Architecture/Forge_flow.md` — vocabulary and gate logic first
+2. `Architecture/Components.md` — what must exist
+3. `Architecture/Geck_forge_seed.md` — how to seed it
+4. `Architecture/Engineering.md` — foundational principles
+5. `Architecture/Mechanical_Structures.md` — fabrication machinery doctrine
+6. `Architecture/Cognitive_Frameworks.md` — how it thinks
+7. `Architecture/Forge_Net.md` — how instances connect
+
+### Operations Gate Flow
+
+`Gate_01` → `Gate_02` → `Gate_03` → `Gate_04` → `Gate_05` → `Gate_06` → `Gate_07`
+*(with feedback loops: G07→G02, G07→G06, G06→Components, G02→G04/G06)*
+
+---
+
+*This addendum covers Admin/, Architecture/, and Operations/Gates.
+Remaining Operations/ domain files and Tests/ will follow in subsequent
+batches. Reconcile against existing Discovery.md before committing —
+additive only, not a replacement. File-local Scope Boundary sections
+remain authoritative where conflicts exist.*
