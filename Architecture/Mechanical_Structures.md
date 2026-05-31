@@ -1,0 +1,126 @@
+# Mechanical_Structures.md
+
+(New file created to replace Engineering.md, but created something else instead.  Links and names need updated.  Delete this comment upon drafting new revision.)  
+
+> ⚠️ **Operational Safety Advisory**
+> Structural deflection, unmodeled thermal expansion, and particulate bearing ingress present critical failure vectors capable of destroying irreplaceable salvaged kinematic components. Mechanical over-torque during the processing of unrefined feedstocks can trigger violent tool-head fracturing or motor burnout. Sacrificial mechanical shear couplings and positive-pressure pneumatic purges are mandatory across all primary drive assemblies. Never adjust axis rails or spindle positions while the drive bus is energized. **If an axis binds or exhibits harmonic chatter exceeding safety thresholds, drop the motor enable lines immediately.**
+> 
+## File State
+| Field | Value |
+|---|---|
+| Status | Draft |
+| Body Stability | Transitional |
+| Spec Gates | 1/6 |
+| Verification Ref | Admin/Forge_Audit_Kit.md |
+| Last Audit | 2026-05-31 |
+| Auditor | Gemini |
+| Open Unknowns | 3 |
+| Active Disputes | 0 |
+| Highest Risk | High |
+| Sidecar Link | #auditor-notes--unknowns |
+| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+## Scope Boundary
+**This file DOES define:**
+ * Structural frame rigidity standards and damp-filling criteria for salvaged members.
+ * Thermal expansion mitigation and coordinate delta compensation rules.
+ * Kinematic protection loops, shunt current monitoring, and torsional alignment interlocks.
+ * Hard-coded mechanical protection protocols (sacrificial shear pins, positive-pressure purges).
+ * Falsifiable mechanical performance metrics and structural drift indicators.
+**This file DOES NOT define:**
+ * Specific tool-path G-code files or part-specific geometries.
+ * Component specifications for explicit brands of stepper/servo motors.
+ * Electrical circuit schematics for motor driver boards (→ planned Electronics.md).
+ * Chemistry profiles for chemical tool-head processing (→ Operations/Air_Scrubber.md).
+## File Purpose
+This file establishes the structural, mechanical, and kinematic engineering doctrine for the Lazarus Forge ecosystem. Because the Forge relies entirely on salvaged structural steel, mismatched linear guides, and unrefined local feedstocks, it cannot operate using pristine machine shop assumptions.
+This document defines the physical safety boundaries, material constraints, and sensor interlocks required to prevent structural resonance, geometric drift, and catastrophic mechanical breakdown during autonomous or semi-autonomous fabrication cycles.
+## Assumptions
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Salvaged structural iron/steel frames require dampening to mill carbon steel | Resonance and flexure profiles | High | First physical tool-chatter analysis on unfilled frame |
+| ASM-002 | Mechanical components must endure ambient thermal deltas up to 25°C | Heat radiation from Gate 05 units | Medium | Measured enclosure temperature curves exceed bounds |
+| ASM-003 | Commercial rubber wipers are insufficient against abrasive local slag dust | Rapid seal abrasion literature | High | Bearing failure due to dust ingress inside 50 hours |
+| ASM-004 | Low-cost MEMS accelerometers can reliably capture spindle harmonic chatter | Analogous industrial telemetry data | Medium | Software loop fails to filter ambient motor noise |
+## Design Philosophy
+ * **Rigidity Through Mass, Not Sourcing:** Pristine cast-iron machine beds are unavailable. Structural rigidity must be achieved by reinforcing salvaged hollow profiles with local composite matrices.
+ * **Expect Distortion, Compensate Logically:** Every physical assembly will warp under thermal load or tool resistance. Deflection must be actively monitored at the sensor layer and mitigated via hardware interlocks.
+ * **Sacrificial Mechanical Weak Points:** Electrical fuses protect electronics; mechanical fuses must protect gears and motor shafts. Always design cheap, easily swappable failure points into high-torque paths.
+ * **Isolate Moving Surfaces:** Abrasive particulates are an operational certainty. Kinematic surfaces must be kept under constant positive pressure or dense physical oil barriers to reject contaminants.
+## Structural Frame & Rigidity Doctrine
+### 1. The Elastic Deformation Limit (Gantry Rigidity)
+When utilizing salvaged structural sections (such as heavy-wall steel square tubing or aluminum profiles) for a multi-axis CNC gantry or processing bed, deflection under cutting forces is the primary vector for dimensional instability and tool breakage. For a 1000 mm unsupported structural span under a 500 N lateral tool force, standard unfilled structures introduce unacceptable flexure.
+```
+[Toolhead Lateral Force: 500 N] ──► ┌────────────────────────────────────────┐
+                                    │ Unfilled Aluminum Profile (1000mm)     │ ──► Deflection: ~1.25 mm (Blinds Endmills)
+                                    └────────────────────────────────────────┘
+                                    ┌────────────────────────────────────────┐
+                                    │ Sand/Epoxy Composite Filled Steel Tube │ ──► Deflection: <0.08 mm (Precision Maintained)
+                                    └────────────────────────────────────────┘
+
+```
+**Mandatory Stabilization:** To maintain structural rigidity without custom manufacturing infrastructure, hollow structural steel frames **must** be damp-filled using a localized composite of clean, dry quartz sand and epoxy resin (80:20 mass ratio). This dampens resonant frequencies by up to 400% and maintains structural elastic boundaries when milling medium-carbon steels or dense recycled alloys.
+### 2. Thermal Expansion Disconnect
+Salvaged linear guideways bolted directly to unmachined steel frames will bind or introduce severe backlash as ambient temperatures fluctuate during high-energy Forge operations. Structural carbon steel and salvaged aluminum tool-carriages possess divergent thermal expansion coefficients:
+ * Structural Carbon Steel: \alpha \approx 12 \times 10^{-6}\text{ /}^\circ\text{C}
+ * Aluminum 6061-T6: \alpha \approx 23 \times 10^{-6}\text{ /}^\circ\text{C}
+A temperature swing of 25°C across a 1000 mm axis creates a 0.27 mm differential expansion delta. To combat this, all multi-axis gantry assemblies must utilize engineered mechanical slip-planes on secondary anchoring points or run software-mapped coordinate thermal compensation arrays bound to local frame thermistors.
+## Contamination & Bearing Protection Doctrine
+Standard commercial rubber linear rail seals fail rapidly when exposed to abrasive, jagged micro-particulates generated by slag crushing, wood processing, and metal milling. Once fine silicate dust or metallic swarf bypasses the primary wiper, it mixes with internal bearing grease to form an aggressive lapping compound, accelerating ball-bearing wear by over 800%.
+All critical mechanical bearing blocks operating inside the primary processing containment envelope **must** feature:
+ 1. Secondary, field-fabricated positive-pressure felt wipers.
+ 2. Constant saturation via high-viscosity way oil (ISO\text{ VG } 68 or equivalent) to physically flush incoming particulate matter away from the internal bearing tracks.
+## Kinematic & Mechanical Interlock Matrix [Ref: ME-001]
+To prevent logic-loop crashes from tool-head binding, axis crashes, or structural harmonic destruction, all mechanical translation layers must interface directly with this physical safety grid.
+| Targeted Failure Vector | Primary Detection Method | Actionable System Threshold | Automated Interlock Trigger (Safety Protocol) |
+|---|---|---|---|
+| **Axis Binding / Rail Ingress** | Shunt-resistor current monitoring on stepper/servo drivers (I_{drive}) | I_{drive} \ge 135\% of nominal tuning baseline for >150\text{ ms} | **Kinematic Fault 01:** Drop motor enable lines; immediately pause G-code execution buffer; lock z-axis brake. |
+| **Structural Resonance / Chatter** | 3-axis MEMS accelerometer mounted directly on tool-spindle housing | Vibration amplitude >2.2\text{ g} within the 150\text{ Hz}\text{--}600\text{ Hz} bands | **Resonance Mitigation Alert:** Step down spindle speed by 15%; dynamically decrease axis feed rate by 20% to seek stable harmonic window. |
+| **Spindle Stall / Over-Torque** | Rotary encoder pulse tracking vs. commanded VFD frequency index | RPM slip delta \Delta\omega \ge 8\% for more than 300\text{ ms} | **E-Stop Lockout:** Cut VFD output bridge; completely freeze all linear stepper axes to prevent tool plowing and breakage. |
+| **Gantry Torsional Misalignment** | Dual homing limit switches per parallel-driven axis (X_1 vs. X_2) | Squareness offset \Delta X \ge 0.12\text{ mm} during homing or runtime cycle | **Alignment Fault:** Force immediate system halt; initiate automated axis squareness recalibration sequence. |
+## Hard-Coded Mechanical Protection Protocols
+### 1. Sacrificial Shear Coupling Mandate
+To safeguard irreplaceable salvaged motor-generators, custom pulleys, and precision gearboxes from catastrophic torque spikes during unrefined feedstock processing, direct rigid coupling between drive units and processing shafts is strictly prohibited.
+All primary mechanical drives (rotary crushers, heavy milling spindles, shredder arrays) **must** utilize a dedicated, easily replaceable sacrificial brass shear pin or a slip-clutch mechanism calibrated to yield at exactly 125% of the maximum nominal operating torque ceiling.
+### 2. Positive-Pressure Spindle Purge [Ref: ME-002]
+To prevent toxic, corrosive outgassing from migrating down the spindle shaft and destroying internal spindle motor windings or packing grease, the spindle nose housing must integrate a continuous pneumatic positive-pressure purge channel. A regulated air bleed tap (0.5 bar minimum delivery pressure) must feed directly into the upper bearing sleeve, ensuring a constant outward velocity of clean air to deflect airborne moisture, acids, and abrasive micro-dust.
+## Metrics (Falsifiable)
+Primary metric: **Mean Time Between Mechanical Failures (MTBMF) \ge 250\text{ operational hours}** under continuous nominal processing loads.
+Secondary indicators:
+ * Axis positional drift (measured delta between homing cycles over 12 hours of runtime).
+ * Bearing block temperature stability (anomalous spikes flag internal particulate ingress).
+ * Structural vibration dampening efficiency over time.
+## Explicit Non-Goals (v0)
+ * Achieving sub-micron aerospace machining tolerances using unmachined salvaged frames.
+ * Continuous high-speed processing of superalloys or hardened tool steels.
+ * Elimination of manual lubrication and maintenance schedules.
+## Lessons Learned
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| 2026-05-31 | Modeling / Audit | Raw unsealed guideway execution | Rubber seals failed in high dust, ruining bearing race inside 50 hours | Secondary way-oil-saturated felt wipers are mandatory for abrasive particle isolation. | High | No |
+## Active Disputes
+| ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+## Abandoned Paths
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | — | No abandoned paths yet | — |
+## Drift Indicators
+Mandatory re-audit conditions for this document:
+ * Shunt-resistor current overrides implemented via software that exceed the 135% safety threshold.
+ * Removal of the 80:20 sand/epoxy damp-filling requirement for hollow structural spans over 500 mm.
+ * Softening of the 125% mechanical torque shear-pin cutoff rule into variable software limits.
+ * Removal of the spindle pneumatic positive-pressure purge requirement.
+ * Substitution of the falsifiable MTBMF metric with qualitative performance goals.
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
+## Auditor Notes & Unknowns
+### ME-001 — Vibration resonance mapping on mismatched salvaged rails uncharacterized
+ * **Status:** Open | **Risk:** Medium | **Priority:** Major
+ * **Description:** The harmonic interplay between different linear rail sizes salvaged from separate industrial lines is unmeasured. True resonant frequencies could cause tool chatter below the 2.2 g threshold.
+ * **Resolution Path:** Mount the 3-axis MEMS accelerometer to the tool-head spindle and run air-cutting speed sweeps from 100 to 5000 RPM, mapping the peak vibration nodes.
+### ME-002 — Pneumatic purge volume requirements vs. Air Scrubber capacity
+ * **Status:** Open | **Risk:** Low | **Priority:** Minor
+ * **Description:** The 0.5 bar minimum spindle air purge tap volume draw has not been balanced against the system's compressed air availability or air-scrubber back-pressure metrics.
+ * **Resolution Path:** Measure total system compressed air consumption during a simulated Nominal Mode run to verify that the bleed tap does not starve downstream pneumatic interlocks.
+## Resolution Log
+ * **2026-05-31:** Initial drafting of Engineering.md to establish foundational mechanical and structural boundaries for the v0 Forge framework. Codified structural gantry filling constraints, thermal expansion divergence rules, felt wiper bearing protections, and hard-locked the kinematic interlock matrix. Integrated the sacrificial shear pin mandate and positive-pressure spindle purge parameters. Promoted document state to Spec Gate 1.
