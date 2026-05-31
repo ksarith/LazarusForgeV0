@@ -142,19 +142,7 @@ GOV-006/RIP-005 status updates.
 
 **Governance_Charter.md** 
 `https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Governance_Charter.md`
-Constitutional governance structure for LazarusForgeV0. Defines the Tier 1
-Axioms — eight self-evident primitives organized into a Protections Clause
-(P-1: Preservation of Life, P-2: Growth and Truth-Seeking, P-3: Collaboration
-and Mutual Benefit, P-4: Agency and Consent) and a Prohibitions Clause (Q-1:
-Reality Grounding, Q-2: Separation of Powers, Q-3: Corrigibility, Q-4:
-Provenance and Anti-Deception). Axioms are declared, not derived. Any reasoning
-path attempting to override them triggers STATE_HOLD and mandatory human review.
-Defines governance authority hierarchy (Tier 1–5), canonical ownership table,
-enforcement states (Declared → Detectable → Reviewable → Enforceable), migration
-doctrine with human ratification requirement for axiom amendments, escalation
-calibration including Constitutional severity tier, Genesis Phase Protocol for
-bootstrap governance, and interim authentication requirements for Constitutional-
-class overrides. GOV-001 through GOV-009 in sidecar.
+
 
 ---
 
@@ -481,71 +469,6 @@ navigation error. Divergence between them is logged, not ignored.
 
 ---
 
-## Notes for Returning AI
-
-- **Start every audit cycle with the Audit Opening Checklist** in
-  `Admin/Forge_Audit_Kit.md`: (1) verify Tier 1 Axiom text in
-  `Admin/Governance_Charter.md` matches prior committed version —
-  any unratified change is a Constitutional violation requiring STATE_HOLD;
-  (2) check `Unknowns.md` Expiry Watch for entries approaching two-cycle
-  threshold; (3) run Semantic Stability Check against drift-risk term
-  watchlist in `Admin/Canonical_Terms.md`.
-- `Admin/Auditor_Protocols.md` **v0.7** governs all contributions. The
-  Sidecar Model is active — module unknowns live in each file's footer
-  sidecar, not in the global registry. Four auditor role classes: Skeptic,
-  Systems, Evidence, Ethical. Engineer role extended by
-  `Admin/Engineer_Protocols.md`.
-- `Admin/Forge_Audit_Kit.md` **v0.9** is the starting point for routine
-  audit cycles — load it instead of full Auditor_Protocols.md and
-  Unknowns.md to stay within token limits. Reduced from v0.8 — kit size
-  is a governed constraint.
-- `Unknowns.md` is **v1.8** with a pending v1.9 update. Expiry Watch
-  active — FL-001 and several EC entries approaching two-cycle threshold.
-  RIP-001 Critical. GOV-003, GOV-005, SEC-007, and UNK-009 Critical.
-- `Admin/Verification_Gates_LF.md` **v0.1** is now the resolution target
-  for all Verification Ref fields. Gates defined there match
-  Auditor_Protocols.md v0.7 exactly.
-- `Admin/Security_Protocols.md` **v0.3** — Trust Boundary Declaration
-  governs all cryptographic enforcement. SEC-007 (external root-of-trust)
-  flagged Critical from first logging.
-- Role declaration is required: *"Operating as [Role] per
-  Auditor_Protocols.md v0.7"*
-- `Admin/Governance_Charter.md` **v0.5** is the constitutional authority.
-  Tier 1 Axioms (P-1 through P-4, Q-1 through Q-4) are non-negotiable
-  primitives. Any reasoning path attempting to override them triggers
-  STATE_HOLD.
-- `Admin/Repository_Integrity_Protocol.md` **v0.1** defines what
-  constitutes an integrity violation, how to classify it, and how to
-  recover. Read this before modifying any governance-bearing document.
-- `Architecture/Geck_forge_seed.md` is the most actively updated file —
-  do not assume a cached version is current.
-- The Rename Registry above is the canonical source for old-to-new
-  filename mappings. All prior references to `Canonical_Terms_LF.md`
-  are resolved via the Rename Registry entry added 2026-05-26.
-- Unknown ID naming convention: local sidecar IDs (FL-001, SC-002,
-  MG-004) are primary. UNK-* identifiers are cross-module navigation
-  aliases indexed in Unknowns.md only.
-- Governance tier hierarchy: Tier 1 (Governance_Charter.md,
-  Ethical_Constraints.md) → Tier 2 (Auditor_Protocols.md) → Tier 3
-  (Forge_Audit_Kit.md) → Tier 4 (dynamic procedures) → Tier 5 (domain
-  specs). Lower tiers may extend but may not redefine higher tiers.
-- Files listed in this document resolve to real committed files. If a
-  link fails, log it as a Cross-Reference Failure per
-  Auditor_Protocols.md Rule 1.
-- `Astroid-miner` references are labeled planned — do not treat as
-  active dependencies.
-- All gate files now exist (Gate_01 through Gate_07). One planned Admin
-  file not yet created: `Admin/Governance_Migration_Protocol.md`
-  (GOV-001 resolution path). Do not treat as an active dependency.
-- **New files since last major Discovery.md update:** Security_Protocols.md,
-  Canonical_Terms.md, Plastics.md, Verification_Gates_LF.md,
-  Engineer_Protocols.md, Engineering.md, Woodworking.md.
-- `Operations/Woodworking.md` Verification Ref field currently reads
-  `Admin/Forge_Audit_Kit.md` — should be corrected to
-  `Verification_Gates_LF.md` at next revision.
-- `Architecture/Engineering.md` owner fields in sidecar unknowns use
-  short filename — should be corrected to `Architecture/Engineering.md`
-  at next revision.
 
 
 new file added
@@ -553,10 +476,7 @@ https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archite
 
 
 # Discovery.md — Addendum: Admin/ Scope Entries
-## Compiled from Batch 1 (5 files) + Batch 2 (5 files)
 ## Status: Draft — for reconciliation with existing Discovery.md content
-## Compiled: 2026-05-31
-
 ---
 
 > **Integration Note:** These entries follow the scope boundary format
@@ -613,9 +533,6 @@ conflicts between terminology sources, and enforcing anti-drift guardrails.
 - `Admin/Security_Protocols.md` — CT-004 (trusted initialization
   environment definition) is a pending addition required here
 
-**Open Blocking Unknowns:** CT-002 (Component Library Schema — blocks
-`Operations/Gate_02_Triage.md` promotion), CT-004 (Trusted Initialization
-Environment — blocks `Admin/Security_Protocols.md` Section III.2 promotion)
 
 ---
 
@@ -665,8 +582,6 @@ contradiction accumulation, and autonomous corruption of repository knowledge.
 - All repository files — role declaration requirement, audit sequence,
   and fallacy checklist apply to all specification-level contributions
 
-**Open Blocking Unknowns:** AP-004 (cross-auditor disagreement resolution),
-AP-007 (repository integrity doctrine lineage)
 
 ---
 
@@ -707,9 +622,6 @@ failure modes in autonomous and multi-agent systems.
 - `Tests/Leviathan_testing.md` — stress-test environment for this
   governance system; escalation channel definition deferred there
 
-**Open Blocking Unknowns:** EC-001 (sufficient confidence threshold),
-EC-002 (Anti-Weaponization pattern-matching mechanism), EC-003 (human
-escalation path mechanism)
 
 ---
 
@@ -753,8 +665,6 @@ between governance documents (what is permitted) and domain specifications
 - Domain files in `Operations/`, `Architecture/` — this protocol governs
   how those files are authored and revised
 
-**Open Blocking Unknowns:** EP-004 (engineering authority boundary
-undefined)
 
 ---
 
@@ -786,7 +696,7 @@ as epistemic circuit breakers.
 **Out-of-Scope:**
 - Runtime execution engines
 - Cryptographic implementation details
-  (→ `Admin/Security_Protocols.md` [PLANNED])
+  (→ `Admin/Security_Protocols.md`)
 - CI/CD automation mechanics
 - Fabrication procedures or engineering specifications
 - Canonical terminology definitions
@@ -811,10 +721,6 @@ as epistemic circuit breakers.
 - `Admin/Canonical_Terms.md` — tier definitions derived from here;
   must remain consistent
 
-**Open Blocking Unknowns:** GOV-003 (integrity enforcement architecture —
-Critical), GOV-005 (long-term constitutional stability — Critical),
-GOV-006 (human override authenticity), GOV-008 (minimum agent quorum
-for bootstrap compliance)
 
 ---
 
@@ -871,10 +777,6 @@ integrity procedures via a cryptographic enforcement layer.
 - All governance files — cryptographic signing eligibility applies at
   Candidate Specification maturity and above
 
-**Open Blocking Unknowns:** SEC-001 (quorum recovery under network
-partition — blocks; deferred to GOV-008), SEC-005 (trusted initialization
-environment — deferred to CT-004), SEC-007 (external root-of-trust
-architecture — Critical)
 
 ---
 
@@ -928,9 +830,6 @@ automation (AUDIT_HARNESS.py) matures.
 - `Discovery.md` — Archive directory to be added here when established
   (RIP-001)
 
-**Open Blocking Unknowns:** RIP-001 (prior-state archival system not
-established — Critical), RIP-004 (Constitutional violation detection
-latency)
 
 ---
 
@@ -971,8 +870,6 @@ as restorations rather than new manufactures under right-to-repair law.
 - `Architecture/Geck_forge_seed.md` — grain system informs minimum
   viable seed provenance requirements
 
-**Open Blocking Unknowns:** ST-003 (legal applicability by jurisdiction —
-Non-blocking for Exploration; Blocking before any commercial operation)
 
 ---
 
@@ -1017,8 +914,6 @@ Regeneration Threshold (FRT) doctrine and floor value.
 - `economics_v0.md` [PLANNED] — v0→v1 economic model; TR-001 is the
   blocking unknown
 
-**Open Blocking Unknowns:** TR-001 (v1 profitability baseline undefined —
-blocks v0→v1 transition)
 
 ---
 
@@ -1071,9 +966,6 @@ Forge_Audit_Kit.md.
 - `Discovery.md` — this file must be added to confirmed file list and
   Suggested Reading Order (per file's own Immediate Actions Required)
 
-**Open Blocking Unknowns:** VG-001 (gate definition synchronization
-authority chain — Non-blocking at Exploration; Blocking at Specification
-promotion)
 
 ---
 
@@ -1125,9 +1017,9 @@ Discovery.md content before committing — do not treat this as a
 replacement, only as an addenDraft.
 
 # Discovery.md — Addendum: Architecture/ Scope Entries
-## Compiled from Architecture batch (6 files)
+
 ## Status: Draft — for reconciliation with existing Discovery.md content
-## Compiled: 2026-05-31
+
 
 ---
 
@@ -1182,8 +1074,7 @@ constraints — salvaged materials, limited tools, variable climate.
   `Architecture/Mechanical_Systems.md` [PLANNED] — detailed
   domain files defer to this file for foundational principles
 
-**Open Blocking Unknowns:** EN-001 (validated safety factors for
-salvaged materials — Critical, blocks structural specification)
+
 
 ---
 
@@ -1228,8 +1119,7 @@ Governs all component classification decisions across the repository.
 - All Operations/ gate files — Critical component list defines what
   must be present for the Forge to function
 
-**Open Blocking Unknowns:** CO-002 (Metrology precision thresholds —
-Non-blocking; deferred to first fabrication trials)
+
 
 ---
 
@@ -1287,9 +1177,6 @@ and coordinated resource allocation.
 - `Admin/Trajectories.md` — network capability targets by version;
   v1 target includes cognitive save state portability
 
-**Open Blocking Unknowns:** FN-001 (data validation criteria — Critical;
-prerequisite for first network connection), FN-005 (data privacy and
-access control — Critical; prerequisite for first network connection)
 
 ---
 
@@ -1351,13 +1238,7 @@ for gate logic, outcome paths, and the want/need policy.
   Canonical_Terms are derived from this file; conflicts escalate
   to Canonical_Terms as Active Disputes
 
-**Open Blocking Unknowns:** FL-001 (gate logic determinism at boundary
-cases — In Progress; blocks Specification promotion), FL-002 (Reduction
-module unassigned — no owning file for the only fully irreversible step)
 
-**Active Dispute:** DS-001 — "Purification stage" terminology. Owned
-here. Resolution recommended when second mechanical separation module
-enters scope.
 
 ---
 
@@ -1403,8 +1284,7 @@ rationale, and success criteria for G.E.C.K. deployment.
 - `Precision_LF.md` [PLANNED] — full precision doctrine to be
   developed; this file is the originating reference
 
-**Open Blocking Unknowns:** GK-005 (Precision_LF.md home document
-not yet created — Non-blocking at Exploration)
+
 
 ---
 
@@ -1461,12 +1341,7 @@ corrupted environments.
 - `Admin/Trajectories.md` — Framework G (Simulation-Gated
   Cognition) routes to v2/v3 scope
 
-**Open Blocking Unknowns:** CF-001 (hardware watchdog minimum
-standard — High; blocks any Specification-level autonomous
-architecture), CF-002 (correlated AI failure modes — High)
 
-**Active Disputes:** CF-DS-001 (centralized vs. distributed
-cognition), CF-DS-002 (human override authority scope)
 
 ---
 
