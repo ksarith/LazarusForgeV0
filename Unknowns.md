@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 1.9 — Audit cycle 2026-05-25. Governance_Charter.md v0.5 (Gemini audit). GOV-007 moved to In Progress. GOV-008 and GOV-009 added. Trajectories.md retrofitted — TR-002 added. Gate_07_Utilization.md FRT logging added — GU-005 added. Air_Scrubber.md retrofitted — AS-004 added. GOV-007 In Progress exit condition dependency on GOV-008 flagged in Expiry Watch.**
+**Version 2.0 — Audit cycle 2026-05-30. Energy.md, Plastics.md, and Woodworking.md reconciled. Security_Protocols.md integration actioned. GOV-006 and RIP-005 moved to In Progress. SEC-001 through SEC-007 and UNK-009 added permanently. EV-002, EV-003, PL-001 through PL-005, WW-001 through WW-005 indexed. Dependency map updated. Expiry Watch updated.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -14,198 +14,28 @@ Navigation unknowns → Discovery.md
 
 ---
 
-## What v1.9 Means
+## What v2.0 Means
 
-- Governance_Charter.md v0.5 produced — Gemini Skeptic/Auditor
-  findings actioned; Gate 2 blocked by bootstrapping paradox,
-  then unblocked by Genesis Phase Protocol addition
-- GOV-007 moved to In Progress — Genesis Phase Protocol is the
-  executing resolution path; human operator as independent
-  verification anchor until multi-agent quorum established
-- GOV-008 added — minimum hardware and agent quorum for bootstrap
-  compliance; Genesis Phase exit condition depends on this
-- GOV-009 added — bounded framework for external resource
-  consumption and environmental interaction; Axiom P-1 and P-3
-  gesture at this but do not operationalize it
-- GOV-006 resolution path tightened — interim authentication
-  requirement now codified in Human Override Doctrine: dual human
-  confirmation or external cryptographic anchor required for
-  Constitutional-class overrides until Security_Protocols.md
-  reaches Provisional Specification
-- Trajectories.md retrofitted to File_Template.md structure —
-  TR-002 added (FRT floor value not yet calibrated)
-- Gate_07_Utilization.md updated — FRT per-cycle logging section
-  added; GU-005 added (FRT cycle definition and floor not yet
-  declared)
-- Air_Scrubber.md retrofitted to File_Template.md structure —
-  AS-004 added (noise exposure limits and hearing conservation
-  program undefined)
-- Gate_02_Triage.md retrofitted — no new unknowns; TS-002
-  cross-reference corrected to canonical path
-- File_Template.md updated — Section 0 (Operational Safety
-  Advisory) added
-- Dependency map updated with GOV-008, GOV-009, TR-002, GU-005,
-  AS-004, and GOV cluster cleanup
-
----
-
-## What v1.8 Means
-
-- Repository_Integrity_Protocol.md v0.1 created — resolves
-  GOV-003 resolution path; bridges constitutional integrity
-  declarations and operational enforcement procedures
-- RIP-001 through RIP-005 added to Governance & Verification
-  section — prior-state archival (Critical), AUDIT_HARNESS.py
-  Phase 1 automation, violation incident log location,
-  Constitutional violation detection latency, and
-  Security_Protocols.md dependency
-- RIP-004 logged In Progress — Forge_Audit_Kit.md v0.8
-  Audit Opening Checklist adds Tier 1 Axiom verification
-  as mandatory first step; closes detection latency gap
-- GOV-002 moved to In Progress — Axiom Q-4 provides
-  constitutional anchoring
-- GOV-003 moved to In Progress — Repository_Integrity_Protocol.md
-  is the executing resolution path
-- AP-007 moved to In Progress — Repository_Integrity_Protocol.md
-  provides operational doctrine backing
-- README.md updated — canonical folder-prefixed filenames
-  throughout; governance layer section added explaining
-  institutional vs. behavioral alignment architecture;
-  all seven gates listed; Tier 1 Axioms described
-- RIP-001 added to Expiry Watch — Critical priority,
-  GitHub releases identified as v0 resolution path
-- Dependency map updated with RIP cluster
-
----
-
-## What v1.7 Means
-
-- Admin reconciliation cycle 2026-05-23 complete —
-  Auditor_Protocols.md, Forge_Audit_Kit.md, and
-  Governance_Charter.md reconciled to File_Template.md
-  structure
-- Auditor_Protocols.md v0.7 produced — merges v0.6 depth
-  with older draft's role class structure, 10-phase audit
-  sequence, evidence classification table; Abandoned Paths
-  and Drift Indicators sections added; AP-004 through AP-007
-  added to sidecar
-- Forge_Audit_Kit.md v0.7 produced — Verification Maturity
-  Model, Truth Provenance Labels, Anti-Theater Doctrine,
-  Confidence Decay/Revalidation, adversarial priority
-  weighting, and expanded sign-off format added; fitted to
-  File_Template.md structure
-- Governance_Charter.md reviewed — tier ordering corrected:
-  Auditor_Protocols.md is Tier 2 (canonical verification
-  doctrine), Forge_Audit_Kit.md is Tier 3 (operational
-  condensation); GOV-001 through GOV-007 added to index
-- AP-004 (cross-auditor disagreement) added from
-  Auditor_Protocols.md reconciliation
-- AP-005 (verification termination threshold), AP-006
-  (institutional truth provenance), AP-007 (repository
-  integrity doctrine lineage) added from Forge_Audit_Kit.md
-  reconciliation; IDs assigned to avoid collision with AP-004
-- GOV- prefix added to Forge_Audit_Kit.md sidecar ID
-  reference
-- Dependency map updated with GOV and new AP entries
-
----
-
-## What v1.6 Means
-
-- Audit cycle 2026-05-20 complete — Gate_07_Utilization.md
-  created and audited by Claude (Retrofit/Auditor) and
-  ChatGPT (Skeptic/Auditor)
-- GU-001 through GU-004 added to new Utilization section —
-  performance metric schema, retirement handoff cross-validation,
-  quality certification ownership, and silent failure detection
-- Electronics.md retrofitted to File_Template.md structure
-  and audited 2026-05-09 (multi-agent), actioned 2026-05-19
-- EL-005 through EL-008 added to Salvage & Fabrication section —
-  toxic dust profile (Critical), firmware trust validation
-  (Critical), correlated TMR failure modes, and counterfeit
-  detection doctrine
-- GF-005 resolved — Gate_07_Utilization.md now exists and
-  owns the utilization stage doctrine
-- Stale filename references corrected throughout index —
-  canonical names per Discovery.md Rename Registry
-
----
-
-## What v1.5 Means
-
-- Audit cycle 2026-05-19 complete — Gate_01_Intake,
-  Gate_03_Reduction, and Gate_06_Fabrication audited
-  by ChatGPT with full Forge_Audit_Kit loaded
-- GI-006 (chain of custody) and GI-007 (digital
-  contamination) added to Intake section
-- GI-007 flagged Critical — digital contamination
-  propagates via Forge_Net.md integration
-- GR-006 (jam clearing), GR-007 (equipment retirement),
-  GR-008 (operator decision support) added to Reduction
-- GR-007 flagged Critical — no retirement threshold defined
-- GF-006 (structural adequacy) and GF-007 (fire suppression)
-  added to Fabrication section
-- GF-007 flagged Critical — arc welding fire hazards
-  unmitigated at facility level in salvage environments
-- AUDIT_HARNESS.py updated to v3 with file registry
-
----
-
-## What v1.4 Means
-
-- Operations/Gate_03_Reduction.md created — only irreversible
-  step, doctrine before specification, three hard prerequisites
-- Operations/Gate_06_Fabrication.md created — arc welding
-  gatekeeper, add-to-excess and mill-to-spec, precision ceiling
-- GR-001 through GR-005 added to Reduction section
-- GF-001 through GF-005 added to Fabrication section
-- GR-003 (waste disposal) flagged Critical — no owner in repository
-- FL-002 and UNK-007 effectively resolved by Gate_03_Reduction.md
-  creation — file now exists and owns the doctrine
-- Gate_07_Utilization.md identified as next pending file via GF-005
-- Dependency map updated with GR and GF entries
-- Discovery.md updated
-
----
-
-## What v1.3 Means
-
-- Operations/Gate_01_Intake.md created — system entry
-  point, safety screening, identification, provenance
-- GI-001 through GI-005 added to Intake section
-- GI-002 (energetic discharge) and GI-003 (augmented
-  detection) are hard prerequisites for first operational
-  Intake run — highest safety priority in Operations cluster
-- Dependency map updated with GI entries
-- Discovery.md updated to reflect Gate_01_Intake.md addition
-
----
-
-## What v1.2 Means
-
-- Architecture/Forge_Net.md created — decentralized network
-  and logistics prerequisite
-- FN-001 through FN-005 added to Network section
-- FN-001 and FN-005 are Hard prerequisites for first
-  forge-to-forge connection — highest priority in network cluster
-- Dependency map updated with FN entries
-- Discovery.md updated to reflect Forge_Net.md addition
-
----
-
-## What v1.1 Means
-
-- Gate_05_Separation_Thermal.md and Gate_04_Separation_Mechanical.md
-  retrofitted to File_Template.md structure and audited this cycle
-- SC-001 through SC-008 and MG-001 through MG-008 added to Hardware
-  Modules table
-- SC-001 status updated from Open to In Progress following RPM
-  safety calculation (2026-05-15)
-- Material Separation Gate prefix corrected from GK to MG to avoid
-  collision with Geck_forge_seed.md GK prefix
-- UNK-006 through UNK-008 added as new cross-module unknowns
-- DS-001 logged in Gate_04_Separation_Mechanical.md — Purification
-  stage terminology dispute; owner is Architecture/Forge_flow.md
+- Energy.md fully retrofitted to File_Template.md standard — EV-002 and
+  EV-003 added; EV-001 stale reference corrected
+- Plastics.md fully retrofitted — PL-001 through PL-005 indexed; PL-005
+  (char residue) new from Grok audit 2026-05-27; syngas combustion stage
+  doctrine corrected; Section D (char handling) added to body
+- Woodworking.md created and revised — full chain from felling through
+  finishing; biome-agnostic typologies replacing location-specific species;
+  Section 2 (woodgrain as asset) added; IFM Screening Protocol added;
+  WW-001 through WW-005 indexed; WW-004 and WW-005 Blocking
+- Security_Protocols.md v0.2 audit actioned — SEC-001 through SEC-007
+  added to Ethics & Governance section; CT-004 added to Governance &
+  Verification section; UNK-009 (external root-of-trust cross-module)
+  added as Critical
+- GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md
+  executing as resolution path for both
+- Discovery.md updated — Security_Protocols.md, Canonical_Terms.md,
+  Plastics.md summaries added; Rename Registry entry for
+  Canonical_Terms_LF.md added; Woodworking.md summary pending
+- Dependency map updated with EV, PL, WW, SEC, CT-004, and UNK-009
+  cluster entries
 
 ---
 
@@ -237,9 +67,9 @@ GOV-002 (provenance operationalization) -> depends on AP-006 (truth provenance h
 GOV-003 (integrity enforcement architecture) -> In Progress — Repository_Integrity_Protocol.md created as resolution path; AP-007 (repository integrity doctrine) — distinct but linked
 GOV-004 (escalation calibration) -> AP-004 (cross-auditor disagreement resolution)
 GOV-005 (constitutional stability) -> discharge via Lessons Learned after stable migration cycles
-GOV-006 (human override authenticity) -> depends on Security_Protocols.md (planned); interim authentication requirement now codified in Governance_Charter.md Human Override Doctrine
+GOV-006 (human override authenticity) -> depends on Security_Protocols.md (executing); interim authentication requirement now codified in Governance_Charter.md Human Override Doctrine
 GOV-007 (bootstrap governance initialization) -> In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008 (minimum agent quorum definition)
-GOV-008 (minimum hardware/agent quorum) -> GOV-007 exit condition; depends on Security_Protocols.md (planned) for attestation mechanism
+GOV-008 (minimum hardware/agent quorum) -> GOV-007 exit condition; depends on Security_Protocols.md for attestation mechanism
 GOV-009 (bounded resource consumption framework) -> cross-ref Tests/Leviathan_testing.md, Tests/Support_Raft.md for physical deployment constraints
 
 AP-001 (auditor metrics) -> depends on AP-003 (audit schema)
@@ -253,6 +83,19 @@ RIP-001 (prior-state archival) -> blocks Phase 2 automation; GitHub releases sat
 RIP-002 (Phase 1 automation) -> depends on RIP-001 for comparison checks
 RIP-004 (detection latency) -> In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist axiom verification step
 RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); GOV-008 (attestation mechanism); Phase 3 dependency
+
+SEC-001 (quorum recovery) -> GOV-008 (minimum quorum definition) — blocking dependency
+SEC-002 (key revocation) -> SEC-001 (partition affects propagation)
+SEC-002 -> GOV-006 (override node revocation requires additional safeguards)
+SEC-003 (key rotation) -> SEC-002 (rotation and revocation must be consistent)
+SEC-004 (key lifecycle) -> SEC-002 / SEC-003 (all three form coherent lifecycle)
+SEC-005 (trusted init environment) -> CT-004 (canonical definition required)
+SEC-006 (timestamp trust) -> SEC-001 (partition is primary degraded-clock context)
+SEC-007 (external root-of-trust) -> GOV-003 / GOV-005 / RIP-001 (cross-module Critical)
+UNK-009 -> SEC-007 / GOV-003 / GOV-005 / RIP-001 (cross-module spanning)
+CT-002 (component library schema) -> Operations/Gate_02_Triage.md
+CT-003 (dependency priority map) -> discharge via Admin/Trajectories.md v0->v1
+CT-004 (trusted init environment) -> SEC-005 (resolution dependency)
 
 TR-001 (v1 profitability) -> depends on EV-001
 TR-002 (FRT floor calibration) -> depends on first operational cycle data; feeds TR-001
@@ -301,6 +144,25 @@ GF-007 (fire suppression) -> seed for UNK-006 facility siting file
 GU-001 (performance metric schema) -> depends on FN-001 Forge_Net contribution format
 GU-002 (retirement handoff) -> depends on Operations/Gate_02_Triage.md intake requirements
 GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging, Architecture/Components.md Baseline Observability
+
+EV-002 (biogas parasitic loads) -> ASM-003 in Energy.md; feeds EV-001 net demand calculation
+EV-003 (battery thermal containment) -> blocks enclosed battery bank commissioning;
+        cross-ref Operations/Air_Scrubber.md for outgassing capture
+
+PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run;
+        cross-ref Operations/Air_Scrubber.md AS-003 alkaline buffering stage
+PL-002 (reactor pressure control and maintenance access) -> blocks reactor fabrication
+PL-003 (fuel stability) -> feeds Operations/Energy.md motor-generator fuel input
+PL-005 (char residue) -> routes to Operations/Gate_02_Triage.md for classification;
+        cross-ref Operations/Gate_03_Reduction.md GR-003 hazardous waste disposal
+
+WW-001 (drying schedules) -> feeds ASM-005 in Woodworking.md
+WW-002 (urban timber performance) -> gates structural use of salvaged urban timber
+WW-003 (CNC fixturing) -> depends on first operational CNC cycle data
+WW-004 (mixed-species dust) -> Blocking; cross-ref Operations/Air_Scrubber.md
+        source capture requirements
+WW-005 (IFM detection) -> Blocking before any powered cut on urban salvage;
+        cross-ref IFM Screening Protocol in Operations/Woodworking.md Section 1
 ```
 
 ---
@@ -312,6 +174,8 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | EV-001 | Forge power demand uncharacterized | `Operations/Energy.md` | In Progress | Blocking |
+| EV-002 | Parasitic and thermal startup loads for biogas streams uncharacterized | `Operations/Energy.md` | Open | Minor |
+| EV-003 | Salvaged battery thermal containment and ventilation strategy undefined | `Operations/Energy.md` | Open | Critical |
 
 ### Leviathan / Autonomy
 
@@ -351,10 +215,17 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | In Progress | Critical |
 | GOV-004 | Escalation calibration partially subjective | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-005 | Long-term constitutional stability unproven | `Admin/Governance_Charter.md` | Open | Critical |
-| GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-009 | Bounded framework for external resource consumption and environmental interaction | `Admin/Governance_Charter.md` | Open | Major |
+| SEC-001 | Quorum recovery under terminal partition | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-002 | Key revocation doctrine undefined | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-003 | Key rotation period undefined | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-004 | Key lifecycle doctrine incomplete | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-005 | Trusted initialization environment undefined | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-006 | Timestamp trust under degraded clock | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-007 | External root-of-trust architecture undefined | `Admin/Security_Protocols.md` | Open | Critical |
 
 ### Governance & Verification
 
@@ -371,7 +242,8 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 | RIP-003 | Violation incident log location undefined | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 | RIP-004 | Constitutional violation detection latency undefined | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
-| RIP-005 | Security_Protocols.md dependency unresolved | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
+| RIP-005 | Security_Protocols.md dependency unresolved | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
+| CT-004 | Trusted initialization environment definition | `Admin/Canonical_Terms.md` | Open | Major |
 
 ### Hardware Modules
 
@@ -492,6 +364,31 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | TR-001 | v1 profitability baseline | `Admin/Trajectories.md` | Open | Blocking |
 | TR-002 | FRT floor value not yet calibrated | `Admin/Trajectories.md` | Open | Major |
 
+### Plastics
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| PL-001 | Halogenated polymer contamination — HCl/dioxin release from PVC/Teflon | `Operations/Plastics.md` | Open | Critical |
+| PL-002 | Reactor thermal runaway, pressure control, and maintenance access | `Operations/Plastics.md` | Open | Major |
+| PL-003 | Pyrolytic fuel stability and contaminant profile | `Operations/Plastics.md` | Open | Minor |
+| PL-004 | Mechanical filament-drawing threshold not defined | `Operations/Plastics.md` | Open | Minor |
+| PL-005 | Char and solid residue composition uncharacterized | `Operations/Plastics.md` | Open | Major |
+
+*PL-001 and PL-002 are Blocking before any hot pyrolysis run and reactor fabrication respectively.*
+
+### Woodworking
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| WW-001 | Ambient-relative humidity drying schedules not quantified | `Operations/Woodworking.md` | Open | Major |
+| WW-002 | Long-term performance of salvaged urban timber uncharacterized | `Operations/Woodworking.md` | Open | Major |
+| WW-003 | CNC fixturing best practices for live-edge slabs not validated | `Operations/Woodworking.md` | Open | Minor |
+| WW-004 | Dust toxicity thresholds for mixed-species milling uncharacterized | `Operations/Woodworking.md` | Open | Major |
+| WW-005 | NDT standards for IFM detection not validated | `Operations/Woodworking.md` | Open | Critical |
+
+*WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
+*WW-005 is Blocking for processing raw urban salvage through any powered machinery.*
+
 ### Cross-Module
 
 | ID | Title | Owning Files | Status | Priority |
@@ -499,6 +396,7 @@ GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging,
 | UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Operations/Gate_05_Separation_Thermal.md` SC-006, `Operations/Gate_04_Separation_Mechanical.md` MG-006 | Open | Major |
 | UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Architecture/Forge_flow.md` FL-002, `Operations/Gate_04_Separation_Mechanical.md` MG-007 | Resolved | — |
 | UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` SC-004 | Open | Major |
+| UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
 
 ### Future / Deferred
 
@@ -523,6 +421,26 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 GOV-007 moved to In Progress — Genesis Phase Protocol executing. Full resolution depends on GOV-008 (minimum hardware/agent quorum definition). GOV-008 exit condition not yet met — monitor at next audit opening.
 
 **RIP-001 (prior-state archival) — Critical.** GitHub releases identified as v0 resolution path. Confirm release cadence is established before closing this entry.
+
+### Critical Watch
+
+| ID | Note |
+|----|------|
+| GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
+| RIP-001 | Prior-state archival — confirm GitHub release cadence established |
+| SEC-007 | External root-of-trust — flagged Critical from first logging; architectural decision above repository level required |
+| UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007; no fast resolution path |
+| EV-003 | Battery thermal containment — no enclosed battery bank may be commissioned until resolved |
+| PL-001 | Halogenated polymer contamination — no hot pyrolysis run before triage protocol validated |
+| WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening workflow validated |
+
+### Blocking Watch
+
+| ID | Note |
+|----|------|
+| GOV-008 | Minimum quorum — GOV-007 Genesis Phase exit condition not yet met |
+| PL-002 | Reactor pressure control — no reactor fabrication before pressure relief system specified |
+| WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 
 GF-005 resolved in v1.6 — removed from watch.
 
@@ -564,401 +482,8 @@ Repository_Integrity_Protocol.md v0.1 created — GOV-003 resolution path execut
 **v1.9 — 2026-05-25:**
 Governance_Charter.md v0.5 produced — Gemini Skeptic/Auditor findings actioned. GOV-007 moved to In Progress — Genesis Phase Protocol is the executing resolution path. GOV-008 added (minimum hardware/agent quorum for bootstrap compliance — Genesis Phase exit condition). GOV-009 added (bounded framework for external resource consumption and environmental interaction). GOV-006 resolution path tightened — interim authentication requirement codified in Human Override Doctrine. Trajectories.md retrofitted to File_Template.md structure — TR-002 added (FRT floor value not yet calibrated). Gate_07_Utilization.md updated with FRT per-cycle logging section — GU-005 added (FRT cycle definition and floor not yet declared). Air_Scrubber.md retrofitted — AS-004 added (noise exposure limits and hearing conservation program undefined). Gate_02_Triage.md retrofitted — no new unknowns, stale cross-reference corrected. File_Template.md updated — Section 0 (Operational Safety Advisory) added. Dependency map updated with new entries and GOV cluster cleanup.
 
-
-ADDENDUM FOR: Unknowns.md
-TARGET SECTION: Ethics & Governance table + Cross-Module table +
-                Dependency Map + Audit Trail + What vX.X Means
-INTEGRATION PRIORITY: High — SEC-007 is Critical
-===============================================================
-
-## ADDENDUM — Unknowns.md — 2026-05-28
-
-### Status Updates (apply to existing rows)
-
-In the Ethics & Governance table, update the following rows:
-
-| ID | Change |
-|----|--------|
-| GOV-006 | Status: Open → In Progress (Security_Protocols.md v0.2 is executing resolution path) |
-| RIP-005 | Status: Open → In Progress (Security_Protocols.md v0.2 is executing resolution path) |
-
-### New Rows — Ethics & Governance table
-
-Add after the GOV-009 row:
-
-| ID      | Title                                          | Owning File                      | Status | Priority |
-|---------|------------------------------------------------|----------------------------------|--------|----------|
-| SEC-001 | Quorum recovery under terminal partition       | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-002 | Key revocation doctrine undefined              | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-003 | Key rotation period undefined                  | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-004 | Key lifecycle doctrine incomplete              | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-005 | Trusted initialization environment undefined   | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-006 | Timestamp trust under degraded clock           | `Admin/Security_Protocols.md`   | Open   | Major    |
-| SEC-007 | External root-of-trust architecture undefined  | `Admin/Security_Protocols.md`   | Open   | Critical |
-
-### New Rows — Governance & Verification table
-
-Add after CT-003 row:
-
-| ID      | Title                                          | Owning File                  | Status | Priority |
-|---------|------------------------------------------------|------------------------------|--------|----------|
-| CT-004  | Trusted initialization environment definition  | `Admin/Canonical_Terms.md`   | Open   | Major    |
-
-### New Cross-Module Entry
-
-Add to Cross-Module table:
-
-| ID      | Title                                                              | Owning Files                                                        | Status | Priority |
-|---------|--------------------------------------------------------------------|---------------------------------------------------------------------|--------|----------|
-| UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
-
-### Dependency Map additions
-
-Add the following lines to the Dependency Map section:
-
-```
-SEC-001 (quorum recovery) -> GOV-008 (minimum quorum definition) — blocking dependency
-SEC-002 (key revocation) -> SEC-001 (partition affects propagation)
-SEC-002 -> GOV-006 (override node revocation requires additional safeguards)
-SEC-003 (key rotation) -> SEC-002 (rotation and revocation must be consistent)
-SEC-004 (key lifecycle) -> SEC-002 / SEC-003 (all three form coherent lifecycle)
-SEC-005 (trusted init environment) -> CT-004 (canonical definition required)
-SEC-006 (timestamp trust) -> SEC-001 (partition is primary degraded-clock context)
-SEC-007 (external root-of-trust) -> GOV-003 / GOV-005 / RIP-001 (cross-module Critical)
-UNK-009 -> SEC-007 / GOV-003 / GOV-005 / RIP-001 (cross-module spanning)
-CT-002 (component library schema) -> Operations/Gate_02_Triage.md
-CT-003 (dependency priority map) -> discharge via Admin/Trajectories.md v0->v1
-CT-004 (trusted init environment) -> SEC-005 (resolution dependency)
-PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run
-PL-002 (reactor over-pressurization) -> blocks first hot pyrolysis run
-```
-
-### Expiry Watch update
-
-Add to Expiry Watch section:
-
-SEC-007 flagged Critical from first logging — monitor. UNK-009 (external
-root-of-trust cross-module) flagged Critical — no fast resolution path;
-requires architectural decision above repository level.
-
-### Audit Trail entry
-
-Add to Audit Trail section:
-
-**v1.9 — 2026-05-28:**
-Security_Protocols.md v0.3 audit actioned. GOV-006 and RIP-005 moved to
-In Progress — Security_Protocols.md is executing resolution path for both.
-SEC-001 through SEC-007 added to Ethics & Governance section. CT-004
-(trusted initialization environment) added to Governance & Verification
-section. UNK-009 (external root-of-trust cross-module) added to Cross-Module
-table as Critical. Dependency map updated with SEC, CT-004, PL, and UNK-009
-entries. PL-001 and PL-002 (Plastics.md) added to Reduction/Intake/Fabrication
-section. Expiry Watch updated.
-
-### Version header update
-
-Update version reference to v1.9.
-
-ADDENDUM FOR: Unknowns.md
-TARGET SECTIONS: Energy & Power table, new Plastics section, new Woodworking
-                 section, Dependency Map, Audit Trail, What vX.X Means,
-                 Status Updates
-INTEGRATION PRIORITY: High — EV-003 is Critical/Blocking; WW-004 is Blocking
-===============================================================
-
-## ADDENDUM — Unknowns.md — 2026-05-29
-
-### Status Updates (apply to existing rows)
-
-In the Ethics & Governance table, update the following rows:
-
-| ID      | Change                                                                          |
-|---------|---------------------------------------------------------------------------------|
-| GOV-006 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
-| RIP-005 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
-
----
-
-### Energy & Power table — add two new rows
-
-Add after the EV-001 row:
-
-| ID     | Title                                                        | Owning File              | Status | Priority |
-|--------|--------------------------------------------------------------|--------------------------|--------|----------|
-| EV-002 | Parasitic and thermal startup loads for biogas streams uncharacterized | `Operations/Energy.md` | Open | Minor |
-| EV-003 | Salvaged battery thermal containment and ventilation strategy undefined | `Operations/Energy.md` | Open | Critical |
-
----
-
-### New Section — Plastics
-
-Add as a new section after Salvage & Fabrication:
-
-#### Plastics
-
-| ID     | Title                                                        | Owning File                | Status | Priority |
-|--------|--------------------------------------------------------------|----------------------------|--------|----------|
-| PL-001 | Halogenated polymer contamination — HCl/dioxin release from PVC/Teflon | `Operations/Plastics.md` | Open | Critical |
-| PL-002 | Reactor thermal runaway, pressure control, and maintenance access | `Operations/Plastics.md` | Open | Major |
-| PL-003 | Pyrolytic fuel stability and contaminant profile             | `Operations/Plastics.md`   | Open   | Minor    |
-| PL-004 | Mechanical filament-drawing threshold not defined            | `Operations/Plastics.md`   | Open   | Minor    |
-| PL-005 | Char and solid residue composition uncharacterized           | `Operations/Plastics.md`   | Open   | Major    |
-
----
-
-### New Section — Woodworking
-
-Add as a new section after Plastics:
-
-#### Woodworking
-
-| ID     | Title                                                        | Owning File                   | Status | Priority |
-|--------|--------------------------------------------------------------|-------------------------------|--------|----------|
-| WW-001 | Locally validated drying schedules for Arkansas species not established | `Operations/Woodworking.md` | Open | Major |
-| WW-002 | Long-term performance of salvaged urban timber uncharacterized | `Operations/Woodworking.md` | Open | Major |
-| WW-003 | CNC fixturing best practices for live-edge slabs not validated | `Operations/Woodworking.md` | Open | Minor |
-| WW-004 | Dust toxicity thresholds for mixed-species milling uncharacterized | `Operations/Woodworking.md` | Open | Major |
-
-*WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
-
----
-
-### Dependency Map additions
-
-Add the following lines to the Dependency Map section:
-
-```
-EV-002 (biogas parasitic loads) -> ASM-003 in Energy.md; feeds EV-001 net demand calculation
-EV-003 (battery thermal containment) -> blocks enclosed battery bank commissioning;
-        cross-ref Operations/Air_Scrubber.md for outgassing capture
-PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run;
-        cross-ref Operations/Air_Scrubber.md AS-003 alkaline buffering stage
-PL-002 (reactor pressure control and maintenance access) -> blocks reactor fabrication
-PL-003 (fuel stability) -> feeds Operations/Energy.md motor-generator fuel input
-PL-005 (char residue) -> routes to Operations/Gate_02_Triage.md for classification;
-        cross-ref Operations/Gate_03_Reduction.md GR-003 hazardous waste disposal
-WW-001 (drying schedules) -> feeds ASM-005 in Woodworking.md
-WW-002 (urban timber performance) -> gates structural use of salvaged urban timber
-WW-003 (CNC fixturing) -> depends on first operational CNC cycle data
-WW-004 (mixed-species dust) -> Blocking; cross-ref Operations/Air_Scrubber.md
-        source capture requirements
-```
-
----
-
-### Expiry Watch update
-
-Add to Expiry Watch section:
-
-EV-003 flagged Critical/Blocking — no enclosed battery bank may be commissioned
-until resolved. PL-001 and PL-002 flagged Critical and Blocking respectively —
-no hot pyrolysis run before PL-001 triage protocol validated, no reactor
-fabrication before PL-002 pressure relief system specified. WW-004 Blocking
-for mixed-species milling without P100 respirator — interim mitigation (P100
-mandatory) is in place but formal characterization is required before this
-unknown closes.
-
----
-
-### Audit Trail entry
-
-Add to Audit Trail section:
-
-**v2.0 — 2026-05-29:**
-Energy.md retrofitted to File_Template.md standard — EV-002 (biogas parasitic
-loads, Minor) and EV-003 (salvaged battery thermal containment, Critical/Blocking)
-added. EV-001 sidecar corrected — stale Unknowns_LF.md reference resolved to
-Unknowns.md. Plastics.md retrofitted — PL-001 through PL-005 indexed; PL-005
-(char residue) is new entry from Grok Skeptic/Auditor audit 2026-05-27.
-Woodworking.md created — WW-001 through WW-004 indexed; WW-004 Blocking for
-mixed-species milling. GOV-006 and RIP-005 moved to In Progress —
-Security_Protocols.md v0.1 is executing resolution path for both. Dependency
-map updated with EV, PL, and WW cluster entries. Expiry Watch updated.
-Discovery.md updated to v2026-05-27 — Security_Protocols.md, Canonical_Terms.md,
-and Plastics.md summaries added; Woodworking.md pending.
-
----
-
-### Version header update
-
-Update version reference to v2.0.
-
-### What v2.0 Means header
-
-Add after existing What vX.X Means entries:
-
----
-
-**What v2.0 Means**
-
-- Energy.md fully retrofitted to File_Template.md standard — EV-002 and
-  EV-003 added; EV-001 stale reference corrected
-- Plastics.md fully retrofitted — PL-001 through PL-005 indexed; PL-005
-  (char residue) new from Grok audit 2026-05-27; syngas combustion stage
-  doctrine corrected; Section D (char handling) added to body
-- Woodworking.md created — full chain from felling through finishing;
-  WW-001 through WW-004 indexed; WW-004 Blocking
-- GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md v0.1
-  executing as resolution path
-- Discovery.md updated — Security_Protocols.md, Canonical_Terms.md,
-  Plastics.md, and Woodworking.md summaries added; Rename Registry entry
-  for Canonical_Terms_LF.md added
-- Dependency map updated with EV, PL, and WW cluster entries
-
-ADDENDUM FOR: Unknowns.md
-TARGET SECTIONS: Energy & Power table, new Plastics section, new Woodworking
-                 section, Dependency Map, Audit Trail, What vX.X Means,
-                 Status Updates
-INTEGRATION PRIORITY: High — EV-003 is Critical/Blocking; WW-004 and WW-005 are Blocking
-===============================================================
-
-## ADDENDUM — Unknowns.md — 2026-05-30
-
-### Status Updates (apply to existing rows)
-
-In the Ethics & Governance table, update the following rows:
-
-| ID      | Change                                                                                |
-|---------|---------------------------------------------------------------------------------------|
-| GOV-006 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
-| RIP-005 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
-
----
-
-### Energy & Power table — add two new rows
-
-Add after the EV-001 row:
-
-| ID     | Title                                                                   | Owning File              | Status | Priority |
-|--------|-------------------------------------------------------------------------|--------------------------|--------|----------|
-| EV-002 | Parasitic and thermal startup loads for biogas streams uncharacterized  | `Operations/Energy.md`   | Open   | Minor    |
-| EV-003 | Salvaged battery thermal containment and ventilation strategy undefined | `Operations/Energy.md`   | Open   | Critical |
-
----
-
-### New Section — Plastics
-
-Add as a new section after Salvage & Fabrication:
-
-#### Plastics
-
-| ID     | Title                                                                        | Owning File                | Status | Priority |
-|--------|------------------------------------------------------------------------------|----------------------------|--------|----------|
-| PL-001 | Halogenated polymer contamination — HCl/dioxin release from PVC/Teflon      | `Operations/Plastics.md`   | Open   | Critical |
-| PL-002 | Reactor thermal runaway, pressure control, and maintenance access            | `Operations/Plastics.md`   | Open   | Major    |
-| PL-003 | Pyrolytic fuel stability and contaminant profile                             | `Operations/Plastics.md`   | Open   | Minor    |
-| PL-004 | Mechanical filament-drawing threshold not defined                            | `Operations/Plastics.md`   | Open   | Minor    |
-| PL-005 | Char and solid residue composition uncharacterized                           | `Operations/Plastics.md`   | Open   | Major    |
-
-*PL-001 and PL-002 are Blocking before any hot pyrolysis run and reactor fabrication respectively.*
-
----
-
-### New Section — Woodworking
-
-Add as a new section after Plastics:
-
-#### Woodworking
-
-| ID     | Title                                                                        | Owning File                    | Status | Priority |
-|--------|------------------------------------------------------------------------------|--------------------------------|--------|----------|
-| WW-001 | Ambient-relative humidity drying schedules not quantified                    | `Operations/Woodworking.md`    | Open   | Major    |
-| WW-002 | Long-term performance of salvaged urban timber uncharacterized               | `Operations/Woodworking.md`    | Open   | Major    |
-| WW-003 | CNC fixturing best practices for live-edge slabs not validated               | `Operations/Woodworking.md`    | Open   | Minor    |
-| WW-004 | Dust toxicity thresholds for mixed-species milling uncharacterized           | `Operations/Woodworking.md`    | Open   | Major    |
-| WW-005 | NDT standards for IFM detection not validated                                | `Operations/Woodworking.md`    | Open   | Critical |
-
-*WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
-*WW-005 is Blocking for processing raw urban salvage through any powered machinery.*
-
----
-
-### Dependency Map additions
-
-Add the following lines to the Dependency Map section:
-
-```
-EV-002 (biogas parasitic loads) -> ASM-003 in Energy.md; feeds EV-001 net demand calculation
-EV-003 (battery thermal containment) -> blocks enclosed battery bank commissioning;
-        cross-ref Operations/Air_Scrubber.md for outgassing capture
-PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run;
-        cross-ref Operations/Air_Scrubber.md AS-003 alkaline buffering stage
-PL-002 (reactor pressure control and maintenance access) -> blocks reactor fabrication
-PL-003 (fuel stability) -> feeds Operations/Energy.md motor-generator fuel input
-PL-005 (char residue) -> routes to Operations/Gate_02_Triage.md for classification;
-        cross-ref Operations/Gate_03_Reduction.md GR-003 hazardous waste disposal
-WW-001 (drying schedules) -> feeds ASM-005 in Woodworking.md
-WW-002 (urban timber performance) -> gates structural use of salvaged urban timber
-WW-003 (CNC fixturing) -> depends on first operational CNC cycle data
-WW-004 (mixed-species dust) -> Blocking; cross-ref Operations/Air_Scrubber.md
-        source capture requirements
-WW-005 (IFM detection) -> Blocking before any powered cut on urban salvage;
-        cross-ref IFM Screening Protocol in Operations/Woodworking.md Section 1
-```
-
----
-
-### Expiry Watch update
-
-Add to Expiry Watch section:
-
-EV-003 flagged Critical/Blocking — no enclosed battery bank may be commissioned
-until resolved. PL-001 and PL-002 flagged Critical and Blocking respectively —
-no hot pyrolysis run before PL-001 triage protocol validated, no reactor
-fabrication before PL-002 pressure relief system specified. WW-004 Blocking
-for mixed-species milling without P100 respirator — interim mitigation (P100
-mandatory) is in place but formal characterization is required before this
-unknown closes. WW-005 flagged Critical/Blocking — no powered machinery contact
-with raw urban salvage until electromagnetic screening workflow is validated
-and minimum detection depth characterized.
-
----
-
-### Audit Trail entry
-
-Add to Audit Trail section:
+**v1.9a — 2026-05-28:**
+Security_Protocols.md v0.2 audit actioned. GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md is executing resolution path for both. SEC-001 through SEC-007 added to Ethics & Governance section. CT-004 (trusted initialization environment) added to Governance & Verification section. UNK-009 (external root-of-trust cross-module) added to Cross-Module table as Critical. Dependency map updated with SEC, CT-004, and UNK-009 entries. Expiry Watch updated.
 
 **v2.0 — 2026-05-30:**
-Energy.md retrofitted to File_Template.md standard — EV-002 (biogas parasitic
-loads, Minor) and EV-003 (salvaged battery thermal containment, Critical/Blocking)
-added. EV-001 sidecar corrected — stale Unknowns_LF.md reference resolved to
-Unknowns.md. Plastics.md retrofitted — PL-001 through PL-005 indexed; PL-005
-(char residue) new entry from Grok Skeptic/Auditor audit 2026-05-27; syngas
-combustion stage doctrine corrected; Section D (char handling) added to body.
-Woodworking.md created and revised — WW-001 through WW-005 indexed; WW-004
-Blocking for mixed-species milling; WW-005 (IFM detection, Critical/Blocking)
-added 2026-05-30 following addition of IFM Screening Protocol and woodgrain
-section; location-specific references removed in favour of biome-agnostic
-typologies. GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md
-v0.1 is executing resolution path for both. Dependency map updated with EV,
-PL, and WW cluster entries. Expiry Watch updated.
-
----
-
-### Version header update
-
-Update version reference to v2.0.
-
-### What v2.0 Means header
-
-Add after existing What vX.X Means entries:
-
----
-
-**What v2.0 Means**
-
-- Energy.md fully retrofitted to File_Template.md standard — EV-002 and
-  EV-003 added; EV-001 stale reference corrected
-- Plastics.md fully retrofitted — PL-001 through PL-005 indexed; PL-005
-  (char residue) new from Grok audit 2026-05-27; syngas combustion stage
-  doctrine corrected; Section D (char handling) added to body
-- Woodworking.md created and revised — full chain from felling through
-  finishing; biome-agnostic typologies replacing location-specific species;
-  Section 2 (woodgrain as asset) added; IFM Screening Protocol added;
-  WW-001 through WW-005 indexed; WW-004 and WW-005 Blocking
-- GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md v0.1
-  executing as resolution path
-- Discovery.md updated — Security_Protocols.md, Canonical_Terms.md,
-  Plastics.md summaries added; Rename Registry entry for Canonical_Terms_LF.md
-  added; Woodworking.md summary pending
-- Dependency map updated with EV, PL, and WW cluster entries
+Energy.md retrofitted to File_Template.md standard — EV-002 (biogas parasitic loads, Minor) and EV-003 (salvaged battery thermal containment, Critical/Blocking) added. EV-001 sidecar corrected — stale Unknowns_LF.md reference resolved to Unknowns.md. Plastics.md retrofitted — PL-001 through PL-005 indexed; PL-005 (char residue) new entry from Grok Skeptic/Auditor audit 2026-05-27; syngas combustion stage doctrine corrected; Section D (char handling) added to body. Woodworking.md created and revised — WW-001 through WW-005 indexed; WW-004 Blocking for mixed-species milling; WW-005 (IFM detection, Critical/Blocking) added 2026-05-30 following addition of IFM Screening Protocol and woodgrain section; location-specific references removed in favour of biome-agnostic typologies. GOV-006 and RIP-005 confirmed In Progress — Security_Protocols.md v0.1 executing as resolution path. Dependency map updated with EV, PL, and WW cluster entries. Expiry Watch restructured into Critical Watch and Blocking Watch tables. All addenda from 2026-05-28 and 2026-05-29 incorporated and removed. Document promoted to v2.0 baseline.
