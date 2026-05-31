@@ -804,3 +804,161 @@ Add after existing What vX.X Means entries:
   Plastics.md, and Woodworking.md summaries added; Rename Registry entry
   for Canonical_Terms_LF.md added
 - Dependency map updated with EV, PL, and WW cluster entries
+
+ADDENDUM FOR: Unknowns.md
+TARGET SECTIONS: Energy & Power table, new Plastics section, new Woodworking
+                 section, Dependency Map, Audit Trail, What vX.X Means,
+                 Status Updates
+INTEGRATION PRIORITY: High — EV-003 is Critical/Blocking; WW-004 and WW-005 are Blocking
+===============================================================
+
+## ADDENDUM — Unknowns.md — 2026-05-30
+
+### Status Updates (apply to existing rows)
+
+In the Ethics & Governance table, update the following rows:
+
+| ID      | Change                                                                                |
+|---------|---------------------------------------------------------------------------------------|
+| GOV-006 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
+| RIP-005 | Status: Open → In Progress (Security_Protocols.md v0.1 is executing resolution path) |
+
+---
+
+### Energy & Power table — add two new rows
+
+Add after the EV-001 row:
+
+| ID     | Title                                                                   | Owning File              | Status | Priority |
+|--------|-------------------------------------------------------------------------|--------------------------|--------|----------|
+| EV-002 | Parasitic and thermal startup loads for biogas streams uncharacterized  | `Operations/Energy.md`   | Open   | Minor    |
+| EV-003 | Salvaged battery thermal containment and ventilation strategy undefined | `Operations/Energy.md`   | Open   | Critical |
+
+---
+
+### New Section — Plastics
+
+Add as a new section after Salvage & Fabrication:
+
+#### Plastics
+
+| ID     | Title                                                                        | Owning File                | Status | Priority |
+|--------|------------------------------------------------------------------------------|----------------------------|--------|----------|
+| PL-001 | Halogenated polymer contamination — HCl/dioxin release from PVC/Teflon      | `Operations/Plastics.md`   | Open   | Critical |
+| PL-002 | Reactor thermal runaway, pressure control, and maintenance access            | `Operations/Plastics.md`   | Open   | Major    |
+| PL-003 | Pyrolytic fuel stability and contaminant profile                             | `Operations/Plastics.md`   | Open   | Minor    |
+| PL-004 | Mechanical filament-drawing threshold not defined                            | `Operations/Plastics.md`   | Open   | Minor    |
+| PL-005 | Char and solid residue composition uncharacterized                           | `Operations/Plastics.md`   | Open   | Major    |
+
+*PL-001 and PL-002 are Blocking before any hot pyrolysis run and reactor fabrication respectively.*
+
+---
+
+### New Section — Woodworking
+
+Add as a new section after Plastics:
+
+#### Woodworking
+
+| ID     | Title                                                                        | Owning File                    | Status | Priority |
+|--------|------------------------------------------------------------------------------|--------------------------------|--------|----------|
+| WW-001 | Ambient-relative humidity drying schedules not quantified                    | `Operations/Woodworking.md`    | Open   | Major    |
+| WW-002 | Long-term performance of salvaged urban timber uncharacterized               | `Operations/Woodworking.md`    | Open   | Major    |
+| WW-003 | CNC fixturing best practices for live-edge slabs not validated               | `Operations/Woodworking.md`    | Open   | Minor    |
+| WW-004 | Dust toxicity thresholds for mixed-species milling uncharacterized           | `Operations/Woodworking.md`    | Open   | Major    |
+| WW-005 | NDT standards for IFM detection not validated                                | `Operations/Woodworking.md`    | Open   | Critical |
+
+*WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
+*WW-005 is Blocking for processing raw urban salvage through any powered machinery.*
+
+---
+
+### Dependency Map additions
+
+Add the following lines to the Dependency Map section:
+
+```
+EV-002 (biogas parasitic loads) -> ASM-003 in Energy.md; feeds EV-001 net demand calculation
+EV-003 (battery thermal containment) -> blocks enclosed battery bank commissioning;
+        cross-ref Operations/Air_Scrubber.md for outgassing capture
+PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run;
+        cross-ref Operations/Air_Scrubber.md AS-003 alkaline buffering stage
+PL-002 (reactor pressure control and maintenance access) -> blocks reactor fabrication
+PL-003 (fuel stability) -> feeds Operations/Energy.md motor-generator fuel input
+PL-005 (char residue) -> routes to Operations/Gate_02_Triage.md for classification;
+        cross-ref Operations/Gate_03_Reduction.md GR-003 hazardous waste disposal
+WW-001 (drying schedules) -> feeds ASM-005 in Woodworking.md
+WW-002 (urban timber performance) -> gates structural use of salvaged urban timber
+WW-003 (CNC fixturing) -> depends on first operational CNC cycle data
+WW-004 (mixed-species dust) -> Blocking; cross-ref Operations/Air_Scrubber.md
+        source capture requirements
+WW-005 (IFM detection) -> Blocking before any powered cut on urban salvage;
+        cross-ref IFM Screening Protocol in Operations/Woodworking.md Section 1
+```
+
+---
+
+### Expiry Watch update
+
+Add to Expiry Watch section:
+
+EV-003 flagged Critical/Blocking — no enclosed battery bank may be commissioned
+until resolved. PL-001 and PL-002 flagged Critical and Blocking respectively —
+no hot pyrolysis run before PL-001 triage protocol validated, no reactor
+fabrication before PL-002 pressure relief system specified. WW-004 Blocking
+for mixed-species milling without P100 respirator — interim mitigation (P100
+mandatory) is in place but formal characterization is required before this
+unknown closes. WW-005 flagged Critical/Blocking — no powered machinery contact
+with raw urban salvage until electromagnetic screening workflow is validated
+and minimum detection depth characterized.
+
+---
+
+### Audit Trail entry
+
+Add to Audit Trail section:
+
+**v2.0 — 2026-05-30:**
+Energy.md retrofitted to File_Template.md standard — EV-002 (biogas parasitic
+loads, Minor) and EV-003 (salvaged battery thermal containment, Critical/Blocking)
+added. EV-001 sidecar corrected — stale Unknowns_LF.md reference resolved to
+Unknowns.md. Plastics.md retrofitted — PL-001 through PL-005 indexed; PL-005
+(char residue) new entry from Grok Skeptic/Auditor audit 2026-05-27; syngas
+combustion stage doctrine corrected; Section D (char handling) added to body.
+Woodworking.md created and revised — WW-001 through WW-005 indexed; WW-004
+Blocking for mixed-species milling; WW-005 (IFM detection, Critical/Blocking)
+added 2026-05-30 following addition of IFM Screening Protocol and woodgrain
+section; location-specific references removed in favour of biome-agnostic
+typologies. GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md
+v0.1 is executing resolution path for both. Dependency map updated with EV,
+PL, and WW cluster entries. Expiry Watch updated.
+
+---
+
+### Version header update
+
+Update version reference to v2.0.
+
+### What v2.0 Means header
+
+Add after existing What vX.X Means entries:
+
+---
+
+**What v2.0 Means**
+
+- Energy.md fully retrofitted to File_Template.md standard — EV-002 and
+  EV-003 added; EV-001 stale reference corrected
+- Plastics.md fully retrofitted — PL-001 through PL-005 indexed; PL-005
+  (char residue) new from Grok audit 2026-05-27; syngas combustion stage
+  doctrine corrected; Section D (char handling) added to body
+- Woodworking.md created and revised — full chain from felling through
+  finishing; biome-agnostic typologies replacing location-specific species;
+  Section 2 (woodgrain as asset) added; IFM Screening Protocol added;
+  WW-001 through WW-005 indexed; WW-004 and WW-005 Blocking
+- GOV-006 and RIP-005 moved to In Progress — Security_Protocols.md v0.1
+  executing as resolution path
+- Discovery.md updated — Security_Protocols.md, Canonical_Terms.md,
+  Plastics.md summaries added; Rename Registry entry for Canonical_Terms_LF.md
+  added; Woodworking.md summary pending
+- Dependency map updated with EV, PL, and WW cluster entries
