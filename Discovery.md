@@ -697,3 +697,576 @@ navigation error. Divergence between them is logged, not ignored.
 
 new file added
 https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Mechanical_Structures.md
+
+
+# Discovery.md — Addendum: Admin/ Scope Entries
+## Compiled from Batch 1 (5 files) + Batch 2 (5 files)
+## Status: Draft — for reconciliation with existing Discovery.md content
+## Compiled: 2026-05-31
+
+---
+
+> **Integration Note:** These entries follow the scope boundary format
+> proposed in the Discovery.md transformation discussion. Each entry
+> captures In-Scope, Out-of-Scope, Upstream Dependencies, and Downstream
+> Recipients derived directly from each file's own Scope Boundary section
+> and Relationship declarations. Reconcile against Discovery.md confirmed
+> file list before committing. Canonical folder-prefixed paths used
+> throughout. Files marked [PLANNED] carry that label as of last read.
+
+---
+
+## Admin/ Directory — Scope Map
+
+---
+
+### `Admin/Canonical_Terms.md`
+**Purpose:** Single source of truth for repository nomenclature. Prevents
+semantic drift across multi-agent cycles by locking vocabulary, resolving
+conflicts between terminology sources, and enforcing anti-drift guardrails.
+
+**In-Scope:**
+- Authoritative vocabulary mappings for system architecture, hardware
+  structures, and governance layers
+- Conflict resolution rules between this file and other vocabulary sources
+- Semantic boundaries enforcing consistency across multi-agent cycles
+- Anti-drift guardrails: banned terms and their approved replacements
+- Disambiguation of overloaded uses of "canonical"
+
+**Out-of-Scope:**
+- Individual component blueprints or dimensional specifications
+- Programmatic API schemas or cryptographic algorithms
+- Ethical policy constraints (→ `Admin/Ethical_Constraints.md`)
+- Operational routing semantics (→ `Architecture/Forge_flow.md` is
+  authoritative for routing; conflicts escalate here as Active Disputes)
+- Governance tier authority (→ `Admin/Governance_Charter.md`; definitions
+  here are derived from that source)
+- Filename resolution for renamed or legacy files (→ `Discovery.md`
+  Rename Registry)
+
+**Upstream Dependencies:**
+- `Admin/Governance_Charter.md` — tier definitions; authoritative over
+  this file for constitutional vocabulary
+- `Architecture/Forge_flow.md` — operational routing vocabulary;
+  authoritative over this file for gate logic terms
+- `Discovery.md` — Rename Registry is the canonical filename resolution
+  source
+
+**Downstream Recipients:**
+- All repository files — anti-drift guardrails apply to all
+  specification-level contributions
+- `Admin/Auditor_Protocols.md` — Fallacy 4 (Semantic Drift) enforcement
+  references this file as the resolution target
+- `Admin/Security_Protocols.md` — CT-004 (trusted initialization
+  environment definition) is a pending addition required here
+
+**Open Blocking Unknowns:** CT-002 (Component Library Schema — blocks
+`Operations/Gate_02_Triage.md` promotion), CT-004 (Trusted Initialization
+Environment — blocks `Admin/Security_Protocols.md` Section III.2 promotion)
+
+---
+
+### `Admin/Auditor_Protocols.md`
+**Purpose:** Defines how auditors operate within LazarusForgeV0. Prevents
+audit theater, uncontrolled specification promotion, semantic drift, silent
+contradiction accumulation, and autonomous corruption of repository knowledge.
+
+**In-Scope:**
+- Repository-wide auditor operational behavior
+- Auditor role classes (Skeptic, Systems, Evidence, Ethical, Synthesizer)
+- Audit entry conditions and sequencing (10-phase sequence)
+- Fallacy Checklist with substantive note requirements
+- AI and human contributor protocols
+- Decentralized audit architecture (Sidecar Model)
+- Unknowns registry governance
+- Verification gate enforcement
+- Adversarial audit layer and challenge battery
+- Drift detection requirements
+- Specification promotion rules
+- Autonomous auditor constraints and human override doctrine
+- Full Stop Review triggers
+- Observability and audit trail requirements
+
+**Out-of-Scope:**
+- Engineering specifications for Forge systems
+- Ethical policy details beyond mandatory anchor preservation
+  (→ `Admin/Ethical_Constraints.md`)
+- Human governance authority structures
+  (→ `Admin/Governance_Charter.md`)
+- Canonical terminology definitions
+  (→ `Admin/Canonical_Terms.md`)
+- Cross-repo verification architecture (→ `Architecture/Forge_Net.md`)
+
+**Upstream Dependencies:**
+- `Admin/Governance_Charter.md` — Tier 1 constitutional authority;
+  this file operates within the hierarchy defined there
+- `Admin/Ethical_Constraints.md` — co-Tier 1; hard-line doctrines
+  (Anti-Weaponization, Life Preservation) are not subject to auditor
+  override
+
+**Downstream Recipients:**
+- `Admin/Forge_Audit_Kit.md` — Tier 3 condensed reference; derived from
+  this file; may not outrank its source
+- `Admin/Verification_Gates_LF.md` — gate definitions extracted from
+  §Verification Gate Enforcement here; that file is derived from this one
+- All repository files — role declaration requirement, audit sequence,
+  and fallacy checklist apply to all specification-level contributions
+
+**Open Blocking Unknowns:** AP-004 (cross-auditor disagreement resolution),
+AP-007 (repository integrity doctrine lineage)
+
+---
+
+### `Admin/Ethical_Constraints.md`
+**Purpose:** First-class control substrate determining whether actions are
+permitted before determining how to execute them. Establishes hard
+constraints (commandments, not guidelines) to close runtime evaluation
+failure modes in autonomous and multi-agent systems.
+
+**In-Scope:**
+- Core mandate: ownership, legal permissibility, ethical constraints,
+  authorization status
+- Ownership and material rights recognition framework
+- Legal context awareness requirements
+- Anti-Weaponization Doctrine (hardest constraint; not subject to review)
+- Life Preservation Heuristics (hard and soft constraints)
+- Cultural and Sacred Site Recognition
+- High-permission environment constraints (landfills, scrap yards)
+- Refusal as a first-class action
+- Human Escalation Protocol (placeholder pending EC-003)
+- Learning without value drift doctrine
+- Governance failure modes and fallback posture (Pacifist Operating
+  Posture)
+
+**Out-of-Scope:**
+- Constitutional governance hierarchy (→ `Admin/Governance_Charter.md`)
+- Auditor operational behavior (→ `Admin/Auditor_Protocols.md`)
+- Runtime enforcement code or cryptographic implementation
+
+**Upstream Dependencies:**
+- None above Tier 1; co-occupies Tier 1 with `Admin/Governance_Charter.md`
+
+**Downstream Recipients:**
+- All repository files — Ethical Anchor field references this file
+- `Admin/Governance_Charter.md` — Tier 1 Axioms are consistent with and
+  reinforced by doctrines here; Anti-Weaponization and Life Preservation
+  are not subject to constitutional override
+- `Tests/Leviathan_testing.md` — stress-test environment for this
+  governance system; escalation channel definition deferred there
+
+**Open Blocking Unknowns:** EC-001 (sufficient confidence threshold),
+EC-002 (Anti-Weaponization pattern-matching mechanism), EC-003 (human
+escalation path mechanism)
+
+---
+
+### `Admin/Engineer_Protocols.md`
+**Purpose:** Guides AI and human engineers toward effective,
+reality-grounded creative problem-solving within the Forge. Fills the gap
+between governance documents (what is permitted) and domain specifications
+(what is built).
+
+**In-Scope:**
+- Cognitive and procedural protocols for engineering problem-solving
+- Pragmatic question framework (10 questions) for AI and human
+  contributors
+- Assumption challenge triggers — when skepticism is mandatory
+- Anti-reinvention and failure-harvesting rules
+- Engineer ↔ Auditor relationship and dispute resolution doctrine
+- AI-specific engineering contribution guidance
+
+**Out-of-Scope:**
+- Specific engineering calculations or domain techniques
+  (→ domain files in `Operations/`, `Architecture/`)
+- General audit or governance procedures
+  (→ `Admin/Auditor_Protocols.md`, `Admin/Forge_Audit_Kit.md`)
+- Detailed validation test protocols (→ domain files)
+- Auditor role class definitions
+  (→ `Admin/Auditor_Protocols.md` §Auditor Role Classes; this file
+  extends the Engineer role defined there, does not replace it)
+- Engineering authority boundary (→ EP-004; undefined until resolved)
+
+**Upstream Dependencies:**
+- `Admin/Auditor_Protocols.md` — Engineer role defined there; AI
+  Contribution Rules apply to engineers operating under this protocol
+- `Admin/Ethical_Constraints.md` — irreversible actions require elevated
+  authorization per §Human Override Doctrine
+- `Discovery.md` — primary navigation layer; repository search begins
+  there per §Pragmatic Question Framework
+
+**Downstream Recipients:**
+- All engineering contributors (human and AI) — pragmatic question
+  framework and assumption challenge triggers apply
+- Domain files in `Operations/`, `Architecture/` — this protocol governs
+  how those files are authored and revised
+
+**Open Blocking Unknowns:** EP-004 (engineering authority boundary
+undefined)
+
+---
+
+### `Admin/Governance_Charter.md`
+**Purpose:** Defines the constitutional governance structure of
+LazarusForgeV0. Stabilizes authority relationships, preserves semantic
+continuity across audit generations, and constrains recursive governance
+expansion. Declares Tier 1 Axioms — self-evident primitives functioning
+as epistemic circuit breakers.
+
+**In-Scope:**
+- Tier 1 constitutional axioms (Protections P-1 through P-4;
+  Prohibitions Q-1 through Q-4)
+- Constitutional governance doctrine
+- Governance authority hierarchy (Tiers 1–5)
+- Canonical governance ownership rules
+- Verification gate constitutional definitions
+- Governance precedence rules
+- Bootstrap governance behavior and Genesis Phase Protocol
+- Governance migration doctrine (including Tier 1 amendment requirements)
+- Provenance doctrine
+- Audit lineage requirements
+- Escalation doctrine and calibration
+- Governance enforcement-state doctrine
+- Repository integrity expectations
+- Autonomous governance constraints
+- Human override doctrine
+
+**Out-of-Scope:**
+- Runtime execution engines
+- Cryptographic implementation details
+  (→ `Admin/Security_Protocols.md` [PLANNED])
+- CI/CD automation mechanics
+- Fabrication procedures or engineering specifications
+- Canonical terminology definitions
+  (→ `Admin/Canonical_Terms.md`)
+- Auditor operational behavior
+  (→ `Admin/Auditor_Protocols.md`)
+- Condensed audit reference
+  (→ `Admin/Forge_Audit_Kit.md`)
+
+**Upstream Dependencies:**
+- None above Tier 1; this file is the constitutional root
+
+**Downstream Recipients:**
+- All repository files — governance hierarchy, axioms, and escalation
+  doctrine apply repository-wide
+- `Admin/Auditor_Protocols.md` — operates within authority hierarchy
+  defined here
+- `Admin/Security_Protocols.md` [PLANNED] — GOV-006 and GOV-008
+  resolution targets
+- `Admin/Governance_Migration_Protocol.md` [PLANNED] — GOV-001
+  resolution target
+- `Admin/Canonical_Terms.md` — tier definitions derived from here;
+  must remain consistent
+
+**Open Blocking Unknowns:** GOV-003 (integrity enforcement architecture —
+Critical), GOV-005 (long-term constitutional stability — Critical),
+GOV-006 (human override authenticity), GOV-008 (minimum agent quorum
+for bootstrap compliance)
+
+---
+
+### `Admin/Security_Protocols.md`
+**Purpose:** Establishes technical security implementation rules for
+validating administrative authority, ensuring knowledge graph integrity,
+and managing multi-node validation in untrusted, degraded, or adversarial
+environments. Bridges constitutional governance declarations and operational
+integrity procedures via a cryptographic enforcement layer.
+
+**In-Scope:**
+- Cryptographic mechanisms for multi-signature Human Override
+  Verification (GOV-006 resolution)
+- Automated code-signing protocols for file integrity verification
+  (RIP Phase 3 target)
+- Node identity verification and key rotation cycles
+- Minimum token complexity, air-gapping requirements, and cryptographic
+  fallback behaviors during network division
+- Trust boundary declaration: governance legitimacy precedes cryptographic
+  enforcement
+- Authentication event logging requirements (SEC-REG-001)
+- Degraded-operation security doctrine
+
+**Out-of-Scope:**
+- Component-level infiltration prevention for salvaged hardware
+  (→ `Operations/Electronics.md`)
+- OS firewall commands or network router firmware rules
+- Local facility access control (physical perimeter)
+- Constitutional governance doctrine
+  (→ `Admin/Governance_Charter.md`)
+- Auditor operational behavior
+  (→ `Admin/Auditor_Protocols.md`)
+- Minimum agent quorum definition
+  (→ GOV-008 in `Admin/Governance_Charter.md`; prerequisite input here)
+- Trusted initialization environment definition
+  (→ CT-004 in `Admin/Canonical_Terms.md`)
+
+**Upstream Dependencies:**
+- `Admin/Governance_Charter.md` — Tier 1; GOV-006 and GOV-008 are
+  originating unknowns; Trust Boundary Declaration defers to hierarchy
+  defined there
+- `Admin/Repository_Integrity_Protocol.md` — RIP-005 is the originating
+  unknown for Phase 3 enforcement; Phases 1 and 2 are prerequisites
+- `Admin/Canonical_Terms.md` — CT-004 (trusted initialization
+  environment) must be defined before Section III.2 can be promoted
+- `Operations/Electronics.md` — Logic-Zero wipe is Layer 1 prerequisite
+  for node cluster admission defined here
+
+**Downstream Recipients:**
+- `Admin/Repository_Integrity_Protocol.md` — Phase 3 cryptographic
+  enforcement resolves RIP-005
+- `Admin/Governance_Charter.md` — resolves GOV-006 interim authentication
+  requirement when this file reaches Provisional Specification
+- All governance files — cryptographic signing eligibility applies at
+  Candidate Specification maturity and above
+
+**Open Blocking Unknowns:** SEC-001 (quorum recovery under network
+partition — blocks; deferred to GOV-008), SEC-005 (trusted initialization
+environment — deferred to CT-004), SEC-007 (external root-of-trust
+architecture — Critical)
+
+---
+
+### `Admin/Repository_Integrity_Protocol.md`
+**Purpose:** Operational integrity enforcement procedures for
+LazarusForgeV0. Bridges the constitutional declaration of integrity
+requirements (Governance_Charter.md) and fully Enforceable integrity
+protections. Defines procedures executable by human operators until
+automation (AUDIT_HARNESS.py) matures.
+
+**In-Scope:**
+- Integrity baseline definitions for each protected repository element
+- Violation detection procedures at v0 (human-in-the-loop)
+- Violation classification system (Minor / Major / Constitutional)
+  and response ladder
+- Recovery procedures following confirmed violations
+- Version preservation requirements and human workflow
+- Automation migration path (Phase 1 → 2 → 3)
+- Relationship between integrity doctrine and constitutional axioms
+- Incident logging requirements
+
+**Out-of-Scope:**
+- Cryptographic authentication implementation
+  (→ `Admin/Security_Protocols.md`)
+- Constitutional governance doctrine
+  (→ `Admin/Governance_Charter.md`)
+- Auditor operational behavior (→ `Admin/Auditor_Protocols.md`)
+- CI/CD pipeline automation mechanics or runtime enforcement code
+- Governance authority hierarchy
+  (→ `Admin/Governance_Charter.md`)
+- Anti-Weaponization doctrine
+  (→ `Admin/Ethical_Constraints.md`)
+
+**Upstream Dependencies:**
+- `Admin/Governance_Charter.md` — GOV-003 is the originating unknown;
+  constitutional integrity requirements declared there
+- `Admin/Auditor_Protocols.md` — Adversarial Challenge Classes 6, 9,
+  and 10 are primary detection mechanisms coordinated with this file
+- `Admin/Ethical_Constraints.md` — Ethical Anchor field integrity
+  governed by doctrine there
+
+**Downstream Recipients:**
+- `Admin/Forge_Audit_Kit.md` — RIP-004 resolution requires an addition
+  to audit opening checklist (Tier 1 Axiom text verification)
+- `Admin/AUDIT_HARNESS.py` — primary automation target for Phase 1
+  and Phase 2 checks defined here
+- `Admin/Security_Protocols.md` — Phase 3 cryptographic enforcement
+  dependency; this file's Phase 3 section is the specification input
+- `Unknowns.md` — Constitutional violation incidents logged as
+  Cross-Module entries there
+- `Discovery.md` — Archive directory to be added here when established
+  (RIP-001)
+
+**Open Blocking Unknowns:** RIP-001 (prior-state archival system not
+established — Critical), RIP-004 (Constitutional violation detection
+latency)
+
+---
+
+### `Admin/Ship_of_Theseus_Right_to_Repair.md`
+**Purpose:** Establishes the Ship of Theseus paradox as the philosophical
+and legal load-bearing argument for the Forge's repair-first doctrine.
+Provides ethical and legal defense framework for treating Forge outputs
+as restorations rather than new manufactures under right-to-repair law.
+
+**In-Scope:**
+- Ship of Theseus paradox as philosophical grounding for repair-first
+  mindset
+- Right-to-repair legal defense strategy for Forge outputs
+- Grain preservation system (1g samples) as provenance and legal
+  continuity mechanism
+- Relationship between Bootstrap Doctrine, Graduation Rule, and
+  continuity of identity
+- QR code provenance documentation framework (placeholder)
+
+**Out-of-Scope:**
+- Full component triage workflow
+  (→ `Operations/Gate_02_Triage.md` / `Architecture/Components.md`)
+- Grain storage and tracking protocol (→ ST-001; pending)
+- QR documentation standard (→ ST-002; pending)
+- Jurisdiction-specific legal verification (→ ST-003; human governing
+  party decision)
+- G.E.C.K. seeding specifications (→ `Architecture/Geck_forge_seed.md`)
+
+**Upstream Dependencies:**
+- `Operations/Gate_02_Triage.md` — triage workflow where repair-first
+  philosophy is operationalized
+- `Architecture/Components.md` — Bootstrap Doctrine and Graduation Rule
+  referenced here as expressions of the same continuity principle
+
+**Downstream Recipients:**
+- `Operations/Gate_02_Triage.md` — philosophical grounding for triage
+  decisions
+- `Architecture/Geck_forge_seed.md` — grain system informs minimum
+  viable seed provenance requirements
+
+**Open Blocking Unknowns:** ST-003 (legal applicability by jurisdiction —
+Non-blocking for Exploration; Blocking before any commercial operation)
+
+---
+
+### `Admin/Trajectories.md`
+**Purpose:** Defines the evolutionary trajectory of the Lazarus Forge
+from v0 through interstellar (v5). Scope routing destination for the
+repository — capabilities beyond current version scope route here
+rather than accumulating in operational documents. Owns the Forge
+Regeneration Threshold (FRT) doctrine and floor value.
+
+**In-Scope:**
+- Version trajectory from v0 through v5 with survival thresholds and
+  exit conditions
+- FRT doctrine and floor value ([2–5%] Placeholder)
+- Revenue allocation framework (operator-defined layer above FRT floor)
+- Scope routing destination for out-of-version capabilities
+- Design doctrine notes governing version advancement
+
+**Out-of-Scope:**
+- Component taxonomy or implementation specs for future versions
+  (→ module documents when versions become active)
+- Detailed economic model
+  (→ planned `economics_v0.md` at v0→v1 transition)
+- FRT measurement and logging procedures
+  (→ `Operations/Gate_07_Utilization.md`)
+- Component procurement doctrine
+  (→ `Architecture/Geck_forge_seed.md`)
+- Formal quality certification standards (→ future v2+ assignment)
+
+**Upstream Dependencies:**
+- `Admin/Governance_Charter.md` — Axiom P-3 (Collaboration and Mutual
+  Benefit) constrains community allocation doctrine
+- `Operations/Energy.md` — EV-001 feeds v1 operating cost model (TR-001)
+- `Architecture/Geck_forge_seed.md` — G.E.C.K. seeding definition
+  for v2
+
+**Downstream Recipients:**
+- All operational and architecture files — out-of-scope capability
+  creep routes here
+- `Operations/Gate_07_Utilization.md` — FRT measurement and per-cycle
+  logging lives there; this file owns the doctrine
+- `economics_v0.md` [PLANNED] — v0→v1 economic model; TR-001 is the
+  blocking unknown
+
+**Open Blocking Unknowns:** TR-001 (v1 profitability baseline undefined —
+blocks v0→v1 transition)
+
+---
+
+### `Admin/Verification_Gates_LF.md`
+**Purpose:** Single canonical source for the six verification gates
+required for document promotion. Every file's Verification Ref field
+points here. Stable dedicated home for gate definitions so they do not
+drift across governance additions in Auditor_Protocols.md or
+Forge_Audit_Kit.md.
+
+**In-Scope:**
+- The six canonical verification gates (G1–G6) with pass criteria and
+  evidence standards
+- Failure routing and holding logic for each gate
+- Full Stop Review trigger conditions and invocation record requirements
+- Gate enforcement rules (sequential requirement, binding block authority,
+  self-approval prohibition, override doctrine, reversibility)
+- Promotion requirements summary
+
+**Out-of-Scope:**
+- Full auditor role class doctrine
+  (→ `Admin/Auditor_Protocols.md`)
+- Full audit sequencing and phase logic
+  (→ `Admin/Auditor_Protocols.md`)
+- Full Adversarial Challenge Battery
+  (→ `Admin/Auditor_Protocols.md`)
+- Condensed audit operational reference
+  (→ `Admin/Forge_Audit_Kit.md`)
+- Cryptographic enforcement of gate passage
+  (→ `Admin/Security_Protocols.md`)
+- Ethical policy (→ `Admin/Ethical_Constraints.md`)
+- Constitutional governance hierarchy
+  (→ `Admin/Governance_Charter.md`)
+
+**Upstream Dependencies:**
+- `Admin/Auditor_Protocols.md` — source of truth for gate definitions;
+  this file is derived from §Verification Gate Enforcement there;
+  conflicts resolve in favor of Auditor_Protocols.md
+- `Admin/Governance_Charter.md` — human override doctrine applies to
+  gate process decisions; Tier 1 violations are not subject to gate
+  override
+
+**Downstream Recipients:**
+- All repository files — Verification Ref field in File State table
+  points here
+- `Admin/Forge_Audit_Kit.md` — carries condensed gate table derived
+  from this file; must remain consistent
+- `Admin/Security_Protocols.md` — Phase 3 cryptographic enforcement
+  will verify gate passage via commit signing
+- `Discovery.md` — this file must be added to confirmed file list and
+  Suggested Reading Order (per file's own Immediate Actions Required)
+
+**Open Blocking Unknowns:** VG-001 (gate definition synchronization
+authority chain — Non-blocking at Exploration; Blocking at Specification
+promotion)
+
+---
+
+## Cross-Cutting Notes for Discovery.md Integration
+
+**Planned files referenced across this batch** (not yet confirmed in
+repository; must carry [PLANNED] label in Discovery.md until created):
+- `Admin/Security_Protocols.md` — now EXISTS (included in this batch)
+- `Admin/Canonical_Terms.md` — now EXISTS (included in Batch 1)
+- `Admin/Governance_Migration_Protocol.md` — still PLANNED
+- `Admin/Repository_Structure.md` — still PLANNED
+- `economics_v0.md` — still PLANNED
+- `Architecture/Forge_Net.md` — status unknown; verify
+- `Admin/Forge_Audit_Kit.md` — status unknown; verify against confirmed list
+- `Admin/File_Template.md` — status unknown; verify against confirmed list
+- `Admin/AUDIT_HARNESS.py` — status unknown; verify against confirmed list
+
+**Archive directory** (`/Archive/`): Prescribed by
+`Admin/Repository_Integrity_Protocol.md` (RIP-001) but not yet
+established. Should be added to Discovery.md when created.
+
+**Suggested Reading Order implication:** `Admin/Verification_Gates_LF.md`
+explicitly requests placement after `Admin/File_Template.md` in the
+Suggested Reading Order. Should be reflected in Discovery.md update.
+
+**Governance tier summary for Discovery.md routing table:**
+
+| Tier | File | Status |
+|------|------|--------|
+| Tier 1 | `Admin/Governance_Charter.md` | Active |
+| Tier 1 | `Admin/Ethical_Constraints.md` | Active |
+| Tier 2 | `Admin/Auditor_Protocols.md` | Active |
+| Tier 3 | `Admin/Forge_Audit_Kit.md` | Verify |
+| Tier 4 | Dynamic procedures | — |
+| Tier 5 | Domain specifications | — |
+| Support | `Admin/Canonical_Terms.md` | Active |
+| Support | `Admin/Security_Protocols.md` | Active (Draft) |
+| Support | `Admin/Repository_Integrity_Protocol.md` | Active (Draft) |
+| Support | `Admin/Verification_Gates_LF.md` | Active (Draft) |
+| Support | `Admin/Engineer_Protocols.md` | Active (Draft) |
+| Support | `Admin/Ship_of_Theseus_Right_to_Repair.md` | Active (Exploration) |
+| Support | `Admin/Trajectories.md` | Active (Exploration) |
+
+---
+
+*This addendum covers Admin/ only. Operations/, Architecture/, and Tests/
+files will follow in subsequent batches. Reconcile against existing
+Discovery.md content before committing — do not treat this as a
+replacement, only as an addendum.*
