@@ -487,3 +487,25 @@ dedicated `Admin/Safety_Protocols.md`.
 - 2026-05-06: Saturation Fault monitoring requirement added to Stage D and Monitoring sections. Chemical bypass failure mode named and addressed.
 - 2026-05-06: Variant 0 (Positive Pressure Enclosure Protection) added. Derived from field observation — cab filtration in high-dust environment. Sacrificial pre-filter doctrine applied.
 - 2026-05-23: Retrofit to File_Template.md structure. File State table, Scope Boundary, Assumptions, Abandoned Paths, Drift Indicators sections added. Noise hazard added to Safety Advisory, Design Philosophy Principle 6, Monitoring section, and AS-004 sidecar entry. All integration hook references updated to canonical folder-prefixed paths. Lessons Learned table reformatted with Evidence Type and Confidence columns.
+
+
+---
+
+## ## Amendments, Field Notes, & Real-World Precedents
+
+### ### 1. Real-World Engineering Benchmarks
+* **The Condensation Prerequisite:** Hard-ware deployment data indicates that direct-to-carbon routing of pyrolysis outgassing causes instantaneous tar blinding of the media. A multi-stage fractional condensation loop (cyclone separator or chilled fluid condenser) MUST precede the chemical scrubbing phase to drop out heavy oil fractions, paraffins, and waxes.
+* **Chemisorption Overrides:** Standard granular activated carbon (GAC) exhibits poor retention for light-fraction toxic syngas components (e.g., carbon monoxide, formaldehydes, methane). Where high-temperature reduction or synthetic polymer processing is active, the final stage dry-bed must integrate an active chemisorbent media (such as alumina impregnated with potassium permanganate ($KMnO_4$)) to permanently chemically neutralize low-molecular-weight VOCs.
+
+### ### 2. Definitive Saturation Thresholds & Sensor Fail-Safes [Ref: AS-003]
+To eliminate the toxic "Saturation Fault" masking condition, the sensor layout must be updated from simple air-velocity monitoring to differential gas-phase analysis:
+
+| Diagnostic Metric | Detection Method | Actionable System Threshold | Automated Interlock Trigger |
+| :--- | :--- | :--- | :--- |
+| **Media Saturation** | Dual VOC PID Sensors (Pre- vs. Post-Filter Differential) | Efficiency drop $< 85\%$ capture | Trigger **System Fault 04**; Halt downstream heating elements; Force auxiliary air bypass. |
+| **Particulate Blinding**| Differential Pressure ($\Delta P$) Transducers across HEPA/Carbon pack | $\Delta P \ge 450 \text{ Pa}$ (over clean baseline) | Trigger **Filter Restriction Alert**; Initiate automated mechanical shaker or lock out milling spindle. |
+| **Acidic Ingress ($HCl$/$HF$)** | Post-scrubber electrochemical gas sensor / pH probe in wet sumps | Sump pH $< 5.5$ or Exhaust $> 5 \text{ ppm}$ | Instantaneous **E-Stop Lockout** of Pyrolysis Reactor core. |
+
+### ### 3. Mechanical & Physical Safety Additions
+* **Anti-Flashback Assemblies:** All lines routing non-condensable syngas or pyrolysis outgassing back into process furnaces or flares must feature a verified dual-mesh inline explosion-proof flashback arrestor to prevent flame propagation back into the air scrubber assembly.
+* **Corrosion Isolation:** Wet venturi or water-bubbler stages handling exhaust from halogenated materials must utilize heavy-walled high-density polyethylene (HDPE) or 316L stainless steel hulls to resist accelerated hydrochloric acid pitting.
