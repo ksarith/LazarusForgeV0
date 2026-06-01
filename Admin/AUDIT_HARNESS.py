@@ -1,14 +1,19 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v3
+LAZARUS FORGE — AUDIT HARNESS v4
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v2:
-  - File registry added — maps short filenames to full repo paths.
-    The repository moved from flat to folder-based structure.
-    All paths now resolve correctly regardless of folder location.
-  - Forge_Audit_Kit.md now correctly fetched from Admin/ folder.
-  - Protocol version updated to v0.5.
-  - Discovery.md fetch added to EXTRA_FILES options for orientation audits.
+CHANGES FROM v3:
+  - File registry updated — Engineering.md, Mechanical_Structures.md,
+    Woodworking.md, Engineer_Protocols.md, Repository_Integrity_Protocol.md
+    added. Entire Challenges/ directory registered (Water.md, Biofouling.md,
+    Waste.md, Planned_Obsolescence.md, Critical_Minerals.md).
+  - Legacy alias added for Canonical_Terms_LF.md.
+  - Alias display filter corrected to also exclude _LF.md suffixes.
+  - Protocol version updated to v0.7.
+  - EXTRA_FILES comments updated — Unknowns.md added as suggested extra
+    for cross-module audits.
+  - Framing line and prompt assembly updated to reference Auditor_Protocols
+    v0.7.
 
 USAGE:
   1. Cell 1 — run once per session (fetch helper + registry)
@@ -41,28 +46,29 @@ FILE_REGISTRY = {
 
     # Admin
     "Auditor_Protocols.md":             "Admin/Auditor_Protocols.md",
+    "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
+    "Engineer_Protocols.md":            "Admin/Engineer_Protocols.md",
     "Ethical_Constraints.md":           "Admin/Ethical_Constraints.md",
     "File_Template.md":                 "Admin/File_Template.md",
     "Forge_Audit_Kit.md":               "Admin/Forge_Audit_Kit.md",
+    "Governance_Charter.md":            "Admin/Governance_Charter.md",
+    "Repository_Integrity_Protocol.md": "Admin/Repository_Integrity_Protocol.md",
+    "Security_Protocols.md":            "Admin/Security_Protocols.md",
     "Ship_of_Theseus.md":               "Admin/Ship_of_Theseus.md",
     "Trajectories.md":                  "Admin/Trajectories.md",
-    "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
-    "Governance_Charter.md":            "Admin/Governance_Charter.md",
-    "Security_Protocols.md":            "Admin/Security_Protocols.md",
-    "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
     "Verification_Gates_LF.md":         "Admin/Verification_Gates_LF.md",
-  
+    "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
+
     # Architecture
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
     "Components.md":                    "Architecture/Components.md",
+    "Engineering.md":                   "Architecture/Engineering.md",
     "Forge_flow.md":                    "Architecture/Forge_flow.md",
     "Forge_Net.md":                     "Architecture/Forge_Net.md",
     "Geck_forge_seed.md":               "Architecture/Geck_forge_seed.md",
+    "Mechanical_Structures.md":         "Architecture/Mechanical_Structures.md",
 
-    # Operations
-    "Air_Scrubber.md":                  "Operations/Air_Scrubber.md",
-    "Electronics.md":                   "Operations/Electronics.md",
-    "Energy.md":                        "Operations/Energy.md",
+    # Operations — Gates
     "Gate_01_Intake.md":                "Operations/Gate_01_Intake.md",
     "Gate_02_Triage.md":                "Operations/Gate_02_Triage.md",
     "Gate_03_Reduction.md":             "Operations/Gate_03_Reduction.md",
@@ -70,15 +76,29 @@ FILE_REGISTRY = {
     "Gate_05_Separation_Thermal.md":    "Operations/Gate_05_Separation_Thermal.md",
     "Gate_06_Fabrication.md":           "Operations/Gate_06_Fabrication.md",
     "Gate_07_Utilization.md":           "Operations/Gate_07_Utilization.md",
+
+    # Operations — Domain
+    "Air_Scrubber.md":                  "Operations/Air_Scrubber.md",
+    "Electronics.md":                   "Operations/Electronics.md",
+    "Energy.md":                        "Operations/Energy.md",
     "Plastics.md":                      "Operations/Plastics.md",
-  
+    "Woodworking.md":                   "Operations/Woodworking.md",
+
     # Tests
     "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
     "Support_Raft.md":                  "Tests/Support_Raft.md",
 
+    # Challenges
+    "Water.md":                         "Challenges/Water.md",
+    "Biofouling.md":                    "Challenges/Biofouling.md",
+    "Waste.md":                         "Challenges/Waste.md",
+    "Planned_Obsolescence.md":          "Challenges/Planned_Obsolescence.md",
+    "Critical_Minerals.md":             "Challenges/Critical_Minerals.md",
+
     # Legacy aliases — resolve to current canonical names.
     # These exist so stale references in cached context still work.
     "Unknowns_LF.md":                   "Unknowns.md",
+    "Canonical_Terms_LF.md":            "Admin/Canonical_Terms.md",
     "Trajectories_LF.md":               "Admin/Trajectories.md",
     "energy_v0.md":                     "Operations/Energy.md",
     "Air_Scrubber_v0.md":               "Operations/Air_Scrubber.md",
@@ -90,6 +110,7 @@ FILE_REGISTRY = {
     "Spin_Chamber_v0.md":               "Operations/Gate_05_Separation_Thermal.md",
     "Component_Triage_System.md":       "Operations/Gate_02_Triage.md",
     "Ship_of_Theseus_Right_to_Repair.md": "Admin/Ship_of_Theseus.md",
+    "Stratification_Chamber_v0.md":     "Operations/Gate_04_Separation_Mechanical.md",
 }
 
 def fetch(filename):
@@ -110,8 +131,22 @@ print("Fetch helper ready.")
 print(f"Registry contains {len(FILE_REGISTRY)} file mappings.")
 print("\nKnown files:")
 for short, path in sorted(FILE_REGISTRY.items()):
-    if not short.endswith("_v0.md") and "LF.md" not in short:  # skip aliases in display
-        print(f"  {short:45} → {path}")
+    # Skip aliases from display (legacy _v0.md, _LF.md, and known alias patterns)
+    is_alias = (
+        short.endswith("_v0.md")
+        or "_LF.md" in short
+        or short in {
+            "leviathan_testing.md",
+            "geck_forge_seed.md",
+            "Lazarus_forge_v0_flow.md",
+            "Ship_of_Theseus_Right_to_Repair.md",
+            "Stratification_Chamber_v0.md",
+            "Component_Triage_System.md",
+            "Canonical_Terms_LF.md",
+        }
+    )
+    if not is_alias:
+        print(f"  {short:50} → {path}")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -133,13 +168,17 @@ fragility, and unknown item handling doctrine.
 # Add files here ONLY when the audit needs extra context.
 # Each file adds ~5-15k chars. Keep total under 60k where possible.
 EXTRA_FILES = [
-    # "Forge_flow.md",          # if gate logic is central
-    # "Ethical_Constraints.md", # if ethics cross-ref needed
-    # "Energy.md",              # if energy claims are central
-    # "Forge_Net.md",           # if network dependency is central
-    # "Gate_02_Triage.md",      # if handoff to triage is relevant
-    # "Components.md",          # if component taxonomy is relevant
-    # "Discovery.md",           # for orientation audits / new agents
+    # "Forge_flow.md",                  # gate logic and vocabulary standard
+    # "Ethical_Constraints.md",         # ethics cross-ref and Anti-Weaponization doctrine
+    # "Energy.md",                      # if energy claims are central
+    # "Forge_Net.md",                   # if network dependency is central
+    # "Gate_02_Triage.md",              # if handoff to triage is relevant
+    # "Components.md",                  # if component taxonomy is relevant
+    # "Unknowns.md",                    # for cross-module audits and unknown routing
+    # "Discovery.md",                   # for orientation audits / new agents
+    # "Mechanical_Structures.md",       # if salvaged-frame fabrication is relevant
+    # "Cognitive_Frameworks.md",        # if autonomy or TMR doctrine is relevant
+    # "Engineer_Protocols.md",          # if engineering authority or risk threshold is relevant
 ]
 
 # ── STEP 4: Set document status ───────────────────────────────────
@@ -207,7 +246,7 @@ sections = []
 
 # Role declaration
 sections.append(
-    f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.5\n"
+    f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.7\n"
     f"Repository: LazarusForgeV0"
 )
 
@@ -218,7 +257,8 @@ sections.append(
     f"- {TARGET_FILE} is classified as {DOC_STATUS}\n"
     f"- Forge_Audit_Kit.md contains the active Fallacy Checklist, Verification Gates,\n"
     f"  AI Contribution Rules, and condensed Unknowns Registry\n"
-    f"- Repository uses folder-based structure: Admin/, Architecture/, Operations/, Tests/\n"
+    f"- Repository uses folder-based structure: Admin/, Architecture/, Operations/,\n"
+    f"  Tests/, Challenges/\n"
     f"- Rename Registry in Discovery.md maps legacy filenames to current canonical paths\n"
     f"- Full reference files: Admin/Auditor_Protocols.md | Unknowns.md\n"
     f"These assumptions are carried forward unless contradicted by new findings."
@@ -236,9 +276,10 @@ sections.append(
     f"Label all findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN],\n"
     f"[CROSS-REF FAILURE]. For each finding, suggest a concrete resolution path.\n\n"
     f"Cross-reference naming note: the repository uses folder-prefixed paths\n"
-    f"(Admin/Ethical_Constraints.md, Operations/Energy.md). Legacy flat names\n"
-    f"(Ethical_Constraints.md, energy_v0.md) are aliases. Do not flag folder-prefixed\n"
-    f"paths as cross-reference failures — they are the canonical form.\n\n"
+    f"(Admin/Ethical_Constraints.md, Operations/Energy.md, Challenges/Water.md).\n"
+    f"Legacy flat names (Ethical_Constraints.md, energy_v0.md, Spin_Chamber_v0.md)\n"
+    f"are aliases — do not flag folder-prefixed paths as cross-reference failures.\n"
+    f"The canonical form always includes the folder prefix.\n\n"
     f"End with the standard sign-off format from Forge_Audit_Kit.md."
 )
 
