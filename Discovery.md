@@ -74,6 +74,8 @@ Architecture/                            — System architecture and foundationa
     ├── Geck_forge_seed.md               — Minimum viable seed specification
     ├── Engineering.md                   — First-principles intellectual backbone
     ├── Mechanical_Structures.md         — Salvaged-frame kinematic and structural doctrine
+    ├── Thermal_Systems.md               — Thermodynamic laws, heat transfer, Peltier, TEG, heat pump doctrine
+    ├── Friction_Dynamics.md             — Fluid mechanics, aerodynamics, and tribology doctrine
     ├── Cognitive_Frameworks.md          — Distributed cognition & survival under uncertainty
     └── Forge_Net.md                     — Decentralized data/physical network logistics
 
@@ -96,7 +98,11 @@ Tests/                                   — Test frameworks and deployment plat
     └── Leviathan_testing.md             — Deep-ocean autonomous stress-testing
 
 Challenges/                              — Problem layer: why these capabilities exist
-    └── Water.md                         — Water scarcity and contamination (Living Waters)
+    ├── Water.md                         — Water scarcity and contamination (Living Waters)
+    ├── Biofouling.md                    — Biological colonization and corrosion in autonomous systems
+    ├── Waste.md                         — Discretionary waste, throwaway culture, repair capacity loss
+    ├── Planned_Obsolescence.md          — Deliberate unrepairability and locked hardware ecosystems
+    └── Critical_Minerals.md             — Rare earth and critical mineral supply chain chokepoints
 ```
 
 **Planned / not yet created:**
@@ -181,6 +187,8 @@ Correct on next audit pass for each file:
 | `Architecture/Geck_forge_seed.md` | Exploration | — | Low |
 | `Architecture/Engineering.md` | Draft | — | Critical (EN-001) |
 | `Architecture/Mechanical_Structures.md` | Draft | 1/6 | High |
+| `Architecture/Thermal_Systems.md` | Draft | 0/6 | High |
+| `Architecture/Friction_Dynamics.md` | Draft | 0/6 | High |
 | `Architecture/Cognitive_Frameworks.md` | Exploration | — | High (CF-001, CF-002) |
 | `Architecture/Forge_Net.md` | Exploration | — | Critical (FN-001, FN-005) |
 | `Operations/Gate_01_Intake.md` | Exploration | 0/6 | Medium |
@@ -197,7 +205,11 @@ Correct on next audit pass for each file:
 | `Operations/Woodworking.md` | Draft | 0/6 | High |
 | `Operations/Support_Raft.md` | Exploration | — | High |
 | `Tests/Leviathan_testing.md` | Exploration | — | High |
-| `Challenges/Water.md` | New | — | — |
+| `Challenges/Water.md` | Active | — | — |
+| `Challenges/Biofouling.md` | Active | — | — |
+| `Challenges/Waste.md` | Active | — | — |
+| `Challenges/Planned_Obsolescence.md` | Active | — | — |
+| `Challenges/Critical_Minerals.md` | Active | — | — |
 
 ---
 
@@ -445,8 +457,10 @@ capabilities); `Operations/Gate_07_Utilization.md`; `economics_v0.md` [PLANNED].
 > 3. `Geck_forge_seed.md` — how to seed it
 > 4. `Engineering.md` — foundational principles
 > 5. `Mechanical_Structures.md` — fabrication machinery doctrine
-> 6. `Cognitive_Frameworks.md` — how it thinks
-> 7. `Forge_Net.md` — how instances connect
+> 6. `Thermal_Systems.md` — heat transfer, thermodynamics, Peltier, TEG, heat pump doctrine
+> 7. `Friction_Dynamics.md` — fluid mechanics, aerodynamics, and tribology doctrine
+> 8. `Cognitive_Frameworks.md` — how it thinks
+> 9. `Forge_Net.md` — how instances connect
 
 ---
 
@@ -547,14 +561,77 @@ torque ceiling); positive-pressure spindle purge; falsifiable MTBMF metric
 (→ `Architecture/Engineering.md`); G-code or part geometries; motor driver
 schematics (→ `Operations/Electronics.md`); chemistry profiles
 (→ `Operations/Air_Scrubber.md`); Air Scrubber back-pressure specs
-(→ `Operations/Air_Scrubber.md`).
-**Upstream:** `Architecture/Engineering.md`; `Admin/Ethical_Constraints.md`.
+(→ `Operations/Air_Scrubber.md`); thermal properties of fluids or heat transfer
+(→ `Architecture/Thermal_Systems.md`); lubrication regime theory
+(→ `Architecture/Friction_Dynamics.md`).
+**Upstream:** `Architecture/Engineering.md`; `Admin/Ethical_Constraints.md`;
+`Architecture/Friction_Dynamics.md` (lubrication and tribology doctrine);
+`Architecture/Thermal_Systems.md` (thermal expansion coefficients).
 **Downstream:** All fabrication machinery specifications requiring gantry or
 kinematic doctrine.
 > ⚠️ *ME-001 (resonance mapping on mismatched salvaged rails) makes interlock
 > thresholds provisional — annotated in interlock matrix.*
 > ℹ️ *Replaces planned `Architecture/Structural_Engineering.md` and
 > `Architecture/Mechanical_Systems.md` — both retired.*
+
+---
+
+### `Architecture/Thermal_Systems.md`
+**Purpose:** Foundational thermal doctrine and Forge applications. Peer file to
+Engineering.md and Friction_Dynamics.md — owns all thermal domain detail. Covers
+thermodynamic laws as Forge operating constraints, heat transfer modes, thermal
+impedance, insulation, heat pumps, Peltier devices, and TEGs.
+**In-Scope:** Laws of thermodynamics as Forge doctrine; conduction, convection, and
+radiation with Forge-relevant parameters; thermal impedance and circuit analogy;
+insulation doctrine (material selection, salvage assessment, R-value derating);
+heat pump operating principles and COP; Peltier (TEC) device characteristics and
+limits; thermopile and TEG harvest doctrine; Arkansas climate thermal baseline;
+cross-module thermal integration map.
+**Out-of-Scope:** Foundational engineering principles (→ `Architecture/Engineering.md`);
+convective fluid flow mechanics (→ `Architecture/Friction_Dynamics.md`); Gate_05
+operating parameters and crucible geometry
+(→ `Operations/Gate_05_Separation_Thermal.md`); Air Scrubber thermal fault
+monitoring (→ `Operations/Air_Scrubber.md`); mechanical structural response to
+thermal expansion (→ `Architecture/Mechanical_Structures.md`); pyrolysis reactor
+thermal profiles for specific polymer blends (→ `Operations/Plastics.md`).
+**Upstream:** `Architecture/Engineering.md` (peer — foundational principles);
+`Admin/Ethical_Constraints.md`.
+**Downstream:** `Operations/Gate_05_Separation_Thermal.md`; `Operations/Air_Scrubber.md`;
+`Operations/Energy.md`; `Operations/Plastics.md`; `Architecture/Mechanical_Structures.md`;
+`Tests/Support_Raft.md`; `Challenges/Water.md`.
+> ⚠️ *TH-001 (heat pump sizing doctrine), TH-003 (atmospheric moisture yield) —
+> open; TH-003 Blocking for Living Waters deployment.*
+> ℹ️ *New file — 2026-05-31. Sidecar: see file §Auditor Notes.*
+
+---
+
+### `Architecture/Friction_Dynamics.md`
+**Purpose:** Unified foundational doctrine for fluid mechanics, aerodynamics, and
+tribology. Peer file to Engineering.md and Thermal_Systems.md — owns all flow,
+drag, and surface interaction detail across liquids, gases, and mechanical contacts.
+**In-Scope:** Fluid properties and the continuum model; pressure, hydrostatics, and
+depth pressure; Reynolds number as universal flow regime classifier; Bernoulli
+principle, continuity, Darcy-Weisbach pipe flow; aerodynamic drag, lift, boundary
+layers, and duct airflow design; hydrodynamics for marine systems (SWATH, Froude,
+cavitation, Stokes settling); tribology — friction coefficients, wear mechanisms
+(adhesive, abrasive, fatigue, corrosive), lubrication regimes and Stribeck curve,
+lubricant selection doctrine for Forge applications.
+**Out-of-Scope:** Foundational engineering principles (→ `Architecture/Engineering.md`);
+thermal properties of fluids and convective heat transfer coefficients
+(→ `Architecture/Thermal_Systems.md`); Air Scrubber hardware specifications
+(→ `Operations/Air_Scrubber.md`); Gate_04 rotor geometry and RPM envelope
+(→ `Operations/Gate_04_Separation_Mechanical.md`); Support Raft SWATH structural
+design (→ `Tests/Support_Raft.md`); lubrication product specifications or brands.
+**Upstream:** `Architecture/Engineering.md` (peer — foundational principles);
+`Admin/Ethical_Constraints.md`.
+**Downstream:** `Operations/Air_Scrubber.md`; `Operations/Gate_04_Separation_Mechanical.md`;
+`Operations/Gate_05_Separation_Thermal.md`; `Tests/Support_Raft.md`;
+`Tests/Leviathan_testing.md`; `Architecture/Mechanical_Structures.md`;
+`Challenges/Biofouling.md`; `Challenges/Water.md`; `Operations/Woodworking.md`.
+> ⚠️ *FD-001 (Gate_04 RPM-to-fluid-doctrine link), FD-002 (Air Scrubber duct
+> velocity profile), FD-003 (salvaged bearing L10 protocol) — open.*
+> ℹ️ *New file — 2026-05-31. Abandoned path: split into Fluid_Dynamics.md +
+> Aerodynamics.md — doctrine overlap too significant; logged in file.*
 
 ---
 
@@ -1054,7 +1131,15 @@ architecture); `Architecture/Forge_Net.md` (delay-tolerant networking doctrine);
 ## Scope Map — Challenges/
 
 > Challenges/ files define problems and requirements. They do not freeze solutions.
-> File-local Scope Boundary sections remain authoritative where they exist.
+> They exist to anchor the repository to real-world purpose — making the *why*
+> visible alongside the *how*. File-local Scope Boundary sections remain
+> authoritative where they exist.
+>
+> **Format note:** Water.md uses the revised four-section format (Crisis →
+> Engineering Requirements → Current Forge Approaches → Long-Term Objective).
+> The four newer files use the original three-tier format (Crisis → Forge Remedy
+> → Systemic Goal). Both are valid. Retrofit to revised format is optional on
+> next edit pass.
 
 ---
 
@@ -1063,21 +1148,136 @@ architecture); `Architecture/Forge_Net.md` (delay-tolerant networking doctrine);
 challenge the Forge exists to address. Frames the Living Waters initiative —
 the Forge's operational posture toward clean water as a human right, not an
 optional capability.
-**In-Scope:** The Crisis — human cost of water scarcity and contamination
-globally; Engineering Requirements — what any remediation approach must satisfy
+**In-Scope:** The Crisis (human cost globally); Engineering Requirements
 (dissolved contaminant removal, suspended solid removal, no secondary pollution,
 intermittent power operation, community deployability, material-positive
-remediation); Current Forge Approaches — stratification cycles, Spin Chamber
+remediation); Current Forge Approaches (stratification cycles, Spin Chamber
 applications, ambient energy harvesting, atmospheric moisture recovery, biochar
-conversion; Long-Term Objective — community water sovereignty; Open Unknowns.
+conversion); Long-Term Objective — community water sovereignty; Open Unknowns.
 **Out-of-Scope:** Specific hardware designs or engineering specifications
 (→ Operations/ files when developed); full implementation detail for atmospheric
-moisture recovery.
+moisture recovery or ionization systems.
 **Upstream:** `Operations/Gate_05_Separation_Thermal.md` (Spin Chamber
-applications); `Operations/Gate_04_Separation_Mechanical.md` (stratification
-cycles); `Operations/Energy.md` (ambient energy harvesting doctrine).
+applications); `Operations/Gate_04_Separation_Mechanical.md` (stratification);
+`Operations/Energy.md` (ambient energy harvesting doctrine).
 **Downstream:** Informs design requirements for Operations/ remediation
 applications; philosophical grounding for water-related engineering decisions.
+> ℹ️ *Footer cross-references are stale — `Operations/Stratification_Chamber_v0.md`
+> and `Operations/Spin_Chamber.md` should be updated to
+> `Operations/Gate_04_Separation_Mechanical.md` and
+> `Operations/Gate_05_Separation_Thermal.md` per Rename Registry.*
+
+---
+
+### `Challenges/Biofouling.md`
+**Purpose:** Establishes biological colonization and corrosion as a foundational
+threat to long-duration autonomous Forge hardware in marine and terrestrial
+environments. Frames the requirement for ecosystem-safe, self-sourced remediation
+that enables multi-decade operational lifespans without human maintenance intervals.
+**In-Scope:** The Crisis — marine macro/micro-fouling on hulls and intake pipes;
+terrestrial biological encroachment and MIC (Microbiologically Influenced
+Corrosion); kinetic and ultrasonic disruption approaches; biomimetic surface
+topography from Plastics.md outputs; sacrificial anode deployment from
+stratification outputs; autonomous and non-toxic remediation doctrine.
+**Out-of-Scope:** Specific transducer hardware specifications; detailed hull
+geometry for Support_Raft (→ `Tests/Support_Raft.md`); galvanic corrosion
+mitigation engineering (→ SR-001 in `Tests/Support_Raft.md`); chemical
+antifoulant formulations (explicit non-approach — ecosystem harm prohibition).
+**Upstream:** `Operations/Gate_04_Separation_Mechanical.md` (stratification
+outputs for sacrificial anodes); `Operations/Plastics.md` (biomimetic surface
+topography fabrication); `Tests/Support_Raft.md` (primary marine deployment
+context); `Admin/Ethical_Constraints.md` (ecosystem harm prohibition governs
+all remediation approaches here).
+**Downstream:** `Tests/Support_Raft.md` (biofouling mitigation requirements);
+`Tests/Leviathan_testing.md` (long-duration autonomous survival requirements);
+`Operations/Gate_05_Separation_Thermal.md` (recovered zinc/aluminum/magnesium
+for sacrificial anodes).
+
+---
+
+### `Challenges/Waste.md`
+**Purpose:** Establishes discretionary waste and the erosion of local repair
+capacity as a structural challenge — driven by cultural psychology and economic
+incentives as much as by material failure. Frames the Forge's role as making
+self-reliance the path of least resistance.
+**In-Scope:** The Crisis — premium asset abandonment due to upgrading cycles and
+cosmetic obsolescence; systematic erosion of community-level repair skills, tools,
+and spare parts availability; automated diagnostics and triage via Gate_01 and
+Gate_02 infrastructure; localized digital twin and spare parts repository linked
+to Plastics.md and woodworking modules; distributed utility return loops and
+community drop-off/retrieval nodes.
+**Out-of-Scope:** Specific vision model or thermal analysis implementations
+(→ `Operations/Gate_01_Intake.md`, `Operations/Gate_02_Triage.md`); full
+3D-printing specification (→ fabrication domain files); Support_Raft as
+drop-off node architecture (→ `Tests/Support_Raft.md`).
+**Upstream:** `Operations/Gate_01_Intake.md` (automated diagnostics
+infrastructure); `Operations/Gate_02_Triage.md` (triage logic for discarded
+goods); `Operations/Plastics.md` (3D-printable replacement fabrication);
+`Operations/Woodworking.md` (repair fabrication feedstock);
+`Tests/Support_Raft.md` (forward-facing drop-off node concept).
+**Downstream:** `Operations/Gate_02_Triage.md` (direct repair vs. deep salvage
+routing); `Operations/Gate_06_Fabrication.md` (replacement part fabrication);
+`Architecture/Forge_Net.md` (community inventory and data layer for known failure
+patterns).
+
+---
+
+### `Challenges/Planned_Obsolescence.md`
+**Purpose:** Establishes deliberate unrepairability — sealed enclosures,
+potted components, cryptographically locked firmware — as a structural challenge
+that positions consumer waste as urban ore. Frames the Forge as the system that
+bypasses forced obsolescence at the material and software level.
+**In-Scope:** The Crisis — monolithic sealed enclosures; material potting and
+multi-material fusion; microchip locking and firmware deprecation; non-destructive
+thermal and mechanical de-manufacturing doctrine; automated logic re-baselining
+via hardware debug interfaces (JTAG, SWD); Logic-Zero wipe and open-source
+re-flashing; standardized geometry upcycling through Plastics.md and
+stratification loops.
+**Out-of-Scope:** Specific microcontroller firmware development; full PCB
+fabrication specification (→ `Operations/Electronics.md`); stratification chamber
+operating parameters (→ `Operations/Gate_05_Separation_Thermal.md`); plastic
+extrusion hardware specification (→ `Operations/Plastics.md`).
+**Upstream:** `Operations/Electronics.md` (Logic-Zero wipe doctrine and hardware
+debug interface stack); `Operations/Gate_02_Triage.md` (thermal delamination
+within Gate_02 scope); `Operations/Plastics.md` (standardized geometry upcycling
+from plastic housings); `Operations/Gate_05_Separation_Thermal.md` (stratification
+of multi-material waste).
+**Downstream:** `Operations/Electronics.md` (re-baselining feeds component
+recovery stack); `Operations/Gate_06_Fabrication.md` (upcycled feedstock as
+fabrication input); `Admin/Ship_of_Theseus.md` (philosophical grounding for
+treating restored devices as continuations, not new manufactures).
+> ℹ️ *References `Stratification_Chamber_v0.md` and
+> `Gate_02_Processing` — stale names. Update to
+> `Operations/Gate_04_Separation_Mechanical.md` and
+> `Operations/Gate_02_Triage.md` per Rename Registry.*
+
+---
+
+### `Challenges/Critical_Minerals.md`
+**Purpose:** Establishes rare earth and critical mineral supply chain
+concentration as a structural threat to technological sovereignty. Frames the
+existing technosphere — accumulated devices and infrastructure — as the primary
+mine for these materials, removing leverage held by geopolitically adversarial
+supply chains.
+**In-Scope:** The Crisis — concentration of neodymium, dysprosium, lithium,
+cobalt, tantalum, gallium, indium supply chains; geopolitical weaponization of
+refining capacity; demand growth from electrification and renewables; aggressive
+urban mining doctrine across the full Gate pipeline; selective induction melting
+and centrifugal separation for high-yield recovery from discarded electronics,
+EV batteries, industrial magnets, catalytic converters; functional substitute
+development using abundant recovered metals; real-time material assay integration.
+**Out-of-Scope:** Specific assay instrument specifications; chemical refining or
+hydrometallurgical processing detail; geopolitical policy or trade law analysis;
+extraction from virgin geological deposits (explicit non-approach).
+**Upstream:** `Operations/Gate_02_Triage.md` (preprocessing doctrine for
+high-value salvage streams); `Operations/Gate_04_Separation_Mechanical.md`
+(centrifugal separation for critical mineral recovery); `Operations/Gate_05_Separation_Thermal.md`
+(selective induction melting by density/conductivity profile);
+`Operations/Electronics.md` (primary source stream — discarded devices).
+**Downstream:** `Operations/Gate_06_Fabrication.md` (recovered rare earth
+fractions as fabrication inputs); `Architecture/Forge_Net.md` (material assay
+data as network knowledge artifacts); `Admin/Trajectories.md` (full rare earth
+refinery capability — v2/v3 scope).
 
 ---
 
