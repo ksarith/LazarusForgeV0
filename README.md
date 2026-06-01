@@ -86,11 +86,12 @@ Full flow logic is defined in `Architecture/Forge_flow.md`.
 ## What's In This Repository
 
 This repository contains the active working specifications for the Lazarus Forge system.
-It is organized around physical modules, governance documents, and test frameworks.
+It is organized around physical modules, governance documents, test frameworks, and a
+problem layer that anchors all capabilities to real-world purpose.
 
 ### Operations — Physical Gates
 
-Each gate governs a distinct stage of the material flow. All gates now exist (Gate_01
+Each gate governs a distinct stage of the material flow. All seven gates exist (Gate_01
 through Gate_07). No pending gate files remain.
 
 - `Operations/Gate_01_Intake.md` — System entry point. Safety screening (energetic,
@@ -105,7 +106,7 @@ through Gate_07). No pending gate files remain.
   Induction heating, slow rotation, MHD damping. Produces useful gradients, not pure metal
 - `Operations/Gate_06_Fabrication.md` — Constructive stage. Arc welding is the v0
   proof-of-concept gatekeeper. Add-to-excess and mill-to-spec philosophy
-- `Operations/Gate_07_Utilization.md` — After action review. Where fabricated parts meet
+- `Operations/Gate_07_Utilization.md` — After-action review. Where fabricated parts meet
   operational reality. The system learns whether what it made worked
 
 ### Operations — Support Systems
@@ -114,20 +115,37 @@ through Gate_07). No pending gate files remain.
   integration. Trust anchor for the governance substrate — ethics enforcement, hardware
   watchdogs, TMR voting, and AI containment all depend on the integrity of this layer
 - `Operations/Energy.md` — Energy strategy and honest accounting. Bootstrap through grid,
-  salvaged motor-generators, biogas, solar, and thermal recovery
+  salvaged motor-generators, biogas, solar, and thermal recovery. Power Demand stub is the
+  shared baseline for all energy accounting across the repository
 - `Operations/Air_Scrubber.md` — Safety and containment subsystem. Five-stage architecture.
   The Forge does not run if the scrubber cannot verify safe operation
+- `Operations/Plastics.md` — Salvaged polymer processing and pyrolytic fuel recovery.
+  Triage hierarchy: direct reuse → mechanical repurposing → thermal depolymerization as
+  last resort. PVC and halogenated polymers are hard prerequisites before any hot run
+- `Operations/Woodworking.md` — Full timber processing chain from felling through milling,
+  drying, joinery, and waste valorization. Southern US species, salvaged urban timber,
+  and high-humidity climate doctrine throughout
 
 ### Architecture
 
-- `Architecture/Forge_flow.md` — Master decision flow and reference standard for shared
-  vocabulary. The governing document for all operational decisions
+- `Architecture/Forge_flow.md` — Master decision flow and **repository-wide vocabulary
+  standard**. The governing document for all operational decisions and the authoritative
+  source for all Defined Terms. Consult this before `Admin/Canonical_Terms.md` for any
+  undefined operational term
 - `Architecture/Components.md` — Critical vs. useful component taxonomy. Defines the
   minimum architecture for the Forge loop to close
+- `Architecture/Engineering.md` — First-principles engineering backbone. Foundational
+  principles, safety factors, materials behavior, and Arkansas climate derating. The *why*
+  behind all engineering decisions
+- `Architecture/Mechanical_Structures.md` — Structural, mechanical, and kinematic
+  engineering doctrine for salvaged-component fabrication machinery. Gantry rigidity,
+  thermal compensation, kinematic interlock matrix, sacrificial shear coupling mandate,
+  and positive-pressure spindle purge. Extends Engineering.md into salvaged-frame reality
 - `Architecture/Cognitive_Frameworks.md` — How Forge systems think safely under
-  uncertainty. Distributed cognition, TMR architecture, human supervisory stack
+  uncertainty. Distributed cognition, confidence collapse states (Green through Black),
+  TMR architecture, human supervisory stack
 - `Architecture/Forge_Net.md` — Decentralized network infrastructure connecting forge
-  instances. Prerequisite for the logistics model
+  instances. Prerequisite for the inter-forge logistics model
 - `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment in
   resource-sparse environments *(living document — updated actively)*
 
@@ -150,19 +168,28 @@ than relying on behavioral alignment alone.
   contributions — human, AI, or multi-agent. Includes the Adversarial Challenge Battery
   (ten challenge classes), role class definitions, and the Sidecar Model for decentralized
   unknown tracking
+- `Admin/Verification_Gates_LF.md` — Single canonical source for the six document
+  promotion gates (G1–G6). Every file's Verification Ref field points here
 - `Admin/Forge_Audit_Kit.md` — Condensed audit reference for routine multi-agent cycles.
   Load this instead of the full governance corpus for routine work. Includes the Audit
   Opening Checklist: Tier 1 Axiom verification first, Expiry Watch second
+- `Admin/Canonical_Terms.md` — Anti-drift vocabulary and term exclusions. Single source
+  of truth for repository nomenclature. Consult after Forge_flow.md for any term dispute
+- `Admin/Engineer_Protocols.md` — Cognitive and procedural protocols for engineering
+  contributors. Fills the gap between governance (what is permitted) and domain
+  specifications (what is built)
+- `Admin/Security_Protocols.md` — Cryptographic trust and multi-agent node security.
+  Bridges constitutional governance declarations and operational integrity procedures
 - `Admin/Repository_Integrity_Protocol.md` — Operational integrity enforcement. Defines
   integrity baselines, violation classification (Minor / Major / Constitutional), recovery
   procedures, and the automation migration path. Bridges the gap between constitutional
   declarations and enforceable protections
-- `Admin/Auditor_Protocols.md` — Verification and hallucination filter
 - `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding for repair as identity
   preservation. Uses the Ship of Theseus paradox to frame right-to-repair defense strategy
 - `Admin/Trajectories.md` — Version roadmap from v0 (terrestrial proof of persistence)
   through v5 (interstellar propagation). Each version defined by survival threshold and
-  exit condition — not a feature list
+  exit condition — not a feature list. Scope routing destination for all out-of-version
+  capabilities
 - `Admin/File_Template.md` — Canonical document structure for all repository files.
   Governs structure, audit discipline, semantic locking, drift detection, and the Ethical
   Anchor embedded in every file
@@ -173,12 +200,39 @@ than relying on behavioral alignment alone.
   to break assumptions and surface hidden failure modes before off-world deployment.
   Survival is optional. Understanding is not
 - `Tests/Support_Raft.md` — Stationary operational anchor for mobile Leviathan units.
-  Regional power, data relay, physical recovery, and triage processing
+  Regional power, data relay, physical recovery, and triage processing. The Raft does not
+  move. Leviathan units do. Complexity that lives on the Raft stays off the units
+
+### Challenges
+
+The Challenges directory is the repository's **problem layer** — it answers why these
+capabilities exist by anchoring the technical architecture to the real-world conditions
+it was built to address. Each file defines a crisis, its engineering requirements, and
+the Forge's current approach. Challenge files do not freeze solutions; they define
+obligations.
+
+- `Challenges/Water.md` — Water scarcity and contamination. The Living Waters initiative.
+  Clean water as a human right, not an optional capability. Atmospheric moisture recovery,
+  stratification-based remediation, material-positive filtration doctrine
+- `Challenges/Biofouling.md` — Biological colonization and corrosion as threats to
+  long-duration autonomous hardware. Ultrasonic disruption, biomimetic surface topography,
+  sacrificial anodes from stratification outputs. No toxic antifoulants
+- `Challenges/Waste.md` — Discretionary waste and the erosion of local repair capacity.
+  The Forge as the system that makes self-reliance the path of least resistance. Automated
+  diagnostics, localized digital twins, community drop-off and retrieval loops
+- `Challenges/Planned_Obsolescence.md` — Sealed enclosures, potted components, locked
+  firmware as deliberate unrepairability. Urban ore doctrine. Thermal delamination,
+  Logic-Zero re-baselining, standardized geometry upcycling
+- `Challenges/Critical_Minerals.md` — Rare earth and critical mineral supply chain
+  concentration as a structural threat to technological sovereignty. The technosphere as
+  the primary mine. Aggressive urban mining, centrifugal separation, selective induction
+  melting for neodymium, cobalt, lithium, tantalum recovery
 
 ### Navigation & Tracking
 
-- `Discovery.md` — Start here. Full file map, reading order, rename registry, and
-  per-file summaries. The canonical source for filename resolution
+- `Discovery.md` — Start here. Full file map, scope routing layer, reading order, rename
+  registry, and per-file scope boundaries. The canonical source for filename resolution
+  and ownership routing. "Where does this belong?" is answered here
 - `Unknowns.md` — Cross-module unknowns global index. Navigation layer only — full entry
   detail lives in each owning file's sidecar
 
@@ -314,10 +368,14 @@ Full framework in `Tests/Leviathan_testing.md`.
 
 Early-stage system architecture with active specification development.
 
-All seven operational gates now exist (Gate_01 through Gate_07). The governance layer
-has reached constitutional maturity with the adoption of Tier 1 Axioms. The primary
-remaining gaps are enforcement architecture (GOV-003), human override authentication
-(GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
+All seven operational gates exist (Gate_01 through Gate_07). The governance layer has
+reached constitutional maturity with the adoption of Tier 1 Axioms. The architecture
+layer now includes `Architecture/Mechanical_Structures.md` — salvaged-frame kinematic
+and structural doctrine — and the Challenges/ directory has been established as the
+repository's problem layer, currently holding five active files.
+
+The primary remaining gaps are enforcement architecture (GOV-003), human override
+authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
 
 No claims of full automation, self-replication, or net-positive economics are made without
 measurement. All quantitative figures are labeled with confidence levels per
