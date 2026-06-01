@@ -1,4 +1,4 @@
-# Challenges/Water.md
+# Challenges/Water_Scarcity_and_Contamination.md
 
 > *Water does not ask permission to sustain life. It simply flows — or it does not.*
 > *Where it does not, everything else stops.*
@@ -67,7 +67,7 @@ The river does not arrive from a central warehouse. It rises from the land it ha
 - Threshold contamination levels at which stratification-based approaches reach diminishing returns versus alternative pathways.
 - Community adoption and maintenance protocols — the social engineering layer that determines whether a technically sound system is actually used.
 
-*See: `Unknowns.md` for tracked open questions. See: `Operations/Stratification_Chamber_v0.md`, `Operations/Spin_Chamber.md` for linked mechanism documentation.*
+*See: `Unknowns.md` for tracked open questions (TH-003 is the Blocking unknown for Living Waters condensation deployment). See: `Operations/Gate_04_Separation_Mechanical.md` and `Operations/Gate_05_Separation_Thermal.md` for linked mechanism documentation. See: `Architecture/Thermal_Systems.md` §5–§6 for heat pump and Peltier condensation doctrine. See: `Architecture/Friction_Dynamics.md` §4 for Venturi scrubbing and airflow design.*
 
 ---
 
