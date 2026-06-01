@@ -96,11 +96,7 @@ Tests/                                   — Test frameworks and deployment plat
     └── Leviathan_testing.md             — Deep-ocean autonomous stress-testing
 
 Challenges/                              — Problem layer: why these capabilities exist
-    ├── Water.md                         — Water scarcity and contamination (Living Waters)
-    ├── Biofouling.md                    — Biological colonization and corrosion in autonomous systems
-    ├── Waste.md                         — Discretionary waste, throwaway culture, repair capacity loss
-    ├── Planned_Obsolescence.md          — Deliberate unrepairability and locked hardware ecosystems
-    └── Critical_Minerals.md             — Rare earth and critical mineral supply chain chokepoints
+    └── Water.md                         — Water scarcity and contamination (Living Waters)
 ```
 
 **Planned / not yet created:**
@@ -201,11 +197,7 @@ Correct on next audit pass for each file:
 | `Operations/Woodworking.md` | Draft | 0/6 | High |
 | `Operations/Support_Raft.md` | Exploration | — | High |
 | `Tests/Leviathan_testing.md` | Exploration | — | High |
-| `Challenges/Water.md` | Active | — | — |
-| `Challenges/Biofouling.md` | Active | — | — |
-| `Challenges/Waste.md` | Active | — | — |
-| `Challenges/Planned_Obsolescence.md` | Active | — | — |
-| `Challenges/Critical_Minerals.md` | Active | — | — |
+| `Challenges/Water.md` | New | — | — |
 
 ---
 
@@ -1062,15 +1054,7 @@ architecture); `Architecture/Forge_Net.md` (delay-tolerant networking doctrine);
 ## Scope Map — Challenges/
 
 > Challenges/ files define problems and requirements. They do not freeze solutions.
-> They exist to anchor the repository to real-world purpose — making the *why*
-> visible alongside the *how*. File-local Scope Boundary sections remain
-> authoritative where they exist.
->
-> **Format note:** Water.md uses the revised four-section format (Crisis →
-> Engineering Requirements → Current Forge Approaches → Long-Term Objective).
-> The four newer files use the original three-tier format (Crisis → Forge Remedy
-> → Systemic Goal). Both are valid. Retrofit to revised format is optional on
-> next edit pass.
+> File-local Scope Boundary sections remain authoritative where they exist.
 
 ---
 
@@ -1079,136 +1063,21 @@ architecture); `Architecture/Forge_Net.md` (delay-tolerant networking doctrine);
 challenge the Forge exists to address. Frames the Living Waters initiative —
 the Forge's operational posture toward clean water as a human right, not an
 optional capability.
-**In-Scope:** The Crisis (human cost globally); Engineering Requirements
+**In-Scope:** The Crisis — human cost of water scarcity and contamination
+globally; Engineering Requirements — what any remediation approach must satisfy
 (dissolved contaminant removal, suspended solid removal, no secondary pollution,
 intermittent power operation, community deployability, material-positive
-remediation); Current Forge Approaches (stratification cycles, Spin Chamber
+remediation); Current Forge Approaches — stratification cycles, Spin Chamber
 applications, ambient energy harvesting, atmospheric moisture recovery, biochar
-conversion); Long-Term Objective — community water sovereignty; Open Unknowns.
+conversion; Long-Term Objective — community water sovereignty; Open Unknowns.
 **Out-of-Scope:** Specific hardware designs or engineering specifications
 (→ Operations/ files when developed); full implementation detail for atmospheric
-moisture recovery or ionization systems.
+moisture recovery.
 **Upstream:** `Operations/Gate_05_Separation_Thermal.md` (Spin Chamber
-applications); `Operations/Gate_04_Separation_Mechanical.md` (stratification);
-`Operations/Energy.md` (ambient energy harvesting doctrine).
+applications); `Operations/Gate_04_Separation_Mechanical.md` (stratification
+cycles); `Operations/Energy.md` (ambient energy harvesting doctrine).
 **Downstream:** Informs design requirements for Operations/ remediation
 applications; philosophical grounding for water-related engineering decisions.
-> ℹ️ *Footer cross-references are stale — `Operations/Stratification_Chamber_v0.md`
-> and `Operations/Spin_Chamber.md` should be updated to
-> `Operations/Gate_04_Separation_Mechanical.md` and
-> `Operations/Gate_05_Separation_Thermal.md` per Rename Registry.*
-
----
-
-### `Challenges/Biofouling.md`
-**Purpose:** Establishes biological colonization and corrosion as a foundational
-threat to long-duration autonomous Forge hardware in marine and terrestrial
-environments. Frames the requirement for ecosystem-safe, self-sourced remediation
-that enables multi-decade operational lifespans without human maintenance intervals.
-**In-Scope:** The Crisis — marine macro/micro-fouling on hulls and intake pipes;
-terrestrial biological encroachment and MIC (Microbiologically Influenced
-Corrosion); kinetic and ultrasonic disruption approaches; biomimetic surface
-topography from Plastics.md outputs; sacrificial anode deployment from
-stratification outputs; autonomous and non-toxic remediation doctrine.
-**Out-of-Scope:** Specific transducer hardware specifications; detailed hull
-geometry for Support_Raft (→ `Tests/Support_Raft.md`); galvanic corrosion
-mitigation engineering (→ SR-001 in `Tests/Support_Raft.md`); chemical
-antifoulant formulations (explicit non-approach — ecosystem harm prohibition).
-**Upstream:** `Operations/Gate_04_Separation_Mechanical.md` (stratification
-outputs for sacrificial anodes); `Operations/Plastics.md` (biomimetic surface
-topography fabrication); `Tests/Support_Raft.md` (primary marine deployment
-context); `Admin/Ethical_Constraints.md` (ecosystem harm prohibition governs
-all remediation approaches here).
-**Downstream:** `Tests/Support_Raft.md` (biofouling mitigation requirements);
-`Tests/Leviathan_testing.md` (long-duration autonomous survival requirements);
-`Operations/Gate_05_Separation_Thermal.md` (recovered zinc/aluminum/magnesium
-for sacrificial anodes).
-
----
-
-### `Challenges/Waste.md`
-**Purpose:** Establishes discretionary waste and the erosion of local repair
-capacity as a structural challenge — driven by cultural psychology and economic
-incentives as much as by material failure. Frames the Forge's role as making
-self-reliance the path of least resistance.
-**In-Scope:** The Crisis — premium asset abandonment due to upgrading cycles and
-cosmetic obsolescence; systematic erosion of community-level repair skills, tools,
-and spare parts availability; automated diagnostics and triage via Gate_01 and
-Gate_02 infrastructure; localized digital twin and spare parts repository linked
-to Plastics.md and woodworking modules; distributed utility return loops and
-community drop-off/retrieval nodes.
-**Out-of-Scope:** Specific vision model or thermal analysis implementations
-(→ `Operations/Gate_01_Intake.md`, `Operations/Gate_02_Triage.md`); full
-3D-printing specification (→ fabrication domain files); Support_Raft as
-drop-off node architecture (→ `Tests/Support_Raft.md`).
-**Upstream:** `Operations/Gate_01_Intake.md` (automated diagnostics
-infrastructure); `Operations/Gate_02_Triage.md` (triage logic for discarded
-goods); `Operations/Plastics.md` (3D-printable replacement fabrication);
-`Operations/Woodworking.md` (repair fabrication feedstock);
-`Tests/Support_Raft.md` (forward-facing drop-off node concept).
-**Downstream:** `Operations/Gate_02_Triage.md` (direct repair vs. deep salvage
-routing); `Operations/Gate_06_Fabrication.md` (replacement part fabrication);
-`Architecture/Forge_Net.md` (community inventory and data layer for known failure
-patterns).
-
----
-
-### `Challenges/Planned_Obsolescence.md`
-**Purpose:** Establishes deliberate unrepairability — sealed enclosures,
-potted components, cryptographically locked firmware — as a structural challenge
-that positions consumer waste as urban ore. Frames the Forge as the system that
-bypasses forced obsolescence at the material and software level.
-**In-Scope:** The Crisis — monolithic sealed enclosures; material potting and
-multi-material fusion; microchip locking and firmware deprecation; non-destructive
-thermal and mechanical de-manufacturing doctrine; automated logic re-baselining
-via hardware debug interfaces (JTAG, SWD); Logic-Zero wipe and open-source
-re-flashing; standardized geometry upcycling through Plastics.md and
-stratification loops.
-**Out-of-Scope:** Specific microcontroller firmware development; full PCB
-fabrication specification (→ `Operations/Electronics.md`); stratification chamber
-operating parameters (→ `Operations/Gate_05_Separation_Thermal.md`); plastic
-extrusion hardware specification (→ `Operations/Plastics.md`).
-**Upstream:** `Operations/Electronics.md` (Logic-Zero wipe doctrine and hardware
-debug interface stack); `Operations/Gate_02_Triage.md` (thermal delamination
-within Gate_02 scope); `Operations/Plastics.md` (standardized geometry upcycling
-from plastic housings); `Operations/Gate_05_Separation_Thermal.md` (stratification
-of multi-material waste).
-**Downstream:** `Operations/Electronics.md` (re-baselining feeds component
-recovery stack); `Operations/Gate_06_Fabrication.md` (upcycled feedstock as
-fabrication input); `Admin/Ship_of_Theseus.md` (philosophical grounding for
-treating restored devices as continuations, not new manufactures).
-> ℹ️ *References `Stratification_Chamber_v0.md` and
-> `Gate_02_Processing` — stale names. Update to
-> `Operations/Gate_04_Separation_Mechanical.md` and
-> `Operations/Gate_02_Triage.md` per Rename Registry.*
-
----
-
-### `Challenges/Critical_Minerals.md`
-**Purpose:** Establishes rare earth and critical mineral supply chain
-concentration as a structural threat to technological sovereignty. Frames the
-existing technosphere — accumulated devices and infrastructure — as the primary
-mine for these materials, removing leverage held by geopolitically adversarial
-supply chains.
-**In-Scope:** The Crisis — concentration of neodymium, dysprosium, lithium,
-cobalt, tantalum, gallium, indium supply chains; geopolitical weaponization of
-refining capacity; demand growth from electrification and renewables; aggressive
-urban mining doctrine across the full Gate pipeline; selective induction melting
-and centrifugal separation for high-yield recovery from discarded electronics,
-EV batteries, industrial magnets, catalytic converters; functional substitute
-development using abundant recovered metals; real-time material assay integration.
-**Out-of-Scope:** Specific assay instrument specifications; chemical refining or
-hydrometallurgical processing detail; geopolitical policy or trade law analysis;
-extraction from virgin geological deposits (explicit non-approach).
-**Upstream:** `Operations/Gate_02_Triage.md` (preprocessing doctrine for
-high-value salvage streams); `Operations/Gate_04_Separation_Mechanical.md`
-(centrifugal separation for critical mineral recovery); `Operations/Gate_05_Separation_Thermal.md`
-(selective induction melting by density/conductivity profile);
-`Operations/Electronics.md` (primary source stream — discarded devices).
-**Downstream:** `Operations/Gate_06_Fabrication.md` (recovered rare earth
-fractions as fabrication inputs); `Architecture/Forge_Net.md` (material assay
-data as network knowledge artifacts); `Admin/Trajectories.md` (full rare earth
-refinery capability — v2/v3 scope).
 
 ---
 
