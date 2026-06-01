@@ -42,7 +42,7 @@
 - Heat pump operating principles, COP doctrine, and Forge deployment contexts
 - Peltier (thermoelectric cooler/heater) device characteristics, limits, and use cases
 - Thermopile and thermoelectric generator (TEG) principles and harvest doctrine
-- Arkansas/southern US climate thermal baseline and seasonal derating guidance
+- Southern US climate thermal baseline and seasonal derating guidance
 - Cross-module thermal integration hooks — how this doctrine applies to Gate_05,
   Air_Scrubber, Energy, and Challenges/Water
 
@@ -341,7 +341,7 @@ This is why heat pumps are more efficient than resistive heating for most climat
 COP_Carnot_heating = T_hot / (T_hot − T_cold)     [temperatures in Kelvin]
 ```
 
-At Arkansas summer conditions, moving heat from 35°C outdoor air to 20°C indoor air:
+At summer conditions, moving heat from 35°C outdoor air to 20°C indoor air:
 
 ```
 COP_Carnot = 293 / (293 − 308) 
