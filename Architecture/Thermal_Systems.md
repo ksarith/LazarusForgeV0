@@ -1,0 +1,629 @@
+# Thermal_Systems.md
+
+> ⚠️ **Operational Safety Advisory**
+> Thermal systems present multiple simultaneous failure vectors: burns and scalding
+> from high-temperature surfaces and steam; fire and ignition from uncontrolled heat
+> sources near combustible materials; toxic outgassing from overheated polymers, coatings,
+> and salvaged materials; electrical hazards from Peltier and thermopile wiring under
+> load; and pressure hazards from sealed or semi-sealed thermal vessels.
+> Heat does not announce itself. A surface at 150°C looks identical to one at 25°C.
+> **Always assume thermal surfaces are hot until confirmed otherwise with instrumentation.
+> Never seal a heated vessel without a verified pressure relief path. Never operate
+> high-wattage Peltier devices without confirmed thermal sink capacity — unloaded
+> Peltier junction temperatures can destroy the device in under 60 seconds.**
+
+---
+
+## File State
+
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Draft                                                               |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-31                                                          |
+| Auditor          | Claude — Systems/Engineer                                           |
+| Open Unknowns    | 4                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | High                                                                |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Scope Boundary
+
+**This file DOES define:**
+- Laws of thermodynamics as operational doctrine for the Forge
+- Heat transfer modes (conduction, convection, radiation) with Forge-relevant parameters
+- Thermal impedance and resistance — the circuit analogy for heat flow
+- Insulation doctrine — material selection, salvage assessment, and application
+- Heat pump operating principles, COP doctrine, and Forge deployment contexts
+- Peltier (thermoelectric cooler/heater) device characteristics, limits, and use cases
+- Thermopile and thermoelectric generator (TEG) principles and harvest doctrine
+- Arkansas/southern US climate thermal baseline and seasonal derating guidance
+- Cross-module thermal integration hooks — how this doctrine applies to Gate_05,
+  Air_Scrubber, Energy, and Challenges/Water
+
+**This file DOES NOT define:**
+- Foundational engineering principles, safety factors, or materials behavior overview
+  (→ `Architecture/Engineering.md` — peer file; consult for general doctrine)
+- Spin Chamber (Gate_05) operating parameters, RPM envelope, or crucible geometry
+  (→ `Operations/Gate_05_Separation_Thermal.md`)
+- Air Scrubber thermal fault monitoring or exhaust heat load
+  (→ `Operations/Air_Scrubber.md`)
+- Energy storage thermal containment or battery fire suppression
+  (→ `Operations/Energy.md` EV-003; `Operations/Air_Scrubber.md`)
+- Mechanical structural response to thermal expansion
+  (→ `Architecture/Mechanical_Structures.md` §Thermal Expansion Disconnect)
+- Pyrolysis reactor thermal profiles for specific polymer blends
+  (→ `Operations/Plastics.md`)
+- Specific refrigerant selection or HVAC system design beyond doctrine
+- Full HVAC regulatory compliance or professional licensure requirements
+
+---
+
+## File Purpose
+
+This file establishes the thermal engineering doctrine for the Lazarus Forge — the
+foundational knowledge layer that governs how heat is understood, moved, harvested,
+and controlled across all Forge systems.
+
+Thermal behavior is a first-class engineering concern in the Forge. Gate_05 is
+fundamentally a thermal separation system. The Air Scrubber manages thermal quench
+stages. Energy recovery is partly a thermal harvest problem. The Living Waters
+initiative (Challenges/Water.md) depends on understanding atmospheric moisture and
+condensation thermodynamics. And the Arkansas climate imposes a thermal environment
+that affects every outdoor and semi-outdoor system the Forge operates.
+
+Without this file, thermal decisions are made ad-hoc in domain files, producing
+inconsistent doctrine, missed heat budgets, and dangerous surprises. This file gives
+all domain files a common thermal language and a consistent set of operating
+assumptions to reference.
+
+**Relationship to `Architecture/Engineering.md`:** That file is the broad engineering
+principles layer — first principles thinking, safety factors, materials behavior, FMEA
+discipline. This file owns the thermal domain specifically. Neither file is upstream
+of the other. Where a question is thermal in nature, this file is authoritative.
+Where a question is structural, mechanical, or general engineering, Engineering.md
+governs. Conflicts or overlaps escalate to a human contributor for resolution.
+
+---
+
+## Assumptions
+
+| ID      | Assumption | Basis | Confidence | Expiry Trigger |
+|---------|------------|-------|------------|----------------|
+| TH-ASM-001 | Arkansas baseline: ambient temperature range −5°C to 40°C, relative humidity 60–95% summer | Regional climate data | High | Forge relocated outside humid subtropical zone |
+| TH-ASM-002 | Salvaged insulation materials have degraded R-values relative to rated spec; derate by 30% minimum until tested | Moisture ingress, compression, aging typical in salvage | High | First measured R-value on salvaged sample |
+| TH-ASM-003 | Peltier devices sourced from salvage have unknown thermal cycling history; treat as reduced-life components | Delamination and solder fatigue accumulate invisibly | Medium | First destructive cross-section of salvaged unit |
+| TH-ASM-004 | Atmospheric moisture recovery is viable in Arkansas summer conditions (high humidity, ambient heat available) | Dew point regularly above 20°C in summer months | Medium | Measured condensation yield below viable threshold |
+
+---
+
+## Body
+
+### Section 1 — Laws of Thermodynamics as Forge Doctrine
+
+The laws of thermodynamics are not academic abstractions — they are hard constraints
+on what the Forge can and cannot do. Every thermal system design must be compatible
+with all four laws. Violations are not design flaws; they are impossibilities.
+
+**Zeroth Law — Thermal Equilibrium**
+If two systems are each in thermal equilibrium with a third, they are in equilibrium
+with each other. *Forge implication:* Any thermal sensor reading must be interpreted
+relative to its equilibrium state. A thermistor reading ambient temperature has
+equilibrated to the surface it contacts, not the fluid flowing past it. Sensor
+placement is not neutral — it is a design decision with thermal consequences.
+
+**First Law — Conservation of Energy**
+Energy cannot be created or destroyed, only converted. Heat added to a system equals
+the increase in internal energy plus work done by the system.
+*Forge implication:* There is no free thermal energy. Every joule harvested from a
+waste heat stream was a joule paid for somewhere upstream. Honest energy accounting
+(→ `Operations/Energy.md`) applies to thermal recovery equally. Claims of net-positive
+thermal harvest must account for the pump, fan, or compressor parasitic load.
+
+**Second Law — Entropy Always Increases**
+Heat flows spontaneously from hot to cold. You cannot move heat from cold to hot
+without doing work. No heat engine is 100% efficient.
+*Forge implication:* This law defines the operating ceiling for every thermal system.
+A heat pump can move heat from cold to hot — but it costs work to do so, and the
+Coefficient of Performance (COP) is always finite. Spontaneous heat flow is an asset
+(passive cooling, gravity-driven convection) when the gradient runs the right direction,
+and a liability when it runs the wrong way.
+
+**Third Law — Absolute Zero is Unreachable**
+Entropy approaches a constant minimum as temperature approaches absolute zero.
+*Forge implication:* At v0 this law is largely academic — the Forge does not operate
+near cryogenic temperatures. It becomes relevant when evaluating thermoelectric
+efficiency claims, which improve at larger temperature differentials.
+
+---
+
+### Section 2 — Heat Transfer Modes
+
+Heat moves by three mechanisms. All three operate simultaneously in most Forge
+systems. Understanding which mode dominates in a given system determines what
+intervention is effective.
+
+#### 2.1 Conduction
+
+Heat flows through a solid material from hot regions to cold regions. The rate is
+governed by Fourier's Law:
+
+```
+Q = k · A · ΔT / L
+```
+
+Where:
+- `Q` = heat flow rate (watts)
+- `k` = thermal conductivity of material (W/m·K)
+- `A` = cross-sectional area perpendicular to flow (m²)
+- `ΔT` = temperature difference across the material (K or °C)
+- `L` = thickness in direction of flow (m)
+
+**Forge-relevant conductivity benchmarks:**
+
+| Material | k (W/m·K) | Forge context |
+|----------|-----------|---------------|
+| Copper | 385 | Heat spreaders, cold plates, Peltier interfaces |
+| Aluminum | 205 | Heatsinks, chassis, thermal bridges |
+| Carbon steel | 50 | Gate_05 crucible shell, structural frames |
+| Stainless steel | 16 | Corrosion-resistant thermal surfaces |
+| Glass | 1.0 | Insulating windows, sight glasses |
+| Wood (dry) | 0.12–0.17 | Natural insulator, structural in cool zones |
+| Mineral wool | 0.04 | Insulation batts, salvageable from demolition |
+| Air (still) | 0.026 | Basis of most insulation systems |
+| Aerogel | 0.015 | Premium insulation; rare in salvage |
+
+*Salvage note:* Thermal conductivity degrades with contamination, moisture ingress,
+and mechanical damage. Steel with surface scale has locally reduced conductivity at
+the scale layer. Insulation compressed below design thickness loses R-value
+proportionally. Always measure or derate.
+
+#### 2.2 Convection
+
+Heat transfer between a surface and a moving fluid (liquid or gas). Two types:
+
+**Natural (free) convection** — buoyancy-driven flow from density differences. Hot
+air rises, cool air falls. No pump or fan required. Used in passive cooling chimneys,
+natural draft heat exchangers, and condensation systems.
+
+**Forced convection** — flow driven by a pump, fan, or blower. Much higher heat
+transfer coefficients. Requires parasitic energy. Used in active cooling loops,
+Air Scrubber thermal quench stages, and heat pump evaporator/condenser circuits.
+
+Newton's Law of Cooling governs convective heat transfer:
+
+```
+Q = h · A · (T_surface − T_fluid)
+```
+
+Where `h` is the convective heat transfer coefficient (W/m²·K). Typical values:
+
+| Condition | h (W/m²·K) |
+|-----------|------------|
+| Natural convection, air | 2–25 |
+| Forced convection, air | 25–250 |
+| Forced convection, water | 500–10,000 |
+| Boiling water | 2,500–100,000 |
+
+*Forge implication:* Water cooling loops outperform air cooling by 20–40× for the
+same surface area. Where heat density is high (Gate_05 crucible exterior, high-wattage
+Peltier cold sides), water loops are the correct intervention. Air cooling is
+appropriate for low-density heat loads or where water introduces contamination risk.
+
+#### 2.3 Radiation
+
+All surfaces emit thermal radiation as electromagnetic waves. The Stefan-Boltzmann
+Law governs emission from a perfect blackbody:
+
+```
+Q = σ · A · T⁴
+```
+
+Where `σ = 5.67 × 10⁻⁸ W/m²·K⁴` and T is absolute temperature (Kelvin).
+
+*Forge implication:* Radiation becomes significant above ~300°C and dominant above
+~600°C. Gate_05 during induction heating, and any open-flame or high-temperature
+process, radiates substantial heat to surroundings. This is both a safety concern
+(radiant burns at distance) and an energy accounting concern (radiated heat is not
+recovered). Reflective surfaces (polished aluminum, ceramic fiber blanket liners)
+reduce radiant losses. Dark, rough surfaces maximize emission — useful for passive
+radiative cooling in hot environments.
+
+---
+
+### Section 3 — Thermal Impedance and the Circuit Analogy
+
+Heat flow through a multi-layer system behaves analogously to electrical current
+through series resistors. This makes thermal circuit analysis a powerful design tool
+available without specialized software.
+
+**Thermal resistance** of a conductive layer:
+
+```
+R_th = L / (k · A)     [K/W]
+```
+
+**Series layers** add directly:
+
+```
+R_total = R_1 + R_2 + R_3 + ...
+```
+
+**Total heat flow** through a series stack:
+
+```
+Q = ΔT_total / R_total
+```
+
+This means: to calculate heat flow through an insulated wall (steel shell + mineral
+wool + air gap + drywall), compute each layer's R_th, sum them, divide the
+temperature difference by the total.
+
+**Contact resistance** is often the dominant term in salvaged assemblies. Two metal
+surfaces in contact have a thermal resistance at their interface that depends on
+surface finish, contact pressure, and the presence of a thermal interface material
+(TIM). A poorly mounted Peltier device may have 5–10× higher effective thermal
+resistance than a well-mounted one simply due to contact resistance at the junction
+interfaces. **Always use thermal paste, graphite sheet, or equivalent TIM at all
+metal-to-metal heat transfer interfaces.**
+
+**Thermal capacitance** (mass × specific heat) determines how quickly a system
+responds to heat input or removal. High thermal mass (steel, water, concrete) acts
+as a buffer — slow to heat, slow to cool. Low thermal mass (thin aluminum, air)
+responds quickly. Gate_05's large metallic charge has high thermal capacitance,
+meaning the thermal ramp-up is slow and predictable. This is a feature, not a bug.
+
+---
+
+### Section 4 — Insulation Doctrine
+
+Insulation reduces unwanted heat transfer. In the Forge context, insulation serves
+three roles:
+1. **Containment** — keeping process heat inside a system (Gate_05, pyrolysis reactor)
+2. **Protection** — preventing heat from reaching personnel or temperature-sensitive
+   components
+3. **Harvest efficiency** — reducing parasitic losses from thermal recovery systems
+
+**Insulation R-value** (imperial) or RSI (metric) is the primary selection metric.
+R-value = L / k in ft²·°F·h/BTU. Higher is better for thermal resistance.
+
+**Salvage-viable insulation materials:**
+
+| Material | RSI per 25mm | Notes |
+|----------|-------------|-------|
+| Mineral wool / rockwool | 0.75 | Excellent salvage candidate — fire-resistant, moisture-resistant, compressible |
+| Fibreglass batt | 0.66 | Common in demolition salvage; degrades with moisture |
+| Rigid foam (EPS/XPS) | 0.88–1.06 | Good but combustible; not for high-temperature zones |
+| Ceramic fiber blanket | 1.5–2.5 | High-temperature rated (up to 1400°C); ideal for Gate_05 exterior |
+| Vermiculite / perlite | 0.35 | Loose-fill; excellent for high-temperature backfill around crucibles |
+| Wood (framing, 90mm) | 0.63 | Structural and insulating in low-temperature zones only |
+| Dead air gap (25mm) | 0.17 | Free; always use where space allows |
+
+**Salvage assessment rules:**
+- Inspect for moisture (weight gain, discoloration, compression set) — wet insulation
+  has near-zero insulating value and may harbor mold
+- Verify temperature rating before use near process heat — most foam insulation fails
+  above 75°C; mineral wool is rated to 750°C+
+- Derate all salvaged insulation R-values by 30% minimum until tested
+  (see TH-ASM-002)
+
+**Arkansas climate implication:** High summer humidity accelerates moisture ingress
+into unsealed insulation assemblies. All exterior insulation must be vapor-barrier
+protected on the warm side. Failure to do this produces wet insulation within
+one to two humid seasons, collapsing thermal performance.
+
+---
+
+### Section 5 — Heat Pumps
+
+A heat pump uses work (mechanical or electrical) to move heat against its natural
+direction — from a cold reservoir to a hot one. This is not a violation of the Second
+Law; it is the Second Law in operation. The work input enables the transfer.
+
+**Coefficient of Performance (COP):**
+
+```
+COP_heating = Q_hot / W_in
+COP_cooling = Q_cold / W_in
+```
+
+A COP of 3.0 means 3 joules of heat are moved for every 1 joule of electrical work.
+This is why heat pumps are more efficient than resistive heating for most climates.
+
+**Carnot COP (theoretical maximum):**
+
+```
+COP_Carnot_heating = T_hot / (T_hot − T_cold)     [temperatures in Kelvin]
+```
+
+At Arkansas summer conditions, moving heat from 35°C outdoor air to 20°C indoor air:
+
+```
+COP_Carnot = 293 / (293 − 308) 
+```
+
+*Note: this direction is cooling mode (extracting heat from inside).* Real systems
+achieve 40–60% of Carnot COP. A well-maintained split system in moderate climate
+achieves COP 3–4 in cooling mode.
+
+**Forge deployment contexts:**
+
+*Atmospheric moisture recovery (Challenges/Water.md):* A heat pump or dedicated
+condensing unit chills a surface below the dew point of ambient air, causing moisture
+to condense. In Arkansas summer conditions (dew point commonly 22–26°C), a surface
+cooled to 10–15°C will yield measurable condensate. The colder the surface relative
+to dew point, the higher the yield rate. The Peltier devices (Section 6) can drive
+small-scale condensation surfaces; vapor-compression systems are required for
+meaningful throughput.
+
+*Process cooling:* Gate_05 and other high-heat operations generate waste heat that
+must be removed. A heat pump can lift that waste heat to a useful temperature
+(e.g., domestic hot water, process preheat) rather than dumping it to ambient.
+
+*Climate control for electronics bays:* High ambient temperatures in Arkansas summers
+degrade electronics performance and lifespan. A small dedicated heat pump for
+electronics enclosures — sized to the actual heat load, not commercial room size —
+is more energy-efficient than running a full HVAC system.
+
+**Salvage note:** Window air conditioning units are widely available in salvage
+streams and contain a functional vapor-compression heat pump. The compressor,
+condenser coil, expansion valve, and evaporator coil can be repurposed into custom
+thermal systems if the refrigerant circuit is kept intact or properly recharged.
+Never vent refrigerant to atmosphere — it is both illegal and environmentally harmful.
+
+---
+
+### Section 6 — Peltier Devices (Thermoelectric Coolers / TECs)
+
+A Peltier device is a solid-state heat pump. When direct current flows through a
+junction of two dissimilar semiconductor materials, one face cools and the other
+heats. Reversing current direction reverses hot and cold sides.
+
+**Operating characteristics:**
+
+- No moving parts — silent, vibration-free, highly reliable if thermally managed
+- COP typically 0.3–0.8 at useful temperature differentials — significantly less
+  efficient than vapor-compression heat pumps
+- Maximum temperature differential (ΔT_max) typically 60–70°C at zero heat load;
+  falls rapidly as heat load increases
+- Typical voltage range 3–24V DC; current 1–10A depending on device size
+- Common salvage sources: CPU coolers, portable refrigerators, medical sample
+  coolers, electronic equipment cold plates
+
+**Critical operating rule — thermal sink is mandatory:**
+The hot side of a Peltier device must be continuously cooled. Without a thermal
+sink, hot-side temperature rises rapidly, reducing ΔT across the device, reducing
+performance, and ultimately destroying the junction through thermal delamination.
+**An unloaded Peltier device powered without a heatsink will fail in under 60 seconds
+at full power.** Always mount to a heatsink with thermal paste before applying power.
+
+**Cascade configurations:** Two Peltier devices stacked (cold side of one cooling
+the hot side of another) achieve greater ΔT than a single device but at reduced
+efficiency. Useful for condensation applications requiring surface temperatures
+well below ambient.
+
+**Forge deployment contexts:**
+- Condensation surface for atmospheric moisture recovery — small surface area,
+  precise temperature control, quiet operation
+- Electronics enclosure spot cooling for sensitive components
+- Temperature-stabilized reference junctions for thermocouple measurement accuracy
+- Small-scale thermal cycling for materials testing
+
+---
+
+### Section 7 — Thermopiles and Thermoelectric Generators (TEGs)
+
+A thermopile is an array of thermocouples connected in series. When maintained
+across a temperature gradient, it generates a voltage proportional to ΔT. A TEG
+is a thermopile optimized for power generation rather than temperature measurement.
+
+**Seebeck coefficient** governs voltage generation:
+
+```
+V = S · ΔT
+```
+
+Where `S` is the Seebeck coefficient (µV/K). Common thermoelectric materials
+have S in the range of 100–300 µV/K. A 100°C differential across a single
+thermocouple junction yields roughly 10–30 mV — very small. Arrays of hundreds
+of junctions in series produce useful voltages.
+
+**TEG efficiency** is low — typically 5–8% of the Carnot efficiency at practical
+temperature differentials. This is not a reason to avoid TEGs in the Forge context;
+it is a reason to position them correctly. TEGs harvest waste heat that would
+otherwise be discarded. A 5% recovery from a waste stream that costs nothing is
+100% return on marginal investment.
+
+**Practical TEG harvest targets in the Forge:**
+
+| Source | Hot Side | Cold Side | Estimated ΔT | Practical Use |
+|--------|----------|-----------|--------------|---------------|
+| Gate_05 exterior shell | 200–400°C | Ambient (~35°C) | 165–365°C | Low-power instrumentation, sensor nodes |
+| Air Scrubber thermal quench | 150–250°C | Cooling water | 100–200°C | Battery trickle charging |
+| Biogas combustion exhaust | 300–500°C | Ambient | 265–465°C | Higher-yield harvest; limited by exhaust volume |
+| Solar absorber panel | 60–90°C | Ambient | 25–55°C | Low yield; better served by flat-plate thermal collector |
+
+**Salvage note:** TEG modules from industrial equipment, automotive exhaust
+applications, and research surplus appear occasionally in the salvage stream.
+Identify by the flat ceramic faces and lead wire pairs. Test Seebeck voltage
+with a candle and multimeter — a functional module produces a measurable voltage
+within seconds.
+
+---
+
+### Section 8 — Forge Thermal Integration Map
+
+This section maps thermal doctrine to the files that depend on it. Contributors
+working on these files should reference the relevant sections here before making
+thermal design decisions.
+
+| Downstream File | Relevant Sections | Dependency |
+|----------------|-------------------|------------|
+| `Operations/Gate_05_Separation_Thermal.md` | §1 (thermodynamic limits), §2 (radiation at high temp), §3 (thermal impedance of crucible assembly) | Gate_05 is a thermal separation system — all design decisions have thermal doctrine roots |
+| `Operations/Air_Scrubber.md` | §2.2 (forced convection in quench stage), §6 (Peltier for condensate recovery) | AS-003 saturation threshold depends on thermal quench parameters |
+| `Operations/Energy.md` | §7 (TEG waste heat harvest), §5 (heat pump COP for efficiency claims) | EV-001 demand baseline must account for thermal parasitic loads |
+| `Operations/Plastics.md` | §1 (First Law — no free heat in pyrolysis), §3 (thermal impedance of reactor wall) | Pyrolysis temperature profiles are thermal management problems |
+| `Architecture/Mechanical_Structures.md` | §2.1 (conductivity of steel/aluminum), §3 (thermal resistance of frame assemblies) | Thermal expansion compensation depends on these values |
+| `Tests/Support_Raft.md` | §5 (heat pump for desalination/condensation), §7 (TEG from thermal gradients in marine environment) | Marine thermal environment is distinct — thermal gradients available at depth |
+| `Challenges/Water.md` | §5 (heat pump condensation doctrine), §6 (Peltier condensation surface), §4 (insulation for cold surfaces to prevent parasitic loss) | Living Waters initiative depends on condensation thermodynamics |
+
+---
+
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|--------------|----------------|-------------|------------------|------------|---------------------|
+| 2026-05-31 | Modeling / doctrine | — | — | File created; no operational lessons yet | — | At first physical thermal system build |
+
+---
+
+## Active Disputes
+
+| ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
+|----|----------------|----------------------|------|--------|-------|
+| — | No active disputes | — | — | — | — |
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| — | — | No abandoned paths yet | — |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Any downstream file (Gate_05, Air_Scrubber, Plastics) adopts thermal constants
+  that contradict values in this file without logging a dispute here
+- Peltier or TEG efficiency claims in any file exceed the theoretical Carnot bounds
+  defined in Sections 6 and 7
+- Insulation R-value claims in any file use non-derated salvage figures
+- Heat pump COP claims exceed 60% of Carnot COP without measured validation
+- The thermal integration map (Section 8) loses coverage of a file that has
+  introduced thermal design decisions
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt
+autonomous audit progression and escalate for human review.
+
+---
+
+## Auditor Notes & Unknowns
+
+### TH-001 — Forge-specific heat pump sizing doctrine not yet developed
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Thermal_Systems.md` |
+| First Logged | 2026-05-31 |
+
+**Description:** Section 5 establishes heat pump principles and COP doctrine but
+does not provide a sizing methodology for Forge-specific deployments (condensation
+yield targets, electronics cooling loads, process cooling requirements). Without
+sizing guidance, deployments will be over- or under-specified.
+
+**Resolution Path:** After EV-001 (Forge power demand baseline) is resolved in
+`Operations/Energy.md`, develop a heat pump sizing worksheet that takes heat load
+in watts, desired ΔT, and ambient conditions as inputs and outputs compressor
+sizing and expected COP. Append to Section 5.
+
+---
+
+### TH-002 — TEG harvest yield at Gate_05 exterior not characterized
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Low |
+| Priority | Minor |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Thermal_Systems.md` |
+| First Logged | 2026-05-31 |
+
+**Description:** Section 7 provides estimated ΔT ranges for Gate_05 TEG harvest
+but the actual exterior shell temperature profile during operation is not yet
+characterized (see SC-001 in `Operations/Gate_05_Separation_Thermal.md`).
+Harvest yield estimates are Analogous confidence only.
+
+**Resolution Path:** When Gate_05 first operational prototype exists, mount
+calibrated thermocouples at three points on the exterior shell during a nominal
+run cycle. Record steady-state temperatures. Update Section 7 harvest table
+from Analogous to Measured confidence.
+
+---
+
+### TH-003 — Atmospheric moisture yield under Arkansas conditions not measured
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — non-blocking for most Forge operations; Blocking for Living Waters deployment |
+| Owner | `Architecture/Thermal_Systems.md` |
+| First Logged | 2026-05-31 |
+
+**Description:** TH-ASM-004 assumes atmospheric moisture recovery is viable in
+Arkansas summer conditions. Section 6 provides the condensation doctrine. But
+actual yield per unit of cold surface area at local dew point conditions has not
+been measured. Without yield data, Living Waters condensation system sizing
+is speculative.
+
+**Resolution Path:** Simple field test — mount a Peltier-cooled plate (target
+surface temperature 8–12°C) in outdoor Arkansas summer conditions. Measure
+condensate mass collected per hour per 100cm² of surface. Run across three
+representative humidity conditions (morning, afternoon, evening). Report as
+g/hr/100cm² at known ambient temperature and dew point. This is a one-day
+measurement campaign once a Peltier test rig exists.
+
+---
+
+### TH-004 — Salvaged Peltier device characterization protocol not defined
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Thermal_Systems.md` |
+| First Logged | 2026-05-31 |
+
+**Description:** Section 6 notes that salvaged Peltier devices have unknown thermal
+cycling history and should be treated as reduced-life components (TH-ASM-003).
+However, no acceptance test protocol exists to classify salvaged Peltier devices
+before deployment. Without this, there is no systematic way to distinguish a
+functional device from one near end-of-life.
+
+**Resolution Path:** Define a three-step acceptance protocol: (1) visual inspection
+for delamination, cracked ceramic, or corroded leads; (2) resistance measurement
+across both thermoelectric legs — deviation >15% from datasheet nominal indicates
+junction degradation; (3) functional test — measure ΔT achieved at rated current
+with calibrated thermal load on hot side. Append as a subsection to Section 6.
+
+---
+
+### Resolution Log
+
+- 2026-05-31: File created. Established as peer Architecture file alongside
+  Engineering.md. Sections 1–8 drafted covering thermodynamic laws, heat transfer
+  modes, thermal impedance circuit analogy, insulation doctrine, heat pumps, Peltier
+  devices, TEGs, and Forge thermal integration map. TH-001 through TH-004 logged.
+  Spec Gate 0/6 — Exploration status. Verification Ref set to
+  `Admin/Verification_Gates_LF.md`.
