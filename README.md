@@ -141,6 +141,14 @@ through Gate_07). No pending gate files remain.
   engineering doctrine for salvaged-component fabrication machinery. Gantry rigidity,
   thermal compensation, kinematic interlock matrix, sacrificial shear coupling mandate,
   and positive-pressure spindle purge. Extends Engineering.md into salvaged-frame reality
+- `Architecture/Thermal_Systems.md` — Thermodynamic laws as Forge operating constraints,
+  heat transfer modes, thermal impedance, insulation doctrine, heat pump COP, Peltier
+  device limits, and TEG harvest doctrine. Peer file to Engineering.md — owns all thermal
+  domain detail across all Forge systems
+- `Architecture/Friction_Dynamics.md` — Unified fluid mechanics, aerodynamics, and
+  tribology doctrine. Reynolds number, Bernoulli, duct design, drag and lift, SWATH
+  hydrodynamics, wear mechanisms, lubrication regimes, and salvaged bearing doctrine.
+  Peer file to Engineering.md — owns all flow, drag, and surface interaction detail
 - `Architecture/Cognitive_Frameworks.md` — How Forge systems think safely under
   uncertainty. Distributed cognition, confidence collapse states (Green through Black),
   TMR architecture, human supervisory stack
@@ -370,9 +378,12 @@ Early-stage system architecture with active specification development.
 
 All seven operational gates exist (Gate_01 through Gate_07). The governance layer has
 reached constitutional maturity with the adoption of Tier 1 Axioms. The architecture
-layer now includes `Architecture/Mechanical_Structures.md` — salvaged-frame kinematic
-and structural doctrine — and the Challenges/ directory has been established as the
-repository's problem layer, currently holding five active files.
+layer now includes `Architecture/Mechanical_Structures.md`, `Architecture/Thermal_Systems.md`,
+and `Architecture/Friction_Dynamics.md` — covering salvaged-frame fabrication doctrine,
+thermodynamic and heat transfer doctrine, and fluid mechanics/aerodynamics/tribology
+doctrine respectively as peer foundational files alongside Engineering.md. The Challenges/
+directory has been established as the repository's problem layer, currently holding five
+active files.
 
 The primary remaining gaps are enforcement architecture (GOV-003), human override
 authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
