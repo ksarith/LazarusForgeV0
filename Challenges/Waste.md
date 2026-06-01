@@ -1,34 +1,42 @@
-# Challenge: Discretionary Waste and Abandonment
+# Challenge: Waste
 
-## 1. The Crisis
-Societal waste streams are driven as much by cultural psychology as they are by mechanical failure. The prevailing economic model incentivizes a "throwaway culture," where fully functional or easily repairable items are discarded simply because they are no longer novel, have minor cosmetic defects, or are deemed inconvenient to store. 
+**Status**: Active | **Priority**: High | **v0 Relevance**: Direct
 
-### Premium Asset Abandonment
-* **The Threat:** Mass abandonment of high-value consumer goods, tools, appliances, and structural materials due to upgrading cycles or minor, non-fatal component degradation.
-* **The Impact:** Massive volumes of complex, high-grade materials (copper wiring, step motors, extruded aluminum, functional circuitry) are mixed with organic waste, downgrading pristine manufacturing assets into toxic landfill mass.
+## Problem Statement
+Modern waste streams are highly mixed, contaminated, and energy-intensive to process. Planned obsolescence, single-use plastics, e-waste, and construction debris overwhelm landfills and recycling systems. True recycling rates remain low globally because separation is expensive, contamination is common, and economic incentives favor virgin materials. This creates persistent pollution, resource loss, and toxicity that undermines long-term human persistence.
 
-### The Loss of Local Repair Capacity
-* **The Threat:** The systematic erosion of community-level repair skills, diagnostic tools, and spare parts availability. 
-* **The Impact:** Complete reliance on highly centralized, fragile global distribution networks. If a single plastic gear snaps in a washing machine or water pump, the entire unit is rendered scrap because the consumer lacks the means to fabricate a replacement.
+## Engineering Requirements
+- Safely handle mixed, unknown, and potentially hazardous inputs without releasing toxins.
+- Maximize functional preservation before any reduction (components > materials > raw feedstock).
+- Achieve positive value-per-kWh on processing loops.
+- Produce usable outputs (repaired parts, sorted materials, purified streams) while minimizing secondary waste.
+- Operate with modular, salvageable hardware that can be maintained in low-infrastructure settings.
+
+## Lazarus Approach
+The Forge treats waste as **misallocated resources** rather than endpoints. Following the core flow (Ingest → Test → Repair → Repurpose → Reduce → Purify → Fabricate → Utilize):
+
+- Prioritize triage via `Component_Triage_System.md` to pull out repairable or directly reusable items first.
+- Use physical separation modules (`Spin_Chamber_v0.md`, `Stratification_Chamber_v0.md`) for density and centrifugal sorting of mixed streams.
+- Deploy `Air_Scrubber_v0.md` and related purification stages to manage fumes, dust, and leachates during reduction.
+- Emphasize closed-loop feedback: track recovered value and adjust heuristics to improve future passes.
+- Design all processing hardware for easy salvage and repair, aligning with Ship_of_Theseus principles.
+
+This turns waste management from a cost sink into a net-positive resource recovery engine.
+
+## Open Questions / Next Steps
+- Develop low-energy heuristics for rapid material identification (vision + simple sensors).
+- Define safe handling protocols for unknown hazardous fractions.
+- Prototype integrated triage + spin chamber workflow for common waste categories (e-waste, plastics, organics).
+- Quantify baseline value-per-kWh for different waste input types.
+- Explore biological augmentation (mycelium, bacteria) for organic fractions within energy constraints.
+
+## References & Related
+- [Lazarus_forge_v0_flow.md](../Lazarus_forge_v0_flow.md) — Core processing sequence
+- [Components.md](../Components.md) — Taxonomy and triage logic
+- [energy_v0.md](../energy_v0.md) — KPI tracking
+- [Air_Scrubber_v0.md](../Air_Scrubber_v0.md), [Spin_Chamber_v0.md](../Spin_Chamber_v0.md), [Stratification_Chamber_v0.md](../Stratification_Chamber_v0.md)
+- [Ship_of_Theseus_Right_to_Repair.md](../Ship_of_Theseus_Right_to_Repair.md)
 
 ---
 
-## 2. The Forge Remedy
-The Forge intervenes by removing the friction, cost, and complexity from the repair and salvage loop. It treats the local waste stream as a chaotic, highly decentralized warehouse of ready-made parts and feedstock.
-
-### Automated Diagnostics and Triage
-* **Mechanism:** Utilizing vision models, thermal analysis, and basic electrical testing routines within the `Gate_01` and `Gate_02` infrastructure to assess discarded goods.
-* **Execution:** Discarded items are scanned to determine their structural and functional health. Items are instantly triaged into two paths: **Direct Repair** (identifying and swapping a single blown capacitor or broken gear) or **Deep Salvage** (harvesting standardized components before rendering the chassis down to base elements).
-
-### The Localized Digital Twin and Spare Parts Repository
-* **Mechanism:** Developing a dynamic library of geometric fixes and adaptive components linked to the `Plastics.md` and wood-processing modules.
-* **Execution:** When a common appliance or tool enters the salvage loop with a known point of failure (e.g., a stripped drive gear or a cracked housing), the Forge pulls or adapts a 3D-printable replacement from its local data layer. It fabricates the fix using recycled feedstock, restoring the item to full utility.
-
-### Distributed Utility Return Loops
-* **Mechanism:** Establishing secure, automated public drop-off and retrieval nodes (the forward face of the `Support_Raft` or localized Forge units).
-* **Execution:** Communities can drop off unwanted or broken goods. The Forge processes them—either returning them to a local inventory of functional, validated tools available for community use, or upcycling the materials into infrastructure that directly improves local life (e.g., automated agricultural piping, clean water filtration blocks, or localized energy captures).
-
----
-
-## 3. Systemic Goal
-To decoupling human quality of life from the extraction of virgin natural resources. By transforming the act of salvage from a manual, low-yield chore into an automated, high-fidelity industrial process, the Forge turns societal waste into regional wealth. The Forge grows in scale and capacity not by stripping the earth, but by absorbing and neutralizing the inefficiencies of the old industrial world—directly improving human lives by making self-reliance the path of least resistance.
+**Last updated**: June 2026
