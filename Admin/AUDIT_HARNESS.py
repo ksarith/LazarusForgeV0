@@ -1,8 +1,13 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v4
+LAZARUS FORGE — AUDIT HARNESS v5
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v3:
+CHANGES FROM v4:
+  - File registry updated — Thermal_Systems.md and Friction_Dynamics.md added
+    to Architecture/ entries (alphabetical order maintained).
+  - EXTRA_FILES comments updated — Thermal_Systems.md and Friction_Dynamics.md
+    added with accurate descriptions.
+  - Version string updated to v5.
   - File registry updated — Engineering.md, Mechanical_Structures.md,
     Woodworking.md, Engineer_Protocols.md, Repository_Integrity_Protocol.md
     added. Entire Challenges/ directory registered (Water.md, Biofouling.md,
@@ -65,8 +70,10 @@ FILE_REGISTRY = {
     "Engineering.md":                   "Architecture/Engineering.md",
     "Forge_flow.md":                    "Architecture/Forge_flow.md",
     "Forge_Net.md":                     "Architecture/Forge_Net.md",
+    "Friction_Dynamics.md":             "Architecture/Friction_Dynamics.md",
     "Geck_forge_seed.md":               "Architecture/Geck_forge_seed.md",
     "Mechanical_Structures.md":         "Architecture/Mechanical_Structures.md",
+    "Thermal_Systems.md":               "Architecture/Thermal_Systems.md",
 
     # Operations — Gates
     "Gate_01_Intake.md":                "Operations/Gate_01_Intake.md",
@@ -177,6 +184,8 @@ EXTRA_FILES = [
     # "Unknowns.md",                    # for cross-module audits and unknown routing
     # "Discovery.md",                   # for orientation audits / new agents
     # "Mechanical_Structures.md",       # if salvaged-frame fabrication is relevant
+    # "Thermal_Systems.md",             # if heat transfer, Peltier, TEG, or heat pump doctrine is relevant
+    # "Friction_Dynamics.md",           # if fluid flow, aerodynamics, duct design, or tribology is relevant
     # "Cognitive_Frameworks.md",        # if autonomy or TMR doctrine is relevant
     # "Engineer_Protocols.md",          # if engineering authority or risk threshold is relevant
 ]
