@@ -1,7 +1,7 @@
 # Challenge: Biofouling and Corrosion
 
 ## 1. The Crisis
-Autonomous, long-duration industrial hardware is constantly under attack by its environment. When left unmonitored, natural forces rapidly reclaim machinery through two intersecting vectors: biological colonization and chemical oxidation. 
+Autonomous, long-duration industrial hardware is constantly under attack by its environment. When left unmonitored, natural forces rapidly reclaim machinery through two intersecting vectors: biological colonization and chemical oxidation.
 
 ### Marine & Aquatic Scenarios
 * **The Threat:** Micro-fouling (slime, algal biofilms) followed by macro-fouling (barnacles, mussels, tube worms) on hulls, intake pipes, and the `Support_Raft` structure.
@@ -29,10 +29,22 @@ The Forge cannot rely on human maintenance intervals or toxic, globally shipped 
 * **Execution:** Applying these recycled polymer skins to exposed hulls and structural joints, making it mechanically impossible for sessile organisms to establish a strong structural foothold.
 
 ### Cathodic and Environmental Isolation
-* **Mechanism:** Automated deployment of sacrificial anodes formed during the stratification and melting cycles (`Stratification_Chamber_v0.md`).
+* **Mechanism:** Automated deployment of sacrificial anodes formed during the stratification and melting cycles (`Operations/Gate_04_Separation_Mechanical.md`).
 * **Execution:** Using recovered low-grade zinc, aluminum, or magnesium scrap to bear the brunt of galvanic corrosion, protecting the primary structural skeleton of the unit indefinitely.
 
 ---
 
 ## 3. Systemic Goal
 To transition autonomous industrial units from temporary intruders in an environment to durable, passive elements of the landscape. By mastering biofouling and corrosion mitigation through self-sourced materials and kinetic prevention, the Forge ensures its operational networks can survive un-maintained in deep wilderness or open ocean for multi-decade timelines, turning hostile environmental degradation into a solved baseline parameter.
+
+---
+
+*See: `Tests/Support_Raft.md` SR-001 (galvanic corrosion mitigation) and SR-012
+(mechanical bio-damping on wave-surge converters) for the primary open unknowns
+this challenge drives. See: `Architecture/Friction_Dynamics.md` §5.1–§5.2 for
+hydrodynamic drag quantification and boundary layer disruption doctrine. See:
+`Architecture/Friction_Dynamics.md` §7.2 for abrasive wear mechanisms from
+biofouling debris. See: `Unknowns.md` for tracked open questions.*
+
+*Challenges/ files define problems and requirements. They do not freeze solutions.*
+*The Forge's answer to this challenge will evolve. The obligation it names will not.*
