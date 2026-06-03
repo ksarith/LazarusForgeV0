@@ -1,8 +1,11 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v5
+LAZARUS FORGE — AUDIT HARNESS v6
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v4:
+CHANGES FROM v5:
+  - File registry updated — Chemistry.md added to Architecture/ entries.
+  - EXTRA_FILES comments updated — Chemistry.md added with description.
+  - Version string updated to v6.
   - File registry updated — Thermal_Systems.md and Friction_Dynamics.md added
     to Architecture/ entries (alphabetical order maintained).
   - EXTRA_FILES comments updated — Thermal_Systems.md and Friction_Dynamics.md
@@ -65,6 +68,7 @@ FILE_REGISTRY = {
     "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
 
     # Architecture
+    "Chemistry.md":                     "Architecture/Chemistry.md",
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
     "Components.md":                    "Architecture/Components.md",
     "Engineering.md":                   "Architecture/Engineering.md",
@@ -186,6 +190,7 @@ EXTRA_FILES = [
     # "Mechanical_Structures.md",       # if salvaged-frame fabrication is relevant
     # "Thermal_Systems.md",             # if heat transfer, Peltier, TEG, or heat pump doctrine is relevant
     # "Friction_Dynamics.md",           # if fluid flow, aerodynamics, duct design, or tribology is relevant
+    # "Chemistry.md",                   # if electrochemistry, corrosion, polymer hazards, or battery assessment is relevant
     # "Cognitive_Frameworks.md",        # if autonomy or TMR doctrine is relevant
     # "Engineer_Protocols.md",          # if engineering authority or risk threshold is relevant
 ]
