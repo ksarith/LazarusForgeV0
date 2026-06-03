@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.1 — Audit cycle 2026-05-31. Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md, Engineer_Protocols.md, Verification_Gates_LF.md, and Canonical_Terms.md reconciled. EN-001 through EN-005, ME-001 through ME-002, CF-001 through CF-003, EP-001 through EP-006, VG-001, CT-001 and CT-003 added. SR-011 through SR-013 formally indexed. CF-DS-001 and CF-DS-002 added to Active Disputes registry. CO-002 and GK-005 confirmed present. Dependency map updated.**
+**Version 2.3 — Audit cycle 2026-06-02. Architecture/Chemistry.md added. CE-001 through CE-004 indexed in new Chemistry & Electrochemistry section. CE-003 flagged as safety-critical prerequisite before first hot pyrolysis run (cross-references PL-001). Dependency map updated with CE cluster entries. Owner field stale name noted: CE-001 through CE-004 sidecars read Chemistry_Electrochemistry.md — correct to Chemistry.md on next file edit.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -14,20 +14,17 @@ Navigation unknowns → Discovery.md
 
 ---
 
-## What v2.1 Means
+## What v2.3 Means
 
-- `Architecture/Engineering.md` reconciled — EN-001 through EN-005 indexed; EN-001
-  (validated safety factors for salvaged materials) flagged Critical/Blocking; new
-  Engineering section added
-- `Architecture/Mechanical_Structures.md` reconciled — ME-001 (resonance mapping on
-  mismatched salvaged rails, Medium) and ME-002 (pneumatic purge volume vs. Air Scrubber
-  capacity, Low) indexed; new Mechanical Structures section added
-- `Architecture/Cognitive_Frameworks.md` reconciled — CF-001 (hardware watchdog minimum
-  standard, High/Blocking) and CF-002 (correlated AI failure modes, High) and CF-003
-  (identity continuity during split-brain, Medium) indexed; new Cognitive Frameworks
-  section added
-- `Admin/Engineer_Protocols.md` reconciled — EP-001 through EP-006 indexed; new Engineer
-  Protocols section added
+- `Architecture/Chemistry.md` created as peer Architecture file — CE-001 through
+  CE-004 indexed in new Chemistry & Electrochemistry section; CE-003 flagged as
+  safety-critical prerequisite before first hot pyrolysis run (cross-references PL-001)
+- Dependency map updated with CE cluster entries: CE-001 → EN-001/SR-001;
+  CE-002 → SC-002; CE-003 → PL-001; CE-004 → EP-004
+- Stale name noted: CE-001 through CE-004 sidecar Owner fields read
+  `Architecture/Chemistry_Electrochemistry.md` — correct to `Architecture/Chemistry.md`
+
+*(v2.2: Thermal_Systems.md and Friction_Dynamics.md added; TH and FD clusters.)*
 - `Admin/Verification_Gates_LF.md` reconciled — VG-001 (gate definition synchronization
   authority chain) indexed; added to Governance & Verification section
 - `Admin/Canonical_Terms.md` reconciled — CT-001 (legacy script integration name
@@ -210,6 +207,33 @@ SR-012 (mechanical bio-damping) -> feeds SR-001 (galvanic corrosion); biofouling
         load on wave-surge converter moving parts
 SR-013 (buoyancy shift) -> depends on SR-002 (sacrificial shell material selection);
         SWATH buoyancy control limit
+
+CE-001 (galvanic corrosion rates) -> feeds EN-001 (salvaged material safety factors
+        for humid environments); cross-ref SR-001 (galvanic corrosion mitigation)
+CE-002 (oxide burden on Spin Chamber) -> cross-ref SC-002 (segregation effectiveness);
+        oxide burden is confounding variable in segregation experiments
+CE-003 (Beilstein validation) -> cross-ref PL-001 (halogenated polymer contamination);
+        CE-003 must resolve before first hot pyrolysis run
+CE-004 (operator training standard) -> cross-ref EP-004 (engineering authority
+        boundary); feeds general operator competency doctrine
+
+TH-001 (heat pump sizing doctrine) -> depends on EV-001 (Forge power demand baseline);
+        feeds Challenges/Water.md condensation system sizing
+TH-002 (TEG harvest yield at Gate_05) -> depends on SC-001 (Gate_05 RPM envelope);
+        non-blocking; upgrades confidence label from Analogous to Measured
+TH-003 (atmospheric moisture yield) -> Blocking for Living Waters deployment;
+        cross-ref Challenges/Water.md; requires Peltier test rig (TH-004 prerequisite)
+TH-004 (Peltier characterization protocol) -> prerequisite for TH-003 field test;
+        cross-ref EL-003 (TMR voter implementation — Peltier salvage shares test workflow)
+
+FD-001 (Gate_04 RPM-to-Stokes link) -> depends on MG-002 (RPM characterization);
+        feeds generalizable separation model for new feedstock compositions
+FD-002 (Air Scrubber duct velocity) -> depends on AS-003 (scrubber waste stream
+        characterization); feeds impaction efficiency calculation per stage
+FD-003 (salvaged bearing L10 protocol) -> cross-ref ME-001 (resonance mapping);
+        non-blocking; housekeeping for bearing acceptance workflow
+FD-004 (Support_Raft reverse link) -> non-blocking housekeeping; resolve on next
+        Support_Raft.md audit pass
 ```
 
 ---
@@ -321,6 +345,37 @@ SR-013 (buoyancy shift) -> depends on SR-002 (sacrificial shell material selecti
 | ME-002 | Pneumatic purge volume requirements vs. Air Scrubber capacity | `Architecture/Mechanical_Structures.md` | Open | Minor |
 
 *EN-001 is Blocking — no structural specification in any file may be promoted without validated safety factors for salvaged materials.*
+
+### Chemistry & Electrochemistry
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| CE-001 | Galvanic corrosion rates for salvaged mixed-metal assemblies not characterized | `Architecture/Chemistry.md` | Open | Major |
+| CE-002 | Oxide burden effect on Spin Chamber output quality not quantified | `Architecture/Chemistry.md` | Open | Major |
+| CE-003 | Field polymer identification reliability not validated for mixed salvage stream | `Architecture/Chemistry.md` | Open | Major |
+| CE-004 | Chemical hazard identification training standard not defined | `Architecture/Chemistry.md` | Open | Major |
+
+*CE-003 is a safety-critical prerequisite before first hot pyrolysis run — cross-references PL-001.*
+
+### Thermal Systems
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| TH-001 | Forge-specific heat pump sizing doctrine not yet developed | `Architecture/Thermal_Systems.md` | Open | Major |
+| TH-002 | TEG harvest yield at Gate_05 exterior not characterized | `Architecture/Thermal_Systems.md` | Open | Minor |
+| TH-003 | Atmospheric moisture yield under Arkansas conditions not measured | `Architecture/Thermal_Systems.md` | Open | Major |
+| TH-004 | Salvaged Peltier device characterization protocol not defined | `Architecture/Thermal_Systems.md` | Open | Major |
+
+*TH-003 is Blocking for Living Waters deployment. Non-blocking for all other Forge operations.*
+
+### Friction Dynamics
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| FD-001 | Gate_04 centrifugal separation RPM data not linked to Stokes settling doctrine | `Architecture/Friction_Dynamics.md` | Open | Major |
+| FD-002 | Air Scrubber duct velocity profile not characterized per capture stage | `Architecture/Friction_Dynamics.md` | Open | Major |
+| FD-003 | Salvaged bearing L10 life estimation protocol not defined | `Architecture/Friction_Dynamics.md` | Open | Major |
+| FD-004 | Support_Raft.md reverse upstream link to Friction_Dynamics.md missing | `Architecture/Friction_Dynamics.md` | Open | Minor |
 
 ### Cognitive Frameworks
 
@@ -561,6 +616,7 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening workflow validated |
 | EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
 | CF-001 | Hardware watchdog minimum standard — no Specification-level autonomous architecture until resolved |
+| TH-003 | Atmospheric moisture yield not measured — Blocking for Living Waters deployment; requires Peltier test rig |
 
 ### Blocking Watch
 
@@ -630,3 +686,10 @@ CO-002 and GK-005 confirmed present from prior version. Active Disputes Registry
 added — CF-DS-001 and CF-DS-002 from Cognitive_Frameworks.md formally recorded.
 EN-001 and CF-001 added to Critical Watch. VG-001 added to Blocking Watch.
 Dependency map updated with all new cluster entries.
+
+**v2.2 — 2026-05-31:** Architecture/Thermal_Systems.md and Architecture/Friction_Dynamics.md
+created as peer Architecture files. TH-001 through TH-004 added (Thermal Systems
+section — new). FD-001 through FD-004 added (Friction Dynamics section — new).
+TH-003 (atmospheric moisture yield — Blocking for Living Waters deployment) added to
+Critical Watch. Dependency map updated with TH and FD cluster entries; cross-links:
+TH-001 → EV-001, TH-003 → TH-004, FD-001 → MG-002, FD-002 → AS-003.
