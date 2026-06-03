@@ -76,6 +76,7 @@ Architecture/                            — System architecture and foundationa
     ├── Mechanical_Structures.md         — Salvaged-frame kinematic and structural doctrine
     ├── Thermal_Systems.md               — Thermodynamic laws, heat transfer, Peltier, TEG, heat pump doctrine
     ├── Friction_Dynamics.md             — Fluid mechanics, aerodynamics, and tribology doctrine
+    ├── Chemistry.md                     — Electrochemistry, corrosion, redox, polymer degradation, battery assessment
     ├── Cognitive_Frameworks.md          — Distributed cognition & survival under uncertainty
     └── Forge_Net.md                     — Decentralized data/physical network logistics
 
@@ -189,6 +190,7 @@ Correct on next audit pass for each file:
 | `Architecture/Mechanical_Structures.md` | Draft | 1/6 | High |
 | `Architecture/Thermal_Systems.md` | Draft | 0/6 | High |
 | `Architecture/Friction_Dynamics.md` | Draft | 0/6 | High |
+| `Architecture/Chemistry.md` | Draft | 0/6 | High |
 | `Architecture/Cognitive_Frameworks.md` | Exploration | — | High (CF-001, CF-002) |
 | `Architecture/Forge_Net.md` | Exploration | — | Critical (FN-001, FN-005) |
 | `Operations/Gate_01_Intake.md` | Exploration | 0/6 | Medium |
@@ -459,8 +461,9 @@ capabilities); `Operations/Gate_07_Utilization.md`; `economics_v0.md` [PLANNED].
 > 5. `Mechanical_Structures.md` — fabrication machinery doctrine
 > 6. `Thermal_Systems.md` — heat transfer, thermodynamics, Peltier, TEG, heat pump doctrine
 > 7. `Friction_Dynamics.md` — fluid mechanics, aerodynamics, and tribology doctrine
-> 8. `Cognitive_Frameworks.md` — how it thinks
-> 9. `Forge_Net.md` — how instances connect
+> 8. `Chemistry.md` — electrochemistry, corrosion, redox, polymer degradation, battery assessment
+> 9. `Cognitive_Frameworks.md` — how it thinks
+> 10. `Forge_Net.md` — how instances connect
 
 ---
 
@@ -632,6 +635,47 @@ design (→ `Tests/Support_Raft.md`); lubrication product specifications or bran
 > velocity profile), FD-003 (salvaged bearing L10 protocol) — open.*
 > ℹ️ *New file — 2026-05-31. Abandoned path: split into Fluid_Dynamics.md +
 > Aerodynamics.md — doctrine overlap too significant; logged in file.*
+
+---
+
+### `Architecture/Chemistry.md`
+**Purpose:** Foundational chemical and electrochemical doctrine for the Forge.
+Peer file to Engineering.md, Thermal_Systems.md, and Friction_Dynamics.md —
+owns all chemical and electrochemical principles across gate operations, marine
+systems, and material processing.
+**In-Scope:** Galvanic series and galvanic corrosion mechanisms; corrosion types
+(uniform, pitting, crevice, MIC, SCC); cathodic protection and sacrificial anode
+selection; acid-base chemistry and pH measurement; HCl, H₂SO₄, and ammonia
+stream identification and neutralization; redox principles and metal oxidation
+states; combustion chemistry including CO and halogen hazards; field contamination
+identification (Beilstein test, pH strips, visual/olfactory indicators); polymer
+degradation chemistry by class (PVC, PTFE, BFRs, polyolefins); battery chemistry
+(lead-acid, Li-ion, NiMH, NiCd) and cell assessment without lab equipment;
+surface chemistry, adhesion, passivation, and protective treatments.
+**Out-of-Scope:** Foundational engineering principles
+(→ `Architecture/Engineering.md`); heat transfer in reactive systems
+(→ `Architecture/Thermal_Systems.md`); fluid flow in chemical processing
+(→ `Architecture/Friction_Dynamics.md`); Air Scrubber hardware specifications
+(→ `Operations/Air_Scrubber.md`); pyrolysis reactor design
+(→ `Operations/Plastics.md`); PCB etch chemistry procedures
+(→ `Operations/Electronics.md`); battery thermal containment hardware
+(→ `Operations/Energy.md`); specific chemical product recommendations or brands;
+regulatory compliance or hazardous materials disposal law.
+**Upstream:** `Architecture/Engineering.md` (peer); `Architecture/Thermal_Systems.md`
+(peer — intersects at thermochemistry); `Architecture/Friction_Dynamics.md`
+(peer — intersects at surface chemistry); `Admin/Ethical_Constraints.md`.
+**Downstream:** `Operations/Plastics.md`; `Operations/Electronics.md`;
+`Operations/Air_Scrubber.md`; `Operations/Gate_05_Separation_Thermal.md`;
+`Operations/Gate_03_Reduction.md`; `Operations/Energy.md`;
+`Tests/Support_Raft.md`; `Challenges/Biofouling.md`;
+`Architecture/Mechanical_Structures.md`; `Operations/Gate_01_Intake.md`;
+`Operations/Gate_02_Triage.md`; `Operations/Woodworking.md`.
+> ⚠️ *CE-003 (Beilstein validation against real salvage stream) is a safety-critical
+> prerequisite before first hot pyrolysis run — cross-references PL-001.*
+> ⚠️ *Owner field in CE-001 through CE-004 sidecars reads
+> `Architecture/Chemistry_Electrochemistry.md` — stale name; correct to
+> `Architecture/Chemistry.md` on next edit pass.*
+> ℹ️ *New file — 2026-06-02. 13-file integration map in §8.*
 
 ---
 
