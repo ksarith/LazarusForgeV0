@@ -149,6 +149,11 @@ through Gate_07). No pending gate files remain.
   tribology doctrine. Reynolds number, Bernoulli, duct design, drag and lift, SWATH
   hydrodynamics, wear mechanisms, lubrication regimes, and salvaged bearing doctrine.
   Peer file to Engineering.md — owns all flow, drag, and surface interaction detail
+- `Architecture/Chemistry.md` — Electrochemical corrosion doctrine, galvanic series,
+  cathodic protection, acid-base chemistry, redox principles, field contamination
+  identification (Beilstein test, pH measurement), polymer degradation by class,
+  battery chemistry and cell assessment, and surface treatment doctrine. Peer file
+  to Engineering.md — owns all chemical and electrochemical principles across the Forge
 - `Architecture/Cognitive_Frameworks.md` — How Forge systems think safely under
   uncertainty. Distributed cognition, confidence collapse states (Green through Black),
   TMR architecture, human supervisory stack
@@ -322,6 +327,20 @@ uncorrigible behavior detectable, contained, and reversible.
 
 ---
 
+## Two Repositories
+
+This repo (`LazarusForgeV0`) is the **active working repository** — lean, connected,
+and operational.
+
+A companion repository (`Lazarus-Forge-`) holds doctrine and philosophy. Ideas are often
+developed there first and refined here into practical specifications. When the two repos
+diverge, that divergence is a signal — either doctrine needs updating based on practical
+experience, or the working version has drifted from its principles.
+
+Both repos are intentionally kept open. Closing one permanently is a decision for later.
+
+---
+
 ## Multi-Agent Development
 
 This project is developed through a structured multi-agent workflow. Different AI systems
@@ -365,8 +384,9 @@ Early-stage system architecture with active specification development.
 All seven operational gates exist (Gate_01 through Gate_07). The governance layer has
 reached constitutional maturity with the adoption of Tier 1 Axioms. The architecture
 layer now includes `Architecture/Mechanical_Structures.md`, `Architecture/Thermal_Systems.md`,
-and `Architecture/Friction_Dynamics.md` — covering salvaged-frame fabrication doctrine,
-thermodynamic and heat transfer doctrine, and fluid mechanics/aerodynamics/tribology
+`Architecture/Friction_Dynamics.md`, and `Architecture/Chemistry.md` — covering
+salvaged-frame fabrication doctrine, thermodynamic and heat transfer doctrine,
+fluid mechanics/aerodynamics/tribology doctrine, and electrochemical/chemical
 doctrine respectively as peer foundational files alongside Engineering.md. The Challenges/
 directory has been established as the repository's problem layer, currently holding five
 active files.
