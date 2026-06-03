@@ -327,20 +327,6 @@ uncorrigible behavior detectable, contained, and reversible.
 
 ---
 
-## Two Repositories
-
-This repo (`LazarusForgeV0`) is the **active working repository** — lean, connected,
-and operational.
-
-A companion repository (`Lazarus-Forge-`) holds doctrine and philosophy. Ideas are often
-developed there first and refined here into practical specifications. When the two repos
-diverge, that divergence is a signal — either doctrine needs updating based on practical
-experience, or the working version has drifted from its principles.
-
-Both repos are intentionally kept open. Closing one permanently is a decision for later.
-
----
-
 ## Multi-Agent Development
 
 This project is developed through a structured multi-agent workflow. Different AI systems
