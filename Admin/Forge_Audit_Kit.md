@@ -307,6 +307,7 @@ Sign-off: [one sentence summary]
 | SEC- | `Admin/Security_Protocols.md` |
 | CT-  | `Admin/Canonical_Terms.md` |
 | PL-  | `Operations/Plastics.md` |
+| CE-  | `Architecture/Chemistry.md` |
 
 *Legacy flat filenames are aliases — resolve via Discovery.md Rename Registry.*
 
@@ -440,6 +441,14 @@ Full registry: `Unknowns.md` v1.8*
 | UNK-006 | Master safety registry — rotating and thermal modules | SC-006, MG-006 | Open | Major |
 | UNK-008 | Welding wire specification — no owner | SC-004 | Open | Major |
 
+### Chemistry
+| ID | Title | Owning File | Status | Priority |
+|----|-------|-------------|--------|----------|
+| CE-001 | Galvanic corrosion rates for salvaged mixed-metal assemblies | `Architecture/Chemistry.md` | Open | Major |
+| CE-002 | Oxide burden effect on Spin Chamber output quality | `Architecture/Chemistry.md` | Open | Major |
+| CE-003 | Field polymer ID reliability not validated for mixed salvage | `Architecture/Chemistry.md` | Open | Major |
+| CE-004 | Chemical hazard identification training standard not defined | `Architecture/Chemistry.md` | Open | Major |
+
 ### Trajectory
 | ID | Title | Owning File | Status | Priority |
 |----|-------|-------------|--------|----------|
@@ -483,6 +492,9 @@ SC-001 -> SC-005
 TR-001 -> depends on EV-001
 PL-001 -> blocks first hot pyrolysis run
 PL-002 -> blocks first hot pyrolysis run
+CE-001 -> EN-001 (corrosion rates feed salvaged material safety factors)
+CE-002 -> SC-002 (oxide burden is confounding variable in segregation experiments)
+CE-003 -> PL-001 (Beilstein validation is prerequisite for pyrolysis triage reliability)
 ```
 
 *Full map: `Unknowns.md` §Dependency Map*
