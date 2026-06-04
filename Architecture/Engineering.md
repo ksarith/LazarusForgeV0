@@ -9,7 +9,8 @@
 > with testing, and never bypass calculations with "it should be fine." Cross-reference
 > domain-specific files for thermal systems (Thermal_Systems.md), fluid mechanics and
 > tribology (Friction_Dynamics.md), salvaged-frame fabrication (Mechanical_Structures.md),
-> and materials processing (Woodworking.md, Plastics.md, etc.).
+> chemical and electrochemical processes (Chemistry.md), and materials processing
+> (Woodworking.md, Plastics.md, etc.).
 > When in doubt, increase margin or hold the design. The cost of a missed failure mode
 > is always higher than the cost of conservative engineering.
 
@@ -48,16 +49,20 @@
   (→ `Architecture/Thermal_Systems.md` — peer file)
 - Fluid mechanics, aerodynamics, lubrication regimes, or tribology
   (→ `Architecture/Friction_Dynamics.md` — peer file)
+- Chemical and electrochemical principles, corrosion doctrine, contamination
+  identification, polymer degradation chemistry, or battery chemistry
+  (→ `Architecture/Chemistry.md` — peer file)
 - Domain-specific fabrication techniques
   (→ `Operations/Woodworking.md`, `Operations/Plastics.md`, etc.)
 - Software engineering or electronics design (→ dedicated files)
 - Full regulatory compliance or professional licensure requirements
 
 **Peer file relationship:** `Architecture/Mechanical_Structures.md`,
-`Architecture/Thermal_Systems.md`, and `Architecture/Friction_Dynamics.md` are
-peer files — same authority level, each owning a distinct domain. This file owns
-broad engineering principles. Where a question is thermal, fluid, or tribological
-in nature, the relevant peer file governs. Conflicts escalate to a human contributor.
+`Architecture/Thermal_Systems.md`, `Architecture/Friction_Dynamics.md`, and
+`Architecture/Chemistry.md` are peer files — same authority level, each owning
+a distinct domain. This file owns broad engineering principles. Where a question
+is thermal, fluid, tribological, or chemical in nature, the relevant peer file
+governs. Conflicts escalate to a human contributor.
 
 ## File Purpose
 
@@ -189,8 +194,8 @@ wood, torque wrenches for critical fasteners.
 - High number of open unknowns reflecting the foundational nature of this file.
 - Body Stability Volatile — expected during initial population and cross-module
   alignment.
-- Scope boundary revised to absorb thermal, fluid, or tribology doctrine from
-  peer files without logging a dispute — trigger re-audit.
+- Scope boundary revised to absorb thermal, fluid, tribology, or chemical
+  doctrine from peer files without logging a dispute — trigger re-audit.
 - Verification Ref changed away from `Admin/Verification_Gates_LF.md`.
 
 ---
