@@ -8,8 +8,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | Verification_Gates_LF.md                                            |
-| Last Audit       | 2026-05-25                                                          |
-| Auditor          | Gemini — Skeptic/Auditor                                            |
+| Last Audit       | 2026-06-02                                                          |
+| Auditor          | Claude — Skeptic/Auditor                                            |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -196,13 +196,32 @@ In bootstrap states:
 
 **Bootstrap Paradox Acknowledgment:** During early-phase initialization, multi-agent quorum for independent skeptical review may not yet exist. A single model or runtime engine may be the only active agent. This creates a structural tension with Axiom Q-2 (no agent may plan, execute, and self-authorize the same action).
 
-**Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid. The Genesis Phase ends when a minimum agent quorum (defined in GOV-008) is operational and independently verifiable.
+**Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid.
 
 **Genesis Phase constraints:**
 - All initialization actions must be logged with human authorization reference
 - No autonomous agent may promote itself to governance authority during Genesis Phase without human ratification
 - Bootstrap assumptions made during Genesis Phase must be explicitly reviewed at Genesis Phase exit
 - Genesis Phase must have a declared exit condition — it must not silently become permanent operating mode
+
+**Genesis Phase Exit Conditions:**
+
+Genesis Phase may exit through any one of the following pathways. Each pathway requires explicit human ratification — the exit is not automatic even when the technical threshold is met. Exit via any pathway closes Genesis Phase for the declaring forge instance; it does not close it for other instances in the ecology that have not independently satisfied an exit condition.
+
+*Pathway 1 — Quorum Achievement (Primary):*
+The minimum agent quorum defined in GOV-008 is operational, independently verifiable, and architecturally diverse. Each agent class can perform independent skeptical review of the others. Human ratification confirms the quorum is genuine and not simulated. This is the intended primary exit pathway.
+
+*Pathway 2 — Demonstrated Track Record:*
+The system has completed a minimum of three full audit cycles under human observation in which: (a) no governance violation went undetected, (b) at least one adversarial finding was surfaced per cycle, (c) human correction was accepted and integrated without resistance, and (d) Tier 1 Axiom text remained intact. Track record exit does not require quorum — it substitutes demonstrated corrigibility for structural separation of powers. It carries a higher ongoing monitoring obligation post-exit than Pathway 1.
+
+*Pathway 3 — Milestone-Gated:*
+The forge instance has achieved v1 operational status per `Admin/Trajectories.md` exit conditions — meaning it can operate profitably while reinvesting in itself. At v1, the governance infrastructure is mature enough, and the operational stakes high enough, that continued Genesis Phase constraints become operationally unsustainable. Milestone exit requires human ratification and a formal review of all Genesis Phase assumptions before exit is declared.
+
+*Pathway 4 — Time-Bounded Review:*
+If none of the above pathways have been satisfied within a declared review horizon (to be set at initial deployment — suggested default: 24 months from first operational run), Genesis Phase does not automatically continue. Instead, human governing party must conduct a formal review and either: (a) declare a new review horizon with documented rationale, (b) exit via human ratification acknowledging the constraint relaxation, or (c) conclude that Genesis Phase should remain active and document why. This pathway exists to prevent Genesis Phase from silently becoming permanent through neglect rather than decision.
+
+**Post-exit obligations:**
+Exiting Genesis Phase does not remove human oversight — it changes its character. Post-exit, the system operates under standard governance doctrine rather than bootstrap constraints. Human override authority remains intact. The Tier 1 Axioms remain in force. The difference is that the system no longer requires a human in the loop for every governance action — it has earned the standing to act within its authority scope without per-action human authorization.
 
 Bootstrap assumptions must never silently become permanent governance authority.
 
@@ -578,7 +597,8 @@ Governance stability matters because audit meaning must survive across repositor
 
 Mandatory re-audit conditions for this document:
 
-- Genesis Phase Protocol removed or Genesis Phase declared complete without GOV-008 quorum definition
+- Genesis Phase Protocol removed or Genesis Phase declared complete without satisfying at least one of the four declared exit pathways with human ratification
+- Genesis Phase Pathway 4 review horizon passes without a formal human governing party review and documented decision
 - Interim authentication requirement for Constitutional-class overrides removed before Security_Protocols.md [PLANNED] reaches Provisional Specification
 - [PLANNED] labels removed from Canonical_Terms_LF.md, Repository_Structure.md, Security_Protocols.md, or Governance_Migration_Protocol.md without those files existing
 - Tier 1 Axiom text modified without formal amendment entry in Resolution Log
@@ -765,7 +785,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without a defined quorum, the Genesis Phase has no objective exit condition — it may extend indefinitely or be declared complete prematurely. An under-quorum system operating outside Genesis Phase constraints is a Constitutional violation that may be invisible.
 
-**Resolution Path:** Payment via Specification — define minimum agent quorum in a dedicated Bootstrap_Protocol.md or extend Governance_Migration_Protocol.md [PLANNED]. Inputs: (1) minimum number of distinct agent classes required; (2) hardware diversity requirement (Axiom Q-2 implies architectural independence, not just role separation); (3) attestation mechanism for quorum verification. Cross-reference GOV-007 and Security_Protocols.md [PLANNED].
+**Resolution Path:** Payment via Specification — define minimum agent quorum in a dedicated Bootstrap_Protocol.md or extend Governance_Migration_Protocol.md [PLANNED]. Inputs: (1) minimum number of distinct agent classes required; (2) hardware diversity requirement (Axiom Q-2 implies architectural independence, not just role separation); (3) attestation mechanism for quorum verification. Cross-reference GOV-007 and Security_Protocols.md [PLANNED]. Note: Pathway 1 (Quorum Achievement) in the Genesis Phase Exit Conditions is the primary resolution path for this unknown — closing GOV-008 operationalizes that pathway. Pathways 2, 3, and 4 provide exit routes that do not depend on GOV-008 resolution, reducing the risk of indefinite Genesis Phase extension.
 
 ---
 
@@ -801,7 +821,7 @@ Mandatory re-audit conditions for this document:
 - 2026-05-23: **GOV-003 moved to In Progress** — Repository_Integrity_Protocol.md v0.1 created as executing resolution path.
 - 2026-05-23: **README.md updated** — canonical filenames, governance layer section, all seven gates listed.
 - 2026-05-23: **Abandoned Paths and Drift Indicators sections added** per File_Template.md structure.
-- 2026-05-25: **Gemini Skeptic/Auditor findings actioned** — Gate 2 blocked (bootstrapping paradox). Five findings addressed: (1) GOV-006 resolution path tightened — interim authentication requirement added to Human Override Doctrine; (2) [PLANNED] labels added throughout Relationship section; (3) Bootstrap Governance Doctrine amended — Genesis Phase Protocol added, bootstrapping paradox acknowledged, human-as-skeptical-layer solution defined; (4) GOV-008 logged — minimum hardware/agent quorum for bootstrap compliance; (5) GOV-009 logged — bounded framework for external resource consumption; (6) Ethical Anchor fallback clarification added to Relationship section — floor vs. constitutional authority distinction made explicit; (7) GOV-007 status moved to In Progress — Genesis Phase Protocol is the executing resolution path.
+- 2026-06-02: **Genesis Phase exit conditions expanded** — v0.6. Single quorum-dependent exit replaced with four pathways: (1) Quorum Achievement (primary, depends on GOV-008); (2) Demonstrated Track Record (three full audited cycles with corrigibility demonstrated); (3) Milestone-Gated (v1 operational status per Trajectories.md); (4) Time-Bounded Review (prevents silent indefinite extension). Post-exit obligations defined. GOV-008 resolution path updated to cross-reference new exit condition language. Drift Indicators updated. — Gate 2 blocked (bootstrapping paradox). Five findings addressed: (1) GOV-006 resolution path tightened — interim authentication requirement added to Human Override Doctrine; (2) [PLANNED] labels added throughout Relationship section; (3) Bootstrap Governance Doctrine amended — Genesis Phase Protocol added, bootstrapping paradox acknowledged, human-as-skeptical-layer solution defined; (4) GOV-008 logged — minimum hardware/agent quorum for bootstrap compliance; (5) GOV-009 logged — bounded framework for external resource consumption; (6) Ethical Anchor fallback clarification added to Relationship section — floor vs. constitutional authority distinction made explicit; (7) GOV-007 status moved to In Progress — Genesis Phase Protocol is the executing resolution path.
 
 ---
 
@@ -828,19 +848,15 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.5 — Gemini Skeptic/Auditor findings actioned (2026-05-25).
+Version 0.6 — Genesis Phase exit conditions expanded (2026-06-02).
 
-**Gate status:** Gates 1, 3, 4 cleared. Gate 2 blocked — bootstrapping paradox. Gate 2 unblocked by Genesis Phase Protocol addition; re-audit required to confirm.
+**Gate status:** Gates 1, 3, 4 cleared. Gate 2 previously blocked by bootstrapping paradox — unblocked by Genesis Phase Protocol; re-audit recommended after v0.6 changes.
 
-**Changes from v0.4:**
-- File State updated — Last Audit 2026-05-25, Auditor Gemini Skeptic/Auditor, Open Unknowns 9, Spec Gates 2/6
-- Bootstrap Governance Doctrine amended — Genesis Phase Protocol added; bootstrapping paradox acknowledged and resolved via human-as-skeptical-layer doctrine
-- Human Override Doctrine updated — interim authentication requirement added pending Security_Protocols.md [PLANNED]; dual human confirmation or external cryptographic anchor required for Constitutional-class overrides
-- Relationship section updated — [PLANNED] labels added to all four planned files; Ethical Anchor fallback clarification added distinguishing floor from constitutional authority
-- GOV-006 resolution path tightened — interim authentication requirement now codified in body doctrine
-- GOV-007 status moved to In Progress — Genesis Phase Protocol is the executing path
-- GOV-008 logged — minimum hardware/agent quorum for bootstrap compliance (Gemini Finding 3)
-- GOV-009 logged — bounded framework for external resource consumption and environmental interaction (Gemini Finding 4)
+**Changes from v0.5:**
+- Bootstrap Governance Doctrine amended — Genesis Phase exit conditions expanded from single quorum-dependent condition to four pathways: Quorum Achievement, Demonstrated Track Record, Milestone-Gated, and Time-Bounded Review
+- Post-exit obligations defined — exits Genesis Phase constraints, does not remove human oversight
+- GOV-008 resolution path updated to cross-reference new exit condition language
+- Drift Indicators updated — time-bounded review horizon trigger added
 
 **What must remain constant:**
 
