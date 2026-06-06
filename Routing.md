@@ -23,6 +23,7 @@ This file acts as the primary network lookup table for automated agents, continu
 | `Admin/Auditor_Protocols.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Auditor_Protocols.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Auditor_Protocols.md) | Explicit |
 | `Admin/Ethical_Constraints.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Ethical_Constraints.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Ethical_Constraints.md) | Explicit |
 | `Admin/Repository_Integrity_Protocol.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Repository_Integrity_Protocol.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Repository_Integrity_Protocol.md) | Explicit |
+| `Admin/Governance_Migration_Protocol.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Governance_Migration_Protocol.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Governance_Migration_Protocol.md) | Explicit |
 | `Admin/Forge_Audit_Kit.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Forge_Audit_Kit.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Forge_Audit_Kit.md) | Explicit |
 | `Admin/File_Template.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/File_Template.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/File_Template.md) | Explicit |
 | `Admin/Safety_Protocols.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Safety_Protocols.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Safety_Protocols.md) | Explicit |
@@ -39,6 +40,9 @@ This file acts as the primary network lookup table for automated agents, continu
 | `Architecture/Cognitive_Frameworks.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Cognitive_Frameworks.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Cognitive_Frameworks.md) | Explicit |
 | `Architecture/Precision.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Precision.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Precision.md) | Explicit |
 | `Architecture/Facilities.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Facilities.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Facilities.md) | Explicit |
+| `Architecture/Chemistry.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Chemistry.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Chemistry.md) | Explicit |
+| `Architecture/Friction_Dynamics.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Friction_Dynamics.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Friction_Dynamics.md) | Explicit |
+| `Architecture/Thermal_Systems.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Thermal_Systems.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Thermal_Systems.md) | Explicit |
 | **Operations/ Layer** | | | |
 | `Operations/Gate_01_Intake.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_01_Intake.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Operations/Gate_01_Intake.md) | Explicit |
 | `Operations/Gate_02_Triage.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Gate_02_Triage.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Operations/Gate_02_Triage.md) | Explicit |
@@ -54,12 +58,12 @@ This file acts as the primary network lookup table for automated agents, continu
 | `Tests/Support_Raft.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Support_Raft.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Support_Raft.md) | Explicit |
 | `Tests/Leviathan_testing.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Leviathan_testing.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Leviathan_testing.md) | Explicit |
 
-*\* **Discovery.md Description Context:** The foundational entry point and behavioral scope directory for the active working repository. Serves as the primary operational mapping file for multi-agent loops and human maintainers to navigate scope thresholds, file states, and repository-wide structural updates without relying on long descriptive text chunks inside the data network layer.*
+*\* **Discovery.md Description Context:** The foundational navigational directory and behavior scope boundary map for the active working repository layer. It anchors incoming multi-agent analysis runs and human code reviews, defining active document maturity gates, dependency maps, and evolutionary path tracking parameters without cluttering data extraction queries with long textual strings.*
 
 ---
 
 ## File Template Backlink Requirement
-To maintain architectural integrity, every markdown asset created or modified within this repository must establish a bi-directional navigation footprint by appending this standard markdown block to its header context block:
+To prevent dead-ends and maintain rigorous structural provenance, every markdown documentation asset within this repository must explicitly mount this navigation anchor block inside its upper context/metadata parameters:
 
 ```markdown
 ---
