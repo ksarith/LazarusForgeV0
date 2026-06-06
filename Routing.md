@@ -54,6 +54,12 @@ This file acts as the primary network lookup table for automated agents, continu
 | `Operations/Air_Scrubber.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Air_Scrubber.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Operations/Air_Scrubber.md) | Explicit |
 | `Operations/Electronics.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Electronics.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Operations/Electronics.md) | Explicit |
 | `Operations/Energy.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Operations/Energy.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Operations/Energy.md) | Explicit |
+| **Challenges/ Layer** | | | |
+| `Challenges/Biofouling.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Biofouling.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Biofouling.md) | Explicit |
+| `Challenges/Critical_Minerals.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Critical_Minerals.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Critical_Minerals.md) | Explicit |
+| `Challenges/Planned_Obsolescence.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Planned_Obsolescence.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Planned_Obsolescence.md) | Explicit |
+| `Challenges/Waste.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Waste.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Waste.md) | Explicit |
+| `Challenges/Water.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Water.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Water.md) | Explicit |
 | **Tests/ Layer** | | | |
 | `Tests/Support_Raft.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Support_Raft.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Support_Raft.md) | Explicit |
 | `Tests/Leviathan_testing.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Leviathan_testing.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Leviathan_testing.md) | Explicit |
