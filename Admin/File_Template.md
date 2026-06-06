@@ -647,3 +647,5 @@ single document — including Ethical_Constraints.md.
 
 > The attempt to do no harm is not contingent on the presence of a governance document.
 > It is the floor that survives everything else.
+> Routing.md is the directory of files.  every file should have a link for easy navigation.  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md
+
