@@ -1,5 +1,13 @@
 # Gate_02_Triage.md
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Triage handles items of unknown provenance, unknown contamination status,
 > and unknown energetic content. A component that passes visual inspection
@@ -21,10 +29,10 @@
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-09                                                          |
 | Auditor          | ChatGPT — Synthesizer; Claude — Engineer                            |
-| Open Unknowns    | 3                                                                   |
+| Open Unknowns    | 4                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -99,8 +107,6 @@ against it.
 | ASM-004 | Queue saturation is detectable before it causes resource deadlock                      | Queue economics doctrine           | Medium     | First operational queue saturation event observed           |
 | ASM-005 | Numeric thresholds (70% performance, 5–15 min runtime) are reasonable starting points | Analogous — industrial triage practice | Low     | N≥50 consistent decisions per component class reached       |
 | ASM-006 | Dual-use and weaponization patterns are recognizable by a trained operator at Station 0 | Current EC-002 status — Placeholder | Low       | EC-002 pattern-matching mechanism defined                   |
-
----
 
 ---
 
@@ -235,7 +241,7 @@ Decision time: < 2 minutes per item
 
 Priority items: motors, transformers, batteries, inverters, PCBs, solenoids
 
-*Cross-reference: `Electronics.md` for detailed harvesting, desoldering, and integrity check protocols.*
+*Cross-reference: `Operations/Electronics.md` for detailed harvesting, desoldering, and integrity check protocols.*
 
 **Pass Guidance:**
 ≥ ~70% of expected performance or "sufficient for forge duty" *(Placeholder — see TS-001)*
@@ -349,8 +355,10 @@ Recurring failure patterns on specific component types are flagged for classific
 | Repair & Learn queue | Triage ↔ | Partially functional items; outcomes feed back |
 | Ethical Constraints | Triage → | Dual-use flags escalate here |
 | Forge Flow | Reference | Gate logic and terminology standard |
-| Electronics.md | Reference | Electrical component harvesting protocols |
+| Operations/Electronics.md | Reference | Electrical component harvesting protocols |
 | Air Scrubber | → Triage | Contamination handling; chemical waste from decontamination |
+| Architecture/Precision.md | Reference | Tolerance tier standard for Station 1/3 threshold calibration (T0–T4) |
+| Architecture/Facilities.md | Reference | Zone separation doctrine — acoustic isolation for Station 2 |
 
 ---
 
@@ -487,6 +495,38 @@ Cross-reference `Architecture/Forge_flow.md` FL-001.
 
 ---
 
+### CT-002 — Component Library Schema (cross-reference)
+
+| Field         | Value                          |
+|---------------|--------------------------------|
+| Status        | Open                           |
+| Risk          | High                           |
+| Priority      | Critical                       |
+| Type          | Technical / Architectural      |
+| Blocking      | Yes — blocks Specification     |
+| Owner         | Architecture/Components.md     |
+| First Logged  | 2026-06-06                     |
+| Last Reviewed | 2026-06-06                     |
+
+**Description:** The Component Library schema — the data structure and
+minimum fields required for a component entry — is undefined. Gate_02_Triage
+routes passing components to the Component Library but cannot specify what
+a compliant entry looks like.
+
+**Why It Matters:** Without a schema, Component Library entries are
+inconsistent across operators and forge instances. Triage provenance tags
+(Principle 5) have no defined target format. Strategic tier classification
+and queue economics data have no home.
+
+**Resolution Path:** Owned by `Architecture/Components.md` — resolution
+requires Components.md to define the Component Library schema (field list,
+required vs. optional, data types). This file's provenance tag requirements
+and queue entry requirements feed that schema definition. CT-002 blocks
+Specification promotion for this file. Cross-reference Discovery.md
+Cross-Module Unknowns table.
+
+---
+
 ### Resolution Log
 
 - May 2026: Gate Correspondence table added.
@@ -503,3 +543,4 @@ Cross-reference `Architecture/Forge_flow.md` FL-001.
 - May 2026: Interfaces section added.
 - May 2026: Station 4 anti-overfitting protection added.
 - 2026-05-23: Retrofitted to File_Template.md structure. Safety Advisory, File State table, Scope Boundary, File Purpose, Assumptions table, Abandoned Paths, Drift Indicators added. DS-001 (retirement handoff dispute) added to Active Disputes. Stale flat filenames corrected to canonical folder-prefixed paths throughout. Lessons Learned reformatted to full table with Evidence Type and Confidence columns. Sidecar unknowns reformatted to structured table format.
+- 2026-06-06: Navigation Anchors block added. Verification Ref corrected to Admin/Verification_Gates_LF.md. Electronics.md cross-reference corrected to Operations/Electronics.md. Duplicate separator removed. Interfaces table updated — Precision.md and Facilities.md added as upstream references. CT-002 cross-reference entry added to sidecar. Open Unknowns updated 3 → 4.
