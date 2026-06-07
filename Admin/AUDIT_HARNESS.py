@@ -1,27 +1,17 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v6
+LAZARUS FORGE — AUDIT HARNESS v7
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v5:
-  - File registry updated — Chemistry.md added to Architecture/ entries.
-  - EXTRA_FILES comments updated — Chemistry.md added with description.
-  - Version string updated to v6.
-  - File registry updated — Thermal_Systems.md and Friction_Dynamics.md added
-    to Architecture/ entries (alphabetical order maintained).
-  - EXTRA_FILES comments updated — Thermal_Systems.md and Friction_Dynamics.md
-    added with accurate descriptions.
-  - Version string updated to v5.
-  - File registry updated — Engineering.md, Mechanical_Structures.md,
-    Woodworking.md, Engineer_Protocols.md, Repository_Integrity_Protocol.md
-    added. Entire Challenges/ directory registered (Water.md, Biofouling.md,
-    Waste.md, Planned_Obsolescence.md, Critical_Minerals.md).
-  - Legacy alias added for Canonical_Terms_LF.md.
-  - Alias display filter corrected to also exclude _LF.md suffixes.
-  - Protocol version updated to v0.7.
-  - EXTRA_FILES comments updated — Unknowns.md added as suggested extra
-    for cross-module audits.
-  - Framing line and prompt assembly updated to reference Auditor_Protocols
-    v0.7.
+CHANGES FROM v6:
+  - File registry updated — Routing.md added to Root entries.
+  - File registry updated — Safety_Protocols.md, Economics.md,
+    Governance_Migration_Protocol.md, Repository_Structure.md added
+    to Admin/ entries.
+  - File registry updated — Facilities.md, Precision.md added to
+    Architecture/ entries.
+  - Legacy aliases added for economics_v0.md and Precision_LF.md.
+  - EXTRA_FILES comments updated — new files added with descriptions.
+  - Version string updated to v7.
 
 USAGE:
   1. Cell 1 — run once per session (fetch helper + registry)
@@ -50,17 +40,22 @@ FILE_REGISTRY = {
     # Root
     "README.md":                        "README.md",
     "Discovery.md":                     "Discovery.md",
+    "Routing.md":                       "Routing.md",
     "Unknowns.md":                      "Unknowns.md",
 
     # Admin
     "Auditor_Protocols.md":             "Admin/Auditor_Protocols.md",
     "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
+    "Economics.md":                     "Admin/Economics.md",
     "Engineer_Protocols.md":            "Admin/Engineer_Protocols.md",
     "Ethical_Constraints.md":           "Admin/Ethical_Constraints.md",
     "File_Template.md":                 "Admin/File_Template.md",
     "Forge_Audit_Kit.md":               "Admin/Forge_Audit_Kit.md",
     "Governance_Charter.md":            "Admin/Governance_Charter.md",
+    "Governance_Migration_Protocol.md": "Admin/Governance_Migration_Protocol.md",
     "Repository_Integrity_Protocol.md": "Admin/Repository_Integrity_Protocol.md",
+    "Repository_Structure.md":          "Admin/Repository_Structure.md",
+    "Safety_Protocols.md":              "Admin/Safety_Protocols.md",
     "Security_Protocols.md":            "Admin/Security_Protocols.md",
     "Ship_of_Theseus.md":               "Admin/Ship_of_Theseus.md",
     "Trajectories.md":                  "Admin/Trajectories.md",
@@ -72,11 +67,13 @@ FILE_REGISTRY = {
     "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
     "Components.md":                    "Architecture/Components.md",
     "Engineering.md":                   "Architecture/Engineering.md",
+    "Facilities.md":                    "Architecture/Facilities.md",
     "Forge_flow.md":                    "Architecture/Forge_flow.md",
     "Forge_Net.md":                     "Architecture/Forge_Net.md",
     "Friction_Dynamics.md":             "Architecture/Friction_Dynamics.md",
     "Geck_forge_seed.md":               "Architecture/Geck_forge_seed.md",
     "Mechanical_Structures.md":         "Architecture/Mechanical_Structures.md",
+    "Precision.md":                     "Architecture/Precision.md",
     "Thermal_Systems.md":               "Architecture/Thermal_Systems.md",
 
     # Operations — Gates
@@ -111,6 +108,8 @@ FILE_REGISTRY = {
     "Unknowns_LF.md":                   "Unknowns.md",
     "Canonical_Terms_LF.md":            "Admin/Canonical_Terms.md",
     "Trajectories_LF.md":               "Admin/Trajectories.md",
+    "economics_v0.md":                  "Admin/Economics.md",
+    "Precision_LF.md":                  "Architecture/Precision.md",
     "energy_v0.md":                     "Operations/Energy.md",
     "Air_Scrubber_v0.md":               "Operations/Air_Scrubber.md",
     "Support_Raft_v0.md":               "Tests/Support_Raft.md",
@@ -154,6 +153,8 @@ for short, path in sorted(FILE_REGISTRY.items()):
             "Stratification_Chamber_v0.md",
             "Component_Triage_System.md",
             "Canonical_Terms_LF.md",
+            "economics_v0.md",
+            "Precision_LF.md",
         }
     )
     if not is_alias:
@@ -187,12 +188,19 @@ EXTRA_FILES = [
     # "Components.md",                  # if component taxonomy is relevant
     # "Unknowns.md",                    # for cross-module audits and unknown routing
     # "Discovery.md",                   # for orientation audits / new agents
+    # "Routing.md",                     # for programmatic file lookup / agent orientation
     # "Mechanical_Structures.md",       # if salvaged-frame fabrication is relevant
     # "Thermal_Systems.md",             # if heat transfer, Peltier, TEG, or heat pump doctrine is relevant
     # "Friction_Dynamics.md",           # if fluid flow, aerodynamics, duct design, or tribology is relevant
     # "Chemistry.md",                   # if electrochemistry, corrosion, polymer hazards, or battery assessment is relevant
     # "Cognitive_Frameworks.md",        # if autonomy or TMR doctrine is relevant
     # "Engineer_Protocols.md",          # if engineering authority or risk threshold is relevant
+    # "Safety_Protocols.md",            # if physical operator safety, PPE, heat stress, or hearing conservation is relevant
+    # "Facilities.md",                  # if physical site constraints, flooring, or airflow topology is relevant
+    # "Precision.md",                   # if tolerance tiers, metrology, or fabrication precision ceiling is relevant
+    # "Economics.md",                   # if procurement doctrine, surplus disposition, barter, or v1 profitability is relevant
+    # "Governance_Migration_Protocol.md", # if Tier 1 amendment or governance migration is relevant
+    # "Repository_Structure.md",        # if naming conventions or folder assignment is relevant
 ]
 
 # ── STEP 4: Set document status ───────────────────────────────────
