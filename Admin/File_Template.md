@@ -1,7 +1,15 @@
-# LF_File_Template.md
+# File_Template.md — LazarusForgeV0
 
 **Standard file structure for LazarusForgeV0 documents.**
 Applies to all new files and retrofit audit cycles.
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
 
 This template is designed for:
 - Human readability
@@ -19,17 +27,18 @@ The repository is treated as a governed knowledge system, not merely a collectio
 Every file in LazarusForgeV0 follows this structure:
 
 ```
-0. OPERATIONAL SAFETY ADVISORY  — Optional. Physical hazard notice, shown before all else
-1. FILE STATE                    — Machine-readable lifecycle metadata
-2. SCOPE BOUNDARY                — Hard ownership boundaries
-3. FILE PURPOSE                  — Human-readable intent
-4. ASSUMPTIONS                   — Temporary truths treated as valid
-5. BODY                          — Clean operational/specification content
-6. LESSONS LEARNED               — Operational memory, never deleted
-7. ACTIVE DISPUTES               — Interpretation conflicts
-8. AUDITOR NOTES                 — Unknowns and resolution tracking
-9. ABANDONED PATHS               — Graveyard for disproven approaches
-10. DRIFT INDICATORS             — Automatic re-audit triggers
+0. NAVIGATION ANCHORS            — Required. Routing.md and Discovery.md backlinks
+1. OPERATIONAL SAFETY ADVISORY   — Optional. Physical hazard notice, shown before all else
+2. FILE STATE                    — Machine-readable lifecycle metadata
+3. SCOPE BOUNDARY                — Hard ownership boundaries
+4. FILE PURPOSE                  — Human-readable intent
+5. ASSUMPTIONS                   — Temporary truths treated as valid
+6. BODY                          — Clean operational/specification content
+7. LESSONS LEARNED               — Operational memory, never deleted
+8. ACTIVE DISPUTES               — Interpretation conflicts
+9. AUDITOR NOTES                 — Unknowns and resolution tracking
+10. ABANDONED PATHS              — Graveyard for disproven approaches
+11. DRIFT INDICATORS             — Automatic re-audit triggers
 ```
 
 The Body must stand alone.
@@ -38,13 +47,37 @@ A Specification-level body should remain understandable even if all footer secti
 
 ---
 
-## 0. Operational Safety Advisory
+## 0. Navigation Anchors
+
+**Required in every file.** Place immediately below the title, before the Operational Safety
+Advisory or File State.
+
+```markdown
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+```
+
+The Navigation Anchors block ensures every file is machine-discoverable from its first lines.
+An agent loading any file in the repository can immediately locate the full routing table
+and the scope map without prior context. This is the backlink requirement defined in Routing.md.
+
+**The anchor block is fixed.** The two URLs do not change per file — they are repository-level
+constants. Do not substitute file-specific links.
+
+---
+
+## 1. Operational Safety Advisory
 
 **Optional. Include in any file governing physical operations, hazardous processes,
 or systems where operator error causes irreversible harm.**
 
-Place immediately below the title, before the File State table. It is the first
-thing any operator or agent reads — including those who read nothing else.
+Place immediately below the Navigation Anchors block, before the File State table. It is the
+first content any operator or agent reads — including those who read nothing else.
 
 ```markdown
 > ⚠️ **Operational Safety Advisory**
@@ -78,26 +111,26 @@ a pre-read flag, not a specification.
 
 ---
 
-## 1. File State
+## 2. File State
 
-Place immediately below the title.
+Place immediately below the Navigation Anchors block (and Safety Advisory if present).
 
 ```markdown
 ## File State
 
-| Field          | Value                                                               |
-|----------------|---------------------------------------------------------------------|
-| Status         | Exploration / Draft / Specification                                 |
-| Body Stability | Volatile / Transitional / Stable                                    |
-| Spec Gates     | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                          |
-| Last Audit     | YYYY-MM-DD                                                          |
-| Auditor        | [Agent — Role]                                                      |
-| Open Unknowns  | N                                                                   |
-| Active Disputes| N                                                                   |
-| Highest Risk   | Low / Medium / High                                                 |
-| Sidecar Link   | #auditor-notes--unknowns                                            |
-| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Exploration / Draft / Specification                                 |
+| Body Stability   | Volatile / Transitional / Stable                                    |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | YYYY-MM-DD                                                          |
+| Auditor          | [Agent — Role]                                                      |
+| Open Unknowns    | N                                                                   |
+| Active Disputes  | N                                                                   |
+| Highest Risk     | Low / Medium / High                                                 |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 ```
 
 **The Ethical Anchor field is fixed and non-negotiable.** Its value must match the canonical
@@ -105,6 +138,9 @@ string exactly in every file. Absence, alteration, or blank value is a mandatory
 indicator requiring human review. It is not a reference to an external document — it is a
 load-bearing principle that survives even if Ethical_Constraints.md is missing, corrupted,
 or deliberately omitted.
+
+**Verification Ref must point to `Admin/Verification_Gates_LF.md`.** Not Forge_Audit_Kit.md.
+The Kit is a condensed reference; the Gates file is the canonical authority.
 
 ---
 
@@ -133,7 +169,7 @@ or operational evidence.
 
 ### Spec Gates
 
-The repository uses six canonical verification gates defined in Verification_Gates_LF.md.
+The repository uses six canonical verification gates defined in `Admin/Verification_Gates_LF.md`.
 
 | Gate | Requirement                  |
 |------|------------------------------|
@@ -151,7 +187,7 @@ A file cannot be promoted to Specification without passing all six.
 
 ### File State Purpose
 
-The File State block is the first thing an autonomous agent reads. It determines:
+The File State block is the first thing an autonomous agent reads after Navigation Anchors. It determines:
 - Whether the file is stable enough to trust
 - Whether the body should be edited
 - Whether the sidecar should be prioritized
@@ -160,7 +196,7 @@ The File State block is the first thing an autonomous agent reads. It determines
 
 ---
 
-## 2. Scope Boundary
+## 3. Scope Boundary
 
 Place immediately after File State.
 
@@ -181,7 +217,7 @@ If content is not listed under DOES, it does not belong in the Body.
 
 ---
 
-## 3. File Purpose
+## 4. File Purpose
 
 ```markdown
 ## File Purpose
@@ -199,16 +235,16 @@ Purpose should explain:
 
 ---
 
-## 4. Assumptions
+## 5. Assumptions
 
 Optional but strongly recommended for all files beyond brand-new stubs.
 
 ```markdown
 ## Assumptions
 
-| ID      | Assumption | Basis | Confidence        | Expiry Trigger                      |
-|---------|------------|-------|-------------------|-------------------------------------|
-| ASM-001 | [statement]| [reason] | Low/Medium/High | [condition that invalidates this] |
+| ID      | Assumption | Basis    | Confidence        | Expiry Trigger                    |
+|---------|------------|----------|-------------------|-----------------------------------|
+| ASM-001 | [statement]| [reason] | Low/Medium/High   | [condition that invalidates this] |
 ```
 
 ---
@@ -232,7 +268,7 @@ an Unknown and must be migrated to the Auditor Notes sidecar.
 
 ---
 
-## 5. Body
+## 6. Body
 
 The document's operational or specification content.
 The Body must be understandable without sidecars, dispute sections, governance commentary,
@@ -273,11 +309,11 @@ Autonomous agents must not modify frozen sections. If modification becomes neces
 ### Canonical Vocabulary
 
 Files should preserve repository-defined terminology. Core terms with specialized meaning
-reference Canonical_Terms_LF.md. Agents must not casually redefine canonical terminology.
+reference `Admin/Canonical_Terms.md`. Agents must not casually redefine canonical terminology.
 
 ---
 
-## 6. Lessons Learned
+## 7. Lessons Learned
 
 Placed after the Body. Separated by a horizontal rule.
 
@@ -331,7 +367,7 @@ What belongs here:
 
 What does not belong here:
 - Governance findings → Auditor Notes
-- Future plans → Trajectories_LF.md
+- Future plans → `Admin/Trajectories.md`
 - Unresolved questions → Auditor Notes sidecar
 - Interpretation conflicts → Active Disputes
 
@@ -339,7 +375,7 @@ A module with no Lessons Learned entries is either brand new or has never been t
 
 ---
 
-## 7. Active Disputes
+## 8. Active Disputes
 
 Placed after Lessons Learned. Include the header and empty table even if no disputes exist —
 the category must remain visible to prompt auditors to actively check rather than skip it.
@@ -349,9 +385,9 @@ the category must remain visible to prompt auditors to actively check rather tha
 
 ## Active Disputes
 
-| ID     | Summary | Positions in Conflict | Risk | Status | Owner |
-|--------|---------|-----------------------|------|--------|-------|
-| DS-001 | [summary] | [position A vs B]   | Medium | Open | [file] |
+| ID     | Summary   | Positions in Conflict | Risk   | Status | Owner  |
+|--------|-----------|-----------------------|--------|--------|--------|
+| DS-001 | [summary] | [position A vs B]     | Medium | Open   | [file] |
 ```
 
 ---
@@ -373,12 +409,12 @@ These are not the same thing and must not be conflated.
 Not all disputes should resolve. Some tensions are structurally healthy — efficiency vs.
 robustness, autonomy vs. operator control, decentralization vs. standardization.
 
-Disputes open across three consecutive audits must be escalated to Unknowns_LF.md for
+Disputes open across three consecutive audits must be escalated to `Unknowns.md` for
 repository-level resolution.
 
 ---
 
-## 8. Auditor Notes & Unknowns
+## 9. Auditor Notes & Unknowns
 
 The sidecar. Placed after Active Disputes.
 
@@ -406,7 +442,7 @@ The sidecar. Placed after Active Disputes.
 
 **Resolution Path:** Concrete closure criteria. One of:
 - *Payment via Specification* — resolved; content moves into Body as committed spec
-- *Discharge via Trajectory* — real but out of scope; route to Trajectories_LF.md
+- *Discharge via Trajectory* — real but out of scope; route to Admin/Trajectories.md
 - *Discharge via Lessons Learned* — resolved by operational experience; lesson recorded
 
 ---
@@ -426,9 +462,9 @@ Unknowns must:
 - Avoid philosophical drift
 
 **Local ID format:** File abbreviation + three-digit number.
-Examples: `CO-001` (Components), `SC-001` (Spin Chamber), `GK-001` (G.E.C.K.).
+Examples: `CO-001` (Components), `FA-001` (Facilities), `PR-001` (Precision).
 
-**Cross-module unknowns** use the global `UNK-XXX` format and are indexed in Unknowns_LF.md.
+**Cross-module unknowns** use the global `UNK-XXX` format and are indexed in `Unknowns.md`.
 Reference them here but do not duplicate the full entry.
 
 ---
@@ -445,7 +481,7 @@ prioritize consolidation or discharge before auditing further.
 
 ---
 
-## 9. Abandoned Paths
+## 10. Abandoned Paths
 
 Optional but strongly recommended. Omit only if the file is brand new and no paths have
 been explored yet.
@@ -475,7 +511,7 @@ independently.
 
 ---
 
-## 10. Drift Indicators
+## 11. Drift Indicators
 
 Drift Indicators are automatic re-audit triggers. They are not optional checklist items.
 
@@ -492,6 +528,7 @@ Drift Indicators are automatic re-audit triggers. They are not optional checklis
 - Persistent disputes silently disappear without resolution entry
 - Assumptions remain past their expiry trigger without review
 - Canonical terminology changes meaning across files
+- Navigation Anchors block absent or URLs modified from canonical values
 - **Ethical Anchor field is absent, altered, or does not match the canonical string**
 
 ---
@@ -507,8 +544,9 @@ escalate for human review. Compound instability is more dangerous than isolated 
 
 When converting an existing file to this structure:
 
-- [ ] **If physical operations file:** Add Operational Safety Advisory above File State — specific hazard, consequence, prerequisite, decision rule, open unknown reference if applicable
-- [ ] Add File State table — include Ethical Anchor field with canonical string
+- [ ] Add Navigation Anchors block immediately below title
+- [ ] **If physical operations file:** Add Operational Safety Advisory — specific hazard, consequence, prerequisite, decision rule, open unknown reference if applicable
+- [ ] Add File State table — include Ethical Anchor field with canonical string; confirm Verification Ref points to `Admin/Verification_Gates_LF.md`
 - [ ] Add Scope Boundary — be honest about what the file does and does not own
 - [ ] Add File Purpose paragraph
 - [ ] Extract hidden assumptions into Assumptions section
@@ -519,7 +557,7 @@ When converting an existing file to this structure:
 - [ ] Create Unknown entries for all known open reality gaps
 - [ ] Populate Abandoned Paths where applicable
 - [ ] Apply FROZEN markers to verified sections
-- [ ] Validate canonical terminology usage
+- [ ] Validate canonical terminology usage against `Admin/Canonical_Terms.md`
 - [ ] Verify Drift Indicators before finalizing
 - [ ] Set Status honestly — most existing files are Exploration
 - [ ] Set Body Stability honestly — most existing files are Volatile or Transitional
@@ -532,6 +570,14 @@ When converting an existing file to this structure:
 ```markdown
 # Module Name
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > *(Include for physical operations files only. Omit for governance, architecture,
 > and navigation files. Name the specific hazard, state the consequence, name the
@@ -540,19 +586,19 @@ When converting an existing file to this structure:
 
 ## File State
 
-| Field          | Value                                                               |
-|----------------|---------------------------------------------------------------------|
-| Status         | Exploration                                                         |
-| Body Stability | Volatile                                                            |
-| Spec Gates     | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                          |
-| Last Audit     | 2026-05-14                                                          |
-| Auditor        | Claude — Skeptic/Auditor                                            |
-| Open Unknowns  | 1                                                                   |
-| Active Disputes| 0                                                                   |
-| Highest Risk   | Low                                                                 |
-| Sidecar Link   | #auditor-notes--unknowns                                            |
-| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Exploration                                                         |
+| Body Stability   | Volatile                                                            |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | YYYY-MM-DD                                                          |
+| Auditor          | [Agent — Role]                                                      |
+| Open Unknowns    | 1                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | Low                                                                 |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ## Scope Boundary
 
@@ -569,9 +615,9 @@ Written for a new auditor who has never seen the repository.
 
 ## Assumptions
 
-| ID      | Assumption                        | Basis           | Confidence | Expiry Trigger                  |
-|---------|-----------------------------------|-----------------|------------|---------------------------------|
-| ASM-001 | Grid power available at bootstrap | v0 site context | Medium     | Off-grid deployment confirmed   |
+| ID      | Assumption                        | Basis           | Confidence | Expiry Trigger                |
+|---------|-----------------------------------|-----------------|------------|-------------------------------|
+| ASM-001 | Grid power available at bootstrap | v0 site context | Medium     | Off-grid deployment confirmed |
 
 ---
 
@@ -599,16 +645,16 @@ Written for a new auditor who has never seen the repository.
 
 ### MN-001 — Example unknown
 
-| Field         | Value             |
-|---------------|-------------------|
-| Status        | Open              |
-| Risk          | Low               |
-| Priority      | Minor             |
-| Type          | Technical         |
-| Blocking      | No                |
-| Owner         | This module       |
-| First Logged  | 2026-05-14        |
-| Last Reviewed | 2026-05-14        |
+| Field         | Value      |
+|---------------|------------|
+| Status        | Open       |
+| Risk          | Low        |
+| Priority      | Minor      |
+| Type          | Technical  |
+| Blocking      | No         |
+| Owner         | This module|
+| First Logged  | YYYY-MM-DD |
+| Last Reviewed | YYYY-MM-DD |
 
 **Description:** One sentence stating what is not yet known.
 
@@ -647,5 +693,3 @@ single document — including Ethical_Constraints.md.
 
 > The attempt to do no harm is not contingent on the presence of a governance document.
 > It is the floor that survives everything else.
-> Routing.md is the directory of files.  every file should have a link for easy navigation.  https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md
-
