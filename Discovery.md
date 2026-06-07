@@ -574,10 +574,8 @@ Rare earth and critical mineral supply chain concentration. Urban mining doctrin
 ## Cross-Repo Relationship
 
 `LazarusForgeV0` (this repo) — operational implementation.
-`Lazarus-Forge-` — doctrine and philosophy. Source of principles refined into practice here.
 `Astroid-miner` — planned; activates when Leviathan deployment is underway.
 
-Divergence between repos is logged, not ignored. Treating them as interchangeable is a navigation error.
 
 **Programmatic entry point:** `Routing.md` is the canonical lookup table for raw file URLs.
 Load Routing.md first when an agent needs to fetch specific files by path.
