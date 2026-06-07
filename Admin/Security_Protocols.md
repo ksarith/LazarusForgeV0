@@ -1,5 +1,13 @@
 # Security_Protocols.md — Cryptographic Trust & Multi-Agent Node Security
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Physical security and digital authority are tightly coupled within the Forge.
 > A compromise of cryptographic key material or human override tokens can bypass
@@ -19,7 +27,7 @@
 | Status           | Draft                                                               |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-28                                                          |
 | Auditor          | Claude — Skeptic/Auditor                                            |
 | Open Unknowns    | 7                                                                   |
@@ -349,7 +357,7 @@ Mandatory re-audit conditions for this document:
 - Abandoned path for SEC-001 independent resolution reopened without human
   ratification and GOV-008 resolution
 - Ethical Anchor field absent, altered, or does not match canonical string
-- Verification Ref field changed from Verification_Gates_LF.md
+- Verification Ref field changed from `Admin/Verification_Gates_LF.md`
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt
 autonomous audit progression and escalate for human review.
@@ -610,6 +618,11 @@ Log as cross-module unknown in `Unknowns.md`.
   Scope Boundary updated to note trusted initialization environment gap.
   Drift Indicators updated with new entries. Abandoned Paths updated.
   Lessons Learned entry added. Open Unknowns updated to 7.
+- 2026-06-06: v0.4 revision — Navigation Anchors added. Verification Ref
+  corrected to Admin/Verification_Gates_LF.md. Drift Indicator reference
+  updated to match. Relationship section updated — Governance_Migration_Protocol.md
+  added (GMP-004/SEC-007 cross-reference); Safety_Protocols.md added
+  (operator impairment and ratification validity note). Content unchanged.
 
 ---
 
@@ -621,6 +634,10 @@ Log as cross-module unknown in `Unknowns.md`.
   to the governance hierarchy defined there; Tier 1 Axioms are not subject
   to cryptographic override; GOV-003 and GOV-005 are cross-module dependencies
   for SEC-007
+- `Admin/Governance_Migration_Protocol.md` — GMP-004 (ratification
+  authentication gap) explicitly cross-references SEC-007 as the resolution
+  path; Tier 1 amendment ratification records are a primary use case for the
+  external root-of-trust architecture defined in SEC-007
 - `Admin/Repository_Integrity_Protocol.md` — RIP-005 is the originating
   unknown for Phase 3 enforcement; Phases 1 and 2 defined there are
   prerequisites to Phase 3 implementation here; RIP-001 cross-references
@@ -628,6 +645,11 @@ Log as cross-module unknown in `Unknowns.md`.
 - `Admin/Ethical_Constraints.md` — co-Tier 1; Anti-Weaponization and Life
   Preservation doctrines are not subject to override by any cryptographic
   mechanism regardless of signature validity
+- `Admin/Safety_Protocols.md` — physical operator safety is outside the
+  cryptographic scope of this file; referenced here because operator
+  impairment recognition (Safety_Protocols.md §V) is a prerequisite for
+  valid human ratification — an impaired operator's cryptographic signature
+  is technically valid but governmentally suspect
 - `Admin/Auditor_Protocols.md` — Tier 2; authentication event logs subject
   to audit trail requirements defined there
 - `Admin/Forge_Audit_Kit.md` — Tier 3; Verification Maturity Model referenced
@@ -645,11 +667,19 @@ Log as cross-module unknown in `Unknowns.md`.
 
 ## Status
 
-Version 0.3 — ChatGPT Skeptic/Auditor findings actioned (2026-05-28).
+Version 0.4 — Reference corrections and Relationship section updated (2026-06-06).
 
 **Gate status:** G1 partial, G2 pass (Exploration scope), G5 blocked
-(Verification_Gates_LF.md unresolved in registry; SEC-005 trusted
-initialization environment undefined).
+(SEC-005 trusted initialization environment undefined).
+
+**Changes from v0.3:**
+- Navigation Anchors block added
+- Verification Ref corrected to `Admin/Verification_Gates_LF.md`
+- Drift Indicator reference updated to match corrected Verification Ref
+- Relationship section updated — `Admin/Governance_Migration_Protocol.md`
+  added (GMP-004 cross-reference to SEC-007); `Admin/Safety_Protocols.md`
+  added (operator impairment and ratification validity note)
+- Content otherwise unchanged
 
 **Changes from v0.2:**
 - Signing eligibility corrected — "Specification status" replaced with
