@@ -1,6 +1,12 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.3 — Audit cycle 2026-06-02. Architecture/Chemistry.md added. CE-001 through CE-004 indexed in new Chemistry & Electrochemistry section. CE-003 flagged as safety-critical prerequisite before first hot pyrolysis run (cross-references PL-001). Dependency map updated with CE cluster entries. Owner field stale name noted: CE-001 through CE-004 sidecars read Chemistry_Electrochemistry.md — correct to Chemistry.md on next file edit.**
+**Version 2.4 — Audit cycle 2026-06-06. Six new files indexed: Facilities.md, Safety_Protocols.md, Economics.md, Governance_Migration_Protocol.md, Repository_Structure.md, Precision.md. New clusters: Facilities, Safety, Economics, Governance Migration, Repository Structure, Precision. UNK-006 (facility siting) resolved — Architecture/Facilities.md now owns. GK-005 (Precision_LF.md not yet created) resolved — Architecture/Precision.md now exists. EP-005 (acceptable risk threshold) resolved — Admin/Safety_Protocols.md Section I. Pending corrections from Discovery.md migrated here as tracked unknowns (PC cluster). Dependency map updated with all new cluster entries.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
 
 ---
 
@@ -10,7 +16,33 @@ Cross-module unknowns index. Full entry detail lives in each owning file's sidec
 
 Module-specific unknowns → owning file sidecar
 Cross-module unknowns → listed here, full entry in owning file
-Navigation unknowns → Discovery.md
+Pending corrections (task list) → PC cluster in this file
+Programmatic URL routing → `Routing.md`
+Navigation map and scope boundaries → `Discovery.md`
+
+**Discovery.md task tables have been retired.** The Pending Verification Ref
+Corrections table and the Pending Reference Corrections — New Files table that
+previously lived in Discovery.md are now tracked here as PC-001 through PC-004.
+Discovery.md is a navigation map, not a task list. This file owns pending work.
+
+---
+
+## What v2.4 Means
+
+- Six new files created 2026-06-06 — FA, SP, EC, GMP, RS, PR clusters indexed
+- UNK-006 (facility siting) resolved — `Architecture/Facilities.md` now owns; 7
+  dependent files have pending reference corrections (PC cluster)
+- GK-005 (Precision_LF.md not created) resolved — `Architecture/Precision.md`
+  now exists; stale name corrected throughout
+- EP-005 (acceptable risk threshold) resolved — `Admin/Safety_Protocols.md`
+  Section I provides the consequence category table and escalation rules
+- Pending corrections migrated from Discovery.md — PC-001 through PC-004
+  replace the task tables that were cluttering the navigation layer
+- Economics.md canonical barter ownership noted — EC-003 resolved in file;
+  indexed here as resolved
+- Navigation note updated — Routing.md now exists as programmatic entry point
+
+*(v2.3: Chemistry.md added; CE-001 through CE-004 indexed.)*
 
 ---
 
@@ -234,6 +266,59 @@ FD-003 (salvaged bearing L10 protocol) -> cross-ref ME-001 (resonance mapping);
         non-blocking; housekeeping for bearing acceptance workflow
 FD-004 (Support_Raft reverse link) -> non-blocking housekeeping; resolve on next
         Support_Raft.md audit pass
+
+FA-001 (site not confirmed) -> blocks all hot operations; blocks SP-006 (emergency
+        response procedures cannot be defined without a site)
+FA-002 (Hot Zone radius not defined) -> depends on AWS/NFPA 51B sourcing; feeds
+        Safety_Protocols.md zone separation enforcement
+FA-003 (zoning/permitting) -> human decision; aligns with SP-005 (regulatory compliance)
+FA-004 (heat stress not quantified) -> resolved by Safety_Protocols.md Section IV
+FA-005 (UNK-006 resolution confirmation) -> depends on 7 dependent files updating
+        upstream references; tracked as PC-001
+
+SP-001 (risk threshold cross-reference) -> depends on Engineer_Protocols.md EP-005
+        alignment; SP-001 confirms EP-005 resolution
+SP-002 (PPE specifications not sourced) -> depends on human review of OSHA 1910
+        Subpart I and NFPA 70E; non-blocking at Exploration
+SP-003 (noise levels not measured) -> depends on first operational site SPL survey;
+        cross-ref AS-004 (noise exposure limits)
+SP-004 (heat stress not validated) -> discharge via Lessons Learned after first
+        summer operating season
+SP-005 (regulatory compliance) -> aligns with FA-003 (zoning/permitting); both
+        human decisions at site selection
+SP-006 (emergency response undefined) -> depends on FA-001 (site confirmed);
+        blocked until site exists
+
+EC-001 (critical mineral disposition) -> depends on Gate_05 first recovery cycle;
+        cross-ref Challenges/Critical_Minerals.md
+EC-002 (operating cost baseline) -> depends on EV-001 (Forge demand baseline);
+        blocks TR-001 closure
+EC-004 (market rate data) -> operator-maintained; no repository file owns price data
+EC-005 (legal/tax compliance) -> aligns with FA-003 (zoning/permitting); human decision
+
+GMP-001 (GOV-001 resolution confirmation) -> depends on Governance_Charter.md audit
+        pass; low risk housekeeping
+GMP-002 (ownership transfer not recorded) -> depends on Governance_Charter.md audit
+        pass; housekeeping
+GMP-003 (adversarial review underspecified at v0) -> depends on GOV-008 (quorum);
+        multi-agent quorum resolves structurally
+GMP-004 (ratification authentication gap) -> mirrors GOV-006; depends on SEC-007
+        (external root-of-trust); highest-risk attack vector on Track B amendment process
+
+RS-001 (non-markdown file type procedure) -> defer until concrete case arises
+RS-002 (Forge_flow.md casing outlier) -> correct on next audit pass of Forge_flow.md
+RS-003 (Archive/ directory not created) -> blocks RIP-001 full closure; create
+        Archive/ directory and placeholder README.md; update Discovery.md structure map
+
+PR-001 (precision ceiling not declared) -> blocks T1/T2 part claims; depends on
+        first fabrication trials; closes CO-002 and partially resolves ME-001
+PR-002 (reference standard not established) -> non-blocking at Exploration; blocks
+        Specification promotion for any file with dimensional claims
+PR-003 (traceable claims required at Specification) -> depends on PR-002
+PR-004 (backlash and compliance not characterized) -> prerequisite for PR-001
+        ceiling declaration; feeds ME-001 interlock threshold validation
+PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.md
+        on next audit pass
 ```
 
 ---
@@ -535,11 +620,112 @@ FD-004 (Support_Raft reverse link) -> non-blocking housekeeping; resolve on next
 *WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
 *WW-005 is Blocking for processing raw urban salvage through any powered machinery.*
 
-### Cross-Module
+### Facilities
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| FA-001 | Site not confirmed or assessed | `Architecture/Facilities.md` | Open | Critical |
+| FA-002 | Hot Zone minimum clearance radius not defined | `Architecture/Facilities.md` | Open | Major |
+| FA-003 | Legal zoning and permitting not assessed | `Architecture/Facilities.md` | Open | Major |
+| FA-004 | Arkansas summer heat load impact not quantified | `Architecture/Facilities.md` | Open | Minor |
+| FA-005 | UNK-006 resolution confirmation pending | `Architecture/Facilities.md` | Open | Minor |
+
+*FA-001 is Critical — blocks all hot operations and SP-006 (emergency response).*
+
+---
+
+### Safety
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| SP-001 | Risk threshold cross-reference with Engineer_Protocols.md pending | `Admin/Safety_Protocols.md` | Open | Major |
+| SP-002 | PPE specifications not sourced to standards | `Admin/Safety_Protocols.md` | Open | Major |
+| SP-003 | Site noise levels not measured | `Admin/Safety_Protocols.md` | Open | Major |
+| SP-004 | Heat stress doctrine not validated against operator experience | `Admin/Safety_Protocols.md` | Open | Minor |
+| SP-005 | Regulatory compliance and permitting not assessed | `Admin/Safety_Protocols.md` | Open | Major |
+| SP-006 | Emergency response procedures not defined | `Admin/Safety_Protocols.md` | Open | Major |
+
+*SP-006 is blocked by FA-001 — cannot define site evacuation without a site.*
+*AS-004 (noise exposure limits) cross-references SP-003 — resolve together.*
+
+---
+
+### Economics
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| EC-001 | Critical mineral surplus disposition path undefined | `Admin/Economics.md` | Open | Major |
+| EC-002 | Operating cost baseline not established | `Admin/Economics.md` | Open | Critical |
+| EC-003 | Barter valuation standard | `Admin/Economics.md` | Resolved | — |
+| EC-004 | Market rate data not maintained | `Admin/Economics.md` | Open | Minor |
+| EC-005 | Legal and tax compliance not assessed | `Admin/Economics.md` | Open | Major |
+
+*EC-002 is Critical — blocks TR-001 closure; depends on EV-001.*
+*EC-003 resolved in Admin/Economics.md Section VI — barter doctrine now owned there.*
+
+---
+
+### Governance Migration
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| GMP-001 | GOV-001 resolution confirmation pending | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
+| GMP-002 | Canonical ownership transfer not recorded in Charter | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
+| GMP-003 | Adversarial review underspecified at v0 single-contributor | `Admin/Governance_Migration_Protocol.md` | Open | Major |
+| GMP-004 | Ratification authentication gap mirrors GOV-006 | `Admin/Governance_Migration_Protocol.md` | Open | Major |
+
+*GMP-004 is the highest-risk attack vector on Track B amendment process — depends on SEC-007.*
+
+---
+
+### Repository Structure
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| RS-001 | Non-markdown file type introduction procedure undefined | `Admin/Repository_Structure.md` | Open | Minor |
+| RS-002 | Forge_flow.md casing outlier not yet corrected | `Admin/Repository_Structure.md` | Open | Minor |
+| RS-003 | Archive/ directory not yet physically created | `Admin/Repository_Structure.md` | Open | Major |
+
+*RS-003 blocks RIP-001 full closure — create Archive/ directory before next
+Specification-level file revision.*
+
+---
+
+### Precision
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| PR-001 | Precision ceiling not yet declared | `Architecture/Precision.md` | Open | Critical |
+| PR-002 | Reference standard not established | `Architecture/Precision.md` | Open | Major |
+| PR-003 | Traceable dimensional claims required at Specification | `Architecture/Precision.md` | Open | Major |
+| PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | Major |
+| PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Open | Minor |
+
+*PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially
+resolves ME-001 when declared.*
+*PR-004 is a prerequisite for PR-001 ceiling declaration.*
+
+---
+
+### Pending Corrections
+
+Pending corrections migrated from Discovery.md. These are bounded housekeeping
+tasks — not open unknowns in the traditional sense — but tracking them here
+keeps Discovery.md as a pure navigation map.
+
+| ID | Title | Files Affected | Status | Priority |
+|---|---|---|---|---|
+| PC-001 | Verification Ref corrections — 10 files pointing to Forge_Audit_Kit.md instead of Admin/Verification_Gates_LF.md | Gate_01, Gate_03, Gate_04, Gate_06, Gate_07, Electronics, Energy, Plastics, Woodworking, Forge_Net | Open | Major |
+| PC-002 | Upstream reference corrections — 7 files missing Facilities.md upstream link | Gate_01, Gate_03, Gate_04, Gate_05, Gate_06, Electronics, Woodworking | Open | Minor |
+| PC-003 | New file cross-reference corrections — 10 files missing references to new 2026-06-06 files | Gate_06→Precision.md, Gate_07→Economics.md, Air_Scrubber→Safety_Protocols.md, Components.md→Precision.md, Mechanical_Structures.md→Precision.md, Engineer_Protocols.md→Safety_Protocols.md, Governance_Charter.md→Governance_Migration_Protocol.md, Trajectories.md→Economics.md, Security_Protocols.md→already done, Geck_forge_seed.md→Precision.md | Open | Minor |
+| PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md have stale cross-references per Rename Registry | Challenges/Water.md, Challenges/Planned_Obsolescence.md | Open | Minor |
+
+*PC-001 is the highest priority — Verification Ref is machine-read by
+AUDIT_HARNESS.py and incorrect references could affect audit routing.*
 
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
-| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Operations/Gate_05_Separation_Thermal.md` SC-006, `Operations/Gate_04_Separation_Mechanical.md` MG-006 | Open | Major |
+| UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Architecture/Facilities.md` (now owns); SC-006, MG-006 (dependents) | Resolved | — |
 | UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Architecture/Forge_flow.md` FL-002, `Operations/Gate_04_Separation_Mechanical.md` MG-007 | Resolved | — |
 | UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` SC-004 | Open | Major |
 | UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
@@ -608,7 +794,7 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| RIP-001 | Prior-state archival — confirm GitHub release cadence established |
+| RIP-001 | Prior-state archival — RS-003 (Archive/ directory) must be created first |
 | SEC-007 | External root-of-trust — flagged Critical from first logging; architectural decision above repository level required |
 | UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007; no fast resolution path |
 | EV-003 | Battery thermal containment — no enclosed battery bank may be commissioned until resolved |
@@ -617,6 +803,9 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
 | CF-001 | Hardware watchdog minimum standard — no Specification-level autonomous architecture until resolved |
 | TH-003 | Atmospheric moisture yield not measured — Blocking for Living Waters deployment; requires Peltier test rig |
+| FA-001 | Site not confirmed — no hot operations until site physically assessed against Facilities.md constraints |
+| EC-002 | Operating cost baseline not established — blocks TR-001 (v1 profitability); depends on EV-001 |
+| PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; prerequisite PR-004 must run first |
 
 ### Blocking Watch
 
@@ -626,6 +815,8 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | PL-002 | Reactor pressure control — no reactor fabrication before pressure relief system specified |
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 | VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
+| RS-003 | Archive/ directory not created — blocks RIP-001 full closure; create before next Specification-level file revision |
+| PC-001 | Verification Ref corrections — 10 files pointing to wrong target; affects AUDIT_HARNESS.py routing |
 
 GF-005 resolved in v1.6 — removed from watch.
 
@@ -642,6 +833,11 @@ GF-005 resolved in v1.6 — removed from watch.
 | UNK-007 | Reduction module upstream dependency | Resolved — Gate_03_Reduction.md creation closes the gap | 2026-05-15 |
 | GK-001 | Forge loop definition | Resolved — defined in Architecture/Geck_forge_seed.md Section III | May 2026 |
 | GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created 2026-05-19 | 2026-05-20 |
+| UNK-006 | Master safety registry — facility siting | Resolved — Architecture/Facilities.md created; 7 dependent files pending PC-002 reference corrections | 2026-06-06 |
+| GK-005 | Precision_LF.md not yet created | Resolved — Architecture/Precision.md created; stale name corrected per Repository_Structure.md convention | 2026-06-06 |
+| EP-005 | Acceptable risk threshold undefined | Resolved — Admin/Safety_Protocols.md Section I defines consequence categories and escalation rules | 2026-06-06 |
+| EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine; canonical ownership assigned | 2026-06-06 |
+| GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
 
 ---
 
@@ -693,3 +889,26 @@ section — new). FD-001 through FD-004 added (Friction Dynamics section — new
 TH-003 (atmospheric moisture yield — Blocking for Living Waters deployment) added to
 Critical Watch. Dependency map updated with TH and FD cluster entries; cross-links:
 TH-001 → EV-001, TH-003 → TH-004, FD-001 → MG-002, FD-002 → AS-003.
+
+**v2.3 — 2026-06-02:** Architecture/Chemistry.md created. CE-001 through CE-004
+indexed in new Chemistry & Electrochemistry section. CE-003 flagged as
+safety-critical prerequisite before first hot pyrolysis run (cross-references
+PL-001). Dependency map updated with CE cluster entries. Stale name noted:
+CE-001 through CE-004 sidecar Owner fields read Chemistry_Electrochemistry.md —
+correct to Chemistry.md on next file edit.
+
+**v2.4 — 2026-06-06:** Six new files created and indexed. FA cluster (Facilities —
+5 unknowns), SP cluster (Safety Protocols — 6 unknowns), EC cluster (Economics —
+5 unknowns, EC-003 resolved immediately), GMP cluster (Governance Migration —
+4 unknowns), RS cluster (Repository Structure — 3 unknowns), PR cluster (Precision —
+5 unknowns) added. PC cluster (Pending Corrections — 4 entries) added — pending
+correction task tables migrated from Discovery.md to this file; Discovery.md now
+a pure navigation map. UNK-006 (facility siting) resolved — Facilities.md created.
+GK-005 (Precision_LF.md) resolved — Precision.md created. EP-005 (acceptable risk
+threshold) resolved — Safety_Protocols.md Section I. EC-003 (barter valuation)
+resolved — Economics.md Section VI. GOV-001 (governance migration mechanics)
+resolved — Governance_Migration_Protocol.md created. 12 items moved to Resolved &
+Discharged Archive. Critical Watch updated — FA-001, EC-002, PR-001 added.
+Blocking Watch updated — RS-003, PC-001 added. Navigation note updated — Routing.md
+now exists as programmatic entry point. Dependency map updated with FA, SP, EC,
+GMP, RS, PR cluster entries.
