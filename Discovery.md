@@ -3,6 +3,12 @@
 
 ---
 
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## Repository Role
 
 This is the **active working repository** — lean, connected, and operational.
@@ -124,11 +130,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness note:** Current Routing.md is missing the following files — add on next update pass:
-`Admin/Canonical_Terms.md`, `Admin/Engineer_Protocols.md`, `Admin/Security_Protocols.md`,
-`Admin/Verification_Gates_LF.md`, `Admin/File_Template.md` (present — verify),
-`Architecture/Engineering.md`, `Architecture/Mechanical_Structures.md`,
-`Operations/Plastics.md`, `Operations/Woodworking.md`
+**Routing.md completeness:** Verified complete as of 2026-06-06. Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -160,52 +162,17 @@ Canonical record of filename changes. Stale references should be resolved using 
 
 ---
 
-## Pending Verification Ref Corrections
+## Pending Corrections
 
-The following files have `Verification Ref: Admin/Forge_Audit_Kit.md` —
-the canonical target is `Admin/Verification_Gates_LF.md`.
-Correct on next audit pass for each file:
+Pending corrections have been migrated to `Unknowns.md` PC cluster (PC-001 through PC-004).
+Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 
-| File |
-|------|
-| `Operations/Gate_01_Intake.md` |
-| `Operations/Gate_03_Reduction.md` |
-| `Operations/Gate_04_Separation_Mechanical.md` *(also missing `Admin/` prefix)* |
-| `Operations/Gate_06_Fabrication.md` |
-| `Operations/Gate_07_Utilization.md` |
-| `Operations/Electronics.md` |
-| `Operations/Energy.md` |
-| `Operations/Plastics.md` |
-| `Operations/Woodworking.md` |
-| `Architecture/Forge_Net.md` |
-
----
-
-## Pending Reference Corrections — New Files (2026-06-05)
-
-The following files need upstream/downstream reference updates on next audit pass:
-
-| File | Correction Needed |
-|------|-------------------|
-| `Operations/Gate_01_Intake.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Gate_03_Reduction.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Gate_04_Separation_Mechanical.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Gate_05_Separation_Thermal.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Gate_06_Fabrication.md` | Add `Architecture/Facilities.md` to Upstream; add `Architecture/Precision.md` to Upstream |
-| `Operations/Gate_07_Utilization.md` | Add `Admin/Economics.md` to Downstream |
-| `Operations/Electronics.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Woodworking.md` | Add `Architecture/Facilities.md` to Upstream |
-| `Operations/Air_Scrubber.md` | Update noise reference to `Admin/Safety_Protocols.md` |
-| `Architecture/Geck_forge_seed.md` | Update GK-005 status; correct Precision_LF.md → Precision.md |
-| `Architecture/Components.md` | Update CO-002 to reference `Architecture/Precision.md` |
-| `Architecture/Mechanical_Structures.md` | Update ME-001 to reference `Architecture/Precision.md` PR-001 |
-| `Admin/Engineer_Protocols.md` | Update EP-005 status; cross-reference `Admin/Safety_Protocols.md` |
-| `Admin/Governance_Charter.md` | Update GOV-001 status; update Canonical Governance Ownership table |
-| `Admin/Trajectories.md` | Update TR-001 cross-reference to `Admin/Economics.md` |
-| `Admin/Security_Protocols.md` | Update [PLANNED] label — file now exists |
-| `Admin/Repository_Integrity_Protocol.md` | Update RIP-001 — Archive/ doctrine now in Repository_Structure.md |
-| `Challenges/Water.md` | Update stale footer cross-references per Rename Registry |
-| `Challenges/Planned_Obsolescence.md` | Update stale names per Rename Registry |
+| ID | Summary | See |
+|----|---------|-----|
+| PC-001 | Verification Ref corrections — 10 files pointing to Forge_Audit_Kit.md | `Unknowns.md` §Pending Corrections |
+| PC-002 | Upstream reference corrections — 7 files missing Facilities.md link | `Unknowns.md` §Pending Corrections |
+| PC-003 | New file cross-reference corrections — 10 files missing 2026-06-06 file references | `Unknowns.md` §Pending Corrections |
+| PC-004 | Stale name corrections — Challenges/Water.md and Planned_Obsolescence.md | `Unknowns.md` §Pending Corrections |
 
 ---
 
@@ -621,11 +588,15 @@ The two files are complementary — Routing.md owns *where*, Discovery.md owns *
 
 ## Cross-Module Unknowns — Attention Required
 
-| Unknown | Referenced By | Status |
-|---------|--------------|--------|
-| UNK-006 — Facility siting | Gates 01, 03, 04, 05, 06, Electronics, Woodworking | Resolved — `Architecture/Facilities.md` owns; 7 dependent files pending reference correction (see Pending Reference Corrections above) |
-| FL-002 — Reduction module ownership | Forge_flow, Gate_04 | Gate_03 exists as Exploration — verify for closure |
-| EC-002 — Anti-Weaponization pattern-matching | Ethical_Constraints, Gate_02 | No mechanism defined |
-| EL-006 — Cryptographic key management for electronics | Electronics | Not yet assigned |
-| GF-003 — Machining and milling hardware specification | Gate_06 | Not yet assigned |
-| UNK-008 — Welding wire chemical qualification | Gate_06 | Not yet assigned |
+Full entries live in `Unknowns.md`. This table is a routing index only.
+
+| Unknown | Status | See |
+|---------|--------|-----|
+| UNK-006 — Facility siting | **Resolved** — `Architecture/Facilities.md` owns; PC-002 tracks reference corrections | `Unknowns.md` |
+| UNK-008 — Welding wire chemical qualification | Open — no owner assigned | `Unknowns.md` |
+| UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Unknowns.md` |
+| FA-001 — Site not confirmed | Critical — blocks all hot operations | `Unknowns.md` |
+| EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
+| PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
+| RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
+| PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
