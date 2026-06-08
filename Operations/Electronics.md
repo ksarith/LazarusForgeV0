@@ -1,5 +1,13 @@
 # Electronics.md — Salvaged Electronics & Logic Integration
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Electronics.md governs the trust boundary for all
 > autonomous forge systems. A salvaged component that
@@ -16,7 +24,7 @@
 > Retardant) dust, and resin decomposition products.
 > Respiratory protection and Air Scrubber operation
 > are required during all PCB milling operations.
-> See EL-005 and Operations/Air_Scrubber.md.
+> See EL-005 and `Operations/Air_Scrubber.md`.
 
 ---
 
@@ -27,7 +35,7 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-09 (multi-agent), actioned 2026-05-19                       |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 8                                                                   |
@@ -81,26 +89,26 @@ entire governance substrate.*
 
 **This file DOES NOT define:**
 - TMR as architectural philosophy or framework
-  taxonomy (Architecture/Cognitive_Frameworks.md
+  taxonomy (`Architecture/Cognitive_Frameworks.md`
   Framework D)
 - Ethical policy governing dual-use escalation
-  (Admin/Ethical_Constraints.md)
+  (`Admin/Ethical_Constraints.md`)
 - Confidence collapse states and split-brain
-  doctrine (Architecture/Cognitive_Frameworks.md)
+  doctrine (`Architecture/Cognitive_Frameworks.md`)
 - Air scrubber hardware specification or waste
-  stream chemistry (Operations/Air_Scrubber.md)
+  stream chemistry (`Operations/Air_Scrubber.md`)
 - Component taxonomy and graduation rules
-  (Architecture/Components.md)
+  (`Architecture/Components.md`)
 - Leviathan mission logic or autonomy architecture
-  (Tests/Leviathan_testing.md)
+  (`Tests/Leviathan_testing.md`)
 - Cryptographic key management or root-of-trust
   infrastructure (not yet assigned — EL-006)
 - Full autonomous governance law
-  (Admin/Ethical_Constraints.md)
+  (`Admin/Ethical_Constraints.md`)
 - Forge-Net network implementation
-  (Architecture/Forge_Net.md)
+  (`Architecture/Forge_Net.md`)
 - Facility siting for electronics work areas
-  (UNK-006 — no file exists yet)
+  (`Architecture/Facilities.md` — FA-001)
 
 ---
 
@@ -170,7 +178,7 @@ provenance.
 | ASM-003 | AI agents using different models provide sufficient diversity for multi-agent consensus — training data overlap does not produce systematic correlated errors on forge-relevant engineering questions | Multi-agent consensus doctrine; model diversity assumed | Low | Correlated AI failure mode study completed per CF-002 — actual overlap in engineering reasoning characterized |
 | ASM-004 | Salvaged components entered the waste stream through legitimate use rather than targeted placement — the salvage stream is not actively seeded with compromised hardware | Threat model; salvage assumed passive not targeted | Low | High-value forge operations attract targeted hardware supply chain attacks — threat model must be reassessed |
 | ASM-005 | The hardware watchdog timer is itself uncompromised — a discrete hardware implementation is assumed architecturally simple enough to resist firmware attack | Watchdog doctrine; hardware implementation assumed trustworthy | Medium | Watchdog compromise detected or design found to include programmable elements vulnerable to firmware attack |
-| ASM-006 | Chemical etch waste, BFR dust, and solder fumes can be safely managed with available Air Scrubber and containment capability | PCB fabrication doctrine; cross-reference Operations/Air_Scrubber.md | Medium | EL-005 toxic dust profile characterized — containment capability confirmed or found insufficient |
+| ASM-006 | Chemical etch waste, BFR dust, and solder fumes can be safely managed with available Air Scrubber and containment capability | PCB fabrication doctrine; cross-reference `Operations/Air_Scrubber.md` | Medium | EL-005 toxic dust profile characterized — containment capability confirmed or found insufficient |
 | ASM-007 | Desoldering yield rates justify the harvesting overhead — sufficient components survive non-destructive harvest to make the process economically viable | Harvesting doctrine; yield rates unknown at v0 | Low | First operational harvesting cycle characterizes actual yield rate per component class |
 | ASM-008 | Forge-Standard interface voltage levels and protocols are achievable with available salvaged components | Forge-Standard doctrine; interface compatibility assumed | Low | First Leviathan hardware iteration characterizes actual salvage compatibility with Forge-Standard spec |
 
@@ -430,7 +438,7 @@ boards):**
   aerosol, BFR dust, and resin decomposition
   products. Respiratory protection and Air Scrubber
   operation required during all milling operations.
-  Cross-reference: Operations/Air_Scrubber.md,
+  Cross-reference: `Operations/Air_Scrubber.md`,
   EL-005.
 
 **Laser etching:**
@@ -450,7 +458,7 @@ boards):**
 - Lowest equipment requirement — achievable with
   minimal tooling
 - Chemical waste stream must be managed per
-  Operations/Air_Scrubber.md contamination handling
+  `Operations/Air_Scrubber.md` contamination handling
 - Ferric chloride neutralization: sodium carbonate
   (washing soda) produces iron hydroxide sludge
   — non-hazardous. Define neutralization protocol
@@ -540,7 +548,7 @@ can be adapted to any Forge-Standard slot.
 TMR implementation in hardware is this file's
 domain. TMR as architectural philosophy and
 framework taxonomy belongs to
-Architecture/Cognitive_Frameworks.md Framework D.
+`Architecture/Cognitive_Frameworks.md` Framework D.
 
 **Architecture:**
 - Three independent logic blocks wired to
@@ -623,7 +631,7 @@ relay circuit has no firmware to compromise. If
 no heartbeat pulse resets the timer, the relay
 opens and cuts motor drive or forces spring-return
 neutral. This is the mechanical enforcement of
-Layer 0 in Architecture/Cognitive_Frameworks.md.
+Layer 0 in `Architecture/Cognitive_Frameworks.md`.
 
 *A compromised watchdog that appears functional
 is worse than no watchdog — it provides false
@@ -631,7 +639,7 @@ assurance while removing the last safety backstop.
 Discrete implementation with no programmable
 elements is the primary mitigation.*
 
-Cross-reference: Architecture/Cognitive_Frameworks.md
+Cross-reference: `Architecture/Cognitive_Frameworks.md`
 CF-001, Layer 0 mechanical truth doctrine.
 
 ### Multi-Agent Consensus (MAC)
@@ -668,7 +676,7 @@ Neither replaces the other.
 - MAC cannot substitute for physical safety
   constraints (Layer 0)
 
-Cross-reference: Architecture/Cognitive_Frameworks.md
+Cross-reference: `Architecture/Cognitive_Frameworks.md`
 Framework D, CF-002 correlated AI failure modes.
 
 ---
@@ -682,7 +690,7 @@ mechanism.
 | Fault State | TMR Outcome | Action |
 |---|---|---|
 | Nominal | 3/3 or 2/3 consensus | Continue mission |
-| Logic conflict | 1/1/1 split or 0/3 | Enter Stasis Mode — see Tests/Support_Raft.md |
+| Logic conflict | 1/1/1 split or 0/3 | Enter Stasis Mode — see `Tests/Support_Raft.md` |
 | Critical offline | Voter failure | Automatic Raft retrieval via magnetic grapple |
 | Bit-flip detected | Single voter anomaly | Flag, log, continue on 2/3 consensus |
 | Firmware integrity failure | Hash mismatch detected | Halt all autonomous action — Logic-Zero and reflash before restart |
@@ -693,7 +701,7 @@ When a Leviathan unit enters split-brain:
   hardware watchdog relay — no uncommanded movement
 - Recovery beacon activates — low-frequency pulse
   for Support Raft magnetic grapples
-- Unit enters Stasis per Tests/Support_Raft.md
+- Unit enters Stasis per `Tests/Support_Raft.md`
   Stasis Mode protocol
 - Collected material offloaded to Material
   Separation Gate while unit is in triage —
@@ -704,7 +712,7 @@ The Raft simulates the Leviathan's next move on
 a local digital twin before the unit physically
 executes it. If simulation shows collision or
 logic loop, Raft overrides and pulls unit into
-dock. Route to Admin/Trajectories.md v2/v3 scope.
+dock. Route to `Admin/Trajectories.md` v2/v3 scope.
 
 ---
 
@@ -717,7 +725,7 @@ controller that drives a conveyor can drive a
 weapon system.
 
 Apply the Dual-Use Annotation Standard from
-Architecture/Components.md to all salvaged
+`Architecture/Components.md` to all salvaged
 electronics:
 - **Low** — general purpose logic, passive
   components, power regulators: standard handling
@@ -726,10 +734,10 @@ electronics:
   patterns emerge
 - **High** — guidance logic, targeting sensors,
   detonation circuits: Full Stop — route to
-  Admin/Ethical_Constraints.md
+  `Admin/Ethical_Constraints.md`
 
 The Component Triage Station 0 ethical flag
-(per Operations/Gate_02_Triage.md Principle 6)
+(per `Operations/Gate_02_Triage.md` Principle 6)
 applies to electronic components as much as
 mechanical ones.
 
@@ -803,7 +811,7 @@ mechanical ones.
 
 | ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
 |----|-----------------|-----------------------|------|--------|-------|
-| — | No active disputes | — | — | — | — |
+| —  | No active disputes | — | — | — | — |
 
 *No interpretation conflicts currently active.
 Design tensions exist (hardware vs software voter,
@@ -817,8 +825,7 @@ first TMR prototype operational.*
 
 ## Auditor Notes & Unknowns
 
-### EL-001 — Forge-Standard voltage and interface
-spec not yet defined
+### EL-001 — Forge-Standard voltage and interface spec not yet defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -855,8 +862,7 @@ plug-compatible assembly.
 
 ---
 
-### EL-002 — PCB trace width and design rules
-not yet specified for v0 tooling
+### EL-002 — PCB trace width and design rules not yet specified for v0 tooling
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -885,8 +891,7 @@ be stated until tooling is characterized.
 
 ---
 
-### EL-003 — TMR voter implementation not yet
-specified
+### EL-003 — TMR voter implementation not yet specified
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -899,27 +904,30 @@ specified
 | First Logged  | 2026-05-06                                       |
 | Last Reviewed | 2026-05-19                                       |
 
-**Description:** Whether the TMR voter is
-implemented in hardware (discrete logic) or
-software (hardened script) is not yet determined.
-Each has different failure modes and complexity.
+**Description:** The voter circuit that arbitrates
+between three TMR logic blocks has not been
+specified beyond the conceptual level. Hardware
+voter vs. software voter choice is unresolved.
+
+**Why It Matters:** The voter is the single point
+of failure in a TMR system — if the voter fails
+or is compromised, the redundancy benefit is lost.
+The implementation choice (hardware vs. software)
+determines the trust properties of the entire
+architecture.
 
 **Resolution Path:**
-- Software voter on separate hardened MCU is
-  lower-complexity for v0 — but requires that
-  MCU to undergo Logic-Zero wipe and firmware
-  verification.
-- Hardware voter (discrete logic) is more reliable
-  and harder to compromise — v1+ target.
-- Decision deferred to first TMR prototype.
-- Payment via Specification — once prototype
-  validates voter implementation, move to
+- First Leviathan prototype defines the voter
+  implementation. v0 recommendation: software
+  voter on dedicated, Logic-Zero'd MCU.
+- Hardware voter is v1+ target for safety-critical.
+- Payment via Specification — once first TMR
+  prototype is built and voter tested, move to
   Section IV as Analogous.
 
 ---
 
-### EL-004 — Chemical etch waste stream handling
-not yet defined
+### EL-004 — Chemical etch waste stream management not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -932,25 +940,28 @@ not yet defined
 | First Logged  | 2026-05-06                                       |
 | Last Reviewed | 2026-05-19                                       |
 
-**Description:** Ferric chloride or alternative
-etchant waste safe storage, neutralization, and
-disposal doctrine is not yet defined.
+**Description:** Ferric chloride and other etch
+chemistries produce hazardous waste streams that
+require neutralization and disposal protocols
+not yet defined.
+
+**Why It Matters:** Improperly disposed etch waste
+contaminates water and soil. Neutralization is
+simple but must be defined before first use.
 
 **Resolution Path:**
-- Ferric chloride neutralized with sodium carbonate
-  produces iron hydroxide sludge — non-hazardous.
-- Define neutralization protocol and sludge
-  disposal path.
-- Route to Operations/Air_Scrubber.md AS-003
-  resolution for alignment.
-- Payment via Specification — once neutralization
-  protocol is defined and tested, move to
+- Define neutralization protocol: sodium carbonate
+  to iron hydroxide sludge (non-hazardous).
+- Define disposal path for neutralized sludge.
+- Cross-reference `Operations/Air_Scrubber.md`
+  waste stream handling.
+- Payment via Specification — once protocol
+  defined and first use validates it, move to
   Section III as Analogous.
 
 ---
 
-### EL-005 — Toxic dust and BFR emission profile
-not characterized
+### EL-005 — Toxic dust and BFR emission profile not characterized
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -963,93 +974,71 @@ not characterized
 | First Logged  | 2026-05-09                                       |
 | Last Reviewed | 2026-05-19                                       |
 
-**Description:** The volume, composition, and
-health hazard profile of dust and fumes generated
-during CNC milling and bulk furnace reflow of old
-PCBs has not been characterized. BFR outgassing,
-fiberglass microdust, copper particulate, and
-lead fumes are all credible hazards.
+**Description:** Actual particulate composition and
+BFR emission rates during CNC milling and bulk
+furnace reflow of salvaged PCBs have not been
+characterized. Current doctrine relies on analogous
+industrial data.
 
-**Why It Matters:** Air Scrubber sizing, filter
-selection, and operator PPE requirements all
-depend on particulate characterization. Chronic
-exposure to fiberglass and BFR dust carries
-serious long-term health risk. A forge that
-mills PCBs without understanding its particulate
-profile is running an uncharacterized health
-hazard against its operators.
+**Why It Matters:** BFR dust and fiberglass
+microdust are serious respiratory hazards. If
+actual emissions exceed what the Air Scrubber can
+handle, current PPE and scrubber doctrine is
+insufficient — unknown until characterized.
 
 **Resolution Path:**
-- Characterize particulate profile for CNC milling
-  of representative PCB material — FR4, CEM-1,
-  and mixed e-waste boards.
-- Cross-reference Operations/Air_Scrubber.md —
-  particulate data feeds scrubber specification
-  and filter selection.
-- Define minimum PPE — P100 respirator minimum
-  during milling and furnace operations.
-- Payment via Specification — once profile is
-  characterized and Air Scrubber sizing validated,
-  move to Sections II and III as Measured.
+- Characterize emissions during first CNC milling
+  and bulk reflow operations.
+- Cross-reference `Operations/Air_Scrubber.md`
+  capacity against measured emission profile.
+- Payment via Specification — once characterized,
+  move PPE and scrubber requirements to Section II
+  as Measured.
 
 ---
 
-### EL-006 — Firmware trust and reflashing
-validation not defined
+### EL-006 — Firmware trust and reflashing validation not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
 | Status        | Open                                             |
 | Risk          | High                                             |
 | Priority      | Critical                                         |
-| Type          | Technical / Security / Governance                |
-| Blocking      | No                                               |
+| Type          | Technical / Security                             |
+| Blocking      | Yes — prerequisite for first salvaged MCU integration |
 | Owner         | Operations/Electronics.md                        |
 | First Logged  | 2026-05-09                                       |
 | Last Reviewed | 2026-05-19                                       |
 
-**Description:** The Logic-Zero wipe protocol,
-firmware hash verification process, and provenance
-logging requirements for salvaged programmable
-devices are described doctrinally but not yet
-specified operationally. Cryptographic signing
-and root-of-trust infrastructure are explicitly
-deferred but unowned.
+**Description:** The cryptographic key management
+infrastructure and root-of-trust architecture
+required for full firmware signing and verification
+are not defined. Current practice (hash verification
+of known-good images) is the minimum interim
+standard.
 
-**Why It Matters:** Physical recovery of a chip
-does not guarantee the integrity of its embedded
-logic. A salvaged MCU that passes all electrical
-tests may execute malicious firmware, contain
-backdoored bootloaders, or perform covert
-surveillance. This is the primary security
-boundary between recovered hardware and trusted
-forge infrastructure.
+**Why It Matters:** Hash verification is better
+than nothing but is not a full root-of-trust. A
+compromised known-good image produces a matching
+hash. Full cryptographic signing with hardware key
+storage is the v1+ target. Until then, the firmware
+trust boundary has a known gap.
 
 **Resolution Path:**
-- Define Logic-Zero wipe procedure per MCU
-  family — erase command, verification step,
-  acceptable completion criteria.
-- Define firmware hash verification — what
-  constitutes a known-good firmware image, where
-  it is stored, how hash is computed and verified.
-- Define provenance log minimum content — device
-  identifier, donor source, wipe date, firmware
-  version, operator.
-- Define locked-bootloader handling — retirement
-  to material recovery, documentation requirement.
-- Cryptographic signing and root-of-trust:
-  discharge via Trajectory to v1+ scope.
-- Payment via Specification — once Logic-Zero
-  protocol is defined and tested against first
-  salvaged MCU batch, move to Section II as
-  Analogous.
-- Cross-reference: Admin/Ethical_Constraints.md,
-  Architecture/Cognitive_Frameworks.md CF-001.
+- Define minimum v0 practice: hash verification
+  from trusted source, provenance log mandatory.
+- Define v1+ target: cryptographic firmware signing,
+  hardware key storage, root-of-trust architecture.
+- Cross-reference `Admin/Security_Protocols.md`
+  for key management infrastructure.
+- Payment via Specification — once v0 minimum
+  practice is validated against first MCU batch,
+  move to Section II as Analogous. Full resolution
+  deferred to v1+ cryptographic infrastructure.
 
 ---
 
-### EL-007 — Correlated failure modes in
-homogeneous salvage TMR not characterized
+### EL-007 — Correlated failure modes in homogeneous salvage TMR not characterized
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -1086,7 +1075,7 @@ answer rather than a detectable disagreement.
 - Characterize actual diversity between selected
   components — silicon family, firmware source,
   thermal history.
-- Cross-reference Architecture/Cognitive_Frameworks.md
+- Cross-reference `Architecture/Cognitive_Frameworks.md`
   CF-002 for AI consensus correlated failure
   parallel.
 - Payment via Specification — once independence
@@ -1095,8 +1084,7 @@ answer rather than a detectable disagreement.
 
 ---
 
-### EL-008 — Counterfeit salvage component
-detection doctrine not defined
+### EL-008 — Counterfeit salvage component detection doctrine not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -1158,6 +1146,11 @@ watchdog systems depend on.
   component detection doctrine gap identified
   in meta-audit. Provisional detection guidance
   added to Section II.
+- 2026-06-08: Navigation Anchors block added.
+  Verification Ref corrected from `Admin/Forge_Audit_Kit.md`
+  to `Admin/Verification_Gates_LF.md` (PC-001).
+  Scope Boundary UNK-006 reference updated to
+  `Architecture/Facilities.md` FA-001 (PC-002).
 
 ---
 
@@ -1177,7 +1170,7 @@ watchdog systems depend on.
 
 The following conditions trigger mandatory re-audit
 of this file. All canonical drift indicators from
-Admin/File_Template.md apply. The following are
+`Admin/File_Template.md` apply. The following are
 additional local triggers specific to Electronics.md:
 
 ### Local Drift Triggers
@@ -1189,7 +1182,7 @@ additional local triggers specific to Electronics.md:
 | MAC results used as safety system substitute rather than pre-implementation verification | MAC and hardware TMR are permanently distinct. MAC cannot substitute for runtime physical safety constraints |
 | Hardware watchdog implemented with programmable firmware rather than discrete hardware | Discrete hardware implementation is permanent doctrine for safety-critical watchdog — programmable watchdog creates recursive trust problem |
 | CNC milling or bulk furnace reflow performed without Air Scrubber operation and respiratory protection | EL-005 Critical — BFR dust and fiberglass microdust are serious health hazards. Air Scrubber prerequisite |
-| Dual-use High components processed without escalation to Admin/Ethical_Constraints.md | Dual-use escalation is mandatory — no local override permitted |
+| Dual-use High components processed without escalation to `Admin/Ethical_Constraints.md` | Dual-use escalation is mandatory — no local override permitted |
 | Counterfeit detection skipped for components from high-risk source categories | EL-008 — elevated scrutiny is doctrine for high-risk sources, not optional |
 | Forge-Standard interface revised without cross-validation against EL-001 and LT-001 | Interface standard changes propagate to all connected forge instances — unilateral revision creates hidden incompatibility |
 | Locked-bootloader devices routed to component library rather than material recovery | Locked bootloader devices cannot be firmware-verified — they cannot be trusted for forge integration |
@@ -1198,6 +1191,6 @@ additional local triggers specific to Electronics.md:
 ### Canonical Drift Triggers
 
 *All mandatory re-audit conditions from
-Admin/File_Template.md Section 10 apply without
+`Admin/File_Template.md` Section 11 apply without
 exception. Local triggers above are additive,
 not substitutes.*
