@@ -1,5 +1,13 @@
 # Gate_01_Intake
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Gate_01_Intake is the system's first and only opportunity
 > to catch hazards before they enter the processing stream.
@@ -20,7 +28,7 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-19                                                          |
 | Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-19)       |
 | Open Unknowns    | 7                                                                   |
@@ -72,7 +80,7 @@
 - Air handling during intake screening
   (Operations/Air_Scrubber.md)
 - Facility siting and intake area safety
-  (UNK-006 — no file exists yet)
+  (Architecture/Facilities.md — FA-001)
 
 ---
 
@@ -244,8 +252,8 @@ three functions must be executable without any
 digital infrastructure. Everything else degrades
 gracefully — safety screening does not.*
 
-Cross-reference: Operations/Energy.md,
-Architecture/Forge_Net.md sync doctrine.
+Cross-reference: `Operations/Energy.md`,
+`Architecture/Forge_Net.md` sync doctrine.
 
 ---
 
@@ -283,11 +291,11 @@ the cost of a hold.
   before any connection to forge systems. Do not
   plug in, power up connected to forge network, or
   allow firmware execution without isolation protocol.
-  Cross-reference: GI-007, Operations/Electronics.md,
-  Architecture/Forge_Net.md
+  Cross-reference: GI-007, `Operations/Electronics.md`,
+  `Architecture/Forge_Net.md`
 - New hazard categories not listed above route to
   Human/AI Oversight Gate and trigger a new category
-  entry per Architecture/Forge_flow.md contamination
+  entry per `Architecture/Forge_flow.md` contamination
   doctrine
 
 **Operator safety:**
@@ -296,8 +304,8 @@ screening. Do not handle items showing energetic
 distress signs — swollen batteries, leaking vessels,
 deformed pressure containers. Log and hold for
 specialist assessment.
-Cross-reference: UNK-006 — siting and clearance
-requirements not yet defined.
+Cross-reference: `Architecture/Facilities.md` FA-001 — siting and clearance
+requirements not yet confirmed.
 
 ---
 
@@ -314,7 +322,7 @@ signal.
   better than no information
 - Retain digitally — paper documents degrade,
   digital copies persist
-- Contribute scan to Architecture/Forge_Net.md
+- Contribute scan to `Architecture/Forge_Net.md`
   reference database when network connectivity
   allows — one forge's manual becomes every
   forge's resource
@@ -356,7 +364,7 @@ guides, and hazard profiles.
 
 **Database dependency:**
 The reference database lives in
-Architecture/Forge_Net.md local cache, synced from
+`Architecture/Forge_Net.md` local cache, synced from
 the network when connectivity allows. At v0 bootstrap,
 the local cache may be sparse — common appliances
 and tools prioritized first. See GI-001.
@@ -463,7 +471,7 @@ it when scale demands — not before.*
 Every item that completes Intake receives a unique
 identifier and a provenance record. This is the
 starting point for the grain system in
-Admin/Ship_of_Theseus.md.
+`Admin/Ship_of_Theseus.md`.
 
 **Minimum intake record at v0:**
 - Unique item identifier (sequential or hash-based)
@@ -480,12 +488,12 @@ Admin/Ship_of_Theseus.md.
 - Physical tag attached to item (durable label,
   cable tie tag, or equivalent)
 - Digital record created in local system
-- Record contributed to Architecture/Forge_Net.md
+- Record contributed to `Architecture/Forge_Net.md`
   when connectivity allows
 
 **Grain system compatibility:**
 Intake tagging format must be cross-validated against
-Admin/Ship_of_Theseus.md grain system requirements
+`Admin/Ship_of_Theseus.md` grain system requirements
 before either is treated as stable. See ASM-006,
 GI-004.
 
@@ -505,10 +513,10 @@ doctrine pending GI-006 resolution:
   are sequential and never reused, even after
   an item is fully processed
 - Record/item reconciliation — at handoff to
-  Gate_02_Triage, the physical tag is verified
+  `Operations/Gate_02_Triage.md`, the physical tag is verified
   against the digital record before the item
   proceeds. Mismatches are held, not routed.
-- Cross-reference: GI-006, Admin/Ship_of_Theseus.md
+- Cross-reference: GI-006, `Admin/Ship_of_Theseus.md`
 
 ---
 
@@ -568,7 +576,7 @@ Oversight saturation. Provisional guidance:
 - Items in safe indefinite hold do not expire —
   a correctly held item is always better than a
   prematurely routed one
-- Cross-reference: Architecture/Forge_flow.md
+- Cross-reference: `Architecture/Forge_flow.md`
   Human/AI Oversight Gate doctrine
 
 **Unknown item as network contribution:**
@@ -600,7 +608,7 @@ item benefits from this forge's work.
 
 | ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
 |----|-----------------|-----------------------|------|--------|-------|
-| — | No active disputes | — | — | — | — |
+| —  | No active disputes | — | — | — | — |
 
 *No interpretation conflicts currently active. Several
 design tensions exist (automation vs. human judgment
@@ -614,8 +622,7 @@ first operational Intake cycle produces yield data.*
 
 ## Auditor Notes & Unknowns
 
-### GI-001 — Reference database content and coverage
-not defined
+### GI-001 — Reference database content and coverage not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -652,7 +659,7 @@ throughput and identification quality.
 - Define initial population strategy — manual entry,
   web scraping of public repair databases (iFixit
   and equivalents), or manufacturer documentation.
-- Cross-reference Architecture/Forge_Net.md —
+- Cross-reference `Architecture/Forge_Net.md` —
   database lives in local cache, synced from
   network. Content strategy must align with
   network contribution doctrine.
@@ -663,8 +670,7 @@ throughput and identification quality.
 
 ---
 
-### GI-002 — Energetic material discharge doctrine
-not defined
+### GI-002 — Energetic material discharge doctrine not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -709,16 +715,15 @@ Intake operation, not a refinement.
   distance, tooling
 - Must be resolved before first operational Intake
   run — hard prerequisite, not a deferral
-- Cross-reference: UNK-006 siting requirements,
-  Operations/Air_Scrubber.md for off-gassing
+- Cross-reference: `Architecture/Facilities.md` FA-001 siting requirements,
+  `Operations/Air_Scrubber.md` for off-gassing
 - Payment via Specification — once discharge
   doctrine is defined and tested, move to
   Section 2 as Analogous.
 
 ---
 
-### GI-003 — Augmented hazard detection capability
-not specified
+### GI-003 — Augmented hazard detection capability not specified
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -775,13 +780,12 @@ and operator health risk downstream.
   operational cycle validates detection reliability,
   move to Section 2 as Analogous.
 - Cross-reference: ASM-004,
-  Operations/Air_Scrubber.md for chemical hazard
+  `Operations/Air_Scrubber.md` for chemical hazard
   handling.
 
 ---
 
-### GI-004 — Intake tagging schema not cross-validated
-against grain system
+### GI-004 — Intake tagging schema not cross-validated against grain system
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -796,7 +800,7 @@ against grain system
 
 **Description:** The intake tagging schema has not
 been cross-validated against the grain system
-requirements in Admin/Ship_of_Theseus.md. Incompatible
+requirements in `Admin/Ship_of_Theseus.md`. Incompatible
 schemas break the provenance chain at its first link.
 
 **Why It Matters:** Intake tagging is the starting
@@ -808,7 +812,7 @@ chain — a schema mismatch breaks that chain at the
 first link.
 
 **Resolution Path:**
-- Review Admin/Ship_of_Theseus.md grain system
+- Review `Admin/Ship_of_Theseus.md` grain system
   requirements — what fields does a grain record
   require at minimum?
 - Cross-validate against Section 7 minimum intake
@@ -822,12 +826,11 @@ first link.
   cross-validated and aligned, move to Section 7
   as Analogous.
 - Cross-reference: ASM-006,
-  Admin/Ship_of_Theseus.md.
+  `Admin/Ship_of_Theseus.md`.
 
 ---
 
-### GI-005 — Pre-Intake protocol for items requiring
-special handling not defined
+### GI-005 — Pre-Intake protocol for items requiring special handling not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -869,8 +872,8 @@ primary source of workplace incidents.
 - Define invocation authority — any operator should
   be able to call a hold without management approval.
 - Cross-reference: GI-002 energetic discharge
-  doctrine, UNK-006 siting requirements,
-  Operations/Air_Scrubber.md.
+  doctrine, `Architecture/Facilities.md` FA-001 siting requirements,
+  `Operations/Air_Scrubber.md`.
 - Payment via Specification — once pre-Intake
   categories and responses are defined and operator
   training covers them, move to Section 1 entry
@@ -878,8 +881,7 @@ primary source of workplace incidents.
 
 ---
 
-### GI-006 — Intake chain-of-custody integrity
-not defined
+### GI-006 — Intake chain-of-custody integrity not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -902,7 +904,7 @@ through the entire gate flow.
 can be corrupted, hazard-cleared items can be swapped
 for unchecked ones, and records can drift from the
 physical objects they describe. The grain system in
-Ship_of_Theseus.md depends on an unbroken provenance
+`Admin/Ship_of_Theseus.md` depends on an unbroken provenance
 chain — Intake is where that chain starts.
 
 **Resolution Path:**
@@ -917,7 +919,7 @@ chain — Intake is where that chain starts.
 - Define record/item reconciliation at Gate_02
   handoff — physical tag verified against digital
   record before routing.
-- Cross-validate with Admin/Ship_of_Theseus.md
+- Cross-validate with `Admin/Ship_of_Theseus.md`
   grain system requirements — GI-006 and GI-004
   may resolve together.
 - Payment via Specification — once chain-of-custody
@@ -926,8 +928,7 @@ chain — Intake is where that chain starts.
 
 ---
 
-### GI-007 — Digital contamination and hostile
-firmware handling not defined
+### GI-007 — Digital contamination and hostile firmware handling not defined
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
@@ -946,7 +947,7 @@ carry malware, hostile firmware, or compromised
 embedded systems. No isolation or handling protocol
 exists for digital contamination at Intake.
 
-**Why It Matters:** Given Forge_Net.md network
+**Why It Matters:** Given `Architecture/Forge_Net.md` network
 integration, a compromised device connected to forge
 systems before isolation could propagate malware to
 the reference database, corrupt cognitive save states,
@@ -968,9 +969,9 @@ hazards are not yet acknowledged in the system.
   expertise are required to clear a device for
   connection? This may require external expertise
   at v0 bootstrap.
-- Cross-reference: Operations/Electronics.md,
-  Architecture/Forge_Net.md, Architecture/
-  Cognitive_Frameworks.md rogue unit doctrine.
+- Cross-reference: `Operations/Electronics.md`,
+  `Architecture/Forge_Net.md`, `Architecture/
+  Cognitive_Frameworks.md` rogue unit doctrine.
 - Payment via Specification — once isolation protocol
   is defined and tested, move to Section 2 as
   Analogous.
@@ -991,6 +992,13 @@ hazards are not yet acknowledged in the system.
   doctrine added to Section 1. Intake-to-Triage
   authority boundary added to Section 8. Parts list
   scope constraint added to Section 5.
+- 2026-06-08: Navigation Anchors block added.
+  Verification Ref corrected from `Admin/Forge_Audit_Kit.md`
+  to `Admin/Verification_Gates_LF.md` (PC-001).
+  Scope Boundary and sidecar UNK-006 references
+  updated to `Architecture/Facilities.md` FA-001
+  (PC-002). Section 2 operator safety cross-reference
+  updated to match.
 
 ---
 
@@ -1011,7 +1019,7 @@ hazards are not yet acknowledged in the system.
 
 The following conditions trigger mandatory re-audit of
 this file. All canonical drift indicators from
-Admin/File_Template.md apply. The following are
+`Admin/File_Template.md` apply. The following are
 additional local triggers specific to Gate_01_Intake:
 
 ### Local Drift Triggers
@@ -1031,6 +1039,6 @@ additional local triggers specific to Gate_01_Intake:
 
 ### Canonical Drift Triggers
 
-*All mandatory re-audit conditions from Admin/File_Template.md
-Section 10 apply without exception. Local triggers above are
+*All mandatory re-audit conditions from `Admin/File_Template.md`
+Section 11 apply without exception. Local triggers above are
 additive, not substitutes.*
