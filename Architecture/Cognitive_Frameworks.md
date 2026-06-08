@@ -1,28 +1,105 @@
 # Cognitive_Frameworks.md — Distributed Cognition & Trust Architectures
 
-**Audit Health:**
-- Status: Exploration
-- Last audit: 2026-05-09 (ChatGPT — Synthesizer)
-- Open unknowns: 3 (Medium-High)
-- Sidecar: [#auditor-notes--unknowns]
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
+## File State
+
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Exploration                                                         |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-09 (ChatGPT — Synthesizer); revised 2026-06-08              |
+| Auditor          | Claude — Retrofit/Auditor                                           |
+| Open Unknowns    | 3                                                                   |
+| Active Disputes  | 2                                                                   |
+| Highest Risk     | High                                                                |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ---
 
 ## Scope Boundary
 
-**This file DOES define:** Cognitive reliability architectures, distributed trust models, redundancy and arbitration frameworks, AI consensus structures, hardware/software supervisory hierarchies, split-brain handling doctrine, confidence collapse states, human override positioning, return-to-base and stasis logic.
+**This file DOES define:**
+- Cognitive reliability architectures for autonomous
+  Forge systems
+- Distributed trust models and redundancy frameworks
+- Framework taxonomy (A through G) — from lone
+  intelligence to simulation-gated cognition
+- Confidence collapse states and associated responses
+- Split-brain handling doctrine
+- Return-to-base and stasis logic
+- Human override positioning and mutual stabilization
+  doctrine
+- Algorithm architecture — the computational structure
+  that emerges from Forge doctrine (Section IX)
+- Guiding axioms for safe cognition under uncertainty
 
-**This file DOES NOT define:** PCB fabrication, specific MCU wiring, mechanical actuator details, ethical policy itself, individual Leviathan mission logic, networking implementation details, cryptographic protocol specifics, or full autonomous governance law.
+**This file DOES NOT define:**
+- PCB fabrication or specific MCU wiring
+  (`Operations/Electronics.md`)
+- Mechanical actuator details
+  (`Architecture/Mechanical_Structures.md`)
+- Ethical policy itself
+  (`Admin/Ethical_Constraints.md`)
+- Individual Leviathan mission logic
+  (`Tests/Leviathan_testing.md`)
+- Networking implementation details
+  (`Architecture/Forge_Net.md`)
+- Cryptographic protocol specifics
+  (`Admin/Security_Protocols.md`)
+- Full autonomous governance law
+  (`Admin/Governance_Charter.md`)
+- Hardware watchdog circuit implementation
+  (`Operations/Electronics.md` CF-001)
 
 ---
 
 ## File Purpose
 
-This file defines how Forge systems think safely under uncertainty.
+This file defines how Forge systems think safely under
+uncertainty, and what those thinking systems are
+computationally attempting to do.
 
-The Forge assumes degraded environments, imperfect hardware, incomplete information, damaged sensors, adversarial conditions, and partial system corruption as **normal operating conditions** rather than edge cases. Cognitive Frameworks exist to prevent isolated faults, hallucinations, firmware corruption, or confidence collapse from turning local errors into catastrophic actions.
+The Forge assumes degraded environments, imperfect
+hardware, incomplete information, damaged sensors,
+adversarial conditions, and partial system corruption
+as normal operating conditions rather than edge cases.
+Cognitive Frameworks exist to prevent isolated faults,
+hallucinations, firmware corruption, or confidence
+collapse from turning local errors into catastrophic
+actions.
 
-The goal is not perfect intelligence. The goal is **survivable cognition**.
+The goal is not perfect intelligence. The goal is
+**survivable cognition**.
+
+Section IX extends this into a formal description of
+the algorithm architecture that the doctrine implies —
+not a single algorithm, but a class of algorithms that
+emerges from the Forge's foundational assumptions about
+knowledge, uncertainty, and reality. Understanding this
+architecture is necessary for translating doctrine into
+machine behavior.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Degraded environments, damaged sensors, and partial corruption are normal operating conditions — not edge cases | Salvage-first doctrine; hostile deployment environments | High | v0 operational data contradicts this — environment is consistently benign and controlled |
+| ASM-002 | Mechanical constraints are more reliable than software constraints under failure conditions | Physical law vs. programmable logic; Layer 0 doctrine | High | A hardware failure mode is identified where mechanical constraints become less reliable than software under specific conditions |
+| ASM-003 | Three AI models with different training lineages provide meaningful cognitive diversity for consensus purposes | Model diversity assumption; CF-002 dependency | Low | Correlated AI failure mode study (CF-002) characterizes actual reasoning overlap — diversity must be demonstrated, not assumed |
+| ASM-004 | Human override remains meaningful and executable under degraded communication conditions | Human governance doctrine; Layer 6 | Medium | Operational scenario arises where human override cannot be executed in time to prevent harm — override doctrine must be revised |
+| ASM-005 | The algorithm architecture described in Section IX accurately characterizes the emergent computational behavior of the doctrine | Synthesis from ChatGPT Synthesizer analysis; cross-checked against repository structure | Medium | Operational experience or formal analysis reveals a significant gap between described and actual emergent behavior |
 
 ---
 
@@ -30,21 +107,37 @@ The goal is not perfect intelligence. The goal is **survivable cognition**.
 
 **Intelligence Is Treated as a Hazard Source**
 
-A sufficiently autonomous system can generate incorrect conclusions, fabricated certainty, unsafe optimization paths, recursive logic traps, or coordinated failure cascades. Therefore: cognition is monitored, confidence is monitored, and disagreement is treated as signal rather than nuisance.
+A sufficiently autonomous system can generate incorrect
+conclusions, fabricated certainty, unsafe optimization
+paths, recursive logic traps, or coordinated failure
+cascades. Therefore: cognition is monitored, confidence
+is monitored, and disagreement is treated as signal
+rather than nuisance.
 
-> A machine can be physically functional while cognitively compromised.
+> A machine can be physically functional while
+> cognitively compromised.
 
 **The Forge Does Not Assume Perfect Truth**
 
-Reality may be partially observable, contradictory, delayed, noisy, spoofed, or unknowable. Therefore the Forge prioritizes bounded confidence, graceful degradation, and reversible decisions over maximum autonomy, maximum speed, or centralized certainty.
+Reality may be partially observable, contradictory,
+delayed, noisy, spoofed, or unknowable. Therefore the
+Forge prioritizes bounded confidence, graceful
+degradation, and reversible decisions over maximum
+autonomy, maximum speed, or centralized certainty.
 
 **Mechanical Truth Outranks Software Confidence**
 
-Software may hallucinate. Sensors may drift. Firmware may corrupt. Consensus may fail. Physical safety boundaries must remain enforceable even during total cognitive collapse.
+Software may hallucinate. Sensors may drift. Firmware
+may corrupt. Consensus may fail. Physical safety
+boundaries must remain enforceable even during total
+cognitive collapse.
 
-Examples: watchdog relays, spring-return neutral states, deadman switches, passive thermal shutdown, physical docking locks.
+Examples: watchdog relays, spring-return neutral states,
+deadman switches, passive thermal shutdown, physical
+docking locks.
 
-No cognition layer is considered authoritative over hard-safe physical constraints.
+No cognition layer is considered authoritative over
+hard-safe physical constraints.
 
 ---
 
@@ -60,30 +153,55 @@ No cognition layer is considered authoritative over hard-safe physical constrain
 | Layer 5 | Mission coordination |
 | Layer 6 | Human governance override |
 
-Failure containment should occur at the lowest possible layer.
+Failure containment should occur at the lowest possible
+layer. A fault contained at Layer 1 is always
+preferable to one that escalates to Layer 6.
 
 ---
 
 ## III. Framework Taxonomy
 
 ### Framework A — Lone Intelligence
-Single controller → actuator system. Simplest architecture, fastest response, minimal overhead. **Forbidden for:** high-mass autonomous Leviathans, weapons-capable systems, critical environmental control, irreversible operations.
+Single controller → actuator system. Simplest
+architecture, fastest response, minimal overhead.
+**Forbidden for:** high-mass autonomous Leviathans,
+weapons-capable systems, critical environmental
+control, irreversible operations.
 
 ### Framework B — Lone AI + Hardware Watchdog
-AI controls behavior. Watchdog controls boundaries. If heartbeat, timing, or safety conditions fail: watchdog interrupts motion, forces neutral state, or returns unit to stasis. **Recommended v0 baseline** — minimum acceptable architecture for early autonomous Forge systems.
+AI controls behavior. Watchdog controls boundaries.
+If heartbeat, timing, or safety conditions fail:
+watchdog interrupts motion, forces neutral state, or
+returns unit to stasis. **Recommended v0 baseline** —
+minimum acceptable architecture for early autonomous
+Forge systems.
 
 ### Framework C — Dual Redundancy
-Both systems cross-check each other. Detects anomalies but cannot resolve 1v1 deadlock. Requires human arbitration, supervisory AI, or return-to-base doctrine for resolution.
+Both systems cross-check each other. Detects anomalies
+but cannot resolve 1v1 deadlock. Requires human
+arbitration, supervisory AI, or return-to-base doctrine
+for resolution.
 
 ### Framework D — Triple Modular Redundancy (TMR)
-Three independent systems attempt the same task. Majority agreement determines output. Tolerates isolated faults and filters transient corruption.
+Three independent systems attempt the same task.
+Majority agreement determines output. Tolerates
+isolated faults and filters transient corruption.
 
-**Diversity requirement:** True TMR requires architectural diversity, firmware diversity, power-path diversity, or manufacturing diversity. Three identical damaged systems are not true redundancy. Correlated failures and shared firmware defects bypass TMR protection entirely.
+**Diversity requirement:** True TMR requires
+architectural diversity, firmware diversity, power-path
+diversity, or manufacturing diversity. Three identical
+damaged systems are not true redundancy. Correlated
+failures and shared firmware defects bypass TMR
+protection entirely.
 
-*Cross-reference: `Electronics.md` §TMR for hardware implementation details.*
+*Cross-reference: `Operations/Electronics.md`
+§Hardware TMR Implementation for circuit-level detail.*
 
 ### Framework E — Hierarchical Ruler + Advisors
-One primary intelligence acts as executive authority. Secondary systems provide challenge, verification, simulation, or dissent. Advisors do not directly control motion unless escalation conditions trigger.
+One primary intelligence acts as executive authority.
+Secondary systems provide challenge, verification,
+simulation, or dissent. Advisors do not directly
+control motion unless escalation conditions trigger.
 
 | Advisor Type | Role |
 |---|---|
@@ -94,10 +212,21 @@ One primary intelligence acts as executive authority. Secondary systems provide 
 | Simulation advisor | Predictive outcome testing |
 
 ### Framework F — Supervisory Consensus Network
-Local units retain operational autonomy while a supervisory layer monitors behavior, validates mission coherence, and intervenes during confidence collapse. Aligns naturally with Support Raft systems, Leviathan fleets, and distributed salvage operations. *Cross-reference: `Support_Raft_v0.md` §Orchestration & Data Tether.*
+Local units retain operational autonomy while a
+supervisory layer monitors behavior, validates mission
+coherence, and intervenes during confidence collapse.
+Aligns naturally with Support Raft systems, Leviathan
+fleets, and distributed salvage operations.
+*Cross-reference: `Tests/Support_Raft.md`
+§Orchestration & Data Tether.*
 
 ### Framework G — Simulation-Gated Cognition
-Actions are simulated before execution. If predicted outcomes exceed risk threshold: action blocked or escalated. Computationally expensive. **Status: Exploratory — likely v2/v3 architecture.** *Cross-reference: `Support_Raft_v0.md` Guardian Protocol.*
+Actions are simulated before execution. If predicted
+outcomes exceed risk threshold: action blocked or
+escalated. Computationally expensive. **Status:
+Exploratory — likely v2/v3 architecture.**
+*Cross-reference: `Tests/Support_Raft.md`
+Guardian Protocol.*
 
 ---
 
@@ -111,21 +240,37 @@ Actions are simulated before execution. If predicted outcomes exceed risk thresh
 | Red | Cognitive instability | Enter caution/stasis |
 | Black | Trust chain compromised | Mechanical lockdown |
 
+Transitions are not purely linear. A system can move
+from Green to Black if trust chain compromise is
+detected directly, bypassing intermediate states.
+Downward transitions (toward Green) require explicit
+re-verification, not mere absence of new faults.
+
 ---
 
 ## V. Return-to-Base Doctrine
 
-When confidence falls below operational threshold, mission completion becomes secondary — preservation becomes primary.
+When confidence falls below operational threshold,
+mission completion becomes secondary — preservation
+becomes primary.
 
-Return-to-base triggers: unresolved split-brain, navigation uncertainty, watchdog anomalies, repeated voter instability, or firmware integrity failure.
+Return-to-base triggers: unresolved split-brain,
+navigation uncertainty, watchdog anomalies, repeated
+voter instability, or firmware integrity failure.
 
-A damaged but recoverable unit is preferable to autonomous escalation, uncontrolled movement, or irreversible environmental harm.
+A damaged but recoverable unit is preferable to
+autonomous escalation, uncontrolled movement, or
+irreversible environmental harm.
 
 ---
 
 ## VI. Split-Brain Doctrine
 
-A split-brain state occurs when no stable consensus exists, arbitration confidence collapses, or identity continuity becomes uncertain. The Forge treats unresolved split-brain as a **safety condition**, not merely a software bug.
+A split-brain state occurs when no stable consensus
+exists, arbitration confidence collapses, or identity
+continuity becomes uncertain. The Forge treats
+unresolved split-brain as a **safety condition**, not
+merely a software bug.
 
 Default response:
 1. Halt non-essential actions
@@ -134,17 +279,28 @@ Default response:
 4. Request supervisory intervention
 5. Enter stasis if unresolved
 
-*Identity continuity during split-brain: see CF-003 in sidecar and `Ship_of_Theseus_Right_to_Repair.md` §Relationship to Forge Doctrine.*
+*Identity continuity during split-brain: see CF-003
+in sidecar and `Admin/Ship_of_Theseus.md`
+§Relationship to Forge Doctrine.*
 
 ---
 
 ## VII. Human Position in the Stack
 
-The Forge is autonomy-assisted, not autonomy-worshipping. Humans remain final governors, final ethical authorities, and final override capability. However, humans are also fallible, inconsistent, fatigued, and bandwidth-limited. Therefore humans supervise systems — but systems also constrain humans through hard safety doctrine.
+The Forge is autonomy-assisted, not
+autonomy-worshipping. Humans remain final governors,
+final ethical authorities, and final override
+capability. However, humans are also fallible,
+inconsistent, fatigued, and bandwidth-limited.
+Therefore humans supervise systems — but systems also
+constrain humans through hard safety doctrine.
 
-The goal is **mutual stabilization**, not unilateral dominance.
+The goal is **mutual stabilization**, not unilateral
+dominance.
 
-*Cross-reference: `Ethical_Constraints.md` for hard-line doctrines that override both AI and human override attempts.*
+*Cross-reference: `Admin/Ethical_Constraints.md` for
+hard-line doctrines that override both AI and human
+override attempts.*
 
 ---
 
@@ -157,70 +313,578 @@ The goal is **mutual stabilization**, not unilateral dominance.
 - Mechanical truth outranks software confidence.
 - The safest system is the one that can stop itself.
 - A machine that cannot admit uncertainty is unsafe.
+- Unknowns are assets, not failures.
+- Reality has the final vote.
 
 ---
 
-## Active Disputes
+## IX. Algorithm Architecture
 
-*Active Disputes is an optional section for unresolved architectural questions where the repo has not yet committed to a position. Different from Auditor Notes — these are open design choices, not gaps in specification.*
+*Synthesized from ChatGPT Synthesizer analysis,
+2026-06-08. Reviewed and extended by Claude —
+Retrofit/Auditor. Confidence: Analogous.*
 
-| ID | Dispute | Positions in Conflict | Risk | Status |
-|---|---|---|---|---|
-| CF-DS-001 | Centralized vs distributed cognition | Single executive AI vs fleet consensus | High | Open |
-| CF-DS-002 | Human override authority scope | Absolute override vs bounded override (see `Ethical_Constraints.md`) | High | Open |
+The doctrine does not naturally translate into a
+single algorithm. It translates into an **algorithm
+architecture** — a class of algorithms that emerges
+from the Forge's foundational assumptions.
+
+Most systems are optimization systems: they maximize
+a known objective. The Forge is a
+**continuous model-correction system** whose primary
+objective is not producing answers but maintaining the
+highest-fidelity representation of reality possible
+under uncertainty. That distinction explains why
+`Unknowns.md`, `Auditor_Protocols.md`, `Discovery.md`,
+and the `Challenges/` directory feel architecturally
+coherent — they are all components of the same
+error-correcting algorithm.
+
+---
+
+### Foundational Assumptions the Architecture Inherits
+
+The algorithm architecture is downstream of these
+doctrinal commitments:
+
+- Knowledge is incomplete
+- Models drift
+- Unknowns are assets, not failures
+- Multiple perspectives are required
+- Reality has the final vote
+- Salvage is preferable to replacement
+- Exploration and Production are different
+  operational modes
+- Every conclusion carries confidence and assumptions
+
+Each of these maps to a specific algorithmic behavior
+described below.
+
+---
+
+### The Forge Meta-Algorithm
+
+The overarching loop that the entire repository
+implements:
+
+```
+Reality
+  ↓
+Observation
+  ↓
+Model
+  ↓
+Audit
+  ↓
+Refinement
+  ↓
+Reality
+```
+
+Expanded:
+
+```
+Observe
+  ↓
+Map (Discovery.md, Routing.md)
+  ↓
+Identify Unknowns (Unknowns.md, sidecar entries)
+  ↓
+Prioritize Unknowns (Blocking/Critical/Major/Minor)
+  ↓
+Experiment (Gates, Leviathan, physical tests)
+  ↓
+Audit (Auditor_Protocols.md, multi-agent cycle)
+  ↓
+Update Models (Lessons Learned, Spec Gate promotion)
+  ↓
+Detect Divergence (Drift Indicators, Pending Corrections)
+  ↓
+Preserve Knowledge (permanent record doctrine)
+  ↓
+Repeat
+```
+
+The loop is already implemented across existing files.
+It is not yet formally named anywhere in the repository.
+This section names it.
+
+---
+
+### Component Algorithms
+
+**1. Unknown-Driven Search**
+
+Traditional algorithms optimize toward a known
+objective. Forge doctrine optimizes toward reduction
+of critical unknowns.
+
+Objective function:
+```
+maximize: useful knowledge gained
+          per unit risk and resource expenditure
+```
+
+Ranking function for unknowns:
+```
+priority = f(impact_if_wrong,
+             current_uncertainty,
+             cost_to_investigate)
+```
+
+This is implemented in `Unknowns.md` via the
+Priority field (Blocking / Critical / Major / Minor)
+and the Expiry Watch. It is a research algorithm,
+not a production algorithm — it behaves differently
+depending on whether the system is in Exploration
+or Specification mode.
+
+**2. Assumption Extraction**
+
+The Auditor's primary function. Given any claim,
+decompose it into its prerequisite graph.
+
+```
+Input:  claim
+Output: directed graph of assumptions,
+        each with confidence and expiry trigger
+```
+
+Example:
+```
+Claim: "This gearbox will survive"
+  ├── torque estimate correct?     [Analogous]
+  ├── material strength correct?   [Placeholder]
+  ├── fatigue accounted for?       [No — Unknown]
+  ├── thermal effects negligible?  [Assumed]
+  └── lubrication available?       [Assumed]
+```
+
+The Assumptions section in `Admin/File_Template.md`
+formalizes this. The `Admin/Auditor_Protocols.md`
+Adversarial Challenge Battery executes it. This
+algorithm is already running in every audit cycle.
+
+**3. Confidence Propagation**
+
+The repository stores claims with confidence labels
+(Measured / Replicated / Simulated / Analogous /
+Placeholder). What does not yet exist is propagation
+through the dependency graph.
+
+The rule:
+```
+if node A depends on node B,
+then confidence(A) ≤ confidence(B)
+```
+
+A claim cannot be more confident than its least-
+confident dependency. The Dependency Map in
+`Unknowns.md` is the graph. The confidence labels
+are the node weights. Propagation logic is not yet
+enforced — it is a future automation target.
+
+Example of current gap: EV-001 is Placeholder.
+EC-002 depends on EV-001. EC-002 cannot legitimately
+be more confident than Placeholder, but nothing
+currently prevents a file from claiming otherwise.
+
+**4. Divergence Detection**
+
+`Discovery.md` treats divergence between doctrine
+and implementation as signal, not failure.
+
+```
+compare: doctrine (what files say)
+compare: implementation (what system does)
+
+if mismatch:
+    classify:
+        doctrine obsolete?
+        implementation drift?
+        both?
+    log as Pending Correction or Unknown
+    do not silently reconcile
+```
+
+The algorithm is mining disagreement for information.
+The `Admin/Repository_Integrity_Protocol.md` violation
+ladder and Drift Indicators implement this.
+
+**5. Salvage Optimization**
+
+The core Gate_02_Triage decision function.
+
+```
+score = retained_value - repair_cost - risk_introduced
+```
+
+`retained_value` is the hard term. Strategic
+Recoverability tiers in Gate_02 are currently
+ordinal — they rank options but do not produce
+cardinal scores. Turning this into an actual scalar
+function is the step from doctrine to deployable
+algorithm. This is an open development target.
+
+**6. Adversarial Optimization (Skeptic/Engineer Loop)**
+
+```
+Engineer:  generate model
+Auditor:   attack model
+Engineer:  revise
+Auditor:   attack revision
+repeat until: convergence OR escalation to human
+```
+
+This is the multi-agent audit cycle already running
+in practice. It is structurally similar to GAN
+training, red-team systems, and formal verification
+loops — but focused on engineering reasoning rather
+than generative output. The termination condition
+is not yet formally defined. Currently the loop
+stops when session context runs out. A formal
+convergence threshold or gate passage criterion
+would complete the algorithm.
+
+**7. Scope Routing**
+
+`Discovery.md` and `Routing.md` implement this.
+
+```
+problem or question detected
+  ↓
+classify domain
+  ↓
+route to owning file
+  ↓
+gather output
+  ↓
+synthesize across domains if cross-module
+```
+
+This is a distributed expert system. The Scope
+Boundary sections in each file are the routing
+filters. An agent loading any file can determine
+immediately whether the question belongs here
+or elsewhere — without loading every other file.
+
+**8. Challenge-Based Planning**
+
+The `Challenges/` directory inverts the traditional
+knowledge organization.
+
+Instead of organizing around what is known, organize
+around what must be overcome.
+
+```
+challenge identified
+  ↓
+identify affected domains
+  ↓
+collect constraints from domain files
+  ↓
+collect relevant unknowns
+  ↓
+generate candidate interventions
+  ↓
+score interventions
+  ↓
+execute best candidate
+  ↓
+audit outcome
+```
+
+This converts the repository from a knowledge store
+into a problem-solving engine. The challenge files
+do not freeze solutions — they define obligations
+that all downstream domain files must satisfy.
+
+---
+
+### Asymmetric Conservatism
+
+The architecture has a second meta-property beyond
+error-correction: it is **asymmetrically conservative**.
+
+The system is much harder to move in the direction
+of "this is known and safe" than toward "this is
+unknown and risky." Promotion gates, confidence
+labels, Blocking flags, the Ethical Anchor, and the
+Drift Indicators all create friction in the direction
+of false certainty.
+
+This asymmetry is a deliberate design choice. It
+maps onto a specific algorithmic class: **anytime
+algorithms** — systems that always maintain a valid
+conservative answer and only upgrade their answer
+when evidence justifies it.
+
+The corollary: a system following Forge doctrine will
+tend to understate confidence. That is correct
+behavior. Overstatement of confidence is the
+primary failure mode this architecture is designed
+to prevent.
+
+---
+
+### What Does Not Exist Yet
+
+The architecture is described. The translation layer
+is not. Specifically:
+
+- **Confidence propagation enforcement** — nothing
+  currently prevents a file from claiming higher
+  confidence than its dependencies support
+- **Salvage score function** — `retained_value` has
+  no formal definition; Gate_02 tiers are ordinal
+- **Adversarial loop termination condition** — the
+  Skeptic/Engineer cycle has no formal convergence
+  criterion
+- **ML integration** — the Dependency Map, confidence
+  labels, and Drift Indicators are structured for
+  machine consumption but no translation layer
+  exists between document structure and training
+  signal
+
+These are development targets, not current gaps
+requiring immediate resolution. They belong in
+`Admin/Trajectories.md` as v1/v2 automation targets.
 
 ---
 
 ## Integration Hooks
 
-- `Electronics.md` — TMR hardware implementation; watchdog circuit design (CF-001)
-- `leviathan_testing.md` — primary stress-test environment for all frameworks; confidence collapse states are test targets
-- `Support_Raft_v0.md` — Framework F natural implementation; Guardian Protocol is Framework G prototype
-- `Ethical_Constraints.md` — CF-DS-002 dispute; hard-line doctrines govern what no cognition layer may override
-- `Ship_of_Theseus_Right_to_Repair.md` — CF-003 identity continuity cross-reference
-- `Auditor_Protocols.md` — multi-agent audit cycle is a real-world implementation of Framework D/E consensus
-- `Trajectories_LF.md` — Framework G (Simulation-Gated Cognition) routes to v2/v3 scope
+- `Operations/Electronics.md` — TMR hardware
+  implementation; watchdog circuit design (CF-001)
+- `Tests/Leviathan_testing.md` — primary stress-test
+  environment for all frameworks; confidence collapse
+  states are test targets
+- `Tests/Support_Raft.md` — Framework F natural
+  implementation; Guardian Protocol is Framework G
+  prototype
+- `Admin/Ethical_Constraints.md` — CF-DS-002 dispute;
+  hard-line doctrines govern what no cognition layer
+  may override
+- `Admin/Ship_of_Theseus.md` — CF-003 identity
+  continuity cross-reference
+- `Admin/Auditor_Protocols.md` — multi-agent audit
+  cycle is a real-world implementation of the
+  Skeptic/Engineer adversarial loop (Section IX)
+- `Admin/Trajectories.md` — Framework G routes to
+  v2/v3; ML integration and confidence propagation
+  enforcement are v1/v2 automation targets
+- `Unknowns.md` — Dependency Map is the confidence
+  propagation graph; Expiry Watch implements
+  Unknown-Driven Search prioritization
 
 ---
 
 ## Lessons Learned
 
-| Date | What was tried | What failed | What was learned |
-|---|---|---|---|
-| May 2026 | Multiple AI models reviewed same architecture | Models occasionally converged on identical flawed assumptions | Consensus without diversity can amplify shared blind spots — TMR requires diversity, not duplication |
-| May 2026 | TMR initially treated as universal solution | Correlated failures invalidated independence assumptions | Redundancy requires diversity, not duplication |
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|---------------|----------------|-------------|------------------|------------|---------------------|
+| May 2026 | Audit Review | Multiple AI models reviewed the same architecture | Models occasionally converged on identical flawed assumptions — apparent consensus on a wrong answer | Consensus without diversity amplifies shared blind spots. TMR requires architectural diversity, not duplication. Three models that share training data share failure modes | Analogous | Yes — CF-002 requires formal correlated failure characterization |
+| May 2026 | Audit Review | TMR initially treated as universal redundancy solution | Correlated failures invalidated independence assumptions — three systems failing identically produce false consensus, not detected disagreement | Redundancy requires diversity, not quantity. Independence must be demonstrated through adversarial testing, not assumed from physical separation | Analogous | Yes — first TMR prototype must include correlated failure adversarial testing |
+| 2026-06-08 | Audit Review | Algorithm architecture was implicit across multiple files but never formally named | Agents reading individual files could not identify the overarching computational loop. The meta-algorithm was present but invisible | Section IX added — names the Forge Meta-Algorithm and its component algorithms. The loop was already implemented; it needed to be described | Analogous | Yes — validate Section IX against operational behavior when physical systems are running |
+
+---
+
+## Active Disputes
+
+| ID | Dispute | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| CF-DS-001 | Centralized vs. distributed cognition | Single executive AI with advisor sub-systems vs. fleet consensus with no single authority | High | Open | `Architecture/Cognitive_Frameworks.md` |
+| CF-DS-002 | Human override authority scope | Absolute human override vs. bounded override constrained by Tier 1 Axioms | High | Open | `Admin/Ethical_Constraints.md` |
+
+*CF-DS-002 has constitutional implications. Resolution
+must be consistent with `Admin/Ethical_Constraints.md`
+Anti-Weaponization and Life Preservation doctrines.
+Escalate to human governing party before closing.*
 
 ---
 
 ## Auditor Notes & Unknowns
 
 ### CF-001 — Hardware watchdog minimum standard undefined
-**Status:** Open
-**Risk:** High
-**What is not yet known:** Minimum required watchdog behaviors and enforcement mechanisms for autonomous Forge systems. Without a defined hard-safe layer, higher cognition frameworks cannot guarantee containment during failure.
-**Resolution path:** Define mandatory watchdog behaviors (heartbeat interval, timeout action, neutral-state enforcement, tamper detection) before any Specification-level autonomous architecture is approved. Owner: `Electronics.md` — watchdog circuit design belongs in the electronics hardware layer.
-**Logged:** 2026-05-09, ChatGPT — Synthesizer
+
+| Field         | Value                                                        |
+|---------------|--------------------------------------------------------------|
+| Status        | Open                                                         |
+| Risk          | High                                                         |
+| Priority      | Critical                                                     |
+| Type          | Technical                                                    |
+| Blocking      | Yes — no Specification-level autonomous architecture may be approved without a defined watchdog minimum standard |
+| Owner         | Operations/Electronics.md                                    |
+| First Logged  | 2026-05-09                                                   |
+| Last Reviewed | 2026-05-09                                                   |
+
+**Description:** Minimum required watchdog behaviors
+and enforcement mechanisms for autonomous Forge
+systems are undefined. Without a defined hard-safe
+layer, higher cognition frameworks cannot guarantee
+containment during failure.
+
+**Why It Matters:** The hardware watchdog is Layer 1
+in the Cognitive Reliability Stack — the last
+software-adjacent constraint before mechanical truth
+(Layer 0). If Layer 1 is undefined, the gap between
+Layer 0 and Layer 2 is uncontrolled. Any
+Specification-level autonomous architecture approved
+without a defined watchdog minimum rests on an
+unverified safety assumption.
+
+**Resolution Path:** Define mandatory watchdog
+behaviors (heartbeat interval, timeout action,
+neutral-state enforcement, tamper detection) before
+any Specification-level autonomous architecture is
+approved. Owner is `Operations/Electronics.md` —
+watchdog circuit design belongs in the electronics
+hardware layer. This file owns the minimum behavior
+requirements; Electronics.md owns the implementation.
+Payment via Specification — once Electronics.md
+defines and validates a watchdog implementation,
+update Layer 1 in Section II with concrete parameters.
+
+---
 
 ### CF-002 — Correlated AI failure modes insufficiently modeled
-**Status:** Open
-**Risk:** High
-**What is not yet known:** How to detect and mitigate synchronized reasoning failures across AI agents that share training assumptions, architecture, or data sources. Apparent consensus may produce false confidence.
-**Resolution path:** Develop diversity scoring metrics and adversarial disagreement testing frameworks. Add to `leviathan_testing.md` as a primary test target — the multi-unit swarm is the natural test environment for correlated failure detection.
-**Logged:** 2026-05-09, ChatGPT — Synthesizer
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | High                                             |
+| Priority      | Major                                            |
+| Type          | Technical / Architectural                        |
+| Blocking      | No                                               |
+| Owner         | Architecture/Cognitive_Frameworks.md             |
+| First Logged  | 2026-05-09                                       |
+| Last Reviewed | 2026-06-08                                       |
+
+**Description:** How to detect and mitigate
+synchronized reasoning failures across AI agents
+that share training assumptions, architecture, or
+data sources. Apparent consensus may produce false
+confidence rather than genuine agreement.
+
+**Why It Matters:** The multi-agent audit cycle —
+the primary mechanism for error detection in the
+repository — assumes that different AI models provide
+independent perspectives. If models share training
+data lineage or reasoning patterns on forge-relevant
+engineering questions, the consensus they reach may
+amplify shared blind spots rather than cancel
+independent errors. The Skeptic/Engineer loop is
+only as good as the diversity of the adversarial
+perspectives it draws on.
+
+**Resolution Path:** Develop diversity scoring
+metrics and adversarial disagreement testing
+frameworks. Add to `Tests/Leviathan_testing.md` as
+a primary test target — the multi-unit swarm is
+the natural environment for correlated failure
+detection. Cross-reference `Operations/Electronics.md`
+EL-007 (correlated TMR failure modes) — the hardware
+and AI versions of this problem are structurally
+identical. Payment via Specification — once first
+multi-unit swarm test data characterizes actual
+reasoning overlap, update Section IX confidence
+propagation and Section III Framework D diversity
+requirements.
+
+---
 
 ### CF-003 — Identity continuity during split-brain unresolved
-**Status:** Open
-**Risk:** Medium
-**What is not yet known:** When a fragmented or partially restored cognition system is considered the "same" entity for purposes of authority continuity, memory trust, and restoration policy.
-**Resolution path:** Cross-reference `Ship_of_Theseus_Right_to_Repair.md` — the Ship of Theseus paradox directly addresses identity through incremental replacement. A restored cognition system with partial original firmware, partial new firmware, and cached memory is exactly the Ship of Theseus problem applied to AI. A short cross-reference section in that document would close this gap. See ST-003 cross-reference note.
-**Logged:** 2026-05-09, ChatGPT — Synthesizer
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Architectural / Governance                       |
+| Blocking      | No                                               |
+| Owner         | Architecture/Cognitive_Frameworks.md             |
+| First Logged  | 2026-05-09                                       |
+| Last Reviewed | 2026-05-09                                       |
+
+**Description:** When a fragmented or partially
+restored cognition system is considered the "same"
+entity for purposes of authority continuity, memory
+trust, and restoration policy.
+
+**Why It Matters:** A Leviathan unit that suffers
+split-brain, partially restores from cache, and
+re-enters operation has an identity continuity
+problem: which memories are trusted, which authority
+grants are still valid, and whether the restored
+unit should be treated as the same agent or a new
+one. Without a doctrine, restoration decisions are
+made ad hoc — which creates inconsistent authority
+chains and potential security gaps.
+
+**Resolution Path:** Cross-reference
+`Admin/Ship_of_Theseus.md` — the Ship of Theseus
+paradox directly addresses identity through
+incremental replacement. A restored cognition system
+with partial original firmware, partial new firmware,
+and cached memory is exactly the Ship of Theseus
+problem applied to AI. A cross-reference section
+in `Admin/Ship_of_Theseus.md` (ST-003) addressing
+AI identity continuity would close this gap.
+Payment via Specification — once ST-003 is resolved
+and a restoration policy is defined, update
+Section VI split-brain doctrine to reference the
+policy.
+
+---
 
 ### Resolution Log
-*(empty)*
 
-### Abandoned Paths
+- 2026-06-08: Navigation Anchors added. File State
+  expanded to full table format. Assumptions section
+  added. Section IX (Algorithm Architecture) added —
+  incorporates ChatGPT Synthesizer analysis
+  (2026-06-08), extended with Asymmetric Conservatism
+  property and development targets. Lessons Learned
+  expanded to full template format. Sidecar entries
+  expanded to full field tables. Integration Hooks
+  updated — stale filenames corrected:
+  `leviathan_testing.md` → `Tests/Leviathan_testing.md`,
+  `Support_Raft_v0.md` → `Tests/Support_Raft.md`,
+  `Ship_of_Theseus_Right_to_Repair.md` →
+  `Admin/Ship_of_Theseus.md`,
+  `Trajectories_LF.md` → `Admin/Trajectories.md`.
+  Active Disputes table expanded with Owner field
+  and CF-DS-002 constitutional note. Guiding Axioms
+  extended with two additions from doctrinal review.
+
+---
+
+## Abandoned Paths
 
 | Date | Path | Why Abandoned | Reconsider? |
-|---|---|---|---|
-| May 2026 | "Pure consensus guarantees correctness" | Consensus can fail through shared blind spots and correlated assumptions | No |
-| May 2026 | "Single perfect supervisory AI" | Violates Forge degraded-environment assumptions; creates catastrophic single-point failure | No |
+|------|------|---------------|-------------|
+| May 2026 | Pure consensus guarantees correctness | Consensus can fail through shared blind spots and correlated assumptions — three systems agreeing on a wrong answer produces false certainty | No — diversity requirement is permanent doctrine |
+| May 2026 | Single perfect supervisory AI | Violates Forge degraded-environment assumptions; creates catastrophic single-point failure in the cognitive layer | No — distributed architecture with diversity is permanent |
+| 2026-06-08 | Implicit algorithm architecture | The Meta-Algorithm and component algorithms were present in the doctrine but unnamed. Leaving them implicit prevented agents from understanding what the system is computing | No — Section IX names them explicitly; implicit status abandoned permanently |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document.
+All canonical triggers from `Admin/File_Template.md`
+apply. The following are additional local triggers:
+
+| Trigger | Reason |
+|---------|--------|
+| TMR diversity requirement weakened or removed | Correlated failure risk — consensus on wrong answer is worse than no consensus |
+| Confidence Collapse States revised without updating Confidence Propagation rules in Section IX | The two systems must remain consistent — collapse state thresholds and confidence ceilings interact |
+| Layer 0 (mechanical truth) demoted below any software layer | Mechanical truth outranks software confidence is permanent doctrine |
+| Section IX algorithm descriptions revised without cross-validating against `Unknowns.md` Dependency Map | The Dependency Map is the confidence propagation graph — structural changes must stay synchronized |
+| CF-DS-002 resolved without escalation to human governing party | Constitutional implications — human ratification required before closing |
+| Salvage score function defined without cross-validation against `Operations/Gate_02_Triage.md` Strategic Recoverability tiers | Score function must extend, not contradict, existing triage doctrine |
+| Human override authority reduced below Layer 6 without Tier 1 Axiom amendment procedure | Governance_Migration_Protocol.md Track B — constitutional amendment required |
+
+**Compound Drift Rule:** If multiple indicators
+activate simultaneously, halt autonomous audit
+progression and escalate for human review.
