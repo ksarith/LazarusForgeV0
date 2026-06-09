@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.4 — Audit cycle 2026-06-06. Six new files indexed: Facilities.md, Safety_Protocols.md, Economics.md, Governance_Migration_Protocol.md, Repository_Structure.md, Precision.md. New clusters: Facilities, Safety, Economics, Governance Migration, Repository Structure, Precision. UNK-006 (facility siting) resolved — Architecture/Facilities.md now owns. GK-005 (Precision_LF.md not yet created) resolved — Architecture/Precision.md now exists. EP-005 (acceptable risk threshold) resolved — Admin/Safety_Protocols.md Section I. Pending corrections from Discovery.md migrated here as tracked unknowns (PC cluster). Dependency map updated with all new cluster entries.**
+**Version 2.5 — Audit cycle 2026-06-08. Retrofit pass: Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md — Navigation Anchors added, Verification Ref corrected (PC-001 partial), Facilities.md upstream references added (PC-002 partial). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated with τ=50ms windowed WDT, cryptographic heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement (Gemini Synthesizer; Analogous confidence). CF-002 In Progress — Leviathan_testing.md Section VII added: poisoned telemetry injection protocol, correlated failure detection criterion, diversity scoring table. CF-003 In Progress — Ship_of_Theseus.md Section IV added: Canonical vs. Derivative Identity, 30% threshold, re-vetting path, cognitive grain analog; ST-003 status updated to In Progress. Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named; Asymmetric Conservatism property documented. PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md corrected (6 files remain). PC-002 partial closure: same four files corrected (3 files remain).**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,6 +27,38 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 
 ---
 
+## What v2.5 Means
+
+- Retrofit pass completed for seven files — Navigation Anchors added to all;
+  Verification Refs corrected; Facilities.md upstream references added
+- CF-001 (hardware watchdog minimum standard) — **In Progress**: Electronics.md
+  Hardware Watchdog Doctrine now defines τ=50ms windowed WDT, cryptographic
+  heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement.
+  Parameters from Gemini Synthesizer analysis; confidence Analogous pending
+  first hardware prototype validation
+- CF-002 (correlated AI failure modes) — **In Progress**: Leviathan_testing.md
+  Section VII defines poisoned telemetry injection protocol, correlated failure
+  detection criterion (two or more diverse architectures reaching identical
+  erroneous conclusions under high-entropy ambiguous input triggers Orange/Red),
+  and diversity scoring table
+- CF-003 (identity continuity during split-brain) — **In Progress**:
+  Ship_of_Theseus.md Section IV defines Canonical vs. Derivative Identity,
+  30% cryptographic state threshold, five-step re-vetting path with human
+  ratification, and cognitive grain analog. ST-003 status updated to In Progress
+- Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named and
+  described; eight component algorithms documented; Asymmetric Conservatism
+  property documented; development targets listed
+- PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md,
+  Air_Scrubber.md corrected — 6 files remain (Gate_03, Gate_04, Gate_06,
+  Gate_07, Plastics, Woodworking, Forge_Net)
+- PC-002 partial closure: same four files corrected — 3 files remain
+  (Gate_03, Gate_04, Gate_05, Gate_06, Woodworking minus already-done)
+
+*(v2.4: Six new files indexed; FA, SP, EC, GMP, RS, PR clusters added;
+PC cluster migrated from Discovery.md.)*
+
+---
+
 ## What v2.4 Means
 
 - Six new files created 2026-06-06 — FA, SP, EC, GMP, RS, PR clusters indexed
@@ -43,32 +75,6 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 - Navigation note updated — Routing.md now exists as programmatic entry point
 
 *(v2.3: Chemistry.md added; CE-001 through CE-004 indexed.)*
-
----
-
-## What v2.3 Means
-
-- `Architecture/Chemistry.md` created as peer Architecture file — CE-001 through
-  CE-004 indexed in new Chemistry & Electrochemistry section; CE-003 flagged as
-  safety-critical prerequisite before first hot pyrolysis run (cross-references PL-001)
-- Dependency map updated with CE cluster entries: CE-001 → EN-001/SR-001;
-  CE-002 → SC-002; CE-003 → PL-001; CE-004 → EP-004
-- Stale name noted: CE-001 through CE-004 sidecar Owner fields read
-  `Architecture/Chemistry_Electrochemistry.md` — correct to `Architecture/Chemistry.md`
-
-*(v2.2: Thermal_Systems.md and Friction_Dynamics.md added; TH and FD clusters.)*
-- `Admin/Verification_Gates_LF.md` reconciled — VG-001 (gate definition synchronization
-  authority chain) indexed; added to Governance & Verification section
-- `Admin/Canonical_Terms.md` reconciled — CT-001 (legacy script integration name
-  mapping, Minor) and CT-003 (dependency priority map needed before v1, Minor) added;
-  CT-002 and CT-004 already present
-- `Tests/Support_Raft.md` reconciled — SR-011 (shell ROI efficiency), SR-012 (mechanical
-  bio-damping), SR-013 (buoyancy shift) formally indexed in Hardware Modules section
-- Active Disputes registry added — CF-DS-001 and CF-DS-002 from Cognitive_Frameworks.md
-  formally recorded
-- CO-002 (metrology precision thresholds) and GK-005 (Precision_LF.md not yet created)
-  confirmed present in prior version
-- Dependency map updated with EN, ME, CF, EP, VG, and SR-011–013 entries
 
 ---
 
@@ -136,7 +142,7 @@ TR-002 (FRT floor calibration) -> depends on first operational cycle data; feeds
 
 GU-005 (FRT cycle definition and floor) -> operator declaration at commissioning; feeds TR-002 and TR-001
 
-AS-004 (noise exposure limits) -> depends on first operational SPL measurement; cross-ref planned Safety_Protocols.md
+AS-004 (noise exposure limits) -> depends on first operational SPL measurement; cross-ref Admin/Safety_Protocols.md SP-003
 
 EL-001 (forge standard interface) -> depends on LT-001
 EL-005 (toxic dust profile) -> feeds Air_Scrubber.md sizing and filter selection
@@ -214,12 +220,16 @@ ME-001 (vibration resonance mapping) -> makes kinematic interlock thresholds in
 ME-002 (pneumatic purge volume vs. Air Scrubber) -> depends on Air_Scrubber.md
         back-pressure spec; Low risk, non-blocking
 
-CF-001 (hardware watchdog minimum standard) -> Blocking for all Specification-level
-        autonomous architecture; owner Electronics.md; gates CF frameworks B through G
-CF-002 (correlated AI failure modes) -> depends on LT multi-unit swarm test data;
-        cross-ref AP-006 (truth provenance hierarchy)
-CF-003 (identity continuity during split-brain) -> cross-ref
-        Admin/Ship_of_Theseus.md ST-003; non-blocking
+CF-001 (hardware watchdog minimum standard) -> In Progress — Electronics.md now
+        defines τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff; Blocking
+        for Specification-level autonomous architecture until first hardware
+        prototype validates parameters; owner Electronics.md; gates CF frameworks B through G
+CF-002 (correlated AI failure modes) -> In Progress — Leviathan_testing.md
+        Section VII defines test protocol; resolution depends on first multi-unit
+        swarm deployment; cross-ref AP-006 (truth provenance hierarchy)
+CF-003 (identity continuity during split-brain) -> In Progress — Ship_of_Theseus.md
+        Section IV defines Canonical vs. Derivative Identity; resolution depends on
+        first split-brain recovery cycle calibrating 30% threshold; cross-ref ST-003
 
 EP-003 (integration mapping with Auditor_Protocols and Cognitive_Frameworks) ->
         cross-ref CF-001, AP-007; governance integration gap
@@ -319,6 +329,10 @@ PR-004 (backlash and compliance not characterized) -> prerequisite for PR-001
         ceiling declaration; feeds ME-001 interlock threshold validation
 PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.md
         on next audit pass
+
+ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
+        now defines Canonical vs. Derivative Identity and 30% threshold; resolution
+        depends on first split-brain recovery cycle; cross-ref CF-003
 ```
 
 ---
@@ -466,11 +480,11 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| CF-001 | Hardware watchdog minimum standard undefined | `Architecture/Cognitive_Frameworks.md` | Open | Critical |
-| CF-002 | Correlated AI failure modes insufficiently modeled | `Architecture/Cognitive_Frameworks.md` | Open | Major |
-| CF-003 | Identity continuity during split-brain unresolved | `Architecture/Cognitive_Frameworks.md` | Open | Major |
+| CF-001 | Hardware watchdog minimum standard — parameters defined, hardware validation pending | `Operations/Electronics.md` | In Progress | Critical |
+| CF-002 | Correlated AI failure modes — test protocol defined, swarm deployment pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Major |
+| CF-003 | Identity continuity during split-brain — doctrine defined, threshold calibration pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Major |
 
-*CF-001 is Blocking — no Specification-level autonomous architecture may be approved without a defined hardware watchdog minimum standard.*
+*CF-001 remains Blocking — parameters are Analogous confidence pending first hardware prototype validation. No Specification-level autonomous architecture may be approved until τ=50ms WDT and H-bridge parameters are measured.*
 
 ### Hardware Modules
 
@@ -518,10 +532,10 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 | GK-002 | Sacrificial anode material | `Architecture/Geck_forge_seed.md` | Open | Medium |
 | GK-003 | Induction charging pad design | `Architecture/Geck_forge_seed.md` | Open | Low |
 | GK-004 | Marine AM material durability | `Architecture/Geck_forge_seed.md` | Open | Low |
-| GK-005 | Precision_LF.md home document not yet created | `Architecture/Geck_forge_seed.md` | Open | Minor |
+| GK-005 | Precision_LF.md home document not yet created | `Architecture/Geck_forge_seed.md` | Resolved | — |
 | ST-001 | Grain storage and tracking protocol | `Admin/Ship_of_Theseus.md` | Open | Low |
 | ST-002 | QR documentation standard | `Admin/Ship_of_Theseus.md` | Open | Low |
-| ST-003 | Legal applicability by jurisdiction | `Admin/Ship_of_Theseus.md` | Open | Medium |
+| ST-003 | AI identity continuity under split-brain | `Admin/Ship_of_Theseus.md` | In Progress | Medium |
 | EL-001 | Forge-Standard interface spec | `Operations/Electronics.md` | Open | Medium |
 | EL-002 | PCB trace width for v0 tooling | `Operations/Electronics.md` | Open | Low |
 | EL-003 | TMR voter implementation | `Operations/Electronics.md` | Open | Medium |
@@ -632,8 +646,6 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 
 *FA-001 is Critical — blocks all hot operations and SP-006 (emergency response).*
 
----
-
 ### Safety
 
 | ID | Title | Owning File | Status | Priority (Promo) |
@@ -648,8 +660,6 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 *SP-006 is blocked by FA-001 — cannot define site evacuation without a site.*
 *AS-004 (noise exposure limits) cross-references SP-003 — resolve together.*
 
----
-
 ### Economics
 
 | ID | Title | Owning File | Status | Priority (Promo) |
@@ -663,8 +673,6 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 *EC-002 is Critical — blocks TR-001 closure; depends on EV-001.*
 *EC-003 resolved in Admin/Economics.md Section VI — barter doctrine now owned there.*
 
----
-
 ### Governance Migration
 
 | ID | Title | Owning File | Status | Priority (Promo) |
@@ -676,8 +684,6 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 
 *GMP-004 is the highest-risk attack vector on Track B amendment process — depends on SEC-007.*
 
----
-
 ### Repository Structure
 
 | ID | Title | Owning File | Status | Priority (Promo) |
@@ -686,10 +692,7 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 | RS-002 | Forge_flow.md casing outlier not yet corrected | `Admin/Repository_Structure.md` | Open | Minor |
 | RS-003 | Archive/ directory not yet physically created | `Admin/Repository_Structure.md` | Open | Major |
 
-*RS-003 blocks RIP-001 full closure — create Archive/ directory before next
-Specification-level file revision.*
-
----
+*RS-003 blocks RIP-001 full closure — create Archive/ directory before next Specification-level file revision.*
 
 ### Precision
 
@@ -701,27 +704,20 @@ Specification-level file revision.*
 | PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | Major |
 | PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Open | Minor |
 
-*PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially
-resolves ME-001 when declared.*
+*PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially resolves ME-001 when declared.*
 *PR-004 is a prerequisite for PR-001 ceiling declaration.*
-
----
 
 ### Pending Corrections
 
-Pending corrections migrated from Discovery.md. These are bounded housekeeping
-tasks — not open unknowns in the traditional sense — but tracking them here
-keeps Discovery.md as a pure navigation map.
-
 | ID | Title | Files Affected | Status | Priority |
 |---|---|---|---|---|
-| PC-001 | Verification Ref corrections — 10 files pointing to Forge_Audit_Kit.md instead of Admin/Verification_Gates_LF.md | Gate_01, Gate_03, Gate_04, Gate_06, Gate_07, Electronics, Energy, Plastics, Woodworking, Forge_Net | Open | Major |
-| PC-002 | Upstream reference corrections — 7 files missing Facilities.md upstream link | Gate_01, Gate_03, Gate_04, Gate_05, Gate_06, Electronics, Woodworking | Open | Minor |
-| PC-003 | New file cross-reference corrections — 10 files missing references to new 2026-06-06 files | Gate_06→Precision.md, Gate_07→Economics.md, Air_Scrubber→Safety_Protocols.md, Components.md→Precision.md, Mechanical_Structures.md→Precision.md, Engineer_Protocols.md→Safety_Protocols.md, Governance_Charter.md→Governance_Migration_Protocol.md, Trajectories.md→Economics.md, Security_Protocols.md→already done, Geck_forge_seed.md→Precision.md | Open | Minor |
+| PC-001 | Verification Ref corrections — files pointing to Forge_Audit_Kit.md instead of Admin/Verification_Gates_LF.md | ~~Gate_01~~, Gate_03, Gate_04, Gate_06, Gate_07, ~~Electronics~~, ~~Energy~~, Plastics, Woodworking, Forge_Net (~~Air_Scrubber~~ corrected) | In Progress | Major |
+| PC-002 | Upstream reference corrections — files missing Facilities.md upstream link | ~~Gate_01~~, Gate_03, Gate_04, Gate_05, Gate_06, ~~Electronics~~, Woodworking | In Progress | Minor |
+| PC-003 | New file cross-reference corrections — files missing references to new 2026-06-06 files | Gate_06→Precision.md, Gate_07→Economics.md, Air_Scrubber→Safety_Protocols.md, Components.md→Precision.md, Mechanical_Structures.md→Precision.md, Engineer_Protocols.md→Safety_Protocols.md, Governance_Charter.md→Governance_Migration_Protocol.md, Trajectories.md→Economics.md, Security_Protocols.md→already done, Geck_forge_seed.md→Precision.md | Open | Minor |
 | PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md have stale cross-references per Rename Registry | Challenges/Water.md, Challenges/Planned_Obsolescence.md | Open | Minor |
 
-*PC-001 is the highest priority — Verification Ref is machine-read by
-AUDIT_HARNESS.py and incorrect references could affect audit routing.*
+*PC-001 is the highest priority — Verification Ref is machine-read by AUDIT_HARNESS.py.*
+*Strikethrough indicates files corrected in 2026-06-08 retrofit pass.*
 
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
@@ -742,16 +738,12 @@ AUDIT_HARNESS.py and incorrect references could affect audit routing.*
 
 ## Active Disputes Registry
 
-Disputes are positions in active conflict within a file. They are not unknowns —
-the question is defined; the answer is contested. Full dispute entries live in
-the owning file's Active Disputes section.
-
 | ID | Title | Owning File | Positions | Risk | Status |
 |---|---|---|---|---|---|
 | CF-DS-001 | Centralized vs. distributed cognition | `Architecture/Cognitive_Frameworks.md` | Single executive AI vs. fleet consensus | High | Open |
 | CF-DS-002 | Human override authority scope | `Architecture/Cognitive_Frameworks.md` | Absolute override vs. bounded override (see `Admin/Ethical_Constraints.md`) | High | Open |
 
-*CF-DS-002 has constitutional implications — the resolution must be consistent with
+*CF-DS-002 has constitutional implications — resolution must be consistent with
 `Admin/Ethical_Constraints.md` Anti-Weaponization and Life Preservation doctrines.
 Escalate to human governing party before closing.*
 
@@ -785,9 +777,10 @@ No structural specification in any Operations/ or Architecture/ file may be prom
 to Specification without this resolved. Monitor at every audit opening once physical
 fabrication begins.
 
-**CF-001 (hardware watchdog minimum standard) — Critical/Blocking.** No
-Specification-level autonomous architecture approval may proceed without a defined
-watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
+**CF-001 (hardware watchdog minimum standard) — In Progress/Blocking.** Parameters
+now defined in Electronics.md (τ=50ms WDT, cryptographic heartbeat, H-bridge
+cutoff). Remains Blocking until first hardware prototype validates parameters at
+Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 
 ### Critical Watch
 
@@ -801,7 +794,7 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | PL-001 | Halogenated polymer contamination — no hot pyrolysis run before triage protocol validated |
 | WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening workflow validated |
 | EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
-| CF-001 | Hardware watchdog minimum standard — no Specification-level autonomous architecture until resolved |
+| CF-001 | Hardware watchdog — In Progress; parameters defined (Analogous); Blocking until hardware prototype validates at Measured confidence |
 | TH-003 | Atmospheric moisture yield not measured — Blocking for Living Waters deployment; requires Peltier test rig |
 | FA-001 | Site not confirmed — no hot operations until site physically assessed against Facilities.md constraints |
 | EC-002 | Operating cost baseline not established — blocks TR-001 (v1 profitability); depends on EV-001 |
@@ -816,9 +809,7 @@ watchdog minimum. Monitor alongside LT-003 (autonomy architecture).
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 | VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
 | RS-003 | Archive/ directory not created — blocks RIP-001 full closure; create before next Specification-level file revision |
-| PC-001 | Verification Ref corrections — 10 files pointing to wrong target; affects AUDIT_HARNESS.py routing |
-
-GF-005 resolved in v1.6 — removed from watch.
+| PC-001 | Verification Ref corrections — 6 files remain; affects AUDIT_HARNESS.py routing |
 
 ---
 
@@ -843,72 +834,30 @@ GF-005 resolved in v1.6 — removed from watch.
 
 ## Audit Trail
 
-**v0.1–v0.91:** See prior version history. Full entry detail for all unknowns now
-migrated to owning file sidecars per Auditor_Protocols.md v0.5 Sidecar Model.
+**v0.1–v0.91:** See prior version history.
 
 **v1.0 — May 2026:** First full audit cycle across all primary documents complete.
 
-**v1.5 — 2026-05-19:** Gate_01_Intake, Gate_03_Reduction, Gate_06_Fabrication audit.
-GI-006, GI-007, GR-006, GR-007, GR-008, GF-006, GF-007 added.
+**v1.5 — 2026-05-19:** Gate_01_Intake, Gate_03_Reduction, Gate_06_Fabrication audit. GI-006, GI-007, GR-006, GR-007, GR-008, GF-006, GF-007 added.
 
-**v1.6 — 2026-05-20:** Gate_07_Utilization.md created. GU-001 through GU-004 added.
-Electronics.md retrofitted — EL-005 through EL-008 added. GF-005 resolved.
+**v1.6 — 2026-05-20:** Gate_07_Utilization.md created. GU-001 through GU-004 added. Electronics.md retrofitted — EL-005 through EL-008 added. GF-005 resolved.
 
-**v1.7 — 2026-05-23:** Admin reconciliation cycle. GOV-001 through GOV-007, AP-004
-through AP-007 added.
+**v1.7 — 2026-05-23:** Admin reconciliation cycle. GOV-001 through GOV-007, AP-004 through AP-007 added.
 
-**v1.8 — 2026-05-23:** Repository_Integrity_Protocol.md created. RIP-001 through
-RIP-005 added. GOV-002, GOV-003, AP-007 moved to In Progress.
+**v1.8 — 2026-05-23:** Repository_Integrity_Protocol.md created. RIP-001 through RIP-005 added. GOV-002, GOV-003, AP-007 moved to In Progress.
 
-**v1.9 — 2026-05-25:** Governance_Charter.md v0.5. GOV-007 In Progress. GOV-008,
-GOV-009, TR-002, GU-005, AS-004 added.
+**v1.9 — 2026-05-25:** Governance_Charter.md v0.5. GOV-007 In Progress. GOV-008, GOV-009, TR-002, GU-005, AS-004 added.
 
-**v1.9a — 2026-05-28:** Security_Protocols.md v0.2 audit. GOV-006, RIP-005 In
-Progress. SEC-001 through SEC-007, CT-004, UNK-009 added.
+**v1.9a — 2026-05-28:** Security_Protocols.md v0.2 audit. GOV-006, RIP-005 In Progress. SEC-001 through SEC-007, CT-004, UNK-009 added.
 
-**v2.0 — 2026-05-30:** Energy.md, Plastics.md, Woodworking.md reconciled. EV-002,
-EV-003, PL-001 through PL-005, WW-001 through WW-005 added. Expiry Watch
-restructured.
+**v2.0 — 2026-05-30:** Energy.md, Plastics.md, Woodworking.md reconciled. EV-002, EV-003, PL-001 through PL-005, WW-001 through WW-005 added. Expiry Watch restructured.
 
-**v2.1 — 2026-05-31:** Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md,
-Engineer_Protocols.md, Verification_Gates_LF.md, and Canonical_Terms.md reconciled.
-EN-001 through EN-005 added (Engineering & Structures section — new). ME-001 and
-ME-002 added (Engineering & Structures section). CF-001 through CF-003 added
-(Cognitive Frameworks section — new). EP-001 through EP-006 added (Engineer
-Protocols section — new). VG-001 added to Governance & Verification section. CT-001
-and CT-003 added to Governance & Verification section (CT-002 and CT-004 already
-present). SR-011, SR-012, SR-013 formally indexed in Hardware Modules section.
-CO-002 and GK-005 confirmed present from prior version. Active Disputes Registry
-added — CF-DS-001 and CF-DS-002 from Cognitive_Frameworks.md formally recorded.
-EN-001 and CF-001 added to Critical Watch. VG-001 added to Blocking Watch.
-Dependency map updated with all new cluster entries.
+**v2.1 — 2026-05-31:** Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md, Engineer_Protocols.md, Verification_Gates_LF.md, and Canonical_Terms.md reconciled. EN-001 through EN-005, ME-001, ME-002, CF-001 through CF-003, EP-001 through EP-006, VG-001, CT-001, CT-003, SR-011–013 added. Active Disputes Registry added. EN-001 and CF-001 added to Critical Watch. VG-001 added to Blocking Watch.
 
-**v2.2 — 2026-05-31:** Architecture/Thermal_Systems.md and Architecture/Friction_Dynamics.md
-created as peer Architecture files. TH-001 through TH-004 added (Thermal Systems
-section — new). FD-001 through FD-004 added (Friction Dynamics section — new).
-TH-003 (atmospheric moisture yield — Blocking for Living Waters deployment) added to
-Critical Watch. Dependency map updated with TH and FD cluster entries; cross-links:
-TH-001 → EV-001, TH-003 → TH-004, FD-001 → MG-002, FD-002 → AS-003.
+**v2.2 — 2026-05-31:** Thermal_Systems.md and Friction_Dynamics.md created. TH-001 through TH-004, FD-001 through FD-004 added. TH-003 added to Critical Watch.
 
-**v2.3 — 2026-06-02:** Architecture/Chemistry.md created. CE-001 through CE-004
-indexed in new Chemistry & Electrochemistry section. CE-003 flagged as
-safety-critical prerequisite before first hot pyrolysis run (cross-references
-PL-001). Dependency map updated with CE cluster entries. Stale name noted:
-CE-001 through CE-004 sidecar Owner fields read Chemistry_Electrochemistry.md —
-correct to Chemistry.md on next file edit.
+**v2.3 — 2026-06-02:** Chemistry.md created. CE-001 through CE-004 indexed. CE-003 flagged safety-critical. Stale name noted: Chemistry_Electrochemistry.md → Chemistry.md.
 
-**v2.4 — 2026-06-06:** Six new files created and indexed. FA cluster (Facilities —
-5 unknowns), SP cluster (Safety Protocols — 6 unknowns), EC cluster (Economics —
-5 unknowns, EC-003 resolved immediately), GMP cluster (Governance Migration —
-4 unknowns), RS cluster (Repository Structure — 3 unknowns), PR cluster (Precision —
-5 unknowns) added. PC cluster (Pending Corrections — 4 entries) added — pending
-correction task tables migrated from Discovery.md to this file; Discovery.md now
-a pure navigation map. UNK-006 (facility siting) resolved — Facilities.md created.
-GK-005 (Precision_LF.md) resolved — Precision.md created. EP-005 (acceptable risk
-threshold) resolved — Safety_Protocols.md Section I. EC-003 (barter valuation)
-resolved — Economics.md Section VI. GOV-001 (governance migration mechanics)
-resolved — Governance_Migration_Protocol.md created. 12 items moved to Resolved &
-Discharged Archive. Critical Watch updated — FA-001, EC-002, PR-001 added.
-Blocking Watch updated — RS-003, PC-001 added. Navigation note updated — Routing.md
-now exists as programmatic entry point. Dependency map updated with FA, SP, EC,
-GMP, RS, PR cluster entries.
+**v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
+
+**v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected in four files (PC-001 In Progress — 6 remain). Facilities.md upstream references added in four files (PC-002 In Progress — 3 remain). CF-001 moved to In Progress — Electronics.md Hardware Watchdog Doctrine updated with τ=50ms windowed WDT, cryptographic heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement (Gemini Synthesizer; Analogous confidence); remains Blocking until hardware prototype validates at Measured. CF-002 moved to In Progress — Leviathan_testing.md Section VII added with poisoned telemetry injection protocol, correlated failure detection criterion, diversity scoring table. CF-003 moved to In Progress — Ship_of_Theseus.md Section IV added with Canonical vs. Derivative Identity, 30% threshold, re-vetting path, cognitive grain analog; ST-003 updated to In Progress. Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named, eight component algorithms documented, Asymmetric Conservatism property defined, development targets listed. Critical Watch CF-001 note updated. Blocking Watch PC-001 remaining count updated to 6.
