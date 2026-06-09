@@ -36,8 +36,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-09 (multi-agent), actioned 2026-05-19                       |
-| Auditor          | Claude — Retrofit/Auditor                                           |
+| Last Audit       | 2026-05-09 (multi-agent), actioned 2026-05-19; revised 2026-06-08  |
+| Auditor          | Claude — Retrofit/Auditor; Gemini — Synthesizer (CF-001 parameters) |
 | Open Unknowns    | 8                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -609,38 +609,82 @@ assumed from physical separation. See EL-007.
 
 ### Hardware Watchdog Doctrine
 
+*CF-001 minimum standard defined 2026-06-08
+following Gemini Synthesizer analysis. Confidence:
+Analogous — parameters require validation against
+first hardware prototype. Closes CF-001 resolution
+path from Architecture/Cognitive_Frameworks.md.*
+
 The hardware watchdog is the final backstop when
 all software and firmware fails. It must be
 independently trustworthy — see ASM-005.
 
-**Minimum watchdog behaviors (CF-001):**
-- Heartbeat signal required from logic board at
-  defined interval *(Placeholder — interval defined
-  per application)*
-- If heartbeat fails: force mechanical neutral
-  state via relay or spring-return mechanism
-- Watchdog timer implemented in discrete hardware
-  — no programmable firmware that can be corrupted
-- Watchdog cannot be disabled by software
-- Watchdog state is physically observable —
-  LED indicator or mechanical flag
+**Layer 1 Minimum Standard (CF-001):**
+
+Layer 1 must enforce an un-bypassable hardware
+**windowed watchdog timer (WDT)**. The following
+parameters define the minimum acceptable
+implementation:
+
+| Parameter | Requirement | Confidence |
+|-----------|-------------|------------|
+| Heartbeat window | τ = 50 ms — valid heartbeat must be received within this window | Analogous |
+| Heartbeat type | Cryptographic — not a simple pulse. Layer 2 must present a valid token that Layer 1 can verify without trusting Layer 2 firmware | Analogous |
+| Timeout action | Physically cut power to all primary H-bridge gate drivers — no software-mediated shutdown | Analogous |
+| Mechanical result | All actuators forced to passive spring-return neutral state — no uncommanded movement possible | Analogous |
+| Bypass | None permitted — watchdog cannot be disabled, paused, or extended by any software layer | Permanent |
+| Implementation | Discrete hardware — RC timer, comparator, relay. No programmable firmware. No microcontroller | Permanent |
+| Observability | Watchdog state physically observable — LED indicator or mechanical flag visible without powering any logic | Permanent |
+
+**Why cryptographic heartbeat:**
+A simple pulse can be spoofed by a compromised
+Layer 2 — the logic board sends the pulse even
+when its decision-making is corrupted, providing
+false assurance. A cryptographic heartbeat requires
+Layer 2 to produce a valid token, which it cannot
+do if its firmware integrity has been compromised
+beyond the token-generation function. This is a
+meaningful additional barrier, not a guarantee.
+See EL-006 for firmware trust limits.
+
+**Why 50ms:**
+The 50ms window is derived from analog deep-sea
+AUV watchdog implementations. It is short enough
+to catch a locked logic board before it can
+complete a damaging actuation cycle, and long
+enough that normal control loop latency does not
+produce false trips. *(Analogous — validate against
+first hardware prototype; adjust if control loop
+latency characterization requires a wider window.)*
+
+**Why H-bridge gate drivers:**
+Cutting power to H-bridge gate drivers removes
+drive capability from all motors and actuators
+simultaneously. It does not rely on any actuator's
+own brake or hold circuit — those are Layer 2
+constructs. The gate driver cutoff is the last
+hardware boundary before Layer 0 spring-return.
 
 **Discrete hardware implementation:**
-A watchdog implemented as a simple RC timer and
-relay circuit has no firmware to compromise. If
-no heartbeat pulse resets the timer, the relay
-opens and cuts motor drive or forces spring-return
-neutral. This is the mechanical enforcement of
-Layer 0 in `Architecture/Cognitive_Frameworks.md`.
+A watchdog implemented as a simple RC timer,
+comparator, and relay circuit has no firmware
+to compromise. If no valid heartbeat token resets
+the timer within τ = 50ms, the relay opens,
+cutting H-bridge gate power, and all actuators
+return to spring-loaded neutral under passive
+mechanical force. This is the physical enforcement
+of Layer 0 in `Architecture/Cognitive_Frameworks.md`.
 
 *A compromised watchdog that appears functional
 is worse than no watchdog — it provides false
 assurance while removing the last safety backstop.
 Discrete implementation with no programmable
-elements is the primary mitigation.*
+elements is the primary mitigation against the
+recursive trust problem documented in ASM-005.*
 
 Cross-reference: `Architecture/Cognitive_Frameworks.md`
-CF-001, Layer 0 mechanical truth doctrine.
+CF-001, Layer 0 mechanical truth doctrine,
+Layer 1 hardware watchdog enforcement.
 
 ### Multi-Agent Consensus (MAC)
 
@@ -1151,6 +1195,16 @@ watchdog systems depend on.
   to `Admin/Verification_Gates_LF.md` (PC-001).
   Scope Boundary UNK-006 reference updated to
   `Architecture/Facilities.md` FA-001 (PC-002).
+- 2026-06-08: Hardware Watchdog Doctrine section
+  expanded with CF-001 minimum standard — τ=50ms
+  windowed WDT, cryptographic heartbeat requirement,
+  H-bridge gate driver cutoff, spring-return neutral
+  enforcement, discrete hardware implementation
+  requirement. Parameters from Gemini Synthesizer
+  analysis; confidence Analogous pending first
+  hardware prototype validation. Closes CF-001
+  resolution path from
+  Architecture/Cognitive_Frameworks.md.
 
 ---
 
