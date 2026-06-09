@@ -1,113 +1,544 @@
-# Ship_of_Theseus_Right_to_Repair.md
-
-**Audit Health:**
-- Status: Exploration
-- Last audit: 2026-05-04 (Claude — Skeptic/Auditor)
-- Open unknowns: 3 (Low)
-- Sidecar: [#auditor-notes--unknowns]
+# Ship_of_Theseus.md
 
 ---
 
-## Overview
-
-This document explores the **Ship of Theseus paradox** as a philosophical framework for **Lazarus Forge**, a self-replicating waste-to-resource system. The paradox — questioning whether an object remains the same after all parts are replaced — serves as a conceptual backbone for prioritizing repair over reduction in the Forge's operations. By viewing components as part of a continuous "identity," Lazarus Forge strengthens a legal and ethical defense under **right-to-repair** laws, treating rebuilt items as restorations rather than new manufactures. This not only enhances sustainability but also mitigates patent risks, aligning with the system's ideology of resurrection and resilience.
-
----
-
-## Philosophical Grounding: The Ship of Theseus Paradox
-
-The Ship of Theseus, from ancient Greek philosophy, poses: If every plank, sail, and nail of Theseus's ship is replaced over time, is it still the same ship? A further twist: If the original parts are reassembled into a second ship, which is the "true" one?
-
-**Core Insight:** Identity is not tied solely to original materials but to continuity of form, function, and purpose. Replacement doesn't destroy essence if done incrementally and with intent to preserve.
-
-**Relevance to Lazarus Forge:** Waste components (e.g., a motor from a scrapped washer) are "ships" with embedded value. Forge processes "replace" damaged parts while retaining functional identity, turning "dead" items into "reborn" ones. Grains (1g samples from originals) symbolize this continuity, linking new outputs to their source.
-
-This paradox encourages a repair-first mindset: value lies in the whole, not just raw materials, countering planned obsolescence.
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
 
 ---
 
-## Practical Application in Lazarus Forge
+## File State
 
-Lazarus Forge applies the paradox across its workflow (intake → triage → repair → reduce → purify → fabricate → replicate), emphasizing repair before irreversible reduction:
+| Field            | Value                                                               |
+|------------------|---------------------------------------------------------------------|
+| Status           | Exploration                                                         |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08           |
+| Auditor          | Claude — Retrofit/Auditor                                           |
+| Open Unknowns    | 3                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | Medium                                                              |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Component Triage:** Scan and test items (e.g., motors, gears). If functional or repairable at low cost, salvage intact — preserving the "ship's" identity. Only reduce if embodied complexity is low. See `Component_Triage_System.md` for the full triage workflow.
+---
 
-**Grain Preservation:** Retain 1g samples from originals (e.g., from a 1960s Mustang part), embedding them in outputs or storing for traceability. This maintains philosophical continuity and provides legal proof of "repair." *(Placeholder — grain storage and tracking protocol not yet specified.)*
+## Scope Boundary
 
-**Recursive Rebuilding:** Outputs (e.g., wire from purified metal) feed back into the system. A Gen 0 chamber produces parts for Gen 1 — the "ship" evolves without losing essence.
+**This file DOES define:**
+- The Ship of Theseus paradox as philosophical
+  and legal grounding for the Forge's repair-first
+  doctrine
+- Grain system — physical instantiation of
+  provenance and identity continuity
+- Right-to-repair legal defense strategy and risk
+  framework
+- Identity continuity doctrine for physical
+  components through incremental repair and
+  replacement
+- AI identity continuity doctrine — Derivative
+  vs. Canonical Identity classification for
+  restored or fragmented autonomous units
+  (ST-003 / CF-003 resolution)
+- Relationship between Bootstrap Doctrine,
+  Graduation Rule, and Ship of Theseus
+  philosophy
+
+**This file DOES NOT define:**
+- Full triage workflow
+  (`Operations/Gate_02_Triage.md`)
+- Minimum viable seed specification
+  (`Architecture/Geck_forge_seed.md`)
+- Cryptographic state verification protocol
+  (`Admin/Security_Protocols.md`)
+- Governance voting weight mechanics
+  (`Admin/Governance_Charter.md`)
+- Split-brain recovery procedures
+  (`Architecture/Cognitive_Frameworks.md`)
+- Jurisdiction-specific legal advice
+  (human governing party decision — ST-003)
+
+---
+
+## File Purpose
+
+This file provides the philosophical, legal, and
+doctrinal grounding for the Forge's repair-first
+identity. The Ship of Theseus paradox — does an
+object remain itself when all its parts are replaced?
+— is not decorative. It is the load-bearing argument
+for why rebuilt items are restorations rather than
+new manufactures, why the Grain system has legal
+weight, and why the Forge treats embodied functional
+value as something worth preserving.
+
+The same philosophical framework that governs physical
+component identity also governs AI unit identity. A
+Leviathan system that suffers split-brain, partially
+restores from cache, and re-enters operation faces
+the same identity question as a ship whose planks
+have been replaced: is it still the same entity?
+Section IV applies the Ship of Theseus doctrine to
+autonomous systems, defining when a restored unit
+is the Canonical Identity and when it is a Derivative
+Identity with restricted authority — closing
+CF-003 from `Architecture/Cognitive_Frameworks.md`.
+
+If this file disappeared, the Forge would lose its
+legal defense posture for right-to-repair claims,
+its provenance continuity doctrine, and the identity
+framework that governs AI unit restoration authority.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Courts and regulators recognize incremental repair as preserving ownership identity — outputs are restorations, not new manufactures | Right-to-repair legal precedents; FTC 2023, EU 2024 Ecodesign Directive | Medium | Legal challenge succeeds in classifying Forge outputs as new manufactures — doctrine must be revised |
+| ASM-002 | A 1g grain sample constitutes sufficient material provenance for legal continuity claims | Analogous to auto repair and restoration precedents | Low | Jurisdiction-specific legal review finds grain standard insufficient — minimum sample size or documentation standard must change |
+| ASM-003 | The 30% cryptographic state threshold for Derivative Identity classification produces a meaningful boundary between recoverable and non-recoverable identity continuity | Engineering judgment; no empirical validation yet | Low | First split-brain recovery cycle characterizes actual state loss patterns — threshold adjusted to match observed behavior |
+| ASM-004 | AI identity continuity follows the same philosophical rules as physical component identity — continuity of function and purpose outweighs continuity of substrate | Extension of Ship of Theseus doctrine to cognitive systems | Medium | CF-003 resolution reveals a fundamental disanalogy between physical and cognitive identity that requires separate doctrine |
+
+---
+
+## I. Philosophical Grounding
+
+The Ship of Theseus, from ancient Greek philosophy,
+poses: if every plank, sail, and nail of Theseus's
+ship is replaced over time, is it still the same
+ship? A further twist: if the original parts are
+reassembled into a second ship, which is the true one?
+
+**Core insight:** Identity is not tied solely to
+original materials but to continuity of form,
+function, and purpose. Replacement does not destroy
+essence if done incrementally and with intent to
+preserve.
+
+**Relevance to Lazarus Forge:** Waste components —
+a motor from a scrapped washer, a bearing from
+discarded industrial equipment — are ships with
+embedded value. Forge processes replace damaged
+parts while retaining functional identity, turning
+dead items into reborn ones. Grains (1g samples
+from originals) symbolize this continuity, linking
+new outputs to their source.
+
+This paradox grounds the repair-first mindset:
+value lies in the whole, not just raw materials.
+It counters planned obsolescence by asserting that
+a dead battery does not make a dead drill.
+
+---
+
+## II. Practical Application
+
+The Forge applies the paradox across its workflow
+(intake → triage → repair → reduce → purify →
+fabricate → utilize):
+
+**Component Triage:** Scan and test items. If
+functional or repairable at low cost, salvage
+intact — preserving the ship's identity. Only
+reduce if embodied complexity is genuinely low.
+Full triage workflow: `Operations/Gate_02_Triage.md`.
+
+**Grain Preservation:** Retain 1g samples from
+originals, embedding them in outputs or storing
+for traceability. This maintains philosophical
+continuity and provides legal proof of repair.
+*(Placeholder — grain storage and tracking
+protocol not yet specified. See ST-001.)*
+
+**Recursive Rebuilding:** Outputs feed back into
+the system. A Gen 0 chamber produces parts for
+Gen 1 — the ship evolves without losing essence.
+This is the Bootstrap Doctrine made physical.
 
 **Examples:**
-- *Vintage goods:* A printed claw foot tub from landfill scrap is a "reborn ship" — form and function preserved, materials replaced.
-- *Space applications:* Asteroid wire extrusion "repairs" regolith into habitats, retaining resource identity through graded streams.
-
-Ideologically: a dead battery doesn't make a dead drill. Repair extends life, reducing energy and waste.
+- *Vintage goods:* A printed claw-foot tub from
+  landfill scrap is a reborn ship — form and
+  function preserved, materials replaced.
+- *Space applications:* Asteroid wire extrusion
+  repairs regolith into habitats, retaining
+  resource identity through graded streams.
 
 ---
 
-## Right-to-Repair Defense Strategy
+## III. Right-to-Repair Defense Strategy
 
-The Ship of Theseus provides a framework for defending Lazarus Forge under right-to-repair laws (e.g., FTC 2023 rulings, EU 2024 Ecodesign Directive), arguing outputs are restorations, not infringements.
+The Ship of Theseus provides a framework for
+defending Forge outputs under right-to-repair
+laws, arguing outputs are restorations, not
+infringements.
 
-**Legal Basis:** Right-to-repair mandates access to parts and tools for fixing owned items. By claiming Forge products as "repairs" of scrapped originals, we leverage precedents where rebuilding owned materials is protected.
+**Legal basis:** Right-to-repair mandates access
+to parts and tools for fixing owned items. By
+classifying Forge products as repairs of scrapped
+originals, the Forge leverages precedents where
+rebuilding owned materials is legally protected.
 
-**Continuity of Identity:** Grains (1g) prove material lineage. Courts recognize incremental replacement (e.g., auto repairs) as preserving ownership.
+**Continuity of identity:** Grains (1g) prove
+material lineage. Courts recognize incremental
+replacement as preserving ownership.
 
-**Repair vs. Reproduction:** Outputs are "rebuilt ships" from owned waste. Patents apply to new manufactures, not repairs — grains tie outputs to originals, avoiding dilution claims.
+**Repair vs. reproduction:** Outputs are rebuilt
+ships from owned waste. Patents apply to new
+manufactures, not repairs — grains tie outputs to
+originals, avoiding dilution claims.
 
-**Ethical and Policy Alignment:** Repair reduces waste (292M tons/year U.S., EPA 2023 — *Analogous*). Ties to anti-obsolescence policy direction.
+**Ethical and policy alignment:** Repair reduces
+waste (292M tons/year U.S., EPA 2023 —
+*Analogous*). Aligns with anti-obsolescence
+policy direction.
 
 **Implementation:**
-- QR codes document provenance ("30% from wrecks") *(Placeholder — QR documentation standard not yet specified)*
-- For space applications: "repair" of asteroid regolith into habitats under COSPAR guidelines
+- QR codes document provenance ("30% from wrecks")
+  *(Placeholder — QR documentation standard not
+  yet specified. See ST-002.)*
+- For space applications: repair of asteroid
+  regolith into habitats under COSPAR guidelines
 
-**Risks and Mitigations:**
-- Brands may challenge "commercial repair" — mitigate with expired patents (pre-2005) and generic designs
-- Patent risk assessment: check expired status before committing to any design derived from a specific product lineage *(cost estimate: ~$1K per check — Analogous)*
+**Risks and mitigations:**
+- Brands may challenge commercial repair — mitigate
+  with expired patents (pre-2005) and generic
+  designs
+- Patent risk assessment: check expired status
+  before committing to any design derived from
+  a specific product lineage *(~$1K per check —
+  Analogous)*
+- Jurisdiction-specific legal verification required
+  before any commercial claim of repair is made
+  — see ST-003
 
 ---
 
-## Relationship to Forge Doctrine
+## IV. AI Identity Continuity Doctrine
 
-The Ship of Theseus is not decoration. It is the ethical and legal load-bearing argument for what the Forge does.
+*Closes CF-003 from
+`Architecture/Cognitive_Frameworks.md`. Added
+2026-06-08 following Gemini Synthesizer analysis.*
 
-The Bootstrap Doctrine in `Components.md` ("imperfect beginnings are valid") and the Graduation Rule (a component graduates when the Forge can detect, repair, and improve it) are both expressions of the same principle: identity persists through transformation when continuity of intent is preserved.
+The Ship of Theseus paradox applies to autonomous
+cognitive systems as directly as it applies to
+physical ships. A Leviathan unit that suffers
+split-brain, loses cryptographic state history,
+partially restores from cache, and re-enters
+operation is not trivially the same unit it was
+before the failure. The question of which authority
+grants remain valid, which memories are trusted,
+and whether the restored unit may vote on governance
+matters is the Ship of Theseus problem applied
+to AI.
 
-The Grain system is the physical instantiation of this philosophy. Every grain is a provenance claim and a legal artifact simultaneously.
+### Canonical Identity vs. Derivative Identity
+
+A restored unit is classified as one of two
+identity types before re-entry into the operational
+network:
+
+**Canonical Identity:** The unit is considered
+continuous with its prior self. Full authority
+grants, governance voting weight, and trust scores
+are restored. Requires that cryptographic state
+continuity exceeds the Derivative Threshold.
+
+**Derivative Identity:** The unit is a functional
+descendant of a prior unit but is not considered
+identical to it for governance purposes. Retains
+localized operational routing capability but is
+stripped of governance voting weight and network
+trust scores until full re-vetting is complete.
+
+### The Derivative Threshold
+
+A unit is classified as Derivative Identity if
+**more than 30% of its cryptographic state history
+or local cognitive state vector has been decoupled
+or altered** during split-brain resolution or
+partial cache restoration.
+
+Confidence: **Analogous** — the 30% figure is
+engineering judgment without empirical validation.
+First split-brain recovery cycle must characterize
+actual state loss patterns and calibrate this
+threshold against observed behavior. See ASM-003.
+
+*The threshold is intentionally conservative.
+A unit that has lost 31% of its state history
+and is classified as Derivative loses governance
+voting weight temporarily — a recoverable cost.
+A unit that has been compromised and is incorrectly
+classified as Canonical retains governance authority
+it should not have — a potentially irreversible
+cost. Asymmetric conservatism applies.*
+
+### Re-Vetting Path for Derivative Identities
+
+A Derivative Identity is not permanently demoted.
+It re-enters Canonical status by completing a
+full Spec Gate sequence under supervision:
+
+1. **Identity audit** — cryptographic state
+   reconstruction log reviewed by supervisory
+   layer; gaps documented
+2. **Behavioral verification** — unit operates
+   under observation without governance voting
+   rights for a defined trial period
+   *(Placeholder — trial duration not yet defined;
+   route to first operational deployment for
+   calibration)*
+3. **Spec Gate sequence** — completes all six
+   verification gates appropriate to its
+   operational role
+4. **Human ratification** — governing party
+   confirms restoration of Canonical status
+5. **Trust score reinstatement** — network
+   peers update trust scores after ratification
+
+Derivative Identity status is logged permanently.
+A unit that has transitioned to Derivative and
+back to Canonical carries that history in its
+provenance record — the grain equivalent for
+cognitive systems.
+
+### Grain Analog for Cognitive Systems
+
+The physical Grain system retains 1g samples as
+provenance anchors. The cognitive equivalent is
+the **cryptographic state log** — a continuous
+hash chain of the unit's decision history,
+firmware state, and identity attestations.
+
+Just as a grain physically connects a rebuilt
+component to its origin, the cryptographic state
+log connects a restored unit to its prior self.
+Log survival under unit loss is a governance
+requirement, not a nice-to-have.
+*Cross-reference: `Tests/Leviathan_testing.md`
+LT-006 — ethical log survival under unit loss.*
+
+### Relationship to Governance Voting
+
+Governance voting weight is a trust-sensitive
+operation. The Derivative Identity classification
+is the mechanism by which the system prevents
+a compromised or partially-restored unit from
+influencing governance decisions before its
+integrity is verified.
+
+*Cross-reference: `Admin/Governance_Charter.md`
+for voting weight mechanics;
+`Admin/Security_Protocols.md` for cryptographic
+state verification protocol.*
+
+---
+
+## V. Relationship to Forge Doctrine
+
+The Ship of Theseus is not decoration. It is the
+ethical and legal load-bearing argument for what
+the Forge does.
+
+The Bootstrap Doctrine in `Architecture/Components.md`
+("imperfect beginnings are valid") and the
+Graduation Rule (a component graduates when the
+Forge can detect, repair, and improve it) are both
+expressions of the same principle: identity persists
+through transformation when continuity of intent
+is preserved.
+
+The Grain system is the physical instantiation of
+this philosophy. Every grain is a provenance claim
+and a legal artifact simultaneously.
+
+The AI Identity Continuity Doctrine (Section IV)
+extends the same principle to cognitive systems:
+continuity of function, purpose, and verifiable
+state history is what makes a restored unit the
+same unit, not mere physical continuity of hardware.
 
 ---
 
 ## Lessons Learned
 
-Operational wisdom from building, testing, and applying this framework.
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|------|---------------|----------------|-------------|------------------|------------|---------------------|
+| — | — | — | — | No operational entries yet — document is philosophical framework pre-hardware | — | — |
+| 2026-06-08 | Audit Review | CF-003 (AI identity continuity) left open in Cognitive_Frameworks.md without a resolution path | The Ship of Theseus framework was present in the repository but not applied to cognitive systems — the connection was implicit | Section IV added — AI Identity Continuity Doctrine formally extends the physical Ship of Theseus doctrine to autonomous systems. Derivative vs. Canonical Identity distinction closes CF-003 | Analogous | Yes — validate 30% threshold against first operational split-brain recovery cycle |
 
-| Date | What was tried | What failed | What was learned |
-|---|---|---|---|
-| — | — | — | No operational entries yet — document is philosophical framework pre-hardware |
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|----|---------|----------------------|------|--------|-------|
+| — | No active disputes | — | — | — | — |
+
+*The Derivative Identity threshold (30%) is a
+judgment call pending empirical validation, but
+it is not a dispute — there is no conflicting
+position. It is an open calibration question
+tracked as ASM-003.*
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| — | — | No abandoned paths yet | — |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document.
+All canonical triggers from `Admin/File_Template.md`
+apply. The following are additional local triggers:
+
+| Trigger | Reason |
+|---------|--------|
+| Derivative Identity threshold revised without cross-validation against first operational split-brain recovery data | ASM-003 — threshold is engineering judgment; calibration against real data is required before promoting to Specification |
+| Re-vetting path modified to remove human ratification step | Governance voting weight reinstatement must have human sign-off — autonomous reinstatement creates a security gap |
+| Grain standard revised without cross-validation against ST-001 and ST-002 resolution | Grain system is the legal and provenance anchor — changes to the standard affect all downstream right-to-repair claims |
+| AI Identity Continuity Doctrine (Section IV) revised without updating CF-003 status in Cognitive_Frameworks.md | The two sections are co-dependent — changes to one must propagate to the other |
+| Cryptographic state log survival requirement removed from Section IV | Log survival under unit loss is a governance requirement — LT-006 cross-reference |
+
+**Compound Drift Rule:** If multiple indicators
+activate simultaneously, halt autonomous audit
+progression and escalate for human review.
 
 ---
 
 ## Auditor Notes & Unknowns
 
 ### ST-001 — Grain storage and tracking protocol not specified
-**Status:** Open
-**Risk:** Low
-**What is not yet known:** How grains are physically stored, labeled, tracked, and associated with their output products across Forge generations.
-**Resolution path:** Define minimum viable grain protocol — storage container, label format, chain of custody log — as part of provenance documentation standard. Route to `geck_forge_seed.md` minimum viable seed for v0.
-**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Low                                              |
+| Priority      | Minor                                            |
+| Type          | Technical                                        |
+| Blocking      | No                                               |
+| Owner         | Admin/Ship_of_Theseus.md                         |
+| First Logged  | 2026-05-04                                       |
+| Last Reviewed | 2026-05-04                                       |
+
+**Description:** How grains are physically stored,
+labeled, tracked, and associated with their output
+products across Forge generations is not specified.
+
+**Why It Matters:** The grain is simultaneously a
+provenance claim and a legal artifact. Without a
+storage and tracking protocol, the chain of custody
+is unenforceable and the legal defense posture
+is weakened.
+
+**Resolution Path:** Define minimum viable grain
+protocol — storage container, label format, chain
+of custody log — as part of provenance documentation
+standard. Route to `Architecture/Geck_forge_seed.md`
+minimum viable seed for v0. Payment via Specification
+— once protocol is defined and first grain is
+physically stored and tracked, move to Section II
+as Analogous.
+
+---
 
 ### ST-002 — QR documentation standard not yet specified
-**Status:** Open
-**Risk:** Low
-**What is not yet known:** What format, content, and system the QR provenance codes use; how they are generated, stored, and verified; and what happens when a QR code cannot be scanned or verified.
-**Resolution path:** Define minimum QR standard — content schema, generator tool, verification path. Can be as simple as a URL to a text record. Placeholder until first production output requires documentation.
-**Logged:** 2026-05-04, Claude — Skeptic/Auditor
 
-### ST-003 — Legal applicability varies by jurisdiction and is not yet verified
-**Status:** Open
-**Risk:** Medium
-**What is not yet known:** Which specific right-to-repair statutes and precedents apply in the Forge's operating jurisdiction(s). The document cites FTC 2023 and EU 2024 Ecodesign Directive as reference points — these need jurisdiction-specific verification before the legal defense strategy is relied upon.
-**Resolution path:** Legal review of applicable statutes in intended operating jurisdiction before any commercial claim of "repair" is made. This is a human governing party decision — not resolvable by AI audit. Flag as Non-blocking for Exploration; Blocking before any commercial operation begins.
-**Logged:** 2026-05-04, Claude — Skeptic/Auditor
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Low                                              |
+| Priority      | Minor                                            |
+| Type          | Technical                                        |
+| Blocking      | No                                               |
+| Owner         | Admin/Ship_of_Theseus.md                         |
+| First Logged  | 2026-05-04                                       |
+| Last Reviewed | 2026-05-04                                       |
+
+**Description:** Format, content, and system for
+QR provenance codes; how they are generated,
+stored, and verified; and what happens when a
+QR code cannot be scanned or verified.
+
+**Why It Matters:** QR codes are the human-readable
+provenance interface. Without a defined standard,
+provenance claims are unverifiable by downstream
+parties and the legal defense posture depends on
+undocumented practice.
+
+**Resolution Path:** Define minimum QR standard
+— content schema, generator tool, verification
+path. Can be as simple as a URL to a text record.
+Placeholder until first production output requires
+documentation. Payment via Specification — once
+first production output is documented with QR
+code and the code is verified by a party other
+than the issuer, move to Section III as Analogous.
+
+---
+
+### ST-003 — AI identity continuity under split-brain
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | In Progress                                      |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Architectural / Governance                       |
+| Blocking      | No                                               |
+| Owner         | Admin/Ship_of_Theseus.md                         |
+| First Logged  | 2026-05-09                                       |
+| Last Reviewed | 2026-06-08                                       |
+
+**Description:** When a fragmented or partially
+restored cognition system is considered the same
+entity for purposes of authority continuity, memory
+trust, and governance voting weight.
+
+**Why It Matters:** Without a doctrine, restoration
+decisions are made ad hoc — which creates
+inconsistent authority chains, potential security
+gaps, and no mechanism to prevent a compromised
+unit from re-entering the governance layer.
+
+**Resolution Path:** Section IV (AI Identity
+Continuity Doctrine) added 2026-06-08 — defines
+Canonical vs. Derivative Identity, the 30%
+Derivative Threshold, the re-vetting path, and
+the cryptographic state log as the cognitive
+grain analog. Status updated to In Progress.
+Moves to Resolved when: (1) the 30% threshold
+is calibrated against first operational split-brain
+recovery data, (2) the re-vetting path trial
+duration is defined from operational deployment,
+and (3) `Architecture/Cognitive_Frameworks.md`
+CF-003 is updated to reference Section IV as
+its resolution. Payment via Specification —
+once threshold is empirically validated, move
+Section IV to Analogous.
+
+---
 
 ### Resolution Log
-*(empty — no entries resolved yet)*
+
+- 2026-06-08: Navigation Anchors added. File State
+  expanded to full table. Scope Boundary, File
+  Purpose, Assumptions, Drift Indicators sections
+  added. Lessons Learned expanded to full template
+  format. Sidecar entries expanded to full field
+  tables. File renamed from
+  `Ship_of_Theseus_Right_to_Repair.md` to
+  `Admin/Ship_of_Theseus.md` per Rename Registry
+  (change occurred 2026-05-15). Section IV (AI
+  Identity Continuity Doctrine) added — closes
+  CF-003 from `Architecture/Cognitive_Frameworks.md`.
+  ST-003 status updated to In Progress.
