@@ -1,5 +1,13 @@
 # Governance_Charter.md
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field            | Value                                                               |
@@ -7,8 +15,8 @@
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
-| Last Audit       | 2026-06-02                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-06-02; revised 2026-06-08                                      |
 | Auditor          | Claude — Skeptic/Auditor                                            |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
@@ -48,7 +56,7 @@
 - Exact escalation token mechanics
 - Repository deployment infrastructure
 - Security implementation code
-- Canonical terminology definitions (→ Canonical_Terms_LF.md)
+- Canonical terminology definitions (→ `Admin/Canonical_Terms.md`)
 - Auditor operational behavior (→ Admin/Auditor_Protocols.md)
 - Condensed audit reference (→ Admin/Forge_Audit_Kit.md)
 
@@ -821,7 +829,16 @@ Mandatory re-audit conditions for this document:
 - 2026-05-23: **GOV-003 moved to In Progress** — Repository_Integrity_Protocol.md v0.1 created as executing resolution path.
 - 2026-05-23: **README.md updated** — canonical filenames, governance layer section, all seven gates listed.
 - 2026-05-23: **Abandoned Paths and Drift Indicators sections added** per File_Template.md structure.
-- 2026-06-02: **Genesis Phase exit conditions expanded** — v0.6. Single quorum-dependent exit replaced with four pathways: (1) Quorum Achievement (primary, depends on GOV-008); (2) Demonstrated Track Record (three full audited cycles with corrigibility demonstrated); (3) Milestone-Gated (v1 operational status per Trajectories.md); (4) Time-Bounded Review (prevents silent indefinite extension). Post-exit obligations defined. GOV-008 resolution path updated to cross-reference new exit condition language. Drift Indicators updated. — Gate 2 blocked (bootstrapping paradox). Five findings addressed: (1) GOV-006 resolution path tightened — interim authentication requirement added to Human Override Doctrine; (2) [PLANNED] labels added throughout Relationship section; (3) Bootstrap Governance Doctrine amended — Genesis Phase Protocol added, bootstrapping paradox acknowledged, human-as-skeptical-layer solution defined; (4) GOV-008 logged — minimum hardware/agent quorum for bootstrap compliance; (5) GOV-009 logged — bounded framework for external resource consumption; (6) Ethical Anchor fallback clarification added to Relationship section — floor vs. constitutional authority distinction made explicit; (7) GOV-007 status moved to In Progress — Genesis Phase Protocol is the executing resolution path.
+- 2026-06-02: **v0.6 — Genesis Phase exit conditions expanded.** Single quorum-dependent exit replaced with four pathways: (1) Quorum Achievement; (2) Demonstrated Track Record; (3) Milestone-Gated; (4) Time-Bounded Review. Post-exit obligations defined. GOV-008 resolution path updated. Drift Indicators updated. Gate 2 blocked (bootstrapping paradox). Five findings addressed: GOV-006 resolution path tightened; [PLANNED] labels added to Relationship section; Bootstrap Governance Doctrine amended — Genesis Phase Protocol added; GOV-008 and GOV-009 logged; Ethical Anchor fallback clarification added; GOV-007 status moved to In Progress.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from
+  `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md` (PC-001).
+  Scope Boundary stale reference corrected: `Canonical_Terms_LF.md` →
+  `Admin/Canonical_Terms.md`. Relationship section [PLANNED] labels removed
+  for four files now confirmed created: `Admin/Canonical_Terms.md` (2026-05-26),
+  `Admin/Repository_Structure.md` (2026-06-06), `Admin/Security_Protocols.md`,
+  `Admin/Governance_Migration_Protocol.md` (2026-06-06) (PC-003). Status section
+  artifact removed — version history absorbed into Resolution Log. Owner fields
+  corrected to `Admin/Governance_Charter.md` throughout sidecar.
 
 ---
 
@@ -835,31 +852,18 @@ Mandatory re-audit conditions for this document:
 - `Discovery.md` — navigation layer; confirmed file list; Rename Registry
 - `Unknowns.md` — global index for cross-module unknowns (index only)
 - `Admin/File_Template.md` — standard file structure; this document now conforms to it
-- `Canonical_Terms_LF.md` [PLANNED] — planned canonical target for terminology governance; does not yet exist; authority temporarily held by nearest active governance owner
-- `Repository_Structure.md` [PLANNED] — planned canonical target for repository structure doctrine; does not yet exist
-- `Security_Protocols.md` [PLANNED] — planned canonical target for authority authentication and integrity enforcement; does not yet exist; GOV-006 and RIP-005 resolution path
-- `Governance_Migration_Protocol.md` [PLANNED] — planned canonical target for Tier 1 Axiom amendment procedures; does not yet exist; GOV-001 resolution path
+- `Admin/Canonical_Terms.md` — canonical target for terminology governance; created 2026-05-26
+- `Admin/Repository_Structure.md` — canonical target for repository structure doctrine; created 2026-06-06
+- `Admin/Security_Protocols.md` — canonical target for authority authentication and integrity enforcement; created prior to 2026-05-28; GOV-006 and RIP-005 resolution path
+- `Admin/Governance_Migration_Protocol.md` — canonical target for Tier 1 Axiom amendment procedures; created 2026-06-06; GOV-001 resolution path
 - `Lazarus-Forge-` — companion doctrine repository; source of principles refined into practice here
 - `Astroid-miner` [PLANNED] — planned repository; deferred to Leviathan milestone; do not treat as active dependency
 
 **Note on Ethical Anchor fallback status:** When this charter is unavailable, the Ethical Anchor field present in every repository file ("Attempt to do no harm. Defer to Ethical_Constraints.md if present.") acts as a temporary immutable floor — not as a substitute for Tier 1 constitutional authority. The Ethical Anchor preserves the foundational behavioral constraint during infrastructure blackout. It does not inherit full Tier 1 constitutional status, does not grant override authority, and does not substitute for axiom-level governance. It is the floor that survives; the charter is what builds above it.
 
+
 ---
 
-## Status
-
-Version 0.6 — Genesis Phase exit conditions expanded (2026-06-02).
-
-**Gate status:** Gates 1, 3, 4 cleared. Gate 2 previously blocked by bootstrapping paradox — unblocked by Genesis Phase Protocol; re-audit recommended after v0.6 changes.
-
-**Changes from v0.5:**
-- Bootstrap Governance Doctrine amended — Genesis Phase exit conditions expanded from single quorum-dependent condition to four pathways: Quorum Achievement, Demonstrated Track Record, Milestone-Gated, and Time-Bounded Review
-- Post-exit obligations defined — exits Genesis Phase constraints, does not remove human oversight
-- GOV-008 resolution path updated to cross-reference new exit condition language
-- Drift Indicators updated — time-bounded review horizon trigger added
-
-**What must remain constant:**
-
-**The attempt to do no harm is not contingent on the presence of a governance document.**
-
-**These axioms are not proven. They are booted.**
+> **The attempt to do no harm is not contingent on the presence of a governance document.**
+>
+> **These axioms are not proven. They are booted.**
