@@ -1,5 +1,13 @@
 # Gate_03_Reduction
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Gate_03_Reduction is the only fully irreversible step
 > in the Lazarus Forge operational flow. Once an item
@@ -22,8 +30,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-15                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-15; revised 2026-06-08                                      |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -75,7 +83,7 @@ Indicators.*
 - Energy accounting for Reduction operation
   (Operations/Energy.md)
 - Facility siting, clearance, and noise requirements
-  (UNK-006 — no file exists yet)
+  (`Architecture/Facilities.md` — FA-001)
 - Biological or chemical waste disposal beyond
   containment doctrine (not yet assigned — GR-003)
 
@@ -725,7 +733,11 @@ for unresolved upstream screening and gate logic gaps.
 
 ### Resolution Log
 
-*(empty — no entries resolved yet)*
+- 2026-06-08: Navigation Anchors block added. Verification Ref
+  corrected from `Admin/Forge_Audit_Kit.md` to
+  `Admin/Verification_Gates_LF.md` (PC-001). Scope Boundary
+  facility siting reference updated from `UNK-006 — no file
+  exists yet` to `Architecture/Facilities.md — FA-001` (PC-002).
 
 ---
 
