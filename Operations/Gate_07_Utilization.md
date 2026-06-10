@@ -1,5 +1,13 @@
 # Gate_07_Utilization
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Utilization is where fabricated parts and recovered
 > components meet operational reality. Silent failures
@@ -20,8 +28,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-19                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-19; revised 2026-06-08                                      |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 1                                                                   |
@@ -82,9 +90,12 @@ not a Utilization operation risk.*
 - Energy accounting for operational use
   (Operations/Energy.md)
 - Facility siting or operational safety beyond
-  logging doctrine (UNK-006)
+  logging doctrine (`Architecture/Facilities.md`
+  — FA-001)
 - Formal quality certification or standards
   compliance (not yet assigned — GU-003)
+- FRT floor declaration and v1 economic baseline
+  (`Admin/Economics.md` — EC-002)
 
 ---
 
@@ -714,11 +725,14 @@ different owning file. FRT floor calibration closes both.
 
 ### Resolution Log
 
-*(empty — no entries resolved yet)*
-
 - 2026-05-23: GU-005 added — FRT cycle definition and floor declaration
   pending operator commissioning decision. FRT logging section (Section 2b)
   added to body. Scope Boundary updated. Open unknowns count updated to 5.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected
+  from `Admin/Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). Scope Boundary updated — `Architecture/Facilities.md` reference
+  added replacing `UNK-006` (PC-002); `Admin/Economics.md` added as FRT
+  floor and v1 economic baseline owner (PC-003).
 
 ---
 
