@@ -1,4 +1,12 @@
-# Forge Network
+# Forge_Net.md — Decentralized Forge Network
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
 
 > ⚠️ **Operational Safety Advisory**
 > The Forge Network connects autonomous systems making
@@ -20,8 +28,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-18                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-18; revised 2026-06-08                                      |
 | Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-18)       |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -635,7 +643,7 @@ in Discovery.md. Folder-prefixed names take precedence.*
 | Priority      | Critical                                         |
 | Type          | Technical / Architectural                        |
 | Blocking      | No                                               |
-| Owner         | Architecture/Forge_Network.md                    |
+| Owner         | Architecture/Forge_Net.md                    |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -697,7 +705,7 @@ the primary technical prerequisite for network security.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Architecture/Forge_Network.md                    |
+| Owner         | Architecture/Forge_Net.md                    |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -736,7 +744,7 @@ not after.
 | Priority      | Major                                            |
 | Type          | Technical / Governance                           |
 | Blocking      | No                                               |
-| Owner         | Architecture/Forge_Network.md                    |
+| Owner         | Architecture/Forge_Net.md                    |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -808,7 +816,7 @@ inflate each other's trust weights.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Architecture/Forge_Network.md                    |
+| Owner         | Architecture/Forge_Net.md                    |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -870,7 +878,7 @@ is available the doctrine may be overly conservative.
 | Priority      | Critical                                         |
 | Type          | Technical / Ethical / Governance                 |
 | Blocking      | No                                               |
-| Owner         | Architecture/Forge_Network.md                    |
+| Owner         | Architecture/Forge_Net.md                    |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -929,7 +937,13 @@ prerequisite for it.
 
 ### Resolution Log
 
-*(empty — no entries resolved yet)*
+- 2026-06-08: Navigation Anchors block added. Title corrected
+  from `Forge Network` to `Forge_Net.md — Decentralized Forge
+  Network`. Verification Ref corrected from
+  `Admin/Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). All sidecar Owner fields corrected from
+  `Architecture/Forge_Network.md` to `Architecture/Forge_Net.md`
+  (canonical filename per Routing.md and Discovery.md).
 
 ---
 
