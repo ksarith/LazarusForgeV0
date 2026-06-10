@@ -1,15 +1,26 @@
 # Woodworking.md — Timber Sourcing, Processing & Fabrication
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Felling operations carry lethal risk from falling trees, barber-chair failures, and chainsaw kickback — never fell alone and always establish two escape routes before the first cut. Power tool operations produce blade ejection, kickback, and entanglement hazards that cause permanent injury in fractions of a second. Fine wood dust is explosive at sufficient airborne concentration and causes permanent respiratory damage from chronic exposure — source capture dust extraction is required at all power tool stations. Several common species (walnut, cedar, yew) produce toxic or sensitizing dust; mixed-species milling has uncharacterized synergistic exposure effects — see WW-004. PPE (eye, ear, respiratory) and machine guarding are non-negotiable prerequisites before any powered operation begins. When in doubt, shut down. The cost of a stopped run is always recoverable.
->
+
+---
+
 ## File State
 | Field | Value |
 |---|---|
 | Status | Draft |
 | Body Stability | Volatile |
 | Spec Gates | 0/6 |
-| Verification Ref | Admin/Forge_Audit_Kit.md |
-| Last Audit | 2026-05-30 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-30 (Gemini — Systems/Auditor); revised 2026-06-08           |
 | Auditor | Gemini — Systems/Auditor |
 | Open Unknowns | 5 |
 | Active Disputes | 0 |
@@ -33,9 +44,13 @@
 
 **This file DOES NOT define:**
  * CNC toolpath generation, G-code, or CAM software workflows.
- * Full shop-wide dust extraction system design (→ Operations/Air_Scrubber.md).
+ * Full shop-wide dust extraction system design (→ `Operations/Air_Scrubber.md`).
  * Structural engineering calculations for load-bearing wooden members.
  * Commercial lumber grading standards or large-scale industrial forestry operations.
+ * Facility siting, shop layout, and clearance zone requirements
+   (→ `Architecture/Facilities.md` — FA-001).
+ * Formal hearing conservation program and PPE sourcing standards
+   (→ `Admin/Safety_Protocols.md`).
 
 ## File Purpose
 This file governs the full processing chain for wood within the Lazarus Forge — from standing tree or salvage source through to finished functional or structural object. Its emphasis is on salvaged and urban timber, irregular and green stock, and low-to-high technology methods appropriate for a self-reliant fabrication environment across variable high-humidity environments.
@@ -262,12 +277,14 @@ Wood dust is a respiratory hazard, a carcinogen at chronic exposure levels for c
 Fine wood dust suspended in air is explosive. Do not allow dust to accumulate on surfaces — a sudden disturbance that raises accumulated dust into a cloud creates an immediate ignition risk. Empty dust collectors regularly. No open flames or ignition sources in dust-generating areas. Cross-reference WW-004 for mixed-species exposure threshold unknowns.
 
 ## Integration Hooks
- * Operations/Air_Scrubber.md — dust extraction system design, toxic species off-gas management, source capture integration.
- * Operations/Gate_02_Triage.md — salvage timber condition assessment follows triage logic; defect classification and routing to fabrication vs. firewood.
- * Operations/Gate_03_Reduction.md — low-value wood waste that cannot be repurposed follows Reduction doctrine to biochar or compost.
- * Operations/Gate_06_Fabrication.md — wood is a fabrication feedstock; fixturing, joinery, and finishing doctrine connects to fabrication workflow.
- * Operations/Energy.md — biochar and wood gas (gasification) are candidate energy inputs; firewood and offcuts feed thermal systems.
- * Admin/Trajectories.md — gasification of wood waste as an energy source, large-scale timber processing, and structural engineering calculations are v1+ scope items.
+ * `Operations/Air_Scrubber.md` — dust extraction system design, toxic species off-gas management, source capture integration.
+ * `Operations/Gate_02_Triage.md` — salvage timber condition assessment follows triage logic; defect classification and routing to fabrication vs. firewood.
+ * `Operations/Gate_03_Reduction.md` — low-value wood waste that cannot be repurposed follows Reduction doctrine to biochar or compost.
+ * `Operations/Gate_06_Fabrication.md` — wood is a fabrication feedstock; fixturing, joinery, and finishing doctrine connects to fabrication workflow.
+ * `Operations/Energy.md` — biochar and wood gas (gasification) are candidate energy inputs; firewood and offcuts feed thermal systems.
+ * `Admin/Trajectories.md` — gasification of wood waste as an energy source, large-scale timber processing, and structural engineering calculations are v1+ scope items.
+ * `Architecture/Facilities.md` — shop siting, floor loading for heavy log stock, clearance zones for power tool operation (FA-001).
+ * `Admin/Safety_Protocols.md` — hearing conservation program; PPE sourcing standards for sustained power tool and chainsaw operations.
 
 ## Lessons Learned
 | Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
@@ -390,7 +407,16 @@ Fine wood dust suspended in air is explosive. Do not allow dust to accumulate on
 
 ### Resolution Log
 
-*(empty)*
+- 2026-06-08: Navigation Anchors block added. Safety Advisory
+  formatting corrected — horizontal rule added after advisory,
+  stray `>` removed. Verification Ref corrected from
+  `Admin/Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). Scope Boundary updated — `Architecture/Facilities.md`
+  added for shop siting and clearance zones (PC-002);
+  `Admin/Safety_Protocols.md` added for hearing conservation
+  program and PPE sourcing standards (PC-003). Integration Hooks
+  updated to canonical backtick paths; Facilities.md and
+  Safety_Protocols.md added.
 
 ---
 
