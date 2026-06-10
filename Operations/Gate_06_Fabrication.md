@@ -1,5 +1,13 @@
 # Gate_06_Fabrication
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Arc welding produces UV radiation, infrared, and arc
 > flash hazards that cause permanent eye damage in
@@ -23,8 +31,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-19                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-19; revised 2026-06-08                                      |
 | Auditor          | Claude — Skeptic/Auditor (actioning ChatGPT audit 2026-05-19)       |
 | Open Unknowns    | 7                                                                   |
 | Active Disputes  | 1                                                                   |
@@ -91,11 +99,13 @@ High risk which reflects process irreversibility.*
   (Operations/Energy.md)
 - Facility siting and fabrication area safety
   beyond operator PPE doctrine
-  (UNK-006 — no file exists yet)
+  (`Architecture/Facilities.md` — FA-001)
 - Component Library specification and management
-  (Architecture/Components.md)
+  (`Architecture/Components.md`)
 - Utilization performance metrics
-  (downstream — GF-005, not yet assigned)
+  (`Operations/Gate_07_Utilization.md`)
+- Precision ceiling doctrine ownership
+  (`Architecture/Precision.md`)
 
 ---
 
@@ -303,7 +313,8 @@ contamination routing, GI-003 detection capability.
 **PPE is a prerequisite, not a preference:**
 First arc welding operation does not begin until
 PPE is confirmed available and fitted. See ASM-007.
-Cross-reference: UNK-006 siting requirements.
+Cross-reference: `Architecture/Facilities.md` FA-001
+siting requirements.
 
 ---
 
@@ -1138,13 +1149,14 @@ the fire risk profile is materially different.
 - Ventilation/fire interaction — forced ventilation
   can feed rather than suppress a fire. Define
   shutdown sequence for ventilation in fire event.
-- Consider as seed for future facility/siting
-  file alongside UNK-006.
+- Consider as seed entry for `Architecture/Facilities.md`
+  hot-work zone doctrine — GF-007 fire suppression
+  requirements belong in the siting layer.
 - Payment via Specification — once fire doctrine
   is defined and validated, move to Section 2
   as Analogous.
-- Cross-reference: UNK-006 siting requirements,
-  Operations/Air_Scrubber.md.
+- Cross-reference: `Architecture/Facilities.md` FA-001,
+  `Operations/Air_Scrubber.md`.
 
 ---
 
@@ -1161,6 +1173,20 @@ the fire risk profile is materially different.
   to Section 5. Consumables lifecycle doctrine
   added to Section 6. Fabrication output tag
   added to Section 8.
+- 2026-06-08: Navigation Anchors block added.
+  Verification Ref corrected from
+  `Admin/Forge_Audit_Kit.md` to
+  `Admin/Verification_Gates_LF.md` (PC-001).
+  Scope Boundary updated — `Architecture/Facilities.md`
+  now exists and owns siting doctrine (PC-002);
+  `Architecture/Precision.md` added as precision
+  ceiling doctrine owner (PC-003);
+  `Operations/Gate_07_Utilization.md` reference
+  corrected (GF-005 now resolved). PPE section
+  UNK-006 reference updated to
+  `Architecture/Facilities.md` FA-001. GF-007
+  resolution path updated to reference
+  `Architecture/Facilities.md`.
 
 ---
 
