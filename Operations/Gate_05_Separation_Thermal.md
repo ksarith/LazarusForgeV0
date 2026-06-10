@@ -1,4 +1,12 @@
-# Spin Chamber (v0)
+# Gate_05_Separation_Thermal
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
 
 > ⚠️ **Operational Safety Advisory**
 > The Spin Chamber operates with molten metal under rotation. Breach, splash,
@@ -16,8 +24,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                           |
-| Last Audit       | 2026-05-15                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-15; revised 2026-06-08                                      |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -45,17 +53,25 @@
   self-replication (not the self-replication architecture itself)
 
 **This file DOES NOT define:**
-- Upstream feedstock preparation (Reduction module)
-- Mechanical separation decisions (Material_Separation_Gate_v0.md)
-- Wire extrusion nozzle design (deferred — Trajectories_LF.md)
-- Welding wire specification or qualification (downstream — not yet assigned)
+- Upstream feedstock preparation
+  (`Operations/Gate_03_Reduction.md`)
+- Mechanical separation decisions
+  (`Operations/Gate_04_Separation_Mechanical.md`)
+- Wire extrusion nozzle design
+  (deferred — `Admin/Trajectories.md`)
+- Welding wire specification or qualification
+  (downstream — not yet assigned)
 - Self-replication architecture or loop closure logic
-  (Lazarus_forge_v0_flow.md, geck_forge_seed.md)
-- Facility siting, clearance, and area-of-operation requirements
-  (SC-006 — no file exists yet)
-- MHD auxiliary coil detailed specification (deferred — Trajectories_LF.md)
-- Drive system detailed geometry (SC-005 — prerequisite for dynamic analysis)
-- Energy accounting and kWh/kg metrics (energy_v0.md)
+  (`Architecture/Forge_flow.md`,
+  `Architecture/Geck_forge_seed.md`)
+- Facility siting, clearance, and area-of-operation
+  requirements (`Architecture/Facilities.md` — FA-001)
+- MHD auxiliary coil detailed specification
+  (deferred — `Admin/Trajectories.md`)
+- Drive system detailed geometry
+  (SC-005 — prerequisite for dynamic analysis)
+- Energy accounting and kWh/kg metrics
+  (`Operations/Energy.md`)
 
 ---
 
@@ -91,8 +107,8 @@ thermal processing would require more complex, less integrated alternatives.
 *Low confidence assumptions reflect resolution paths that vary by forge
 instance and deployment context, not critical failure points.
 Purchase-what-cannot-be-produced doctrine and inter-forge trade
-are valid resolution paths. See Lazarus_Forge_v0.md (core principles)
-and Trajectories_LF.md for forge ecology context.*
+are valid resolution paths. See README.md and
+`Admin/Trajectories.md` for forge ecology context.*
 
 ---
 
@@ -332,8 +348,8 @@ Its outputs feed:
 - Welding wire production via planned extrusion interface
 
 Each generation improves the next. Older chambers remain useful. Self-replication
-architecture and loop closure logic are governed by Lazarus_forge_v0_flow.md and
-geck_forge_seed.md — not this file.
+architecture and loop closure logic are governed by `Architecture/Forge_flow.md` and
+`Architecture/Geck_forge_seed.md` — not this file.
 
 ---
 
@@ -411,7 +427,7 @@ in the sidecar, not disputes. Revisit after first operational run.*
 | Priority      | Major                          |
 | Type          | Technical                      |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md             |
+| Owner         | Operations/Gate_05_Separation_Thermal.md |
 | First Logged  | 2026-05-04                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -446,7 +462,7 @@ an unacceptable failure mode per the failure philosophy.
 | Priority      | Critical                       |
 | Type          | Technical                      |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md             |
+| Owner         | Operations/Gate_05_Separation_Thermal.md |
 | First Logged  | 2026-05-04                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -487,7 +503,7 @@ reduction.
 | Priority      | Minor                          |
 | Type          | Technical                      |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md             |
+| Owner         | Operations/Gate_05_Separation_Thermal.md |
 | First Logged  | 2026-05-04                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -507,7 +523,7 @@ honestly to a higher-power future version.
   auxiliary coil activation. Look for measurable difference in
   vibration signature, segregation consistency, or melt stability.
 - If no measurable benefit observed at v0 scale: discharge via
-  Trajectory — route full MHD specification to Trajectories_LF.md
+  Trajectory — route full MHD specification to `Admin/Trajectories.md`
   for higher-power future versions. Remove optional language from
   v0 body to reduce complexity.
 - If measurable benefit observed: Payment via Specification —
@@ -525,7 +541,7 @@ honestly to a higher-power future version.
 | Priority      | Minor                          |
 | Type          | Technical                      |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md             |
+| Owner         | Operations/Gate_05_Separation_Thermal.md |
 | First Logged  | 2026-05-04                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -551,7 +567,7 @@ it enables cannot be validated or built toward deliberately.
   3. Draw speed control method is selected and integrated
      with instrumentation spec
 - Discharge via Trajectory — route full nozzle specification
-  to Trajectories_LF.md v1 scope.
+  to `Admin/Trajectories.md` v1 scope.
 - Payment via Specification — once nozzle design is validated
   and draw speed control demonstrated, move to Body as Measured.
 
@@ -566,7 +582,7 @@ it enables cannot be validated or built toward deliberately.
 | Priority      | Major                          |
 | Type          | Technical                      |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md             |
+| Owner         | Operations/Gate_05_Separation_Thermal.md |
 | First Logged  | 2026-05-15                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -616,7 +632,7 @@ failure that monitoring catches too late.
 | Priority      | Major                          |
 | Type          | Technical / Ethical            |
 | Blocking      | No                             |
-| Owner         | Spin_Chamber_v0.md (seed entry)|
+| Owner         | Operations/Gate_05_Separation_Thermal.md (seed entry) |
 | First Logged  | 2026-05-15                     |
 | Last Reviewed | 2026-05-15                     |
 
@@ -633,21 +649,21 @@ what that separation looks like in practice, at what distances, or
 under what conditions.
 
 **Resolution Path:**
-- This entry is a seed for a future master safety registry and
-  facility siting document. It is not blocking v0 specification
-  work but must be resolved before any operational run.
-- Siting requirements will vary by deployment context:
-  terrestrial, marine (Support_Raft_v0.md), and future off-world
-  contexts each carry different constraints.
-- When the master safety registry is created, this entry
-  discharges by reference to it. Local SC-006 closes and
-  the governing requirements live in the safety file.
-- Recommend escalating to cross-module UNK entry in
-  Unknowns_LF.md — siting and clearance requirements affect
-  every thermal module in the Forge, not the Spin Chamber alone.
+- `Architecture/Facilities.md` was created 2026-06-06 and now
+  owns siting and clearance doctrine for all hot and rotating
+  modules. This entry discharges by reference to FA-001 once
+  the safety advisory is updated to cross-reference
+  `Architecture/Facilities.md` and the Spin Chamber-specific
+  siting requirements are documented there.
+- Siting requirements vary by deployment context —
+  terrestrial, marine (`Tests/Support_Raft.md`), and future
+  off-world contexts each carry different constraints.
+- UNK-006 resolved — `Unknowns.md` cross-module entry now
+  routes to `Architecture/Facilities.md` as the governing
+  siting document.
 - Discharge via Trajectory for off-world and marine variants.
   Payment via Specification for terrestrial v0 baseline
-  once siting document exists.
+  once `Architecture/Facilities.md` FA-001 is resolved.
 
 ---
 
@@ -661,6 +677,21 @@ under what conditions.
   Dynamic analysis deferred to SC-005. Cold water analog test
   remains required — purpose reframed from wall integrity
   validation to balance and vibration characterization.
+- 2026-06-08: Navigation Anchors block added. Title corrected
+  from `Spin Chamber (v0)` to `Gate_05_Separation_Thermal`.
+  Verification Ref corrected from `Verification_Gates_LF.md`
+  to `Admin/Verification_Gates_LF.md` (PC-001). Facilities.md
+  upstream reference added to Scope Boundary (PC-002). All
+  stale filenames corrected throughout: Material_Separation_Gate_v0.md
+  → Gate_04_Separation_Mechanical.md, Lazarus_forge_v0_flow.md
+  → Forge_flow.md, geck_forge_seed.md → Geck_forge_seed.md,
+  Trajectories_LF.md → Trajectories.md, energy_v0.md →
+  Energy.md, Support_Raft_v0.md → Support_Raft.md,
+  LF_File_Template.md → File_Template.md. Sidecar Owner
+  fields corrected from Spin_Chamber_v0.md to
+  Operations/Gate_05_Separation_Thermal.md. SC-006 resolution
+  path updated — Architecture/Facilities.md now exists and
+  owns siting doctrine; UNK-006 resolved.
 
 ---
 
@@ -678,7 +709,7 @@ under what conditions.
 ## Drift Indicators
 
 The following conditions trigger mandatory re-audit of this file.
-All canonical drift indicators from LF_File_Template.md apply.
+All canonical drift indicators from `Admin/File_Template.md` apply.
 The following are additional local triggers specific to the
 Spin Chamber:
 
@@ -696,6 +727,6 @@ Spin Chamber:
 
 ### Canonical Drift Triggers
 
-*All mandatory re-audit conditions from LF_File_Template.md
+*All mandatory re-audit conditions from `Admin/File_Template.md`
 Section 10 apply without exception. Local triggers above are
 additive, not substitutes.*
