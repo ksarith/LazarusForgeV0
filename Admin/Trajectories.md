@@ -1,5 +1,13 @@
 # Lazarus Forge — Trajectory (v0 → Interstellar)
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field            | Value                                                               |
@@ -7,8 +15,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
-| Last Audit       | 2026-05-23                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-23; revised 2026-06-08                                      |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -32,7 +40,7 @@
 **This file DOES NOT define:**
 - Component taxonomy or implementation specs for future versions
   (defined in module documents when versions become active)
-- Detailed economic model (→ planned economics_v0.md at v0→v1 transition)
+- Detailed economic model (→ `Admin/Economics.md`)
 - FRT measurement and logging procedures
   (→ Operations/Gate_07_Utilization.md)
 - Component procurement doctrine
@@ -358,8 +366,8 @@ condition cannot be verified — advancement from v0 to v1 is blocked.
 **Resolution Path:** Full economic model is a v0→v1 transition task. Inputs
 needed: (1) operating cost model from `Operations/Energy.md` — feeds from
 EV-001; (2) revenue model for external outputs; (3) FRT-calibrated reinvestment
-rate definition. Route to a dedicated `economics_v0.md` document when
-v0→v1 transition planning begins. FRT doctrine (TR-002) is a prerequisite input.
+rate definition. `Admin/Economics.md` now owns the economic model and barter
+doctrine — route TR-001 closure work there. FRT doctrine (TR-002) is a prerequisite input.
 
 ---
 
@@ -398,4 +406,8 @@ economic model.
 - May 2026: v5 designated as conceptual horizon — explicit rationale for absent exit condition.
 - May 2026: G.E.C.K. cross-references added at v2. UNK-008 / LT-003 autonomy dependency noted at v3 and v4.
 - May 2026: v0 exit condition verification note added — self-reporting circularity acknowledged, human proxy defined.
-- 2026-05-23: Retrofitted to File_Template.md structure. File State, Scope Boundary, File Purpose, Abandoned Paths, Drift Indicators added. Stale flat filenames corrected. Lessons Learned reformatted to full table. TR-002 added. FRT doctrine section added with definition, reinvestment taxonomy, revenue allocation framework, KPI companion table, version advancement table, and logging cross-reference to Gate_07_Utilization.md.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected
+  from `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). Scope Boundary updated — `economics_v0.md` reference corrected
+  to `Admin/Economics.md` (PC-003). TR-001 resolution path updated —
+  `Admin/Economics.md` now owns economic model and barter doctrine.
