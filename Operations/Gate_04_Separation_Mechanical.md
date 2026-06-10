@@ -1,4 +1,12 @@
-# Material Separation Gate (v0)
+# Gate_04_Separation_Mechanical
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
 
 > ⚠️ **Operational Safety Advisory**
 > The Material Separation Gate operates a high-RPM rotating drum
@@ -21,8 +29,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Forge_Audit_Kit.md                                                  |
-| Last Audit       | 2026-05-15                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-15; revised 2026-06-08                                      |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 8                                                                   |
 | Active Disputes  | 1                                                                   |
@@ -53,23 +61,23 @@
 
 **This file DOES NOT define:**
 - Upstream feedstock reduction or shredding
-  (Reduction module — not yet assigned)
+  (`Operations/Gate_03_Reduction.md`)
 - Thermal processing of Class C output
-  (Spin_Chamber_v0.md)
+  (`Operations/Gate_05_Separation_Thermal.md`)
 - Component triage and human review of Unknown Bulk
-  (Component_Triage_System.md)
+  (`Operations/Gate_02_Triage.md`)
 - Air handling and exhaust management from high-RPM operation
-  (Air_Scrubber_v0.md)
+  (`Operations/Air_Scrubber.md`)
 - Energy accounting and kWh/kg metrics
-  (energy_v0.md)
+  (`Operations/Energy.md`)
 - Marine thermal sink integration beyond integration hook
-  (Support_Raft_v0.md)
+  (`Tests/Support_Raft.md`)
 - Aquatic biofouling impact on rotor and bearing performance
-  (leviathan_testing.md)
+  (`Tests/Leviathan_testing.md`)
 - Electromagnetic field bias for future versions
-  (deferred — Trajectories_LF.md)
+  (deferred — `Admin/Trajectories.md`)
 - Facility siting, clearance, and area-of-operation requirements
-  (MG-006 — no file exists yet)
+  (`Architecture/Facilities.md` — FA-001)
 - Detailed sensor specifications or spectroscopy hardware
   (not yet assigned)
 - Powder feedstock handling
@@ -117,7 +125,7 @@ consumption and contamination risk.
 | ASM-004 | v0 operating environment is terrestrial | No marine provisions in v0 spec; Leviathan deferred | Medium | Marine or off-world deployment enters scope |
 | ASM-005 | Manual operator or Component Triage System capacity exists to process Unknown Bulk output without backlog | Fail-to-bin routes to review — assumes review capacity | Medium | Unknown Bulk accumulation rate exceeds review capacity — scaling trigger activates |
 | ASM-006 | Replication is preferable to enlargement for scaling — multiple small gates are assumed to behave better than a single large one at v0 scale | Scaling doctrine; failure mode distribution logic | Medium | Replication produces coordination problems, resource contention, or interference between units that enlargement would not — or replication pressure forces component evolution that changes the preferred architecture |
-| ASM-007 | Mechanical separation is energy-positive relative to thermal processing for the same diverted material — the gate saves more energy than it consumes | Energy Position section; directional improvement assumed | Low | Quantitative energy baseline established against energy_v0.md — directional assumption confirmed or revised |
+| ASM-007 | Mechanical separation is energy-positive relative to thermal processing for the same diverted material — the gate saves more energy than it consumes | Energy Position section; directional improvement assumed | Low | Quantitative energy baseline established against `Operations/Energy.md` — directional assumption confirmed or revised |
 
 *Low confidence assumptions reflect unvalidated operational parameters
 and sensor procurement uncertainty. ASM-003 and ASM-007 are the most
@@ -125,7 +133,7 @@ load-bearing — the confidence threshold governs every routing decision
 and the energy-positive claim is the gate's core economic justification.
 Both require experimental validation before the gate can be promoted
 beyond Exploration. Purchase-what-cannot-be-produced doctrine applies
-to ASM-002. See README.md and Trajectories_LF.md for forge ecology context.*
+to ASM-002. See README.md and `Admin/Trajectories.md` for forge ecology context.*
 
 ---
 
@@ -146,7 +154,7 @@ Success is defined by *avoided processing*, not perfect separation.
 
 The Material Separation Gate operates **after Reduction** and **before
 Purification** within the Lazarus Forge operational flow
-(Lazarus_forge_v0_flow.md). It is the upstream mechanical decision
+(`Architecture/Forge_flow.md`). It is the upstream mechanical decision
 point — material that passes here avoids the energy cost of the Spin
 Chamber entirely.
 
@@ -287,7 +295,7 @@ revealing the cause:
 - Conductive dust creates electrical shorting risk for sensor
   electronics — sensor housing must be sealed against
   particulate ingress
-- Cross-link to Air_Scrubber_v0.md: particulate burden from
+- Cross-link to `Operations/Air_Scrubber.md`: particulate burden from
   high-RPM operation must be explicitly included in scrubber
   intake specification, not only exhaust gas handling
 - Rising Unknown Bulk rate is the primary sensor fouling
@@ -304,7 +312,7 @@ Auditor_Protocols.md:
   threshold not yet validated against known feedstock samples;
   see MG-003)*, material is ejected to the **Unknown Bulk** bin
 - Unknown Bulk is not discarded — it is logged, held, and routed
-  to Component_Triage_System.md or Synthesizer review at next
+  to `Operations/Gate_02_Triage.md` or Synthesizer review at next
   available cycle
 - Unknown Bulk that remains unresolved after triage may be
   reprocessed through reduction with adjusted parameters, or
@@ -320,7 +328,7 @@ Auditor_Protocols.md:
 - Magnetic or electromagnetic biasing may be added in later versions
 - Not required for v0 validation
 - Must never force separation beyond observable stability
-- Deferred to Trajectories_LF.md
+- Deferred to `Admin/Trajectories.md`
 
 ---
 
@@ -340,7 +348,7 @@ Auditor_Protocols.md:
 - **Class B:** Downgraded material (repurpose / lower-precision use)
 - **Class C:** Mixed bulk → Spin Chamber for thermal processing
 - **Unknown Bulk:** Ambiguous or low-confidence material →
-  Component_Triage_System review → reduction retry or Class C routing
+  `Operations/Gate_02_Triage.md` review → reduction retry or Class C routing
 - **Fail:** Unclassifiable after review → Reduction or discard
 
 ---
@@ -362,15 +370,15 @@ The primary energy value of this gate is derived from **avoided
 thermal processing**. Sorted metal recovery via mechanical
 separation is energy-positive relative to processing the same
 material through the Spin Chamber *(Placeholder — directional
-improvement expected but not yet quantified against energy_v0.md
-baseline)*. Polymer diversion is currently energy-neutral
-*(Placeholder — lifecycle justification is contamination
-prevention, not energy recovery)*.
+improvement expected but not yet quantified against
+`Operations/Energy.md` baseline)*. Polymer diversion is currently
+energy-neutral *(Placeholder — lifecycle justification is
+contamination prevention, not energy recovery)*.
 
 Quantitative energy reduction is expected but not required for
 v0 validation. Directional improvement is sufficient. Specific
 reduction estimates are deferred to experimental baseline against
-energy_v0.md kWh/kg metric.
+`Operations/Energy.md` kWh/kg metric.
 
 ---
 
@@ -432,7 +440,7 @@ Target for v0 exploration (not a guarantee):
   loss indicates sensor calibration failure, upstream reduction
   inconsistency, or feedstock outside the gate's classification
   envelope. This metric makes the retry loop cost visible and
-  falsifiable. Cross-reference: MG-003, energy_v0.md.
+  falsifiable. Cross-reference: MG-003, `Operations/Energy.md`.
 
 ---
 
@@ -506,17 +514,22 @@ Class A salvage priority.
 
 ## Integration Hooks
 
-- Lazarus_forge_v0_flow.md — governing operational flow; gate
+- `Architecture/Forge_flow.md` — governing operational flow; gate
   operates within Purification stage
-- Spin_Chamber_v0.md — receives Class C bulk output; this gate
-  reduces its thermal load
-- Component_Triage_System.md — receives Unknown Bulk for human
-  or assisted review
-- Air_Scrubber_v0.md — receives exhaust from high-RPM operation
-- energy_v0.md — energy reduction claims require cross-validation
-- leviathan_testing.md — aquatic deployment unknowns routed here
-- Support_Raft_v0.md — thermal sink for heat pipe output in
-  marine configurations
+- `Operations/Gate_05_Separation_Thermal.md` — receives Class C
+  bulk output; this gate reduces its thermal load
+- `Operations/Gate_02_Triage.md` — receives Unknown Bulk for
+  human or assisted review
+- `Operations/Air_Scrubber.md` — receives exhaust from high-RPM
+  operation
+- `Operations/Energy.md` — energy reduction claims require
+  cross-validation
+- `Tests/Leviathan_testing.md` — aquatic deployment unknowns
+  routed here
+- `Tests/Support_Raft.md` — thermal sink for heat pipe output
+  in marine configurations
+- `Architecture/Facilities.md` — siting and clearance requirements
+  (FA-001)
 
 ---
 
@@ -534,10 +547,10 @@ Class A salvage priority.
 
 | ID | Dispute Summary | Positions in Conflict | Risk | Status | Owner |
 |----|-----------------|-----------------------|------|--------|-------|
-| DS-001 | "Purification stage" terminology may cause semantic overlap with Spin_Chamber_v0.md | Position A: Gate sits within Purification stage per Lazarus_forge_v0_flow.md definition ("any mechanism achieving comparable separation output"). Position B: Gate does not purify in metallurgical terms — should be called "Mechanical Diversion Stage" or "Pre-Thermal Classification Stage" to avoid confusion | Low | Open | Lazarus_forge_v0_flow.md |
+| DS-001 | "Purification stage" terminology may cause semantic overlap with `Operations/Gate_05_Separation_Thermal.md` | Position A: Gate sits within Purification stage per `Architecture/Forge_flow.md` definition ("any mechanism achieving comparable separation output"). Position B: Gate does not purify in metallurgical terms — should be called "Mechanical Diversion Stage" or "Pre-Thermal Classification Stage" to avoid confusion | Low | Open | `Architecture/Forge_flow.md` |
 
 *DS-001 is a cross-module terminology question. Resolution belongs
-in Lazarus_forge_v0_flow.md — if the flow document's Purification
+in `Architecture/Forge_flow.md` — if the flow document's Purification
 definition is revised to exclude mechanical diversion, this file's
 position statement must be updated to match. No unilateral change
 made here. Logged following ChatGPT audit 2026-05-15.*
@@ -555,7 +568,7 @@ made here. Logged following ChatGPT audit 2026-05-15.*
 | Priority      | Minor                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15 (migrated from prose registry)        |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -568,7 +581,7 @@ avoided thermal processing. Without a quantitative baseline,
 the energy-positive claim cannot be verified or falsified.
 
 **Resolution Path:**
-- Deferred to experimental baseline against energy_v0.md
+- Deferred to experimental baseline against `Operations/Energy.md`
   kWh/kg metric.
 - Resolution requires Leviathan test cycle data or terrestrial
   pilot run with instrumented energy measurement.
@@ -586,7 +599,7 @@ the energy-positive claim cannot be verified or falsified.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15 (migrated from prose registry)        |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -619,7 +632,7 @@ not be optimal across all input classes.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15 (migrated from prose registry)        |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -656,7 +669,7 @@ parameter in the gate.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15 (migrated from prose registry)        |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -693,7 +706,7 @@ without a specified algorithm.
 | Priority      | Minor                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15 (migrated from prose registry)        |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -708,7 +721,7 @@ progressively degrade separation quality and accelerate
 bearing failure without obvious external symptoms.
 
 **Resolution Path:**
-- Discharge via Trajectory — route to leviathan_testing.md
+- Discharge via Trajectory — route to `Tests/Leviathan_testing.md`
   for marine deployment test framework.
 - Not relevant to terrestrial v0 validation.
 
@@ -723,7 +736,7 @@ bearing failure without obvious external symptoms.
 | Priority      | Major                                            |
 | Type          | Technical / Ethical                              |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md (seed entry)      |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md (seed entry)      |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -741,12 +754,13 @@ operator protocols.
 
 **Resolution Path:**
 - Seed entry for future master safety registry — mirrors
-  SC-006 in Spin_Chamber_v0.md.
+  SC-006 in `Operations/Gate_05_Separation_Thermal.md`.
 - Not blocking v0 specification work but must be resolved
   before any operational run.
-- Recommend escalating to cross-module UNK entry in
-  Unknowns_LF.md alongside SC-006 — siting requirements
-  affect all rotating and thermal modules in the Forge.
+- Recommend cross-module tracking alongside SC-006 in
+  `Unknowns.md` — siting requirements affect all rotating
+  and thermal modules in the Forge. UNK-006 resolved —
+  `Architecture/Facilities.md` now owns siting doctrine.
 - Discharge via Trajectory for marine and off-world variants.
 - Payment via Specification for terrestrial v0 baseline
   once siting document exists.
@@ -762,7 +776,7 @@ operator protocols.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -802,7 +816,7 @@ geometries but do not substitute for a clearing doctrine.
 | Priority      | Major                                            |
 | Type          | Technical                                        |
 | Blocking      | No                                               |
-| Owner         | Material_Separation_Gate_v0.md                   |
+| Owner         | Operations/Gate_04_Separation_Mechanical.md                   |
 | First Logged  | 2026-05-15                                       |
 | Last Reviewed | 2026-05-15                                       |
 
@@ -828,7 +842,7 @@ increasingly unreliable when the actual problem is maintenance.
 - Rising Unknown Bulk rate is the primary detection signal —
   distinguish fouling from calibration drift (MG-003) by
   cleaning sensors and observing recovery.
-- Cross-reference Air_Scrubber_v0.md — particulate burden
+- Cross-reference `Operations/Air_Scrubber.md` — particulate burden
   must be included in scrubber intake specification.
 - Payment via Specification — once fouling rate is
   characterized and cleaning interval established, move
@@ -885,10 +899,46 @@ Material Separation Gate:
 | Feedstock class expands beyond non-powdered reduced metallic without assumptions review | ASM-001 expiry trigger — particle envelope, RPM bands, and sensor calibration all change with feedstock class |
 | Replication scaling abandoned in favor of enlargement without ASM-006 review | Core scaling doctrine — override requires explicit audit and documented justification |
 | Geometry correction algorithm advanced without MG-004 resolution | Sensor cross-check cannot function as designed without specified algorithm |
-| Lazarus_forge_v0_flow.md revises Purification stage definition without DS-001 review | Gate's position in system flow depends on flow document definition — any change must propagate here |
+| `Architecture/Forge_flow.md` revises Purification stage definition without DS-001 review | Gate's position in system flow depends on flow document definition — any change must propagate here |
 
 ### Canonical Drift Triggers
 
-*All mandatory re-audit conditions from File_Template.md
+*All mandatory re-audit conditions from `Admin/File_Template.md`
 Section 10 apply without exception. Local triggers above are
 additive, not substitutes.*
+
+---
+
+### Resolution Log
+
+- 2026-05-15: MG-001 through MG-005 — Migrated from prose
+  Unknowns Registry to structured sidecar format. Content
+  preserved; format updated to template standard.
+- 2026-05-15: MG-006 — New entry. Siting and safety
+  requirements gap identified during retrofit audit.
+  Mirrors SC-006 in Gate_05_Separation_Thermal.md. Cross-module
+  UNK escalation recommended alongside SC-006.
+- 2026-05-15: MG-007 — New entry. Rotor jam and entanglement
+  recovery behavior undefined. Logged following Grok and
+  ChatGPT independent audit convergence.
+- 2026-05-15: MG-008 — New entry. Sensor fouling from
+  conductive and abrasive fines. Silent failure mode
+  identified by ChatGPT audit. Sensor fouling doctrine
+  added to Sensor Cross-Check section.
+- 2026-06-08: Navigation Anchors block added. Title corrected
+  from `Material Separation Gate (v0)` to
+  `Gate_04_Separation_Mechanical`. Verification Ref corrected
+  from `Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). Facilities.md upstream reference added to Scope
+  Boundary and Integration Hooks (PC-002). All stale filenames
+  corrected throughout: Spin_Chamber_v0.md →
+  Gate_05_Separation_Thermal.md, Component_Triage_System.md →
+  Gate_02_Triage.md, Air_Scrubber_v0.md → Air_Scrubber.md,
+  energy_v0.md → Energy.md, Support_Raft_v0.md →
+  Support_Raft.md, leviathan_testing.md →
+  Leviathan_testing.md, Trajectories_LF.md → Trajectories.md,
+  Lazarus_forge_v0_flow.md → Forge_flow.md. Sidecar Owner
+  fields corrected from Material_Separation_Gate_v0.md to
+  Operations/Gate_04_Separation_Mechanical.md. MG-006
+  resolution path updated — UNK-006 resolved by
+  Architecture/Facilities.md.
