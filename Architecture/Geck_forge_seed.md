@@ -1,6 +1,14 @@
 # Lazarus Forge — G.E.C.K.
 **(Genesis / General Environmental Construction Kit)**
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field            | Value                                                               |
@@ -8,10 +16,10 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                           |
-| Last Audit       | 2026-05-04                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08           |
 | Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 3                                                                   |
+| Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -31,10 +39,14 @@
 
 **This file DOES NOT define:**
 - Detailed engineering specifications for any G.E.C.K. module
-- Full precision doctrine or precision tracking methodology (see future Precision_LF.md)
-- Leviathan chassis or deep-marine systems (see Trajectories_LF.md)
-- Energy infrastructure beyond portable generation minimum (see energy_v0.md)
-- Component taxonomy or classification criteria (see Components.md)
+- Full precision doctrine or precision tracking methodology
+  (→ `Architecture/Precision.md`)
+- Leviathan chassis or deep-marine systems
+  (→ `Admin/Trajectories.md`)
+- Energy infrastructure beyond portable generation minimum
+  (→ `Operations/Energy.md`)
+- Component taxonomy or classification criteria
+  (→ `Architecture/Components.md`)
 
 ---
 
@@ -138,8 +150,9 @@ Threshold) and Components.md item 5 (Metrology).
 
 ## V. Precision Threshold (Introductory)
 
-*Full treatment deferred to Precision_LF.md — not yet written. This section establishes
-the concept and its connection to G.E.C.K. seeding.*
+*Full treatment in `Architecture/Precision.md` — T0–T4 tolerance tier system,
+precision ceiling doctrine, metrology doctrine, and fabrication-precision feedback
+loop. This section establishes the concept and its connection to G.E.C.K. seeding.*
 
 **Precision is a capability gate.** The world's productive capability is bounded by the
 precision with which materials can be measured, cut, formed, and verified. A Forge limited
@@ -156,9 +169,9 @@ performance optimization.
 What the G.E.C.K. brings determines what the v0 Forge can verify, and therefore what it
 can reliably produce.
 
-*Cross-reference: Components.md CO-002 (Metrology Precision Thresholds). Full precision
-doctrine to be developed in Precision_LF.md and cross-referenced from Components.md,
-Version Mapping, and Graduation Rule.*
+*Cross-reference: `Architecture/Components.md` CO-002 (Metrology Precision Thresholds).
+Full precision doctrine in `Architecture/Precision.md` — cross-referenced from
+Components.md Metrology (item 5), CO-002, and Version Mapping.*
 
 ---
 
@@ -281,7 +294,7 @@ Once self-replacement is proven, the Forge graduates:
 ## X. Marine Variant (Exploratory)
 
 *Status: Exploratory — not binding for v0 terrestrial demonstration. Routes to
-Trajectories_LF.md v1/v2 scope for full specification. See GK-003 and GK-004.*
+`Admin/Trajectories.md` v1/v2 scope for full specification. See GK-003 and GK-004.*
 
 A marine G.E.C.K. seeds a Leviathan unit or Support Raft deployment from minimal
 resources in an open-ocean or coastal environment. The terrestrial module list applies
@@ -323,7 +336,7 @@ with the following modifications and additions.
 
 *Biofouling Management Module (marine-critical):*
 - Sacrificial Shell System: designed colonization zones, scheduled shedding, structured
-  reef substrate contribution per Support_Raft_v0.md doctrine
+  reef substrate contribution per `Tests/Support_Raft.md` doctrine
 - Fouling monitoring — detect colonization growth rate
 - Shedding mechanism — mechanical, chemical, or biological *(Placeholder — mechanism
   not yet specified)*
@@ -391,7 +404,7 @@ minimum cost.*
 | Priority      | Major         |
 | Type          | Architectural |
 | Blocking      | No            |
-| Owner         | geck_forge_seed.md |
+| Owner         | Architecture/Geck_forge_seed.md |
 | First Logged  | 2026-05-04    |
 | Last Reviewed | 2026-05-14    |
 
@@ -416,7 +429,7 @@ UNK-026 (Graduation Rule detection circularity).
 | Priority      | Minor              |
 | Type          | Technical          |
 | Blocking      | No                 |
-| Owner         | geck_forge_seed.md |
+| Owner         | Architecture/Geck_forge_seed.md |
 | First Logged  | 2026-05-04         |
 | Last Reviewed | 2026-05-14         |
 
@@ -442,7 +455,7 @@ confirmed.
 | Priority      | Minor              |
 | Type          | Technical          |
 | Blocking      | No                 |
-| Owner         | geck_forge_seed.md |
+| Owner         | Architecture/Geck_forge_seed.md |
 | First Logged  | 2026-05-04         |
 | Last Reviewed | 2026-05-14         |
 
@@ -454,7 +467,7 @@ not yet defined.
 recharged from the Support Raft in operational conditions.
 
 **Resolution Path:** Discharge via Trajectory — depends on Leviathan unit power envelope
-(UNK-006) and hull design. Route full specification to Trajectories_LF.md v1/v2 scope.
+(UNK-006) and hull design. Route full specification to `Admin/Trajectories.md` v1/v2 scope.
 
 ---
 
@@ -467,7 +480,7 @@ recharged from the Support Raft in operational conditions.
 | Priority      | Minor              |
 | Type          | Technical          |
 | Blocking      | No                 |
-| Owner         | geck_forge_seed.md |
+| Owner         | Architecture/Geck_forge_seed.md |
 | First Logged  | 2026-05-04         |
 | Last Reviewed | 2026-05-14         |
 
@@ -486,28 +499,30 @@ system.
 
 ### GK-005 — Precision doctrine home document not yet created
 
-| Field         | Value              |
-|---------------|--------------------|
-| Status        | Open               |
-| Risk          | Low                |
-| Priority      | Minor              |
-| Type          | Architectural      |
-| Blocking      | No                 |
-| Owner         | geck_forge_seed.md |
-| First Logged  | 2026-05-14         |
-| Last Reviewed | 2026-05-14         |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Resolved                         |
+| Risk          | Low                              |
+| Priority      | Minor                            |
+| Type          | Architectural                    |
+| Blocking      | No                               |
+| Owner         | Architecture/Geck_forge_seed.md  |
+| First Logged  | 2026-05-14                       |
+| Last Reviewed | 2026-06-08                       |
 
-**Description:** Section V introduces precision as a capability gate and Forge metric but
-defers full treatment to Precision_LF.md, which does not yet exist.
+**Description:** Section V introduced precision as a capability gate and Forge metric but
+deferred full treatment to `Architecture/Precision.md`, which did not exist at time of
+logging.
 
-**Why It Matters:** Without a home document, the precision insight remains introductory
-and cannot be cross-referenced with full force from Components.md, Graduation Rule, or
+**Why It Matters:** Without a home document, the precision insight remained introductory
+and could not be cross-referenced with full force from Components.md, Graduation Rule, or
 Version Mapping.
 
-**Resolution Path:** Payment via Specification — create Precision_LF.md covering: precision
-as a capability gate, precision ceiling as a tracked Forge metric, precision improvement
-as a graduation criterion, and procurement of precision instruments as a seeding strategy.
-Cross-reference from Components.md Metrology (item 5), CO-002, and Version Mapping.
+**Resolution Path:** Resolved — `Architecture/Precision.md` created 2026-06-06. Full
+precision doctrine now lives there: T0–T4 tolerance tier system, precision ceiling
+doctrine, metrology doctrine, salvage equipment derating, and fabrication-precision
+feedback loop. Section V cross-reference updated to `Architecture/Precision.md`. CO-002
+in Components.md routes to PR-001 for resolution.
 
 ---
 
@@ -515,13 +530,24 @@ Cross-reference from Components.md Metrology (item 5), CO-002, and Version Mappi
 
 - 2026-05-04: **GK-001** — Resolved. Forge loop explicitly defined in Section III.
 - 2026-05-04: **UNK-005** — Partially resolved. Marine G.E.C.K. variant stub added
-  (Section X). Full specification deferred to Trajectories_LF.md v1/v2 scope.
-- 2026-05-14: File retrofitted to canonical LF_File_Template structure. File State, Scope
-  Boundary, File Purpose, Assumptions, Procurement Doctrine (Section IV), Precision
-  Threshold introduction (Section V), Active Disputes, structured unknown tables, and
-  Abandoned Paths added.
-- 2026-05-14: **GK-005** logged — Precision_LF.md identified as needed home document for
-  full precision doctrine.
+  (Section X). Full specification deferred to `Admin/Trajectories.md` v1/v2 scope.
+- 2026-05-14: File retrofitted to canonical `Admin/File_Template.md` structure. File
+  State, Scope Boundary, File Purpose, Assumptions, Procurement Doctrine (Section IV),
+  Precision Threshold introduction (Section V), Active Disputes, structured unknown
+  tables, and Abandoned Paths added.
+- 2026-05-14: **GK-005** logged — `Architecture/Precision.md` identified as needed
+  home document for full precision doctrine.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from
+  `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md` (PC-001). Scope
+  Boundary stale filenames corrected: Precision_LF.md →
+  `Architecture/Precision.md`, Trajectories_LF.md → `Admin/Trajectories.md`,
+  energy_v0.md → `Operations/Energy.md` (PC-003). All stale filenames corrected
+  throughout body: Support_Raft_v0.md → `Tests/Support_Raft.md`,
+  LF_File_Template → `Admin/File_Template.md`. All sidecar Owner fields corrected
+  to `Architecture/Geck_forge_seed.md`. **GK-005 resolved** — `Architecture/Precision.md`
+  created 2026-06-06; Section V cross-reference updated. Open Unknowns updated from
+  3 to 2 (GK-005 now Resolved; GK-002, GK-003, GK-004 remain Open but are
+  non-blocking trajectory items).
 
 ---
 
