@@ -1,5 +1,13 @@
 # Plastics.md — Salvaged Polymers & Pyrolytic Fuel Recovery
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Thermal depolymerization (pyrolysis) operates at high temperatures (300°C–500°C)
 > and generates highly flammable, toxic hydrocarbons and synthetic gas. Enclosure
@@ -19,8 +27,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Forge_Audit_Kit.md                                            |
-| Last Audit       | 2026-05-27                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-27 (Grok — Skeptic/Auditor); revised 2026-06-08             |
 | Auditor          | Grok — Skeptic/Auditor                                              |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -53,6 +61,10 @@
   (→ `Operations/Gate_02_Triage.md`)
 - Energy accounting for pyrolysis reactor operation
   (→ `Operations/Energy.md`)
+- Facility siting, clearance, and hot-work zone requirements
+  (→ `Architecture/Facilities.md` — FA-001)
+- Operator PPE standards and hearing/respiratory conservation program
+  (→ `Admin/Safety_Protocols.md`)
 
 ---
 
@@ -209,6 +221,10 @@ that bypasses halogenated feedstock rejection at triage. Cross-reference:
   SC-007)
 - `Admin/Trajectories.md` — fractional distillation, filament extrusion hardware
   specification, and deep characterization of oil quality are v1+ scope items
+- `Architecture/Facilities.md` — siting and hot-work zone requirements;
+  pyrolysis reactor clearance zones and ventilation topology (FA-001)
+- `Admin/Safety_Protocols.md` — operator PPE standards; respiratory protection
+  requirements for toxic off-gas handling
 
 ---
 
@@ -402,6 +418,12 @@ char composition is characterized and a routing decision tree is defined.
   Skeptic/Auditor audit 2026-05-27.
 - 2026-05-27: PL-005 — New entry. Char and solid residue handling gap identified
   in Grok Skeptic/Auditor audit 2026-05-27. Section D added to body.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from
+  `Admin/Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md` (PC-001).
+  Scope Boundary updated — `Architecture/Facilities.md` added for siting and
+  hot-work zone requirements (PC-002); `Admin/Safety_Protocols.md` added for
+  operator PPE and respiratory protection standards (PC-003). Both added to
+  Integration Hooks.
 
 ---
 
