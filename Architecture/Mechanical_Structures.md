@@ -1,5 +1,13 @@
 # Mechanical_Structures.md
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Structural deflection, unmodeled thermal expansion, and particulate bearing ingress
 > present critical failure vectors capable of destroying irreplaceable salvaged kinematic
@@ -20,7 +28,7 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-31                                                          |
+| Last Audit       | 2026-05-31; revised 2026-06-08                                      |
 | Auditor          | Gemini                                                              |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -48,11 +56,13 @@
 - Specific tool-path G-code files or part-specific geometries
 - Component specifications for explicit brands of stepper/servo motors
 - Electrical circuit schematics for motor driver boards
-  (→ `Operations/Electronics.md` [PLANNED])
+  (→ `Operations/Electronics.md`)
 - Chemistry profiles for chemical tool-head processing
   (→ `Operations/Air_Scrubber.md`)
 - Compressed air system capacity or Air Scrubber back-pressure specifications
   (→ `Operations/Air_Scrubber.md`; see ME-002)
+- Precision ceiling doctrine, tolerance tiers, or metrology methodology
+  (→ `Architecture/Precision.md`)
 
 ---
 
@@ -333,7 +343,8 @@ supplement.
 **Resolution Path:** Measure total system compressed air consumption during a simulated
 Nominal Mode run. Verify the 0.5 bar bleed tap does not reduce system pressure below
 downstream interlock minimums. Cross-reference `Operations/Air_Scrubber.md` for
-back-pressure specifications once that file exists.
+back-pressure specifications and AS-003 (scrubber waste stream and saturation
+calibration — open unknown).
 
 ---
 
@@ -348,3 +359,8 @@ back-pressure specifications once that file exists.
   spindle purge parameters. Verification Ref corrected to
   `Admin/Verification_Gates_LF.md`. Open Unknowns count set to 2 (ME-001, ME-002).
   Spec Gate 1 assessed as passing.
+- 2026-06-08: Navigation Anchors block added. Scope Boundary updated —
+  `Operations/Electronics.md` [PLANNED] tag removed (file now exists);
+  `Architecture/Precision.md` added as precision ceiling doctrine owner (PC-003).
+  ME-002 resolution path updated — `Operations/Air_Scrubber.md` now exists;
+  cross-reference to AS-003 added.
