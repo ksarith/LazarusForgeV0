@@ -1,5 +1,13 @@
 # Lazarus Forge — Components (v0)
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field            | Value                                                               |
@@ -7,8 +15,8 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                           |
-| Last Audit       | 2026-05-14                                                          |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-14 (Gemini 3 Flash — Skeptic/Auditor); revised 2026-06-08  |
 | Auditor          | Gemini 3 Flash — Skeptic/Auditor                                    |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -31,7 +39,10 @@
 - Electronics, software, biological, or optical fabrication systems
 - Detailed engineering specifications for any individual component
 - Energy infrastructure beyond grid bootstrap minimum
-- G.E.C.K. manifest or redundancy stock (see geck_forge_seed.md)
+- G.E.C.K. manifest or redundancy stock
+  (→ `Architecture/Geck_forge_seed.md`)
+- Precision ceiling doctrine, tolerance tiers, or metrology methodology
+  (→ `Architecture/Precision.md`)
 - Cross-module governance or repository-level unknowns
 
 ---
@@ -145,7 +156,7 @@ Decision-making systems above basic threshold logic. Enables reduced human overs
 over time.
 
 ### D. Energy Infrastructure
-On-site generation, storage, and distribution beyond grid bootstrap. See `energy_v0.md`.
+On-site generation, storage, and distribution beyond grid bootstrap. See `Operations/Energy.md`.
 
 ### E. Logistics & Transport
 Material handling, sorting, and transfer automation. Enables higher throughput.
@@ -191,7 +202,7 @@ Forge. The Bootstrap Doctrine establishes:
 
 **Sufficiency criterion:** A component is sufficient if it allows the Forge loop to close.
 The Forge loop: intake → triage → process → verify → learn → repeat.
-(Loop definition per `geck_forge_seed.md` Section III.)
+(Loop definition per `Architecture/Geck_forge_seed.md` Section III.)
 
 **Wear and consumables:** Bootstrap components operate under high maintenance cadence.
 Blade dulling, nozzle clogging, bearing wear, and similar degradation are expected — not
@@ -285,10 +296,10 @@ principled basis and could be made incorrectly or silently deferred.
 Critical item 6 — minimum instrumentation floor distinct from Advanced Sensing. (2)
 Bootstrap Doctrine updated — graduation at v0 uses Baseline Observability plus human
 operator judgment together as the proxy. Remaining: same note should be added to
-Lazarus_forge_v0_flow.md Bootstrap Doctrine reference. UNK-026 in Unknowns_LF.md should
+`Architecture/Forge_flow.md` Bootstrap Doctrine reference. UNK-026 in `Unknowns.md` should
 be updated to reflect partial resolution.
 
-*Cross-module reference: UNK-026 in Unknowns_LF.md*
+*Cross-module reference: UNK-026 in `Unknowns.md`*
 
 ---
 
@@ -327,6 +338,15 @@ tolerance requirements emerge from actual loop closure attempts, not pre-specifi
 - May 2026: Wear and consumables note added to Bootstrap Doctrine. G.E.C.K. named as redundancy path. Gemini Gate 1 blocker cleared.
 - May 2026: CO-002 logged per Gemini audit finding.
 - May 2026: File retrofitted to canonical LF_File_Template structure. File State, Scope Boundary, File Purpose, Assumptions, Active Disputes, structured unknown tables, and Abandoned Paths added.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from
+  `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md` (PC-001). Scope
+  Boundary updated — `Architecture/Geck_forge_seed.md` backtick path corrected;
+  `Architecture/Precision.md` added as precision ceiling doctrine owner (PC-003).
+  Section IID `energy_v0.md` corrected to `Operations/Energy.md`. Section V loop
+  reference corrected to `Architecture/Geck_forge_seed.md`. CO-001 sidecar stale
+  filenames corrected: `Lazarus_forge_v0_flow.md` → `Architecture/Forge_flow.md`,
+  `Unknowns_LF.md` → `Unknowns.md`. Owner fields corrected to
+  `Architecture/Components.md`.
 
 ---
 
