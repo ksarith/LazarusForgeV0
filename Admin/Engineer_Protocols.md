@@ -1,5 +1,13 @@
 # Engineer_Protocols.md — Engineering Problem-Solving Protocol
 
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Poor engineering judgment or unvalidated creative solutions can lead to
 > structural failure, energetic release, wasted resources, or dangerous systems.
@@ -20,10 +28,10 @@
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
-| Last Audit       | 2026-05-29                                                          |
-| Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 4                                                                   |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-05-30 (ChatGPT — Skeptic/Auditor); revised 2026-06-08          |
+| Auditor          | Claude — Retrofit/Auditor (integrating 2026-05-30 addendum)         |
+| Open Unknowns    | 6                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -54,6 +62,9 @@
 - Auditor role class definitions — governed by
   `Admin/Auditor_Protocols.md` §Auditor Role Classes; this file
   extends the Engineer role defined there, it does not replace it
+- Physical safety hazard thresholds, PPE requirements, and
+  acceptable risk consequence categories
+  (→ `Admin/Safety_Protocols.md`)
 
 ---
 
@@ -124,10 +135,13 @@ a simpler alternative? Feature and capability creep are common failure
 modes in complex systems.
 
 **2. Has a solution already been found?**
-Search in this order: `Discovery.md` → relevant module files →
-Lessons Learned → `Unknowns.md` → `Architecture/Forge_Net.md` (when
-available). `Discovery.md` is the primary navigation layer. Repository
-search begins there unless a direct canonical reference is already known.
+Search in this order: (1) `Discovery.md` — primary navigation layer, preferred
+first stop; (2) canonical folder structure (Admin/, Architecture/, Operations/,
+Tests/) if Discovery.md is stale or unavailable; (3) Rename Registry in
+Discovery.md for potentially renamed files; (4) direct file search as fallback.
+`Discovery.md` is the preferred dependency, not the only path — if it becomes
+stale, repository search quality degrades but does not fail entirely. Also consult
+`Architecture/Forge_Net.md` (when available) for cross-forge knowledge.
 This is repository doctrine, not a suggestion.
 
 **3. What worked, what failed, and why?**
@@ -139,9 +153,22 @@ Safety, materials (especially salvaged and imperfect), energy, tools,
 time, environment, skill level. Constraints are not obstacles — they are
 the problem definition.
 
+For energy-bearing systems, thermal processes, chemical processing,
+electronics salvage, pressure vessels, rotating machinery, or fabrication
+operations: review `Operations/Energy.md` and relevant hazard doctrine
+before capability claims or design proposals. Energy-bearing proposals
+must not assume available capacity without consulting current energy
+characterization state.
+
 **5. What is the simplest thing that could work?**
 Apply the "good enough for now" standard. Complexity is debt. Every
 additional component is a failure mode waiting to manifest.
+
+Recovery economics check: does implementation cost — in energy, materials,
+time, or operator burden — exceed the recovered value or utility? A solution
+that costs more than it recovers is reduction dressed as progress. Apply
+the Energy Density Paradox test from the Fallacy Checklist before committing
+to any recovery or reprocessing proposal.
 
 **6. What are the three most likely failure modes?**
 Perform lightweight failure mode analysis. Identify load paths, single
@@ -217,6 +244,20 @@ is a planning tool. Physical testing is the verification gate.
 Record assumptions, decisions, and test results immediately. Context
 loss between sessions is a primary failure mode for multi-agent
 workflows. What is not recorded is lost.
+
+**Unknown Discovery Doctrine**
+When an engineering contribution surfaces a gap, uncertainty, or unresolved
+question that does not yet exist as a sidecar unknown, log it before solution
+development proceeds beyond exploratory discussion. Do not build on an
+unlogged unknown — it will not be tracked, will not receive an expiry review,
+and will not be visible to future contributors or audit cycles. The cost of
+logging is seconds. The cost of an untracked unknown compounding across
+sessions is institutional memory loss.
+
+Newly discovered unknowns must include at minimum: a one-sentence description
+of the reality gap, a one-sentence consequence if left unresolved, and a
+proposed resolution path or discharge route. Route to the owning file's
+sidecar; cross-module unknowns route to `Unknowns.md`.
 
 ---
 
@@ -318,11 +359,44 @@ definition.
 
 ---
 
+### 8. Hazard Escalation Doctrine
+
+Engineering proposals that introduce or interact with the following hazard
+classes must review relevant hazard doctrine and active unknowns before
+proceeding beyond exploratory discussion:
+
+| Hazard Class | Repository Reference | Active Critical Unknowns |
+|---|---|---|
+| Energetic materials | `Operations/Gate_01_Intake.md` | GI-002, GI-003 |
+| Toxic emissions / dust | `Operations/Electronics.md`, `Operations/Air_Scrubber.md` | EL-005 |
+| Biological / chemical waste | `Operations/Gate_03_Reduction.md` | GR-003 |
+| Fire / hot-work | `Operations/Gate_06_Fabrication.md` | GF-007 |
+| Halogenated polymers | `Operations/Plastics.md` | PL-001 |
+| Autonomous behavior | `Admin/Ethical_Constraints.md`, `Architecture/Cognitive_Frameworks.md` | LT-003, LT-004 |
+| Pressure vessels / reactor | `Operations/Plastics.md` | PL-002 |
+| Rotating machinery | `Operations/Gate_05_Separation_Thermal.md` | SC-001, SC-005 |
+| Physical safety / PPE | `Admin/Safety_Protocols.md` | SP-002, SP-003, SP-006 |
+
+Findings from hazard review that are not already logged must be logged as
+unknowns before the proposal advances. Hazard findings that involve
+energetic release, toxic exposure, fire/explosion risk, autonomous action,
+or irreversible environmental impact must be escalated to human operator
+review before any implementation proceeds.
+
+Route escalations to `Admin/Ethical_Constraints.md` for hard-floor checks
+and `Admin/Auditor_Protocols.md` §Human Override Doctrine for authorization
+requirements.
+
+---
+
 ## Lessons Learned
 
 | Date       | Evidence Type | What Was Tried                              | What Failed                                              | What Was Learned                                                                                  | Confidence | Revalidation Needed |
 |------------|---------------|---------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------------------------------|------------|---------------------|
 | 2026-05-29 | Anecdotal     | Broad "question everything" approach        | Wasted effort on settled problems                        | Targeted skepticism anchored in explicit triggers is superior to indiscriminate skepticism        | Anecdotal  | Yes                 |
+| 2026-05-30 | Audit Review  | Discovery.md as sole navigation anchor      | Single-point dependency — stale Discovery degrades search quality | Discovery.md is preferred dependency not only path; canonical folder structure is the fallback   | Analogous  | No                  |
+| 2026-05-30 | Audit Review  | Recovery proposals without economics check  | Solutions proposed whose cost exceeded recovered value   | Energy Density Paradox check must apply to recovery and reprocessing proposals, not just fabrication | Analogous | Yes                 |
+| 2026-05-30 | Audit Review  | Unknown discovery without explicit logging doctrine | Unknowns surfaced during engineering work went untracked | Unknown discovery doctrine required — log before proceeding; untracked unknowns are invisible to future audit cycles | Analogous | Yes |
 | 2026-05-29 | Audit Review  | Engineer role defined without explicit Auditor relationship | Role boundary became ambiguous under governance pressure | Engineer and Auditor roles must be explicitly complementary with a defined dispute resolution sequence | Analogous | Yes              |
 
 ---
@@ -507,6 +581,81 @@ overridden regardless of engineering authority level.
 
 ---
 
+---
+
+### EP-005 — Acceptable Risk Threshold Undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance / Technical       |
+| Blocking      | No                           |
+| Owner         | Admin/Engineer_Protocols.md  |
+| First Logged  | 2026-05-30                   |
+| Last Reviewed | 2026-05-30                   |
+
+**Description:** The Assumption Challenge Triggers section requires escalation
+when "safety consequences exceed acceptable risk threshold" but no threshold
+is defined. The term "acceptable risk" appears without a reference standard,
+quantitative bound, or decision rule.
+
+**Why It Matters:** Without a defined threshold, two engineers may reach
+opposite conclusions about whether a safety consequence triggers mandatory
+challenge. The trigger becomes subjective and audit-inconsistent. This also
+affects EP-004 — authority to accept risk cannot be defined before the risk
+threshold is defined.
+
+**Resolution Path:** Payment via Specification — define acceptable risk
+threshold with reference to at least one of: (1) consequence severity
+categories (minor/major/catastrophic/irreversible) with corresponding
+escalation routes; (2) cross-reference to `Admin/Ethical_Constraints.md`
+Life Preservation heuristics as the hard floor; (3) explicit deferral to
+human operator for any consequence involving irreversible physical harm.
+Cross-reference `Admin/Safety_Protocols.md` consequence category table —
+that file now owns physical safety escalation thresholds (EP-005 partial
+resolution path). Also cross-reference EC-001 (sufficient confidence
+threshold) and EP-004 (engineering authority boundary).
+
+---
+
+### EP-006 — Unknown Lifecycle Integration Undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance                   |
+| Blocking      | No                           |
+| Owner         | Admin/Engineer_Protocols.md  |
+| First Logged  | 2026-05-30                   |
+| Last Reviewed | 2026-05-30                   |
+
+**Description:** The file instructs engineers to feed Lessons Learned and
+resolve Unknowns, but does not define the full lifecycle for unknowns
+discovered during engineering work: how to discover and log them, how to
+assign ownership and severity, how to set expiry criteria, and how to
+distinguish engineering unknowns from governance unknowns. The Unknown
+Discovery Doctrine added to Section 6 covers the discovery trigger but
+not the full lifecycle.
+
+**Why It Matters:** Engineers surfacing unknowns without lifecycle guidance
+will log them inconsistently — wrong file, wrong severity, no expiry trigger,
+no owner. Inconsistent unknowns are invisible to the Expiry Watch and the
+global index.
+
+**Resolution Path:** Payment via Specification — define: (1) format
+requirements for engineering-sourced unknowns (cross-reference
+`Admin/File_Template.md` §8 sidecar format); (2) ownership assignment
+rules (unknown lives in the file closest to the gap); (3) severity
+classification guidance for engineering discoveries; (4) escalation
+path for unknowns that surface hazards rather than just gaps.
+Cross-reference `Admin/Auditor_Protocols.md` §Unknowns Registry Governance.
+
+---
+
 ### Resolution Log
 
 - 2026-05-29: v0.1 created by Grok (Fabricator/Systems). Initial
@@ -525,10 +674,25 @@ overridden regardless of engineering authority level.
   Spec Gates updated to 2/6. Open Unknowns updated to 4. All EP-
   owner fields corrected to Admin/Engineer_Protocols.md. Abandoned
   Paths section populated. ASM-004 added to Assumptions.
-
----
-
-## Relationship to Existing Documents
+- 2026-05-30: ChatGPT Skeptic/Auditor addendum actioned. Question 2
+  search order updated to include fallback paths. Question 4 expanded
+  with energy-bearing systems consultation requirement. Question 5
+  expanded with recovery economics check. Section 6 expanded with
+  Unknown Discovery Doctrine. Section 8 (Hazard Escalation Doctrine)
+  added — hazard class table with repository references and active
+  critical unknowns. Lessons Learned entries added. EP-005 logged
+  (acceptable risk threshold undefined). EP-006 logged (unknown lifecycle
+  integration undefined). Open Unknowns updated to 6.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected
+  from `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md`
+  (PC-001). Scope Boundary updated — `Admin/Safety_Protocols.md` added
+  for physical safety hazard thresholds and PPE requirements (PC-003).
+  Safety_Protocols.md row added to Section 8 Hazard Escalation table.
+  All addendum content integrated into body — addendum block removed.
+  File State updated: Open Unknowns 4→6, Last Audit and Auditor fields
+  updated to reflect 2026-05-30 ChatGPT pass. EP-005 resolution path
+  updated — `Admin/Safety_Protocols.md` now provides consequence
+  category table as partial resolution path.
 
 - `Admin/Auditor_Protocols.md` — Tier 2; this file extends the Engineer
   role defined in §Auditor Role Classes; AI Contribution Rules and Human
@@ -558,219 +722,22 @@ overridden regardless of engineering authority level.
 
 ---
 
-## Status
+## Drift Indicators
 
-Version 0.2 — revised draft (2026-05-29).
+Mandatory re-audit conditions for this document. All canonical triggers
+from `Admin/File_Template.md` apply. The following are additional local
+triggers specific to Engineer_Protocols.md:
 
-**Gate status:** G1 (internal coherence) and G2 (physical plausibility
-as a governance document) assessed as passing. G3 through G6 require
-formal audit pass by a different agent.
+| Trigger | Reason |
+|---------|--------|
+| The 10-question framework is modified to remove safety or failure-learning questions | Safety and failure-learning are load-bearing — the framework is not complete without them |
+| Assumption Challenge Triggers are removed or made optional | Mandatory challenge doctrine is the primary defense against reasoning drift in multi-agent workflows |
+| Discovery.md is removed as the primary search target | Anti-reinvention doctrine depends on a stable primary navigation anchor |
+| Unknown Discovery Doctrine removed from Section 6 | Untracked unknowns compound silently — logging doctrine is mandatory |
+| Section 8 Hazard Escalation table revised without cross-validating against owning file sidecars | Hazard unknowns change as files are updated — table must stay current |
+| "Acceptable risk threshold" referenced without pointing to a defined standard | EP-005 — subjective threshold produces audit-inconsistent escalation decisions |
+| EP-005 or EP-006 closed without formal resolution entry | Both require documented resolution criteria — silent closure is not permitted |
+| Lessons Learned evidence type labels diverge from repository Truth Provenance vocabulary | Repository alignment requires Measured / Estimated / Analogous / Placeholder labels |
 
-**What must remain constant:**
-
-**Engineering is disciplined adaptation under constraints.**
-
-**Skepticism must be targeted, not indiscriminate.**
-
-**Every engineering effort should capture knowledge, not just output.**
-
-
----
-
-## ADDENDUM — Admin/Engineer_Protocols.md — 2026-05-30
-## Paste this block to the end of the file.
-## Integrate into body at next full revision pass.
-## ChatGPT Skeptic/Auditor findings actioned.
-
----
-
-### Body Additions (integrate into sections at next revision)
-
-**ADD TO Section 2, Question 4 — Real Constraints:**
-Add after the existing paragraph:
-
-> For energy-bearing systems, thermal processes, chemical processing,
-> electronics salvage, pressure vessels, rotating machinery, or fabrication
-> operations: review `Operations/Energy.md` and relevant hazard doctrine
-> before capability claims or design proposals. Energy-bearing proposals
-> must not assume available capacity without consulting current energy
-> characterization state.
-
-**ADD TO Section 2, Question 5 — Simplest Thing That Could Work:**
-Add after the existing paragraph:
-
-> Recovery economics check: does implementation cost — in energy, materials,
-> time, or operator burden — exceed the recovered value or utility? A solution
-> that costs more than it recovers is reduction dressed as progress. Apply
-> the Energy Density Paradox test from the Fallacy Checklist before committing
-> to any recovery or reprocessing proposal.
-
-**ADD TO Section 2, Question 2 — Has a Solution Already Been Found:**
-Replace the existing search order with:
-
-> Search in this order: (1) `Discovery.md` — primary navigation layer,
-> preferred first stop; (2) canonical folder structure (Admin/, Architecture/,
-> Operations/, Tests/) if Discovery.md is stale or unavailable; (3) Rename
-> Registry in Discovery.md for potentially renamed files; (4) direct file
-> search as fallback. `Discovery.md` is the preferred dependency, not the
-> only path — if it becomes stale, repository search quality degrades but
-> does not fail entirely.
-
-**ADD TO Section 6 — Failure Harvesting, after the four-pathway closure loop:**
-
-> **Unknown Discovery Doctrine**
-> When an engineering contribution surfaces a gap, uncertainty, or unresolved
-> question that does not yet exist as a sidecar unknown, log it before solution
-> development proceeds beyond exploratory discussion. Do not build on an
-> unlogged unknown — it will not be tracked, will not receive an expiry review,
-> and will not be visible to future contributors or audit cycles. The cost of
-> logging is seconds. The cost of an untracked unknown compounding across
-> sessions is institutional memory loss.
->
-> Newly discovered unknowns must include at minimum: a one-sentence description
-> of the reality gap, a one-sentence consequence if left unresolved, and a
-> proposed resolution path or discharge route. Route to the owning file's
-> sidecar; cross-module unknowns route to `Unknowns.md`.
-
-**ADD new Section 8 — Hazard Escalation Doctrine:**
-
-> ### 8. Hazard Escalation Doctrine
->
-> Engineering proposals that introduce or interact with the following hazard
-> classes must review relevant hazard doctrine and active unknowns before
-> proceeding beyond exploratory discussion:
->
-> | Hazard Class | Repository Reference | Active Critical Unknowns |
-> |---|---|---|
-> | Energetic materials | `Operations/Gate_01_Intake.md` | GI-002, GI-003 |
-> | Toxic emissions / dust | `Operations/Electronics.md`, `Operations/Air_Scrubber.md` | EL-005 |
-> | Biological / chemical waste | `Operations/Gate_03_Reduction.md` | GR-003 |
-> | Fire / hot-work | `Operations/Gate_06_Fabrication.md` | GF-007 |
-> | Halogenated polymers | `Operations/Plastics.md` | PL-001 |
-> | Autonomous behavior | `Admin/Ethical_Constraints.md`, `Architecture/Cognitive_Frameworks.md` | LT-003, LT-004 |
-> | Pressure vessels / reactor | `Operations/Plastics.md` | PL-002 |
-> | Rotating machinery | `Operations/Gate_05_Separation_Thermal.md` | SC-001, SC-005 |
->
-> Findings from hazard review that are not already logged must be logged as
-> unknowns before the proposal advances. Hazard findings that involve
-> energetic release, toxic exposure, fire/explosion risk, autonomous action,
-> or irreversible environmental impact must be escalated to human operator
-> review before any implementation proceeds.
->
-> Route escalations to `Admin/Ethical_Constraints.md` for hard-floor checks
-> and `Admin/Auditor_Protocols.md` §Human Override Doctrine for authorization
-> requirements.
-
----
-
-### Lessons Learned Additions (append to table at next revision)
-
-| Date       | Evidence Type | What Was Tried                                   | What Failed                                                     | What Was Learned                                                                                                    | Confidence | Revalidation Needed |
-|------------|---------------|--------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|------------|---------------------|
-| 2026-05-30 | Audit Review  | Discovery.md as sole navigation anchor           | Single-point dependency — stale Discovery degrades search quality | Discovery.md is preferred dependency not only path; canonical folder structure is the fallback                     | Analogous  | No                  |
-| 2026-05-30 | Audit Review  | Recovery proposals without economics check       | Solutions proposed whose cost exceeded recovered value          | Energy Density Paradox check must apply to recovery and reprocessing proposals, not just fabrication               | Analogous  | Yes                 |
-| 2026-05-30 | Audit Review  | Unknown discovery without explicit logging doctrine | Unknowns surfaced during engineering work went untracked       | Unknown discovery doctrine required — log before proceeding; untracked unknowns are invisible to future audit cycles | Analogous | Yes                 |
-
----
-
-### New Sidecar Unknowns (append to Auditor Notes & Unknowns before Resolution Log)
-
----
-
-### EP-005 — Acceptable Risk Threshold Undefined
-
-| Field         | Value                        |
-|---------------|------------------------------|
-| Status        | Open                         |
-| Risk          | Medium                       |
-| Priority      | Major                        |
-| Type          | Governance / Technical       |
-| Blocking      | No                           |
-| Owner         | Admin/Engineer_Protocols.md  |
-| First Logged  | 2026-05-30                   |
-| Last Reviewed | 2026-05-30                   |
-
-**Description:** The Assumption Challenge Triggers section requires escalation
-when "safety consequences exceed acceptable risk threshold" but no threshold
-is defined. The term "acceptable risk" appears without a reference standard,
-quantitative bound, or decision rule.
-
-**Why It Matters:** Without a defined threshold, two engineers may reach
-opposite conclusions about whether a safety consequence triggers mandatory
-challenge. The trigger becomes subjective and audit-inconsistent. This also
-affects EP-004 (engineering authority boundary) — authority to accept risk
-cannot be defined before the risk threshold is defined.
-
-**Resolution Path:** Payment via Specification — define acceptable risk
-threshold with reference to at least one of: (1) consequence severity
-categories (minor/major/catastrophic/irreversible) with corresponding
-escalation routes; (2) cross-reference to `Admin/Ethical_Constraints.md`
-Life Preservation heuristics as the hard floor; (3) explicit deferral to
-human operator for any consequence involving irreversible physical harm.
-Cross-reference EC-001 (sufficient confidence threshold) and EP-004
-(engineering authority boundary) — all three form a coherent authority
-and risk-tolerance framework.
-
----
-
-### EP-006 — Unknown Lifecycle Integration Undefined
-
-| Field         | Value                        |
-|---------------|------------------------------|
-| Status        | Open                         |
-| Risk          | Medium                       |
-| Priority      | Major                        |
-| Type          | Governance                   |
-| Blocking      | No                           |
-| Owner         | Admin/Engineer_Protocols.md  |
-| First Logged  | 2026-05-30                   |
-| Last Reviewed | 2026-05-30                   |
-
-**Description:** The file instructs engineers to feed Lessons Learned and
-resolve Unknowns, but does not define the full lifecycle for unknowns
-discovered during engineering work: how to discover and log them, how to
-assign ownership and severity, how to set expiry criteria, and how to
-distinguish engineering unknowns from governance unknowns. The Unknown
-Discovery Doctrine added in this addendum covers the discovery trigger but
-not the full lifecycle.
-
-**Why It Matters:** Engineers surfacing unknowns without lifecycle guidance
-will log them inconsistently — wrong file, wrong severity, no expiry trigger,
-no owner. Inconsistent unknowns are invisible to the Expiry Watch and the
-global index. The governance system depends on well-formed unknown entries
-to function.
-
-**Resolution Path:** Payment via Specification — define: (1) format
-requirements for engineering-sourced unknowns (cross-reference
-`Admin/File_Template.md` §8 sidecar format); (2) ownership assignment
-rules (unknown lives in the file closest to the gap); (3) severity
-classification guidance for engineering discoveries (distinguish technical
-unknowns from governance unknowns from safety unknowns); (4) escalation
-path for unknowns that surface hazards rather than just gaps.
-Cross-reference `Admin/Auditor_Protocols.md` §Unknowns Registry Governance
-for alignment with existing doctrine.
-
----
-
-### Resolution Log Addition (append to Resolution Log)
-
-- 2026-05-30: ChatGPT Skeptic/Auditor findings actioned via addendum.
-  Body additions queued: energy-bearing consultation requirement (Question 4),
-  recovery economics check (Question 5), Discovery.md fallback order
-  (Question 2), Unknown Discovery Doctrine (Section 6), Hazard Escalation
-  Doctrine (new Section 8). Lessons Learned entries added. EP-005 logged
-  (acceptable risk threshold undefined). EP-006 logged (unknown lifecycle
-  integration undefined). Open Unknowns updated: 4 → 6. Verification_Gates_LF.md
-  G5 cross-reference resolved — file confirmed existing per Discovery.md
-  updated 2026-05-29. Provenance vocabulary alignment noted for next revision:
-  Lessons Learned evidence labels should align with repository Truth Provenance
-  labels (Measured / Estimated / Analogous / Placeholder).
-
----
-
-### File State Updates (apply at next revision)
-
-- Open Unknowns: 4 → 6
-- Last Audit: 2026-05-30
-- Auditor: ChatGPT — Skeptic/Auditor (findings actioned by Claude)
-- Spec Gates: 2/6 (unchanged — G3 partial, G5 resolved pending formal pass)
+**Compound Drift Rule:** Multiple simultaneous triggers escalate to
+human review.
