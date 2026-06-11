@@ -115,7 +115,8 @@ Challenges/                                 — Problem layer: why these capabil
     ├── Biofouling.md                       — Biological colonization and corrosion
     ├── Waste.md                            — Discretionary waste and repair capacity loss
     ├── Planned_Obsolescence.md             — Deliberate unrepairability and locked hardware
-    └── Critical_Minerals.md                — Rare earth and critical mineral supply chains
+    ├── Critical_Minerals.md                — Rare earth and critical mineral supply chains
+    └── Emergence.md                        — Emergent intelligence: alignment-by-environment design
 
 Archive/                                    — Prior states of governance-bearing documents
     └── [created when first Specification-level file is revised — see Admin/Repository_Structure.md]
@@ -130,7 +131,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness:** Verified complete as of 2026-06-06. Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+**Routing.md completeness:** Verified complete as of 2026-06-11 (`Challenges/Emergence.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -228,6 +229,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Challenges/Waste.md` | Active | — | — |
 | `Challenges/Planned_Obsolescence.md` | Active | — | — |
 | `Challenges/Critical_Minerals.md` | Active | — | — |
+| `Challenges/Emergence.md` | Exploration | 0/6 | High |
 
 ---
 
@@ -568,6 +570,12 @@ Deliberate unrepairability. Thermal de-manufacturing; Logic-Zero wipe; standardi
 Rare earth and critical mineral supply chain concentration. Urban mining doctrine; selective induction recovery; real-time material assay.
 **Upstream:** Gate_02_Triage.md; Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Electronics.md.
 **Downstream:** Gate_06_Fabrication.md; Forge_Net.md; Trajectories.md.
+
+### `Challenges/Emergence.md`
+Emergent intelligence and alignment-by-environment design. Phase-shift framing; eight engineering requirements; game-theoretic scaffolding; Logic-Zero reset; constitutional corrigibility architecture. First Challenges/ file built to full File_Template.md standard — reference implementation for future Challenges/ retrofit passes.
+**Upstream:** Ethical_Constraints.md; Governance_Charter.md (Q-3); Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Electronics.md; Auditor_Protocols.md.
+**Downstream:** Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Forge_Net.md; Leviathan_testing.md; Support_Raft.md; Verification_Gates_LF.md.
+⚠️ EM-001 (behavioral opacity detection threshold) — High; blocks watchdog specification. EM-004 (governance substrate integrity under emergent agent access) — Critical; mirrors GOV-003, SEC-007.
 
 ---
 
