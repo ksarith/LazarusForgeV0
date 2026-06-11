@@ -134,17 +134,9 @@ through Gate_07). No pending gate files remain.
   undefined operational term
 - `Architecture/Components.md` — Critical vs. useful component taxonomy. Defines the
   minimum architecture for the Forge loop to close
-- `Architecture/Facilities.md` — Physical environment constraints and siting prerequisites.
-  Nonburnable flooring as a hard constraint. Airflow topology doctrine, hazard zone
-  separation, triangle workstation principle, floor loading, utility access. Resolves
-  UNK-006 (facility siting) — the gap previously referenced by seven dependent modules
 - `Architecture/Engineering.md` — First-principles engineering backbone. Foundational
   principles, safety factors, materials behavior, and Arkansas climate derating. The *why*
   behind all engineering decisions
-- `Architecture/Precision.md` — Precision ceiling doctrine and repository-wide tolerance
-  tier system (T0–T4). Metrology doctrine for salvaged instruments, measurement uncertainty
-  standard, salvage equipment dimensional derating, and the fabrication-precision feedback
-  loop between Gate_06 and Gate_07. Precision is tracked as a first-class capability metric
 - `Architecture/Mechanical_Structures.md` — Structural, mechanical, and kinematic
   engineering doctrine for salvaged-component fabrication machinery. Gantry rigidity,
   thermal compensation, kinematic interlock matrix, sacrificial shear coupling mandate,
@@ -164,7 +156,9 @@ through Gate_07). No pending gate files remain.
   to Engineering.md — owns all chemical and electrochemical principles across the Forge
 - `Architecture/Cognitive_Frameworks.md` — How Forge systems think safely under
   uncertainty. Distributed cognition, confidence collapse states (Green through Black),
-  TMR architecture, human supervisory stack
+  TMR architecture, human supervisory stack. Section IX formally names the Forge
+  Meta-Algorithm and eight component algorithms that emerge from the doctrine —
+  the repository is a continuous model-correction system, not an optimization system
 - `Architecture/Forge_Net.md` — Decentralized network infrastructure connecting forge
   instances. Prerequisite for the inter-forge logistics model
 - `Architecture/Geck_forge_seed.md` — Minimum viable seed for new Forge deployment in
@@ -199,34 +193,17 @@ than relying on behavioral alignment alone.
 - `Admin/Engineer_Protocols.md` — Cognitive and procedural protocols for engineering
   contributors. Fills the gap between governance (what is permitted) and domain
   specifications (what is built)
-- `Admin/Safety_Protocols.md` — Physical operator safety doctrine. PPE requirements by
-  hazard class, hearing conservation, heat stress doctrine for Arkansas summer conditions,
-  acceptable risk threshold (consequence categories: Minor / Major / Catastrophic /
-  Irreversible), and incident reporting. The only Admin/ file whose failure mode is
-  physical harm rather than document drift
 - `Admin/Security_Protocols.md` — Cryptographic trust and multi-agent node security.
   Bridges constitutional governance declarations and operational integrity procedures
 - `Admin/Repository_Integrity_Protocol.md` — Operational integrity enforcement. Defines
   integrity baselines, violation classification (Minor / Major / Constitutional), recovery
   procedures, and the automation migration path. Bridges the gap between constitutional
   declarations and enforceable protections
-- `Admin/Repository_Structure.md` — Filename conventions and folder assignment doctrine.
-  The no-version-suffix rule, PascalCase with underscores standard, folder decision rules
-  (seven in order), Archive/ directory doctrine. Forward-looking naming standard — new
-  files are created under this rule
-- `Admin/Economics.md` — Dynamic resource doctrine. Buy what you need, sell what you
-  don't. Canonical owner of all barter doctrine — barter is a fully valid economic
-  exchange, valued at market replacement cost of received goods. Market navigation
-  framework, value ladder doctrine, v1 profitability baseline framework (TR-001
-  resolution path)
-- `Admin/Governance_Migration_Protocol.md` — Tier 1 Axiom amendment procedures. Two-track
-  system: Track A for Tier 2–5 governance, Track B for constitutional amendments. Track B
-  requires four phases — engineer proposal assembly, adversarial review, human ratification,
-  and recording. Human ratification is mandatory and non-delegable. Hard floor: the
-  Anti-Weaponization Doctrine and the humanitarian override closure are outside amendment
-  scope permanently
 - `Admin/Ship_of_Theseus.md` — Philosophical and legal grounding for repair as identity
-  preservation. Uses the Ship of Theseus paradox to frame right-to-repair defense strategy
+  preservation. Uses the Ship of Theseus paradox to frame right-to-repair defense strategy.
+  Also owns the AI Identity Continuity Doctrine — defines when a restored or fragmented
+  autonomous unit is the Canonical Identity vs. a Derivative Identity with restricted
+  governance authority, and the re-vetting path back to full standing
 - `Admin/Trajectories.md` — Version roadmap from v0 (terrestrial proof of persistence)
   through v5 (interstellar propagation). Each version defined by survival threshold and
   exit condition — not a feature list. Scope routing destination for all out-of-version
@@ -239,7 +216,9 @@ than relying on behavioral alignment alone.
 
 - `Tests/Leviathan_testing.md` — Deep-ocean autonomous test framework. Leviathan exists
   to break assumptions and surface hidden failure modes before off-world deployment.
-  Survival is optional. Understanding is not
+  Section VII defines the Correlated AI Failure Test Protocol — poisoned telemetry
+  injection under swarm conditions to detect whether multi-agent consensus is genuine
+  agreement or amplified shared blind spots. Survival is optional. Understanding is not
 - `Tests/Support_Raft.md` — Stationary operational anchor for mobile Leviathan units.
   Regional power, data relay, physical recovery, and triage processing. The Raft does not
   move. Leviathan units do. Complexity that lives on the Raft stays off the units
@@ -271,15 +250,11 @@ obligations.
 
 ### Navigation & Tracking
 
-- `Discovery.md` — Start here for scope relationships and routing logic. Full file map,
-  scope routing layer, reading order, rename registry, and per-file scope boundaries.
-  "Where does this belong?" and "what files does this decision affect?" are answered here
-- `Routing.md` — Start here for programmatic file access. Flat lookup table mapping every
-  file to its raw GitHub URL (for agent context loading) and repository URL (for human
-  review). Load this first when an agent needs to fetch specific files by path
-- `Unknowns.md` — Cross-module unknowns global index and pending corrections tracker.
-  Navigation layer only — full entry detail lives in each owning file's sidecar. Also
-  owns all pending correction task tracking; Discovery.md is a pure navigation map
+- `Discovery.md` — Start here. Full file map, scope routing layer, reading order, rename
+  registry, and per-file scope boundaries. The canonical source for filename resolution
+  and ownership routing. "Where does this belong?" is answered here
+- `Unknowns.md` — Cross-module unknowns global index. Navigation layer only — full entry
+  detail lives in each owning file's sidecar
 
 ---
 
@@ -325,10 +300,8 @@ At v0, purchasing precision instruments is correct doctrine. A commercial calipe
 outperforms anything a v0 Forge can self-fabricate to measure itself with. Precision
 is seeded deliberately; it is not bootstrapped from nothing.
 
-The T0–T4 tolerance tier system in `Architecture/Precision.md` is the repository-wide
-standard for all dimensional claims. T0 and T1 are the reliable v0 working range. The
-precision ceiling is declared from fabrication trials and revised as capability grows —
-downward revision in response to evidence is not failure, it is honest accounting.
+Full precision doctrine is under development. Cross-reference: `Architecture/Components.md`
+item 5 (Metrology) and item 6 (Baseline Observability).
 
 ---
 
@@ -346,8 +319,7 @@ the architecture builds:
 - **Adversarial review** — no agent's output is trusted without hostile independent review
 - **Provenance requirements** — all claims must trace to verifiable external sources
 - **Visible uncertainty** — unknowns must remain visible, not buried
-- **Amendment procedures** — the system can be corrected through defined paths, including
-  formal Tier 1 Axiom amendment via `Admin/Governance_Migration_Protocol.md`
+- **Amendment procedures** — the system can be corrected through defined paths
 - **Escalation paths** — instability surfaces rather than accumulates silently
 
 The Tier 1 Axioms in `Admin/Governance_Charter.md` are the constitutional foundation.
@@ -403,25 +375,17 @@ Full framework in `Tests/Leviathan_testing.md`.
 Early-stage system architecture with active specification development.
 
 All seven operational gates exist (Gate_01 through Gate_07). The governance layer has
-reached constitutional maturity with the adoption of Tier 1 Axioms and the creation of
-`Admin/Governance_Migration_Protocol.md` — the amendment procedure that makes the
-constitution corrigible without making it fragile. The architecture layer now includes
-`Architecture/Facilities.md` (physical environment constraints — resolves the facility
-siting gap across seven dependent modules), `Architecture/Precision.md` (tolerance tier
-system and metrology doctrine), `Architecture/Mechanical_Structures.md`,
-`Architecture/Thermal_Systems.md`, `Architecture/Friction_Dynamics.md`, and
-`Architecture/Chemistry.md` as peer foundational files alongside Engineering.md. The
-Challenges/ directory holds five active files anchoring the technical architecture to
-real-world purpose. `Admin/Safety_Protocols.md` establishes physical operator safety
-doctrine — the only Admin/ file whose failure mode is harm rather than drift.
-`Admin/Economics.md` establishes the dynamic resource doctrine and owns all barter
-protocol. `Admin/Repository_Structure.md` codifies the naming conventions that have been
-applied throughout the repository. `Routing.md` provides programmatic file access for
-agent context loading.
+reached constitutional maturity with the adoption of Tier 1 Axioms. The architecture
+layer now includes `Architecture/Mechanical_Structures.md`, `Architecture/Thermal_Systems.md`,
+`Architecture/Friction_Dynamics.md`, and `Architecture/Chemistry.md` — covering
+salvaged-frame fabrication doctrine, thermodynamic and heat transfer doctrine,
+fluid mechanics/aerodynamics/tribology doctrine, and electrochemical/chemical
+doctrine respectively as peer foundational files alongside Engineering.md. The Challenges/
+directory has been established as the repository's problem layer, currently holding five
+active files.
 
 The primary remaining gaps are enforcement architecture (GOV-003), human override
-authentication (GOV-006), confirmed facility siting (FA-001), and the operational hardware
-unknowns tracked in `Unknowns.md`.
+authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
 
 No claims of full automation, self-replication, or net-positive economics are made without
 measurement. All quantitative figures are labeled with confidence levels per
@@ -430,5 +394,3 @@ measurement. All quantitative figures are labeled with confidence levels per
 The system is incomplete. Incompleteness is honest.
 
 **Start with `Discovery.md`.**
-**Routing.md is the index tool.**
-https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md
