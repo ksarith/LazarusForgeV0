@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.5 — Audit cycle 2026-06-08. Retrofit pass: Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md — Navigation Anchors added, Verification Ref corrected (PC-001 partial), Facilities.md upstream references added (PC-002 partial). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated with τ=50ms windowed WDT, cryptographic heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement (Gemini Synthesizer; Analogous confidence). CF-002 In Progress — Leviathan_testing.md Section VII added: poisoned telemetry injection protocol, correlated failure detection criterion, diversity scoring table. CF-003 In Progress — Ship_of_Theseus.md Section IV added: Canonical vs. Derivative Identity, 30% threshold, re-vetting path, cognitive grain analog; ST-003 status updated to In Progress. Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named; Asymmetric Conservatism property documented. PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md corrected (6 files remain). PC-002 partial closure: same four files corrected (3 files remain).**
+**Version 2.6 — Audit cycle 2026-06-08 (continued). Retrofit pass completed: Gate_03, Gate_04, Gate_05, Gate_06, Gate_07, Plastics, Woodworking, Forge_Net, Geck_forge_seed, Components, Mechanical_Structures, Engineer_Protocols, Governance_Charter, Trajectories — Navigation Anchors added to all. PC-001 CLOSED — all 10 Verification Ref corrections applied. PC-002 CLOSED — all 7 Facilities.md upstream references applied. PC-003 CLOSED — all 10 new-file cross-reference corrections applied. GK-005 RESOLVED — Architecture/Precision.md created 2026-06-06. Engineer_Protocols.md ADDENDUM integrated — EP-005 and EP-006 now active sidecar unknowns (Open Unknowns updated 4→6). Governance_Charter.md [PLANNED] labels cleared for four files now confirmed created. Trajectories.md economics_v0.md reference corrected to Admin/Economics.md. Mechanical_Structures.md [PLANNED] Electronics.md tag removed.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,7 +27,32 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 
 ---
 
-## What v2.5 Means
+## What v2.6 Means
+
+- **PC-001 CLOSED** — All 10 Verification Ref corrections applied across the
+  full file set. AUDIT_HARNESS.py now routes correctly against every file.
+- **PC-002 CLOSED** — All 7 Facilities.md upstream references applied.
+- **PC-003 CLOSED** — All 10 new-file cross-reference corrections applied.
+  Files now reference: Precision.md, Economics.md, Safety_Protocols.md,
+  Governance_Migration_Protocol.md per their scope dependencies.
+- **GK-005 RESOLVED** — `Architecture/Precision.md` created 2026-06-06.
+  Geck_forge_seed.md Section V updated; Open Unknowns 3→2.
+- **EP-005 and EP-006 now active** — Engineer_Protocols.md ADDENDUM
+  integrated into body. EP-005 (acceptable risk threshold) and EP-006
+  (unknown lifecycle integration) added as formal sidecar unknowns.
+  Open Unknowns for Engineer_Protocols.md updated 4→6.
+- **Governance_Charter.md [PLANNED] labels cleared** for four files now
+  confirmed created: Canonical_Terms.md, Repository_Structure.md,
+  Security_Protocols.md, Governance_Migration_Protocol.md.
+- Retrofit complete for this session: 22 files total received Navigation
+  Anchors, correct Verification Refs, and targeted corrections. Repository
+  is now structurally compliant for machine audit across the full active
+  file set.
+
+*(v2.5: Seven files retrofitted; CF-001, CF-002, CF-003 moved to In
+Progress; PC-001 and PC-002 partial closure.)*
+
+
 
 - Retrofit pass completed for seven files — Navigation Anchors added to all;
   Verification Refs corrected; Facilities.md upstream references added
@@ -428,7 +453,7 @@ ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
 | EP-002 | AI vs Human Protocol optimization | `Admin/Engineer_Protocols.md` | Open | Minor |
 | EP-003 | Integration mapping with Auditor_Protocols and Cognitive_Frameworks | `Admin/Engineer_Protocols.md` | Open | Major |
 | EP-004 | Engineering authority boundary undefined | `Admin/Engineer_Protocols.md` | Open | Major |
-| EP-005 | Acceptable risk threshold undefined | `Admin/Engineer_Protocols.md` | Open | Major |
+| EP-005 | Acceptable risk threshold undefined — partial resolution via Safety_Protocols.md; full threshold definition still open | `Admin/Engineer_Protocols.md` | Open | Major |
 | EP-006 | Unknown lifecycle integration undefined | `Admin/Engineer_Protocols.md` | Open | Major |
 
 ### Engineering & Structures
@@ -702,7 +727,7 @@ ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
 | PR-002 | Reference standard not established | `Architecture/Precision.md` | Open | Major |
 | PR-003 | Traceable dimensional claims required at Specification | `Architecture/Precision.md` | Open | Major |
 | PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | Major |
-| PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Open | Minor |
+| PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Resolved | — |
 
 *PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially resolves ME-001 when declared.*
 *PR-004 is a prerequisite for PR-001 ceiling declaration.*
@@ -711,9 +736,9 @@ ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
 
 | ID | Title | Files Affected | Status | Priority |
 |---|---|---|---|---|
-| PC-001 | Verification Ref corrections — files pointing to Forge_Audit_Kit.md instead of Admin/Verification_Gates_LF.md | ~~Gate_01~~, Gate_03, Gate_04, Gate_06, Gate_07, ~~Electronics~~, ~~Energy~~, Plastics, Woodworking, Forge_Net (~~Air_Scrubber~~ corrected) | In Progress | Major |
-| PC-002 | Upstream reference corrections — files missing Facilities.md upstream link | ~~Gate_01~~, Gate_03, Gate_04, Gate_05, Gate_06, ~~Electronics~~, Woodworking | In Progress | Minor |
-| PC-003 | New file cross-reference corrections — files missing references to new 2026-06-06 files | Gate_06→Precision.md, Gate_07→Economics.md, Air_Scrubber→Safety_Protocols.md, Components.md→Precision.md, Mechanical_Structures.md→Precision.md, Engineer_Protocols.md→Safety_Protocols.md, Governance_Charter.md→Governance_Migration_Protocol.md, Trajectories.md→Economics.md, Security_Protocols.md→already done, Geck_forge_seed.md→Precision.md | Open | Minor |
+| PC-001 | Verification Ref corrections — all 10 files corrected to Admin/Verification_Gates_LF.md | ~~Gate_01~~, ~~Gate_03~~, ~~Gate_04~~, ~~Gate_06~~, ~~Gate_07~~, ~~Electronics~~, ~~Energy~~, ~~Plastics~~, ~~Woodworking~~, ~~Forge_Net~~ (~~Air_Scrubber~~ corrected) | **Resolved** | Major |
+| PC-002 | Upstream reference corrections — all 7 files now include Facilities.md upstream link | ~~Gate_01~~, ~~Gate_03~~, ~~Gate_04~~, ~~Gate_05~~, ~~Gate_06~~, ~~Electronics~~, ~~Woodworking~~ | **Resolved** | Minor |
+| PC-003 | New file cross-reference corrections — all 10 files updated with 2026-06-06 file references | ~~Gate_06→Precision.md~~, ~~Gate_07→Economics.md~~, ~~Air_Scrubber→Safety_Protocols.md~~, ~~Components.md→Precision.md~~, ~~Mechanical_Structures.md→Precision.md~~, ~~Engineer_Protocols.md→Safety_Protocols.md~~, ~~Governance_Charter.md→Governance_Migration_Protocol.md~~, ~~Trajectories.md→Economics.md~~, ~~Security_Protocols.md→already done~~, ~~Geck_forge_seed.md→Precision.md~~ | **Resolved** | Minor |
 | PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md have stale cross-references per Rename Registry | Challenges/Water.md, Challenges/Planned_Obsolescence.md | Open | Minor |
 
 *PC-001 is the highest priority — Verification Ref is machine-read by AUDIT_HARNESS.py.*
@@ -809,7 +834,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 | VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
 | RS-003 | Archive/ directory not created — blocks RIP-001 full closure; create before next Specification-level file revision |
-| PC-001 | Verification Ref corrections — 6 files remain; affects AUDIT_HARNESS.py routing |
+| PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md; low risk, not machine-read |
 
 ---
 
@@ -826,7 +851,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created 2026-05-19 | 2026-05-20 |
 | UNK-006 | Master safety registry — facility siting | Resolved — Architecture/Facilities.md created; 7 dependent files pending PC-002 reference corrections | 2026-06-06 |
 | GK-005 | Precision_LF.md not yet created | Resolved — Architecture/Precision.md created; stale name corrected per Repository_Structure.md convention | 2026-06-06 |
-| EP-005 | Acceptable risk threshold undefined | Resolved — Admin/Safety_Protocols.md Section I defines consequence categories and escalation rules | 2026-06-06 |
+| PR-005 | GK-005 resolution confirmation pending | Resolved — Geck_forge_seed.md Section V updated; cross-reference now points to Architecture/Precision.md | 2026-06-08 |
+| EP-005 | Acceptable risk threshold — partial resolution | Partially resolved — Admin/Safety_Protocols.md Section I defines consequence categories and escalation rules; full threshold definition remains open in Engineer_Protocols.md sidecar | 2026-06-06 |
 | EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine; canonical ownership assigned | 2026-06-06 |
 | GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
 
@@ -860,4 +886,6 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
-**v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected in four files (PC-001 In Progress — 6 remain). Facilities.md upstream references added in four files (PC-002 In Progress — 3 remain). CF-001 moved to In Progress — Electronics.md Hardware Watchdog Doctrine updated with τ=50ms windowed WDT, cryptographic heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement (Gemini Synthesizer; Analogous confidence); remains Blocking until hardware prototype validates at Measured. CF-002 moved to In Progress — Leviathan_testing.md Section VII added with poisoned telemetry injection protocol, correlated failure detection criterion, diversity scoring table. CF-003 moved to In Progress — Ship_of_Theseus.md Section IV added with Canonical vs. Derivative Identity, 30% threshold, re-vetting path, cognitive grain analog; ST-003 updated to In Progress. Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named, eight component algorithms documented, Asymmetric Conservatism property defined, development targets listed. Critical Watch CF-001 note updated. Blocking Watch PC-001 remaining count updated to 6.
+**v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v2.6 — 2026-06-08 (continued):** Retrofit pass completed for 14 additional files — Gate_03, Gate_04, Gate_05, Gate_06, Gate_07, Plastics, Woodworking, Forge_Net, Geck_forge_seed, Components, Mechanical_Structures, Engineer_Protocols, Governance_Charter, Trajectories. Navigation Anchors added to all. **PC-001 CLOSED** — all 10 Verification Ref corrections applied; AUDIT_HARNESS.py routing now correct across full file set. **PC-002 CLOSED** — all 7 Facilities.md upstream references applied. **PC-003 CLOSED** — all 10 new-file cross-reference corrections applied. **GK-005 RESOLVED** — Geck_forge_seed.md Section V updated; Open Unknowns 3→2. **PR-005 RESOLVED** — GK-005 confirmation housekeeping complete. **EP-005 partial resolution clarified** — full threshold definition remains open; Resolved Archive entry corrected. EP-005 and EP-006 sidecar entries now formally active following Engineer_Protocols.md ADDENDUM integration. Governance_Charter.md [PLANNED] labels cleared for 4 files now confirmed created. Blocking Watch updated — PC-001 replaced with PC-004. PC-001, PC-002, PC-003 moved to Resolved in Pending Corrections table.
