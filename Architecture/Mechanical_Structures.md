@@ -28,13 +28,37 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-31; revised 2026-06-08                                      |
-| Auditor          | Gemini                                                              |
+| Last Audit       | 2026-06-11                                                          |
+| Auditor          | Gemini; revised Claude 2026-06-11                                   |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; structural failure as operator safety concern |
+| `Admin/Safety_Protocols.md` | Load-bearing inspection doctrine; PPE for fabrication work |
+| `Architecture/Engineering.md` | Safety factors, margin doctrine, derating principles |
+| `Architecture/Facilities.md` | Site constraints; floor loading capacity; Hot Zone prerequisites |
+| `Operations/Gate_06_Fabrication.md` | Fabrication standards that produce structural members |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Gate_06_Fabrication.md` | Structural member specifications produced by this file |
+| `Tests/Support_Raft.md` | SWATH hull structural doctrine; load path analysis |
+| `Tests/Leviathan_testing.md` | Pressure vessel and structural integrity for subsea units |
+| `Architecture/Friction_Dynamics.md` | Peer file — vibration and mechanical wear at structural interfaces |
+| `Architecture/Thermal_Systems.md` | Peer file — thermal expansion effects on structural joints |
 
 ---
 
@@ -350,6 +374,9 @@ calibration — open unknown).
 
 ### Resolution Log
 
+- 2026-06-11: Upstream Dependencies and Downstream Dependents tables added.
+  Last Audit updated. No Arkansas/location-specific references found — file
+  already clean on this dimension.
 - 2026-05-31: File created as `Mechanical_Structures.md` — establishes structural,
   mechanical, and kinematic engineering doctrine for salvaged-component fabrication
   machinery. Scope explicitly scoped as downstream extension of
