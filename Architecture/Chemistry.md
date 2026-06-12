@@ -1,5 +1,11 @@
 # Chemistry.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Chemical and electrochemical processes present hazards that are frequently
 > invisible until damage is done. Corrosive acids and bases cause chemical burns
@@ -23,13 +29,38 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-02                                                          |
-| Auditor          | Claude — Systems/Engineer                                           |
+| Last Audit       | 2026-06-11                                                          |
+| Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 4                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; chemical handling as safety-critical operation |
+| `Admin/Safety_Protocols.md` | PPE doctrine for chemical handling; acid and solvent exposure limits |
+| `Architecture/Facilities.md` | RDC climate baseline for humidity and corrosion context; substitute via `Facilities.md` §VII |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Electronics.md` | Galvanic corrosion doctrine; etch chemistry; PCB cleaning hazards |
+| `Operations/Gate_05_Separation_Thermal.md` | Oxide burden (CE-002); melt chemistry for alloy fractions |
+| `Operations/Air_Scrubber.md` | Off-gas chemistry; toxic fume identification |
+| `Operations/Plastics.md` | Polymer degradation chemistry; pyrolysis byproducts |
+| `Tests/Support_Raft.md` | Galvanic corrosion in marine mixed-metal assemblies (CE-001) |
+| `Tests/Leviathan_testing.md` | Electrochemical behavior at depth; battery chemistry |
+| `Architecture/Engineering.md` | Peer file — materials corrosion and derating doctrine |
+| `Architecture/Friction_Dynamics.md` | Peer file — lubrication chemistry; tribochemistry at interfaces |
 
 ---
 
@@ -119,7 +150,7 @@ both files apply and neither overrides the other.
 | ID | Assumption | Basis | Confidence | Expiry Trigger |
 |----|------------|-------|------------|----------------|
 | CE-ASM-001 | Operators have basic chemistry literacy — can read a pH scale, understand acid/base distinction, recognize common hazard symbols | Reasonable entry level for Forge operators | Medium | Confirmed lower baseline — training materials required before chemical handling begins |
-| CE-ASM-002 | Operating environment: high humidity (60–95% summer RH), occasional standing water, variable pH in surface water | Regional climate and geology | High | Forge relocated to significantly different geochemical environment |
+| CE-ASM-002 | Operating environment: high humidity (RDC baseline: 60–95% summer RH), occasional standing water, variable pH in surface water. Builders in drier climates will see lower baseline corrosion rates; builders in coastal or tropical environments may see higher. Substitute via `Architecture/Facilities.md` §VII. | RDC climate baseline — see `Architecture/Facilities.md` §VII | Medium | Forge deployed to significantly different geochemical environment — substitute via Facilities.md §VII |
 | CE-ASM-003 | Salvaged materials have unknown chemical history — surface treatments, coatings, contamination, and prior chemical exposure are not documented | Salvage doctrine | High | Provenance documentation confirms chemical history for a specific material class |
 | CE-ASM-004 | Field identification methods (Beilstein test, pH strips, visual indicators) are the primary chemical assessment tools at v0 — laboratory analysis is not assumed available | v0 resource constraints | High | Laboratory analytical capability confirmed available at deployment site |
 
@@ -776,9 +807,11 @@ halt autonomous audit progression and escalate for human review.
 
 **Description:** Section 1.1 provides the galvanic series and area-ratio
 doctrine, but actual corrosion rates for specific salvage-relevant metal
-pairings in the Forge's Arkansas humid environment are not characterized.
+pairings in the Forge's high-humidity RDC operating environment are not characterized.
 Published corrosion data assumes specific environments and alloy compositions
-that may not match salvage stock.
+that may not match salvage stock. Builders in arid or coastal environments
+should note their corrosion baseline differs from the RDC — substitute via
+`Architecture/Facilities.md` §VII.
 
 **Why It Matters:** Structural lifetime predictions for mixed-metal Forge
 assemblies cannot be made without environment-specific corrosion rate data.
@@ -893,6 +926,10 @@ general operator training doctrine.
 
 ### Resolution Log
 
+- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
+  Dependents tables added. CE-ASM-002 converted from location-specific to RDC
+  abstraction with substitution guidance. CE-001 body reference to "Arkansas humid
+  environment" updated to RDC framing. Last Audit updated.
 - 2026-06-02: File created as `Architecture/Chemistry_Electrochemistry.md`.
   Establishes electrochemistry, acid-base, redox, contamination identification,
   polymer degradation, battery chemistry, and surface chemistry doctrine as
