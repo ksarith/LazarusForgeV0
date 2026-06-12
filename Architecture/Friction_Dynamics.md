@@ -1,5 +1,11 @@
 # Friction_Dynamics.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Fluid systems under pressure present burst, jet, and whipping hazards. Compressed
 > air lines, hydraulic circuits, and pressurized water systems can fail catastrophically
@@ -23,9 +29,39 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-31                                                          |
-| Auditor          | Claude — Systems/Engineer                                           |
-| Open Unknowns    | 4                                                                   |
+| Last Audit       | 2026-06-11                                                          |
+| Auditor          | Claude — Systems/Engineer; revised 2026-06-11                       |
+| Open Unknowns    | 3                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | Medium                                                              |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; fluid hazard as operator safety concern |
+| `Admin/Safety_Protocols.md` | PPE for fluid systems under pressure; compressed air hazards |
+| `Architecture/Engineering.md` | Peer file — broad engineering principles; safety factors |
+| `Architecture/Facilities.md` | RDC climate baseline for air density and wind speed — substitute your deployment parameters via `Facilities.md` §VII |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Gate_04_Separation_Mechanical.md` | Fluid dynamics in Spin Chamber; centrifugal separation |
+| `Operations/Air_Scrubber.md` | Duct airflow design; fan sizing; pressure drop calculations |
+| `Architecture/Thermal_Systems.md` | Peer file — convective heat transfer; fluid thermal properties |
+| `Architecture/Chemistry.md` | Peer file — tribochemistry; lubrication fluid chemistry |
+| `Architecture/Mechanical_Structures.md` | Peer file — vibration and wear at structural interfaces |
+| `Tests/Support_Raft.md` | SWATH hydrodynamics; boundary layer doctrine; wave-surge converter |
+| `Tests/Leviathan_testing.md` | Subsea drag; hydrodynamic maneuverability |
+| `Challenges/Biofouling.md` | Drag penalty from biofouling; boundary layer disruption |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -45,7 +81,9 @@
 - Reynolds number as the universal flow regime classifier across all three domains
 - Forge integration map — how this doctrine applies to Air Scrubber, Support Raft,
   Leviathan, Gate_04/05 rotating components, and Mechanical_Structures
-- Arkansas/southern US climate baseline for fluid and aerodynamic operating conditions
+- **Reference Deployment Context (RDC)** baseline for fluid and aerodynamic operating
+  conditions — builders must substitute their deployment parameters via
+  `Architecture/Facilities.md` §VII Site Initialization Checklist
 
 **This file DOES NOT define:**
 - Foundational engineering principles, safety factors, or general materials behavior
@@ -104,7 +142,7 @@ apply and neither overrides the other. Conflicts escalate to a human contributor
 
 | ID | Assumption | Basis | Confidence | Expiry Trigger |
 |----|------------|-------|------------|----------------|
-| FD-ASM-001 | Arkansas summer ambient conditions: air density ~1.17 kg/m³ at 35°C, 1 atm | Standard atmospheric model | High | Forge relocated to significantly different altitude or climate |
+| FD-ASM-001 | RDC summer ambient baseline: air density ~1.17 kg/m³ at 35°C, 1 atm. Builders at high altitude or in cold climates will see meaningfully different air density — substitute via `Architecture/Facilities.md` §VII. | RDC climate baseline — see `Architecture/Facilities.md` §VII | Medium | Forge deployed to significantly different altitude or climate — substitute via Facilities.md §VII |
 | FD-ASM-002 | Salvaged pipe and fittings have unknown pressure history; derate rated pressure by 50% until hydrostatically tested | Conservative salvage doctrine | High | Hydrostatic proof test completed at 1.5× operating pressure |
 | FD-ASM-003 | Salvaged bearing lubricant is contaminated or degraded; strip and repack before any operational use | Bearing life data for contaminated grease | High | Bearing inspected and repacked with verified lubricant |
 | FD-ASM-004 | Reynolds number governs flow regime for all fluids in Forge systems; laminar/turbulent transition at Re ≈ 2300 for pipe flow | Established fluid mechanics | High | Flow in non-circular or unusual-geometry passages where standard Re criteria do not apply |
@@ -352,9 +390,11 @@ F_lift = ½ · ρ · V² · C_L · A
 Flat panel structures (gates, covers, solar panels) experience aerodynamic lift
 in wind — a flat plate at angle of attack develops lift that can overturn or
 carry away unsecured panels. Design attachment points for structures exposed
-to wind with aerodynamic uplift in mind. At Arkansas wind speeds (typical
-maximum ~25 m/s in severe weather), a 1m² flat panel experiences up to
-~375N of aerodynamic force.
+to wind with aerodynamic uplift in mind. At RDC wind speeds (severe weather
+baseline ~25 m/s — substitute your region's design wind speed via
+`Architecture/Facilities.md` §VII), a 1m² flat panel experiences up to
+~375N of aerodynamic force. High-wind deployments (coastal, tornado-prone,
+mountain pass) must use regional wind speed data, not this baseline.
 
 #### 5.4 Airflow in Ducts and Ventilation Systems
 
