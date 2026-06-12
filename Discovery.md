@@ -173,7 +173,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | PC-001 | Verification Ref corrections — 10 files pointing to Forge_Audit_Kit.md | `Unknowns.md` §Pending Corrections |
 | PC-002 | Upstream reference corrections — 7 files missing Facilities.md link | `Unknowns.md` §Pending Corrections |
 | PC-003 | New file cross-reference corrections — 10 files missing 2026-06-06 file references | `Unknowns.md` §Pending Corrections |
-| PC-004 | Stale name corrections — Challenges/Water.md and Planned_Obsolescence.md | `Unknowns.md` §Pending Corrections |
+| ~~PC-004~~ | ~~Stale name corrections — Challenges/Water.md and Planned_Obsolescence.md~~ | Resolved 2026-06-11 — retrofit pass applied corrections |
 
 ---
 
@@ -545,31 +545,34 @@ Hostile-environment test framework. Fail fast; recover often; sensors lie; recor
 > Challenges/ files define problems and requirements. They do not freeze solutions.
 
 ### `Challenges/Water.md`
-Water scarcity and contamination. Living Waters initiative. Engineering requirements; current Forge approaches; community water sovereignty.
-**Upstream:** Gate_05_Separation_Thermal.md; Gate_04_Separation_Mechanical.md; Energy.md.
-**Downstream:** Operations/ remediation applications (when developed).
-⚠️ Footer cross-references stale — update per Rename Registry.
+Water scarcity and contamination. Living Waters initiative. Atmospheric moisture recovery; stratification separation; ambient energy harvesting; community water sovereignty objective. File_Template.md compliant as of 2026-06-11.
+**Upstream:** Ethical_Constraints.md; Safety_Protocols.md; Thermal_Systems.md (TH-001, TH-003); Friction_Dynamics.md §4; Chemistry.md; Facilities.md.
+**Downstream:** Thermal_Systems.md (TH-001, TH-003 driven by this challenge); Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Forge_Net.md.
+⚠️ TH-003 (atmospheric moisture yield) — Blocking for Living Waters deployment. WS-001 through WS-004 Open.
 
 ### `Challenges/Biofouling.md`
-Biological colonization and MIC. Kinetic and ultrasonic disruption; biomimetic surfaces; sacrificial anodes. Non-toxic remediation doctrine.
-**Upstream:** Gate_04_Separation_Mechanical.md; Plastics.md; Support_Raft.md; Ethical_Constraints.md.
-**Downstream:** Support_Raft.md; Leviathan_testing.md; Gate_05_Separation_Thermal.md.
+Biological colonization and MIC in marine environments. Ecosystem-safe doctrine; sacrificial shell system; biomimetic surfaces; sacrificial anodes from Forge outputs; fouling as network signal. File_Template.md compliant as of 2026-06-11.
+**Upstream:** Ethical_Constraints.md; Safety_Protocols.md; Facilities.md; Chemistry.md (CE-001); Friction_Dynamics.md §5.1–§5.2, §7.2.
+**Downstream:** Support_Raft.md (SR-001, SR-012 primary open unknowns); Leviathan_testing.md; Geck_forge_seed.md (GK-002); Friction_Dynamics.md; Chemistry.md; Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md.
+⚠️ BF-001 through BF-004 Open (all Major).
 
 ### `Challenges/Waste.md`
-Discretionary waste and erosion of repair capacity. Automated triage; community drop-off nodes; distributed utility return loops.
-**Upstream:** Gate_01_Intake.md; Gate_02_Triage.md; Plastics.md; Woodworking.md; Support_Raft.md.
-**Downstream:** Gate_02_Triage.md; Gate_06_Fabrication.md; Forge_Net.md.
+Discretionary waste and repair capacity loss. Salvage-first doctrine; triage-before-reduction; hazardous stream containment; network knowledge federation. File_Template.md compliant as of 2026-06-11.
+**Upstream:** Ethical_Constraints.md; Governance_Charter.md; Safety_Protocols.md; Facilities.md; Gate_02_Triage.md.
+**Downstream:** Forge_flow.md; Gate_02_Triage.md; Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Air_Scrubber.md; Gate_07_Utilization.md; Forge_Net.md; Economics.md.
+⚠️ WA-002 (hazardous fraction identification) — Critical. WA-004 (negative-value disposal doctrine) — Critical; mirrors GR-003 gap.
 
 ### `Challenges/Planned_Obsolescence.md`
-Deliberate unrepairability. Thermal de-manufacturing; Logic-Zero wipe; standardized geometry upcycling.
-**Upstream:** Electronics.md; Gate_02_Triage.md; Plastics.md; Gate_05_Separation_Thermal.md.
-**Downstream:** Electronics.md; Gate_06_Fabrication.md; Ship_of_Theseus.md.
-⚠️ Stale names — update per Rename Registry.
+Deliberate unrepairability, firmware lock, sealed assemblies. Non-destructive harvesting; Logic-Zero re-baselining; debug interface recovery; polymer upcycling; community repairability return. File_Template.md compliant as of 2026-06-11.
+**Upstream:** Ethical_Constraints.md; Governance_Charter.md; Safety_Protocols.md; Ship_of_Theseus.md; Facilities.md; Gate_02_Triage.md; Electronics.md.
+**Downstream:** Electronics.md; Gate_02_Triage.md; Plastics.md; Air_Scrubber.md; Ship_of_Theseus.md; Forge_Net.md; Economics.md.
+⚠️ PO-002 (potting compound removal) — blocks non-destructive recovery of potted assemblies. PO-001 (legal boundary doctrine) — jurisdiction-variable human decision.
 
 ### `Challenges/Critical_Minerals.md`
-Rare earth and critical mineral supply chain concentration. Urban mining doctrine; selective induction recovery; real-time material assay.
-**Upstream:** Gate_02_Triage.md; Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Electronics.md.
-**Downstream:** Gate_06_Fabrication.md; Forge_Net.md; Trajectories.md.
+Rare earth and critical mineral supply chain concentration. Urban mining doctrine; triage-before-reduction for mineral-rich streams; centrifugal and induction separation; functional substitute development; network urban ore data contribution. File_Template.md compliant as of 2026-06-11. Substantially expanded from stub — Engineering Requirements, Long-Term Objective, Current Forge Approaches written from scratch.
+**Upstream:** Ethical_Constraints.md; Safety_Protocols.md; Facilities.md; Chemistry.md (CE-002); Gate_02_Triage.md; Economics.md (EC-001).
+**Downstream:** Gate_04_Separation_Mechanical.md (MG-002, MG-003); Gate_05_Separation_Thermal.md (SC-001, SC-008); Gate_06_Fabrication.md; Components.md; Forge_Net.md; Economics.md; Trajectories.md.
+⚠️ CM-002 (acid leach reagent recovery) — Critical; blocks hydrometallurgical processing. CM-001 (inline assay integration) — blocks dynamic routing decisions.
 
 ### `Challenges/Emergence.md`
 Emergent intelligence and alignment-by-environment design. Phase-shift framing; eight engineering requirements; game-theoretic scaffolding; Logic-Zero reset; constitutional corrigibility architecture. First Challenges/ file built to full File_Template.md standard — reference implementation for future Challenges/ retrofit passes.
