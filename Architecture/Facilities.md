@@ -1,5 +1,11 @@
 # Facilities.md — LazarusForgeV0
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > ⚠️ **Operational Safety Advisory**
 > This file governs the physical environment in which arc welding, induction heating,
 > pyrolysis-adjacent processes, and powered reduction equipment operate. An inadequate
@@ -21,13 +27,42 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-05                                                          |
+| Last Audit       | 2026-06-11                                                          |
 | Auditor          | Claude — Architect/Auditor                                          |
-| Open Unknowns    | 5                                                                   |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation doctrine; operator safety as a hard constraint |
+| `Admin/Safety_Protocols.md` | PPE doctrine; heat stress thresholds; hearing conservation; cross-reference for operator capability assumptions |
+| `Admin/Governance_Charter.md` | Constitutional constraints on site operations |
+| `Operations/Air_Scrubber.md` | Negative pressure doctrine that Airflow Topology section implements at facility level |
+| `Operations/Energy.md` | Grid power assumption (ASM-001); load planning for sequential vs. concurrent operation |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Gate_01_Intake.md` | Site-level intake zone constraints |
+| `Operations/Gate_03_Reduction.md` | Hot Zone flooring and airflow prerequisites for reduction equipment |
+| `Operations/Gate_04_Separation_Mechanical.md` | Floor loading and Hot Zone constraints for rotor operation |
+| `Operations/Gate_05_Separation_Thermal.md` | Hot Zone prerequisites for induction heating |
+| `Operations/Gate_06_Fabrication.md` | Welding zone and triangle workstation layout |
+| `Operations/Electronics.md` | Warm Zone constraints for chemical handling and soldering |
+| `Operations/Woodworking.md` | Dust and combustible storage zone separation |
+| `Architecture/Friction_Dynamics.md` | Climate parameter context for airflow and tribology sizing |
+| `Architecture/Thermal_Systems.md` | Climate parameter context for thermal load calculations |
+| `Admin/Safety_Protocols.md` | FA-002 (Hot Zone radius) feeds heat stress and PPE doctrine |
 
 ---
 
@@ -38,11 +73,12 @@
 - Nonburnable flooring as a hard prerequisite for hot operations
 - Airflow topology doctrine (negative pressure zones, exhaust routing hierarchy)
 - Triangle workstation layout principle
-- Environmental baseline — Arkansas climate context (heat, humidity, seasonal variation)
+- **Reference Deployment Context (RDC)** — a declared climate and site baseline used throughout this file. Builders must substitute their own deployment parameters before any sizing or scheduling decisions. See Section VII — Site Initialization Checklist.
 - Utility access doctrine (grid power, water, egress)
 - Hazard zone separation principles
 - Floor loading classification guidance for heavy equipment
 - Bootstrap facility proxy — operating with available space under stated constraints
+- **Site Initialization Checklist** — the structured interface between generic Forge doctrine and any specific deployment context
 
 **This file DOES NOT define:**
 - Air Scrubber hardware specifications or staging (→ `Operations/Air_Scrubber.md`)
@@ -66,6 +102,14 @@ disappeared, no principled site assessment could be made and the repository woul
 no record of what the facility is expected to provide versus what individual modules
 are responsible for providing themselves.
 
+**Portability note:** This file uses a Reference Deployment Context (RDC) rather than
+a specific geographic location. The RDC is a temperate/humid continental climate
+baseline — hot summers, mild winters, storm exposure. It is not a prescription.
+Builders anywhere in the world can use this file by completing the Site Initialization
+Checklist (Section VII), which surfaces every climate and site parameter the other
+Forge files expect to be filled in. The doctrine is generic. The parameters are yours
+to supply.
+
 ---
 
 ## Assumptions
@@ -73,11 +117,11 @@ are responsible for providing themselves.
 | ID      | Assumption                                                                   | Basis                                      | Confidence | Expiry Trigger                                              |
 |---------|------------------------------------------------------------------------------|--------------------------------------------|------------|-------------------------------------------------------------|
 | ASM-001 | Grid power available at v0 bootstrap site                                    | Inherited from Components.md ASM-001       | Medium     | Off-grid deployment confirmed — route to Energy.md          |
-| ASM-002 | Covered indoor or semi-enclosed space available                              | Arkansas climate — humidity, storm exposure | Medium     | Site survey contradicts covered space availability          |
+| ASM-002 | Covered indoor or semi-enclosed space available                              | RDC climate — humidity, storm exposure | Medium     | Site survey contradicts covered space availability          |
 | ASM-003 | Nonburnable flooring available or installable at acceptable cost             | Concrete slab common in industrial/garage  | Medium     | Site survey shows combustible-only flooring with no remedy  |
 | ASM-004 | Adequate natural or forced airflow achievable at v0 bootstrap                | Air_Scrubber.md negative pressure doctrine | Medium     | Airflow modeling shows inadequate exhaust path              |
 | ASM-005 | Human operator physically present during all hot operations at v0            | Bootstrap Doctrine — inherited from Components.md | High  | Autonomous operation capability demonstrated and validated  |
-| ASM-006 | Arkansas climate baseline applies (hot-humid summers, mild winters, storm exposure) | Geographic context                   | High       | Site located outside Arkansas climate zone                  |
+| ASM-006 | Reference Deployment Context (RDC) climate baseline applies — hot-humid summers, mild winters, storm exposure. Builders outside this climate zone must substitute their own parameters via the Site Initialization Checklist (Section VII). | Geographic context — see Section VII | Medium       | Deployment site confirmed outside RDC climate zone — substitute parameters via Section VII |
 
 ---
 
@@ -135,15 +179,23 @@ At v0 with minimal equipment, the minimum acceptable configuration is:
 Forced ventilation (fans, blowers) supplements but does not replace directional topology.
 A powerful fan exhausting in the wrong direction is worse than no fan.
 
-### Arkansas Climate Consideration
+### Reference Deployment Context (RDC) Climate Consideration
 
-High summer humidity (regularly 70–90% RH) affects airflow planning:
+*The following values reflect the RDC baseline (hot-humid summers, mild winters, storm exposure). Substitute your deployment region's parameters — see Section VII.*
+
+High summer humidity (RDC baseline: regularly 70–90% RH) affects airflow planning:
 - Humid makeup air accelerates corrosion on exposed metal stock — storage zones need
   separation from process exhaust makeup air paths where possible
 - Summer heat load inside enclosed spaces demands airflow even when process exhaust
   is not the primary concern — operator heat stress is a real failure mode
-- Storm season (spring, early summer) means exhaust penetrations need weather protection
-  — an exhaust path that floods during rain is an airflow path that fails when most needed
+- Storm season (RDC baseline: spring/early summer) means exhaust penetrations need
+  weather protection — an exhaust path that floods during rain is an airflow path
+  that fails when most needed
+
+**Substitution note:** High-arid deployments replace humidity corrosion concern with
+dust infiltration management. Cold-climate deployments add frozen condensate risk
+in exhaust penetrations. Tropical deployments intensify both humidity and heat stress
+baselines. Document your substitution in the Site Initialization Checklist.
 
 ---
 
@@ -191,7 +243,7 @@ cleaning agents). Requires: ventilated but not necessarily negative-pressure; no
 or protected flooring; no open flame within the zone.
 
 **Cold Zone** — Intake, triage, storage, cold assembly, artifact memory and compute.
-Requires: covered space, humidity management (Arkansas context), physical separation
+Requires: covered space, humidity management (per RDC or your deployment climate — see Section VII), physical separation
 from Hot Zone exhaust.
 
 **Egress Corridor** — Unobstructed path from any zone to outside. Must remain clear
@@ -253,6 +305,69 @@ scrubber waste to surface water.
 Minimum two independent egress paths from the Hot Zone. At least one egress path must
 be usable while carrying a person — not a roof hatch, not a window requiring a ladder.
 Egress paths are marked, unobstructed, and reviewed at the start of each operating session.
+
+---
+
+## VII. Site Initialization Checklist
+
+This checklist is the structured interface between the generic Forge doctrine in this file and any specific deployment context. Every Forge initialization must complete this checklist before the constraint values elsewhere in this file are treated as calibrated.
+
+**How to use:** For each parameter, record your deployment value. Where the RDC baseline is the correct value for your context, note "RDC applies." Where it differs, note your local value and identify which file sections need re-reading with your substituted value.
+
+---
+
+### A. Climate Parameters
+
+| Parameter | Why It Matters | Files That Use It | RDC Baseline | Your Value |
+|---|---|---|---|---|
+| Summer ambient temperature range | Operator heat stress; thermal load on process equipment | `Facilities.md` §II, `Architecture/Thermal_Systems.md`, `Admin/Safety_Protocols.md` | 85–100°F / 29–38°C (heat index higher) | _______________ |
+| Summer humidity range | Airflow planning; corrosion on stored metal; condensation in exhaust paths | `Facilities.md` §II, `Architecture/Friction_Dynamics.md` §5 | 70–90% RH | _______________ |
+| Winter ambient low | Fluid viscosity; cold startup loads; condensation in pneumatic systems | `Architecture/Thermal_Systems.md`, `Operations/Energy.md` | 25–40°F / −4–4°C | _______________ |
+| Precipitation and storm exposure | Exhaust penetration design; covered space requirement; flood risk | `Facilities.md` §II, §VI | Significant storm season spring/early summer; periodic flooding possible | _______________ |
+| Prevailing wind direction | Exhaust outlet placement; makeup air intake direction | `Facilities.md` §II | Variable; SE/SW prevailing summer | _______________ |
+| Dust and particulate baseline | Air Scrubber sizing; bearing and sensor protection | `Architecture/Friction_Dynamics.md` §7, `Operations/Air_Scrubber.md` | Low-moderate | _______________ |
+
+---
+
+### B. Site Parameters
+
+| Parameter | Why It Matters | Files That Use It | Minimum Required | Your Value |
+|---|---|---|---|---|
+| Floor type | Hard prerequisite for hot operations | `Facilities.md` §I | Nonburnable (concrete preferred) | _______________ |
+| Floor area available for Hot Zone | Zone separation feasibility | `Facilities.md` §IV | ≥ 200 sq ft dedicated | _______________ |
+| Covered/enclosed space | Weather protection for equipment and operators | `Facilities.md` §II | Yes — indoor or semi-enclosed | _______________ |
+| Ceiling height at Hot Zone | Welding fume rise; overhead clearance for reduction equipment | `Facilities.md` §IV | ≥ 10 ft / 3 m recommended | _______________ |
+| Grid power service | Arc welding and induction heating | `Facilities.md` §VI, `Operations/Energy.md` | 240V single-phase minimum | _______________ |
+| Water access | Wet scrubbing; general cleaning | `Facilities.md` §VI, `Operations/Air_Scrubber.md` | Hose bib or utility sink within 50 ft | _______________ |
+| Independent egress paths | Emergency exit from Hot Zone | `Facilities.md` §VI | Minimum 2, one person-width | _______________ |
+
+---
+
+### C. Regulatory Parameters
+
+| Parameter | Why It Matters | Files That Use It | Action Required | Your Status |
+|---|---|---|---|---|
+| Zoning class | Industrial hot work may be prohibited in residential or commercial zones | `Facilities.md` FA-003 | Human decision before first hot operation | _______________ |
+| Hot work permit requirement | Some jurisdictions require permit for arc welding or open flame | `Facilities.md` FA-003 | Verify with local authority | _______________ |
+| Chemical storage limits | Acid, solvent, and flux storage may be regulated by quantity | `Operations/Electronics.md`, `Operations/Air_Scrubber.md` | Verify with local fire code | _______________ |
+| Noise ordinance | Reduction equipment and blowers may exceed residential limits | `Facilities.md`, `Admin/Safety_Protocols.md` SP-003 | Verify before sustained operations | _______________ |
+
+---
+
+### D. Operational Parameters
+
+| Parameter | Why It Matters | Files That Use It | RDC Baseline | Your Value |
+|---|---|---|---|---|
+| Operator count at v0 | Affects zone layout; supervision capacity; escalation paths | `Admin/Safety_Protocols.md`, `Facilities.md` ASM-005 | 1 operator minimum; 2 recommended for hot operations | _______________ |
+| Primary salvage stream | Drives which gate files are most operationally relevant | `Architecture/Forge_flow.md`, `Operations/Gate_02_Triage.md` | Mixed consumer electronics and small appliances | _______________ |
+| Operating hours | Heat stress risk; noise ordinance compliance window | `Facilities.md` FA-004, `Admin/Safety_Protocols.md` | Daytime, seasonal avoidance of peak heat | _______________ |
+| Off-grid or grid power | Changes energy accounting baseline | `Operations/Energy.md` ASM-001 | Grid power available | _______________ |
+
+---
+
+*A completed Site Initialization Checklist does not replace FA-001 (physical site survey). It is a pre-survey instrument that surfaces what the survey must verify. A site that passes the checklist on paper must still be physically assessed against Sections I–VI before hot operations begin.*
+
+*Builders initializing a Forge outside the RDC baseline: once you have completed columns D and E above, re-read Sections II, IV, and FA-004 with your substituted values. Any section that references "RDC baseline" should be re-evaluated against your local conditions.*
 
 ---
 
@@ -354,7 +469,7 @@ Exploration — blocking for first hot operation.
 
 ---
 
-### FA-004 — Arkansas summer heat load impact on operator safety not quantified
+### FA-004 — RDC heat load impact on operator safety not quantified
 
 | Field         | Value         |
 |---------------|---------------|
@@ -365,58 +480,60 @@ Exploration — blocking for first hot operation.
 | Blocking      | No            |
 | Owner         | Facilities.md |
 | First Logged  | 2026-06-05    |
-| Last Reviewed | 2026-06-05    |
+| Last Reviewed | 2026-06-11    |
 
-**Description:** Process heat from arc welding and induction combined with Arkansas
-summer ambient conditions (heat index regularly exceeding 100°F) may create operator
-heat stress conditions that affect safe operation. No threshold or mitigation doctrine
-is defined.
+**Description:** Process heat from arc welding and induction combined with RDC summer
+ambient conditions (heat index regularly exceeding 100°F in hot-humid baseline) may
+create operator heat stress conditions that affect safe operation. No threshold or
+mitigation doctrine is defined. Deployments in hotter or more humid climates face
+elevated risk; deployments in cooler climates may be able to deprioritize this unknown.
 
 **Why It Matters:** Operator impairment from heat stress is a silent failure mode —
 the process continues but judgment degrades. This is relevant to the Human Override
 Interface (Components.md Critical item 8) — an impaired operator is not a reliable
 override mechanism.
 
-**Resolution Path:** Route to `Admin/Safety_Protocols.md` [PLANNED] for heat stress
-doctrine. At minimum, log as an assumption expiry trigger for ASM-005 (human operator
-present and capable).
+**Resolution Path:** Route to `Admin/Safety_Protocols.md` for heat stress doctrine.
+The Site Initialization Checklist (Section VII) now captures the deployment-specific
+ambient temperature parameter that feeds this unknown. Resolution is partially unlocked
+by Section VII deployment — a builder in a cool climate can note this as non-blocking
+for their context. Builders in hot climates must treat as Critical before first summer
+hot operation.
 
 ---
 
 ### FA-005 — Relationship between Facilities.md and UNK-006 resolution status
 
-| Field         | Value         |
-|---------------|---------------|
-| Status        | Open          |
-| Risk          | Low           |
-| Priority      | Minor         |
-| Type          | Governance    |
-| Blocking      | No            |
-| Owner         | Facilities.md |
-| First Logged  | 2026-06-05    |
-| Last Reviewed | 2026-06-05    |
+| Field         | Value              |
+|---------------|-------------------|
+| Status        | **Resolved**       |
+| Risk          | —                 |
+| Priority      | Minor             |
+| Type          | Governance        |
+| Blocking      | No                |
+| Owner         | Facilities.md     |
+| First Logged  | 2026-06-05        |
+| Resolved      | 2026-06-11        |
 
-**Description:** UNK-006 in Unknowns.md references facility siting as an open
-cross-module unknown with 7 dependents. This file is the intended resolution target.
-UNK-006 should be updated to reflect that Facilities.md now owns this domain, but
-closure of UNK-006 requires confirming that all 7 dependent files accept this file
-as their siting authority.
-
-**Why It Matters:** If dependent files are not updated to reference Facilities.md,
-UNK-006 remains partially open and the cross-module gap persists in Discovery.md's
-Cross-Module Unknowns table.
-
-**Resolution Path:** On next audit pass for each of the 7 dependent files
-(Gate_01, Gate_03, Gate_04, Gate_05, Gate_06, Electronics, Woodworking), add
-`Facilities.md` to their Upstream Dependencies and replace the UNK-006 placeholder
-reference with a direct file reference. Update Unknowns.md UNK-006 status to
-Resolved when all 7 are confirmed. Update Discovery.md Cross-Module Unknowns table.
+**Resolution:** Facilities.md is confirmed as the owning file for the domain previously
+tracked as UNK-006. Downstream dependent files (Gate_01, Gate_03, Gate_04, Gate_05,
+Gate_06, Electronics, Woodworking) now reference Facilities.md in their Upstream
+Dependencies tables following the PC-002 and PC-003 correction passes. UNK-006 is
+resolved. Discovery.md Cross-Module Unknowns table updated. FA-005 closed.
 
 ---
 
 ### Resolution Log
 
-*(empty — first version)*
+- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
+  Dependents tables added. ASM-006 converted from Arkansas-specific to Reference
+  Deployment Context (RDC) abstraction. Section II Arkansas Climate Consideration
+  renamed and expanded with RDC substitution guidance and climate-type notes.
+  Section VII Site Initialization Checklist added — structured interface between
+  generic doctrine and deployment-specific parameters. FA-004 updated to RDC
+  framing; resolution partially unlocked by Section VII. FA-005 resolved —
+  UNK-006 ownership confirmed, downstream dependents confirmed referencing
+  Facilities.md. Open Unknowns count updated 5→3. Last Audit updated.
 
 ---
 
