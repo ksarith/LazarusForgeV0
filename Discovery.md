@@ -159,7 +159,7 @@ Canonical record of filename changes. Stale references should be resolved using 
 | Engineering.md (replaced by) | Mechanical_Structures.md | Architecture/ | 2026-05-31 |
 | economics_v0.md | Economics.md | Admin/ | 2026-06-05 |
 | Precision_LF.md | Precision.md | Architecture/ | 2026-06-05 |
-| Forge_flow.md | Forge_Flow.md | Architecture/ | Pending — RS-002 |
+| Forge_flow.md | Forge_flow.md | Architecture/ | Resolved — RS-002 2026-06-11 |
 
 ---
 
