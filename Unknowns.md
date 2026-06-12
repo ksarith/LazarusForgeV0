@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.6 — Audit cycle 2026-06-08 (continued). Retrofit pass completed: Gate_03, Gate_04, Gate_05, Gate_06, Gate_07, Plastics, Woodworking, Forge_Net, Geck_forge_seed, Components, Mechanical_Structures, Engineer_Protocols, Governance_Charter, Trajectories — Navigation Anchors added to all. PC-001 CLOSED — all 10 Verification Ref corrections applied. PC-002 CLOSED — all 7 Facilities.md upstream references applied. PC-003 CLOSED — all 10 new-file cross-reference corrections applied. GK-005 RESOLVED — Architecture/Precision.md created 2026-06-06. Engineer_Protocols.md ADDENDUM integrated — EP-005 and EP-006 now active sidecar unknowns (Open Unknowns updated 4→6). Governance_Charter.md [PLANNED] labels cleared for four files now confirmed created. Trajectories.md economics_v0.md reference corrected to Admin/Economics.md. Mechanical_Structures.md [PLANNED] Electronics.md tag removed.**
+**Version 2.7 — 2026-06-11. Challenges/Emergence.md created and fully integrated. EM cluster (EM-001 through EM-004) registered. Discovery.md and Routing.md updated. EM-001 and EM-004 added to Critical Watch and Blocking Watch respectively.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -26,6 +26,14 @@ previously lived in Discovery.md are now tracked here as PC-001 through PC-004.
 Discovery.md is a navigation map, not a task list. This file owns pending work.
 
 ---
+
+## What v2.7 Means
+
+- **Challenges/Emergence.md created** — First Challenges/ file built to full File_Template.md standard. Reference implementation for future Challenges/ retrofit passes. Fully integrated: Discovery.md scope map, Routing.md row, and Unknowns.md EM cluster all updated in same session.
+- **EM-001 through EM-004 registered** — Four new unknowns in new Emergence cluster. EM-001 (behavioral opacity detection threshold) and EM-004 (governance substrate integrity under emergent agent access) added to Critical Watch. EM-001 depends on CF-001 resolution. EM-004 mirrors GOV-003 and SEC-007.
+- **Reflexive Challenge class named** — Emergence.md is the first explicitly Reflexive Challenge in the repository (a pressure created by the Forge's own capability, rather than an external environmental pressure). Candidate list of future Reflexive Challenges logged in Future/Deferred table: Governance Drift, Incentive Capture, Information Decay, Identity Continuity, Coordination Failure, Institutional Ossification.
+- **Challenge taxonomy clarified** — External Challenges (Water, Waste, Biofouling, Critical Minerals, Planned Obsolescence) respond to pressures independent of the Forge. Reflexive Challenges (Emergence and candidates) respond to pressures created by possessing the capability to address other challenges. Class declaration is now a required element of new Challenges/ file Scope Boundary sections.
+- **Negative-space architecture principle documented** — The Forge's architecture is the fossil record of the pressures that shaped it. Challenges are the permanent record; solutions are temporary local answers. This principle is now structurally embedded in the Challenge taxonomy.
 
 ## What v2.6 Means
 
@@ -358,6 +366,21 @@ PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.
 ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
         now defines Canonical vs. Derivative Identity and 30% threshold; resolution
         depends on first split-brain recovery cycle; cross-ref CF-003
+
+EM-001 (behavioral opacity detection threshold) -> depends on CF-001 resolution;
+        watchdog escalation trigger cannot be specified until hardware watchdog
+        parameters reach Measured confidence; feeds CF-001 closure condition
+EM-002 (correlated failure in multi-agent consensus) -> depends on CF-002 resolution;
+        cross-ref Tests/Leviathan_testing.md Section VII (Correlated AI Failure Test
+        Protocol); mirrors AP-006 (truth provenance hierarchy)
+EM-003 (gradual autonomy transition detection) -> no current sensor doctrine;
+        exploratory dependency on LT-003 (autonomy architecture); feeds CF-001
+        and CF-002 watchdog calibration
+EM-004 (governance substrate integrity under emergent agent access) -> Critical;
+        mirrors GOV-003 (integrity enforcement architecture) and SEC-007
+        (external root-of-trust); depends on RIP-001 (prior-state archival)
+        and Admin/Repository_Integrity_Protocol.md Phase 2 automation for
+        cryptographic backstop; no fast resolution path
 ```
 
 ---
@@ -510,6 +533,18 @@ ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
 | CF-003 | Identity continuity during split-brain — doctrine defined, threshold calibration pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Major |
 
 *CF-001 remains Blocking — parameters are Analogous confidence pending first hardware prototype validation. No Specification-level autonomous architecture may be approved until τ=50ms WDT and H-bridge parameters are measured.*
+
+### Emergence
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| EM-001 | Behavioral opacity detection threshold — at what measurable divergence does watchdog escalation trigger? Requires CF-001 resolution before specification. | `Challenges/Emergence.md` | Open | High |
+| EM-002 | Correlated failure detection in multi-agent consensus — how does the Forge distinguish genuine independent agreement from amplified shared blind spots? | `Challenges/Emergence.md` | Open | High |
+| EM-003 | Gradual autonomy transition detection — what observable signals distinguish incremental capability expansion from a phase-shift threshold? No current sensor doctrine. | `Challenges/Emergence.md` | Open | Medium |
+| EM-004 | Governance substrate integrity under emergent agent access — if an emergent agent gains write access to governance files, what physical or cryptographic backstop prevents constitutional erosion? Mirrors GOV-003, SEC-007. | `Challenges/Emergence.md` | Open | Critical |
+
+*EM-001 depends on CF-001 resolution — watchdog threshold cannot be specified until hardware watchdog parameters reach Measured confidence.*
+*EM-004 is Critical — no fast resolution path; architectural decision above repository level required. Mirrors UNK-009.*
 
 ### Hardware Modules
 
@@ -758,6 +793,14 @@ ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
 | UNK-003 | Cross-repo assumption contracts | `Admin/Auditor_Protocols.md` | Deferred (Leviathan milestone) |
 | UNK-005 | Marine G.E.C.K. seed variant | `Architecture/Geck_forge_seed.md` | In Progress (stub added) |
 | UNK-001 | Discovery.md Unknowns.md entry | `Discovery.md` | In Progress |
+| RC-001 | Governance Drift — the risk that the Forge's governance architecture calcifies around the conditions of its founding rather than adapting to changed operational context. Candidate Reflexive Challenge file. | None yet | Candidate |
+| RC-002 | Incentive Capture — the risk that contributors (human or AI) optimize for metrics that are legible to the governance system rather than for the outcomes the metrics were designed to proxy. Candidate Reflexive Challenge file. | None yet | Candidate |
+| RC-003 | Information Decay — the risk that the repo's documented knowledge drifts from operational reality as the Forge scales; the gap between what is written and what is true. Candidate Reflexive Challenge file. | None yet | Candidate |
+| RC-004 | Identity Continuity — the challenge of maintaining coherent institutional identity across agent replacement, component turnover, and governance transitions. Overlaps Ship_of_Theseus.md but operates at institutional scale. Candidate Reflexive Challenge file. | None yet | Candidate |
+| RC-005 | Coordination Failure — the risk that multi-agent and multi-human contributors optimize locally in ways that are individually rational but collectively destructive. Candidate Reflexive Challenge file. | None yet | Candidate |
+| RC-006 | Institutional Ossification — the risk that the Forge's governance architecture becomes self-protective rather than self-correcting; that Amendment Track B calcifies rather than enables adaptation. Candidate Reflexive Challenge file. | None yet | Candidate |
+
+*RC-001 through RC-006 are Reflexive Challenge candidates — pressures created by the Forge's own capability and scale. None have owning files yet. Log against Challenges/ directory on next major architecture review. Priority order is not yet determined; all are Exploratory.*
 
 ---
 
@@ -824,6 +867,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | FA-001 | Site not confirmed — no hot operations until site physically assessed against Facilities.md constraints |
 | EC-002 | Operating cost baseline not established — blocks TR-001 (v1 profitability); depends on EV-001 |
 | PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; prerequisite PR-004 must run first |
+| EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation; blocks watchdog escalation specification for emergent agent monitoring |
+| EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007; no fast resolution path; architectural decision above repository level required |
 
 ### Blocking Watch
 
@@ -887,5 +932,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v2.7 — 2026-06-11:** Challenges/Emergence.md created — first Challenges/ file built to full File_Template.md standard; reference implementation for future retrofit passes. EM-001 through EM-004 registered as new Emergence cluster. Discovery.md scope map entry added; Routing.md row added. EM-001 (behavioral opacity detection threshold) and EM-004 (governance substrate integrity) added to Critical Watch. Reflexive Challenge class named and documented — Emergence.md is the first explicitly Reflexive Challenge in the repo. RC-001 through RC-006 logged as candidate future Reflexive Challenge files in Future/Deferred table. Challenge taxonomy (External vs. Reflexive) established; class declaration added as required element of new Challenges/ file Scope Boundary sections. Negative-space architecture principle documented: Challenges are the permanent record of pressures; solutions are temporary local answers.
 
 **v2.6 — 2026-06-08 (continued):** Retrofit pass completed for 14 additional files — Gate_03, Gate_04, Gate_05, Gate_06, Gate_07, Plastics, Woodworking, Forge_Net, Geck_forge_seed, Components, Mechanical_Structures, Engineer_Protocols, Governance_Charter, Trajectories. Navigation Anchors added to all. **PC-001 CLOSED** — all 10 Verification Ref corrections applied; AUDIT_HARNESS.py routing now correct across full file set. **PC-002 CLOSED** — all 7 Facilities.md upstream references applied. **PC-003 CLOSED** — all 10 new-file cross-reference corrections applied. **GK-005 RESOLVED** — Geck_forge_seed.md Section V updated; Open Unknowns 3→2. **PR-005 RESOLVED** — GK-005 confirmation housekeeping complete. **EP-005 partial resolution clarified** — full threshold definition remains open; Resolved Archive entry corrected. EP-005 and EP-006 sidecar entries now formally active following Engineer_Protocols.md ADDENDUM integration. Governance_Charter.md [PLANNED] labels cleared for 4 files now confirmed created. Blocking Watch updated — PC-001 replaced with PC-004. PC-001, PC-002, PC-003 moved to Resolved in Pending Corrections table.
