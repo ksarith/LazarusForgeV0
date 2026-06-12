@@ -1,7 +1,78 @@
 # Challenges/Waste.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > *Everything the world has thrown away is still here.*
 > *The question is only whether we treat it as an ending or a beginning.*
+
+---
+
+## File State
+
+| Field | Value |
+|---|---|
+| **Status** | Active |
+| **Version** | v0.2 |
+| **Last Updated** | 2026-06-11 |
+| **Owner** | Challenges/ |
+| **Verification Ref** | `Admin/Verification_Gates_LF.md` |
+| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+
+---
+
+## Scope Boundary
+
+**Challenge Class:** External — waste as a structural condition exists independent of the Forge. The Forge's capacity to process salvage did not create this pressure; it responds to it.
+
+**Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
+
+**This file owns:**
+- The crisis framing for discretionary waste, repair capacity loss, and the systematic dismantling of the repair economy
+- The engineering requirements governing salvage-first material recovery
+- The Forge's current architectural responses to this challenge
+- The long-term objective for community material sovereignty
+
+**This file does not own:**
+- Gate routing logic → `Architecture/Forge_flow.md`
+- Triage decision sequence → `Operations/Gate_02_Triage.md`
+- Mechanical separation doctrine → `Operations/Gate_04_Separation_Mechanical.md`
+- Thermal separation doctrine → `Operations/Gate_05_Separation_Thermal.md`
+- Hazardous fume and off-gas containment → `Operations/Air_Scrubber.md`
+- Polymer triage and pyrolysis → `Operations/Plastics.md`
+- Closed-loop utilization feedback → `Operations/Gate_07_Utilization.md`
+- Network knowledge federation → `Architecture/Forge_Net.md`
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; Anti-Weaponization; Pacifist Operating Posture |
+| `Admin/Governance_Charter.md` | Constitutional bounds on material recovery operations |
+| `Admin/Safety_Protocols.md` | Hazardous material handling; PPE doctrine; hot operations constraints |
+| `Architecture/Facilities.md` | Site requirements for hot waste processing operations |
+| `Operations/Gate_02_Triage.md` | Triage logic that governs complexity-preservation decisions |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Architecture/Forge_flow.md` | Gate sequence logic is the operational answer to this challenge |
+| `Operations/Gate_02_Triage.md` | Five-station triage is the primary Forge response to waste complexity |
+| `Operations/Gate_04_Separation_Mechanical.md` | Mechanical separation preserves material value upstream of thermal |
+| `Operations/Gate_05_Separation_Thermal.md` | Thermal separation resolves what mechanical cannot |
+| `Operations/Plastics.md` | Polymer fraction handling directly addresses consumer waste streams |
+| `Operations/Air_Scrubber.md` | Containment infrastructure made necessary by hazardous waste fractions |
+| `Operations/Gate_07_Utilization.md` | Closed-loop feedback closes the waste-to-resource cycle |
+| `Architecture/Forge_Net.md` | Network knowledge federation amplifies local waste intelligence |
+| `Admin/Economics.md` | Value recovery doctrine and barter framework for recovered material |
 
 ---
 
@@ -60,6 +131,27 @@ It means treating the informal recycling sector not as an embarrassment to be re
 It means that the repair economy returns — not as nostalgia, but as capability. That the knowledge required to maintain a piece of equipment lives in the community that uses it. That a discarded drill is a parts source before it is a landfill entry. That the next generation of a forge is built substantially from the outputs of the previous one.
 
 The river does not waste water. The forest does not waste leaves. Waste, in those systems, is simply matter that has not yet found its next function. The Forge is an attempt to organize human material flows around the same principle.
+
+---
+
+---
+
+## Open Unknowns
+
+| ID | Description | Status | Risk |
+|---|---|---|---|
+| WA-001 | Embedded complexity preservation metric — no formal measure exists for whether triage decisions are successfully preserving functional complexity versus routing prematurely to reduction. Needed before Gate_02 promotion from Exploration. | Open | Major |
+| WA-002 | Hazardous fraction identification reliability — the triage workflow assumes operator ability to identify asbestos, heavy metals, and BFR-containing materials. No validated identification protocol or training standard is defined. Cross-ref CE-004. | Open | Critical |
+| WA-003 | Informal sector integration doctrine — no framework exists for how the Forge interfaces with, supports, or avoids displacing existing informal waste recovery workers. Structural gap at community deployment scale. | Open | Major |
+| WA-004 | Negative-value waste fraction disposal — materials that cannot be recovered and are hazardous to store require a disposal doctrine. No owning file currently covers this. Cross-ref GR-003. | Open | Critical |
+
+*WA-002 and WA-004 are Critical — no sustained mixed-waste operations without hazardous fraction identification and negative-value disposal doctrine.*
+
+*Full tracking entries to be registered in `Unknowns.md` on next audit cycle.*
+
+---
+
+*See: `Architecture/Forge_flow.md` for the master gate sequence this challenge drives. See: `Operations/Gate_02_Triage.md` for the primary triage doctrine. See: `Operations/Plastics.md` for polymer fraction handling. See: `Operations/Air_Scrubber.md` for hazardous stream containment. See: `Unknowns.md` for all cross-module tracked unknowns.*
 
 ---
 
