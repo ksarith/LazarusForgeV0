@@ -1,5 +1,11 @@
 # Thermal_Systems.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Thermal systems present multiple simultaneous failure vectors: burns and scalding
 > from high-temperature surfaces and steam; fire and ignition from uncontrolled heat
@@ -22,13 +28,40 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-31                                                          |
-| Auditor          | Claude — Systems/Engineer                                           |
+| Last Audit       | 2026-06-11                                                          |
+| Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 4                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; thermal hazard as operator safety concern |
+| `Admin/Safety_Protocols.md` | Burn and scald PPE doctrine; thermal surface handling |
+| `Architecture/Engineering.md` | Peer file — broad engineering principles; safety factors |
+| `Architecture/Facilities.md` | RDC climate baseline for thermal load calculations — substitute your deployment parameters via `Facilities.md` §VII Site Initialization Checklist |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Gate_05_Separation_Thermal.md` | Induction and thermal separation doctrine; TH-001 (heat pump sizing) |
+| `Operations/Air_Scrubber.md` | Thermal quench stage design; exhaust heat load management |
+| `Operations/Energy.md` | Heat pump COP doctrine; thermal harvest from Gate_05; EV-003 (battery thermal containment) |
+| `Operations/Plastics.md` | Pyrolysis thermal profiles; polymer thermal degradation |
+| `Challenges/Water.md` | TH-003 (atmospheric moisture yield) — Blocking for Living Waters deployment |
+| `Architecture/Friction_Dynamics.md` | Peer file — fluid thermal properties; convective transfer |
+| `Architecture/Chemistry.md` | Peer file — thermal effects on electrochemical reactions |
+| `Tests/Support_Raft.md` | Thermal management for induction charging and Gate hosting |
+| `Tests/Leviathan_testing.md` | Thermal management for subsea electronics |
 
 ---
 
@@ -42,7 +75,8 @@
 - Heat pump operating principles, COP doctrine, and Forge deployment contexts
 - Peltier (thermoelectric cooler/heater) device characteristics, limits, and use cases
 - Thermopile and thermoelectric generator (TEG) principles and harvest doctrine
-- Southern US climate thermal baseline and seasonal derating guidance
+- **Reference Deployment Context (RDC)** thermal baseline and seasonal derating guidance
+  — builders must substitute their deployment parameters via `Architecture/Facilities.md` §VII
 - Cross-module thermal integration hooks — how this doctrine applies to Gate_05,
   Air_Scrubber, Energy, and Challenges/Water
 
@@ -74,8 +108,10 @@ Thermal behavior is a first-class engineering concern in the Forge. Gate_05 is
 fundamentally a thermal separation system. The Air Scrubber manages thermal quench
 stages. Energy recovery is partly a thermal harvest problem. The Living Waters
 initiative (Challenges/Water.md) depends on understanding atmospheric moisture and
-condensation thermodynamics. And the Arkansas climate imposes a thermal environment
-that affects every outdoor and semi-outdoor system the Forge operates.
+condensation thermodynamics. And the Reference Deployment Context (RDC) climate
+imposes a thermal environment that affects every outdoor and semi-outdoor system
+the Forge operates. Builders in other climate zones must substitute their own
+parameters — see `Architecture/Facilities.md` §VII Site Initialization Checklist.
 
 Without this file, thermal decisions are made ad-hoc in domain files, producing
 inconsistent doctrine, missed heat budgets, and dangerous surprises. This file gives
@@ -95,10 +131,10 @@ governs. Conflicts or overlaps escalate to a human contributor for resolution.
 
 | ID      | Assumption | Basis | Confidence | Expiry Trigger |
 |---------|------------|-------|------------|----------------|
-| TH-ASM-001 | Arkansas baseline: ambient temperature range −5°C to 40°C, relative humidity 60–95% summer | Regional climate data | High | Forge relocated outside humid subtropical zone |
+| TH-ASM-001 | RDC baseline: ambient temperature range −5°C to 40°C, relative humidity 60–95% summer. Builders outside this climate zone must substitute their own parameters via `Architecture/Facilities.md` §VII. | RDC climate baseline — see `Architecture/Facilities.md` §VII | Medium | Forge deployed outside RDC climate zone — substitute via Facilities.md §VII |
 | TH-ASM-002 | Salvaged insulation materials have degraded R-values relative to rated spec; derate by 30% minimum until tested | Moisture ingress, compression, aging typical in salvage | High | First measured R-value on salvaged sample |
 | TH-ASM-003 | Peltier devices sourced from salvage have unknown thermal cycling history; treat as reduced-life components | Delamination and solder fatigue accumulate invisibly | Medium | First destructive cross-section of salvaged unit |
-| TH-ASM-004 | Atmospheric moisture recovery is viable in Arkansas summer conditions (high humidity, ambient heat available) | Dew point regularly above 20°C in summer months | Medium | Measured condensation yield below viable threshold |
+| TH-ASM-004 | Atmospheric moisture recovery is viable in high-humidity RDC summer conditions (ambient heat available, dew point regularly above 20°C). Builders in arid or cool climates should treat TH-003 as potentially Blocking for their deployment. | RDC dew point data — substitute via `Architecture/Facilities.md` §VII | Medium | Measured condensation yield below viable threshold |
 
 ---
 
@@ -312,10 +348,12 @@ R-value = L / k in ft²·°F·h/BTU. Higher is better for thermal resistance.
 - Derate all salvaged insulation R-values by 30% minimum until tested
   (see TH-ASM-002)
 
-**Arkansas climate implication:** High summer humidity accelerates moisture ingress
-into unsealed insulation assemblies. All exterior insulation must be vapor-barrier
-protected on the warm side. Failure to do this produces wet insulation within
-one to two humid seasons, collapsing thermal performance.
+**RDC climate implication:** High summer humidity (RDC baseline) accelerates moisture
+ingress into unsealed insulation assemblies. All exterior insulation must be
+vapor-barrier protected on the warm side. Failure to do this produces wet insulation
+within one to two humid seasons, collapsing thermal performance. Arid deployments
+face reduced moisture ingress risk but increased thermal cycling fatigue in insulation
+joints. Substitute your climate via `Architecture/Facilities.md` §VII.
 
 ---
 
@@ -355,7 +393,7 @@ achieves COP 3–4 in cooling mode.
 
 *Atmospheric moisture recovery (Challenges/Water.md):* A heat pump or dedicated
 condensing unit chills a surface below the dew point of ambient air, causing moisture
-to condense. In Arkansas summer conditions (dew point commonly 22–26°C), a surface
+to condense. In RDC summer conditions (dew point commonly 22–26°C), a surface
 cooled to 10–15°C will yield measurable condensate. The colder the surface relative
 to dew point, the higher the yield rate. The Peltier devices (Section 6) can drive
 small-scale condensation surfaces; vapor-compression systems are required for
@@ -365,10 +403,12 @@ meaningful throughput.
 must be removed. A heat pump can lift that waste heat to a useful temperature
 (e.g., domestic hot water, process preheat) rather than dumping it to ambient.
 
-*Climate control for electronics bays:* High ambient temperatures in Arkansas summers
-degrade electronics performance and lifespan. A small dedicated heat pump for
-electronics enclosures — sized to the actual heat load, not commercial room size —
-is more energy-efficient than running a full HVAC system.
+*Climate control for electronics bays:* High ambient temperatures in RDC summers
+(and hotter in tropical deployments) degrade electronics performance and lifespan.
+A small dedicated heat pump for electronics enclosures — sized to actual heat load,
+not commercial room size — is more energy-efficient than running a full HVAC system.
+Builders in cooler climates can deprioritize this; builders in tropical zones should
+treat it as higher priority than the RDC baseline suggests.
 
 **Salvage note:** Window air conditioning units are widely available in salvage
 streams and contain a functional vapor-compression heat pump. The compressor,
@@ -566,7 +606,7 @@ from Analogous to Measured confidence.
 
 ---
 
-### TH-003 — Atmospheric moisture yield under Arkansas conditions not measured
+### TH-003 — Atmospheric moisture yield under deployment conditions not measured
 
 | Field | Value |
 |-------|-------|
@@ -577,19 +617,24 @@ from Analogous to Measured confidence.
 | Blocking | No — non-blocking for most Forge operations; Blocking for Living Waters deployment |
 | Owner | `Architecture/Thermal_Systems.md` |
 | First Logged | 2026-05-31 |
+| Last Reviewed | 2026-06-11 |
 
 **Description:** TH-ASM-004 assumes atmospheric moisture recovery is viable in
-Arkansas summer conditions. Section 6 provides the condensation doctrine. But
-actual yield per unit of cold surface area at local dew point conditions has not
-been measured. Without yield data, Living Waters condensation system sizing
-is speculative.
+high-humidity RDC summer conditions. Section 6 provides the condensation doctrine.
+But actual yield per unit of cold surface area at local dew point conditions has not
+been measured. Without yield data, Living Waters condensation system sizing is
+speculative. Builders in arid or cool climates should treat this as potentially
+Blocking for their deployment regardless of the non-blocking status at RDC baseline
+— if your deployment dew point is regularly below 15°C, condensation yield may be
+insufficient to justify the system.
 
 **Resolution Path:** Simple field test — mount a Peltier-cooled plate (target
-surface temperature 8–12°C) in outdoor Arkansas summer conditions. Measure
-condensate mass collected per hour per 100cm² of surface. Run across three
-representative humidity conditions (morning, afternoon, evening). Report as
-g/hr/100cm² at known ambient temperature and dew point. This is a one-day
-measurement campaign once a Peltier test rig exists.
+surface temperature 8–12°C) in outdoor conditions at your deployment site.
+Measure condensate mass collected per hour per 100cm² of surface. Run across
+three representative humidity conditions (morning, afternoon, evening). Report
+as g/hr/100cm² at known ambient temperature and dew point. This is a one-day
+measurement campaign once a Peltier test rig exists. Results are deployment-specific
+— each Forge instance should run this test for their local climate.
 
 ---
 
@@ -621,6 +666,13 @@ with calibrated thermal load on hot side. Append as a subsection to Section 6.
 
 ### Resolution Log
 
+- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
+  Dependents tables added. All nine Arkansas/location-specific references converted
+  to Reference Deployment Context (RDC) abstraction with substitution guidance and
+  pointer to `Architecture/Facilities.md` §VII. TH-ASM-001 and TH-ASM-004 updated
+  to RDC framing. TH-003 retitled from "Arkansas conditions" to "deployment
+  conditions" — resolution path updated to be deployment-generic with note for
+  arid/cool climate builders. Last Audit updated.
 - 2026-05-31: File created. Established as peer Architecture file alongside
   Engineering.md. Sections 1–8 drafted covering thermodynamic laws, heat transfer
   modes, thermal impedance circuit analogy, insulation doctrine, heat pumps, Peltier
