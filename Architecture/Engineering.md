@@ -1,5 +1,11 @@
 # Engineering.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > ⚠️ **Operational Safety Advisory**
 > Engineering decisions directly govern physical systems that can fail catastrophically
 > (structural collapse, energetic release, mechanical failure, fire, or loss of control).
@@ -22,13 +28,39 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-29                                                          |
-| Auditor          | Grok — Fabricator/Systems                                           |
+| Last Audit       | 2026-06-11                                                          |
+| Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; operator safety as foundational constraint |
+| `Admin/Safety_Protocols.md` | Safety factors cross-reference; PPE doctrine for structural operations |
+| `Architecture/Facilities.md` | Site constraints; RDC climate baseline — substitute your deployment parameters via `Facilities.md` §VII Site Initialization Checklist |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Architecture/Mechanical_Structures.md` | Structural safety factors and margin doctrine inherited from this file |
+| `Architecture/Thermal_Systems.md` | Systems engineering integration principles |
+| `Architecture/Friction_Dynamics.md` | Peer file — broad engineering principles apply across all domains |
+| `Architecture/Chemistry.md` | Peer file — materials behavior and derating doctrine |
+| `Operations/Gate_06_Fabrication.md` | Forge-specific safety factors and tolerance standards |
+| `Operations/Woodworking.md` | Wood derating and moisture behavior doctrine |
+| `Operations/Plastics.md` | Materials behavior and failure mode analysis |
+| `Architecture/Components.md` | Safety factors for salvaged component graduation |
+| `Tests/Leviathan_testing.md` | Engineering principles for autonomous system structural design |
 
 ## Scope Boundary
 
@@ -38,7 +70,8 @@
 - Core mechanical, structural, and systems engineering fundamentals
 - Materials behavior overview and selection guidance
 - Forge-specific parameters, safety factors, and climate considerations
-  (Arkansas/southern US)
+  — values use the **Reference Deployment Context (RDC)**; substitute your deployment
+  parameters via `Architecture/Facilities.md` §VII Site Initialization Checklist
 - Progressive path from basic to high-performance engineering
 
 **This file DOES NOT define:**
@@ -79,7 +112,7 @@ failures, safety incidents, and inefficient reinvention of fundamental knowledge
 |---------|------------|-------|------------|----------------|
 | ASM-001 | Builders have basic math and physics literacy (algebra, geometry, forces) | Typical maker/engineer entry level | Medium | Confirmed lower skill baseline |
 | ASM-002 | Access to basic measurement tools and ability to prototype/test | Standard Forge shop capability | High | Fully resource-constrained deployment |
-| ASM-003 | Arkansas climate (high humidity, thunderstorms, occasional freezes) applies as baseline | User location context | High | Relocation outside humid subtropical zone |
+| ASM-003 | Reference Deployment Context (RDC) climate baseline applies — high humidity, thunderstorms, occasional freezes. Builders outside this climate zone must substitute their own parameters via `Architecture/Facilities.md` §VII. | RDC baseline — see `Architecture/Facilities.md` §VII | Medium | Deployment confirmed outside RDC climate zone — substitute via Facilities.md §VII |
 
 ---
 
@@ -107,8 +140,8 @@ haven't thought about it enough.
   thermal management detail see `Architecture/Thermal_Systems.md`.
 
 ### 3. Structural Engineering Basics
-- Loads: Dead, live, environmental (wind, seismic, snow — Arkansas wind/snow
-  loads matter).
+- Loads: Dead, live, environmental (wind, seismic, snow — consult your deployment
+  region's load data; see `Architecture/Facilities.md` §VII and EN-002).
 - Beams, columns, trusses, connections.
 - Buckling, deflection, shear, bending moment.
 - **Key Formula Reference**: Simple beam deflection, Euler buckling, etc.
@@ -121,8 +154,10 @@ haven't thought about it enough.
   metals (ductile vs brittle), plastics, composites.
 - Derating: Reduce allowable stresses for temperature, moisture, fatigue, defects
   in salvaged stock.
-- **Arkansas Note**: High humidity accelerates rot in wood and corrosion in metals
-  — favor rot-resistant species and protective coatings.
+- **RDC Note**: High humidity (RDC baseline) accelerates rot in wood and corrosion
+  in metals — favor rot-resistant species and protective coatings. Arid deployments
+  reduce this risk but increase dust and thermal cycling concerns. Substitute your
+  climate via `Architecture/Facilities.md` §VII.
 
 ### 5. Systems Engineering & Integration
 - Define requirements → architecture → interfaces → verification.
@@ -152,9 +187,10 @@ Be explicit.
 
 **Tolerances**: ±0.5 mm general fabrication; tighter for bearings/interfaces.
 
-**Environmental Derating** (Arkansas):
-- Wood strength: Reduce 20–30% for sustained high humidity.
-- Fastener corrosion allowance.
+**Environmental Derating** *(RDC baseline — substitute your deployment values via `Architecture/Facilities.md` §VII)*:
+- Wood strength: Reduce 20–30% for sustained high humidity (RDC). Arid deployments
+  may use lesser derating; tropical deployments should verify against local species data.
+- Fastener corrosion allowance: specify galvanized or stainless in wet/humid environments.
 
 **Measurement Standards**: Calibrate tools regularly. Use moisture meters for
 wood, torque wrenches for critical fasteners.
@@ -227,7 +263,7 @@ Promote to Specification when validated against at least one destructive test se
 
 ---
 
-### EN-002 — Arkansas-specific environmental load data
+### EN-002 — Deployment-specific environmental load data not compiled
 
 | Field | Value |
 |-------|-------|
@@ -238,15 +274,20 @@ Promote to Specification when validated against at least one destructive test se
 | Blocking | No |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
-| Last Reviewed | 2026-05-29 |
+| Last Reviewed | 2026-06-11 |
 
-**Description:** Precise local wind, snow, and humidity derating values need better
-compilation.
+**Description:** Precise local wind, snow, seismic, and humidity derating values for
+the deployment region have not been compiled into a structured table. The RDC baseline
+provides starting values but is not a substitute for deployment-specific data.
 
-**Why It Matters:** Affects all outdoor and structural designs.
+**Why It Matters:** Affects all outdoor and structural designs. A builder in a high
+wind or seismic zone using RDC baseline values will be under-margined.
 
-**Resolution Path:** Compile from ASCE 7 and local NOAA data for the specific
-deployment region. Append as a structured table in §8.
+**Resolution Path:** Each deploying builder should compile from their regional
+equivalent of ASCE 7 and local meteorological data. A structured table template
+will be added to `Architecture/Facilities.md` §VII when EN-002 advances to
+In Progress. The `Facilities.md` Site Initialization Checklist Climate Parameters
+section (§VII.A) is the interim capture mechanism.
 
 *(Additional unknowns: EN-003 Materials database, EN-004 High-performance low-tech
 methods, EN-005 Verification testing protocols — full entries in sidecar.)*
@@ -255,6 +296,12 @@ methods, EN-005 Verification testing protocols — full entries in sidecar.)*
 
 ### Resolution Log
 
+- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
+  Dependents tables added. All Arkansas/location-specific references converted to
+  Reference Deployment Context (RDC) abstraction with pointer to `Architecture/
+  Facilities.md` §VII Site Initialization Checklist. ASM-003 updated to RDC framing.
+  EN-002 retitled and description updated to deployment-generic framing. Last Audit
+  updated.
 - 2026-05-31: Scope boundary updated — peer file references to
   `Architecture/Mechanical_Structures.md`, `Architecture/Thermal_Systems.md`, and
   `Architecture/Friction_Dynamics.md` added. Stale references to retired planned
