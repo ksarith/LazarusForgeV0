@@ -28,7 +28,11 @@
 
 This file defines the challenge of emergent intelligence as it applies to the Lazarus Forge — its distributed multi-agent architecture, autonomous subsystems, and governance substrate. It covers the conditions under which deterministic logic transitions toward dynamic self-modification of internal heuristics, and the engineering requirements the Forge must satisfy to remain corrigible, transparent, and cooperative across that transition.
 
-**This file owns:**
+**Challenge Class:** Reflexive — this challenge is created by the Forge's own capability, not by external environmental pressure. The Forge's capacity to deploy autonomous agents is itself the source of the pressure this file describes. Contrast with External Challenges (Water, Waste, Biofouling, Critical Minerals, Planned Obsolescence), which exist independent of the Forge.
+
+**Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
+
+This file owns:**
 - The crisis framing for emergent intelligence in distributed autonomous systems
 - The engineering requirements governing alignment-by-environment design
 - The Forge's current architectural responses to this challenge
