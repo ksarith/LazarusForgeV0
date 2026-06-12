@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.7 — 2026-06-11. Challenges/Emergence.md created and fully integrated. EM cluster (EM-001 through EM-004) registered. Discovery.md and Routing.md updated. EM-001 and EM-004 added to Critical Watch and Blocking Watch respectively.**
+**Version 2.8 — 2026-06-11. Full Challenges/ retrofit pass complete. Five files brought to File_Template.md compliance: Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md (PC-004 title correction applied), Critical_Minerals.md (full prose expansion). WA, BF, PO, WS, CM clusters registered (20 new unknowns). PC-004 CLOSED. WA-002, WA-004, CM-002 added to Critical Watch.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,6 +27,14 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 
 ---
 
+## What v2.8 Means
+
+- **Full Challenges/ retrofit pass complete** — all six Challenges/ files now comply with File_Template.md standard. Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md, and Critical_Minerals.md all received Navigation Anchors, File State block, Scope Boundary (with Challenge Class declaration), Upstream Dependencies, Downstream Dependents, and formal Open Unknowns tables.
+- **Critical_Minerals.md substantially expanded** — file was three untitled paragraphs with no Engineering Requirements, no Long-Term Objective, and no open unknowns. Full prose expansion written to match depth of other Challenges/ files. Title corrected from `Critical_Mineral_Chokepoints.md` to `Critical_Minerals.md`.
+- **PC-004 CLOSED** — Water.md title corrected from `Water_Scarcity_and_Contamination.md` to `Water.md`. Stale name corrections applied across both affected files.
+- **Five new unknown clusters registered** — WA (Waste, 4 entries), BF (Biofouling, 4 entries), PO (Planned Obsolescence, 4 entries), WS (Water Scarcity, 4 entries), CM (Critical Minerals, 4 entries). 20 new unknowns total.
+- **Challenge taxonomy fully instantiated** — all six Challenges/ files now carry explicit Challenge Class declarations (all five retrofitted files are External; Emergence.md is Reflexive). Taxonomy is now complete across the full Challenges/ directory.
+
 ## What v2.7 Means
 
 - **Challenges/Emergence.md created** — First Challenges/ file built to full File_Template.md standard. Reference implementation for future Challenges/ retrofit passes. Fully integrated: Discovery.md scope map, Routing.md row, and Unknowns.md EM cluster all updated in same session.
@@ -35,79 +43,6 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 - **Challenge taxonomy clarified** — External Challenges (Water, Waste, Biofouling, Critical Minerals, Planned Obsolescence) respond to pressures independent of the Forge. Reflexive Challenges (Emergence and candidates) respond to pressures created by possessing the capability to address other challenges. Class declaration is now a required element of new Challenges/ file Scope Boundary sections.
 - **Negative-space architecture principle documented** — The Forge's architecture is the fossil record of the pressures that shaped it. Challenges are the permanent record; solutions are temporary local answers. This principle is now structurally embedded in the Challenge taxonomy.
 
-## What v2.6 Means
-
-- **PC-001 CLOSED** — All 10 Verification Ref corrections applied across the
-  full file set. AUDIT_HARNESS.py now routes correctly against every file.
-- **PC-002 CLOSED** — All 7 Facilities.md upstream references applied.
-- **PC-003 CLOSED** — All 10 new-file cross-reference corrections applied.
-  Files now reference: Precision.md, Economics.md, Safety_Protocols.md,
-  Governance_Migration_Protocol.md per their scope dependencies.
-- **GK-005 RESOLVED** — `Architecture/Precision.md` created 2026-06-06.
-  Geck_forge_seed.md Section V updated; Open Unknowns 3→2.
-- **EP-005 and EP-006 now active** — Engineer_Protocols.md ADDENDUM
-  integrated into body. EP-005 (acceptable risk threshold) and EP-006
-  (unknown lifecycle integration) added as formal sidecar unknowns.
-  Open Unknowns for Engineer_Protocols.md updated 4→6.
-- **Governance_Charter.md [PLANNED] labels cleared** for four files now
-  confirmed created: Canonical_Terms.md, Repository_Structure.md,
-  Security_Protocols.md, Governance_Migration_Protocol.md.
-- Retrofit complete for this session: 22 files total received Navigation
-  Anchors, correct Verification Refs, and targeted corrections. Repository
-  is now structurally compliant for machine audit across the full active
-  file set.
-
-*(v2.5: Seven files retrofitted; CF-001, CF-002, CF-003 moved to In
-Progress; PC-001 and PC-002 partial closure.)*
-
-
-
-- Retrofit pass completed for seven files — Navigation Anchors added to all;
-  Verification Refs corrected; Facilities.md upstream references added
-- CF-001 (hardware watchdog minimum standard) — **In Progress**: Electronics.md
-  Hardware Watchdog Doctrine now defines τ=50ms windowed WDT, cryptographic
-  heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement.
-  Parameters from Gemini Synthesizer analysis; confidence Analogous pending
-  first hardware prototype validation
-- CF-002 (correlated AI failure modes) — **In Progress**: Leviathan_testing.md
-  Section VII defines poisoned telemetry injection protocol, correlated failure
-  detection criterion (two or more diverse architectures reaching identical
-  erroneous conclusions under high-entropy ambiguous input triggers Orange/Red),
-  and diversity scoring table
-- CF-003 (identity continuity during split-brain) — **In Progress**:
-  Ship_of_Theseus.md Section IV defines Canonical vs. Derivative Identity,
-  30% cryptographic state threshold, five-step re-vetting path with human
-  ratification, and cognitive grain analog. ST-003 status updated to In Progress
-- Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named and
-  described; eight component algorithms documented; Asymmetric Conservatism
-  property documented; development targets listed
-- PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md,
-  Air_Scrubber.md corrected — 6 files remain (Gate_03, Gate_04, Gate_06,
-  Gate_07, Plastics, Woodworking, Forge_Net)
-- PC-002 partial closure: same four files corrected — 3 files remain
-  (Gate_03, Gate_04, Gate_05, Gate_06, Woodworking minus already-done)
-
-*(v2.4: Six new files indexed; FA, SP, EC, GMP, RS, PR clusters added;
-PC cluster migrated from Discovery.md.)*
-
----
-
-## What v2.4 Means
-
-- Six new files created 2026-06-06 — FA, SP, EC, GMP, RS, PR clusters indexed
-- UNK-006 (facility siting) resolved — `Architecture/Facilities.md` now owns; 7
-  dependent files have pending reference corrections (PC cluster)
-- GK-005 (Precision_LF.md not created) resolved — `Architecture/Precision.md`
-  now exists; stale name corrected throughout
-- EP-005 (acceptable risk threshold) resolved — `Admin/Safety_Protocols.md`
-  Section I provides the consequence category table and escalation rules
-- Pending corrections migrated from Discovery.md — PC-001 through PC-004
-  replace the task tables that were cluttering the navigation layer
-- Economics.md canonical barter ownership noted — EC-003 resolved in file;
-  indexed here as resolved
-- Navigation note updated — Routing.md now exists as programmatic entry point
-
-*(v2.3: Chemistry.md added; CE-001 through CE-004 indexed.)*
 
 ---
 
@@ -381,6 +316,64 @@ EM-004 (governance substrate integrity under emergent agent access) -> Critical;
         (external root-of-trust); depends on RIP-001 (prior-state archival)
         and Admin/Repository_Integrity_Protocol.md Phase 2 automation for
         cryptographic backstop; no fast resolution path
+
+WA-001 (embedded complexity preservation metric) -> no formal measure before
+        Gate_02 promotion; feeds TS-001 (forge duty threshold) and CO-001
+        (graduation rule circularity)
+WA-002 (hazardous fraction identification reliability) -> cross-ref CE-004
+        (chemical hazard training standard); Safety-critical before mixed-waste ops
+WA-003 (informal sector integration doctrine) -> no upstream dependency;
+        human decision at community deployment scale
+WA-004 (negative-value waste fraction disposal) -> cross-ref GR-003
+        (biological and chemical waste disposal doctrine); both Critical gaps;
+        neither has an owning file
+
+BF-001 (ultrasonic antifouling energy budget) -> depends on SR-004
+        (induction charging pad design) for power budget context;
+        cross-ref EL-003 (TMR voter implementation — piezo shares test workflow)
+BF-002 (biomimetic surface topography durability) -> depends on first
+        operational deployment in high-turbulence environment; feeds SR-012
+        (mechanical bio-damping)
+BF-003 (regional fouling rate differential) -> no blocking dependency;
+        feeds SR-001 (galvanic corrosion mitigation) maintenance cycle calibration
+BF-004 (shed panel reef substrate viability) -> cross-ref CE-001
+        (galvanic corrosion rates); Plastics.md toxicity doctrine; non-blocking
+        until first panel shed cycle
+
+PO-001 (firmware re-baselining legal boundary doctrine) -> human decision;
+        jurisdiction-variable; cross-ref Admin/Governance_Charter.md for
+        IP boundary framing
+PO-002 (potting compound removal chemistry) -> blocks non-destructive recovery
+        of potted assemblies; cross-ref EL-006 (firmware trust and reflashing)
+PO-003 (proprietary connector adapter coverage) -> non-blocking;
+        feeds EL-001 (Forge-Standard interface spec)
+PO-004 (community re-baselining skill transfer standard) -> cross-ref
+        CE-004 (chemical hazard training standard); EP-004 (engineering
+        authority boundary); both address operator competency doctrine
+
+WS-001 (energy harvesting for high-humidity low-kinetic environments) ->
+        depends on EV-001 (Forge power demand baseline); feeds TH-001
+        (heat pump sizing doctrine)
+WS-002 (heavy metal stabilization in tropical climates) -> cross-ref
+        CE-001 (galvanic corrosion rates in humid environments); non-blocking
+        until first tropical deployment
+WS-003 (stratification diminishing returns threshold) -> cross-ref MG-002
+        (optimal RPM bands per feedstock); SC-002 (segregation effectiveness)
+WS-004 (community adoption and maintenance protocol) -> human decision;
+        no blocking technical dependency; feeds WA-003 (informal sector
+        integration doctrine)
+
+CM-001 (real-time material assay integration) -> cross-ref CE-002
+        (oxide burden on Spin Chamber output); CE-003 (Beilstein validation);
+        blocks dynamic routing decisions in gate workflow
+CM-002 (acid leach reagent recovery doctrine) -> cross-ref GR-003
+        (biological and chemical waste disposal); blocks hydrometallurgical
+        processing; Critical
+CM-003 (functional substitute performance floor) -> cross-ref PR-001
+        (precision ceiling); GF-002 (precision ceiling at v0); no acceptance
+        criterion for substitute development without this
+CM-004 (urban ore database coverage) -> no blocking dependency; feeds
+        CM-001 (assay integration) and MG-002 (RPM calibration per feedstock)
 ```
 
 ---
@@ -545,6 +538,57 @@ EM-004 (governance substrate integrity under emergent agent access) -> Critical;
 
 *EM-001 depends on CF-001 resolution — watchdog threshold cannot be specified until hardware watchdog parameters reach Measured confidence.*
 *EM-004 is Critical — no fast resolution path; architectural decision above repository level required. Mirrors UNK-009.*
+
+### Waste
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| WA-001 | Embedded complexity preservation metric — no formal measure exists for whether triage decisions are preserving functional complexity versus routing prematurely to reduction. Needed before Gate_02 promotion from Exploration. | `Challenges/Waste.md` | Open | Major |
+| WA-002 | Hazardous fraction identification reliability — no validated identification protocol or training standard exists for asbestos, heavy metals, and BFR-containing materials in mixed waste streams. Cross-ref CE-004. | `Challenges/Waste.md` | Open | Critical |
+| WA-003 | Informal sector integration doctrine — no framework exists for how the Forge interfaces with, supports, or avoids displacing existing informal waste recovery workers at community deployment scale. | `Challenges/Waste.md` | Open | Major |
+| WA-004 | Negative-value waste fraction disposal — materials that cannot be recovered and are hazardous to store require a disposal doctrine. No owning file currently covers this. Cross-ref GR-003. | `Challenges/Waste.md` | Open | Critical |
+
+*WA-002 and WA-004 are Critical — no sustained mixed-waste operations without hazardous fraction identification and negative-value disposal doctrine.*
+
+### Biofouling
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| BF-001 | Ultrasonic antifouling energy budget — piezoelectric transducer array effectiveness and energy consumption at operational depth not characterized. Active approach, unvalidated. | `Challenges/Biofouling.md` | Open | Major |
+| BF-002 | Biomimetic surface topography durability — micro-texture effectiveness and abrasion resistance in high-turbulence or sediment-laden water not characterized. | `Challenges/Biofouling.md` | Open | Major |
+| BF-003 | Regional fouling rate differential — no maintenance cycle calibration doctrine exists for varying latitude, season, and biological activity. | `Challenges/Biofouling.md` | Open | Major |
+| BF-004 | Shed panel reef substrate viability — no validation protocol confirms that shed colonized panels do not leach antifoulant or polymer toxins as reef substrate. Cross-ref CE-001, Plastics.md toxicity doctrine. | `Challenges/Biofouling.md` | Open | Major |
+
+### Planned Obsolescence
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| PO-001 | Firmware re-baselining legal boundary doctrine — the Forge's position that firmware lock is a material property, not a legal boundary, is philosophically grounded but operationally untested. Jurisdiction-variable. | `Challenges/Planned_Obsolescence.md` | Open | Major |
+| PO-002 | Potting compound removal chemistry — no validated thermal or chemical protocol exists for removing epoxy potting without damaging enclosed components. Blocks non-destructive recovery of potted assemblies. | `Challenges/Planned_Obsolescence.md` | Open | Major |
+| PO-003 | Proprietary connector adapter coverage — no systematic inventory of connector types in likely salvage streams exists. Feeds EL-001 (Forge-Standard interface spec). | `Challenges/Planned_Obsolescence.md` | Open | Minor |
+| PO-004 | Community re-baselining skill transfer standard — no owning file defines the training and documentation standard for returning repairability to communities. Cross-ref CE-004, EP-004. | `Challenges/Planned_Obsolescence.md` | Open | Major |
+
+### Water Scarcity
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| WS-001 | Optimal energy harvesting for high-humidity low-kinetic environments — no validated design for off-grid filtration power in still-air, high-humidity contexts. Feeds TH-001 sizing. | `Challenges/Water.md` | Open | Major |
+| WS-002 | Heavy metal stabilization chemistry for tropical climates — long-term stability of isolated outputs in high-temperature, high-humidity storage not characterized. | `Challenges/Water.md` | Open | Major |
+| WS-003 | Stratification diminishing returns threshold — contamination levels at which stratification-based approaches reach declining effectiveness not defined. Cross-ref MG-002, SC-002. | `Challenges/Water.md` | Open | Major |
+| WS-004 | Community adoption and maintenance protocol — the social and institutional layer governing whether a technically sound system is used and maintained. No owning file currently defines this. | `Challenges/Water.md` | Open | Major |
+
+*TH-003 (atmospheric moisture yield) remains the Blocking unknown for Living Waters deployment — tracked in Thermal Systems cluster.*
+
+### Critical Minerals
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| CM-001 | Real-time material assay integration — no validated inline characterization method exists for critical mineral fraction identification during processing. Blocks dynamic routing decisions. Cross-ref CE-002, CE-003. | `Challenges/Critical_Minerals.md` | Open | Major |
+| CM-002 | Acid leach reagent recovery and closed-loop doctrine — where chemical separation is necessary, reagent recovery and waste stream management protocol is undefined. Blocks hydrometallurgical processing. Cross-ref GR-003. | `Challenges/Critical_Minerals.md` | Open | Critical |
+| CM-003 | Functional substitute performance floor — no minimum performance specification exists for alloy substitute applications. No acceptance criterion for substitute development. Cross-ref PR-001, GF-002. | `Challenges/Critical_Minerals.md` | Open | Major |
+| CM-004 | Urban ore database coverage — no systematic inventory of critical mineral content by device type, generation, and condition for likely salvage streams. Recovery yields currently Analogous. | `Challenges/Critical_Minerals.md` | Open | Major |
+
+*CM-002 is Critical — no hydrometallurgical processing may proceed without closed-loop reagent recovery and waste stream doctrine.*
 
 ### Hardware Modules
 
@@ -774,7 +818,7 @@ EM-004 (governance substrate integrity under emergent agent access) -> Critical;
 | PC-001 | Verification Ref corrections — all 10 files corrected to Admin/Verification_Gates_LF.md | ~~Gate_01~~, ~~Gate_03~~, ~~Gate_04~~, ~~Gate_06~~, ~~Gate_07~~, ~~Electronics~~, ~~Energy~~, ~~Plastics~~, ~~Woodworking~~, ~~Forge_Net~~ (~~Air_Scrubber~~ corrected) | **Resolved** | Major |
 | PC-002 | Upstream reference corrections — all 7 files now include Facilities.md upstream link | ~~Gate_01~~, ~~Gate_03~~, ~~Gate_04~~, ~~Gate_05~~, ~~Gate_06~~, ~~Electronics~~, ~~Woodworking~~ | **Resolved** | Minor |
 | PC-003 | New file cross-reference corrections — all 10 files updated with 2026-06-06 file references | ~~Gate_06→Precision.md~~, ~~Gate_07→Economics.md~~, ~~Air_Scrubber→Safety_Protocols.md~~, ~~Components.md→Precision.md~~, ~~Mechanical_Structures.md→Precision.md~~, ~~Engineer_Protocols.md→Safety_Protocols.md~~, ~~Governance_Charter.md→Governance_Migration_Protocol.md~~, ~~Trajectories.md→Economics.md~~, ~~Security_Protocols.md→already done~~, ~~Geck_forge_seed.md→Precision.md~~ | **Resolved** | Minor |
-| PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md have stale cross-references per Rename Registry | Challenges/Water.md, Challenges/Planned_Obsolescence.md | Open | Minor |
+| PC-004 | Stale name corrections — Challenges/Water.md title corrected from Water_Scarcity_and_Contamination.md; Planned_Obsolescence.md stale refs corrected | ~~Challenges/Water.md~~, ~~Challenges/Planned_Obsolescence.md~~ | **Resolved** | Minor |
 
 *PC-001 is the highest priority — Verification Ref is machine-read by AUDIT_HARNESS.py.*
 *Strikethrough indicates files corrected in 2026-06-08 retrofit pass.*
@@ -869,6 +913,9 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; prerequisite PR-004 must run first |
 | EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation; blocks watchdog escalation specification for emergent agent monitoring |
 | EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007; no fast resolution path; architectural decision above repository level required |
+| WA-002 | Hazardous fraction identification reliability — no validated identification protocol for asbestos, heavy metals, BFR in mixed waste streams; Safety-critical before mixed-waste operations |
+| WA-004 | Negative-value waste fraction disposal — no owning file; no doctrine for hazardous unrecoverable material; mirrors GR-003 gap |
+| CM-002 | Acid leach reagent recovery doctrine — undefined; no hydrometallurgical processing before closed-loop reagent recovery and waste stream management are specified |
 
 ### Blocking Watch
 
@@ -879,7 +926,6 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 | VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
 | RS-003 | Archive/ directory not created — blocks RIP-001 full closure; create before next Specification-level file revision |
-| PC-004 | Stale name corrections — Challenges/Water.md and Challenges/Planned_Obsolescence.md; low risk, not machine-read |
 
 ---
 
@@ -900,6 +946,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | EP-005 | Acceptable risk threshold — partial resolution | Partially resolved — Admin/Safety_Protocols.md Section I defines consequence categories and escalation rules; full threshold definition remains open in Engineer_Protocols.md sidecar | 2026-06-06 |
 | EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine; canonical ownership assigned | 2026-06-06 |
 | GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
+| PC-004 | Stale name corrections — Water.md and Planned_Obsolescence.md | Resolved — Water.md title corrected to match filename; stale cross-references corrected in both files during Challenges/ retrofit pass | 2026-06-11 |
 
 ---
 
@@ -932,6 +979,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v2.8 — 2026-06-11:** Full Challenges/ retrofit pass complete. Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md, Critical_Minerals.md all brought to File_Template.md compliance — Navigation Anchors, File State, Scope Boundary (Challenge Class: External for all five), Upstream/Downstream tables, formal Open Unknowns tables. Critical_Minerals.md substantially expanded — Engineering Requirements, Long-Term Objective, and Current Forge Approaches written from scratch; title corrected from Critical_Mineral_Chokepoints.md. **PC-004 CLOSED** — Water.md title corrected; stale refs resolved. Five new clusters registered: WA-001–004, BF-001–004, PO-001–004, WS-001–004, CM-001–004 (20 new unknowns). WA-002, WA-004, CM-002 added to Critical Watch. PC-004 removed from Blocking Watch. Challenge taxonomy fully instantiated — all six Challenges/ files now carry explicit Challenge Class declarations.
 
 **v2.7 — 2026-06-11:** Challenges/Emergence.md created — first Challenges/ file built to full File_Template.md standard; reference implementation for future retrofit passes. EM-001 through EM-004 registered as new Emergence cluster. Discovery.md scope map entry added; Routing.md row added. EM-001 (behavioral opacity detection threshold) and EM-004 (governance substrate integrity) added to Critical Watch. Reflexive Challenge class named and documented — Emergence.md is the first explicitly Reflexive Challenge in the repo. RC-001 through RC-006 logged as candidate future Reflexive Challenge files in Future/Deferred table. Challenge taxonomy (External vs. Reflexive) established; class declaration added as required element of new Challenges/ file Scope Boundary sections. Negative-space architecture principle documented: Challenges are the permanent record of pressures; solutions are temporary local answers.
 
