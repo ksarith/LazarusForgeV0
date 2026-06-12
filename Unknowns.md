@@ -20,442 +20,33 @@ Pending corrections (task list) → PC cluster in this file
 Programmatic URL routing → `Routing.md`
 Navigation map and scope boundaries → `Discovery.md`
 
-**Discovery.md task tables have been retired.** The Pending Verification Ref
-Corrections table and the Pending Reference Corrections — New Files table that
-previously lived in Discovery.md are now tracked here as PC-001 through PC-004.
-Discovery.md is a navigation map, not a task list. This file owns pending work.
+**Cross-module dependencies** are owned by each file's Upstream/Downstream tables as of the v0.2 retrofit pass. See `Discovery.md` Scope Map for navigation. The Dependency Map section formerly in this file has been retired — it was a compensatory mechanism for files that lacked Upstream/Downstream tables. Those tables now exist across the full active file set and are the authoritative source.
+
+**Discovery.md task tables have been retired.** Pending corrections are tracked here as PC clusters. Discovery.md is a navigation map, not a task list.
+
+### Size Management Rules
+
+These rules are enforced at every audit cycle opening:
+
+1. **What vX.X Means — rolling single section.** Only the current version's What section is kept live. When a new version is cut, the prior What section is retired. Its content is already captured in the Audit Trail entry for that version. Keeping stacked What sections is redundant.
+
+2. **Resolved entries leave the Active Index immediately.** Once an unknown is resolved, it moves to the Resolved & Discharged Archive. It does not linger in the Active Index with a Resolved status badge. Active tables show Open and In Progress only.
+
+3. **Compression trigger at 1,200 lines.** If this file exceeds 1,200 lines, a compression pass is mandatory before new entries are added. Compression scope: retire old What sections, verify all resolved actives have moved to archive, confirm Dependency Map remains retired.
+
+4. **Audit Trail entries are concise.** Two to three sentences maximum: what changed, what was resolved, what moved to watch lists. The What vX.X section carries the full narrative during the session; the Audit Trail is the permanent compressed record.
 
 ---
 
 ## What v2.9 Means
 
-- **Support_Raft.md v0.5** — full File_Template.md compliance retrofit. Navigation Anchors, File State, Scope Boundary (owns/does-not-own), Upstream/Downstream tables added. All stale file references corrected (`Material_Separation_Gate_v0.md` → `Operations/Gate_05_Separation_Thermal.md`; `energy_v0.md` → `Operations/Energy.md`; `leviathan_testing.md` → `Tests/Leviathan_testing.md`; `Ship_of_Theseus_Right_to_Repair.md` → `Admin/Ship_of_Theseus.md`; `geck_forge_seed.md` → `Architecture/Geck_forge_seed.md`).
-- **Five-anchor Purpose reframe** — Purpose section restructured around five anchor roles (Energy, Truth, Recovery, Material, Communication). Doctrine elevated above hull implementation. Anchor-node vs. headquarters distinction made explicit.
-- **Failure Philosophy & Succession section added** — failure modes table, degraded operation doctrine, end-of-region protocol, and succession principle consolidated into a dedicated section. The symmetric Leviathan ↔ Raft ↔ Shore Forge relationship diagram added.
-- **SR-010 RESOLVED** — thermal management architecture declared modular/expandable in Mechanical Design section. No further action required.
-- **SR-006 moved to In Progress** — cold storage rack concept implemented in Stasis Mode; specification trigger defined as Leviathan unit physical envelope confirmation.
+- **Support_Raft.md v0.5** — full File_Template.md compliance retrofit. Navigation Anchors, File State, Scope Boundary, Upstream/Downstream tables added. All stale file references corrected. Five-anchor Purpose reframe adopted (Energy, Truth, Recovery, Material, Communication anchors). Failure Philosophy & Succession section added; symmetric Leviathan ↔ Raft ↔ Shore Forge relationship formalized.
+- **SR-010 RESOLVED** — thermal management modularity declared modular/expandable in Mechanical Design section.
+- **SR-006 In Progress** — cold storage rack specification trigger defined as Leviathan unit physical envelope confirmation.
+- **Dependency Map retired** — cross-module dependencies now owned by each file's Upstream/Downstream tables following full retrofit pass.
+- **Size management rules adopted** — What vX.X compression rule, Active Index housekeeping rule, 1,200-line compression trigger, and concise Audit Trail rule added to Purpose section.
 
-## What v2.8 Means
-
-- **Full Challenges/ retrofit pass complete** — all six Challenges/ files now comply with File_Template.md standard. Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md, and Critical_Minerals.md all received Navigation Anchors, File State block, Scope Boundary (with Challenge Class declaration), Upstream Dependencies, Downstream Dependents, and formal Open Unknowns tables.
-- **Critical_Minerals.md substantially expanded** — file was three untitled paragraphs with no Engineering Requirements, no Long-Term Objective, and no open unknowns. Full prose expansion written to match depth of other Challenges/ files. Title corrected from `Critical_Mineral_Chokepoints.md` to `Critical_Minerals.md`.
-- **PC-004 CLOSED** — Water.md title corrected from `Water_Scarcity_and_Contamination.md` to `Water.md`. Stale name corrections applied across both affected files.
-- **Five new unknown clusters registered** — WA (Waste, 4 entries), BF (Biofouling, 4 entries), PO (Planned Obsolescence, 4 entries), WS (Water Scarcity, 4 entries), CM (Critical Minerals, 4 entries). 20 new unknowns total.
-- **Challenge taxonomy fully instantiated** — all six Challenges/ files now carry explicit Challenge Class declarations (all five retrofitted files are External; Emergence.md is Reflexive). Taxonomy is now complete across the full Challenges/ directory.
-
-## What v2.7 Means
-
-- **Challenges/Emergence.md created** — First Challenges/ file built to full File_Template.md standard. Reference implementation for future Challenges/ retrofit passes. Fully integrated: Discovery.md scope map, Routing.md row, and Unknowns.md EM cluster all updated in same session.
-- **EM-001 through EM-004 registered** — Four new unknowns in new Emergence cluster. EM-001 (behavioral opacity detection threshold) and EM-004 (governance substrate integrity under emergent agent access) added to Critical Watch. EM-001 depends on CF-001 resolution. EM-004 mirrors GOV-003 and SEC-007.
-- **Reflexive Challenge class named** — Emergence.md is the first explicitly Reflexive Challenge in the repository (a pressure created by the Forge's own capability, rather than an external environmental pressure). Candidate list of future Reflexive Challenges logged in Future/Deferred table: Governance Drift, Incentive Capture, Information Decay, Identity Continuity, Coordination Failure, Institutional Ossification.
-- **Challenge taxonomy clarified** — External Challenges (Water, Waste, Biofouling, Critical Minerals, Planned Obsolescence) respond to pressures independent of the Forge. Reflexive Challenges (Emergence and candidates) respond to pressures created by possessing the capability to address other challenges. Class declaration is now a required element of new Challenges/ file Scope Boundary sections.
-- **Negative-space architecture principle documented** — The Forge's architecture is the fossil record of the pressures that shaped it. Challenges are the permanent record; solutions are temporary local answers. This principle is now structurally embedded in the Challenge taxonomy.
-
-## What v2.6 Means
-
-- **PC-001 CLOSED** — All 10 Verification Ref corrections applied across the
-  full file set. AUDIT_HARNESS.py now routes correctly against every file.
-- **PC-002 CLOSED** — All 7 Facilities.md upstream references applied.
-- **PC-003 CLOSED** — All 10 new-file cross-reference corrections applied.
-  Files now reference: Precision.md, Economics.md, Safety_Protocols.md,
-  Governance_Migration_Protocol.md per their scope dependencies.
-- **GK-005 RESOLVED** — `Architecture/Precision.md` created 2026-06-06.
-  Geck_forge_seed.md Section V updated; Open Unknowns 3→2.
-- **EP-005 and EP-006 now active** — Engineer_Protocols.md ADDENDUM
-  integrated into body. EP-005 (acceptable risk threshold) and EP-006
-  (unknown lifecycle integration) added as formal sidecar unknowns.
-  Open Unknowns for Engineer_Protocols.md updated 4→6.
-- **Governance_Charter.md [PLANNED] labels cleared** for four files now
-  confirmed created: Canonical_Terms.md, Repository_Structure.md,
-  Security_Protocols.md, Governance_Migration_Protocol.md.
-- Retrofit complete for this session: 22 files total received Navigation
-  Anchors, correct Verification Refs, and targeted corrections. Repository
-  is now structurally compliant for machine audit across the full active
-  file set.
-
-*(v2.5: Seven files retrofitted; CF-001, CF-002, CF-003 moved to In
-Progress; PC-001 and PC-002 partial closure.)*
-
-
-
-- Retrofit pass completed for seven files — Navigation Anchors added to all;
-  Verification Refs corrected; Facilities.md upstream references added
-- CF-001 (hardware watchdog minimum standard) — **In Progress**: Electronics.md
-  Hardware Watchdog Doctrine now defines τ=50ms windowed WDT, cryptographic
-  heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement.
-  Parameters from Gemini Synthesizer analysis; confidence Analogous pending
-  first hardware prototype validation
-- CF-002 (correlated AI failure modes) — **In Progress**: Leviathan_testing.md
-  Section VII defines poisoned telemetry injection protocol, correlated failure
-  detection criterion (two or more diverse architectures reaching identical
-  erroneous conclusions under high-entropy ambiguous input triggers Orange/Red),
-  and diversity scoring table
-- CF-003 (identity continuity during split-brain) — **In Progress**:
-  Ship_of_Theseus.md Section IV defines Canonical vs. Derivative Identity,
-  30% cryptographic state threshold, five-step re-vetting path with human
-  ratification, and cognitive grain analog. ST-003 status updated to In Progress
-- Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named and
-  described; eight component algorithms documented; Asymmetric Conservatism
-  property documented; development targets listed
-- PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md,
-  Air_Scrubber.md corrected — 6 files remain (Gate_03, Gate_04, Gate_06,
-  Gate_07, Plastics, Woodworking, Forge_Net)
-- PC-002 partial closure: same four files corrected — 3 files remain
-  (Gate_03, Gate_04, Gate_05, Gate_06, Woodworking minus already-done)
-
-*(v2.4: Six new files indexed; FA, SP, EC, GMP, RS, PR clusters added;
-PC cluster migrated from Discovery.md.)*
-
----
-
-## What v2.4 Means
-
-- Six new files created 2026-06-06 — FA, SP, EC, GMP, RS, PR clusters indexed
-- UNK-006 (facility siting) resolved — `Architecture/Facilities.md` now owns; 7
-  dependent files have pending reference corrections (PC cluster)
-- GK-005 (Precision_LF.md not created) resolved — `Architecture/Precision.md`
-  now exists; stale name corrected throughout
-- EP-005 (acceptable risk threshold) resolved — `Admin/Safety_Protocols.md`
-  Section I provides the consequence category table and escalation rules
-- Pending corrections migrated from Discovery.md — PC-001 through PC-004
-  replace the task tables that were cluttering the navigation layer
-- Economics.md canonical barter ownership noted — EC-003 resolved in file;
-  indexed here as resolved
-- Navigation note updated — Routing.md now exists as programmatic entry point
-
-*(v2.3: Chemistry.md added; CE-001 through CE-004 indexed.)*
-
----
-
-## Dependency Map
-
-```
-EV-001 (Operations/Energy.md) -> LT-001 (Tests/Leviathan_testing.md)
-  -> LT-003 (autonomy architecture)
-     -> LT-004 (trust model)
-     -> LT-005 (priority propagation)
-     -> SR-003 (battery buffer sizing)
-
-LT-002 (storage degradation) -> feeds LT-001 (parallel)
-
-GK-003 (induction pad) -> depends on LT-001
-
-CO-001 (graduation rule circularity) -> feeds FL-001
-TS-001 (forge duty threshold) -> feeds FL-001
-FL-001 (gate logic determinism) — In Progress
-
-TS-002 (contamination routing) -> affects AS-003 (air scrubber waste)
-
-EC-001 (confidence threshold) -> LT-003 / EC-007
-EC-004 (governance failure modes) -> EC-007
-EC-007 (governance fail-safe) — In Progress
-
-GOV-001 (governance migration mechanics) -> no blocking dependency; resolved by Governance_Migration_Protocol.md creation
-GOV-002 (provenance operationalization) -> depends on AP-006 (truth provenance hierarchy)
-GOV-003 (integrity enforcement architecture) -> In Progress — Repository_Integrity_Protocol.md created as resolution path; AP-007 (repository integrity doctrine) — distinct but linked
-GOV-004 (escalation calibration) -> AP-004 (cross-auditor disagreement resolution)
-GOV-005 (constitutional stability) -> discharge via Lessons Learned after stable migration cycles
-GOV-006 (human override authenticity) -> depends on Security_Protocols.md (executing); interim authentication requirement now codified in Governance_Charter.md Human Override Doctrine
-GOV-007 (bootstrap governance initialization) -> In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008 (minimum agent quorum definition)
-GOV-008 (minimum hardware/agent quorum) -> GOV-007 exit condition; depends on Security_Protocols.md for attestation mechanism
-GOV-009 (bounded resource consumption framework) -> cross-ref Tests/Leviathan_testing.md, Tests/Support_Raft.md for physical deployment constraints
-
-AP-001 (auditor metrics) -> depends on AP-003 (audit schema)
-AP-003 (audit trail schema) -> AP-001
-AP-004 (cross-auditor disagreement) -> GOV-004 (escalation calibration); may merge
-AP-005 (verification termination threshold) -> EC-001 (sufficient confidence threshold)
-AP-006 (truth provenance hierarchy) -> FN-001 (validation criteria) / CF-002 (correlated AI failure modes)
-AP-007 (repository integrity doctrine) -> FN-001 / AP-003 / Architecture/Forge_Net.md
-AP-007 cross-ref GOV-003 — constitutional enforcement vs. operational auditor doctrine
-RIP-001 (prior-state archival) -> blocks Phase 2 automation; GitHub releases satisfy at v0
-RIP-002 (Phase 1 automation) -> depends on RIP-001 for comparison checks
-RIP-004 (detection latency) -> In Progress — resolved by Forge_Audit_Kit.md Audit Opening Checklist axiom verification step
-RIP-005 (Security_Protocols.md) -> GOV-006 (human override authenticity); GOV-008 (attestation mechanism); Phase 3 dependency
-
-SEC-001 (quorum recovery) -> GOV-008 (minimum quorum definition) — blocking dependency
-SEC-002 (key revocation) -> SEC-001 (partition affects propagation)
-SEC-002 -> GOV-006 (override node revocation requires additional safeguards)
-SEC-003 (key rotation) -> SEC-002 (rotation and revocation must be consistent)
-SEC-004 (key lifecycle) -> SEC-002 / SEC-003 (all three form coherent lifecycle)
-SEC-005 (trusted init environment) -> CT-004 (canonical definition required)
-SEC-006 (timestamp trust) -> SEC-001 (partition is primary degraded-clock context)
-SEC-007 (external root-of-trust) -> GOV-003 / GOV-005 / RIP-001 (cross-module Critical)
-UNK-009 -> SEC-007 / GOV-003 / GOV-005 / RIP-001 (cross-module spanning)
-CT-001 (legacy script name mapping) -> AUDIT_HARNESS.py; low risk, Minor
-CT-002 (component library schema) -> Operations/Gate_02_Triage.md
-CT-003 (dependency priority map) -> discharge via Admin/Trajectories.md v0->v1
-CT-004 (trusted init environment) -> SEC-005 (resolution dependency)
-
-TR-001 (v1 profitability) -> depends on EV-001
-TR-002 (FRT floor calibration) -> depends on first operational cycle data; feeds TR-001
-
-GU-005 (FRT cycle definition and floor) -> operator declaration at commissioning; feeds TR-002 and TR-001
-
-AS-004 (noise exposure limits) -> depends on first operational SPL measurement; cross-ref Admin/Safety_Protocols.md SP-003
-
-EL-001 (forge standard interface) -> depends on LT-001
-EL-005 (toxic dust profile) -> feeds Air_Scrubber.md sizing and filter selection
-EL-006 (firmware trust) -> prerequisite for first salvaged MCU integration
-EL-007 (correlated TMR failure) -> depends on first TMR prototype
-EL-008 (counterfeit detection) -> cross-reference EL-006 firmware trust
-
-SC-001 (RPM envelope) -> SC-005 (drive system geometry)
-SC-002 (segregation effectiveness) — primary Gen-0 validation target
-SC-006 (siting) -> UNK-006 (master safety registry)
-MG-006 (siting) -> UNK-006 (master safety registry)
-UNK-007 (reduction module) -> Resolved
-UNK-008 (welding wire) -> SC-004
-FN-001 (validation criteria) -> blocks first network connection
-FN-005 (privacy doctrine) -> blocks first network connection
-FN-002 (replication factor) -> depends on LT-002 (node loss rate)
-FN-003 (gaming detection) -> must deploy with FN positive reinforcement
-FN-004 (transport layer) -> informs FN-002 sync doctrine
-GI-002 (energetic discharge) -> blocks first operational Intake run
-GI-003 (augmented detection) -> blocks first unsupervised Intake run
-GI-001 (reference database) -> informs GI-003 detection protocol
-GI-004 (tagging schema) -> depends on Admin/Ship_of_Theseus.md grain system
-GI-005 (pre-Intake protocol) -> depends on GI-002 energetic doctrine
-GI-006 (chain of custody) -> depends on GI-004 tagging schema
-GI-007 (digital contamination) -> depends on Architecture/Forge_Net.md FN-001, Operations/Electronics.md
-GR-002 (method selection) -> unblocks GR-001, GR-004, GR-005, GR-006
-GR-003 (waste disposal) -> no owner in repository — Critical gap
-GR-001 (output envelope) -> depends on GR-002, feeds MG inputs
-GR-004 (particulate) -> depends on GR-002, feeds Air_Scrubber sizing
-GR-005 (automation criteria) -> depends on FL-001, GI-002, GI-003, GR-001, GR-004
-GR-006 (jam clearing) -> depends on GR-002 method selection
-GR-007 (equipment retirement) -> depends on GR-003 waste disposal
-GR-008 (operator decision support) -> compensates for GI-002, GI-003 until resolved
-GF-001 (wire diameter) -> depends on welding process selection, feeds SC-004
-GF-002 (precision ceiling) -> feeds all fabrication tolerance claims
-GF-005 (Utilization gap) -> Resolved — Gate_07_Utilization.md created
-GF-006 (structural adequacy) -> depends on GF-002 precision ceiling
-GF-007 (fire suppression) -> seed for UNK-006 facility siting file
-GU-001 (performance metric schema) -> depends on FN-001 Forge_Net contribution format
-GU-002 (retirement handoff) -> depends on Operations/Gate_02_Triage.md intake requirements
-GU-004 (silent failure detection) -> depends on GF-006 safety-critical flagging, Architecture/Components.md Baseline Observability
-
-EV-002 (biogas parasitic loads) -> ASM-003 in Energy.md; feeds EV-001 net demand calculation
-EV-003 (battery thermal containment) -> blocks enclosed battery bank commissioning;
-        cross-ref Operations/Air_Scrubber.md for outgassing capture
-
-PL-001 (halogenated polymer contamination) -> blocks first hot pyrolysis run;
-        cross-ref Operations/Air_Scrubber.md AS-003 alkaline buffering stage
-PL-002 (reactor pressure control and maintenance access) -> blocks reactor fabrication
-PL-003 (fuel stability) -> feeds Operations/Energy.md motor-generator fuel input
-PL-005 (char residue) -> routes to Operations/Gate_02_Triage.md for classification;
-        cross-ref Operations/Gate_03_Reduction.md GR-003 hazardous waste disposal
-
-WW-001 (drying schedules) -> feeds ASM-005 in Woodworking.md
-WW-002 (urban timber performance) -> gates structural use of salvaged urban timber
-WW-003 (CNC fixturing) -> depends on first operational CNC cycle data
-WW-004 (mixed-species dust) -> Blocking; cross-ref Operations/Air_Scrubber.md
-        source capture requirements
-WW-005 (IFM detection) -> Blocking before any powered cut on urban salvage;
-        cross-ref IFM Screening Protocol in Operations/Woodworking.md Section 1
-
-EN-001 (validated safety factors for salvaged materials) -> Blocking; gates all
-        structural specification in Architecture/Mechanical_Structures.md and
-        Operations/ fabrication files; no structural spec may be promoted without this
-EN-002 (Arkansas environmental load data) -> feeds EN-001 safety factor validation;
-        non-blocking but informs all climate-derated design decisions
-EN-003 (materials database) -> feeds EN-001 and GF-002 precision ceiling
-EN-004 (high-performance low-tech methods) -> Exploratory; informs fabrication
-        method selection in Gate_06
-EN-005 (verification testing protocols) -> feeds EN-001 validation pathway
-
-ME-001 (vibration resonance mapping) -> makes kinematic interlock thresholds in
-        Mechanical_Structures.md provisional; blocks promotion of interlock matrix
-        from Analogous to Measured confidence label
-ME-002 (pneumatic purge volume vs. Air Scrubber) -> depends on Air_Scrubber.md
-        back-pressure spec; Low risk, non-blocking
-
-CF-001 (hardware watchdog minimum standard) -> In Progress — Electronics.md now
-        defines τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff; Blocking
-        for Specification-level autonomous architecture until first hardware
-        prototype validates parameters; owner Electronics.md; gates CF frameworks B through G
-CF-002 (correlated AI failure modes) -> In Progress — Leviathan_testing.md
-        Section VII defines test protocol; resolution depends on first multi-unit
-        swarm deployment; cross-ref AP-006 (truth provenance hierarchy)
-CF-003 (identity continuity during split-brain) -> In Progress — Ship_of_Theseus.md
-        Section IV defines Canonical vs. Derivative Identity; resolution depends on
-        first split-brain recovery cycle calibrating 30% threshold; cross-ref ST-003
-
-EP-003 (integration mapping with Auditor_Protocols and Cognitive_Frameworks) ->
-        cross-ref CF-001, AP-007; governance integration gap
-EP-004 (engineering authority boundary) -> cross-ref GOV-004 escalation calibration;
-        governance gap
-EP-005 (acceptable risk threshold) -> cross-ref EC-001 confidence threshold
-EP-006 (unknown lifecycle integration) -> cross-ref AP-003 audit trail schema
-
-VG-001 (gate definition synchronization authority chain) -> Non-blocking at
-        Exploration; Blocking before any Specification promotion across repository;
-        source of truth chain: Auditor_Protocols.md -> Verification_Gates_LF.md ->
-        Forge_Audit_Kit.md must be enforced
-
-SR-011 (shell ROI efficiency) -> depends on SR-004 (induction charging pad design);
-        energy budget comparison
-SR-012 (mechanical bio-damping) -> feeds SR-001 (galvanic corrosion); biofouling
-        load on wave-surge converter moving parts
-SR-013 (buoyancy shift) -> depends on SR-002 (sacrificial shell material selection);
-        SWATH buoyancy control limit
-
-CE-001 (galvanic corrosion rates) -> feeds EN-001 (salvaged material safety factors
-        for humid environments); cross-ref SR-001 (galvanic corrosion mitigation)
-CE-002 (oxide burden on Spin Chamber) -> cross-ref SC-002 (segregation effectiveness);
-        oxide burden is confounding variable in segregation experiments
-CE-003 (Beilstein validation) -> cross-ref PL-001 (halogenated polymer contamination);
-        CE-003 must resolve before first hot pyrolysis run
-CE-004 (operator training standard) -> cross-ref EP-004 (engineering authority
-        boundary); feeds general operator competency doctrine
-
-TH-001 (heat pump sizing doctrine) -> depends on EV-001 (Forge power demand baseline);
-        feeds Challenges/Water.md condensation system sizing
-TH-002 (TEG harvest yield at Gate_05) -> depends on SC-001 (Gate_05 RPM envelope);
-        non-blocking; upgrades confidence label from Analogous to Measured
-TH-003 (atmospheric moisture yield) -> Blocking for Living Waters deployment;
-        cross-ref Challenges/Water.md; requires Peltier test rig (TH-004 prerequisite)
-TH-004 (Peltier characterization protocol) -> prerequisite for TH-003 field test;
-        cross-ref EL-003 (TMR voter implementation — Peltier salvage shares test workflow)
-
-FD-001 (Gate_04 RPM-to-Stokes link) -> depends on MG-002 (RPM characterization);
-        feeds generalizable separation model for new feedstock compositions
-FD-002 (Air Scrubber duct velocity) -> depends on AS-003 (scrubber waste stream
-        characterization); feeds impaction efficiency calculation per stage
-FD-003 (salvaged bearing L10 protocol) -> cross-ref ME-001 (resonance mapping);
-        non-blocking; housekeeping for bearing acceptance workflow
-FD-004 (Support_Raft reverse link) -> non-blocking housekeeping; resolve on next
-        Support_Raft.md audit pass
-
-FA-001 (site not confirmed) -> blocks all hot operations; blocks SP-006 (emergency
-        response procedures cannot be defined without a site)
-FA-002 (Hot Zone radius not defined) -> depends on AWS/NFPA 51B sourcing; feeds
-        Safety_Protocols.md zone separation enforcement
-FA-003 (zoning/permitting) -> human decision; aligns with SP-005 (regulatory compliance)
-FA-004 (heat stress not quantified) -> resolved by Safety_Protocols.md Section IV
-FA-005 (UNK-006 resolution confirmation) -> depends on 7 dependent files updating
-        upstream references; tracked as PC-001
-
-SP-001 (risk threshold cross-reference) -> depends on Engineer_Protocols.md EP-005
-        alignment; SP-001 confirms EP-005 resolution
-SP-002 (PPE specifications not sourced) -> depends on human review of OSHA 1910
-        Subpart I and NFPA 70E; non-blocking at Exploration
-SP-003 (noise levels not measured) -> depends on first operational site SPL survey;
-        cross-ref AS-004 (noise exposure limits)
-SP-004 (heat stress not validated) -> discharge via Lessons Learned after first
-        summer operating season
-SP-005 (regulatory compliance) -> aligns with FA-003 (zoning/permitting); both
-        human decisions at site selection
-SP-006 (emergency response undefined) -> depends on FA-001 (site confirmed);
-        blocked until site exists
-
-EC-001 (critical mineral disposition) -> depends on Gate_05 first recovery cycle;
-        cross-ref Challenges/Critical_Minerals.md
-EC-002 (operating cost baseline) -> depends on EV-001 (Forge demand baseline);
-        blocks TR-001 closure
-EC-004 (market rate data) -> operator-maintained; no repository file owns price data
-EC-005 (legal/tax compliance) -> aligns with FA-003 (zoning/permitting); human decision
-
-GMP-001 (GOV-001 resolution confirmation) -> depends on Governance_Charter.md audit
-        pass; low risk housekeeping
-GMP-002 (ownership transfer not recorded) -> depends on Governance_Charter.md audit
-        pass; housekeeping
-GMP-003 (adversarial review underspecified at v0) -> depends on GOV-008 (quorum);
-        multi-agent quorum resolves structurally
-GMP-004 (ratification authentication gap) -> mirrors GOV-006; depends on SEC-007
-        (external root-of-trust); highest-risk attack vector on Track B amendment process
-
-RS-001 (non-markdown file type procedure) -> defer until concrete case arises
-RS-002 (Forge_flow.md casing outlier) -> correct on next audit pass of Forge_flow.md
-RS-003 (Archive/ directory not created) -> blocks RIP-001 full closure; create
-        Archive/ directory and placeholder README.md; update Discovery.md structure map
-
-PR-001 (precision ceiling not declared) -> blocks T1/T2 part claims; depends on
-        first fabrication trials; closes CO-002 and partially resolves ME-001
-PR-002 (reference standard not established) -> non-blocking at Exploration; blocks
-        Specification promotion for any file with dimensional claims
-PR-003 (traceable claims required at Specification) -> depends on PR-002
-PR-004 (backlash and compliance not characterized) -> prerequisite for PR-001
-        ceiling declaration; feeds ME-001 interlock threshold validation
-PR-005 (GK-005 resolution confirmation) -> housekeeping; update Geck_forge_seed.md
-        on next audit pass
-
-ST-003 (AI identity continuity) -> In Progress — Ship_of_Theseus.md Section IV
-        now defines Canonical vs. Derivative Identity and 30% threshold; resolution
-        depends on first split-brain recovery cycle; cross-ref CF-003
-
-EM-001 (behavioral opacity detection threshold) -> depends on CF-001 resolution;
-        watchdog escalation trigger cannot be specified until hardware watchdog
-        parameters reach Measured confidence; feeds CF-001 closure condition
-EM-002 (correlated failure in multi-agent consensus) -> depends on CF-002 resolution;
-        cross-ref Tests/Leviathan_testing.md Section VII (Correlated AI Failure Test
-        Protocol); mirrors AP-006 (truth provenance hierarchy)
-EM-003 (gradual autonomy transition detection) -> no current sensor doctrine;
-        exploratory dependency on LT-003 (autonomy architecture); feeds CF-001
-        and CF-002 watchdog calibration
-EM-004 (governance substrate integrity under emergent agent access) -> Critical;
-        mirrors GOV-003 (integrity enforcement architecture) and SEC-007
-        (external root-of-trust); depends on RIP-001 (prior-state archival)
-        and Admin/Repository_Integrity_Protocol.md Phase 2 automation for
-        cryptographic backstop; no fast resolution path
-
-WA-001 (embedded complexity preservation metric) -> no formal measure before
-        Gate_02 promotion; feeds TS-001 (forge duty threshold) and CO-001
-        (graduation rule circularity)
-WA-002 (hazardous fraction identification reliability) -> cross-ref CE-004
-        (chemical hazard training standard); Safety-critical before mixed-waste ops
-WA-003 (informal sector integration doctrine) -> no upstream dependency;
-        human decision at community deployment scale
-WA-004 (negative-value waste fraction disposal) -> cross-ref GR-003
-        (biological and chemical waste disposal doctrine); both Critical gaps;
-        neither has an owning file
-
-BF-001 (ultrasonic antifouling energy budget) -> depends on SR-004
-        (induction charging pad design) for power budget context;
-        cross-ref EL-003 (TMR voter implementation — piezo shares test workflow)
-BF-002 (biomimetic surface topography durability) -> depends on first
-        operational deployment in high-turbulence environment; feeds SR-012
-        (mechanical bio-damping)
-BF-003 (regional fouling rate differential) -> no blocking dependency;
-        feeds SR-001 (galvanic corrosion mitigation) maintenance cycle calibration
-BF-004 (shed panel reef substrate viability) -> cross-ref CE-001
-        (galvanic corrosion rates); Plastics.md toxicity doctrine; non-blocking
-        until first panel shed cycle
-
-PO-001 (firmware re-baselining legal boundary doctrine) -> human decision;
-        jurisdiction-variable; cross-ref Admin/Governance_Charter.md for
-        IP boundary framing
-PO-002 (potting compound removal chemistry) -> blocks non-destructive recovery
-        of potted assemblies; cross-ref EL-006 (firmware trust and reflashing)
-PO-003 (proprietary connector adapter coverage) -> non-blocking;
-        feeds EL-001 (Forge-Standard interface spec)
-PO-004 (community re-baselining skill transfer standard) -> cross-ref
-        CE-004 (chemical hazard training standard); EP-004 (engineering
-        authority boundary); both address operator competency doctrine
-
-WS-001 (energy harvesting for high-humidity low-kinetic environments) ->
-        depends on EV-001 (Forge power demand baseline); feeds TH-001
-        (heat pump sizing doctrine)
-WS-002 (heavy metal stabilization in tropical climates) -> cross-ref
-        CE-001 (galvanic corrosion rates in humid environments); non-blocking
-        until first tropical deployment
-WS-003 (stratification diminishing returns threshold) -> cross-ref MG-002
-        (optimal RPM bands per feedstock); SC-002 (segregation effectiveness)
-WS-004 (community adoption and maintenance protocol) -> human decision;
-        no blocking technical dependency; feeds WA-003 (informal sector
-        integration doctrine)
-
-CM-001 (real-time material assay integration) -> cross-ref CE-002
-        (oxide burden on Spin Chamber output); CE-003 (Beilstein validation);
-        blocks dynamic routing decisions in gate workflow
-CM-002 (acid leach reagent recovery doctrine) -> cross-ref GR-003
-        (biological and chemical waste disposal); blocks hydrometallurgical
-        processing; Critical
-CM-003 (functional substitute performance floor) -> cross-ref PR-001
-        (precision ceiling); GF-002 (precision ceiling at v0); no acceptance
-        criterion for substitute development without this
-CM-004 (urban ore database coverage) -> no blocking dependency; feeds
-        CM-001 (assay integration) and MG-002 (RPM calibration per feedstock)
-```
+*Prior What vX.X sections (v2.4 through v2.8) retired per compression rule. Full session narratives preserved in Audit Trail.*
 
 ---
 
@@ -485,7 +76,6 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | FL-001 | Gate logic determinism | `Architecture/Forge_flow.md` | In Progress | Blocking |
-| FL-002 | Reduction module unassigned — upstream dependency | `Architecture/Forge_flow.md` | Resolved | — |
 | TS-001 | "Sufficient for forge duty" threshold | `Operations/Gate_02_Triage.md` | In Progress | Blocking |
 | TS-002 | Contamination routing protocol | `Operations/Gate_02_Triage.md` | Open | Blocking |
 | TS-003 | Gate determinism (downstream) | `Operations/Gate_02_Triage.md` | In Progress | Blocking |
@@ -704,7 +294,6 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | Medium |
 | SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | Low |
 | SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | Medium |
-| SR-010 | Thermal management modularity | `Tests/Support_Raft.md` | **Resolved** | — |
 | SR-011 | Shell ROI efficiency — panel swap energy cost vs. intake recovery gain | `Tests/Support_Raft.md` | Open | Medium |
 | SR-012 | Mechanical bio-damping — colonization impact on wave-surge converter moving parts | `Tests/Support_Raft.md` | Open | Medium |
 | SR-013 | Buoyancy shift — calcifying organism mass limit before SWATH control overwhelmed | `Tests/Support_Raft.md` | Open | Medium |
@@ -713,11 +302,9 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| GK-001 | Forge loop definition | `Architecture/Geck_forge_seed.md` | Resolved | — |
 | GK-002 | Sacrificial anode material | `Architecture/Geck_forge_seed.md` | Open | Medium |
 | GK-003 | Induction charging pad design | `Architecture/Geck_forge_seed.md` | Open | Low |
 | GK-004 | Marine AM material durability | `Architecture/Geck_forge_seed.md` | Open | Low |
-| GK-005 | Precision_LF.md home document not yet created | `Architecture/Geck_forge_seed.md` | Resolved | — |
 | ST-001 | Grain storage and tracking protocol | `Admin/Ship_of_Theseus.md` | Open | Low |
 | ST-002 | QR documentation standard | `Admin/Ship_of_Theseus.md` | Open | Low |
 | ST-003 | AI identity continuity under split-brain | `Admin/Ship_of_Theseus.md` | In Progress | Medium |
@@ -751,7 +338,6 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | GF-002 | Precision ceiling not characterized at v0 bootstrap | `Operations/Gate_06_Fabrication.md` | Open | Major |
 | GF-003 | Material removal hardware not specified | `Operations/Gate_06_Fabrication.md` | Open | Minor |
 | GF-004 | Fabrication energy consumption not characterized | `Operations/Gate_06_Fabrication.md` | Open | Minor |
-| GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Resolved | — |
 | GF-006 | Structural adequacy criteria undefined for v0 qualification | `Operations/Gate_06_Fabrication.md` | Open | Major |
 | GF-007 | Fabrication-area fire suppression and hot-work doctrine undefined | `Operations/Gate_06_Fabrication.md` | Open | Critical |
 
@@ -887,7 +473,6 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | PR-002 | Reference standard not established | `Architecture/Precision.md` | Open | Major |
 | PR-003 | Traceable dimensional claims required at Specification | `Architecture/Precision.md` | Open | Major |
 | PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | Major |
-| PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Resolved | — |
 
 *PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially resolves ME-001 when declared.*
 *PR-004 is a prerequisite for PR-001 ceiling declaration.*
@@ -907,7 +492,6 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
 | UNK-006 | Master safety registry — siting and clearance for all rotating and thermal modules | `Architecture/Facilities.md` (now owns); SC-006, MG-006 (dependents) | Resolved | — |
-| UNK-007 | Reduction module unassigned — upstream dependency for Gate and flow document | `Architecture/Forge_flow.md` FL-002, `Operations/Gate_04_Separation_Mechanical.md` MG-007 | Resolved | — |
 | UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` SC-004 | Open | Major |
 | UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
 
