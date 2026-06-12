@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.0 — 2026-06-11. Phase 1 quick-close pass. Six unknowns resolved: RS-002 (casing), RS-003 (Archive/ created), FD-004 (bidirectional cross-ref), GMP-001, GMP-002 (governance confirmations), RIP-003 (violation log location declared). RS-003 removed from Blocking Watch. All six moved to Resolved Archive.**
+**Version 3.1 — 2026-06-11. Location abstraction pass. TH-003, EN-002, FA-004 titles updated from Arkansas/location-specific to deployment-generic framing. TH-003 Critical Watch entry updated. Five Architecture files and Facilities.md fully RDC-abstracted. No unknowns opened or closed.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -37,6 +37,15 @@ These rules are enforced at every audit cycle opening:
 4. **Audit Trail entries are concise.** Two to three sentences maximum: what changed, what was resolved, what moved to watch lists. The What vX.X section carries the full narrative during the session; the Audit Trail is the permanent compressed record.
 
 ---
+
+## What v3.1 Means
+
+- **Location abstraction pass complete** — all Arkansas/location-specific language removed from active unknown titles and descriptions across the full Architecture layer. Operational references now use Reference Deployment Context (RDC) framing with pointer to `Architecture/Facilities.md` §VII Site Initialization Checklist.
+- **TH-003** retitled from "atmospheric moisture yield under Arkansas conditions" to "atmospheric moisture yield under deployment conditions." Resolution path updated — each Forge instance runs the measurement for their local climate. Critical Watch entry updated to match.
+- **EN-002** retitled from "Arkansas-specific environmental load data" to "deployment-specific environmental load data not compiled."
+- **FA-004** retitled from "Arkansas summer heat load" to "RDC heat load impact on operator safety."
+- **No unknowns opened or closed this pass.**
+
 
 ## What v3.0 Means
 
@@ -157,7 +166,7 @@ These rules are enforced at every audit cycle opening:
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | EN-001 | Validated safety factors for salvaged materials | `Architecture/Engineering.md` | Open | Critical |
-| EN-002 | Arkansas-specific environmental load data | `Architecture/Engineering.md` | Open | Major |
+| EN-002 | Deployment-specific environmental load data not compiled | `Architecture/Engineering.md` | Open | Major |
 | EN-003 | Materials database for salvaged alloy identification | `Architecture/Engineering.md` | Open | Major |
 | EN-004 | High-performance low-tech fabrication methods | `Architecture/Engineering.md` | Open | Minor |
 | EN-005 | Verification testing protocols for structural claims | `Architecture/Engineering.md` | Open | Major |
@@ -183,7 +192,7 @@ These rules are enforced at every audit cycle opening:
 |---|---|---|---|---|
 | TH-001 | Forge-specific heat pump sizing doctrine not yet developed | `Architecture/Thermal_Systems.md` | Open | Major |
 | TH-002 | TEG harvest yield at Gate_05 exterior not characterized | `Architecture/Thermal_Systems.md` | Open | Minor |
-| TH-003 | Atmospheric moisture yield under Arkansas conditions not measured | `Architecture/Thermal_Systems.md` | Open | Major |
+| TH-003 | Atmospheric moisture yield under deployment conditions not measured | `Architecture/Thermal_Systems.md` | Open | Major |
 | TH-004 | Salvaged Peltier device characterization protocol not defined | `Architecture/Thermal_Systems.md` | Open | Major |
 
 *TH-003 is Blocking for Living Waters deployment. Non-blocking for all other Forge operations.*
@@ -420,7 +429,7 @@ These rules are enforced at every audit cycle opening:
 | FA-001 | Site not confirmed or assessed | `Architecture/Facilities.md` | Open | Critical |
 | FA-002 | Hot Zone minimum clearance radius not defined | `Architecture/Facilities.md` | Open | Major |
 | FA-003 | Legal zoning and permitting not assessed | `Architecture/Facilities.md` | Open | Major |
-| FA-004 | Arkansas summer heat load impact not quantified | `Architecture/Facilities.md` | Open | Minor |
+| FA-004 | RDC heat load impact on operator safety not quantified | `Architecture/Facilities.md` | Open | Minor |
 | FA-005 | UNK-006 resolution confirmation pending | `Architecture/Facilities.md` | Open | Minor |
 
 *FA-001 is Critical — blocks all hot operations and SP-006 (emergency response).*
@@ -576,7 +585,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening workflow validated |
 | EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
 | CF-001 | Hardware watchdog — In Progress; parameters defined (Analogous); Blocking until hardware prototype validates at Measured confidence |
-| TH-003 | Atmospheric moisture yield not measured — Blocking for Living Waters deployment; requires Peltier test rig |
+| TH-003 | Atmospheric moisture yield under deployment conditions not measured — Blocking for Living Waters deployment; requires Peltier test rig (deployment-specific measurement) |
 | FA-001 | Site not confirmed — no hot operations until site physically assessed against Facilities.md constraints |
 | EC-002 | Operating cost baseline not established — blocks TR-001 (v1 profitability); depends on EV-001 |
 | PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; prerequisite PR-004 must run first |
@@ -654,6 +663,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v3.1 — 2026-06-11:** Location abstraction pass. TH-003, EN-002, FA-004 titles updated to deployment-generic framing. TH-003 Critical Watch entry updated. Matches RDC abstraction applied across Facilities.md, Friction_Dynamics.md, Engineering.md, Chemistry.md, Thermal_Systems.md, and Mechanical_Structures.md in same session. No unknowns opened or closed.
 
 **v3.0 — 2026-06-11:** Phase 1 quick-close pass. Six unknowns resolved: RS-002 (Forge_flow.md casing corrected in Discovery.md), RS-003 (Archive/README.md created, append-only doctrine declared), FD-004 (bidirectional Friction_Dynamics ↔ Support_Raft cross-reference confirmed), GMP-001 & GMP-002 (GOV-001 resolution confirmed, canonical ownership logged), RIP-003 (Admin/Logs/violations.md declared as canonical violation incident log). RS-003 removed from Blocking Watch. All six added to Resolved Archive. No new unknowns introduced.
 
