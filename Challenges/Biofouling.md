@@ -1,9 +1,79 @@
 # Challenges/Biofouling.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > *The barnacle does not know it is a problem.*
-> *It is simply doing what living things do — finding a surface,
-> holding on, and building a future there.*
+> *It is simply doing what living things do — finding a surface,*
+> *holding on, and building a future there.*
 > *The question is whether we can do the same.*
+
+---
+
+## File State
+
+| Field | Value |
+|---|---|
+| **Status** | Active |
+| **Version** | v0.2 |
+| **Last Updated** | 2026-06-11 |
+| **Owner** | Challenges/ |
+| **Verification Ref** | `Admin/Verification_Gates_LF.md` |
+| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+
+---
+
+## Scope Boundary
+
+**Challenge Class:** External — biological colonization of marine surfaces exists independent of the Forge. The pressure is environmental; the Forge's presence in marine environments does not create biofouling, it inherits it.
+
+**Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
+
+**This file owns:**
+- The crisis framing for biological colonization, hull degradation, and microbially-induced corrosion in marine environments
+- The engineering requirements governing ecosystem-safe, maintenance-light fouling management
+- The Forge's current architectural responses to this challenge
+- The long-term objective for accommodation with marine biological pressure
+
+**This file does not own:**
+- Sacrificial shell system design and panel replacement doctrine → `Tests/Support_Raft.md`
+- Sacrificial anode material selection → `Architecture/Geck_forge_seed.md` GK-002
+- Hydrodynamic drag quantification and boundary layer disruption → `Architecture/Friction_Dynamics.md` §5.1–§5.2
+- Abrasive wear from biofouling debris → `Architecture/Friction_Dynamics.md` §7.2
+- Galvanic corrosion mitigation → `Tests/Support_Raft.md` SR-001
+- Metal fraction recovery for anode production → `Operations/Gate_04_Separation_Mechanical.md`, `Operations/Gate_05_Separation_Thermal.md`
+- Polymer surface texture fabrication → `Operations/Plastics.md`
+- Fouling data as network signal → `Tests/Leviathan_testing.md`
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Ecosystem-safe design requirement; Anti-Weaponization; Pacifist Operating Posture |
+| `Admin/Safety_Protocols.md` | Marine operations safety constraints |
+| `Architecture/Facilities.md` | Siting constraints for marine-adjacent operations |
+| `Architecture/Chemistry.md` | Galvanic corrosion chemistry; CE-001 (mixed-metal corrosion rates) |
+| `Architecture/Friction_Dynamics.md` | Drag penalty quantification; bearing wear from biofouling debris |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Tests/Support_Raft.md` | Sacrificial shell system; SR-001, SR-012 are the primary open unknowns this challenge drives |
+| `Tests/Leviathan_testing.md` | Fouling accumulation as Tier 2 network signal; autonomy constraints in biofouling environments |
+| `Architecture/Geck_forge_seed.md` | Sacrificial anode material selection (GK-002) |
+| `Architecture/Friction_Dynamics.md` | Hydrodynamic and wear doctrine driven by fouling conditions |
+| `Architecture/Chemistry.md` | Electrochemical corrosion doctrine in fouled environments |
+| `Operations/Gate_04_Separation_Mechanical.md` | Metal fraction recovery for anode production |
+| `Operations/Gate_05_Separation_Thermal.md` | Refined metal output for sacrificial anode casting |
+| `Operations/Plastics.md` | Biomimetic surface texture production from recycled polymer |
 
 ---
 
@@ -65,12 +135,24 @@ The barnacle is not the enemy. It is evidence that the environment is alive and 
 
 ---
 
-*See: `Tests/Support_Raft.md` SR-001 (galvanic corrosion mitigation) and SR-012
-(mechanical bio-damping on wave-surge converters) for the primary open unknowns
-this challenge drives. See: `Architecture/Friction_Dynamics.md` §5.1–§5.2 for
-hydrodynamic drag quantification and boundary layer disruption doctrine. See:
-`Architecture/Friction_Dynamics.md` §7.2 for abrasive wear mechanisms from
-biofouling debris. See: `Unknowns.md` for tracked open questions.*
+---
+
+## Open Unknowns
+
+| ID | Description | Status | Risk |
+|---|---|---|---|
+| BF-001 | Ecosystem-safe ultrasonic antifouling — piezoelectric transducer array effectiveness and energy budget at operational depth not characterized. Approach is active but unvalidated. | Open | Major |
+| BF-002 | Biomimetic surface topography durability — micro-texture effectiveness and abrasion resistance in high-turbulence or sediment-laden water not characterized. | Open | Major |
+| BF-003 | Tropical vs. temperate fouling rate differential — colonization timelines and organism composition vary significantly by latitude and season. No doctrine for adjusting maintenance cycles by deployment region. | Open | Major |
+| BF-004 | Shed panel reef substrate viability — panels deposited as reef substrate must not leach antifoulant or polymer toxins. No validation protocol defined. Cross-ref CE-001 (galvanic corrosion), Plastics.md toxicity doctrine. | Open | Major |
+
+*Full tracking entries to be registered in `Unknowns.md` on next audit cycle.*
+
+---
+
+*See: `Tests/Support_Raft.md` SR-001 (galvanic corrosion mitigation) and SR-012 (mechanical bio-damping on wave-surge converters) for the primary open unknowns this challenge drives. See: `Architecture/Friction_Dynamics.md` §5.1–§5.2 for hydrodynamic drag quantification and boundary layer disruption doctrine. See: `Architecture/Friction_Dynamics.md` §7.2 for abrasive wear mechanisms from biofouling debris. See: `Unknowns.md` for all cross-module tracked unknowns.*
+
+---
 
 *Challenges/ files define problems and requirements. They do not freeze solutions.*
 *The Forge's answer to this challenge will evolve. The obligation it names will not.*
