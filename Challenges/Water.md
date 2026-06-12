@@ -1,7 +1,73 @@
-# Challenges/Water_Scarcity_and_Contamination.md
+# Challenges/Water.md
+
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
 
 > *Water does not ask permission to sustain life. It simply flows — or it does not.*
 > *Where it does not, everything else stops.*
+
+---
+
+## File State
+
+| Field | Value |
+|---|---|
+| **Status** | Active |
+| **Version** | v0.2 |
+| **Last Updated** | 2026-06-11 |
+| **Owner** | Challenges/ |
+| **Verification Ref** | `Admin/Verification_Gates_LF.md` |
+| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+
+---
+
+## Scope Boundary
+
+**Challenge Class:** External — water scarcity and contamination exist as physical and structural conditions independent of the Forge. The Forge did not create these conditions; it responds to them.
+
+**Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
+
+**This file owns:**
+- The crisis framing for water scarcity, contamination, and the structural gap between recognized rights and lived reality
+- The engineering requirements governing remediation approaches within this challenge space
+- The Forge's current architectural responses under the Living Waters initiative
+- The long-term objective for community water sovereignty
+
+**This file does not own:**
+- Heat pump sizing doctrine → `Architecture/Thermal_Systems.md` TH-001
+- Atmospheric moisture yield characterization → `Architecture/Thermal_Systems.md` TH-003 (**Blocking for Living Waters deployment**)
+- Peltier device characterization → `Architecture/Thermal_Systems.md` TH-004
+- Venturi scrubbing and airflow design → `Architecture/Friction_Dynamics.md` §4
+- Spin Chamber applications → `Operations/Gate_04_Separation_Mechanical.md`, `Operations/Gate_05_Separation_Thermal.md`
+- Biochar production from organic streams → `Operations/Plastics.md`
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation doctrine; community sovereignty imperative |
+| `Admin/Safety_Protocols.md` | Chemical handling constraints for isolated contaminant streams |
+| `Architecture/Thermal_Systems.md` | Heat pump and condensation doctrine; TH-003 is the Blocking unknown for Living Waters |
+| `Architecture/Friction_Dynamics.md` | Venturi and airflow design for filtration systems |
+| `Architecture/Chemistry.md` | Contaminant chemistry; heavy metal stabilization |
+| `Architecture/Facilities.md` | Site constraints for water processing operations |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Architecture/Thermal_Systems.md` | TH-001 (heat pump sizing) and TH-003 (atmospheric moisture yield) are directly driven by this challenge |
+| `Operations/Gate_04_Separation_Mechanical.md` | Stratification and separation cycles adapted for aqueous contamination |
+| `Operations/Gate_05_Separation_Thermal.md` | Spin Chamber applications for suspended solid and microplastic removal |
+| `Operations/Plastics.md` | Biochar and organic sludge conversion from biological contamination streams |
+| `Architecture/Forge_Net.md` | Environmental water quality data as network signal |
 
 ---
 
@@ -60,14 +126,24 @@ The river does not arrive from a central warehouse. It rises from the land it ha
 
 ---
 
+
+---
+
 ## Open Unknowns
 
-- Optimal energy harvesting configurations for high-humidity, low-kinetic environments.
-- Long-term stabilization chemistry for isolated heavy metal outputs in tropical climates.
-- Threshold contamination levels at which stratification-based approaches reach diminishing returns versus alternative pathways.
-- Community adoption and maintenance protocols — the social engineering layer that determines whether a technically sound system is actually used.
+| ID | Description | Status | Risk |
+|---|---|---|---|
+| WS-001 | Optimal energy harvesting configurations for high-humidity, low-kinetic environments — no validated design for off-grid filtration power in still-air, high-humidity contexts. Feeds TH-001 sizing. | Open | Major |
+| WS-002 | Heavy metal stabilization chemistry for tropical climates — long-term stability of isolated heavy metal outputs in high-temperature, high-humidity storage not characterized. | Open | Major |
+| WS-003 | Stratification diminishing returns threshold — contamination levels at which stratification-based approaches reach declining effectiveness versus alternative pathways not defined. | Open | Major |
+| WS-004 | Community adoption and maintenance protocol — the social and institutional layer that determines whether a technically sound system is actually used and maintained. No owning file currently defines this. | Open | Major |
 
-*See: `Unknowns.md` for tracked open questions (TH-003 is the Blocking unknown for Living Waters condensation deployment). See: `Operations/Gate_04_Separation_Mechanical.md` and `Operations/Gate_05_Separation_Thermal.md` for linked mechanism documentation. See: `Architecture/Thermal_Systems.md` §5–§6 for heat pump and Peltier condensation doctrine. See: `Architecture/Friction_Dynamics.md` §4 for Venturi scrubbing and airflow design.*
+*TH-003 (atmospheric moisture yield) is the Blocking unknown for Living Waters condensation deployment — tracked in `Unknowns.md` under Thermal Systems cluster.*
+*Full tracking entries for WS cluster to be registered in `Unknowns.md` on next audit cycle.*
+
+---
+
+*See: `Unknowns.md` TH-003 — Blocking unknown for Living Waters condensation deployment. See: `Operations/Gate_04_Separation_Mechanical.md` and `Operations/Gate_05_Separation_Thermal.md` for linked separation mechanism documentation. See: `Architecture/Thermal_Systems.md` §5–§6 for heat pump and Peltier condensation doctrine. See: `Architecture/Friction_Dynamics.md` §4 for Venturi scrubbing and airflow design.*
 
 ---
 
