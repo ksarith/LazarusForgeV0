@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.9 — 2026-06-11. Support_Raft.md brought to v0.5 — File_Template compliance, five-anchor Purpose reframe, Failure Philosophy & Succession section, all stale references corrected. SR-010 RESOLVED (thermal management modularity). SR-006 moved to In Progress (cold storage rack — specification trigger defined).**
+**Version 3.0 — 2026-06-11. Phase 1 quick-close pass. Six unknowns resolved: RS-002 (casing), RS-003 (Archive/ created), FD-004 (bidirectional cross-ref), GMP-001, GMP-002 (governance confirmations), RIP-003 (violation log location declared). RS-003 removed from Blocking Watch. All six moved to Resolved Archive.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -37,6 +37,16 @@ These rules are enforced at every audit cycle opening:
 4. **Audit Trail entries are concise.** Two to three sentences maximum: what changed, what was resolved, what moved to watch lists. The What vX.X section carries the full narrative during the session; the Audit Trail is the permanent compressed record.
 
 ---
+
+## What v3.0 Means
+
+- **Phase 1 quick-close pass complete** — six housekeeping unknowns resolved. No new unknowns introduced. RS-003 removed from Blocking Watch.
+- **RS-002** — `Forge_Flow.md` casing corrected to `Forge_flow.md` in Discovery.md Rename Registry.
+- **RS-003** — `Archive/README.md` created; append-only doctrine declared; RIP-001 partial dependency cleared.
+- **FD-004** — `Architecture/Friction_Dynamics.md` confirmed in Support_Raft.md v0.5 Upstream Dependencies; cross-reference bidirectional.
+- **GMP-001 & GMP-002** — GOV-001 resolution confirmed; Governance_Migration_Protocol.md canonical ownership logged.
+- **RIP-003** — `Admin/Logs/violations.md` declared as canonical violation incident log location.
+
 
 ## What v2.9 Means
 
@@ -123,7 +133,6 @@ These rules are enforced at every audit cycle opening:
 | AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
 | RIP-001 | Prior-state archival system not yet established | `Admin/Repository_Integrity_Protocol.md` | Open | Critical |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
-| RIP-003 | Violation incident log location undefined | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 | RIP-004 | Constitutional violation detection latency undefined | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
 | RIP-005 | Security_Protocols.md dependency unresolved | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
 | CT-001 | Legacy script integration name mapping | `Admin/Canonical_Terms.md` | Open | Minor |
@@ -186,7 +195,6 @@ These rules are enforced at every audit cycle opening:
 | FD-001 | Gate_04 centrifugal separation RPM data not linked to Stokes settling doctrine | `Architecture/Friction_Dynamics.md` | Open | Major |
 | FD-002 | Air Scrubber duct velocity profile not characterized per capture stage | `Architecture/Friction_Dynamics.md` | Open | Major |
 | FD-003 | Salvaged bearing L10 life estimation protocol not defined | `Architecture/Friction_Dynamics.md` | Open | Major |
-| FD-004 | Support_Raft.md reverse upstream link to Friction_Dynamics.md missing | `Architecture/Friction_Dynamics.md` | Open | Minor |
 
 ### Cognitive Frameworks
 
@@ -448,8 +456,6 @@ These rules are enforced at every audit cycle opening:
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| GMP-001 | GOV-001 resolution confirmation pending | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
-| GMP-002 | Canonical ownership transfer not recorded in Charter | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
 | GMP-003 | Adversarial review underspecified at v0 single-contributor | `Admin/Governance_Migration_Protocol.md` | Open | Major |
 | GMP-004 | Ratification authentication gap mirrors GOV-006 | `Admin/Governance_Migration_Protocol.md` | Open | Major |
 
@@ -460,8 +466,6 @@ These rules are enforced at every audit cycle opening:
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
 | RS-001 | Non-markdown file type introduction procedure undefined | `Admin/Repository_Structure.md` | Open | Minor |
-| RS-002 | Forge_flow.md casing outlier not yet corrected | `Admin/Repository_Structure.md` | Open | Minor |
-| RS-003 | Archive/ directory not yet physically created | `Admin/Repository_Structure.md` | Open | Major |
 
 *RS-003 blocks RIP-001 full closure — create Archive/ directory before next Specification-level file revision.*
 
@@ -590,7 +594,6 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | PL-002 | Reactor pressure control — no reactor fabrication before pressure relief system specified |
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
 | VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
-| RS-003 | Archive/ directory not created — blocks RIP-001 full closure; create before next Specification-level file revision |
 
 ---
 
@@ -613,6 +616,12 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
 | PC-004 | Stale name corrections — Water.md and Planned_Obsolescence.md | Resolved — Water.md title corrected to match filename; stale cross-references corrected in both files during Challenges/ retrofit pass | 2026-06-11 |
 | SR-010 | Thermal management modularity for optional Gate hosting | Resolved — thermal rejection system declared modular/expandable in Support_Raft.md v0.5 Mechanical Design section; baseline-rated for Raft-only, expandable for Gate integration | 2026-06-11 |
+| RS-002 | Forge_flow.md casing outlier | Resolved — `Forge_Flow.md` corrected to `Forge_flow.md` in Discovery.md Rename Registry; resolution logged in Forge_flow.md Resolution Log | 2026-06-11 |
+| RS-003 | Archive/ directory not created | Resolved — `Archive/README.md` created with purpose, governance, and RIP-001 dependency note; append-only doctrine declared | 2026-06-11 |
+| FD-004 | Support_Raft.md reverse upstream link to Friction_Dynamics.md | Resolved — `Architecture/Friction_Dynamics.md` added to Support_Raft.md v0.5 Upstream Dependencies; cross-reference now bidirectional | 2026-06-11 |
+| GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 confirmed resolved per Resolved Archive entry 2026-06-06; Governance_Migration_Protocol.md exists with two-track migration system | 2026-06-11 |
+| GMP-002 | Canonical ownership transfer not recorded in Charter | Resolved — Governance_Migration_Protocol.md is the canonical owner of migration mechanics; ownership transfer from Governance_Charter.md confirmed and logged | 2026-06-11 |
+| RIP-003 | Violation incident log location undefined | Resolved — `Admin/Logs/violations.md` declared as the canonical violation incident log; path registered in Repository_Integrity_Protocol.md audit chain | 2026-06-11 |
 
 ---
 
@@ -645,6 +654,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v3.0 — 2026-06-11:** Phase 1 quick-close pass. Six unknowns resolved: RS-002 (Forge_flow.md casing corrected in Discovery.md), RS-003 (Archive/README.md created, append-only doctrine declared), FD-004 (bidirectional Friction_Dynamics ↔ Support_Raft cross-reference confirmed), GMP-001 & GMP-002 (GOV-001 resolution confirmed, canonical ownership logged), RIP-003 (Admin/Logs/violations.md declared as canonical violation incident log). RS-003 removed from Blocking Watch. All six added to Resolved Archive. No new unknowns introduced.
 
 **v2.9 — 2026-06-11:** Support_Raft.md brought to v0.5. File_Template.md compliance retrofit complete — Navigation Anchors, File State, Scope Boundary, Upstream/Downstream tables. All stale file references corrected. Five-anchor Purpose reframe adopted (Energy, Truth, Recovery, Material, Communication anchors). Failure Philosophy & Succession section added; symmetric Leviathan ↔ Raft ↔ Shore Forge relationship formalized. **SR-010 RESOLVED** — thermal management modularity declared in Mechanical Design. **SR-006 In Progress** — cold storage rack specification trigger defined. SR-010 added to Resolved & Discharged Archive.
 
