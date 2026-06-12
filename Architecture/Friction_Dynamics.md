@@ -693,28 +693,32 @@ Section 7.2.
 
 | Field | Value |
 |-------|-------|
-| Status | Open |
-| Risk | Low |
+| Status | **Resolved** |
+| Risk | — |
 | Priority | Minor |
 | Type | Cross-reference |
 | Blocking | No |
 | Owner | `Architecture/Friction_Dynamics.md` |
 | First Logged | 2026-05-31 |
+| Resolved | 2026-06-11 |
 
 **Description:** Section 5.1 and Section 6 provide the hydrodynamic doctrine
 for SWATH hull design. `Tests/Support_Raft.md` contains the specific SWATH
 geometry and SR unknowns. The cross-reference exists in the integration map
 but the reverse link (Support_Raft.md referencing this file for hull drag
-doctrine) does not yet exist.
+doctrine) did not yet exist.
 
-**Resolution Path:** On next audit of Support_Raft.md, add `Architecture/
-Friction_Dynamics.md` to its Upstream Dependencies in the Scope Boundary.
-Non-blocking; housekeeping.
+**Resolution:** `Architecture/Friction_Dynamics.md` added to `Tests/Support_Raft.md`
+Upstream Dependencies table during the v0.5 retrofit pass (2026-06-11). Reverse
+link now exists. Cross-reference is bidirectional.
 
 ---
 
 ### Resolution Log
 
+- 2026-06-11: FD-004 resolved — `Architecture/Friction_Dynamics.md` added to
+  `Tests/Support_Raft.md` Upstream Dependencies during v0.5 retrofit pass.
+  Reverse upstream link now bidirectional. FD-004 closed.
 - 2026-05-31: File created as `Architecture/Friction_Dynamics.md` — peer
   Architecture file alongside Engineering.md and Thermal_Systems.md. Sections
   1–8 drafted covering fluid properties, pressure and hydrostatics, Reynolds
