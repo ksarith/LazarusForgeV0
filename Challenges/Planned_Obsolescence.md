@@ -1,7 +1,77 @@
 # Challenges/Planned_Obsolescence.md
 
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
 > *A thing built to fail is not a product. It is a lease.*
 > *And the terms are set by someone else.*
+
+---
+
+## File State
+
+| Field | Value |
+|---|---|
+| **Status** | Active |
+| **Version** | v0.2 |
+| **Last Updated** | 2026-06-11 |
+| **Owner** | Challenges/ |
+| **Verification Ref** | `Admin/Verification_Gates_LF.md` |
+| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+
+---
+
+## Scope Boundary
+
+**Challenge Class:** External — planned obsolescence as an economic and industrial practice exists independent of the Forge. The Forge did not create the conditions of designed failure; it responds to them.
+
+**Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
+
+**This file owns:**
+- The crisis framing for designed unrepairability, firmware lock, and the systematic elimination of repair economy capacity
+- The engineering requirements governing non-destructive recovery of locked and sealed hardware
+- The Forge's current architectural responses to this challenge
+- The long-term objective for making planned obsolescence structurally untenable
+
+**This file does not own:**
+- Thermal desoldering and component integrity verification → `Operations/Electronics.md`
+- Logic-Zero firmware re-baselining doctrine → `Operations/Electronics.md`
+- Counterfeit and remarked component detection → `Operations/Electronics.md` EL-008
+- Thermal delamination for sealed assemblies → `Operations/Gate_02_Triage.md` Station 1
+- Polymer enclosure upcycling → `Operations/Plastics.md`
+- Provenance and identity doctrine for repaired devices → `Admin/Ship_of_Theseus.md`
+- Toxic stream handling (BFR, lead, cadmium) → `Operations/Air_Scrubber.md`, `Operations/Electronics.md`
+
+---
+
+## Upstream Dependencies
+
+| File | Dependency |
+|---|---|
+| `Admin/Ethical_Constraints.md` | Life Preservation; Anti-Weaponization; Pacifist Operating Posture |
+| `Admin/Governance_Charter.md` | Constitutional bounds on firmware re-baselining and IP boundary doctrine |
+| `Admin/Safety_Protocols.md` | Toxic material handling; BFR containment; PPE doctrine |
+| `Admin/Ship_of_Theseus.md` | Identity continuity and provenance doctrine for recovered devices |
+| `Architecture/Facilities.md` | Site constraints for electronics recovery hot operations |
+| `Operations/Gate_02_Triage.md` | Station 1 thermal delamination; complexity-preservation triage |
+| `Operations/Electronics.md` | Primary technical doctrine for this challenge |
+
+---
+
+## Downstream Dependents
+
+| File | Dependency |
+|---|---|
+| `Operations/Electronics.md` | Non-destructive harvesting, Logic-Zero, debug interface recovery all answer this challenge directly |
+| `Operations/Gate_02_Triage.md` | Thermal delamination workflow driven by sealed assembly challenge |
+| `Operations/Plastics.md` | Polymer enclosure upcycling loop |
+| `Operations/Air_Scrubber.md` | Containment infrastructure driven by toxic e-waste fractions |
+| `Admin/Ship_of_Theseus.md` | Provenance doctrine for repaired and re-baselined devices |
+| `Architecture/Forge_Net.md` | Firmware trust and Logic-Zero doctrine propagated across network |
+| `Admin/Economics.md` | Value recovery model for recovered electronics and components |
 
 ---
 
@@ -61,6 +131,25 @@ It means that the repair economy does not need to fight the obsolescence economy
 The chip does not know it was locked. The motor does not know it was potted. The enclosure does not know it was sealed. Only the business model knew — and business models change when the world around them changes.
 
 The Forge is part of what changes the world around them.
+
+---
+
+---
+
+## Open Unknowns
+
+| ID | Description | Status | Risk |
+|---|---|---|---|
+| PO-001 | Legal boundary doctrine for firmware re-baselining — the Forge's position that firmware lock is a material property, not a legal boundary, is philosophically grounded but operationally untested. No legal review has been performed. Context-dependent and jurisdiction-variable. | Open | Major |
+| PO-002 | Potting compound removal chemistry — no validated thermal or chemical protocol exists for removing epoxy potting from electronics without damaging enclosed components. Blocks non-destructive recovery of potted assemblies. | Open | Major |
+| PO-003 | Proprietary connector adapter coverage — no systematic inventory of proprietary connector types in likely salvage streams exists. Standardized interface bridging is aspirational without this. | Open | Minor |
+| PO-004 | Community re-baselining skill transfer standard — the goal of returning repairability to communities requires a training and documentation standard. No owning file currently defines this. | Open | Major |
+
+*Full tracking entries to be registered in `Unknowns.md` on next audit cycle.*
+
+---
+
+*See: `Operations/Electronics.md` for the primary technical doctrine responding to this challenge — thermal desoldering, Logic-Zero re-baselining, debug interface recovery, and counterfeit detection. See: `Admin/Ship_of_Theseus.md` for the provenance and identity doctrine for recovered and repaired devices. See: `Unknowns.md` for all cross-module tracked unknowns.*
 
 ---
 
