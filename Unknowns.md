@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 2.8 — 2026-06-11. Full Challenges/ retrofit pass complete. Five files brought to File_Template.md compliance: Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md (PC-004 title correction applied), Critical_Minerals.md (full prose expansion). WA, BF, PO, WS, CM clusters registered (20 new unknowns). PC-004 CLOSED. WA-002, WA-004, CM-002 added to Critical Watch.**
+**Version 2.9 — 2026-06-11. Support_Raft.md brought to v0.5 — File_Template compliance, five-anchor Purpose reframe, Failure Philosophy & Succession section, all stale references corrected. SR-010 RESOLVED (thermal management modularity). SR-006 moved to In Progress (cold storage rack — specification trigger defined).**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,6 +27,14 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 
 ---
 
+## What v2.9 Means
+
+- **Support_Raft.md v0.5** — full File_Template.md compliance retrofit. Navigation Anchors, File State, Scope Boundary (owns/does-not-own), Upstream/Downstream tables added. All stale file references corrected (`Material_Separation_Gate_v0.md` → `Operations/Gate_05_Separation_Thermal.md`; `energy_v0.md` → `Operations/Energy.md`; `leviathan_testing.md` → `Tests/Leviathan_testing.md`; `Ship_of_Theseus_Right_to_Repair.md` → `Admin/Ship_of_Theseus.md`; `geck_forge_seed.md` → `Architecture/Geck_forge_seed.md`).
+- **Five-anchor Purpose reframe** — Purpose section restructured around five anchor roles (Energy, Truth, Recovery, Material, Communication). Doctrine elevated above hull implementation. Anchor-node vs. headquarters distinction made explicit.
+- **Failure Philosophy & Succession section added** — failure modes table, degraded operation doctrine, end-of-region protocol, and succession principle consolidated into a dedicated section. The symmetric Leviathan ↔ Raft ↔ Shore Forge relationship diagram added.
+- **SR-010 RESOLVED** — thermal management architecture declared modular/expandable in Mechanical Design section. No further action required.
+- **SR-006 moved to In Progress** — cold storage rack concept implemented in Stasis Mode; specification trigger defined as Leviathan unit physical envelope confirmation.
+
 ## What v2.8 Means
 
 - **Full Challenges/ retrofit pass complete** — all six Challenges/ files now comply with File_Template.md standard. Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md, and Critical_Minerals.md all received Navigation Anchors, File State block, Scope Boundary (with Challenge Class declaration), Upstream Dependencies, Downstream Dependents, and formal Open Unknowns tables.
@@ -43,6 +51,79 @@ Discovery.md is a navigation map, not a task list. This file owns pending work.
 - **Challenge taxonomy clarified** — External Challenges (Water, Waste, Biofouling, Critical Minerals, Planned Obsolescence) respond to pressures independent of the Forge. Reflexive Challenges (Emergence and candidates) respond to pressures created by possessing the capability to address other challenges. Class declaration is now a required element of new Challenges/ file Scope Boundary sections.
 - **Negative-space architecture principle documented** — The Forge's architecture is the fossil record of the pressures that shaped it. Challenges are the permanent record; solutions are temporary local answers. This principle is now structurally embedded in the Challenge taxonomy.
 
+## What v2.6 Means
+
+- **PC-001 CLOSED** — All 10 Verification Ref corrections applied across the
+  full file set. AUDIT_HARNESS.py now routes correctly against every file.
+- **PC-002 CLOSED** — All 7 Facilities.md upstream references applied.
+- **PC-003 CLOSED** — All 10 new-file cross-reference corrections applied.
+  Files now reference: Precision.md, Economics.md, Safety_Protocols.md,
+  Governance_Migration_Protocol.md per their scope dependencies.
+- **GK-005 RESOLVED** — `Architecture/Precision.md` created 2026-06-06.
+  Geck_forge_seed.md Section V updated; Open Unknowns 3→2.
+- **EP-005 and EP-006 now active** — Engineer_Protocols.md ADDENDUM
+  integrated into body. EP-005 (acceptable risk threshold) and EP-006
+  (unknown lifecycle integration) added as formal sidecar unknowns.
+  Open Unknowns for Engineer_Protocols.md updated 4→6.
+- **Governance_Charter.md [PLANNED] labels cleared** for four files now
+  confirmed created: Canonical_Terms.md, Repository_Structure.md,
+  Security_Protocols.md, Governance_Migration_Protocol.md.
+- Retrofit complete for this session: 22 files total received Navigation
+  Anchors, correct Verification Refs, and targeted corrections. Repository
+  is now structurally compliant for machine audit across the full active
+  file set.
+
+*(v2.5: Seven files retrofitted; CF-001, CF-002, CF-003 moved to In
+Progress; PC-001 and PC-002 partial closure.)*
+
+
+
+- Retrofit pass completed for seven files — Navigation Anchors added to all;
+  Verification Refs corrected; Facilities.md upstream references added
+- CF-001 (hardware watchdog minimum standard) — **In Progress**: Electronics.md
+  Hardware Watchdog Doctrine now defines τ=50ms windowed WDT, cryptographic
+  heartbeat, H-bridge gate driver cutoff, spring-return neutral enforcement.
+  Parameters from Gemini Synthesizer analysis; confidence Analogous pending
+  first hardware prototype validation
+- CF-002 (correlated AI failure modes) — **In Progress**: Leviathan_testing.md
+  Section VII defines poisoned telemetry injection protocol, correlated failure
+  detection criterion (two or more diverse architectures reaching identical
+  erroneous conclusions under high-entropy ambiguous input triggers Orange/Red),
+  and diversity scoring table
+- CF-003 (identity continuity during split-brain) — **In Progress**:
+  Ship_of_Theseus.md Section IV defines Canonical vs. Derivative Identity,
+  30% cryptographic state threshold, five-step re-vetting path with human
+  ratification, and cognitive grain analog. ST-003 status updated to In Progress
+- Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm named and
+  described; eight component algorithms documented; Asymmetric Conservatism
+  property documented; development targets listed
+- PC-001 partial closure: Energy.md, Gate_01_Intake.md, Electronics.md,
+  Air_Scrubber.md corrected — 6 files remain (Gate_03, Gate_04, Gate_06,
+  Gate_07, Plastics, Woodworking, Forge_Net)
+- PC-002 partial closure: same four files corrected — 3 files remain
+  (Gate_03, Gate_04, Gate_05, Gate_06, Woodworking minus already-done)
+
+*(v2.4: Six new files indexed; FA, SP, EC, GMP, RS, PR clusters added;
+PC cluster migrated from Discovery.md.)*
+
+---
+
+## What v2.4 Means
+
+- Six new files created 2026-06-06 — FA, SP, EC, GMP, RS, PR clusters indexed
+- UNK-006 (facility siting) resolved — `Architecture/Facilities.md` now owns; 7
+  dependent files have pending reference corrections (PC cluster)
+- GK-005 (Precision_LF.md not created) resolved — `Architecture/Precision.md`
+  now exists; stale name corrected throughout
+- EP-005 (acceptable risk threshold) resolved — `Admin/Safety_Protocols.md`
+  Section I provides the consequence category table and escalation rules
+- Pending corrections migrated from Discovery.md — PC-001 through PC-004
+  replace the task tables that were cluttering the navigation layer
+- Economics.md canonical barter ownership noted — EC-003 resolved in file;
+  indexed here as resolved
+- Navigation note updated — Routing.md now exists as programmatic entry point
+
+*(v2.3: Chemistry.md added; CE-001 through CE-004 indexed.)*
 
 ---
 
@@ -619,11 +700,11 @@ CM-004 (urban ore database coverage) -> no blocking dependency; feeds
 | SR-003 | Battery buffer sizing | `Tests/Support_Raft.md` | Open | Medium |
 | SR-004 | Induction charging pad design | `Tests/Support_Raft.md` | Open | Medium |
 | SR-005 | Chicken-and-egg end-of-region | `Tests/Support_Raft.md` | Open | Medium |
-| SR-006 | Cold storage rack design | `Tests/Support_Raft.md` | Open | Low |
+| SR-006 | Cold storage rack design | `Tests/Support_Raft.md` | **In Progress** | Low |
 | SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | Medium |
 | SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | Low |
 | SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | Medium |
-| SR-010 | Thermal management modularity | `Tests/Support_Raft.md` | Open | Low |
+| SR-010 | Thermal management modularity | `Tests/Support_Raft.md` | **Resolved** | — |
 | SR-011 | Shell ROI efficiency — panel swap energy cost vs. intake recovery gain | `Tests/Support_Raft.md` | Open | Medium |
 | SR-012 | Mechanical bio-damping — colonization impact on wave-surge converter moving parts | `Tests/Support_Raft.md` | Open | Medium |
 | SR-013 | Buoyancy shift — calcifying organism mass limit before SWATH control overwhelmed | `Tests/Support_Raft.md` | Open | Medium |
@@ -947,6 +1028,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine; canonical ownership assigned | 2026-06-06 |
 | GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
 | PC-004 | Stale name corrections — Water.md and Planned_Obsolescence.md | Resolved — Water.md title corrected to match filename; stale cross-references corrected in both files during Challenges/ retrofit pass | 2026-06-11 |
+| SR-010 | Thermal management modularity for optional Gate hosting | Resolved — thermal rejection system declared modular/expandable in Support_Raft.md v0.5 Mechanical Design section; baseline-rated for Raft-only, expandable for Gate integration | 2026-06-11 |
 
 ---
 
@@ -979,6 +1061,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v2.9 — 2026-06-11:** Support_Raft.md brought to v0.5. File_Template.md compliance retrofit complete — Navigation Anchors, File State, Scope Boundary, Upstream/Downstream tables. All stale file references corrected. Five-anchor Purpose reframe adopted (Energy, Truth, Recovery, Material, Communication anchors). Failure Philosophy & Succession section added; symmetric Leviathan ↔ Raft ↔ Shore Forge relationship formalized. **SR-010 RESOLVED** — thermal management modularity declared in Mechanical Design. **SR-006 In Progress** — cold storage rack specification trigger defined. SR-010 added to Resolved & Discharged Archive.
 
 **v2.8 — 2026-06-11:** Full Challenges/ retrofit pass complete. Waste.md, Biofouling.md, Planned_Obsolescence.md, Water.md, Critical_Minerals.md all brought to File_Template.md compliance — Navigation Anchors, File State, Scope Boundary (Challenge Class: External for all five), Upstream/Downstream tables, formal Open Unknowns tables. Critical_Minerals.md substantially expanded — Engineering Requirements, Long-Term Objective, and Current Forge Approaches written from scratch; title corrected from Critical_Mineral_Chokepoints.md. **PC-004 CLOSED** — Water.md title corrected; stale refs resolved. Five new clusters registered: WA-001–004, BF-001–004, PO-001–004, WS-001–004, CM-001–004 (20 new unknowns). WA-002, WA-004, CM-002 added to Critical Watch. PC-004 removed from Blocking Watch. Challenge taxonomy fully instantiated — all six Challenges/ files now carry explicit Challenge Class declarations.
 
