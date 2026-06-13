@@ -27,11 +27,11 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Volatile                                                            |
-| Spec Gates       | 0/6                                                                 |
+| Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-11                                                          |
-| Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 4                                                                   |
+| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit  |
+| Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -43,9 +43,9 @@
 
 | File | Dependency |
 |---|---|
-| `Admin/Ethical_Constraints.md` | Life Preservation; chemical handling as safety-critical operation |
-| `Admin/Safety_Protocols.md` | PPE doctrine for chemical handling; acid and solvent exposure limits |
-| `Architecture/Facilities.md` | RDC climate baseline for humidity and corrosion context; substitute via `Facilities.md` §VII |
+| `Admin/Ethical_Constraints.md` | Life Preservation; chemical dual-use awareness; hazardous material handling |
+| `Admin/Safety_Protocols.md` | PPE doctrine for chemical handling; acid, solvent, and toxic gas exposure limits |
+| `Architecture/Facilities.md` | RDC climate baseline for humidity and corrosion context — substitute via `Facilities.md` §VII |
 
 ---
 
@@ -53,14 +53,19 @@
 
 | File | Dependency |
 |---|---|
-| `Operations/Electronics.md` | Galvanic corrosion doctrine; etch chemistry; PCB cleaning hazards |
-| `Operations/Gate_05_Separation_Thermal.md` | Oxide burden (CE-002); melt chemistry for alloy fractions |
-| `Operations/Air_Scrubber.md` | Off-gas chemistry; toxic fume identification |
-| `Operations/Plastics.md` | Polymer degradation chemistry; pyrolysis byproducts |
-| `Tests/Support_Raft.md` | Galvanic corrosion in marine mixed-metal assemblies (CE-001) |
-| `Tests/Leviathan_testing.md` | Electrochemical behavior at depth; battery chemistry |
-| `Architecture/Engineering.md` | Peer file — materials corrosion and derating doctrine |
+| `Operations/Plastics.md` | Halogenated polymer rejection (PL-001) built on §4.1 Beilstein and §5 polymer degradation |
+| `Operations/Electronics.md` | Battery chemistry (§6); BFR hazard (§5.1); PCB etch neutralization (§2) |
+| `Operations/Air_Scrubber.md` | Scrubber design and AS-003 saturation monitoring built on §2 acid-base doctrine |
+| `Operations/Gate_05_Separation_Thermal.md` | Oxide burden (CE-002); redox chemistry of metal separation (§3.1) |
+| `Operations/Gate_03_Reduction.md` | Combustion chemistry (§3.2); contamination indicators (§4.3) |
+| `Operations/Energy.md` | Salvaged cell assessment doctrine (§6); EV-003 containment |
+| `Operations/Gate_01_Intake.md` | Contamination identification (§4); GI-003 augmented detection |
+| `Operations/Gate_02_Triage.md` | Polymer identification (§5.2); Beilstein at Station 0 |
+| `Tests/Support_Raft.md` | Galvanic corrosion mitigation SR-001 (§1.1–1.3) |
+| `Challenges/Biofouling.md` | MIC mechanism (§1.2); cathodic protection (§1.3) |
+| `Architecture/Mechanical_Structures.md` | Galvanic compatibility of mixed-metal salvage assemblies (§1.1) |
 | `Architecture/Friction_Dynamics.md` | Peer file — lubrication chemistry; tribochemistry at interfaces |
+| `Architecture/Thermal_Systems.md` | Peer file — thermal effects on electrochemical reactions |
 
 ---
 
@@ -75,11 +80,17 @@
   for hazardous material streams
 - Polymer degradation chemistry — why specific polymer classes are hazardous
   at elevated temperatures
-- Surface chemistry fundamentals — adhesion, passivation, and coating behavior
+- Surface chemistry fundamentals — adhesion, passivation, oxide formation,
+  contact angle, and corrosion interfaces. *Note: surface treatment procedures
+  (phosphating, anodizing, blackening, Cerakote) may eventually migrate to an
+  Operations/Surface_Treatments.md file as the repository matures. Chemistry.md
+  retains the underlying principles; the procedures are implementation detail.*
 - Battery and electrochemical cell chemistry — principles governing salvaged
   cell assessment, failure modes, and safe handling
 - Forge integration map — how chemical and electrochemical doctrine applies
   across gate operations, marine systems, and material processing
+- **Chemical Operator Minimum Competency** appendix — minimum chemical literacy
+  standard for Forge operators
 
 **This file DOES NOT define:**
 - Foundational engineering principles, safety factors, or materials behavior
@@ -221,9 +232,12 @@ a sacrificial anode to intentionally provide the active material.
 
 **Uniform corrosion** — general oxidation across the entire exposed surface.
 The most predictable form; rate can be estimated from corrosion data tables
-for specific metal-environment combinations. Steel in neutral soil: ~0.1–0.5
-mm/year. Steel in seawater: ~0.1–0.3 mm/year. *(Analogous — standard
-corrosion engineering tables; verify against deployment environment.)*
+for specific metal-environment combinations. *(Illustrative values from
+standard references: Steel in neutral soil ~0.1–0.5 mm/year; Steel in seawater
+~0.1–0.3 mm/year — these are strongly environment-dependent and vary with alloy
+composition, oxygen content, chloride concentration, temperature, and microbial
+activity. Treat as order-of-magnitude only; CE-001 owns quantitative corrosion
+rate characterization for the deployment environment.)*
 
 **Pitting corrosion** — localized attack producing small, deep pits that
 penetrate far more rapidly than surface loss suggests. Initiated at surface
@@ -370,6 +384,26 @@ biological waste streams at Gate_03.
 
 ---
 
+### Section 2.3 — Solution Chemistry and Precipitation *(stub)*
+
+Solubility and precipitation govern dissolved metal behavior, scaling,
+hard water effects, filter fouling, sludge formation, and carbonate
+deposits across the Forge's wet processing operations.
+
+Key phenomena not yet documented:
+- Dissolved metal precipitation (iron hydroxide, calcium carbonate)
+- Scaling in heat exchangers and wet scrubbers
+- Hard water effects on scrubber buffering capacity
+- Iron oxidation and rust floc formation in wet processing
+- Filter fouling from precipitated solids
+
+These touch Air_Scrubber, wet processing in Gate_03, Living Waters
+condensation water quality, and biofouling chemistry. See CE-005.
+
+*This section is a placeholder. Full doctrine deferred to CE-005 resolution.*
+
+---
+
 ### Section 3 — Oxidation-Reduction (Redox) Chemistry
 
 Oxidation-reduction reactions involve the transfer of electrons between
@@ -510,6 +544,12 @@ areas.
 
 Chemical training matters here: the goal is pattern recognition, not
 analytical precision.
+
+> **Doctrine: Odor is a warning signal, never a clearance signal.**
+> The absence of odor does not mean the absence of hazard. H₂S causes
+> rapid olfactory fatigue — concentration can remain lethal after you
+> stop smelling it. CO is odorless at all concentrations. A space that
+> smells safe may not be safe. Ventilate, test, and hold.
 
 | Indicator | Possible Contaminant | Action |
 |-----------|---------------------|--------|
@@ -801,17 +841,17 @@ halt autonomous audit progression and escalate for human review.
 | Priority | Major |
 | Type | Technical |
 | Blocking | No |
-| Owner | `Architecture/Chemistry_Electrochemistry.md` |
+| Owner | `Architecture/Chemistry.md` |
 | First Logged | 2026-06-02 |
-| Last Reviewed | 2026-06-02 |
+| Last Reviewed | 2026-06-11 |
 
 **Description:** Section 1.1 provides the galvanic series and area-ratio
 doctrine, but actual corrosion rates for specific salvage-relevant metal
-pairings in the Forge's high-humidity RDC operating environment are not characterized.
-Published corrosion data assumes specific environments and alloy compositions
-that may not match salvage stock. Builders in arid or coastal environments
-should note their corrosion baseline differs from the RDC — substitute via
-`Architecture/Facilities.md` §VII.
+pairings in the Forge's high-humidity RDC operating environment are not
+characterized. Published corrosion data assumes specific environments and
+alloy compositions that may not match salvage stock. Builders in arid or
+coastal environments should note their corrosion baseline differs from
+the RDC — substitute via `Architecture/Facilities.md` §VII.
 
 **Why It Matters:** Structural lifetime predictions for mixed-metal Forge
 assemblies cannot be made without environment-specific corrosion rate data.
@@ -836,7 +876,7 @@ data feeds structural derating factors for humid environments.
 | Priority | Major |
 | Type | Technical — cross-module |
 | Blocking | No |
-| Owner | `Architecture/Chemistry_Electrochemistry.md` |
+| Owner | `Architecture/Chemistry.md` |
 | First Logged | 2026-06-02 |
 | Last Reviewed | 2026-06-02 |
 
@@ -863,13 +903,13 @@ in segregation experiments.
 | Field | Value |
 |-------|-------|
 | Status | Open |
-| Risk | Medium |
-| Priority | Major |
+| Risk | **Critical** |
+| Priority | **Critical** |
 | Type | Technical / Safety |
-| Blocking | No |
-| Owner | `Architecture/Chemistry_Electrochemistry.md` |
+| Blocking | **Yes — blocks first hot pyrolysis run** |
+| Owner | `Architecture/Chemistry.md` |
 | First Logged | 2026-06-02 |
-| Last Reviewed | 2026-06-02 |
+| Last Reviewed | 2026-06-11 |
 
 **Description:** Section 5.2 polymer identification table and Section 4.1
 Beilstein test are established methods, but their combined reliability for
@@ -878,58 +918,99 @@ aged, contaminated, multi-layer, and composite materials — has not been
 validated at Forge operating conditions.
 
 **Why It Matters:** False negatives on halogenated polymer detection are
-the critical failure mode — a PVC-containing material that passes the
+the critical failure mode. A PVC-containing material that passes the
 Beilstein test and enters the reactor produces HCl and potentially dioxins.
-The reliability of the detection method against real salvage, not
-laboratory standards, must be established before pyrolysis operations begin.
+Real salvage plastics are messy — multi-layer packaging, contaminated
+feedstocks, brominated housings, weathered polymers, fillers, and coatings
+are exactly where laboratory identification assumptions fail. PL-001
+(hard rejection doctrine) depends on the correctness of this identification.
+If CE-003 fails, PL-001 fails with it.
 
 **Resolution Path:** Validate Beilstein test and polymer identification
 table against a representative sample of real salvage plastic stream
-(minimum 50 items from intake, spanning multiple material types). Document
-false positive and false negative rates. Cross-reference PL-001 — this
-validation is a prerequisite before first hot pyrolysis run.
+(minimum 50 items from intake, spanning multiple material types, ages,
+and contamination states). Document false positive and false negative
+rates. This validation is a mandatory prerequisite before first hot
+pyrolysis run. Cross-reference PL-001.
 
 ---
 
-### CE-004 — Chemical hazard identification training standard not defined
+### CE-004 — Chemical Operator Minimum Competency
+
+| Field | Value |
+|-------|-------|
+| Status | **In Progress** |
+| Risk | High |
+| Priority | Major |
+| Type | Governance / Safety |
+| Blocking | No |
+| Owner | `Architecture/Chemistry.md` |
+| First Logged | 2026-06-02 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** CE-ASM-001 assumes basic chemistry literacy. The minimum
+competency standard for Forge operators handling chemical streams is not
+formally defined as a testable checklist. Converted from open unknown to
+In Progress — core checklist content promoted to Appendix A of this file.
+Formal sign-off and integration with `Admin/Engineer_Protocols.md` remain
+open.
+
+**Resolution Path:** Appendix A (Chemical Operator Minimum Competency)
+is the resolution artifact. Closure requires: (1) integration with
+`Admin/Engineer_Protocols.md` operator training doctrine, (2) designated
+sign-off mechanism for Forge instance initialization.
+
+---
+
+### CE-005 — Solution chemistry and precipitation doctrine not established
 
 | Field | Value |
 |-------|-------|
 | Status | Open |
 | Risk | Medium |
 | Priority | Major |
-| Type | Governance / Safety |
+| Type | Technical |
 | Blocking | No |
-| Owner | `Architecture/Chemistry_Electrochemistry.md` |
-| First Logged | 2026-06-02 |
-| Last Reviewed | 2026-06-02 |
+| Owner | `Architecture/Chemistry.md` |
+| First Logged | 2026-06-11 |
+| Last Reviewed | 2026-06-11 |
 
-**Description:** CE-ASM-001 assumes basic chemistry literacy. The minimum
-competency standard for Forge operators handling chemical streams — what
-they must know before conducting Beilstein tests, pH monitoring, battery
-assessment, or chemical waste neutralization — is not defined.
+**Description:** Solubility, precipitation, scaling, hard water behavior,
+and dissolved metal dynamics are not yet addressed in Chemistry.md.
+Section 2.3 is a stub placeholder. These phenomena affect Air_Scrubber
+scrubber buffering saturation (AS-003), wet processing in Gate_03, Living
+Waters condensation water quality, and biofouling chemistry.
 
-**Why It Matters:** Without a defined minimum, operator competency is
-inconsistent across forge instances and over time as personnel change.
-The contamination identification methods in Section 4 are straightforward
-but require correct execution — an incorrectly performed Beilstein test
-is worse than no test (false safety).
+**Why It Matters:** A scrubber that silently scales over weeks loses
+effectiveness without obvious failure signal. Iron hydroxide precipitation
+in wet processing creates sludge that fouls equipment and requires disposal
+doctrine (GR-003). Hard water reduces reagent efficiency in neutralization
+operations.
 
-**Resolution Path:** Define minimum operator chemical literacy checklist
-before first chemical processing operations. At minimum: pH scale and
-what it means, Beilstein test procedure and interpretation, H₂S and HCl
-hazard recognition, battery chemistry hazard awareness, and neutralization
-basics. Cross-reference `Admin/Engineer_Protocols.md` for integration with
-general operator training doctrine.
+**Resolution Path:** Expand Section 2.3 stub into full doctrine covering:
+solubility product constants for common Forge-relevant precipitates (iron
+hydroxide, calcium carbonate, calcium sulfate); scaling prediction and
+prevention; hard water identification and treatment; sludge formation and
+disposal routing to GR-003. Cross-reference Air_Scrubber.md AS-003.
 
 ---
 
 ### Resolution Log
 
-- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
-  Dependents tables added. CE-ASM-002 converted from location-specific to RDC
-  abstraction with substitution guidance. CE-001 body reference to "Arkansas humid
-  environment" updated to RDC framing. Last Audit updated.
+- 2026-06-11: ChatGPT informal audit integrated. Eight findings actioned:
+  (1) Navigation Anchors, Upstream/Downstream tables added. (2) Spec Gate
+  advanced 0→1. (3) All owner fields corrected from Chemistry_Electrochemistry.md
+  to Chemistry.md. (4) CE-ASM-002 and CE-001 body converted to RDC framing.
+  (5) CE-003 elevated from Major to Critical — Blocking status added; PL-001
+  dependency made explicit. (6) Odor section doctrine header added — "warning
+  signal, never clearance signal." (7) Corrosion rate numbers annotated as
+  illustrative; CE-001 declared as quantitative owner. (8) Surface chemistry
+  scope note added — treatments may migrate to Operations/Surface_Treatments.md.
+  CE-004 converted to In Progress — Appendix A (Chemical Operator Minimum
+  Competency) created with 10-item checklist. CE-005 added (solution chemistry
+  and precipitation stub). Section 2.3 stub added. Open Unknowns updated 4→5.
+  Last Audit updated.
+
 - 2026-06-02: File created as `Architecture/Chemistry_Electrochemistry.md`.
   Establishes electrochemistry, acid-base, redox, contamination identification,
   polymer degradation, battery chemistry, and surface chemistry doctrine as
@@ -985,3 +1066,32 @@ G3 through G6 require formal audit pass by a different agent.
 **The Beilstein test protects the reactor. The galvanic series protects the structure.**
 
 **Unknown chemical history is the default assumption for all salvaged material.**
+
+---
+
+## Appendix A — Chemical Operator Minimum Competency
+
+*Converted from CE-004. Defines the minimum chemical literacy standard that every
+Forge operator must demonstrate before conducting any chemical processing operations —
+Beilstein tests, pH monitoring, battery assessment, chemical waste neutralization,
+or contamination identification. Integration with `Admin/Engineer_Protocols.md` is
+pending (CE-004 resolution trigger). Until formally integrated, this appendix is
+the operative standard.*
+
+| # | Competency | Key Test | Reference |
+|---|---|---|---|
+| 1 | pH scale and neutralization | Can correctly identify whether a substance needs acid or base addition to reach neutral; understands neutral ≠ safe | §2 |
+| 2 | Strong acids vs. strong bases — dilute does not mean safe | Can name the three mineral acids in §2.1 and state their primary hazard | §2.1 |
+| 3 | H₂S olfactory fatigue — smell disappears before the hazard does | Can explain why "I can't smell it anymore" is not a safety clearance | §4.3 |
+| 4 | CO invisibility — no sensory warning at any concentration | Can state that CO detection requires instrumentation, not smell | §4.3 |
+| 5 | Beilstein test — correct procedure, interpretation, and failure modes with aged or composite polymers | Can perform test and interpret result; knows a negative result is not a guarantee | §4.1, CE-003 |
+| 6 | Battery chemistry hazards — hydrogen off-gassing, acid/electrolyte exposure, thermal runaway | Can identify the three failure modes and their immediate response actions | §6 |
+| 7 | Galvanic corrosion basics — mixed metals in electrolyte, general galvanic series direction | Can correctly predict which metal corrodes faster in a steel-aluminum pairing | §1.1 |
+| 8 | Unknown chemical history doctrine — no documented history means treat as unknown until tested | Can state the correct intake response for an unlabeled container | §4 |
+| 9 | Ventilation-first response — any chemical odor requires immediate ventilation before investigation | Can state the correct first action when any chemical odor is detected | §4.3 |
+| 10 | "Slow does not mean safe" — gradual exposures accumulate; delayed symptoms are common | Can explain why a comfortable-feeling process can still cause harm | §4.3 |
+
+*A Forge operator who cannot answer the key test for any row has not met the
+minimum competency standard and must not conduct chemical processing operations
+unsupervised. This is a hard prerequisite aligned with Ethical_Constraints.md
+Life Preservation doctrine.*
