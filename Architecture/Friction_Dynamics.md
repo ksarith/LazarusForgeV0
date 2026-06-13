@@ -27,11 +27,11 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 0/6                                                                 |
+| Spec Gates       | 2/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-11                                                          |
-| Auditor          | Claude — Systems/Engineer; revised 2026-06-11                       |
-| Open Unknowns    | 3                                                                   |
+| Auditor          | Claude (2026-05-31); ChatGPT informal (2026-06-11); Claude retrofit  |
+| Open Unknowns    | 4                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -183,6 +183,13 @@ fluid pathways, and the Air Scrubber wet capture stages. Water surface tension a
 20°C: σ ≈ 0.073 N/m. Reduced by surfactants, elevated temperature, and contamination.
 
 ---
+
+**v0 Forge compressible flow boundary:** All v0 Forge systems are assumed
+incompressible (Mach < 0.3). Compressible flow phenomena — choked flow, shock
+waves, transonic effects, sonic nozzles, supersonic aerodynamics — are out of
+scope and require human engineering review before any Forge system operates in
+that regime. No dependent file may assume compressible flow behavior without
+explicit notation and human sign-off.
 
 ### Section 2 — Pressure, Hydrostatics, and the Pressure Equation
 
@@ -448,12 +455,21 @@ where their submerged-pontoon configuration provides maximum advantage.
 
 **Cavitation** — when local fluid pressure drops below vapor pressure, the liquid
 flashes to vapor, forming bubbles that collapse violently when pressure recovers.
+
+> **Cavitation Doctrine:** Cavitation damage is cumulative and self-amplifying.
+> Once pitting begins, surface roughness increases local turbulence, which lowers
+> local pressure further and accelerates cavitation. A cavitating component should
+> be treated as a **failed component**, not acceptable wear. Redesign the system
+> to eliminate the pressure drop before returning to operation. Particularly
+> relevant to Leviathan propulsion, Support Raft wave converters, and any pump
+> in the Forge water system.
+
 Cavitation erodes metal surfaces (propellers, pump impellers, valve seats) and
-creates noise and vibration. Avoid by keeping fluid velocities in constrictions
-below cavitation onset (depends on fluid temperature and vapor pressure).
-At 20°C, water vapor pressure is 2.3 kPa absolute — significant margin below
-atmospheric. At 80°C it rises to 47 kPa — cavitation becomes a real risk in
-hot water circuits.
+creates noise (crackling/popping) and vibration. Avoid by keeping fluid velocities
+in constrictions below cavitation onset (depends on fluid temperature and vapor
+pressure). At 20°C, water vapor pressure is 2.3 kPa absolute — significant margin
+below atmospheric. At 80°C it rises to 47 kPa — cavitation becomes a real risk
+in hot water circuits.
 
 **Particle settling velocity (Stokes' Law)** — for small spherical particles
 settling in a fluid:
@@ -469,6 +485,21 @@ higher effective g = faster separation of denser particles. This is why RPM
 characterization (MG-002) is critical to Gate_04 performance.
 
 ---
+
+**Other dimensionless groups:** Reynolds number remains the primary dimensionless
+parameter across this file. Additional groups become important in specific regimes
+and are noted here for future-proofing — they are not fully developed at v0:
+
+| Group | When It Matters | Forge Relevance |
+|---|---|---|
+| Strouhal (St = fL/V) | Oscillatory flow, vortex shedding, cable vibration | Mast/antenna vibration on Support Raft; oscillating wake loads on Leviathan |
+| Weber (We = ρV²L/σ) | Sprays, droplet breakup, surface tension dominates | Air Scrubber atomization; wet scrubber droplet sizing |
+| Prandtl (Pr = μCp/k) | Heat transfer in fluids — boundary with Thermal_Systems | Liquid cooling loops; see `Architecture/Thermal_Systems.md` |
+| Schmidt (Sc = μ/ρD) | Mass transfer in fluids | Scrubber absorption efficiency |
+
+When any dependent file encounters vortex shedding, spray systems, or coupled
+heat-and-fluid transfer, these groups must be introduced explicitly rather than
+assumed negligible.
 
 ### Section 7 — Tribology: Friction, Wear, and Lubrication
 
@@ -530,6 +561,22 @@ spalling after a calculable number of stress cycles (L10 bearing life).
 contact. Prevalent in the marine environment (→ `Tests/Support_Raft.md` SR-001)
 and in the Air Scrubber wet stages where acid condensate contacts metal components.
 
+**Archard Wear Law** — first-order scaling model for sliding wear:
+
+```
+V = (k · W · L) / H
+```
+
+Where: V = wear volume (mm³), W = normal load (N), L = sliding distance (mm),
+H = hardness of softer material (MPa), k = dimensionless wear coefficient
+(10⁻⁸ to 10⁻³ depending on lubrication, contamination, material pair).
+
+*Forge implication:* Wear volume scales linearly with load and sliding distance,
+and inversely with hardness. Doubling load doubles wear. Halving hardness doubles
+wear. In contaminated environments, k rises by orders of magnitude — contamination
+exclusion (§7.5) matters more than lubricant choice. Use for salvage component
+life estimation when load and speed profiles are known.
+
 #### 7.3 Lubrication Regimes
 
 The Stribeck curve describes three lubrication regimes as a function of speed,
@@ -585,6 +632,37 @@ use. Unknown lubricant history, contamination, and degradation make any inherite
 lubrication condition unsafe for Forge operation. (See FD-ASM-003.)
 
 ---
+
+#### 7.5 Contamination as the Dominant Failure Mode
+
+In the Lazarus Forge environment, abrasive contamination is assumed to be the
+primary cause of tribological failure — not lubricant chemistry, not surface
+finish, not load.
+
+Dust, metal fines, silica, slag particles, and corrosion products convert
+lubricated contacts into grinding systems. A bearing running in clean oil at
+twice its rated load will outlast the same bearing running at rated load in
+oil contaminated with 100-micron metal fines.
+
+**Protection hierarchy:**
+
+1. **Exclude contamination** — seals, covers, positive-pressure purges,
+   filtered inlets. The first line of defense is always keeping particles out.
+2. **Maintain lubrication** — degraded lubricant carries particles that excluded
+   lubricant would not. Change intervals in contaminated environments are shorter,
+   not longer.
+3. **Reduce load** — reduces k in the Archard equation; buys time but does not
+   fix the contamination problem.
+4. **Reduce speed** — reduces sliding distance per unit time; buys time.
+
+**Seal integrity often matters more than lubricant selection.** A cheap bearing
+with an intact seal in a contaminated environment will outlast an expensive bearing
+with a compromised seal in the same environment. In the salvage context where both
+seals and lubricants come from uncertain sources, confirm seal integrity before
+trusting lubricant quality.
+
+Cross-reference `Architecture/Mechanical_Structures.md` §Kinematic Interlock Matrix
+for contamination exclusion requirements at Gate machinery level.
 
 ### Section 8 — Forge Integration Map
 
@@ -713,6 +791,7 @@ file and cross-reference from Air_Scrubber.md.
 | Blocking | No |
 | Owner | `Architecture/Friction_Dynamics.md` |
 | First Logged | 2026-05-31 |
+| Last Reviewed | 2026-06-11 |
 
 **Description:** Section 7.2 introduces fatigue wear and L10 bearing life as
 a concept. However, estimating remaining L10 life in a salvaged bearing with
@@ -723,9 +802,12 @@ deploy versus when it should be reduced to material.
 **Resolution Path:** Define a conservative salvaged bearing acceptance protocol:
 (1) visual and tactile inspection (pitting, spalling, rough rotation); (2)
 radial and axial play measurement against datasheet limits; (3) conservative
-life derating — treat any salvaged bearing as having consumed 50% of its L10
-life by default unless evidence suggests otherwise. Append as a subsection to
-Section 7.2.
+life derating — treat any salvaged bearing as having consumed **75–90% of its
+L10 life by default** unless provenance is documented and runtime is confirmed.
+This is more conservative than 50% and better reflects that unknown bearings
+are typically retired equipment, not lightly-used stock. The cost of premature
+replacement is far lower than unexpected failure inside Gate machinery.
+Append as a subsection to Section 7.2.
 
 ---
 
@@ -754,9 +836,57 @@ link now exists. Cross-reference is bidirectional.
 
 ---
 
+### FD-005 — Fluid-Structure Interaction (FSI) not formally bridged
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Structural |
+| Blocking | No |
+| Owner | `Architecture/Friction_Dynamics.md` |
+| First Logged | 2026-06-11 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Fluid systems and structural/tribological behavior are coupled
+through vibration in ways this file acknowledges but does not formally bridge.
+Key coupling paths: rotor imbalance → vibration → bearing load → lubrication
+breakdown → wear; cavitation → pressure pulses → vibration → fatigue; turbulent
+wake → oscillating forces → shaft deflection → seal wear. Mechanical_Structures.md
+owns vibration structurally; Friction_Dynamics.md owns the fluid and tribology side.
+The FSI coupling mechanism between them is not formally documented.
+
+**Why It Matters:** A vibration problem that originates in fluid behavior (vortex
+shedding, cavitation, turbulent wake) but manifests as a structural or wear failure
+has no clear owning file. This creates a gap where drift can accumulate undetected
+across Support_Raft, Leviathan, and Gate_04.
+
+**Resolution Path:** Add a Section 7.6 stub documenting the FSI coupling mechanism
+— the point where fluid forces become structural loads. Identify the three main
+coupling paths above. Declare that Mechanical_Structures.md owns the structural
+response and this file owns the fluid-side forcing function. Non-blocking pending
+first FSI-relevant failure in operational deployment.
+
+---
+
 ### Resolution Log
 
-- 2026-06-11: FD-004 resolved — `Architecture/Friction_Dynamics.md` added to
+- 2026-06-11: ChatGPT informal audit integrated. Eight findings actioned:
+  (1) Spec Gate advanced 0→2 — scope boundary clear, Reynolds number unification
+  is genuine architectural contribution. (2) Compressible flow out-of-scope
+  declaration added to end of Section 1 — v0 Forge systems assumed incompressible;
+  choked flow, shocks, transonic effects require human review. (3) Cavitation
+  elevated to boxed doctrine statement — "failed component, not acceptable wear."
+  (4) Dimensionless numbers table added to Section 6 — Strouhal, Weber, Prandtl,
+  Schmidt noted with Forge relevance; Reynolds remains primary. (5) Archard wear
+  equation added to Section 7.2 — first-order wear scaling model for salvage
+  life estimation. (6) Section 7.5 Contamination as Dominant Failure Mode added —
+  protection hierarchy; seal integrity over lubricant selection; Archard k factor
+  context. (7) FD-003 bearing life default changed from 50% to 75–90% consumed —
+  more honest for unknown-provenance equipment. (8) FD-005 added — FSI bridge
+  not formally documented between fluid-side forcing and structural response.
+  Open Unknowns updated 3→4. Last Audit updated.
   `Tests/Support_Raft.md` Upstream Dependencies during v0.5 retrofit pass.
   Reverse upstream link now bidirectional. FD-004 closed.
 - 2026-05-31: File created as `Architecture/Friction_Dynamics.md` — peer
