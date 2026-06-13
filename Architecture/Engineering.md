@@ -25,11 +25,11 @@
 | Field            | Value                                                               |
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
-| Body Stability   | Volatile                                                            |
-| Spec Gates       | 0/6                                                                 |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-11                                                          |
-| Auditor          | Claude — Retrofit/Auditor                                           |
+| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit   |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -43,8 +43,8 @@
 | File | Dependency |
 |---|---|
 | `Admin/Ethical_Constraints.md` | Life Preservation; operator safety as foundational constraint |
-| `Admin/Safety_Protocols.md` | Safety factors cross-reference; PPE doctrine for structural operations |
-| `Architecture/Facilities.md` | Site constraints; RDC climate baseline — substitute your deployment parameters via `Facilities.md` §VII Site Initialization Checklist |
+| `Admin/Safety_Protocols.md` | PPE doctrine; safety factor cross-reference for structural operations |
+| `Architecture/Facilities.md` | RDC climate baseline — substitute your deployment parameters via `Facilities.md` §VII Site Initialization Checklist |
 
 ---
 
@@ -62,6 +62,8 @@
 | `Architecture/Components.md` | Safety factors for salvaged component graduation |
 | `Tests/Leviathan_testing.md` | Engineering principles for autonomous system structural design |
 
+---
+
 ## Scope Boundary
 
 **This file DOES define:**
@@ -69,9 +71,10 @@
   the entire LazarusForge
 - Core mechanical, structural, and systems engineering fundamentals
 - Materials behavior overview and selection guidance
-- Forge-specific parameters, safety factors, and climate considerations
-  — values use the **Reference Deployment Context (RDC)**; substitute your deployment
-  parameters via `Architecture/Facilities.md` §VII Site Initialization Checklist
+- Forge-specific parameters and safety factors
+- **Reference Deployment Context (RDC)** baseline for environmental derating —
+  builders must substitute their own parameters via `Architecture/Facilities.md` §VII
+- Hierarchy of engineering evidence — from intuition to operational history
 - Progressive path from basic to high-performance engineering
 
 **This file DOES NOT define:**
@@ -97,14 +100,25 @@ a distinct domain. This file owns broad engineering principles. Where a question
 is thermal, fluid, tribological, or chemical in nature, the relevant peer file
 governs. Conflicts escalate to a human contributor.
 
+---
+
 ## File Purpose
 
 This file exists to provide a single, durable source of engineering truth and
 judgment for all Forge activities. It equips builders with condensed principles,
 safety discipline, and practical parameters so that designs are safe, effective,
 and improvable under real-world constraints including salvaged materials, limited
-tools, and variable conditions. Without it, the Forge would suffer repeated design
-failures, safety incidents, and inefficient reinvention of fundamental knowledge.
+tools, and variable conditions.
+
+**Role in the Forge doctrine triad:**
+- `Admin/Ethical_Constraints.md` — moral doctrine
+- `Admin/Auditor_Protocols.md` — epistemic doctrine
+- `Architecture/Engineering.md` — physical-world doctrine
+
+These three together establish the foundational operating constraints for the
+entire repository. Engineering.md is the physical-world layer of that triad.
+
+---
 
 ## Assumptions
 
@@ -112,93 +126,160 @@ failures, safety incidents, and inefficient reinvention of fundamental knowledge
 |---------|------------|-------|------------|----------------|
 | ASM-001 | Builders have basic math and physics literacy (algebra, geometry, forces) | Typical maker/engineer entry level | Medium | Confirmed lower skill baseline |
 | ASM-002 | Access to basic measurement tools and ability to prototype/test | Standard Forge shop capability | High | Fully resource-constrained deployment |
-| ASM-003 | Reference Deployment Context (RDC) climate baseline applies — high humidity, thunderstorms, occasional freezes. Builders outside this climate zone must substitute their own parameters via `Architecture/Facilities.md` §VII. | RDC baseline — see `Architecture/Facilities.md` §VII | Medium | Deployment confirmed outside RDC climate zone — substitute via Facilities.md §VII |
+| ASM-003 | Reference Deployment Context (RDC) climate baseline applies — high humidity, thunderstorms, occasional freezes. Builders outside this climate zone must substitute their own parameters via `Architecture/Facilities.md` §VII. | RDC baseline — see `Architecture/Facilities.md` §VII | Medium | Deployment confirmed outside RDC climate zone |
 
 ---
 
 ## Body
 
 ### 1. Core Engineering Principles
-- **First Principles Thinking**: Break problems down to fundamental physics (forces,
-  energy, material properties) rather than analogy or tradition.
-- **Margin of Safety**: Apply minimum 2×–4× factors depending on application (higher
-  for critical/human-occupied structures, fatigue, or uncertainty).
-- **Fail Safe vs Fail Operational**: Design so that failures lead to safe states.
-- **Murphy's Law Discipline**: Assume what can go wrong will — design accordingly.
-- **Iterate Fast, Fail Small**: Prototype → test → refine before scaling.
 
-**Rule of Thumb**: If you haven't identified at least three ways it can fail, you
+- **First Principles Thinking** — Break problems down to fundamental physics (forces,
+  energy, material properties) rather than analogy or tradition.
+- **Margin of Safety** — Apply minimum 2×–4× factors depending on application (higher
+  for critical/human-occupied structures, fatigue, or uncertainty).
+- **Fail Safe, Not Fail Operational** — Design so that failures lead to safe states,
+  not continued operation.
+- **Murphy's Law Discipline** — Assume what can go wrong will. Design accordingly.
+- **Conservation of Complexity** — Complexity should only be introduced when simpler
+  solutions have been exhausted. Every component, adjustment, and interface becomes
+  another failure mode. Prefer passive over active systems. Prefer gravity over pumps.
+  Prefer mechanical timing over software timing where feasible. Prefer standard parts
+  over custom parts. Prefer repairability over peak performance.
+- **Iterate Fast, Fail Small** — Prototype → test → refine before scaling.
+
+**Rule of Thumb:** If you haven't identified at least three ways it can fail, you
 haven't thought about it enough.
 
-### 2. Mechanical Engineering Fundamentals
-- **Stress & Strain**: Stress = Force/Area. Strain = deformation. Understand Young's
-  Modulus, yield strength, ultimate strength.
-- **Forces & Moments**: Statics (sum of forces/moments = 0), dynamics, torque.
-- **Mechanisms**: Levers, linkages, gears, bearings, fasteners. For tribology
-  (friction, wear, lubrication) see `Architecture/Friction_Dynamics.md` §7.
-- **Energy & Power**: Conservation, efficiency losses, thermal management. For
-  thermal management detail see `Architecture/Thermal_Systems.md`.
+---
 
-### 3. Structural Engineering Basics
+### 2. Hierarchy of Engineering Evidence
+
+Not all engineering knowledge is equally reliable. The Forge requires explicit
+confidence labeling — mirroring the epistemic doctrine in `Admin/Auditor_Protocols.md`.
+
+| Level | Source | Confidence | Use |
+|---|---|---|---|
+| 1 | Intuition / experience | Lowest | Starting point only; never sufficient alone |
+| 2 | Rule of thumb | Low | Quick sanity checks; document explicitly |
+| 3 | Hand calculation | Medium | Required for all safety-critical sizing |
+| 4 | Simulation / FEA | Medium | Hypothesis generator — validate with hand calcs |
+| 5 | Prototype test | High | Required before production or deployment |
+| 6 | Destructive test | High | Required for Specification-level claims |
+| 7 | Operational history | Highest | Measured confidence; requires documented conditions |
+
+**FEA doctrine:** Use FEA as a hypothesis generator. Validate critical results with
+hand calculations, conservative assumptions, and physical testing. Blind trust in
+FEA output without validation against hand calculations is an engineering failure,
+not a tool limitation.
+
+**Salvage note:** Unknown-history materials cannot progress past Level 2 confidence
+without destructive testing. See EN-001.
+
+---
+
+### 3. Mechanical Engineering Fundamentals
+
+**Conceptual distinctions that apply everywhere:**
+- Stiffness vs. strength — a stiff structure resists deformation; a strong one resists
+  failure. Both matter. Neither implies the other.
+- Elasticity vs. permanent deformation — elastic range is recoverable; yield is not.
+  Design to stay elastic under all expected loads including surprises.
+- Concentrated loads vs. distributed loads — concentrated loads create stress
+  concentrations; joints, holes, and abrupt changes amplify them significantly.
+- Static vs. cyclic loading — fatigue failure occurs well below static yield strength.
+  Any repeated load deserves a fatigue factor.
+
+**Key relations:** Stress = Force/Area. Strain = deformation/original length.
+Torque = Force × moment arm. For tribology detail see `Architecture/Friction_Dynamics.md` §7.
+For thermal management detail see `Architecture/Thermal_Systems.md`.
+
+---
+
+### 4. Structural Engineering Basics
+
 - Loads: Dead, live, environmental (wind, seismic, snow — consult your deployment
   region's load data; see `Architecture/Facilities.md` §VII and EN-002).
-- Beams, columns, trusses, connections.
-- Buckling, deflection, shear, bending moment.
-- **Key Formula Reference**: Simple beam deflection, Euler buckling, etc.
-  (use FEA sparingly, validate with hand calcs).
+- Beams, columns, trusses, connections. Buckling, deflection, shear, bending moment.
+- **Key Formula Reference:** Simple beam deflection, Euler buckling.
+  Use FEA as hypothesis generator; validate with hand calculations (see §2).
 
-### 4. Materials Selection & Behavior
-- Key properties: Strength, stiffness, toughness, fatigue resistance, corrosion,
-  density, cost, workability.
-- Common Forge materials cross-reference: Wood (anisotropic, moisture sensitive),
-  metals (ductile vs brittle), plastics, composites.
-- Derating: Reduce allowable stresses for temperature, moisture, fatigue, defects
-  in salvaged stock.
-- **RDC Note**: High humidity (RDC baseline) accelerates rot in wood and corrosion
-  in metals — favor rot-resistant species and protective coatings. Arid deployments
-  reduce this risk but increase dust and thermal cycling concerns. Substitute your
-  climate via `Architecture/Facilities.md` §VII.
+**RDC climate note:** High humidity (RDC baseline) accelerates rot in wood and
+corrosion in metals — favor rot-resistant species and protective coatings. Arid
+deployments reduce this risk but increase thermal cycling concerns. Substitute your
+climate via `Architecture/Facilities.md` §VII.
 
-### 5. Systems Engineering & Integration
+---
+
+### 5. Materials Selection & Behavior
+
+- Key properties: Strength, stiffness, toughness, fatigue resistance, corrosion
+  resistance, density, cost, workability.
+- Common Forge materials: Wood (anisotropic, moisture sensitive), metals (ductile
+  vs brittle failure modes differ critically), plastics, composites.
+- **Derating for salvaged materials:** Reduce allowable stresses for temperature,
+  moisture, fatigue, and unknown history. Default derating table pending EN-001
+  resolution — until then apply minimum 3× safety factor on any unknown-history
+  structural member.
+- See `Architecture/Chemistry.md` for corrosion behavior. See `Architecture/
+  Mechanical_Structures.md` for fabricated-frame specifics.
+
+---
+
+### 6. Systems Engineering & Integration
+
 - Define requirements → architecture → interfaces → verification.
 - Interface management (mechanical, electrical, thermal).
 - Reliability, maintainability, scalability.
+- **Documentation discipline:** If it isn't written down with a date and a confidence
+  level, it didn't happen. Drawings, BOMs, revision control, and test records are
+  not administrative overhead — they are the mechanism by which the Forge accumulates
+  knowledge instead of repeating the same mistakes.
 
-### 6. Design & Analysis Methods
-- Sketching → CAD → FEA → Physical prototype → Testing.
-- Failure Modes & Effects Analysis (FMEA).
-- Tolerance analysis (worst-case vs statistical).
-- Documentation discipline: Drawings, BOMs, revision control.
+---
 
-### 7. High-Performance Engineering
-- Lightweighting (strength-to-weight optimization).
-- Topology optimization, lattice structures, composites.
-- Extreme environment design (thermal, vibration, corrosion).
-- Efficiency & sustainability (energy, material, lifecycle).
+### 7. Design & Analysis Methods
+
+- Sketching → CAD → FEA → Physical prototype → Testing (see §2 Hierarchy of Evidence).
+- **FMEA:** Before any design is built, identify: what can fail, how likely, what the
+  consequence is, and what the detection mechanism is. A design with no identified
+  failure modes has not been analyzed — it has been assumed safe.
+- Tolerance analysis: worst-case vs. statistical. For salvage stock, always worst-case.
+- **High-performance caution:** Topology optimization, lattice structures, and
+  composites are powerful tools that also create failure modes that are harder to
+  inspect, repair, and understand. Apply only when simpler approaches are exhausted
+  (Conservation of Complexity, §1). See EN-006.
+
+---
 
 ### 8. Forge-Specific Parameters & Standards
-**Common Safety Factors**:
+
+**Common Safety Factors:**
 - Static non-critical: 2–3×
 - Structural/human load: 4×
-- Fatigue/impact/uncertain materials: 6×+
+- Fatigue/impact/unknown-history salvage materials: 6×+ (EN-001 blocks reduction)
 
-**Units**: Default to metric (mm, N, MPa) with imperial soft conversions.
-Be explicit.
+**Units:** Default metric (mm, N, MPa) with imperial soft conversions. Be explicit.
 
-**Tolerances**: ±0.5 mm general fabrication; tighter for bearings/interfaces.
+**Tolerances:** ±0.5 mm general fabrication; tighter for bearings and interfaces.
 
-**Environmental Derating** *(RDC baseline — substitute your deployment values via `Architecture/Facilities.md` §VII)*:
+**Environmental Derating** *(RDC baseline — substitute via `Architecture/Facilities.md` §VII)*:
 - Wood strength: Reduce 20–30% for sustained high humidity (RDC). Arid deployments
-  may use lesser derating; tropical deployments should verify against local species data.
-- Fastener corrosion allowance: specify galvanized or stainless in wet/humid environments.
+  may use lesser derating; tropical deployments verify against local species data.
+- Fastener corrosion: Specify galvanized or stainless in wet/humid environments.
 
-**Measurement Standards**: Calibrate tools regularly. Use moisture meters for
-wood, torque wrenches for critical fasteners.
+**Measurement Standards:** Calibrate tools regularly. Use moisture meters for wood,
+torque wrenches for critical fasteners.
+
+---
 
 ### 9. Measurement, Testing & Validation
+
 - Always test to failure on non-critical samples when possible.
-- Non-destructive testing (visual, tap, deflection).
+- Non-destructive testing: visual, tap test, deflection.
 - Data-driven iteration: Record loads, failures, conditions.
+- **Validation chain:** A design not validated at Level 5 or above (see §2) cannot
+  make Specification-level claims in any dependent file.
 
 ---
 
@@ -227,39 +308,48 @@ wood, torque wrenches for critical fasteners.
 ---
 
 ## Drift Indicators
-- High number of open unknowns reflecting the foundational nature of this file.
-- Body Stability Volatile — expected during initial population and cross-module
-  alignment.
+
 - Scope boundary revised to absorb thermal, fluid, tribology, or chemical
   doctrine from peer files without logging a dispute — trigger re-audit.
+- FEA guidance weakened to allow simulation without hand-calculation validation
+  — trigger re-audit.
+- Conservation of Complexity principle removed or softened — trigger re-audit.
+- Hierarchy of Evidence table removed or simplified below 5 levels — trigger re-audit.
 - Verification Ref changed away from `Admin/Verification_Gates_LF.md`.
 
 ---
 
 ## Auditor Notes & Unknowns
 
-### EN-001 — Validated safety factors for salvaged materials
+### EN-001 — Validated safety factors for salvaged unknown-history materials
 
 | Field | Value |
 |-------|-------|
 | Status | Open |
 | Risk | High |
-| Priority | Critical |
+| Priority | **Critical** |
 | Type | Technical |
-| Blocking | Yes |
+| Blocking | **Yes** |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
-| Last Reviewed | 2026-05-29 |
+| Last Reviewed | 2026-06-11 |
 
-**Description:** Lack of Forge-specific tested safety factor guidelines when using
-urban salvaged or reclaimed materials with unknown history.
+**Description:** No Forge-specific tested safety factor table exists for salvaged
+materials with unknown history. The current default (6×+) is conservative but
+undifferentiated — it applies the same factor to unknown structural steel and
+unknown timber without basis.
 
-**Why It Matters:** Direct impact on structural integrity and safety. No structural
-specification in any file may be promoted without this resolved.
+**Why It Matters:** A salvage system without conservative derating tables is
+effectively operating blind. No structural specification in any Forge file may
+be promoted to Specification confidence until this is resolved. This is the
+most important unknown in the Architecture layer.
 
-**Resolution Path:** Develop tested safety factor table for common salvaged material
-categories (structural steel, aluminum extrusion, salvaged timber, unknown alloy).
-Promote to Specification when validated against at least one destructive test series.
+**Resolution Path:** Develop tested safety factor table for common salvaged
+material categories: structural steel (unknown grade), aluminum extrusion
+(unknown alloy), salvaged timber (unknown species/moisture history), unknown
+alloy bar/plate. Promote to Specification when validated against at least one
+destructive test series per category. Interim: document the 6×+ floor as the
+mandatory default and flag all dependent specifications.
 
 ---
 
@@ -277,35 +367,128 @@ Promote to Specification when validated against at least one destructive test se
 | Last Reviewed | 2026-06-11 |
 
 **Description:** Precise local wind, snow, seismic, and humidity derating values for
-the deployment region have not been compiled into a structured table. The RDC baseline
-provides starting values but is not a substitute for deployment-specific data.
+the deployment region have not been compiled. The RDC baseline provides starting
+values but is not a substitute for deployment-specific data. Builders in high-wind
+or seismic zones using RDC baseline values will be under-margined.
 
-**Why It Matters:** Affects all outdoor and structural designs. A builder in a high
-wind or seismic zone using RDC baseline values will be under-margined.
+**Resolution Path:** Each deploying builder compiles from their regional equivalent
+of ASCE 7 and local meteorological data. The `Architecture/Facilities.md` §VII
+Site Initialization Checklist Climate Parameters section is the interim capture
+mechanism.
 
-**Resolution Path:** Each deploying builder should compile from their regional
-equivalent of ASCE 7 and local meteorological data. A structured table template
-will be added to `Architecture/Facilities.md` §VII when EN-002 advances to
-In Progress. The `Facilities.md` Site Initialization Checklist Climate Parameters
-section (§VII.A) is the interim capture mechanism.
+---
 
-*(Additional unknowns: EN-003 Materials database, EN-004 High-performance low-tech
-methods, EN-005 Verification testing protocols — full entries in sidecar.)*
+### EN-003 — Materials database for salvaged stock
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Engineering.md` |
+| First Logged | 2026-05-29 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** No structured database of material properties for common salvage
+stream items exists. Builders currently rely on published spec sheets that may not
+match actual salvage stock composition or condition.
+
+**Resolution Path:** Build incrementally from destructive test data as operations
+begin. Start with the highest-volume salvage categories identified at Gate_02 triage.
+
+---
+
+### EN-004 — High-performance low-tech fabrication methods
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Low |
+| Priority | Minor |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Engineering.md` |
+| First Logged | 2026-05-29 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Methods for achieving high-performance outcomes with limited tooling
+(hand tools, basic welding, salvaged fasteners) are not documented. This limits
+builder capability in low-infrastructure deployments.
+
+**Resolution Path:** Document via Lessons Learned as builders accumulate experience.
+Not blocking.
+
+---
+
+### EN-005 — Verification testing protocols
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Governance |
+| Blocking | No |
+| Owner | `Architecture/Engineering.md` |
+| First Logged | 2026-05-29 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Standardized verification testing protocols for Forge-built
+components do not exist. The Hierarchy of Evidence (§2) defines confidence levels
+but does not specify what a Level 5 or Level 6 test looks like for specific
+component types.
+
+**Resolution Path:** As the Forge matures, testing doctrine will likely grow into
+a dedicated file (`Tests/Verification_Methods.md` or `Admin/Test_Protocols.md`).
+The Hierarchy of Evidence in §2 is the interim framework.
+
+---
+
+### EN-006 — Advanced engineering section drift risk
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Low |
+| Priority | Minor |
+| Type | Structural |
+| Blocking | No |
+| Owner | `Architecture/Engineering.md` |
+| First Logged | 2026-06-11 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Section 7 (high-performance engineering) covers topology
+optimization, lattice structures, and composites. These subjects are deep enough
+to eventually warrant their own file. As the Forge matures, this section is the
+most likely to require splitting into `Architecture/Advanced_Engineering.md` or
+`Architecture/Performance_Engineering.md`.
+
+**Resolution Path:** Monitor section length and complexity. Trigger split when
+Section 7 exceeds 150 lines or when a downstream file begins citing it as a
+domain authority rather than a survey.
 
 ---
 
 ### Resolution Log
 
-- 2026-06-11: Navigation Anchors block added. Upstream Dependencies and Downstream
-  Dependents tables added. All Arkansas/location-specific references converted to
-  Reference Deployment Context (RDC) abstraction with pointer to `Architecture/
-  Facilities.md` §VII Site Initialization Checklist. ASM-003 updated to RDC framing.
-  EN-002 retitled and description updated to deployment-generic framing. Last Audit
-  updated.
-- 2026-05-31: Scope boundary updated — peer file references to
-  `Architecture/Mechanical_Structures.md`, `Architecture/Thermal_Systems.md`, and
-  `Architecture/Friction_Dynamics.md` added. Stale references to retired planned
-  files (`Structural_Engineering.md`, `Mechanical_Systems.md`) removed. Verification
-  Ref corrected to `Admin/Verification_Gates_LF.md`. Safety advisory cross-references
-  updated. Peer file relationship doctrine added to Scope Boundary. Drift Indicators
-  section added.
+- 2026-06-11: ChatGPT informal audit integrated. Eight findings actioned:
+  (1) Navigation Anchors, Upstream/Downstream tables added. (2) Spec Gate
+  advanced 0→3 — scope boundary, falsifiable safety factors, and peer
+  relationships all clearly established. (3) Conservation of Complexity
+  added to §1 Core Principles — joins First Principles Thinking, Margin of
+  Safety, Fail Safe, Murphy's Law, and Iterate Fast. (4) Hierarchy of
+  Engineering Evidence added as §2 — seven-level ladder from intuition to
+  operational history; mirrors Auditor_Protocols epistemic structure; FEA
+  doctrine updated to "hypothesis generator, validate with hand calcs."
+  (5) §2 Mechanical fundamentals reframed around conceptual distinctions
+  (stiffness vs. strength, static vs. cyclic) rather than terminology lists.
+  (6) EN-001 elevated from High/Critical to explicitly Critical/Blocking with
+  stronger "operating blind" framing. (7) EN-006 added — Section 7 advanced
+  engineering drift risk. (8) All Arkansas/RDC abstraction applied — ASM-003
+  updated, §3 and §8 environmental notes updated. Role in doctrine triad
+  added to File Purpose. Open Unknowns updated 5→6. Last Audit updated.
+- 2026-05-31: Scope boundary updated — peer file references added.
+  Stale references to retired planned files removed. Verification Ref corrected.
+  Safety advisory cross-references updated. Drift Indicators section added.
