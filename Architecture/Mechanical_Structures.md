@@ -13,10 +13,12 @@
 > present critical failure vectors capable of destroying irreplaceable salvaged kinematic
 > components. Mechanical over-torque during the processing of unrefined feedstocks can
 > trigger violent tool-head fracturing or motor burnout. Sacrificial mechanical shear
-> couplings and positive-pressure pneumatic purges are mandatory across all primary drive
-> assemblies. Never adjust axis rails or spindle positions while the drive bus is
-> energized. **If an axis binds or exhibits harmonic chatter exceeding safety thresholds,
-> drop the motor enable lines immediately.**
+> couplings and contamination exclusion systems are mandatory across all primary drive
+> assemblies — positive-pressure pneumatic purge is the current v0 implementation;
+> equivalent alternatives (labyrinth seals, grease barriers, oil mist systems) may be
+> substituted when validated against ME-002. Never adjust axis rails or spindle positions
+> while the drive bus is energized. **If an axis binds or exhibits harmonic chatter
+> exceeding safety thresholds, drop the motor enable lines immediately.**
 
 ---
 
@@ -26,39 +28,15 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 1/6                                                                 |
+| Spec Gates       | 2/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-11                                                          |
-| Auditor          | Gemini; revised Claude 2026-06-11                                   |
-| Open Unknowns    | 2                                                                   |
+| Auditor          | Gemini (2026-05-31); ChatGPT (2026-06-11); Claude — Retrofit        |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
-
----
-
-## Upstream Dependencies
-
-| File | Dependency |
-|---|---|
-| `Admin/Ethical_Constraints.md` | Life Preservation; structural failure as operator safety concern |
-| `Admin/Safety_Protocols.md` | Load-bearing inspection doctrine; PPE for fabrication work |
-| `Architecture/Engineering.md` | Safety factors, margin doctrine, derating principles |
-| `Architecture/Facilities.md` | Site constraints; floor loading capacity; Hot Zone prerequisites |
-| `Operations/Gate_06_Fabrication.md` | Fabrication standards that produce structural members |
-
----
-
-## Downstream Dependents
-
-| File | Dependency |
-|---|---|
-| `Operations/Gate_06_Fabrication.md` | Structural member specifications produced by this file |
-| `Tests/Support_Raft.md` | SWATH hull structural doctrine; load path analysis |
-| `Tests/Leviathan_testing.md` | Pressure vessel and structural integrity for subsea units |
-| `Architecture/Friction_Dynamics.md` | Peer file — vibration and mechanical wear at structural interfaces |
-| `Architecture/Thermal_Systems.md` | Peer file — thermal expansion effects on structural joints |
 
 ---
 
@@ -160,10 +138,13 @@ unfilled structures introduce unacceptable flexure.
 ```
 
 **Mandatory Stabilization:** To maintain structural rigidity without custom manufacturing
-infrastructure, hollow structural steel frames **must** be damp-filled using a localized
-composite of clean, dry quartz sand and epoxy resin (80:20 mass ratio). This dampens
-resonant frequencies by up to 400% and maintains structural elastic boundaries when
-milling medium-carbon steels or dense recycled alloys.
+infrastructure, hollow structural steel frames **must** be damp-filled using a dense
+composite matrix. The RDC starting mixture is clean, dry quartz sand and epoxy resin
+(80:20 mass ratio) — this is a validated starting point, not a frozen specification.
+Alternative fills (polymer concrete, fly ash composites, iron shot) may prove superior
+and should be evaluated as operational experience accumulates; see ME-004. This fill
+can reduce resonance amplitude by up to fourfold while increasing damping ratios and
+preserving structural rigidity.
 
 ### 2. Thermal Expansion Disconnect
 
@@ -269,7 +250,7 @@ operational cycle.)*
 
 | Date       | Evidence Type   | What Was Tried                        | What Failed                                                  | What Was Learned                                                                    | Confidence | Revalidation Needed |
 |------------|-----------------|---------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------|------------|---------------------|
-| 2026-05-31 | Modeling / Audit | Raw unsealed guideway execution      | Rubber seals failed in high dust, ruining bearing race inside 50 hours | Secondary way-oil-saturated felt wipers are mandatory for abrasive particle isolation | High       | No                  |
+| 2026-05-31 | Modeling / Audit | Modeled raw unsealed guideway execution under abrasive particulate load | Predicted rubber seal failure within ~50 hours based on abrasion literature and analogous industrial cases — not yet confirmed by operational observation | Secondary way-oil-saturated felt wipers are mandatory for abrasive particle isolation; validate on first physical run | High | Yes — validate against first physical bearing teardown |
 
 ---
 
@@ -295,8 +276,9 @@ Mandatory re-audit conditions for this document:
 
 - Shunt-resistor current overrides implemented via software that exceed the 135% safety
   threshold
-- Removal of the 80:20 sand/epoxy damp-filling requirement for hollow structural spans
-  over 500 mm
+- Removal of the dense damping matrix fill requirement for hollow structural spans
+  over 500 mm (the fill is mandatory; the specific mixture ratio is an implementation
+  detail that may evolve — see ME-004)
 - Softening of the 125% mechanical torque shear-pin cutoff rule into variable software
   limits
 - Removal of the spindle pneumatic positive-pressure purge requirement
@@ -372,12 +354,96 @@ calibration — open unknown).
 
 ---
 
+---
+
+### ME-003 — Structural creep and damp-fill aging not characterized
+
+| Field         | Value                                |
+|---------------|--------------------------------------|
+| Status        | Open                                 |
+| Risk          | Medium                               |
+| Priority      | Major                                |
+| Type          | Technical                            |
+| Blocking      | No                                   |
+| Owner         | `Architecture/Mechanical_Structures.md` |
+| First Logged  | 2026-06-11                           |
+| Last Reviewed | 2026-06-11                           |
+
+**Description:** Epoxy/sand fills and salvaged weldments may change mechanical
+properties over years of operation due to vibration fatigue, moisture ingress,
+thermal cycling, shrinkage, and differential expansion between fill and frame.
+The damping characteristics of the filled structure may drift gradually without
+any single obvious component failure. No monitoring or revalidation doctrine
+currently exists for this.
+
+**Why It Matters:** A machine that slowly loses stiffness through fill aging
+or weld creep can drift outside its safe operating envelope invisibly. Interlock
+thresholds calibrated to a freshly built machine may become insufficient for a
+machine that has been operating for two years. This is a silent failure mode —
+the process continues but dimensional accuracy and structural safety margins
+both degrade.
+
+**Resolution Path:** Establish resonance fingerprinting as a periodic
+maintenance procedure. At defined intervals (initially every 250 hours of
+operation matching MTBMF), sweep spindle RPM from 100–5000 RPM and measure
+accelerometer spectrum. Compare to baseline taken at commissioning. If resonance
+signatures shift outside a defined tolerance band, inspect fill integrity,
+weld condition, and bearing preload before resuming full operation. Regrouting
+or structural reinforcement protocol to be defined when first resonance shift
+is observed.
+
+---
+
+### ME-004 — Calibration values not separated from doctrine sections
+
+| Field         | Value                                |
+|---------------|--------------------------------------|
+| Status        | Open                                 |
+| Risk          | Low                                  |
+| Priority      | Minor                                |
+| Type          | Structural                           |
+| Blocking      | No                                   |
+| Owner         | `Architecture/Mechanical_Structures.md` |
+| First Logged  | 2026-06-11                           |
+| Last Reviewed | 2026-06-11                           |
+
+**Description:** Provisional numerical thresholds (2.2 g, 150–600 Hz, 135%,
+150 ms, 8%, 300 ms, 0.12 mm, 125%, 0.5 bar) are embedded directly inside
+doctrine sections. These values are acknowledged as Analogous/provisional but
+their confidence level and promotion path are not tracked per-value. When a
+measured value replaces an analogous one, a doctrine section must be rewritten
+rather than a parameter table updated.
+
+**Why It Matters:** As operational data accumulates, individual thresholds
+will be promoted from Analogous to Measured at different times. The current
+structure requires rewriting prose doctrine sections to make those updates,
+which creates drift risk and makes confidence levels invisible to future auditors.
+
+**Resolution Path:** Create a Calibration Values appendix table with columns:
+Parameter | Current Value | Confidence | Owner Section | Promotion Trigger.
+Each numerical threshold in the Kinematic Matrix and Hard-Coded Protocols
+gets a row. Doctrine sections reference the table rather than embedding the
+number directly. This separates "abnormal current shall trigger motor shutdown"
+(doctrine, stable) from "135% for 150ms" (calibration, provisional). Defer
+to next major file revision — non-blocking.
+
+---
+
 ### Resolution Log
 
-- 2026-06-11: Upstream Dependencies and Downstream Dependents tables added.
-  Last Audit updated. No Arkansas/location-specific references found — file
-  already clean on this dimension.
-- 2026-05-31: File created as `Mechanical_Structures.md` — establishes structural,
+- 2026-06-11: ChatGPT informal audit integrated. Five findings actioned:
+  (1) Spec Gate advanced 1→2 — Gate 1 (scope boundary) and Gate 2 (falsifiable
+  metrics) both satisfied. (2) "Dampens resonant frequencies by up to 400%"
+  corrected to physically accurate amplitude reduction framing. (3) 80:20 ratio
+  demoted from frozen specification to RDC starting value — dense fill doctrine
+  protected; Drift Indicator updated accordingly. (4) Safety Advisory updated —
+  contamination exclusion is the mandatory doctrine; pneumatic purge is the v0
+  implementation. (5) Lessons Learned evidence type corrected — wording now
+  accurately reflects modeled/predicted failure, not operational observation.
+  ME-003 added (structural creep and damp-fill aging). ME-004 added (calibration
+  values not separated from doctrine). Open Unknowns updated 2→3 (ME-004 is
+  Minor/non-blocking; ME-003 is the substantive new gap). Last Audit updated.
+- 2026-06-08: Navigation Anchors block added. Scope Boundary updated.
   mechanical, and kinematic engineering doctrine for salvaged-component fabrication
   machinery. Scope explicitly scoped as downstream extension of
   `Architecture/Engineering.md`, not a replacement. Codified gantry damp-filling
