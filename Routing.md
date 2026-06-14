@@ -102,3 +102,12 @@ Update this file whenever:
 
 Routing.md completeness is verified against Discovery.md structure map.
 Discrepancies between the two are logged as pending corrections in Discovery.md.
+
+
+### Routing.md — patch block
+
+Under the **Tests/ Layer** section, add one row after `Tests/Leviathan_testing.md`:
+
+| `Tests/Living_Waters.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Living_Waters.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Living_Waters.md) | Explicit |
+
+No other changes to Routing.md.
