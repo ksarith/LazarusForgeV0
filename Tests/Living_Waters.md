@@ -7,11 +7,11 @@
 
 | Field | Value |
 |---|---|
-| Version | v0.2 |
+| Version | v0.3 |
 | Status | Active — Experimental |
 | Folder | Tests/ |
 | Last Updated | 2026-06-14 |
-| Authors | James (Owner), Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer) |
+| Authors | James (Owner), Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
 | Depends On | Energy.md, Safety_Protocols.md, Unknowns.md, Economics.md |
 | Feeds Into | Operations/ (pending validation) |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
@@ -266,13 +266,82 @@ Capture of water vapor from ambient air via:
 - Passive radiative cooling and condensation.
 - Desiccant adsorption/desorption cycles.
 - Fog net interception.
-- Active refrigeration condensation.
+- Active refrigeration condensation (see LW-005a).
 
 **Constraint**
 
 Atmospheric harvesting is supplemental until a reliable purification baseline exists. Harvested condensate carries airborne contaminants — microplastics, industrial aerosols, biological particulates — and requires treatment before entering closed-loop storage. In arid Forges where no surface water exists, sequencing pressure may force earlier deployment; purification integration must be planned from the start in those cases.
 
 **Status:** Supplemental — dependent on LW-001 or LW-003 validation first. May be accelerated in desert-context Forges.
+
+---
+
+### LW-005a — Refrigeration-Based Atmospheric Condensation (Active AWG)
+
+**Concept**
+
+Forced humid air across a chilled heat exchanger surface causes water vapor to condense. Unlike passive methods, active refrigeration provides reliable condensation independent of ambient radiative conditions. This is the highest-yield atmospheric pathway under high-humidity conditions and the most compatible with salvage-sourced components.
+
+This sub-pathway was developed from iterative design work across two implementation forms:
+- **Vertical downward-venting units** — freestanding, centralized refrigeration, higher output density.
+- **Fence-mounted distributed units** — modular deployment along fence lines, solar or grid powered.
+
+The vertical unit architecture is the primary Forge candidate due to greater compatibility with salvaged components and centralized refrigeration efficiency.
+
+**Vertical Unit Architecture (Primary)**
+
+Five-unit array, each unit 1–1.5 m tall, designed for deployment in a defined perimeter area.
+
+*Per unit:*
+- Inner core: 5–8 cm diameter aluminum mesh tube with helical impeller or static vanes producing vortex airflow.
+- Outer heat exchanger: 20–25 cm diameter tube with copper coils or plates (~2.5–3 m² surface area), enhanced with crinkled aluminum foil and fins, hydrophobic coated.
+- Airflow: Top-mounted angled fans (0.1–0.2 m³/s per unit) driving humid air downward through core and across chilled surface.
+- Cooling: Centralized 5–7 kW vapor-compression refrigeration unit (target COP 3–4) chilling circulating water to 5–10°C, keeping heat exchanger surface at 10–15°C.
+- Heat rejection: Single vertical shaft (20–30 cm diameter) with blower venting condenser heat upward.
+- Ionization: High-voltage DC enhancement (+20–25 kV on core, −15 to −20 kV on tube surface) to improve droplet nucleation. See shared electrical architecture note below.
+- Collection: Condensate drains to bottom trays and collects in tanks or buckets.
+
+*Proposed performance parameters (unvalidated — empirical testing required):*
+
+| Parameter | Proposed Value | Confidence |
+|---|---|---|
+| Condensate per unit | 4.5–10 L/hour | Low — modeling estimate |
+| Power per unit | 0.37–0.75 kW | Low — modeling estimate |
+| Energy intensity | ~0.3–0.5 kWh/L | Plausible — consistent with commercial AWG benchmarks at high humidity |
+| Five-unit array total | 22.5–50 L/hour | Low — unvalidated aggregate |
+| Local RH reduction (2000 ft² area) | 70% → 40–50% | Very Low — modeling only; atmospheric dynamics unconfirmed |
+
+**Note on energy intensity:** Commercial atmospheric water generators under favorable conditions (>70% RH, warm air) typically achieve 0.3–0.5 kWh/L. The proposed parameters are consistent with this range but have not been validated at Forge build quality or with salvaged components. Degraded performance should be assumed for initial test planning.
+
+**Note on RH reduction claim:** Local humidity reduction in a bounded area is plausible as a secondary effect but is not a design target for this pathway. Water production is the Forge-relevant objective. Atmospheric-scale effects are out of scope at current development interval.
+
+**Fence-Mounted Variant (Alternative Deployment)**
+
+Two form factors developed:
+- *2 ft solar unit:* 24" × 10" × 7", 5–7 lbs, 10–15W solar, 110–230 CFM airflow, ~3–4.5 kg/hour output. Cost target: $650–$900 new manufacture.
+- *8 ft rollable grid unit:* 96" × 10" × 1" unrolled, 15–20 lbs, 120V grid → 24V DC (14–22W), 90–180 CFM, ~6–9 kg/hour output. Cost target: $700–$925 new manufacture.
+
+**Forge compatibility assessment:** Fence-mounted units assume new manufacture at defined cost targets. This conflicts with salvage-first doctrine. These variants are noted as reference designs for context; they are not primary Forge build candidates unless component sourcing from salvage can be demonstrated. See LW-UNK-009.
+
+**Shared Electrical Architecture Note**
+
+The high-voltage ionization system in LW-005a (+20–25 kV DC) uses the same general electrode configuration as the ionization enhancement explored in LW-001 (vacuum distillation volatility management). A shared high-voltage supply architecture may be feasible across both pathways where both are deployed. This is a declared synergy candidate, not a confirmed design.
+
+**Salvage Component Targets**
+- Vapor-compression refrigeration unit: commercial refrigeration compressors (abundant in salvage stream).
+- Copper coils: HVAC evaporator coils, refrigerator evaporators.
+- Aluminum fins and mesh: window AC units, salvaged heat exchangers.
+- Fans: salvaged computer server fans, HVAC blower assemblies.
+- High-voltage supply: salvaged neon sign transformers, flyback transformers (requires qualification).
+
+**Proposed Test Parameters**
+- **LW-TEST-501 (Condensation Rate vs. RH):** Measure actual condensate output per unit at varying ambient humidity levels. Establish minimum viable RH threshold for positive water yield.
+- **LW-TEST-502 (Energy Intensity Validation):** Measure kWh consumed per liter produced across humidity and temperature range. Compare against 0.3–0.5 kWh/L commercial benchmark.
+- **LW-TEST-503 (Ionization Enhancement Delta):** Measure condensate yield with and without HV ionization active. Quantify improvement or confirm negligible effect at this scale.
+- **LW-TEST-504 (Salvage Component COP):** Measure actual COP of salvaged refrigeration compressor in this configuration. Reject configurations below COP 2.0 as energy-unviable.
+- **LW-TEST-505 (Condensate Quality):** Test condensate for airborne contaminants — particulates, biological matter, VOCs. Confirm purification requirements before potable use classification.
+
+**Status:** Exploratory — proposed parameters unvalidated. Salvage compatibility partially confirmed by component availability. Empirical testing required before yield claims can be made.
 
 ---
 
@@ -390,6 +459,7 @@ Brine-as-resource transforms a waste disposal problem into a production line. Th
 | LW-UNK-006 | Salvage-compatible membrane sourcing for any RO pathway | Open |
 | LW-UNK-007 | Draw solution regeneration chemistry and energy cost for LW-007 forward osmosis | Open |
 | LW-UNK-008 | Site characterization → pathway selection decision framework | Declared — formal framework not yet written |
+| LW-UNK-009 | Salvage sourcing path for fence-mounted AWG variant (LW-005a) — required before Forge build candidacy | Open |
 
 *Candidates for migration to Unknowns.md pending triage.*
 
