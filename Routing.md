@@ -111,3 +111,36 @@ Under the **Tests/ Layer** section, add one row after `Tests/Leviathan_testing.m
 | `Tests/Living_Waters.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Living_Waters.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Living_Waters.md) | Explicit |
 
 No other changes to Routing.md.
+
+
+# Routing.md — Patch v2
+**Date:** 2026-06-14
+**Adds:** Tests/Trophic_Forge.md and Tests/Solar_Descent.md
+
+---
+
+## Patch Instructions
+
+In the **Tests/ Layer** section, replace the current block:
+
+| `Tests/Support_Raft.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Support_Raft.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Support_Raft.md) | Explicit |
+| `Tests/Leviathan_testing.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Leviathan_testing.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Leviathan_testing.md) | Explicit |
+| `Tests/Living_Waters.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Living_Waters.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Living_Waters.md) | Explicit |
+
+With:
+
+| `Tests/Support_Raft.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Support_Raft.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Support_Raft.md) | Explicit |
+| `Tests/Leviathan_testing.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Leviathan_testing.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Leviathan_testing.md) | Explicit |
+| `Tests/Living_Waters.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Living_Waters.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Living_Waters.md) | Explicit |
+| `Tests/Trophic_Forge.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Trophic_Forge.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Trophic_Forge.md) | Explicit |
+| `Tests/Solar_Descent.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Solar_Descent.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Solar_Descent.md) | Explicit |
+
+---
+
+## Update the Last Updated line at top of file:
+
+**Last updated: 2026-06-14**
+
+---
+
+No other changes to Routing.md.
