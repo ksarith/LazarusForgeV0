@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.1 — 2026-06-11. Location abstraction pass. TH-003, EN-002, FA-004 titles updated from Arkansas/location-specific to deployment-generic framing. TH-003 Critical Watch entry updated. Five Architecture files and Facilities.md fully RDC-abstracted. No unknowns opened or closed.**
+**Version 3.2 — 2026-06-11. Architecture audit integration pass. Nine new unknowns registered across five clusters (ME-003, ME-004, TH-005, TH-006, CE-005, EN-006, FD-005, and CE-003 elevated, CE-004 In Progress). CE-003 added to Critical Watch. EN-001 Blocking status confirmed. FA-005 resolved.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -37,6 +37,15 @@ These rules are enforced at every audit cycle opening:
 4. **Audit Trail entries are concise.** Two to three sentences maximum: what changed, what was resolved, what moved to watch lists. The What vX.X section carries the full narrative during the session; the Audit Trail is the permanent compressed record.
 
 ---
+
+## What v3.2 Means
+
+- **Nine new unknowns registered** — ME-003 (structural creep/damp-fill aging), ME-004 (calibration values not separated from doctrine), TH-005 (thermal interface material doctrine), TH-006 (TEG salvage efficiency), CE-005 (solution chemistry/precipitation), EN-006 (advanced engineering drift risk), FD-005 (FSI bridge missing).
+- **CE-003 elevated to Critical** — blocks first hot pyrolysis run; PL-001 depends on polymer identification reliability; false negative produces HCl/dioxins. Added to Critical Watch.
+- **CE-004 In Progress** — Chemical Operator Minimum Competency Appendix A created in Chemistry.md.
+- **FA-005 Resolved** — UNK-006 ownership confirmed; Facilities.md is the owning file; moved to Resolved Archive.
+- **Spec Gate advances recorded** — Engineering.md 0→3; Friction_Dynamics.md 0→2; Mechanical_Structures.md 1→2; Thermal_Systems.md 0→1.
+
 
 ## What v3.1 Means
 
@@ -170,8 +179,11 @@ These rules are enforced at every audit cycle opening:
 | EN-003 | Materials database for salvaged alloy identification | `Architecture/Engineering.md` | Open | Major |
 | EN-004 | High-performance low-tech fabrication methods | `Architecture/Engineering.md` | Open | Minor |
 | EN-005 | Verification testing protocols for structural claims | `Architecture/Engineering.md` | Open | Major |
+| EN-006 | Advanced engineering section drift risk (topology, composites) | `Architecture/Engineering.md` | Open | Minor |
 | ME-001 | Vibration resonance mapping on mismatched salvaged rails | `Architecture/Mechanical_Structures.md` | Open | Major |
 | ME-002 | Pneumatic purge volume requirements vs. Air Scrubber capacity | `Architecture/Mechanical_Structures.md` | Open | Minor |
+| ME-003 | Structural creep and damp-fill aging not characterized | `Architecture/Mechanical_Structures.md` | Open | Major |
+| ME-004 | Calibration values not separated from doctrine sections | `Architecture/Mechanical_Structures.md` | Open | Minor |
 
 *EN-001 is Blocking — no structural specification in any file may be promoted without validated safety factors for salvaged materials.*
 
@@ -181,8 +193,9 @@ These rules are enforced at every audit cycle opening:
 |---|---|---|---|---|
 | CE-001 | Galvanic corrosion rates for salvaged mixed-metal assemblies not characterized | `Architecture/Chemistry.md` | Open | Major |
 | CE-002 | Oxide burden effect on Spin Chamber output quality not quantified | `Architecture/Chemistry.md` | Open | Major |
-| CE-003 | Field polymer identification reliability not validated for mixed salvage stream | `Architecture/Chemistry.md` | Open | Major |
-| CE-004 | Chemical hazard identification training standard not defined | `Architecture/Chemistry.md` | Open | Major |
+| CE-003 | Field polymer identification reliability not validated for mixed salvage stream | `Architecture/Chemistry.md` | Open | **Critical** |
+| CE-004 | Chemical Operator Minimum Competency — Appendix A created in Chemistry.md | `Architecture/Chemistry.md` | **In Progress** | Major |
+| CE-005 | Solution chemistry and precipitation doctrine not established | `Architecture/Chemistry.md` | Open | Major |
 
 *CE-003 is a safety-critical prerequisite before first hot pyrolysis run — cross-references PL-001.*
 
@@ -194,6 +207,8 @@ These rules are enforced at every audit cycle opening:
 | TH-002 | TEG harvest yield at Gate_05 exterior not characterized | `Architecture/Thermal_Systems.md` | Open | Minor |
 | TH-003 | Atmospheric moisture yield under deployment conditions not measured | `Architecture/Thermal_Systems.md` | Open | Major |
 | TH-004 | Salvaged Peltier device characterization protocol not defined | `Architecture/Thermal_Systems.md` | Open | Major |
+| TH-005 | Thermal interface material doctrine undefined | `Architecture/Thermal_Systems.md` | Open | Major |
+| TH-006 | TEG absolute efficiency range not validated for salvage stock | `Architecture/Thermal_Systems.md` | Open | Minor |
 
 *TH-003 is Blocking for Living Waters deployment. Non-blocking for all other Forge operations.*
 
@@ -204,6 +219,7 @@ These rules are enforced at every audit cycle opening:
 | FD-001 | Gate_04 centrifugal separation RPM data not linked to Stokes settling doctrine | `Architecture/Friction_Dynamics.md` | Open | Major |
 | FD-002 | Air Scrubber duct velocity profile not characterized per capture stage | `Architecture/Friction_Dynamics.md` | Open | Major |
 | FD-003 | Salvaged bearing L10 life estimation protocol not defined | `Architecture/Friction_Dynamics.md` | Open | Major |
+| FD-005 | Fluid-Structure Interaction (FSI) not formally bridged | `Architecture/Friction_Dynamics.md` | Open | Major |
 
 ### Cognitive Frameworks
 
@@ -430,7 +446,6 @@ These rules are enforced at every audit cycle opening:
 | FA-002 | Hot Zone minimum clearance radius not defined | `Architecture/Facilities.md` | Open | Major |
 | FA-003 | Legal zoning and permitting not assessed | `Architecture/Facilities.md` | Open | Major |
 | FA-004 | RDC heat load impact on operator safety not quantified | `Architecture/Facilities.md` | Open | Minor |
-| FA-005 | UNK-006 resolution confirmation pending | `Architecture/Facilities.md` | Open | Minor |
 
 *FA-001 is Critical — blocks all hot operations and SP-006 (emergency response).*
 
@@ -594,6 +609,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | WA-002 | Hazardous fraction identification reliability — no validated identification protocol for asbestos, heavy metals, BFR in mixed waste streams; Safety-critical before mixed-waste operations |
 | WA-004 | Negative-value waste fraction disposal — no owning file; no doctrine for hazardous unrecoverable material; mirrors GR-003 gap |
 | CM-002 | Acid leach reagent recovery doctrine — undefined; no hydrometallurgical processing before closed-loop reagent recovery and waste stream management are specified |
+| CE-003 | Field polymer identification reliability not validated for mixed salvage stream — Critical; blocks first hot pyrolysis run; PL-001 depends on this; false negative produces HCl/dioxins |
 
 ### Blocking Watch
 
@@ -624,6 +640,7 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 | EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine; canonical ownership assigned | 2026-06-06 |
 | GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
 | PC-004 | Stale name corrections — Water.md and Planned_Obsolescence.md | Resolved — Water.md title corrected to match filename; stale cross-references corrected in both files during Challenges/ retrofit pass | 2026-06-11 |
+| FA-005 | UNK-006 resolution confirmation pending | Resolved — Facilities.md confirmed as owning file; all 7 dependent files reference Facilities.md; Discovery.md Cross-Module Unknowns updated | 2026-06-11 |
 | SR-010 | Thermal management modularity for optional Gate hosting | Resolved — thermal rejection system declared modular/expandable in Support_Raft.md v0.5 Mechanical Design section; baseline-rated for Raft-only, expandable for Gate integration | 2026-06-11 |
 | RS-002 | Forge_flow.md casing outlier | Resolved — `Forge_Flow.md` corrected to `Forge_flow.md` in Discovery.md Rename Registry; resolution logged in Forge_flow.md Resolution Log | 2026-06-11 |
 | RS-003 | Archive/ directory not created | Resolved — `Archive/README.md` created with purpose, governance, and RIP-001 dependency note; append-only doctrine declared | 2026-06-11 |
@@ -663,6 +680,8 @@ Measured confidence. Monitor alongside LT-003 (autonomy architecture).
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch. RS-003, PC-001 added to Blocking Watch.
 
 **v2.5 — 2026-06-08:** Retrofit pass — Energy.md, Gate_01_Intake.md, Electronics.md, Air_Scrubber.md, Cognitive_Frameworks.md, Ship_of_Theseus.md, Leviathan_testing.md. Navigation Anchors added to all seven. Verification Refs corrected (PC-001 partial — 4 of 10 files). Facilities.md upstream references added (PC-002 partial — 4 of 7 files). CF-001 In Progress — Electronics.md Hardware Watchdog Doctrine updated (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). CF-002 In Progress — Leviathan_testing.md Section VII added (poisoned telemetry injection protocol). CF-003 In Progress — Ship_of_Theseus.md Section IV added (Canonical vs. Derivative Identity). Cognitive_Frameworks.md Section IX added — Forge Meta-Algorithm and eight component algorithms named.
+
+**v3.2 — 2026-06-11:** Architecture audit integration pass. Nine new unknowns: ME-003, ME-004 (Mechanical Structures); TH-005, TH-006 (Thermal Systems); CE-005 (Chemistry); EN-006 (Engineering); FD-005 (Friction Dynamics). CE-003 elevated to Critical/Blocking — added to Critical Watch. CE-004 moved to In Progress (Appendix A created). FA-005 resolved — UNK-006 ownership confirmed; added to Resolved Archive. Spec Gates advanced across four Architecture files.
 
 **v3.1 — 2026-06-11:** Location abstraction pass. TH-003, EN-002, FA-004 titles updated to deployment-generic framing. TH-003 Critical Watch entry updated. Matches RDC abstraction applied across Facilities.md, Friction_Dynamics.md, Engineering.md, Chemistry.md, Thermal_Systems.md, and Mechanical_Structures.md in same session. No unknowns opened or closed.
 
