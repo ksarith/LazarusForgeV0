@@ -21,6 +21,7 @@
 | Auditor | Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
 | Open Unknowns | 10 |
 | Active Disputes | 0 |
+| Forward References | Astroid-miner companion repository |
 | Highest Risk | High |
 | Sidecar Link | #auditor-notes--unknowns |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
@@ -34,9 +35,11 @@
 - SD-001 optical downlink pathway and its sub-components including the molten tin termination concept.
 - SD-002 thermal/fluid downlink pathway and its sub-components.
 - The shared underground chamber architecture where both pathways reconverge.
+- Chamber geometry candidate (geodesic/spherical) and modular panel expansion approach.
 - Power conversion cascade from the underground chamber.
 - Safety governance doctrine for both pathways.
 - Proposed test parameters for each pathway and shared systems.
+- Forward reference to Astroid-miner companion system and declared technology transfer paths.
 - Open unknowns requiring resolution before promotion consideration.
 
 **This file DOES NOT define:**
@@ -269,6 +272,18 @@ The underground chamber is the reconvergence point. Whether energy arrives as ph
 - **Geomechanical constraint:** Operating temperature ceiling strictly bounded by host rock thermal expansion limits. Temperature must remain below fracturing threshold for local geology. See SD-UNK-004.
 - **Atmosphere:** Inert atmosphere (argon or nitrogen purge) preferred for any pathway involving molten metal components or high-purity processing. Passive gravity-fed pressure relief venting for steam spike or containment breach.
 
+**Chamber Geometry — Design Candidate**
+
+Rectangular flat-walled chambers develop thermal stress concentrations at corners under repeated heating and cooling cycles. At target operating temperatures (500–2000°C), this is a structural failure pathway over time.
+
+A geodesic or near-spherical geometry — analogous to a truncated icosahedron (soccer ball form) — distributes thermal stress evenly across the entire surface. No stress concentration points. Thermal expansion loads are shared uniformly by the shell.
+
+*Modular panel expansion:* Rather than committing to full excavation upfront, the chamber can begin as a minimal viable sphere and expand by adding panels outward as validated performance justifies increased volume. Each expansion stage is independently testable before the next is committed.
+
+This geometry also has a declared forward relevance: a self-contained spherical processing vessel that can be scaled and separated into panels is directly analogous to the architecture needed for asteroid body processing in the Astroid-miner companion system. See Forward Reference section.
+
+**Status:** Design candidate — not a committed specification. Geometry selection is deferred to SD-UNK-004 (host geology) resolution, as excavation method constrains achievable chamber shape.
+
 **Self-Discharge Rate**
 
 Heat leaks into surrounding bedrock continuously. Self-discharge rate (% of stored energy lost per day) is a function of insulation thickness, temperature differential, and chamber geometry. This must be characterized empirically — it sets the minimum daily solar input required to maintain operating temperature.
@@ -331,6 +346,58 @@ Consistent with Forge doctrine: physical boundaries and passive mechanisms take 
 **Thermal Runaway Definition**
 - Chamber temperature exceeds host geology fracturing threshold: immediate full shutoff, both pathways.
 - Self-discharge rate increases >50% above baseline without change in insulation: investigate structural integrity before resuming operation.
+
+---
+
+## Forward Reference — Asteroid Processing System
+
+Solar Descent is the terrestrial validation stage for a space-based solar concentration and material processing architecture. Every unknown resolved here reduces risk in the Astroid-miner companion system. The relationship is explicit and directional: prove it underground first, then translate to vacuum.
+
+**Technology Transfer Paths**
+
+| Solar Descent Element | Asteroid System Equivalent | Transfer Notes |
+|---|---|---|
+| SD-001 fiber optic downlink | Space-based fiber or mirror array routing solar flux to processing vessel | No atmosphere means no scattering loss; higher flux density achievable; continuous solar availability eliminates day/night cycle constraint |
+| Underground chamber (sealed, inert atmosphere) | Asteroid processing vessel (vacuum environment) | Vacuum eliminates oxidation problems that complicate SD-001a molten tin termination on Earth — SD-001a may be more viable in space than underground |
+| Staged thermal cascade by temperature grade | Staged volatile extraction from asteroid body under solar heating | Same physics: different materials release at different temperatures; capture at each stage segregates by composition |
+| Stirling conversion (large thermal differential) | Stirling or equivalent (2.7K space background as cold sink) | Space cold sink produces a thermodynamic differential orders of magnitude larger than underground; conversion efficiency ceiling rises dramatically |
+| Spherical modular chamber geometry | Self-contained processing vessel; separable panel expansion | Direct architectural analogue — a vessel that can grow by adding panels works identically in both environments |
+| Vacuum pump integration (LW-001 synergy) | Vacuum capture of volatiles freeing at staged temperatures | On Earth: pump creates vacuum to lower boiling point. In space: vacuum is the ambient condition; staged heating drives volatiles off sequentially |
+
+**The Staged Asteroid Extraction Sequence**
+
+Solar concentration heats an asteroid body or captured fragment under ambient vacuum. Different materials sublime or outgas at different temperatures, enabling fractional segregation without mechanical separation:
+
+```
+Solar concentration applied to asteroid body
+      ↓
+Stage 1 — Noble gases and light volatiles (H₂, He, N₂) — lowest temperature
+      → Vacuum capture at Stage 1 temperature band
+      ↓
+Stage 2 — Water ice sublimation (~150–200K onset in vacuum)
+      → Capture → feedstock for life support or propellant production
+      ↓
+Stage 3 — CO₂, SO₂, and volatile ices
+      → Capture and segregate
+      ↓
+Stage 4 — Organic compound fractions (temperature-banded by boiling point)
+      → Capture → chemical feedstock
+      ↓
+Stage 5 — Silicate and metal processing (high temperature)
+      → Structural and manufacturing feedstock
+```
+
+This is fractional distillation of an asteroid body under solar heat — the same organizing principle as LW-001 vacuum distillation and SD-001's staged thermal cascade, applied at planetary material scale.
+
+**Scope Declaration**
+
+The asteroid processing system is out of scope for this file. Solar Descent defines terrestrial underground solar concentration. The forward reference exists to:
+
+1. Preserve the conceptual connection so it is not reinvented independently later.
+2. Declare that SD test results (especially SD-TEST-101 through SD-TEST-104) are inputs to Astroid-miner system design, not only to Forge Operations/ promotion.
+3. Flag SD-001a (molten tin termination) as potentially more viable in vacuum than underground — a finding that may be relevant to the space system before it is resolved terrestrially.
+
+**Repository Pointer:** `Astroid-miner` companion repository. Activates when Leviathan deployment is underway per Discovery.md cross-repo relationship declaration. Solar Descent findings should be formally transferred to that repository at activation.
 
 ---
 
