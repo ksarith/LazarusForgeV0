@@ -108,7 +108,10 @@ Operations/                                 — Physical modules and operational
 
 Tests/                                      — Test frameworks and deployment platforms
     ├── Support_Raft.md                     — Stationary marine deployment anchor
-    └── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
+    ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
+    ├── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
+    ├── Trophic_Forge.md                    — Biological cascade network; light → insect → fish → nutrient → crop → water; bootstrap sequence doctrine
+    └── Solar_Descent.md                    — Underground concentrated solar; SD-001 optical downlink; SD-002 fluid downlink; shared chamber reconvergence
 
 Challenges/                                 — Problem layer: why these capabilities exist
     ├── Water.md                            — Water scarcity and contamination (Living Waters)
@@ -131,7 +134,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness:** Verified complete as of 2026-06-11 (`Challenges/Emergence.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+**Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Trophic_Forge.md` and `Tests/Solar_Descent.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -224,6 +227,9 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Operations/Woodworking.md` | Draft | 0/6 | High |
 | `Tests/Support_Raft.md` | Exploration | — | High |
 | `Tests/Leviathan_testing.md` | Exploration | — | High |
+| `Tests/Living_Waters.md` | Exploration | — | High |
+| `Tests/Trophic_Forge.md` | Exploration | 0/6 | High |
+| `Tests/Solar_Descent.md` | Exploration | 0/6 | High |
 | `Challenges/Water.md` | Active | — | — |
 | `Challenges/Biofouling.md` | Active | — | — |
 | `Challenges/Waste.md` | Active | — | — |
@@ -414,7 +420,7 @@ Salvaged-frame kinematic and structural doctrine. Gantry rigidity; kinematic int
 ### `Architecture/Thermal_Systems.md`
 Foundational thermal doctrine. Thermodynamic laws; heat transfer; Peltier; TEG; heat pump; Arkansas climate thermal baseline.
 **Upstream:** Engineering.md; Ethical_Constraints.md.
-**Downstream:** Gate_05_Separation_Thermal.md; Air_Scrubber.md; Energy.md; Plastics.md; Mechanical_Structures.md; Support_Raft.md; Water.md.
+**Downstream:** Gate_05_Separation_Thermal.md; Air_Scrubber.md; Energy.md; Plastics.md; Mechanical_Structures.md; Support_Raft.md; Water.md; Tests/Solar_Descent.md (thermodynamic doctrine governs underground chamber and conversion cascade).
 ⚠️ TH-001 (heat pump sizing), TH-003 (atmospheric moisture yield — Blocking for Living Waters).
 
 ### `Architecture/Friction_Dynamics.md`
@@ -538,6 +544,24 @@ Hostile-environment test framework. Fail fast; recover often; sensors lie; recor
 **Downstream:** Cognitive_Frameworks.md; Forge_Net.md; Energy.md; Trajectories.md.
 ⚠️ LT-001 (power envelope), LT-002 (deep-ocean storage degradation), LT-003 (autonomy architecture unspecified) — High risk. LT-006 (ethical log survival under unit loss) — governance implications.
 
+### `Tests/Living_Waters.md`
+Water purification pathways initiative. LW-001 through LW-010 experimental pathways. Site-conditioned pathway selection doctrine. Water Hierarchy (Tier 1–7). Primary candidates: LW-001 Vacuum Distillation (with MVR), LW-003 Deep-Sea RO. Declared trajectory: hydrological counterpart to Energy.md.
+**Upstream:** Energy.md; Safety_Protocols.md; Ethical_Constraints.md; Unknowns.md; Challenges/Water.md; Challenges/Biofouling.md (LW-UNK-004); Architecture/Thermal_Systems.md (TH-003); Architecture/Friction_Dynamics.md.
+**Downstream:** Operations/ (pending validation and promotion criteria); Economics.md (LW-010 mineral recovery); Unknowns.md (LW-UNK-001 through LW-UNK-008).
+⚠️ LW-UNK-001 (volatile co-distillation — CRITICAL safety gap before any potable output claim). LW-UNK-003 (lumen implosion threshold — CRITICAL for LW-003 deployment). TH-003 (atmospheric moisture yield) — Blocking for LW-005 atmospheric harvesting.
+
+### `Tests/Trophic_Forge.md`
+Biological cascade network architecture. Light node ignition (UV/blue LED phototaxis harvest) → fish production → nutrient cycling → crop fertilization → phytoremediation → pond replenishment. Bootstrap sequence doctrine: each node provides leverage to justify the next. Declared trajectory: seed of Biology/ domain.
+**Upstream:** Ethical_Constraints.md; Energy.md (light node power); Tests/Living_Waters.md (pond water interface — TF-009); Challenges/Biofouling.md (pond fouling — TF-UNK-004); Safety_Protocols.md.
+**Downstream:** Declared future Biology/ domain; Economics.md (closed-loop input cost reduction); Unknowns.md (TF-001 through TF-009).
+⚠️ TF-001 (phototaxis yield at Forge scale — CRITICAL; blocks organizing principle validation). TF-006 (non-target insect capture — ethical unknown; escalates to Ethical_Constraints.md if threshold cannot be met). TF-009 (pond node interface with Living_Waters.md — joint resolution required).
+
+### `Tests/Solar_Descent.md`
+Underground concentrated solar architecture. Surface collection layer feeds two diverging downlink pathways — SD-001 optical (fiber optic / light well) and SD-002 thermal/fluid (molten salt / synthetic oil) — that reconverge at a shared subterranean chamber. Power conversion cascade (Stirling primary; TEG bootstrap). Waste heat feeds LW-001 and LW-008 in Living_Waters.md.
+**Upstream:** Ethical_Constraints.md; Energy.md; Architecture/Thermal_Systems.md; Operations/Gate_05_Separation_Thermal.md; Tests/Living_Waters.md (waste heat cascade interface — SD-UNK-010); Safety_Protocols.md; Challenges/Biofouling.md (surface collection layer in humid climates).
+**Downstream:** Operations/Energy.md (power output); Operations/Gate_05_Separation_Thermal.md (high-grade process heat); Operations/Plastics.md (pyrolysis heat feed); Tests/Living_Waters.md (LW-001, LW-008 waste heat); Unknowns.md (SD-UNK-001 through SD-UNK-010).
+⚠️ SD-UNK-004 (host geology fracturing threshold — CRITICAL; blocks all excavation and chamber construction; parallels FA-001 in governance weight). SD-UNK-002 (achievable underground temperature — CRITICAL; blocks power conversion pathway selection). SD-UNK-010 (waste heat interface with Living_Waters.md — joint resolution required).
+
 ---
 
 ## Scope Map — Challenges/
@@ -547,7 +571,7 @@ Hostile-environment test framework. Fail fast; recover often; sensors lie; recor
 ### `Challenges/Water.md`
 Water scarcity and contamination. Living Waters initiative. Atmospheric moisture recovery; stratification separation; ambient energy harvesting; community water sovereignty objective. File_Template.md compliant as of 2026-06-11.
 **Upstream:** Ethical_Constraints.md; Safety_Protocols.md; Thermal_Systems.md (TH-001, TH-003); Friction_Dynamics.md §4; Chemistry.md; Facilities.md.
-**Downstream:** Thermal_Systems.md (TH-001, TH-003 driven by this challenge); Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Forge_Net.md.
+**Downstream:** Thermal_Systems.md (TH-001, TH-003 driven by this challenge); Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Forge_Net.md; Tests/Living_Waters.md (implementation test framework).
 ⚠️ TH-003 (atmospheric moisture yield) — Blocking for Living Waters deployment. WS-001 through WS-004 Open.
 
 ### `Challenges/Biofouling.md`
@@ -587,7 +611,6 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 `LazarusForgeV0` (this repo) — operational implementation.
 `Astroid-miner` — planned; activates when Leviathan deployment is underway.
 
-
 **Programmatic entry point:** `Routing.md` is the canonical lookup table for raw file URLs.
 Load Routing.md first when an agent needs to fetch specific files by path.
 Load Discovery.md when an agent needs to understand scope relationships and routing logic.
@@ -609,135 +632,3 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
 | RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
 | PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
-
-
-### Discovery.md — three patch locations
-
----
-
-PATCH 1 — Repository Structure block, Tests/ section
-Replace:
-    Tests/                                      — Test frameworks and deployment platforms
-        ├── Support_Raft.md                     — Stationary marine deployment anchor
-        └── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
-
-With:
-    Tests/                                      — Test frameworks and deployment platforms
-        ├── Support_Raft.md                     — Stationary marine deployment anchor
-        ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
-        └── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
-
----
-
-PATCH 2 — Routing.md completeness line
-Replace:
-    **Routing.md completeness:** Verified complete as of 2026-06-11 (`Challenges/Emergence.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
-
-With:
-    **Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Living_Waters.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
-
----
-
-PATCH 3 — Repository Maturity Snapshot table
-Add after the `Tests/Leviathan_testing.md` row:
-
-| `Tests/Living_Waters.md` | Exploration | — | High |
-
----
-
-PATCH 4 — Scope Map — Tests/ section
-Add after the Leviathan_testing.md scope entry:
-
-### `Tests/Living_Waters.md`
-Water purification pathways initiative. LW-001 through LW-010 experimental pathways. Site-conditioned pathway selection doctrine. Water Hierarchy (Tier 1–7). Primary candidates: LW-001 Vacuum Distillation (with MVR), LW-003 Deep-Sea RO. Declared trajectory: hydrological counterpart to Energy.md.
-**Upstream:** Energy.md; Safety_Protocols.md; Ethical_Constraints.md; Unknowns.md; Challenges/Water.md; Challenges/Biofouling.md (LW-UNK-004); Architecture/Thermal_Systems.md (TH-003); Architecture/Friction_Dynamics.md.
-**Downstream:** Operations/ (pending validation and promotion criteria); Economics.md (LW-010 mineral recovery); Unknowns.md (LW-UNK-001 through LW-UNK-008).
-⚠️ LW-UNK-001 (volatile co-distillation — CRITICAL safety gap before any potable output claim). LW-UNK-003 (lumen implosion threshold — CRITICAL for LW-003 deployment). TH-003 (atmospheric moisture yield) — Blocking for LW-005 atmospheric harvesting.
-
----
-
-PATCH 5 — Challenges/Water.md scope entry
-In the Downstream line, add:
-    `Tests/Living_Waters.md` (implementation test framework for this challenge).
-
-Full updated Downstream line:
-**Downstream:** Thermal_Systems.md (TH-001, TH-003 driven by this challenge); Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Forge_Net.md; Tests/Living_Waters.md (implementation test framework).
-
-# Discovery.md — Patch v2
-**Date:** 2026-06-14
-**Adds:** Tests/Trophic_Forge.md and Tests/Solar_Descent.md
-
----
-
-## PATCH 1 — Repository Structure block, Tests/ section
-
-Replace:
-    Tests/                                      — Test frameworks and deployment platforms
-        ├── Support_Raft.md                     — Stationary marine deployment anchor
-        ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
-        └── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
-
-With:
-    Tests/                                      — Test frameworks and deployment platforms
-        ├── Support_Raft.md                     — Stationary marine deployment anchor
-        ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
-        ├── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
-        ├── Trophic_Forge.md                    — Biological cascade network; light → insect → fish → nutrient → crop → water; bootstrap sequence doctrine
-        └── Solar_Descent.md                    — Underground concentrated solar; SD-001 optical downlink; SD-002 fluid downlink; shared chamber reconvergence
-
----
-
-## PATCH 2 — Routing.md completeness line
-
-Replace:
-    **Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Living_Waters.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
-
-With:
-    **Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Trophic_Forge.md` and `Tests/Solar_Descent.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
-
----
-
-## PATCH 3 — Repository Maturity Snapshot table
-
-Add after the `Tests/Living_Waters.md` row:
-
-| `Tests/Trophic_Forge.md` | Exploration | 0/6 | High |
-| `Tests/Solar_Descent.md` | Exploration | 0/6 | High |
-
----
-
-## PATCH 4 — Scope Map — Tests/ section
-
-Add after the Living_Waters.md scope entry (before the Challenges/ header):
-
-### `Tests/Trophic_Forge.md`
-Biological cascade network architecture. Light node ignition (UV/blue LED phototaxis harvest) → fish production → nutrient cycling → crop fertilization → phytoremediation → pond replenishment. Bootstrap sequence doctrine: each node provides leverage to justify the next. Declared trajectory: seed of Biology/ domain.
-**Upstream:** Ethical_Constraints.md; Energy.md (light node power); Tests/Living_Waters.md (pond water interface — TF-009); Challenges/Biofouling.md (pond fouling — TF-UNK-004); Safety_Protocols.md.
-**Downstream:** Declared future Biology/ domain; Economics.md (closed-loop input cost reduction); Unknowns.md (TF-001 through TF-009).
-⚠️ TF-001 (phototaxis yield at Forge scale — CRITICAL; blocks organizing principle validation). TF-006 (non-target insect capture — ethical unknown; escalates to Ethical_Constraints.md if threshold cannot be met). TF-009 (pond node interface with Living_Waters.md — joint resolution required).
-
-### `Tests/Solar_Descent.md`
-Underground concentrated solar architecture. Surface collection layer feeds two diverging downlink pathways — SD-001 optical (fiber optic / light well) and SD-002 thermal/fluid (molten salt / synthetic oil) — that reconverge at a shared subterranean chamber. Power conversion cascade (Stirling primary; TEG bootstrap). Waste heat feeds LW-001 and LW-008 in Living_Waters.md.
-**Upstream:** Ethical_Constraints.md; Energy.md; Architecture/Thermal_Systems.md; Operations/Gate_05_Separation_Thermal.md; Tests/Living_Waters.md (waste heat cascade interface — SD-UNK-010); Safety_Protocols.md; Challenges/Biofouling.md (surface collection layer in humid climates).
-**Downstream:** Operations/Energy.md (power output); Operations/Gate_05_Separation_Thermal.md (high-grade process heat); Operations/Plastics.md (pyrolysis heat feed); Tests/Living_Waters.md (LW-001, LW-008 waste heat); Unknowns.md (SD-UNK-001 through SD-UNK-010).
-⚠️ SD-UNK-004 (host geology fracturing threshold — CRITICAL; blocks all excavation and chamber construction; parallels FA-001 in governance weight). SD-UNK-002 (achievable underground temperature — CRITICAL; blocks power conversion pathway selection). SD-UNK-010 (waste heat interface with Living_Waters.md — joint resolution required).
-
----
-
-## PATCH 5 — Challenges/Water.md scope entry downstream line
-
-The existing downstream line already references Tests/Living_Waters.md.
-No change needed — Trophic_Forge.md and Solar_Descent.md are not direct downstream of Challenges/Water.md.
-
----
-
-## PATCH 6 — Architecture/Thermal_Systems.md scope entry downstream line
-
-Current downstream line includes: Gate_05_Separation_Thermal.md; Air_Scrubber.md; Energy.md; Plastics.md; Mechanical_Structures.md; Support_Raft.md; Water.md
-
-Add to downstream:
-    Tests/Solar_Descent.md (thermodynamic doctrine governs underground chamber and conversion cascade).
-
-Full updated Downstream line:
-**Downstream:** Gate_05_Separation_Thermal.md; Air_Scrubber.md; Energy.md; Plastics.md; Mechanical_Structures.md; Support_Raft.md; Water.md; Tests/Solar_Descent.md (thermodynamic doctrine governs underground chamber and conversion cascade).
-
