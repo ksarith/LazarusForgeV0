@@ -609,3 +609,56 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
 | RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
 | PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
+
+
+### Discovery.md — three patch locations
+
+---
+
+PATCH 1 — Repository Structure block, Tests/ section
+Replace:
+    Tests/                                      — Test frameworks and deployment platforms
+        ├── Support_Raft.md                     — Stationary marine deployment anchor
+        └── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
+
+With:
+    Tests/                                      — Test frameworks and deployment platforms
+        ├── Support_Raft.md                     — Stationary marine deployment anchor
+        ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
+        └── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
+
+---
+
+PATCH 2 — Routing.md completeness line
+Replace:
+    **Routing.md completeness:** Verified complete as of 2026-06-11 (`Challenges/Emergence.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+
+With:
+    **Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Living_Waters.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+
+---
+
+PATCH 3 — Repository Maturity Snapshot table
+Add after the `Tests/Leviathan_testing.md` row:
+
+| `Tests/Living_Waters.md` | Exploration | — | High |
+
+---
+
+PATCH 4 — Scope Map — Tests/ section
+Add after the Leviathan_testing.md scope entry:
+
+### `Tests/Living_Waters.md`
+Water purification pathways initiative. LW-001 through LW-010 experimental pathways. Site-conditioned pathway selection doctrine. Water Hierarchy (Tier 1–7). Primary candidates: LW-001 Vacuum Distillation (with MVR), LW-003 Deep-Sea RO. Declared trajectory: hydrological counterpart to Energy.md.
+**Upstream:** Energy.md; Safety_Protocols.md; Ethical_Constraints.md; Unknowns.md; Challenges/Water.md; Challenges/Biofouling.md (LW-UNK-004); Architecture/Thermal_Systems.md (TH-003); Architecture/Friction_Dynamics.md.
+**Downstream:** Operations/ (pending validation and promotion criteria); Economics.md (LW-010 mineral recovery); Unknowns.md (LW-UNK-001 through LW-UNK-008).
+⚠️ LW-UNK-001 (volatile co-distillation — CRITICAL safety gap before any potable output claim). LW-UNK-003 (lumen implosion threshold — CRITICAL for LW-003 deployment). TH-003 (atmospheric moisture yield) — Blocking for LW-005 atmospheric harvesting.
+
+---
+
+PATCH 5 — Challenges/Water.md scope entry
+In the Downstream line, add:
+    `Tests/Living_Waters.md` (implementation test framework for this challenge).
+
+Full updated Downstream line:
+**Downstream:** Thermal_Systems.md (TH-001, TH-003 driven by this challenge); Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Plastics.md; Forge_Net.md; Tests/Living_Waters.md (implementation test framework).
