@@ -19,7 +19,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md |
 | Last Audit | 2026-06-14 |
 | Auditor | Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
-| Open Unknowns | 10 |
+| Open Unknowns | 12 |
 | Active Disputes | 0 |
 | Forward References | Astroid-miner companion repository |
 | Highest Risk | High |
@@ -74,8 +74,8 @@ This file lives in Tests/ because excavation requirements are unvalidated at For
 
 | ID | Assumption | Basis | Confidence | Expiry Trigger |
 |---|---|---|---|---|
-| ASM-001 | Fiber optic bundles sourced from salvage can sustain sufficient flux density for meaningful underground heat delivery | Analogous — research fiber solar systems demonstrated; salvage-grade fiber durability unknown | Low | SD-TEST-101 flux measurement |
-| ASM-002 | Achievable underground focal temperature at Forge build quality is 1000–2000°C | Research literature on fiber-fed solar furnaces; Forge-scale unvalidated | Low | SD-TEST-103 temperature measurement |
+| ASM-001 | Fiber optic bundles sourced from salvage can sustain sufficient flux density for meaningful underground heat delivery | Analogous — research fiber solar systems demonstrated; salvage-grade fiber durability unknown. Telecom fiber likely unsuitable — designed for information transmission, not power density | **Very Low** | SD-TEST-101 flux measurement |
+| ASM-002 | Achievable underground focal temperature at Forge build quality falls within useful industrial range | Research literature peaks at 1000–2000°C; Forge-scale with salvaged components likely underperforms significantly. Conservative expectation: 300–800°C. Stretch: 800–1500°C. Research peak: 2000°C+. Conservative range still supports Stirling, pyrolysis, distillation, and thermal storage. | Low | SD-TEST-103 temperature measurement |
 | ASM-003 | Molten salt or synthetic oil working fluid can be sourced or synthesized from salvage stream | Analogous — industrial availability; Forge sourcing unconfirmed | Low | Component audit |
 | ASM-004 | Host geology at target site can sustain subterranean chamber without thermal fracturing | General geomechanical literature; site-specific geology unknown | Very Low | SD-TEST-201 geomechanical assessment |
 | ASM-005 | Underground chamber thermal self-discharge rate is manageable without active insulation beyond packed earth and salvaged insulation board | Analogous — passive underground thermal storage literature | Low | SD-TEST-202 self-discharge measurement |
@@ -157,16 +157,16 @@ Concentrated sunlight is coupled into fiber optic bundles or vertical reflective
 | Configuration | Projected Temperature | Confidence |
 |---|---|---|
 | Salvage-grade silica fiber, single dish | 500–1000°C | Low |
-| Optimized silica fiber bundle, multi-dish array | 1000–2000°C | Low |
-| Sapphire fiber, inert atmosphere cavity | 2000–3000°C theoretical | Very Low |
-| Research peak (Israeli fiber solar, narrow hot zone) | ~2400°C reported | External reference only |
+| Optimized silica fiber bundle, multi-dish array | 1000–1700°C | Low — bounded by silica softening point (~1200°C sustained; ~1710°C melt) |
+| Sapphire fiber, inert atmosphere cavity | 1700–2040°C | Very Low — bounded by sapphire melting point |
+| Research peak (Israeli fiber solar, narrow hot zone) | ~2400°C reported | External reference only — purpose-built fiber; not Forge-achievable |
 
 All figures are proposed parameters pending empirical testing at Forge build quality. Degraded performance should be assumed for initial planning.
 
 **Salvage Component Targets**
-- Fiber optic bundles: industrial process fiber, medical fiber optic light guides, salvaged telecommunications fiber (lower flux tolerance — requires characterization).
-- Light well alternatives: polished stainless steel tube, salvaged aluminum irrigation pipe with reflective interior lining.
-- Secondary concentrators at fiber input: compound parabolic concentrators (CPC) fabricated from polished salvaged sheet metal.
+- Fiber optic bundles: industrial process fiber, medical fiber optic light guides. **Telecommunications fiber is likely unsuitable** — designed for information transmission, not power density; may fail almost immediately under concentrated flux. Requires explicit characterization before use.
+- **Light well alternative (elevated priority per ChatGPT audit):** Polished stainless steel tube or salvaged aluminum irrigation pipe with reflective interior lining. Advantages over fiber: no melting risk, no coupling losses, easier shaft cleaning, more scalable. Surface focus → reflective shaft → secondary concentrator → receiver may outperform salvage fiber systems at Forge build quality. Should be tested in parallel with fiber bundles.
+- Secondary concentrators at fiber or well input: compound parabolic concentrators (CPC) fabricated from polished salvaged sheet metal.
 
 ---
 
@@ -176,16 +176,16 @@ All figures are proposed parameters pending empirical testing at Forge build qua
 
 At the underground end of the optical downlink, glass rods or fiber ends are submerged in a shallow pool of molten tin. The molten tin acts as a reflective liquid interface — redirecting light that exits the fiber ends into the chamber receiver while the tin bath itself absorbs and transfers heat to the surrounding thermal storage medium.
 
-**Physical Basis**
+**Analogous Phenomena (not direct physical basis)**
 - Molten tin is highly reflective for visible and near-infrared wavelengths due to free-electron metallic reflectivity.
-- The float glass process demonstrates stable, optically useful glass-tin contact is achievable (molten glass floating on molten tin in commercial float glass manufacture).
-- A glass-tin interface acts as a dynamic, self-healing secondary reflector — minor surface contamination re-merges into the liquid bath rather than permanently fouling a solid surface.
+- The float glass process demonstrates stable glass-tin contact at controlled temperatures — however, fiber ends submerged in molten tin is a substantially different geometry from flat glass floating on a large tin bath. The analogy is weak and should not be used to imply experimental support stronger than actually exists.
+- A liquid tin interface could act as a dynamic, self-healing secondary reflector in principle — minor surface contamination re-merges into the liquid bath rather than permanently fouling a solid surface. This remains undemonstrated at relevant flux densities.
 
 **Temperature Constraints**
 - Molten tin melting point: ~232°C. Boiling point: ~2602°C.
 - At focal temperatures approaching silicon vaporization (>2600°C), tin would vaporize, creating convective instability and optical disruption.
-- Practical operating window: **800–1500°C** at the tin bath surface. Above this, vapor pressure and convective boiling degrade the optical interface.
-- Silica glass rods soften under load below 1700°C — sapphire rods (melting point ~2040°C) are preferred for sustained high-temperature operation.
+- Practical operating window: **800–1100°C** for salvage-grade silica rod infrastructure. Silica softens rapidly near 1200°C and transitions to liquid near 1710°C — the upper tin bath surface temperature must be throttled to 1100°C to preserve structural utility of silica rods. Sapphire rods extend operational ceiling to **~1500°C** under strict thermal throttling.
+- Silica glass rods soften under sustained load below 1700°C — sapphire rods (melting point ~2040°C) are mandatory for operation above 1100°C.
 
 **Failure Modes**
 - Tin oxidation forming dross layer — destroys reflectivity. Mitigation: inert atmosphere (argon purge) in the termination cavity.
@@ -241,7 +241,7 @@ Concentrated sunlight heats a working fluid at a surface receiver. The fluid —
 | Molten tin | 232–2600°C | Medium — recoverable from salvage | High temp viable; vapor pressure at extremes |
 
 **Pressure and Head Loss**
-- At 20 m depth, a molten salt column exerts ~40 kPa additional head pressure on the return pump.
+- At 20 m depth, a molten nitrate salt column (ρ ≈ 1800 kg/m³) exerts approximately **353 kPa (~0.35 MPa)** additional head pressure on the return pump (P = ρgh = 1800 × 9.81 × 20). Prior figure of ~40 kPa was in error by nearly an order of magnitude — corrected per ChatGPT audit 2026-06-14.
 - Downward pumping is gravity-assisted; fluid column weight reduces pump work on the descent stroke.
 - Net energy cost of fluid circulation must be characterized against thermal delivery — this is the parasitic load of SD-002.
 
@@ -606,6 +606,44 @@ The asteroid processing system is out of scope for this file. Solar Descent defi
 **Why It Matters:** Both files may define the interface independently, producing contradictory requirements. Living_Waters.md owns water purification doctrine; Solar_Descent.md owns heat delivery. Where they interact, a shared interface spec is required.
 
 **Resolution Path:** Joint resolution on next audit pass. Living_Waters.md governs temperature and purity requirements at the heat exchanger; Solar_Descent.md governs heat delivery parameters up to that point.
+
+---
+
+### SD-UNK-011 — Receiver material survivability uncharacterized
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | High |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — blocks sustained operation specification |
+| Owner | Tests/Solar_Descent.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** The underground receiver exposed to concentrated solar flux may experience thermal shock, oxidation, creep, spalling, and localized melting. Receiver material lifetime determines maintenance interval and sets a practical ceiling on maximum sustainable operating temperature — independent of what the fiber or fluid downlink can theoretically deliver.
+
+**Resolution Path:** Dedicated receiver endurance testing under sustained flux at target operating temperature. Receiver material selection must account for thermal cycling, not just peak temperature.
+
+---
+
+### SD-UNK-012 — Dust and alignment stability uncharacterized
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — blocks maintenance interval specification |
+| Owner | Tests/Solar_Descent.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Optical systems require tracking accuracy, shaft cleanliness, and alignment retention over time. Small angular errors in the surface collection array or reflective shaft may dramatically reduce delivered flux. Dust accumulation in the shaft degrades transmission. Alignment drift under thermal cycling of structural supports is uncharacterized. This may become one of the dominant maintenance burdens of SD-001.
+
+**Resolution Path:** SD-TEST-105 (shaft contamination rate) partially addresses dust accumulation. Dedicated alignment stability test required — measure delivered flux degradation over 30, 60, and 90-day periods without realignment intervention. Establish realignment interval and design for accessible adjustment.
 
 ---
 
