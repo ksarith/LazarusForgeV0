@@ -19,8 +19,8 @@
 | Verification Ref | Admin/Verification_Gates_LF.md |
 | Last Audit | 2026-06-14 |
 | Auditor | Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
-| Open Unknowns | 9 |
-| Active Disputes | 1 |
+| Open Unknowns | 10 |
+| Active Disputes | 0 |
 | Highest Risk | High |
 | Sidecar Link | #auditor-notes--unknowns |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
@@ -77,9 +77,77 @@ A Trophic Forge is a directed biological network, not a linear cascade and not a
 
 The defining property that distinguishes a Trophic Forge from standard aquaponics, tri-trophic systems, or closed-loop agriculture:
 
-> **The system ignites at the light node.** Energy enters as light; wild insect biomass exits as the first harvest. No purchased feed input is required from day one. Every subsequent node is fueled by the productive output of the previous node with no external supplementation at steady state.
+> **The design objective is that no purchased feed is required at steady state.** The system ignites at the light node — energy enters as light, wild insect biomass exits as the first harvest. Whether the light node alone can sustain this condition remains an empirical question and is the principal purpose of TF-TEST-001 and TF-TEST-004.
 
 This is an architectural claim, not a validated fact. It is the hypothesis the Tests/ phase exists to test.
+
+**Energy Efficiency Qualification (Gemini audit — 2026-06-14)**
+
+The light node is not free energy. It converts electrical energy through cascading losses:
+
+- Salvage-grade LED electrical-to-optical efficiency: ~30–40% (lower if driving circuitry is mismatched).
+- Phototaxis yield per kWh drops significantly in cold weather, high wind, moonlight, and off-season conditions.
+- Wild insect feed conversion ratio (FCR) to fish biomass: approximately 1.5–2.5 kg insects per kg fish produced.
+
+The Trophic Forge is a machine that converts electrical energy into biological caloric energy at low net system efficiency. Under resource-constrained conditions, this tradeoff must be evaluated against direct alternatives (e.g., using the same electrical energy to pump water for direct crop irrigation). The zero-external-input claim is a steady-state target under favorable conditions — it is not a baseline operating assumption. See TF-TEST-004.
+
+**Seasonality Failure Cascade**
+
+Wild insect yield is highly volatile. The named failure propagation path:
+
+```
+Insect yield drops (winter / dry season / adverse weather)
+      ↓
+Fish biomass loss or starvation
+      ↓
+Fish nitrogen/phosphorus excretion drops
+      ↓
+Crop node starved of nutrients
+      ↓
+Phytoremediation edge vegetation weakened
+      ↓
+Return water quality degrades
+      ↓
+Pond water quality crashes
+```
+
+This cascade is the primary resilience risk for the system. The Biomass Capture Buffer (see Buffered Architecture below) is the structural mitigation. See TF-007.
+
+---
+
+### Buffered Architecture (Gemini audit — 2026-06-14)
+
+The original base loop is a strict sequential dependency. If any node fails, all downstream nodes fail with it. The buffered architecture decouples real-time node dependencies, allowing the system to survive single-node dropout without cascading collapse.
+
+```
+       [ Energy.md / Salvaged Solar + Storage ]
+                         │
+                         ▼
+       [ Light Node (Nocturnal UV/Blue Array) ]
+                         │
+                         ▼
+        [ Biomass Capture Buffer ]
+        (surplus dried/frozen for winter)
+                         │
+                         ▼
+    ┌────────────► [ Fish Pond Node ] ◄────────────┐
+    │                    │                         │
+    │                    ▼                         │
+    │         [ Nutrient-Rich Effluent ]           │
+    │                    │                         │
+    │                    ▼                         │
+[Living_Waters.md] ◄── [ Crop Node / Fields ]      │
+(Emergency Filter)       │                         │
+    ▲                    ▼                         │
+    └────────── [ Phytoremediation Buffer ] ───────┘
+                    (Edge Vegetation)
+```
+
+**Biomass Capture Buffer:** Surplus insect biomass captured during peak season (summer) is dried or frozen for winter use. Decouples the fish node from real-time light node yield. Without this buffer, the seasonality failure cascade is inevitable in temperate climates.
+
+**Phytoremediation Buffer:** Edge vegetation acts as a holding and filtering stage rather than a direct pass-through. Return water quality is verified before pond re-entry. If quality thresholds are not met, water is diverted to Living_Waters.md filtration pathway rather than returned to the pond.
+
+**Supplemental Feed Fallback:** If insect biomass drops below 1% of fish stock weight for more than 7 consecutive days, the node enters a Supplemental Feed state. Black Soldier Fly larvae cultured from crop waste is the preferred fallback — it violates the pure light-ignition loop claim but preserves the fish asset. This state must be logged as a loop integrity event.
 
 ---
 
@@ -152,31 +220,31 @@ The LED/phototaxis ignition node is the architecturally distinctive claim. It is
 ### Proposed Test Parameters
 
 **TF-TEST-001 — Phototaxis Yield Baseline**
-Measure actual insect biomass captured per night per unit of LED power input (kg/kWh) across species composition, humidity, temperature, and moon phase conditions. Establish minimum viable yield threshold required to sustain target fish population without supplemental feed.
+Measure actual insect biomass captured per night per unit of LED power input. Target metric: ≥0.15 kg wet insect biomass per kWh electrical input. Control variables must include at least three distinct moon phases — new moon (peak yield baseline) and full moon (floor yield). Test across humidity, temperature, and seasonal conditions to establish yield curve. Establish minimum viable yield threshold required to sustain target fish population without supplemental feed.
 *Confidence target: Measured.*
 
 **TF-TEST-002 — LED Wavelength Optimization**
-Compare insect capture yield across UV (365 nm), blue (450 nm), and mixed spectrum arrays. Characterize non-target capture rate (pollinators, beneficial predators). Establish optimal wavelength or combination that maximizes pest-species yield while minimizing beneficial species impact.
+Compare insect capture yield across UV (365 nm), blue (450 nm), and mixed spectrum arrays. Characterize non-target capture rate (pollinators, beneficial predators). Establish optimal wavelength or combination that maximizes pest-species yield while minimizing beneficial species impact. Physical mesh exclusion matrix must be evaluated for size threshold that retains target pests while allowing small beneficial insects to escape.
 *Confidence target: Measured.*
 
 **TF-TEST-003 — Fish Nutrient Output Characterization**
-Measure N, P, K concentration in pond water as a function of fish species, stocking density, and feed input rate. Establish whether nutrient output at Forge-scale stocking is sufficient to produce measurable crop yield improvement over unfertilized control.
+Measure N, P, K concentration in pond effluent as a function of fish species, stocking density, and feed input rate. Target metric: Total Ammonia Nitrogen (TAN) 1.0–2.0 mg/L and Nitrates (NO₃⁻) 20–40 mg/L in pond effluent prior to crop routing. Values below this range will fail to produce measurable fertilization effect without auxiliary chemical supplementation.
 *Confidence target: Measured.*
 
 **TF-TEST-004 — Zero External Feed Threshold**
-Determine minimum insect biomass yield (kg/night) required to maintain fish population at stable weight with zero supplemental feed. This is the empirical test of the core Trophic Forge claim.
+Determine minimum insect biomass yield required to maintain fish population at stable weight with zero supplemental feed. Target metric: minimum daily insect input equal to 2–3% of total fish stock weight per day. Failure condition: if insect biomass drops below 1% of fish stock weight for more than 7 consecutive days, node enters Supplemental Feed state and event is logged as a loop integrity violation. This is the empirical test of the core Trophic Forge claim.
 *Confidence target: Measured — this is the gate test for the organizing principle.*
 
 **TF-TEST-005 — Phytoremediation Return Water Quality**
-Measure water quality (N, P, biological oxygen demand, pathogen indicators) of pond return water after passage through edge vegetation filtration. Confirm whether phytoremediation alone closes the loop or whether auxiliary filtration is required.
+Measure water quality of pond return water after passage through edge vegetation filtration. Target metric: TAN reduced to <0.5 mg/L and Unionized Ammonia (NH₃) to <0.05 mg/L before gravity return to fish pond. If thresholds are not met, water routing is locked out from the pond and diverted to Living_Waters.md filtration pathway. Candidate edge vegetation: Typha latifolia (cattail), duckweed channels.
 *Confidence target: Measured.*
 
 **TF-TEST-006 — Minimum Viable Loop Scale**
-Determine the smallest pond area, LED array size, and crop border length at which the full loop is self-sustaining. This defines the floor for Forge deployment planning.
+Determine the smallest pond area, LED array size, and crop border length at which the full buffered loop is self-sustaining. This defines the floor for Forge deployment planning.
 *Confidence target: Simulated initially; target Measured.*
 
 **TF-TEST-007 — Single Node Failure Propagation**
-Simulate or induce failure of each node in turn (power loss to LED array, fish population loss, drought, crop failure). Measure how rapidly failure propagates to adjacent nodes and at what degradation level the loop can no longer recover without external input.
+Simulate or induce failure of each node in turn (power loss to LED array, fish population loss, drought, crop failure). Measure how rapidly failure propagates to adjacent nodes and at what degradation level the loop can no longer recover without external input. Verify that Biomass Capture Buffer and Phytoremediation Buffer prevent cascade collapse under single-node failure.
 *Confidence target: Simulated initially; target Field Test.*
 
 ---
@@ -212,7 +280,7 @@ The Trophic Forge is the biological analogue of the mechanical and thermal trans
 
 | ID | Summary | Positions in Conflict | Risk | Status | Owner |
 |---|---|---|---|---|---|
-| DS-001 | Naming: Trophic Forge vs. Cascade Agriculture vs. Metabolic Agriculture | ChatGPT favors Metabolic (emphasizes matter cycling); Grok favors Cascade (emphasizes sequential conversion); Claude favors Trophic Forge (emphasizes biological transformation engine parallel to mechanical Forge). Prior art search not yet complete. | Low | Open | This file |
+| DS-001 | Naming: Trophic Forge vs. Cascade Agriculture vs. Metabolic Agriculture | Resolved — Gemini audit 2026-06-14. Trophic Forge adopted. Rationale: reflects active engineering manipulation of biological energy levels; fits Forge nomenclature; Metabolic Agriculture sounds like standard organic farming. Prior art identified: entomoponics, phototactic tri-trophic aquaponics, Southeast Asian rice-fish light-trap systems. | Low | **Closed** | This file |
 
 ---
 
@@ -252,11 +320,11 @@ The Trophic Forge is the biological analogue of the mechanical and thermal trans
 | First Logged | 2026-06-14 |
 | Last Reviewed | 2026-06-14 |
 
-**Description:** No search has been conducted for prior art under the names Trophic Forge, Metabolic Agriculture, Cascade Conversion Farming, or LED-ignited tri-trophic closed-loop aquaponics.
+**Description:** Gemini audit (2026-06-14) identified closest prior art as entomoponics and phototactic tri-trophic aquaponics. Southeast Asian rice-fish light-trap systems are the closest operational analog. Full literature search not yet conducted.
 
-**Why It Matters:** If substantial prior art exists, the Trophic Forge may be a named concept with established literature, which would either validate or constrain the current architecture.
+**Why It Matters:** If substantial prior art exists, the Trophic Forge may be a named concept with established literature, which would either validate or constrain the current architecture. Preliminary finding suggests the LED ignition node as primary feed source (rather than purchased feed supplement) is the novel architectural claim.
 
-**Resolution Path:** Payment via Specification — search results incorporated into Distinction from Prior Art section; confirmed novel elements documented.
+**Resolution Path:** Partially addressed — Gemini audit provides initial framing. Full literature search required to characterize scope of prior art and confirm novel elements. Update Distinction from Prior Art section when complete.
 
 ---
 
@@ -327,20 +395,26 @@ The Trophic Forge is the biological analogue of the mechanical and thermal trans
 
 | Field | Value |
 |---|---|
-| Status | Open |
-| Risk | High |
+| Status | Partially Addressed |
+| Risk | High — Ethical_Constraints escalation candidate |
 | Priority | Major |
 | Type | Ethical |
 | Blocking | No — blocks wavelength optimization, not initial test |
+| Escalation | If non-target capture cannot be bounded below harmful threshold, escalate to Ethical_Constraints.md review before any further system expansion |
 | Owner | Tests/Trophic_Forge.md |
 | First Logged | 2026-06-14 |
 | Last Reviewed | 2026-06-14 |
 
-**Description:** The LED array will attract non-target species including pollinators (bees, moths that pollinate crops) and beneficial predators (lacewings, ground beetles). Capture rate of non-target species across wavelength configurations is unknown.
+**Description:** The LED array will attract non-target species including pollinators and beneficial predators. Capture rate across wavelength configurations is unknown. This is not merely a technical parameter — systematic destruction of pollinator populations or destabilization of local predator-prey balance could make the system ecologically negative even if biomass production metrics succeed. A Trophic Forge that produces fish protein while collapsing the surrounding insect ecology violates the Ethical Anchor regardless of yield numbers.
 
-**Why It Matters:** Systematic capture of pollinators and beneficial predators could undermine the crop node and cause net ecological harm — a direct conflict with the Ethical Anchor. This is an ethical unknown, not merely a technical one.
+**Why It Matters:** Systematic capture of pollinators and beneficial predators could undermine the crop node and cause net ecological harm — a direct conflict with the Ethical Anchor. The harm is not confined to the Forge boundary; it propagates into the surrounding ecosystem.
 
-**Resolution Path:** Payment via Specification — TF-TEST-002 wavelength optimization results. Operating protocol must include non-target capture thresholds. If thresholds cannot be met, LED operating hours must be restricted to minimize pollinator exposure (nocturnal operation preferred; pollinator activity peaks at dawn/dusk).
+**Draft Operating Protocol (Gemini audit — 2026-06-14):**
+- Restrict light node to **nocturnal operation commencing 1 hour after dusk, terminating 1 hour before dawn.** Eliminates overlap with daytime pollinator activity windows (honeybees, most beneficial Hymenoptera).
+- Implement **physical mesh exclusion matrix** over harvest mechanism: mesh sized to retain target pest species while allowing small beneficial insects to escape. Specific mesh size to be determined by TF-TEST-002 species composition data.
+- UV (365 nm) attracts nocturnal moths (crop pests) but also aquatic macroinvertebrates — characterize aquatic invertebrate capture rate separately and assess impact on pond ecosystem.
+
+**Resolution Path:** Draft protocol above reduces ethical risk. TF-TEST-002 wavelength optimization and species composition data required to confirm protocol effectiveness. Full resolution requires measured non-target capture rate under protocol conditions. If measured rate exceeds acceptable threshold, escalate to Ethical_Constraints.md before proceeding.
 
 ---
 
@@ -404,6 +478,39 @@ The Trophic Forge is the biological analogue of the mechanical and thermal trans
 **Why It Matters:** Without a clear ownership boundary, both files may attempt to define pond water quality standards independently, producing contradictory doctrine.
 
 **Resolution Path:** Joint resolution — a shared interface definition to be added to both files on next audit pass. Living_Waters.md owns water quality standards; Trophic_Forge.md owns biological productivity standards. Where they interact, Living_Waters.md governs.
+
+---
+
+### TF-010 — Seasonal and climatic variability uncharacterized
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | High |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — blocks annual self-sufficiency claim |
+| Owner | Tests/Trophic_Forge.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Insect abundance varies with season, temperature, humidity, precipitation, moon phase, and geography. Biomass production sufficient during summer peak conditions may collapse to near zero during winter or drought periods. The Biomass Capture Buffer (dried/frozen surplus) partially mitigates this, but buffer capacity requirements across a full annual cycle have not been characterized.
+
+**Why It Matters:** A system that is self-sustaining only during favorable months still requires external feed reserves or adaptive degraded-mode operation for the remainder of the year. The zero-external-input claim must be evaluated across annual cycles, not peak conditions alone. This unknown directly qualifies the organizing principle.
+
+**Resolution Path:** Payment via Specification — longitudinal measurements across at minimum one full annual cycle. Define reserve doctrine (buffer sizing) and degraded-mode operation protocol for off-season periods. Until resolved, all yield claims are peak-condition estimates only.
+
+---
+
+### Constitutional Statement (Declared — Grok audit 2026-06-14)
+
+The following statement is proposed as the Trophic Forge constitutional axiom, to be formally ratified if and when this file promotes to a Biology/ domain:
+
+> **Every node must be independently productive. Nothing exists solely to support something else.**
+
+This principle is more fundamental than the light node claim. If the LED array fails, fish remain fish, crops remain crops, ponds remain ponds, and edge vegetation continues filtering water. The system degrades rather than becoming useless. Each node justifies its own existence while contributing to the network — the same philosophy as the Lazarus Forge itself applied to biological transformation.
+
+*Status: Declared candidate. Not yet ratified. Requires human confirmation before encoding as binding doctrine.*
 
 ---
 
