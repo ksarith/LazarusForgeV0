@@ -1,17 +1,16 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v7
+LAZARUS FORGE — AUDIT HARNESS v8
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v6:
-  - File registry updated — Routing.md added to Root entries.
-  - File registry updated — Safety_Protocols.md, Economics.md,
-    Governance_Migration_Protocol.md, Repository_Structure.md added
-    to Admin/ entries.
-  - File registry updated — Facilities.md, Precision.md added to
-    Architecture/ entries.
-  - Legacy aliases added for economics_v0.md and Precision_LF.md.
-  - EXTRA_FILES comments updated — new files added with descriptions.
-  - Version string updated to v7.
+CHANGES FROM v7:
+  - File registry synced to Routing.md (2026-06-14) — authoritative source.
+  - Tests/ registry expanded: Living_Waters.md, Trophic_Forge.md,
+    Solar_Descent.md added.
+  - Challenges/ registry expanded: Emergence.md added.
+  - EXTRA_FILES comment block updated — all new Tests/ and Challenges/
+    files added with descriptions.
+  - Registry is now verified-complete against Routing.md master map.
+  - Version string updated to v8.
 
 USAGE:
   1. Cell 1 — run once per session (fetch helper + registry)
@@ -36,6 +35,7 @@ BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main
 # File registry — maps short filenames to full repo paths.
 # Update this when files are added, renamed, or moved.
 # Short name is what you type in Cell 2. Path is what gets fetched.
+# SOURCE OF TRUTH: Routing.md (last verified 2026-06-14)
 FILE_REGISTRY = {
     # Root
     "README.md":                        "README.md",
@@ -94,14 +94,18 @@ FILE_REGISTRY = {
 
     # Tests
     "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
+    "Living_Waters.md":                 "Tests/Living_Waters.md",
+    "Solar_Descent.md":                 "Tests/Solar_Descent.md",
     "Support_Raft.md":                  "Tests/Support_Raft.md",
+    "Trophic_Forge.md":                 "Tests/Trophic_Forge.md",
 
     # Challenges
-    "Water.md":                         "Challenges/Water.md",
     "Biofouling.md":                    "Challenges/Biofouling.md",
-    "Waste.md":                         "Challenges/Waste.md",
-    "Planned_Obsolescence.md":          "Challenges/Planned_Obsolescence.md",
     "Critical_Minerals.md":             "Challenges/Critical_Minerals.md",
+    "Emergence.md":                     "Challenges/Emergence.md",
+    "Planned_Obsolescence.md":          "Challenges/Planned_Obsolescence.md",
+    "Waste.md":                         "Challenges/Waste.md",
+    "Water.md":                         "Challenges/Water.md",
 
     # Legacy aliases — resolve to current canonical names.
     # These exist so stale references in cached context still work.
@@ -180,6 +184,7 @@ fragility, and unknown item handling doctrine.
 # Add files here ONLY when the audit needs extra context.
 # Each file adds ~5-15k chars. Keep total under 60k where possible.
 EXTRA_FILES = [
+    # "File_Template.md",               # if structural compliance is the audit focus
     # "Forge_flow.md",                  # gate logic and vocabulary standard
     # "Ethical_Constraints.md",         # ethics cross-ref and Anti-Weaponization doctrine
     # "Energy.md",                      # if energy claims are central
@@ -201,6 +206,19 @@ EXTRA_FILES = [
     # "Economics.md",                   # if procurement doctrine, surplus disposition, barter, or v1 profitability is relevant
     # "Governance_Migration_Protocol.md", # if Tier 1 amendment or governance migration is relevant
     # "Repository_Structure.md",        # if naming conventions or folder assignment is relevant
+    # ── Tests/ ──────────────────────────────────────────────────────
+    # "Living_Waters.md",               # if water purification pathways or LW-UNK items are relevant
+    # "Trophic_Forge.md",               # if biological cascade architecture or TF-UNK items are relevant
+    # "Solar_Descent.md",               # if underground solar, thermal downlink, or SD-UNK items are relevant
+    # "Support_Raft.md",                # if marine platform, sacrificial shell, or SR-UNK items are relevant
+    # "Leviathan_testing.md",           # if hostile-environment autonomy or LT-UNK items are relevant
+    # ── Challenges/ ─────────────────────────────────────────────────
+    # "Water.md",                       # if hydrological challenge requirements are relevant
+    # "Biofouling.md",                  # if marine fouling, MIC, or BF-UNK items are relevant
+    # "Waste.md",                       # if hazardous stream handling or WA-UNK items are relevant
+    # "Planned_Obsolescence.md",        # if firmware lock, potting removal, or PO-UNK items are relevant
+    # "Critical_Minerals.md",           # if rare earth, urban mining, or CM-UNK items are relevant
+    # "Emergence.md",                   # if emergent agent behavior, alignment, or EM-UNK items are relevant
 ]
 
 # ── STEP 4: Set document status ───────────────────────────────────
