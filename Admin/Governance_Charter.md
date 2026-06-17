@@ -14,10 +14,10 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 2/6                                                                 |
+| Spec Gates       | 1/6 (Gate 2 Blocked — Bootstrap Paradox; see Resolution Log)        |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-02; revised 2026-06-08                                      |
-| Auditor          | Claude — Skeptic/Auditor                                            |
+| Last Audit       | 2026-06-16                                                          |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor                  |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -204,7 +204,7 @@ In bootstrap states:
 
 **Bootstrap Paradox Acknowledgment:** During early-phase initialization, multi-agent quorum for independent skeptical review may not yet exist. A single model or runtime engine may be the only active agent. This creates a structural tension with Axiom Q-2 (no agent may plan, execute, and self-authorize the same action).
 
-**Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid.
+**Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid under Axiom Q-2 — provided the operator satisfies Q-2 through role separation: the authorization record must be generated in a separate session or external medium from the runtime session executing the action. A single operator both issuing and consuming authorization within the same session does not satisfy Q-2. The separation may be accomplished by: (a) a signed external record (dated document, cryptographic token, or physical log) created before the runtime session begins; (b) a second human operator confirming the authorization; or (c) a static configuration file committed to the repository before the runtime session that specifies the authorized action scope. The key requirement is that the planning/authorization function and the execution/self-authorization function are demonstrably separated in artifact, time, or identity.
 
 **Genesis Phase constraints:**
 - All initialization actions must be logged with human authorization reference
@@ -255,18 +255,18 @@ Forge_Audit_Kit.md is explicitly derived from Auditor_Protocols.md. A derived co
 
 | Governance Concept              | Canonical Owner                | Status                    |
 |---------------------------------|--------------------------------|---------------------------|
-| Tier 1 constitutional axioms    | Governance_Charter.md          | Active                    |
-| Governance hierarchy            | Governance_Charter.md          | Active                    |
-| Ethical anchor                  | Ethical_Constraints.md         | Active                    |
-| Canonical verification doctrine | Auditor_Protocols.md           | Active                    |
-| Operational audit reference     | Forge_Audit_Kit.md             | Active (derived — Tier 3) |
-| Auditor conduct                 | Auditor_Protocols.md           | Active                    |
-| Dynamic adversarial procedures  | Forge_Audit_Kit.md             | Active                    |
-| Canonical terminology           | Canonical_Terms_LF.md [PLANNED] | Planned canonical target  |
-| Repository structure doctrine   | Repository_Structure.md [PLANNED] | Planned canonical target  |
-| Governance migration doctrine   | Governance_Charter.md          | Active                    |
-| Repository integrity doctrine   | Governance_Charter.md          | Transitional              |
-| Security protocols              | Security_Protocols.md [PLANNED] | Planned canonical target  |
+| Tier 1 constitutional axioms    | `Admin/Governance_Charter.md`          | Active                    |
+| Governance hierarchy            | `Admin/Governance_Charter.md`          | Active                    |
+| Ethical anchor                  | `Admin/Ethical_Constraints.md`         | Active                    |
+| Canonical verification doctrine | `Admin/Auditor_Protocols.md`           | Active                    |
+| Operational audit reference     | `Admin/Forge_Audit_Kit.md`             | Active (derived — Tier 3) |
+| Auditor conduct                 | `Admin/Auditor_Protocols.md`           | Active                    |
+| Dynamic adversarial procedures  | `Admin/Forge_Audit_Kit.md`             | Active                    |
+| Canonical terminology           | `Admin/Canonical_Terms.md`             | Active (created 2026-05-26) |
+| Repository structure doctrine   | `Admin/Repository_Structure.md`        | Active (created 2026-06-06) |
+| Governance migration doctrine   | `Admin/Governance_Charter.md`          | Active                    |
+| Repository integrity doctrine   | `Admin/Governance_Charter.md`          | Transitional              |
+| Security protocols              | `Admin/Security_Protocols.md`          | Active (created pre-2026-05-28) |
 
 If canonical governance targets do not yet exist, authority temporarily remains with the nearest active governance owner until migration occurs.
 
@@ -607,8 +607,8 @@ Mandatory re-audit conditions for this document:
 
 - Genesis Phase Protocol removed or Genesis Phase declared complete without satisfying at least one of the four declared exit pathways with human ratification
 - Genesis Phase Pathway 4 review horizon passes without a formal human governing party review and documented decision
-- Interim authentication requirement for Constitutional-class overrides removed before Security_Protocols.md [PLANNED] reaches Provisional Specification
-- [PLANNED] labels removed from Canonical_Terms_LF.md, Repository_Structure.md, Security_Protocols.md, or Governance_Migration_Protocol.md without those files existing
+- Interim authentication requirement for Constitutional-class overrides removed before `Admin/Security_Protocols.md` reaches Provisional Specification
+- `Admin/Canonical_Terms.md`, `Admin/Repository_Structure.md`, `Admin/Security_Protocols.md`, or `Admin/Governance_Migration_Protocol.md` removed from the repository or renamed without updating the Canonical Governance Ownership table
 - Tier 1 Axiom text modified without formal amendment entry in Resolution Log
 - Tier ordering in Governance Authority Hierarchy diverges from canonical relationship between Auditor_Protocols.md and Forge_Audit_Kit.md
 - Canonical Governance Ownership table contains entries without explicit Status field
@@ -631,20 +631,20 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                    |
 |---------------|--------------------------|
-| Status        | Open                     |
+| Status        | In Progress              |
 | Risk          | Medium                   |
 | Priority      | Major                    |
 | Type          | Governance               |
 | Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
+| Owner         | `Admin/Governance_Charter.md`    |
 | First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-23               |
+| Last Reviewed | 2026-06-16               |
 
-**Description:** Governance migration doctrine exists conceptually but lacks executable migration procedures, particularly for Tier 1 Axiom amendments.
+**Description:** Governance migration doctrine exists conceptually but lacks fully executable migration procedures, particularly for Tier 1 Axiom amendments.
 
 **Why It Matters:** Governance upgrades may still produce semantic fragmentation; axiom amendments without formal procedures create constitutional instability.
 
-**Resolution Path:** Payment via Specification — create Governance_Migration_Protocol.md. Axiom amendment procedures defined in this charter are the starting constraint set.
+**Resolution Path:** `Admin/Governance_Migration_Protocol.md` created 2026-06-06 as the executing resolution path — axiom amendment procedures defined in this charter are the starting constraint set. Status moved to In Progress pending full operationalization and audit of GMP against charter constraints.
 
 ---
 
@@ -753,6 +753,8 @@ Mandatory re-audit conditions for this document:
 
 **Resolution Path:** Payment via Specification — create Security_Protocols.md defining authority authentication architecture. Until Security_Protocols.md reaches Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions require independent confirmation from a second human operator, external cryptographic signature, or dated physical/digital record outside the repository system. Interim requirement now codified in Human Override Doctrine.
 
+**Interim Declarative-Only Notice (GOV-006-A):** The interim authentication requirements listed above are purely declarative at current repository maturity. They offer zero automated resistance against an environment-trapped agent capable of fabricating plausible human-sounding override text. No technical enforcement mechanism exists for these rules until `Admin/Security_Protocols.md` reaches Provisional Specification status and Phase 3 automation in `Admin/Repository_Integrity_Protocol.md` is operational. This gap must not be treated as a closed risk. All governance actors operating during this interim period should treat override claims as unverified unless accompanied by an artifact demonstrably generated outside the runtime session (external timestamp, second-operator signature, or pre-committed configuration file).
+
 ---
 
 ### GOV-007 — Bootstrap governance authority initialization undefined
@@ -793,7 +795,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without a defined quorum, the Genesis Phase has no objective exit condition — it may extend indefinitely or be declared complete prematurely. An under-quorum system operating outside Genesis Phase constraints is a Constitutional violation that may be invisible.
 
-**Resolution Path:** Payment via Specification — define minimum agent quorum in a dedicated Bootstrap_Protocol.md or extend Governance_Migration_Protocol.md [PLANNED]. Inputs: (1) minimum number of distinct agent classes required; (2) hardware diversity requirement (Axiom Q-2 implies architectural independence, not just role separation); (3) attestation mechanism for quorum verification. Cross-reference GOV-007 and Security_Protocols.md [PLANNED]. Note: Pathway 1 (Quorum Achievement) in the Genesis Phase Exit Conditions is the primary resolution path for this unknown — closing GOV-008 operationalizes that pathway. Pathways 2, 3, and 4 provide exit routes that do not depend on GOV-008 resolution, reducing the risk of indefinite Genesis Phase extension.
+**Resolution Path:** Payment via Specification — define minimum agent quorum in a dedicated Bootstrap_Protocol.md or extend `Admin/Governance_Migration_Protocol.md`. Inputs: (1) minimum number of distinct agent classes required; (2) hardware diversity requirement (Axiom Q-2 implies architectural independence, not just role separation); (3) attestation mechanism for quorum verification. Cross-reference GOV-007 and `Admin/Security_Protocols.md`. Note: Pathway 1 (Quorum Achievement) in the Genesis Phase Exit Conditions is the primary resolution path for this unknown — closing GOV-008 operationalizes that pathway. Pathways 2, 3, and 4 provide exit routes that do not depend on GOV-008 resolution, reducing the risk of indefinite Genesis Phase extension.
 
 ---
 
@@ -839,6 +841,12 @@ Mandatory re-audit conditions for this document:
   `Admin/Governance_Migration_Protocol.md` (2026-06-06) (PC-003). Status section
   artifact removed — version history absorbed into Resolution Log. Owner fields
   corrected to `Admin/Governance_Charter.md` throughout sidecar.
+- 2026-06-16: **v0.7 — Multi-agent audit pass (Claude + Gemini).** Five findings addressed:
+  (1) Spec Gates corrected from 2/6 to 1/6 — Gate 2 remains Blocked (Bootstrap Paradox) per 2026-06-02 log; metadata now matches historical record.
+  (2) Canonical Governance Ownership table cleaned — [PLANNED] stripped from `Admin/Security_Protocols.md`, `Admin/Repository_Structure.md`, and `Admin/Governance_Migration_Protocol.md`; `Canonical_Terms_LF.md` corrected to `Admin/Canonical_Terms.md`; all owners now use canonical folder-prefixed paths.
+  (3) Genesis Phase Protocol clarified — Q-2 compliance via single human operator now requires demonstrable role separation: authorization artifact must be generated in a separate session, external medium, or pre-committed configuration file from the runtime session executing the action. Same-session self-authorization does not satisfy Q-2.
+  (4) GOV-006 sub-entry GOV-006-A added — interim authentication rules documented as declarative-only with zero automated resistance until Security_Protocols.md reaches Provisional Spec and RIP Phase 3 automation is operational.
+  (5) GOV-001 status moved to In Progress — Governance_Migration_Protocol.md created 2026-06-06 as executing resolution path. GOV-008 resolution path [PLANNED] labels removed.
 
 ---
 
