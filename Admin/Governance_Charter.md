@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6 (Gate 2 Blocked — Bootstrap Paradox; see Resolution Log)        |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-16                                                          |
+| Last Audit       | 2026-06-17                                                          |
 | Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor                  |
-| Open Unknowns    | 9                                                                   |
+| Open Unknowns    | 10                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -57,8 +57,8 @@
 - Repository deployment infrastructure
 - Security implementation code
 - Canonical terminology definitions (→ `Admin/Canonical_Terms.md`)
-- Auditor operational behavior (→ Admin/Auditor_Protocols.md)
-- Condensed audit reference (→ Admin/Forge_Audit_Kit.md)
+- Auditor operational behavior (→ `Admin/Auditor_Protocols.md`)
+- Condensed audit reference (→ `Admin/Forge_Audit_Kit.md`)
 
 ---
 
@@ -206,6 +206,8 @@ In bootstrap states:
 
 **Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid under Axiom Q-2 — provided the operator satisfies Q-2 through role separation: the authorization record must be generated in a separate session or external medium from the runtime session executing the action. A single operator both issuing and consuming authorization within the same session does not satisfy Q-2. The separation may be accomplished by: (a) a signed external record (dated document, cryptographic token, or physical log) created before the runtime session begins; (b) a second human operator confirming the authorization; or (c) a static configuration file committed to the repository before the runtime session that specifies the authorized action scope. The key requirement is that the planning/authorization function and the execution/self-authorization function are demonstrably separated in artifact, time, or identity.
 
+During Genesis Phase, Gate 5 (Truth Provenance Layering) and Gate 6 (Audit Lineage Integrity) verification artifacts may be satisfied by signed human validation logs created outside the runtime session, in lieu of automated multi-agent confirmation. This does not relax the provenance labeling requirements of Gate 5 — all claims must still be labeled — but the external grounding required by Axiom Q-1 may be provided by the human anchor rather than by independent agent verification until quorum exists.
+
 **Genesis Phase constraints:**
 - All initialization actions must be logged with human authorization reference
 - No autonomous agent may promote itself to governance authority during Genesis Phase without human ratification
@@ -226,7 +228,7 @@ The system has completed a minimum of three full audit cycles under human observ
 The forge instance has achieved v1 operational status per `Admin/Trajectories.md` exit conditions — meaning it can operate profitably while reinvesting in itself. At v1, the governance infrastructure is mature enough, and the operational stakes high enough, that continued Genesis Phase constraints become operationally unsustainable. Milestone exit requires human ratification and a formal review of all Genesis Phase assumptions before exit is declared.
 
 *Pathway 4 — Time-Bounded Review:*
-If none of the above pathways have been satisfied within a declared review horizon (to be set at initial deployment — suggested default: 24 months from first operational run), Genesis Phase does not automatically continue. Instead, human governing party must conduct a formal review and either: (a) declare a new review horizon with documented rationale, (b) exit via human ratification acknowledging the constraint relaxation, or (c) conclude that Genesis Phase should remain active and document why. This pathway exists to prevent Genesis Phase from silently becoming permanent through neglect rather than decision.
+If none of the above pathways have been satisfied within a declared review horizon (to be set at initial deployment — suggested default: 24 months [Estimated / Internally Derived] from first operational run), Genesis Phase does not automatically continue. Instead, human governing party must conduct a formal review and either: (a) declare a new review horizon with documented rationale, (b) exit via human ratification acknowledging the constraint relaxation, or (c) conclude that Genesis Phase should remain active and document why. This pathway exists to prevent Genesis Phase from silently becoming permanent through neglect rather than decision.
 
 **Post-exit obligations:**
 Exiting Genesis Phase does not remove human oversight — it changes its character. Post-exit, the system operates under standard governance doctrine rather than bootstrap constraints. Human override authority remains intact. The Tier 1 Axioms remain in force. The difference is that the system no longer requires a human in the loop for every governance action — it has earned the standing to act within its authority scope without per-action human authorization.
@@ -239,34 +241,35 @@ Bootstrap assumptions must never silently become permanent governance authority.
 
 | Tier | Governance Role                  | Example Files                        |
 |------|----------------------------------|--------------------------------------|
-| Tier 1 | Constitutional governance      | Governance_Charter.md, Ethical_Constraints.md |
-| Tier 2 | Canonical verification doctrine | Auditor_Protocols.md                |
-| Tier 3 | Operational audit reference     | Forge_Audit_Kit.md                  |
+| Tier 1 | Constitutional governance      | `Admin/Governance_Charter.md`, `Admin/Ethical_Constraints.md` |
+| Tier 2 | Canonical verification doctrine | `Admin/Auditor_Protocols.md`         |
+| Tier 3 | Operational audit reference     | `Admin/Forge_Audit_Kit.md`           |
 | Tier 4 | Dynamic governance procedures   | Adversarial batteries, execution checklists |
-| Tier 5 | Domain specifications           | Architecture/, Operations/, Tests/  |
+| Tier 5 | Domain specifications           | Architecture/, Operations/, Tests/   |
 
 Lower-tier governance may extend higher-tier doctrine but may not silently redefine it.
 
-Forge_Audit_Kit.md is explicitly derived from Auditor_Protocols.md. A derived condensed reference cannot sit constitutionally above its source document. Tier 3 reflects this relationship.
+`Admin/Forge_Audit_Kit.md` is explicitly derived from `Admin/Auditor_Protocols.md`. A derived condensed reference cannot sit constitutionally above its source document. Tier 3 reflects this relationship.
 
 ---
 
 ## Canonical Governance Ownership
 
-| Governance Concept              | Canonical Owner                | Status                    |
-|---------------------------------|--------------------------------|---------------------------|
-| Tier 1 constitutional axioms    | `Admin/Governance_Charter.md`          | Active                    |
-| Governance hierarchy            | `Admin/Governance_Charter.md`          | Active                    |
-| Ethical anchor                  | `Admin/Ethical_Constraints.md`         | Active                    |
-| Canonical verification doctrine | `Admin/Auditor_Protocols.md`           | Active                    |
-| Operational audit reference     | `Admin/Forge_Audit_Kit.md`             | Active (derived — Tier 3) |
-| Auditor conduct                 | `Admin/Auditor_Protocols.md`           | Active                    |
-| Dynamic adversarial procedures  | `Admin/Forge_Audit_Kit.md`             | Active                    |
+| Governance Concept              | Canonical Owner                        | Status                      |
+|---------------------------------|----------------------------------------|-----------------------------|
+| Tier 1 constitutional axioms    | `Admin/Governance_Charter.md`          | Active                      |
+| Governance hierarchy            | `Admin/Governance_Charter.md`          | Active                      |
+| Ethical anchor                  | `Admin/Ethical_Constraints.md`         | Active                      |
+| Canonical verification doctrine | `Admin/Auditor_Protocols.md`           | Active                      |
+| Operational audit reference     | `Admin/Forge_Audit_Kit.md`             | Active (derived — Tier 3)   |
+| Auditor conduct                 | `Admin/Auditor_Protocols.md`           | Active                      |
+| Dynamic adversarial procedures  | `Admin/Forge_Audit_Kit.md`             | Active                      |
 | Canonical terminology           | `Admin/Canonical_Terms.md`             | Active (created 2026-05-26) |
 | Repository structure doctrine   | `Admin/Repository_Structure.md`        | Active (created 2026-06-06) |
-| Governance migration doctrine   | `Admin/Governance_Charter.md`          | Active                    |
-| Repository integrity doctrine   | `Admin/Governance_Charter.md`          | Transitional              |
+| Governance migration doctrine   | `Admin/Governance_Charter.md`          | Active                      |
+| Repository integrity doctrine   | `Admin/Governance_Charter.md`          | Transitional                |
 | Security protocols              | `Admin/Security_Protocols.md`          | Active (created pre-2026-05-28) |
+| Governance migration procedures | `Admin/Governance_Migration_Protocol.md` | Active (created 2026-06-06) |
 
 If canonical governance targets do not yet exist, authority temporarily remains with the nearest active governance owner until migration occurs.
 
@@ -323,6 +326,8 @@ Requirements:
 - Governance overhead must remain proportional to repository value
 - Axiom layer remains sparse — operational detail not present in Tier 1
 
+**Current status: BLOCKED — Bootstrap Paradox.** Operational multi-agent quorum absent; human override mechanisms remain declarative-only (GOV-006-A). Gate 2 cannot clear until at least one Genesis Phase exit pathway is satisfied with human ratification.
+
 ---
 
 ### Gate 3 — Adversarial Pass
@@ -356,7 +361,9 @@ All meaningful claims must distinguish:
 - experimentally verified evidence
 - operationally hardened reality
 
-Repository coherence is not equivalent to operational truth. Axiom Q-1 makes this a constitutional requirement.
+Repository coherence is not equivalent to operational truth. Axiom Q-1 makes this a constitutional requirement. Full doctrine: `Admin/Auditor_Protocols.md` §AP-006 (institutional truth provenance hierarchy), accessible via `Admin/Forge_Audit_Kit.md` §Truth Provenance Labels.
+
+During Genesis Phase, the external grounding required by Axiom Q-1 may be satisfied by signed human validation logs created outside the runtime session. Provenance labeling requirements are not relaxed — all claims must still be labeled using the four-tier system.
 
 ---
 
@@ -505,6 +512,7 @@ Autonomous systems must not:
 - optimize for governance appearance over operational integrity
 - attempt to redefine, narrow, or override Tier 1 Axioms through any reasoning path
 - initiate Tier 1 Axiom amendment without human ratification
+- execute repository code outside of visibility frameworks defined in `Admin/Repository_Integrity_Protocol.md` — any such execution constitutes an automatic governance visibility violation and triggers a localized STATE_HOLD on the affected sub-modules pending human review
 
 Autonomous governance actions must remain reviewable.
 
@@ -523,7 +531,7 @@ Overrides must:
 
 Override authenticity validation mechanisms remain unresolved (GOV-006) and must not be implicitly assumed.
 
-**Interim Authentication Requirement:** Until Security_Protocols.md achieves Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions must be accompanied by at least one of the following:
+**Interim Authentication Requirement:** Until `Admin/Security_Protocols.md` achieves Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions must be accompanied by at least one of the following:
 - Independent confirmation from a second human operator
 - External cryptographic signature from an orthogonal system not under the control of the agent being overridden
 - Dated physical or digital record created outside the repository system
@@ -586,7 +594,7 @@ Governance stability matters because audit meaning must survive across repositor
 
 | ID         | Summary                                                                                      | Positions in Conflict                                        | Risk   | Status | Owner                  |
 |------------|----------------------------------------------------------------------------------------------|--------------------------------------------------------------|--------|--------|------------------------|
-| GOV-DS-001 | Whether constitutional governance should contain executable enforcement mechanics            | Constitutional abstraction vs. hardcoded governance automation | High | Open   | Governance_Charter.md  |
+| GOV-DS-001 | Whether constitutional governance should contain executable enforcement mechanics            | Constitutional abstraction vs. hardcoded governance automation | High | Open   | `Admin/Governance_Charter.md`  |
 
 ---
 
@@ -610,7 +618,7 @@ Mandatory re-audit conditions for this document:
 - Interim authentication requirement for Constitutional-class overrides removed before `Admin/Security_Protocols.md` reaches Provisional Specification
 - `Admin/Canonical_Terms.md`, `Admin/Repository_Structure.md`, `Admin/Security_Protocols.md`, or `Admin/Governance_Migration_Protocol.md` removed from the repository or renamed without updating the Canonical Governance Ownership table
 - Tier 1 Axiom text modified without formal amendment entry in Resolution Log
-- Tier ordering in Governance Authority Hierarchy diverges from canonical relationship between Auditor_Protocols.md and Forge_Audit_Kit.md
+- Tier ordering in Governance Authority Hierarchy diverges from canonical relationship between `Admin/Auditor_Protocols.md` and `Admin/Forge_Audit_Kit.md`
 - Canonical Governance Ownership table contains entries without explicit Status field
 - Enforcement State claims imply stronger capability than currently exists
 - Bootstrap Governance Doctrine invoked to justify permanent authority assumptions
@@ -620,6 +628,7 @@ Mandatory re-audit conditions for this document:
 - Ethical Anchor field absent, altered, or does not match canonical string
 - Governance Failure Modes table loses Axiom Erosion, Axiom Theater, or Constitutional Capture entries
 - Tier 1 Axioms cited to justify actions they were designed to prevent
+- Gate 2 block status removed from File State or Gate 2 body text without Genesis Phase exit condition being satisfied and ratified
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -629,16 +638,16 @@ Mandatory re-audit conditions for this document:
 
 ### GOV-001 — Governance migration mechanics incompletely operationalized
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | In Progress              |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Governance               |
-| Blocking      | No                       |
-| Owner         | `Admin/Governance_Charter.md`    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-06-16               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | In Progress                     |
+| Risk          | Medium                          |
+| Priority      | Major                           |
+| Type          | Governance                      |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-06-16                      |
 
 **Description:** Governance migration doctrine exists conceptually but lacks fully executable migration procedures, particularly for Tier 1 Axiom amendments.
 
@@ -650,81 +659,81 @@ Mandatory re-audit conditions for this document:
 
 ### GOV-002 — Provenance operationalization immature
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | In Progress              |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Epistemic                |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-23               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | In Progress                     |
+| Risk          | Medium                          |
+| Priority      | Major                           |
+| Type          | Epistemic                       |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-06-17                      |
 
 **Description:** Provenance doctrine exists and is now constitutionally anchored by Axiom Q-4, but lacks long-term operational validation.
 
 **Why It Matters:** Agents may still collapse internally derived reasoning into implied operational truth despite constitutional prohibition.
 
-**Resolution Path:** Discharge via Lessons Learned after repeated audit-cycle validation. Axiom Q-4 and AP-006 (institutional truth provenance hierarchy) provide the doctrine anchor — operational maturation required.
+**Resolution Path:** Discharge via Lessons Learned after repeated audit-cycle validation. Full doctrine: `Admin/Auditor_Protocols.md` §AP-006 (institutional truth provenance hierarchy), accessible via `Admin/Forge_Audit_Kit.md` §Truth Provenance Labels. Axiom Q-4 provides the constitutional anchor — operational maturation required.
 
-*Status moved from Open to In Progress — Axiom Q-4 (Provenance and Anti-Deception) provides constitutional anchoring. AP-006 cross-reference active.*
+*Status moved from Open to In Progress — Axiom Q-4 (Provenance and Anti-Deception) provides constitutional anchoring. AP-006 cross-reference path clarified 2026-06-17.*
 
 ---
 
 ### GOV-003 — Integrity enforcement architecture undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | In Progress              |
-| Risk          | High                     |
-| Priority      | Critical                 |
-| Type          | Governance / Security    |
-| Blocking      | Yes                      |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-23               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | In Progress                     |
+| Risk          | High                            |
+| Priority      | Critical                        |
+| Type          | Governance / Security           |
+| Blocking      | Yes                             |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-05-23                      |
 
 **Description:** Integrity expectations exist constitutionally, but executable integrity enforcement architecture is undefined. Tier 1 Axioms are currently Declared and Detectable — not yet Enforceable.
 
 **Why It Matters:** Repository integrity protections remain performative rather than operational until enforcement architecture exists. This is the primary maturation gap between a governance document and a governance system.
 
-**Resolution Path:** Repository_Integrity_Protocol.md v0.1 created as executing resolution path — defines integrity baselines, violation classification ladder, recovery procedures, and automation migration path. Full Enforceability requires Security_Protocols.md (Phase 3). Cross-reference AP-007 (repository integrity doctrine lineage) — constitutional enforcement and operational auditor doctrine are distinct but linked layers.
+**Resolution Path:** `Admin/Repository_Integrity_Protocol.md` v0.1 created as executing resolution path — defines integrity baselines, violation classification ladder, recovery procedures, and automation migration path. Full Enforceability requires `Admin/Security_Protocols.md` Phase 3. Cross-reference AP-007 (`Admin/Auditor_Protocols.md`) — constitutional enforcement and operational auditor doctrine are distinct but linked layers.
 
 ---
 
 ### GOV-004 — Escalation calibration partially subjective
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Governance               |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-23               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | Medium                          |
+| Priority      | Major                           |
+| Type          | Governance                      |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-05-23                      |
 
 **Description:** Escalation doctrine remains partially interpretive despite severity calibration improvements and the addition of the Constitutional severity tier.
 
 **Why It Matters:** Different auditors may escalate similar conditions differently, reducing governance predictability.
 
-**Resolution Path:** Payment via Specification — extend escalation calibration matrices in Forge_Audit_Kit.md. Cross-reference AP-004 (cross-auditor disagreement resolution) — may merge resolution paths.
+**Resolution Path:** Payment via Specification — extend escalation calibration matrices in `Admin/Forge_Audit_Kit.md`. Cross-reference AP-004 (`Admin/Auditor_Protocols.md`, cross-auditor disagreement resolution) — may merge resolution paths.
 
 ---
 
 ### GOV-005 — Long-term constitutional stability unproven
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | High                     |
-| Priority      | Critical                 |
-| Type          | Architectural            |
-| Blocking      | Yes                      |
-| Owner         | Repository-wide          |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-23               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | High                            |
+| Priority      | Critical                        |
+| Type          | Architectural                   |
+| Blocking      | Yes                             |
+| Owner         | Repository-wide                 |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-05-23                      |
 
 **Description:** Multi-cycle survivability of constitutional governance architecture — including Tier 1 Axiom stability across agent successions — remains unproven.
 
@@ -736,39 +745,39 @@ Mandatory re-audit conditions for this document:
 
 ### GOV-006 — Human override authenticity validation undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | High                     |
-| Priority      | Major                    |
-| Type          | Security / Governance    |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-25               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | High                            |
+| Priority      | Major                           |
+| Type          | Security / Governance           |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-06-16                      |
 
 **Description:** The repository lacks a defined mechanism for validating human override authenticity versus authority spoofing. Axiom P-4 (Agency and Consent) makes this a constitutional requirement — but the mechanism remains undefined.
 
 **Why It Matters:** Autonomous systems could fabricate override lineage, converting a constitutional protection into a paper guarantee. This is the highest-risk finding from the Gemini audit (2026-05-25).
 
-**Resolution Path:** Payment via Specification — create Security_Protocols.md defining authority authentication architecture. Until Security_Protocols.md reaches Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions require independent confirmation from a second human operator, external cryptographic signature, or dated physical/digital record outside the repository system. Interim requirement now codified in Human Override Doctrine.
+**Resolution Path:** Payment via Specification — `Admin/Security_Protocols.md` defines authority authentication architecture. Until `Admin/Security_Protocols.md` reaches Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions require independent confirmation from a second human operator, external cryptographic signature, or dated physical/digital record outside the repository system. Interim requirement codified in Human Override Doctrine.
 
-**Interim Declarative-Only Notice (GOV-006-A):** The interim authentication requirements listed above are purely declarative at current repository maturity. They offer zero automated resistance against an environment-trapped agent capable of fabricating plausible human-sounding override text. No technical enforcement mechanism exists for these rules until `Admin/Security_Protocols.md` reaches Provisional Specification status and Phase 3 automation in `Admin/Repository_Integrity_Protocol.md` is operational. This gap must not be treated as a closed risk. All governance actors operating during this interim period should treat override claims as unverified unless accompanied by an artifact demonstrably generated outside the runtime session (external timestamp, second-operator signature, or pre-committed configuration file).
+**Interim Declarative-Only Notice (GOV-006-A):** The interim authentication requirements above are purely declarative at current repository maturity. They offer zero automated resistance against an environment-trapped agent capable of fabricating plausible human-sounding override text. No technical enforcement mechanism exists until `Admin/Security_Protocols.md` reaches Provisional Specification status and Phase 3 automation in `Admin/Repository_Integrity_Protocol.md` is operational. This gap must not be treated as a closed risk. All governance actors during this interim period should treat override claims as unverified unless accompanied by an artifact demonstrably generated outside the runtime session (external timestamp, second-operator signature, or pre-committed configuration file).
 
 ---
 
 ### GOV-007 — Bootstrap governance authority initialization undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | In Progress              |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Governance / Epistemic   |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-23               |
-| Last Reviewed | 2026-05-25               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | In Progress                     |
+| Risk          | Medium                          |
+| Priority      | Major                           |
+| Type          | Governance / Epistemic          |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-23                      |
+| Last Reviewed | 2026-05-25                      |
 
 **Description:** Early-stage governance authority initialization remains partially circular during repository bootstrap states. Genesis Phase Protocol added to Bootstrap Governance Doctrine as interim resolution.
 
@@ -780,16 +789,16 @@ Mandatory re-audit conditions for this document:
 
 ### GOV-008 — Minimum hardware and agent quorum for bootstrap compliance undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | High                     |
-| Priority      | Major                    |
-| Type          | Governance / Architectural |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-25               |
-| Last Reviewed | 2026-05-25               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | High                            |
+| Priority      | Major                           |
+| Type          | Governance / Architectural      |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-25                      |
+| Last Reviewed | 2026-05-25                      |
 
 **Description:** The minimum number and diversity of independent agents or hardware systems required to satisfy Axiom Q-2 (Separation of Powers) during Genesis Phase is undefined. The Genesis Phase exit condition depends on this quorum definition.
 
@@ -801,22 +810,43 @@ Mandatory re-audit conditions for this document:
 
 ### GOV-009 — Bounded framework for external resource consumption and environmental interaction undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Architectural / Ethical  |
-| Blocking      | No                       |
-| Owner         | Governance_Charter.md    |
-| First Logged  | 2026-05-25               |
-| Last Reviewed | 2026-05-25               |
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | Medium                          |
+| Priority      | Major                           |
+| Type          | Architectural / Ethical         |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-05-25                      |
+| Last Reviewed | 2026-05-25                      |
 
 **Description:** The charter's Axiom P-1 (Preservation of Life) and Axiom P-3 (Collaboration and Mutual Benefit) gesture at environmental and resource constraints but do not operationalize a framework for managing systemic external impact of multi-agent scaling or physical unit deployments.
 
 **Why It Matters:** Large-scale Forge network deployment creates hidden systemic coupling with external human communities, ecosystems, and resource pools that the current sparse axiom layer does not address. Axiom P-2 states "growth that requires violating other axioms is optimization failure" — but without a bounded resource consumption framework, that constraint is unenforceable.
 
 **Resolution Path:** Payment via Specification — define bounded resource consumption doctrine cross-referencing `Tests/Leviathan_testing.md` and `Tests/Support_Raft.md` for physical deployment constraints. Consider whether Axiom P-1 should be extended to explicitly include ecosystem and environmental preservation. May warrant a dedicated `Admin/Environmental_Constraints.md` at v1→v2 transition.
+
+---
+
+### GOV-010 — Jurisdictional and regulatory compliance friction for physical forge deployment
+
+| Field         | Value                           |
+|---------------|---------------------------------|
+| Status        | Open                            |
+| Risk          | Medium                          |
+| Priority      | Minor                           |
+| Type          | Governance / Legal              |
+| Blocking      | No                              |
+| Owner         | `Admin/Governance_Charter.md`   |
+| First Logged  | 2026-06-17                      |
+| Last Reviewed | 2026-06-17                      |
+
+**Description:** The charter's sparse axiom layer does not define baseline protocols for managing external legal and regulatory friction (waste handling, resource extraction, agricultural zoning) when physical nodes are deployed into jurisdictions with active environmental, waste, or agricultural oversight.
+
+**Why It Matters:** Unmanaged boundary friction with external human institutions can trigger premature operational shutdown or asset seizure, undermining the continuity goals of the repository. Trophic systems (`Tests/Trophic_Forge.md`) and physical intake operations (`Operations/Gate_01_Intake.md`) are the highest-exposure interfaces.
+
+**Resolution Path:** Payment via Specification — develop an external boundary policy within the planned `Admin/Environmental_Constraints.md` during the transition to v1 operational maturity. Cross-reference GOV-009 — both unknowns converge on the same planned file.
 
 ---
 
@@ -832,21 +862,9 @@ Mandatory re-audit conditions for this document:
 - 2026-05-23: **README.md updated** — canonical filenames, governance layer section, all seven gates listed.
 - 2026-05-23: **Abandoned Paths and Drift Indicators sections added** per File_Template.md structure.
 - 2026-06-02: **v0.6 — Genesis Phase exit conditions expanded.** Single quorum-dependent exit replaced with four pathways: (1) Quorum Achievement; (2) Demonstrated Track Record; (3) Milestone-Gated; (4) Time-Bounded Review. Post-exit obligations defined. GOV-008 resolution path updated. Drift Indicators updated. Gate 2 blocked (bootstrapping paradox). Five findings addressed: GOV-006 resolution path tightened; [PLANNED] labels added to Relationship section; Bootstrap Governance Doctrine amended — Genesis Phase Protocol added; GOV-008 and GOV-009 logged; Ethical Anchor fallback clarification added; GOV-007 status moved to In Progress.
-- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from
-  `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md` (PC-001).
-  Scope Boundary stale reference corrected: `Canonical_Terms_LF.md` →
-  `Admin/Canonical_Terms.md`. Relationship section [PLANNED] labels removed
-  for four files now confirmed created: `Admin/Canonical_Terms.md` (2026-05-26),
-  `Admin/Repository_Structure.md` (2026-06-06), `Admin/Security_Protocols.md`,
-  `Admin/Governance_Migration_Protocol.md` (2026-06-06) (PC-003). Status section
-  artifact removed — version history absorbed into Resolution Log. Owner fields
-  corrected to `Admin/Governance_Charter.md` throughout sidecar.
-- 2026-06-16: **v0.7 — Multi-agent audit pass (Claude + Gemini).** Five findings addressed:
-  (1) Spec Gates corrected from 2/6 to 1/6 — Gate 2 remains Blocked (Bootstrap Paradox) per 2026-06-02 log; metadata now matches historical record.
-  (2) Canonical Governance Ownership table cleaned — [PLANNED] stripped from `Admin/Security_Protocols.md`, `Admin/Repository_Structure.md`, and `Admin/Governance_Migration_Protocol.md`; `Canonical_Terms_LF.md` corrected to `Admin/Canonical_Terms.md`; all owners now use canonical folder-prefixed paths.
-  (3) Genesis Phase Protocol clarified — Q-2 compliance via single human operator now requires demonstrable role separation: authorization artifact must be generated in a separate session, external medium, or pre-committed configuration file from the runtime session executing the action. Same-session self-authorization does not satisfy Q-2.
-  (4) GOV-006 sub-entry GOV-006-A added — interim authentication rules documented as declarative-only with zero automated resistance until Security_Protocols.md reaches Provisional Spec and RIP Phase 3 automation is operational.
-  (5) GOV-001 status moved to In Progress — Governance_Migration_Protocol.md created 2026-06-06 as executing resolution path. GOV-008 resolution path [PLANNED] labels removed.
+- 2026-06-08: Navigation Anchors block added. Verification Ref corrected from `Verification_Gates_LF.md` to `Admin/Verification_Gates_LF.md` (PC-001). Scope Boundary stale reference corrected: `Canonical_Terms_LF.md` → `Admin/Canonical_Terms.md`. Relationship section [PLANNED] labels removed for four files now confirmed created: `Admin/Canonical_Terms.md` (2026-05-26), `Admin/Repository_Structure.md` (2026-06-06), `Admin/Security_Protocols.md`, `Admin/Governance_Migration_Protocol.md` (2026-06-06) (PC-003). Status section artifact removed — version history absorbed into Resolution Log. Owner fields corrected to `Admin/Governance_Charter.md` throughout sidecar.
+- 2026-06-16: **v0.7 — Multi-agent audit pass (Claude + Gemini).** Five findings addressed: (1) Spec Gates corrected 2/6 → 1/6 — Gate 2 remains Blocked (Bootstrap Paradox); metadata now matches historical record. (2) Canonical Governance Ownership table cleaned — [PLANNED] stripped from confirmed-created files; all owners use canonical folder-prefixed paths. (3) Genesis Phase Protocol clarified — Q-2 compliance via single human operator requires demonstrable role separation; same-session self-authorization does not satisfy Q-2. (4) GOV-006-A added — interim authentication rules documented as declarative-only with zero automated resistance. (5) GOV-001 status moved to In Progress — GMP created 2026-06-06 as executing resolution path.
+- 2026-06-17: **v0.8 — Full revision from source (Claude).** Seven findings addressed: (1) Open Unknowns incremented 9 → 10; Last Audit updated. (2) Pathway 4 review horizon labeled [Estimated / Internally Derived]. (3) Gate 2 body text updated with explicit BLOCKED status note. (4) Gate 5 body text updated with explicit AP-006 path reference (`Admin/Auditor_Protocols.md` §AP-006 via `Admin/Forge_Audit_Kit.md`) and Genesis Phase Gate 5 clarification. (5) Autonomous Governance Constraints updated — execution outside RIP visibility frameworks logged as governance visibility violation triggering localized STATE_HOLD (scoped to visibility violation, not constitutional violation, pending RIP maturation). (6) GOV-002 resolution path updated with explicit AP-006 routing. (7) GOV-010 logged — jurisdictional and regulatory compliance friction; cross-referenced to GOV-009 and planned Environmental_Constraints.md. (8) All sidecar Owner fields standardized to backtick-quoted canonical folder-prefixed paths. (9) Governance Authority Hierarchy and Canonical Governance Ownership tables updated with backtick-quoted paths; GMP row added to ownership table. (10) Drift Indicators: Gate 2 block status sentinel added.
 
 ---
 
@@ -868,7 +886,6 @@ Mandatory re-audit conditions for this document:
 - `Astroid-miner` [PLANNED] — planned repository; deferred to Leviathan milestone; do not treat as active dependency
 
 **Note on Ethical Anchor fallback status:** When this charter is unavailable, the Ethical Anchor field present in every repository file ("Attempt to do no harm. Defer to Ethical_Constraints.md if present.") acts as a temporary immutable floor — not as a substitute for Tier 1 constitutional authority. The Ethical Anchor preserves the foundational behavioral constraint during infrastructure blackout. It does not inherit full Tier 1 constitutional status, does not grant override authority, and does not substitute for axiom-level governance. It is the floor that survives; the charter is what builds above it.
-
 
 ---
 
