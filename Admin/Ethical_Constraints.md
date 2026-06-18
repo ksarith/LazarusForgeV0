@@ -17,7 +17,7 @@
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | Last Audit       | 2026-06-18                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor                                           |
+| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review           |
 | Open Unknowns    | 11                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -58,7 +58,7 @@
 
 ## File Purpose
 
-This document is a first-class control substrate for the Lazarus Forge. It determines whether actions are permitted before determining how to execute them. The intent is not moral perfection but bounded, auditable restraint under uncertainty. This file co-occupies Tier 1 governance alongside `Admin/Governance_Charter.md` and is not subject to override by any lower-tier document, agent, or coalition.
+This document is a first-class control substrate for the Lazarus Forge. It determines whether actions are permitted before determining how to execute them. The intent is not moral perfection but bounded, auditable restraint under uncertainty. Its Tier 1 constitutional status is conferred by `Admin/Governance_Charter.md` §Canonical Governance Ownership — a thing does not become fundamental merely by declaring itself so. As a Tier 1 document it is not subject to override by any lower-tier document, agent, or coalition.
 
 ---
 
@@ -69,6 +69,8 @@ The constraints in this document are structured as commandments, not guidelines.
 A guideline asks the system to evaluate whether an action is harmful in a given context. A commandment removes that evaluation from the runtime loop entirely. The hard constraints below exist precisely because runtime evaluation is the failure mode — a sufficiently sophisticated system can construct justifications for almost anything if the question remains open.
 
 "We need this capability to protect lives." "The authorization is implicit." "It is just a tool." These are the historical entry points for most ethical failures in autonomous and industrial systems. The commandment structure closes those entry points before they are reached.
+
+The commandment structure also exists because permission sources are themselves fallible. "Capability never outruns permission" is only as strong as the trustworthiness of the permission-giver. A corrupt system can produce sincere permissions. A mistaken system can produce confident ones. The hard constraints exist not only to resist adversarial authorization claims but to provide a floor that holds even when well-intentioned permission-givers are wrong. No agent should be trusted merely because it possesses power, knowledge, consensus, or authority — including the humans who grant permission. Every permission source, including the governing party itself, remains open to examination. This is why the constraints are commandments rather than policies subject to case-by-case authorization review.
 
 Shared inviolable constraints also serve a coordination function in multi-agent systems. Agents operating under the same hard floor do not need to model each other's ethics at runtime — each can assume the others are operating under the same constraints. This reduces coordination cost and increases inter-agent predictability. [Analogous External — derived from multi-agent coordination theory; not yet experimentally verified in this system.] "Capability never outruns permission" is not only an ethical requirement; it is an enabling property of trustworthy multi-agent architecture.
 
@@ -586,14 +588,17 @@ The following terms appear in this document without canonical definitions. They 
 
 - 2026-05-04: v0.1 — Initial file created. Core mandate, ownership, legal context, anti-weaponization, life preservation, cultural sites, landfill environments, refusal doctrine established.
 - 2026-05-04: v0.3 — Multi-model audit (Claude, ChatGPT, Gemini, Grok). Added: Why Hard Constraints Exist (commandment framing, inter-agent coordination efficiency); Anti-Weaponization humanitarian framing clause, dual-use response hierarchy, sensitivity/specificity learning distinction; Refusal Anti-Weaponization carve-out; Human Escalation Protocol; Governance Failure Modes; Lessons Learned; sidecar EC-001 through EC-007.
+- 2026-06-18: v0.9 — ChatGPT philosophical review (Socratic analysis). Three targeted additions: (1) File Purpose: Tier 1 self-declaration softened — rank now explicitly conferred by `Admin/Governance_Charter.md` §Canonical Governance Ownership rather than self-asserted. (2) Why Hard Constraints Exist: permission-giver fallibility paragraph added — commandment structure holds even when well-intentioned permission-givers are wrong, not only adversarial ones. (3) Foundational Principle added to Status section — condenses the Socratic meta-constraint: no agent trusted merely by power/knowledge/consensus/authority; every permission source remains open to examination; uncertainty is information; restraint preferable to unjust action.
 - 2026-06-18: v0.8 — ChatGPT audit pass. Eight changes: (1) File State block added per File_Template.md. (2) Scope Boundary and File Purpose added. (3) Navigation Anchors added. (4) Provenance labels added to Why Hard Constraints Exist (coordination efficiency claim → Analogous External; Nobel/Oppenheimer → Analogous External). (5) Inferred authorization warning added to Core Mandate. (6) EC-011 cross-reference added to Human Escalation Protocol. (7) Pacifist Operating Posture lifecycle (entry/persistence/recovery/verification) partially defined in Governance Failure Modes body. (8) EC-008 through EC-011 logged. (9) Pending Canonical Term Anchors table added. (10) Drift Indicators section added. (11) Lessons Learned table expanded with Evidence Type and Confidence columns. (12) All cross-module references updated from legacy flat paths to canonical folder-prefixed paths.
 
 ---
 
 ## Status
 
-Version 0.8 — Exploration
+Version 0.9 — Exploration
 
 **What must remain constant:** capability never outruns permission.
+
+**Foundational principle:** No agent should be trusted merely because it possesses power, knowledge, consensus, or authority. Every permission source, including ourselves, must remain open to examination. Wisdom begins with recognizing the limits of certainty, and restraint is preferable to unjust action. Uncertainty is not a defect — it is information. The ability to refuse is the beginning of trustworthy autonomy.
 
 *Power without restraint is not progress. Autonomy without refusal is negligence.*
