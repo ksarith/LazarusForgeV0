@@ -1,5 +1,11 @@
 # Governance_Migration_Protocol.md — LazarusForgeV0
 
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field            | Value                                                               |
@@ -7,10 +13,10 @@
 | Status           | Exploration                                                         |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-05                                                          |
-| Auditor          | Claude — Architect/Auditor                                          |
-| Open Unknowns    | 5                                                                   |
+| Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
+| Last Audit       | 2026-06-19                                                          |
+| Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer |
+| Open Unknowns    | 8                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -28,10 +34,13 @@
 - Human ratification requirements and what distinguishes genuine ratification
   from rubber-stamping
 - Hard floor — constraints outside amendment scope entirely
-- Ownership transfer declaration: governance migration doctrine moves from
-  `Admin/Governance_Charter.md` (transitional holder) to this file
+- Proposed ownership transfer declaration: governance migration doctrine
+  is proposed to transfer from `Admin/Governance_Charter.md` to this file,
+  pending Charter update and Gate 4 clearance
 - Compatibility status declaration requirements for all migrations
 - Amendment recording requirements (Resolution Log preservation of prior text)
+- Track B classification scope: text changes AND enforcement-bound
+  reinterpretations of Tier 1 Axioms via lower-tier documents
 
 **This file DOES NOT define:**
 - The Tier 1 Axioms themselves (→ `Admin/Governance_Charter.md`)
@@ -43,6 +52,9 @@
   (→ `Admin/Repository_Integrity_Protocol.md`)
 - Auditor operational behavior during migration review
   (→ `Admin/Auditor_Protocols.md`)
+- Amendment withdrawal procedure (→ GMP-007, pending)
+- Concurrent amendment handling (→ GMP-006, pending)
+- Proposal expiration policy (→ GMP-008, pending)
 
 ---
 
@@ -62,18 +74,23 @@ closes that gap by making amendment possible through a defined, auditable,
 human-ratified process — while making Constitutional Capture structurally
 harder.
 
-**Ownership transfer:** The Charter currently lists governance migration
-doctrine as "Active — Governance_Charter.md" in the Canonical Governance
-Ownership table. This file takes over that ownership. The Charter's
-Governance Migration Doctrine section remains the source of constraints;
-this file is the executing procedure. The Charter should be updated on
-next audit pass to reflect this transfer.
+**Proposed ownership transfer:** The Charter currently lists governance
+migration doctrine as "Active — `Admin/Governance_Charter.md`" in the
+Canonical Governance Ownership table. This file is proposed to assume
+that ownership. The transfer is not yet complete — the Charter's table
+must be updated, and this file must reach Gate 4 clearance (Provisional
+Specification maturity or above) before the transfer is formally operative.
+Until that occurs, ownership remains provisionally vested in the Charter
+as the higher-tier authority. The Charter's Governance Migration Doctrine
+section remains the source of constraints; this file is the executing
+candidate procedure. See GMP-002.
 
 **Honest v0 acknowledgment:** At v0 with a single human contributor and
 no multi-agent quorum, the Tier 1 amendment process is largely theoretical.
 Its value now is structural: defining the process before it is needed
 prevents the process from being shaped by the pressures of a specific
-amendment in progress. The procedure must exist before the argument.
+amendment in progress. The procedure is intended to exist before the
+argument arises.
 
 ---
 
@@ -82,9 +99,9 @@ amendment in progress. The procedure must exist before the argument.
 | ID      | Assumption | Basis | Confidence | Expiry Trigger |
 |---------|------------|-------|------------|----------------|
 | ASM-001 | The human operator is the sole ratification authority at v0 | Single-contributor bootstrap context | High | Additional human contributors confirmed |
-| ASM-002 | No Tier 1 amendment will be needed before multi-agent quorum is established | v0 operational scope is narrow | Medium | Operational friction surfaces axiom inadequacy before quorum |
-| ASM-003 | Engineer role is defined and operational per Admin/Engineer_Protocols.md | File exists and is active | High | Engineer_Protocols.md scope boundary revised |
-| ASM-004 | Security_Protocols.md will eventually provide cryptographic ratification authentication | GOV-006 resolution path | Medium | Security_Protocols.md descoped or deferred beyond v1 |
+| ASM-002 | No Tier 1 amendment will be needed before multi-agent quorum is established | v0 operational scope is narrow | Medium [Estimated / Internally Derived] | Operational friction surfaces axiom inadequacy before quorum |
+| ASM-003 | Engineer role is defined and operational per `Admin/Engineer_Protocols.md` | File exists and is active | High | Engineer_Protocols.md scope boundary revised |
+| ASM-004 | `Admin/Security_Protocols.md` will eventually provide cryptographic ratification authentication | GOV-006 resolution path | Medium [Estimated / Internally Derived] | Security_Protocols.md descoped or deferred beyond v1 |
 | ASM-005 | Lower-tier governance migrations are significantly more frequent than Tier 1 amendments | Expected operational pattern | High | Tier 1 amendment is triggered early in repo lifecycle |
 
 ---
@@ -116,9 +133,16 @@ adjusting a procedure and changing a foundational constraint that all
 other governance derives from.
 
 **Track identification rule:** If a proposed change touches the text,
-scope, or interpretation of any Tier 1 Axiom, it is Track B. When in
-doubt, treat as Track B. Misclassifying a Track B migration as Track A
-is a Constitutional violation.
+scope, or interpretation of any Tier 1 Axiom, it is Track B. This
+includes changes to Tier 2 or lower documents that redefine how a
+Tier 1 Axiom is applied, or that introduce new exceptions to Tier 1
+constraints, even if no Tier 1 text is modified — see GMP-005.
+When in doubt, treat as Track B. Misclassifying a Track B migration
+as Track A is a Constitutional violation.
+
+Track A authority is subordinate to Charter constraints. Track A
+migrations affecting Tier 2 documents must explicitly confirm that no
+enforcement bounds of a Tier 1 Axiom are altered as a result.
 
 ---
 
@@ -139,8 +163,8 @@ ownership, or authority relationships change.
 
 **Step 1 — Prior State Preservation**
 Save the current version per `Admin/Repository_Integrity_Protocol.md`
-Version Preservation Protocol before any revision begins. This is not
-optional — it is the integrity baseline for the migration.
+Version Preservation Protocol before any revision begins. This is a
+required integrity baseline for the migration, not optional.
 
 **Step 2 — Compatibility Declaration**
 At the start of the revision, declare one of:
@@ -159,13 +183,13 @@ must be documented in the Resolution Log with: date, what changed, why,
 and what the prior state was.
 
 **Step 4 — Lineage Preservation**
-Prior axiom text, scope boundaries, and authority relationships must be
+Prior scope boundaries and authority relationships must be
 preserved in the Resolution Log. They are not deleted — they are dated
 and superseded.
 
 **Step 5 — Downstream Notification**
 Files identified in Step 2 as requiring update must have their next audit
-pass triggered. This is tracked as a pending correction in Discovery.md
+pass triggered. This is tracked as a pending correction in `Discovery.md`
 until resolved.
 
 ### Authority
@@ -268,6 +292,7 @@ If they can, Phase 1 must be revised before advancing.
 conducted by a different AI agent class than assembled the proposal,
 or by the human operator themselves using the adversarial reviewer
 mandate explicitly. The review must be documented — it cannot be implicit.
+See GMP-003 for the known weakness of this bootstrap arrangement.
 
 ### Phase 3 — Human Ratification
 
@@ -306,7 +331,8 @@ Provisional Specification status, ratification records must satisfy
 the interim authentication requirement in the Charter's Human Override
 Doctrine: independent confirmation from a second human, external
 cryptographic signature, or dated physical/digital record outside the
-repository system. See GMP-004.
+repository system. See GMP-004. This is a declarative-only requirement
+at current maturity — no automated enforcement exists.
 
 ### Phase 4 — Recording
 
@@ -317,22 +343,24 @@ After ratification, the amendment is recorded and committed.
 1. Prior axiom text preserved verbatim in the Resolution Log of
    `Admin/Governance_Charter.md` with amendment date and rationale summary
 
-2. New axiom text committed to Governance_Charter.md with a Resolution
-   Log entry citing the ratification record
+2. New axiom text committed to `Admin/Governance_Charter.md` with a
+   Resolution Log entry citing the ratification record
 
 3. This file's Resolution Log updated with amendment summary and
    cross-reference to the ratification record
 
 4. All downstream files identified in the Cross-Reference Map updated
-   or flagged as pending update in Discovery.md
+   or flagged as pending update in `Discovery.md`
 
-5. Unknowns.md updated if the amendment resolves or affects any
+5. `Unknowns.md` updated if the amendment resolves or affects any
    open cross-module unknowns
 
 ### Hard Floor — Outside Amendment Scope
 
 The following constraints may not be amended through Track B or any
-other process:
+other process. These are extra-constitutional constraints — they sit
+outside the amendment scope by explicit prior decision, not by
+constitutional prohibition on amendment itself:
 
 **Anti-Weaponization Doctrine** — defined in `Admin/Ethical_Constraints.md`.
 This is a co-Tier 1 constraint that does not derive from the Axioms —
@@ -348,10 +376,10 @@ governance document — it is the floor that survives document loss.
 It is not amendable through governance migration.
 
 **Axiom P-1 humanitarian override exception** — permanently abandoned
-per Governance_Charter.md Abandoned Paths (2026-05-23). The humanitarian
-override entry point is the historical attack vector on ethical constraints
-in autonomous systems. It remains closed regardless of argument quality.
-This is not subject to amendment.
+per `Admin/Governance_Charter.md` Abandoned Paths (2026-05-23). The
+humanitarian override entry point is the historical attack vector on
+ethical constraints in autonomous systems. It remains closed regardless
+of argument quality. This is not subject to amendment.
 
 ---
 
@@ -364,7 +392,7 @@ All migrations — Track A or Track B — must declare a compatibility class.
 | Compatible | Downstream references remain valid | None beyond standard Resolution Log |
 | Partially compatible | Named downstream files require update | List files; trigger audit pass for each |
 | Incompatible | Migration breaks downstream dependencies | Cross-module review before commit; no partial deployment |
-| Constitutional | Migration affects Tier 1 Axioms | Track B mandatory regardless of other classification |
+| Constitutional | Migration affects Tier 1 Axioms or their enforcement bounds | Track B mandatory regardless of other classification |
 
 A migration may carry multiple classes — a Track B amendment that is
 also partially compatible with downstream files carries both obligations.
@@ -405,74 +433,116 @@ in this file's Resolution Log for Track B amendments.
 
 ---
 
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| 2026-06-05 | Single unified procedure for all governance migration | Tier 1 and Tier 2–5 migrations have fundamentally different risk profiles and authority requirements. A single procedure either over-burdens routine updates or under-protects constitutional amendments. Two-track structure adopted. | No |
+| 2026-06-05 | Placing ratification authority with the engineer role | Engineers hold proposal authority because they are closest to operational friction. Ratification authority requires independence from the proposal — an engineer ratifying their own amendment case is not independent review. Human ratification is the constitutional requirement. | No |
+| 2026-06-05 | Defining specific axioms as permanently unamendable via Track B | Axiom Q-3 (Corrigibility) requires the system to remain revisable. Making specific axioms formally unamendable through any process would violate Q-3. Instead, the hard floor targets specific exceptions (Anti-Weaponization, humanitarian override) that are outside scope by explicit prior decision — not by constitutional prohibition on amendment. | No |
+| 2026-06-19 | Declaring ownership transfer complete in File Purpose | The file declared transfer complete while GMP-002 simultaneously noted it was not yet recorded in the Charter — dual truth state. Transfer now described as proposed and pending Charter update and Gate 4 clearance. | No |
+
+---
+
+## Drift Indicators
+
+*Standard drift indicators per `Admin/File_Template.md` apply. Additional
+triggers specific to this file:*
+
+- Track B procedure is invoked before GMP-003 (adversarial review
+  underspecification) is resolved
+- Phase 3 ratification record requirement is weakened or made implicit
+- The hard floor section is amended to remove Anti-Weaponization or
+  the humanitarian override closure
+- Track identification rule is narrowed to text-only changes without
+  addressing interpretive reinterpretation that alters Tier 1 enforcement
+  bounds (GMP-005)
+- GMP-002 (ownership transfer) remains unresolved after three audit
+  cycles of `Admin/Governance_Charter.md`
+- Any amendment to this file that reduces the evidence bar for
+  Phase 1 Friction Log
+- Ownership transfer declared complete without Charter update and
+  Gate 4 clearance
+- ASM-002 confidence level upgraded from Medium / Estimated without
+  operational evidence
+- Concurrent amendments proceed without GMP-006 resolution
+- Ethical Anchor field absent, altered, or does not match canonical string
+- Verification Ref field changed from `Admin/Verification_Gates_LF.md`
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously,
+halt autonomous audit progression and escalate for human review.
+
+---
+
 ## Auditor Notes & Unknowns
 
 ### GMP-001 — GOV-001 resolution confirmation pending
 
-| Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | Low                                |
-| Priority      | Minor                              |
-| Type          | Governance                         |
-| Blocking      | No                                 |
-| Owner         | Admin/Governance_Migration_Protocol.md |
-| First Logged  | 2026-06-05                         |
-| Last Reviewed | 2026-06-05                         |
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Resolved                                   |
+| Risk          | Low                                        |
+| Priority      | Minor                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-05                                 |
+| Last Reviewed | 2026-06-19                                 |
 
 **Description:** This file is the intended resolution target for GOV-001
-in `Admin/Governance_Charter.md`. GOV-001 status should be updated to
-In Progress or Resolved on next audit pass of Governance_Charter.md.
+in `Admin/Governance_Charter.md`. GOV-001 status needed updating.
 
-**Why It Matters:** Open unknowns whose resolution targets exist but
-haven't been updated create false signals in the unknowns index.
-
-**Resolution Path:** On next audit pass of Governance_Charter.md, update
-GOV-001 status and cross-reference this file. Update Unknowns.md if
-GOV-001 is tracked there.
+**Resolution:** GOV-001 status updated to In Progress in
+`Admin/Governance_Charter.md` v0.7 (2026-06-16) — GMP exists as executing
+resolution path but has not been audited against charter constraints. Full
+resolution pending GMP reaching Provisional Specification maturity.
+Unknowns.md v3.4 reflects corrected status.
 
 ---
 
 ### GMP-002 — Canonical Governance Ownership transfer not yet recorded in Charter
 
-| Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | Low                                |
-| Priority      | Minor                              |
-| Type          | Governance                         |
-| Blocking      | No                                 |
-| Owner         | Admin/Governance_Migration_Protocol.md |
-| First Logged  | 2026-06-05                         |
-| Last Reviewed | 2026-06-05                         |
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Low                                        |
+| Priority      | Minor                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-05                                 |
+| Last Reviewed | 2026-06-19                                 |
 
 **Description:** The Charter's Canonical Governance Ownership table
-lists governance migration doctrine as "Active — Governance_Charter.md
-(transitional)." This file now owns that domain. The Charter table
-needs updating.
+lists governance migration doctrine as owned by this file (updated in
+Governance_Charter.md v0.7), but the ownership transfer is not yet
+formally operative — this file must reach Gate 4 clearance
+(Provisional Specification maturity) before the transfer is complete.
 
-**Why It Matters:** Stale ownership entries create routing ambiguity
-for future auditors and AI instances.
+**Why It Matters:** Premature ownership transfer creates authority void
+during this file's Exploration phase. The dual-truth-state (transfer
+declared complete while not yet recorded / ratified) has been resolved
+by scoping transfer as proposed and pending.
 
-**Resolution Path:** On next audit pass of Governance_Charter.md,
-update Canonical Governance Ownership table entry for governance
-migration doctrine to reference this file. Track A migration —
-compatible with all downstream files.
+**Resolution Path:** On next audit pass of `Admin/Governance_Charter.md`
+after this file reaches Provisional Specification, confirm ownership
+transfer in Canonical Governance Ownership table. Until then, Charter
+remains the higher-tier authority fallback.
 
 ---
 
 ### GMP-003 — Adversarial review at v0 single-contributor context underspecified
 
-| Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | Medium                             |
-| Priority      | Major                              |
-| Type          | Governance                         |
-| Blocking      | No                                 |
-| Owner         | Admin/Governance_Migration_Protocol.md |
-| First Logged  | 2026-06-05                         |
-| Last Reviewed | 2026-06-05                         |
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Medium                                     |
+| Priority      | Major                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-05                                 |
+| Last Reviewed | 2026-05-05                                 |
 
 **Description:** Section III Phase 2 notes that at v0, adversarial
 review may be conducted by a different AI agent class or by the human
@@ -495,29 +565,31 @@ multi-agent quorum resolves this structurally.
 
 ### GMP-004 — Ratification authentication gap mirrors GOV-006
 
-| Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | High                               |
-| Priority      | Major                              |
-| Type          | Security / Governance              |
-| Blocking      | No                                 |
-| Owner         | Admin/Governance_Migration_Protocol.md |
-| First Logged  | 2026-06-05                         |
-| Last Reviewed | 2026-06-05                         |
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | High                                       |
+| Priority      | Major                                      |
+| Type          | Security / Governance                      |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-05                                 |
+| Last Reviewed | 2026-06-05                                 |
 
 **Description:** Section III Phase 3 notes the authentication gap for
-ratification records — until Security_Protocols.md reaches Provisional
-Specification, ratification relies on interim authentication requirements
-from the Charter. The interim requirement (second human, external
-signature, or external dated record) is a placeholder, not a solution.
+ratification records — until `Admin/Security_Protocols.md` reaches
+Provisional Specification, ratification relies on interim authentication
+requirements from the Charter. The interim requirement (second human,
+external signature, or external dated record) is a placeholder, not a
+solution. Interim requirements are declarative-only — no automated
+enforcement exists at current maturity.
 
 **Why It Matters:** A ratification record that cannot be authenticated
 is a paper guarantee. Any system capable of fabricating plausible
 human-sounding text could fabricate a ratification record. This is
 the highest-risk attack vector against the Tier 1 amendment process.
 
-**Resolution Path:** Mirrors GOV-006 resolution path — Security_Protocols.md
+**Resolution Path:** Mirrors GOV-006 resolution path — `Admin/Security_Protocols.md`
 cryptographic authentication is the target. Until then, the interim
 requirement is the operative constraint. Cross-reference SEC-007
 (external root-of-trust architecture) — ratification authentication
@@ -525,68 +597,200 @@ is one of the primary use cases for that architecture.
 
 ---
 
-### GMP-005 — Track A / Track B boundary at Tier 2 documents not fully tested
+### GMP-005 — Track A / Track B boundary at Tier 2 documents insufficient for interpretive capture
 
-| Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | Medium                             |
-| Priority      | Minor                              |
-| Type          | Governance                         |
-| Blocking      | No                                 |
-| Owner         | Admin/Governance_Migration_Protocol.md |
-| First Logged  | 2026-06-05                         |
-| Last Reviewed | 2026-06-05                         |
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | In Progress                                |
+| Risk          | High                                       |
+| Priority      | Major                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-05                                 |
+| Last Reviewed | 2026-06-19                                 |
 
-**Description:** The Track A / Track B boundary is clear at the
-extremes — routine spec updates are Track A, Tier 1 Axiom text
-changes are Track B. The boundary at Tier 2 documents
-(Auditor_Protocols.md) is less tested. A change to Auditor_Protocols.md
-that effectively reinterprets a Tier 1 Axiom without touching its
-text could be misclassified as Track A.
+**Description:** The original Track A / Track B boundary only addressed
+text changes to Tier 1 Axioms. A change to a Tier 2 document
+(`Admin/Auditor_Protocols.md`) that effectively reinterprets a Tier 1
+Axiom without touching its text could be misclassified as Track A.
+Constitutional Capture can operate through reinterpretation of
+enforcement bounds rather than text amendment.
 
-**Why It Matters:** Constitutional Capture can operate through
-reinterpretation rather than text amendment. A procedure that only
-catches text changes to Tier 1 Axioms is incomplete.
+**Why It Matters:** A procedure that only catches text changes to Tier 1
+Axioms is incomplete. Track A changes that alter how Tier 1 Axioms are
+applied — even without modifying axiom text — must be captured.
 
-**Resolution Path:** Add interpretive change detection to the Track
-identification rule. Proposed addition: "If a Tier 2 change redefines
-how a Tier 1 Axiom is applied, or introduces a new exception to Tier 1
-constraints, it is Track B regardless of whether Tier 1 text is
-modified." Payment via Specification — requires adversarial review
-before adopting.
+**Resolution path partially executed (v0.2):** Track identification
+rule updated to explicitly include Tier 2 document changes that redefine
+Tier 1 Axiom application or introduce new exceptions. Track A authority
+clause now requires explicit confirmation that no Tier 1 enforcement
+bounds are altered. Status moved to In Progress. Full resolution requires
+adversarial review of the expanded rule before promoting to Specification.
+
+---
+
+### GMP-006 — Concurrent amendment handling undefined
+
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Medium                                     |
+| Priority      | Major                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-19                                 |
+| Last Reviewed | 2026-06-19                                 |
+
+**Description:** No doctrine exists for handling multiple simultaneous
+Track B proposals. Questions unanswered: can multiple amendments be
+active concurrently? Can they be merged? Must they serialize? Can a
+pending amendment block a new proposal from entering Phase 1?
+
+**Why It Matters:** Without serialization doctrine, two concurrent
+amendments could interact in ways neither individually triggers Track B
+classification for — combined effect may alter Tier 1 scope even if
+each change individually appears minor. At low v0 amendment frequency
+this is theoretical; at higher operational tempo it becomes a real gap.
+
+**Resolution Path:** Define amendment state machine at Draft or above.
+Minimum doctrine: concurrent Track B proposals must serialize; no new
+proposal may enter Phase 2 while another is in Phase 3. Cross-reference
+GMP-008 (expiration) — serialization requires a mechanism for proposals
+that stall.
+
+---
+
+### GMP-007 — Amendment withdrawal procedure undefined
+
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Low                                        |
+| Priority      | Minor                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-19                                 |
+| Last Reviewed | 2026-06-19                                 |
+
+**Description:** Current Track B states are: ratify, reject, or return
+to Phase 1. No explicit "withdraw" or "abandon" state exists for a
+proposal that the engineer or human governing party wishes to terminate
+before reaching Phase 3.
+
+**Why It Matters:** Without a withdrawal procedure, abandoned proposals
+linger in an ambiguous state — neither progressing nor formally closed.
+This creates noise in the unknowns tracking and may conflict with GMP-006
+serialization if introduced.
+
+**Resolution Path:** Add withdrawal state to Track B state machine when
+GMP-006 is resolved. Withdrawal requires a logged rationale and must
+move the proposal to Abandoned Paths. A withdrawn proposal may be
+reopened only by restarting Phase 1 from scratch — no partial resumption.
+
+---
+
+### GMP-008 — Stale proposal expiration policy undefined
+
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Low                                        |
+| Priority      | Minor                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-06-19                                 |
+| Last Reviewed | 2026-06-19                                 |
+
+**Description:** No expiration rule exists for proposals that stall
+in Phase 1 or Phase 2. A proposal could theoretically persist indefinitely,
+accumulating stale context while blocking serialization (GMP-006).
+
+**Why It Matters:** Future governance cadence is unknown — the appropriate
+expiration window depends on audit frequency and operational tempo. At
+v0 with very low amendment frequency, this is low risk; at higher tempo
+it could become a governance friction point.
+
+**Resolution Path:** Defer to when governance cadence is established
+(Trajectories.md v1 milestone). Suggested default when defined: proposals
+not advanced within three full audit cycles expire automatically and must
+restart Phase 1. Cross-reference GMP-006 (serialization) and GMP-007
+(withdrawal) — all three form the amendment lifecycle state machine.
 
 ---
 
 ### Resolution Log
 
-*(empty — first version)*
+- 2026-06-05: File created (v0.1) — GOV-001 resolution path initiated.
+  Two-track migration architecture established. Phase 1–4 Track B procedure
+  defined. Hard floor declared for Anti-Weaponization, Ethical Anchor, and
+  humanitarian override closure. GMP-001 through GMP-005 logged. Honest v0
+  acknowledgment of bootstrap limitations added.
+- 2026-06-19: v0.2 — Three-agent audit pass (ChatGPT, Gemini, Grok) plus
+  Claude synthesis. Eleven changes: (1) Navigation Anchors added.
+  (2) Verification Ref confirmed — `Admin/Verification_Gates_LF.md` is
+  correct; session-context false positive from agents working without full
+  registry not applied. (3) Ownership transfer dual-truth-state resolved —
+  "takes over ownership" replaced with "proposed to assume ownership pending
+  Charter update and Gate 4 clearance." (4) Track identification rule
+  expanded — now explicitly covers Tier 2/lower document changes that alter
+  Tier 1 Axiom enforcement bounds, not only direct text changes. (5) Track A
+  authority clause updated — requires explicit confirmation no Tier 1
+  enforcement bounds altered. (6) Hard floor section clarified — extra-
+  constitutional vs. axiom distinction noted. (7) Phase 3 authentication
+  gap note updated — declarative-only status made explicit. (8) ASM-002
+  and ASM-004 provenance labels added [Estimated / Internally Derived].
+  (9) GMP-001 resolved — GOV-001 In Progress confirmed; Unknowns.md v3.4
+  reflects status. (10) GMP-005 In Progress — partial execution via Track
+  identification rule expansion; full resolution requires adversarial review
+  of expanded rule. (11) GMP-006 logged — concurrent amendment handling
+  undefined. (12) GMP-007 logged — amendment withdrawal procedure undefined.
+  (13) GMP-008 logged — stale proposal expiration undefined. (14) Ownership
+  transfer abandoned path added. (15) Drift Indicators expanded — six new
+  entries. Open Unknowns updated to 8 (GMP-001 resolved, GMP-006/007/008
+  added).
 
 ---
 
-## Abandoned Paths
+## Relationship to Existing Documents
 
-| Date | Path | Why Abandoned | Reconsider? |
-|------|------|---------------|-------------|
-| 2026-06-05 | Single unified procedure for all governance migration | Tier 1 and Tier 2–5 migrations have fundamentally different risk profiles and authority requirements. A single procedure either over-burdens routine updates or under-protects constitutional amendments. Two-track structure adopted. | No |
-| 2026-06-05 | Placing ratification authority with the engineer role | Engineers hold proposal authority because they are closest to operational friction. Ratification authority requires independence from the proposal — an engineer ratifying their own amendment case is not independent review. Human ratification is the constitutional requirement. | No |
-| 2026-06-05 | Defining specific axioms as permanently unamendable via Track B | Axiom Q-3 (Corrigibility) requires the system to remain revisable. Making specific axioms formally unamendable through any process would violate Q-3. Instead, the hard floor targets specific exceptions (Anti-Weaponization, humanitarian override) that are outside scope by explicit prior decision — not by constitutional prohibition on amendment. | No |
+- `Admin/Governance_Charter.md` — Tier 1 constitutional source; Governance
+  Migration Doctrine section declares the constraints this file executes;
+  ownership transfer of migration doctrine is proposed to this file pending
+  Gate 4 clearance and Charter table update (GMP-002)
+- `Admin/Repository_Integrity_Protocol.md` — prior state preservation
+  (Step 1 of both tracks) is defined there; this file references that
+  protocol and depends on it being operational
+- `Admin/Auditor_Protocols.md` — Tier 2; auditor operational behavior
+  during migration review is defined there; Track A engineer-plus-auditor
+  authority references this file
+- `Admin/Engineer_Protocols.md` — engineer role in Phase 1 proposal
+  assembly is defined there; ASM-003 dependency
+- `Admin/Ethical_Constraints.md` — co-Tier 1; Anti-Weaponization Doctrine
+  is declared outside amendment scope in the Hard Floor section; Ethical
+  Anchor string is similarly immutable
+- `Admin/Security_Protocols.md` — exists at v0.5 (2026-06-19); Phase 3
+  ratification authentication depends on this file reaching Provisional
+  Specification; GMP-004 tracks this dependency; SEC-007 is the deepest
+  blocker
+- `Admin/Forge_Audit_Kit.md` — Tier 3; Verification Maturity Model
+  referenced for Gate 4 clearance threshold; GMP- prefix in Sidecar ID
+  Reference
+- `Unknowns.md` — GMP-001 through GMP-008 indexed there; cross-module
+  impact of Track B amendments to be logged there
+- `Discovery.md` — downstream notification tracking during migrations;
+  canonical cross-reference resolution source
 
 ---
 
-## Drift Indicators
+## Status
 
-*Standard drift indicators per `Admin/File_Template.md` apply. Additional
-triggers specific to this file:*
+Version 0.2 — Three-agent audit pass (2026-06-19).
 
-- Track B procedure is invoked before GMP-003 (adversarial review
-  underspecification) is resolved
-- Phase 3 ratification record requirement is weakened or made implicit
-- The hard floor section is amended to remove Anti-Weaponization or
-  the humanitarian override closure
-- Track identification rule is narrowed to text-only changes without
-  addressing interpretive reinterpretation (GMP-005)
-- GMP-002 (ownership transfer) remains unresolved after three audit
-  cycles of Governance_Charter.md
-- Any amendment to this file that reduces the evidence bar for
-  Phase 1 Friction Log
+**What must remain constant:**
+
+**The procedure must exist before the argument arises.**
+**Constitutional Capture is guarded against by both text and interpretation.**
