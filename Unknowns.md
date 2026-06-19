@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.3 — 2026-06-14. Three new Tests/ file clusters registered — LW (Living Waters, 9 unknowns), TF (Trophic Forge, 10 unknowns), SD (Solar Descent, 12 unknowns). TF-006 added to Critical Watch as Ethical_Constraints escalation candidate. SD-UNK-004 added to Critical Watch (parallels FA-001 weight). 31 new unknowns total.**
+**Version 3.4 — 2026-06-18. Six new unknowns registered from session audit pass (EC-008, EC-009, EC-010, EC-011, GOV-010, CT-005). GOV-001 un-archived — archive entry was premature; GMP exists but has not been audited against charter constraints; status corrected to In Progress. GOV-006-A declarative-only notice logged. EC-011 and EC-008 added to Critical Watch. EC-010 and GOV-010 cross-referenced — both converge on planned Environmental_Constraints.md.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -38,15 +38,18 @@ These rules are enforced at every audit cycle opening:
 
 ---
 
-## What v3.3 Means
+## What v3.4 Means
 
-- **31 new unknowns registered** across three new Tests/ file clusters: LW (Living Waters — 9), TF (Trophic Forge — 10 including TF-010 seasonal variability added by Grok audit), SD (Solar Descent — 12 including SD-UNK-011 receiver survivability and SD-UNK-012 alignment stability added by ChatGPT audit).
-- **TF-006 (non-target insect capture)** elevated to Ethical_Constraints escalation candidate — systematic pollinator or predator capture could make Trophic Forge ecologically negative regardless of yield metrics. Added to Critical Watch.
-- **SD-UNK-004 (host geology fracturing threshold)** carries same governance weight as FA-001 — no excavation or chamber construction without site geomechanical assessment. Added to Critical Watch.
-- **SD head pressure error corrected** — prior figure of ~40 kPa for molten nitrate salt at 20 m depth corrected to ~353 kPa per ChatGPT audit. Correction logged in Solar_Descent.md Body.
-- **DS-001 (Trophic Forge naming dispute) closed** — Trophic Forge adopted; prior art identified (entomoponics, phototactic tri-trophic aquaponics, Southeast Asian rice-fish light-trap systems).
-- **TF constitutional statement declared** — "Every node must be independently productive. Nothing exists solely to support something else." Candidate axiom for Biology/ domain promotion; requires human ratification.
-- **Three new files** added to Routing.md and Discovery.md: Tests/Living_Waters.md, Tests/Trophic_Forge.md, Tests/Solar_Descent.md.
+- **6 new unknowns registered** from 2026-06-18 session audit pass across three files:
+  - EC-008 (Inferred authorization doctrine undefined), EC-009 (Human authority conflict resolution undefined), EC-010 (Jurisdiction conflict hierarchy undefined), EC-011 (Human governance adversary model undefined) — from `Admin/Ethical_Constraints.md` v0.9 audit
+  - GOV-010 (Jurisdictional and regulatory compliance friction for physical forge deployment) — from `Admin/Governance_Charter.md` v0.8 audit
+  - CT-005 (Ethical and authorization term placeholders pending canonicalization) — from `Admin/Canonical_Terms.md` v0.3
+- **GOV-001 un-archived** — archive entry (v3.0, 2026-06-06) was premature. `Admin/Governance_Migration_Protocol.md` was created as the resolution path but has not been audited against charter constraints. Status corrected to In Progress. Archive entry annotated.
+- **GOV-006-A declarative-only notice** added — interim authentication rules in `Admin/Governance_Charter.md` are purely declarative with zero automated resistance until `Admin/Security_Protocols.md` reaches Provisional Spec.
+- **EC-011 added to Critical Watch** — human governance adversary model is the load-bearing assumption under "capability never outruns permission"; if the permission source is compromised the entire doctrine fails.
+- **EC-008 added to Critical Watch** — inferred authorization is the softest point in the permission model; interim default (no material alteration) is in place but formal resolution required before operational deployment.
+- **EC-010 and GOV-010 cross-referenced** — both converge on planned `Admin/Environmental_Constraints.md` at v1 transition.
+- **Five files revised** this session: `Admin/AUDIT_HARNESS.py` v8, `Admin/Forge_Audit_Kit.md` v1.1, `Admin/Governance_Charter.md` v0.8, `Admin/Ethical_Constraints.md` v0.9, `Admin/Canonical_Terms.md` v0.3.
 
 ---
 
@@ -93,15 +96,20 @@ These rules are enforced at every audit cycle opening:
 | EC-005 | Life-preservation vs. Anti-Weaponization | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
 | EC-006 | Ethical log survival under unit loss | `Admin/Ethical_Constraints.md` | Open | Non-blocking |
 | EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
-| GOV-001 | Governance migration mechanics incompletely operationalized | `Admin/Governance_Charter.md` | Open | Major |
+| EC-008 | Inferred authorization doctrine undefined | `Admin/Ethical_Constraints.md` | Open | Major |
+| EC-009 | Human authority conflict resolution undefined | `Admin/Ethical_Constraints.md` | Open | Major |
+| EC-010 | Jurisdiction conflict hierarchy undefined — cross-ref GOV-010; both converge on planned `Admin/Environmental_Constraints.md` | `Admin/Ethical_Constraints.md` | Open | Minor |
+| EC-011 | Human governance adversary model undefined | `Admin/Ethical_Constraints.md` | Open | Major |
+| GOV-001 | Governance migration mechanics incompletely operationalized — `Admin/Governance_Migration_Protocol.md` created; not yet audited against charter constraints | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | In Progress | Critical |
 | GOV-004 | Escalation calibration partially subjective | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-005 | Long-term constitutional stability unproven | `Admin/Governance_Charter.md` | Open | Critical |
-| GOV-006 | Human override authenticity validation undefined | `Admin/Governance_Charter.md` | In Progress | Major |
+| GOV-006 | Human override authenticity validation undefined — GOV-006-A: interim authentication rules are declarative-only; zero automated resistance until `Admin/Security_Protocols.md` reaches Provisional Spec | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-009 | Bounded framework for external resource consumption and environmental interaction | `Admin/Governance_Charter.md` | Open | Major |
+| GOV-010 | Jurisdictional and regulatory compliance friction for physical forge deployment — cross-ref EC-010; both converge on planned `Admin/Environmental_Constraints.md` | `Admin/Governance_Charter.md` | Open | Minor |
 | SEC-001 | Quorum recovery under terminal partition | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-002 | Key revocation doctrine undefined | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-003 | Key rotation period undefined | `Admin/Security_Protocols.md` | Open | Major |
@@ -129,6 +137,7 @@ These rules are enforced at every audit cycle opening:
 | CT-002 | Component Library Schema standard undefined | `Admin/Canonical_Terms.md` | Open | Major |
 | CT-003 | Dependency_Priority_Map.md needed before v1 | `Admin/Canonical_Terms.md` | Open | Minor |
 | CT-004 | Trusted initialization environment definition | `Admin/Canonical_Terms.md` | Open | Major |
+| CT-005 | Ethical and authorization term placeholders pending canonicalization — six terms (EC-001, EC-002, EC-004, EC-007, EC-008 dependencies); close when all six have binding definitions | `Admin/Canonical_Terms.md` | Open | Major |
 | VG-001 | Gate definition synchronization authority chain undefined | `Admin/Verification_Gates_LF.md` | Open | Major |
 
 ### Engineer Protocols
@@ -201,28 +210,28 @@ These rules are enforced at every audit cycle opening:
 | CF-002 | Correlated AI failure modes — test protocol defined, swarm deployment pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Major |
 | CF-003 | Identity continuity during split-brain — doctrine defined, threshold calibration pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Major |
 
-*CF-001 remains Blocking — parameters are Analogous confidence pending first hardware prototype validation. No Specification-level autonomous architecture may be approved until τ=50ms WDT and H-bridge parameters are measured.*
+*CF-001 remains Blocking — parameters are Analogous confidence pending first hardware prototype validation.*
 
 ### Emergence
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| EM-001 | Behavioral opacity detection threshold — at what measurable divergence does watchdog escalation trigger? Requires CF-001 resolution before specification. | `Challenges/Emergence.md` | Open | High |
-| EM-002 | Correlated failure detection in multi-agent consensus — how does the Forge distinguish genuine independent agreement from amplified shared blind spots? | `Challenges/Emergence.md` | Open | High |
-| EM-003 | Gradual autonomy transition detection — what observable signals distinguish incremental capability expansion from a phase-shift threshold? No current sensor doctrine. | `Challenges/Emergence.md` | Open | Medium |
-| EM-004 | Governance substrate integrity under emergent agent access — if an emergent agent gains write access to governance files, what physical or cryptographic backstop prevents constitutional erosion? Mirrors GOV-003, SEC-007. | `Challenges/Emergence.md` | Open | Critical |
+| EM-001 | Behavioral opacity detection threshold — depends on CF-001 resolution | `Challenges/Emergence.md` | Open | High |
+| EM-002 | Correlated failure detection in multi-agent consensus | `Challenges/Emergence.md` | Open | High |
+| EM-003 | Gradual autonomy transition detection — no current sensor doctrine | `Challenges/Emergence.md` | Open | Medium |
+| EM-004 | Governance substrate integrity under emergent agent access — mirrors GOV-003, SEC-007 | `Challenges/Emergence.md` | Open | Critical |
 
-*EM-001 depends on CF-001 resolution — watchdog threshold cannot be specified until hardware watchdog parameters reach Measured confidence.*
-*EM-004 is Critical — no fast resolution path; architectural decision above repository level required. Mirrors UNK-009.*
+*EM-001 depends on CF-001 resolution.*
+*EM-004 is Critical — no fast resolution path; architectural decision above repository level required.*
 
 ### Waste
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| WA-001 | Embedded complexity preservation metric — no formal measure exists for whether triage decisions are preserving functional complexity versus routing prematurely to reduction. Needed before Gate_02 promotion from Exploration. | `Challenges/Waste.md` | Open | Major |
-| WA-002 | Hazardous fraction identification reliability — no validated identification protocol or training standard exists for asbestos, heavy metals, and BFR-containing materials in mixed waste streams. Cross-ref CE-004. | `Challenges/Waste.md` | Open | Critical |
-| WA-003 | Informal sector integration doctrine — no framework exists for how the Forge interfaces with, supports, or avoids displacing existing informal waste recovery workers at community deployment scale. | `Challenges/Waste.md` | Open | Major |
-| WA-004 | Negative-value waste fraction disposal — materials that cannot be recovered and are hazardous to store require a disposal doctrine. No owning file currently covers this. Cross-ref GR-003. | `Challenges/Waste.md` | Open | Critical |
+| WA-001 | Embedded complexity preservation metric undefined | `Challenges/Waste.md` | Open | Major |
+| WA-002 | Hazardous fraction identification reliability — no validated identification protocol | `Challenges/Waste.md` | Open | Critical |
+| WA-003 | Informal sector integration doctrine undefined | `Challenges/Waste.md` | Open | Major |
+| WA-004 | Negative-value waste fraction disposal doctrine undefined | `Challenges/Waste.md` | Open | Critical |
 
 *WA-002 and WA-004 are Critical — no sustained mixed-waste operations without hazardous fraction identification and negative-value disposal doctrine.*
 
@@ -230,99 +239,96 @@ These rules are enforced at every audit cycle opening:
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| BF-001 | Ultrasonic antifouling energy budget — piezoelectric transducer array effectiveness and energy consumption at operational depth not characterized. Active approach, unvalidated. | `Challenges/Biofouling.md` | Open | Major |
-| BF-002 | Biomimetic surface topography durability — micro-texture effectiveness and abrasion resistance in high-turbulence or sediment-laden water not characterized. | `Challenges/Biofouling.md` | Open | Major |
-| BF-003 | Regional fouling rate differential — no maintenance cycle calibration doctrine exists for varying latitude, season, and biological activity. | `Challenges/Biofouling.md` | Open | Major |
-| BF-004 | Shed panel reef substrate viability — no validation protocol confirms that shed colonized panels do not leach antifoulant or polymer toxins as reef substrate. Cross-ref CE-001, Plastics.md toxicity doctrine. | `Challenges/Biofouling.md` | Open | Major |
+| BF-001 | Ultrasonic antifouling energy budget not characterized | `Challenges/Biofouling.md` | Open | Major |
+| BF-002 | Biomimetic surface topography durability not characterized | `Challenges/Biofouling.md` | Open | Major |
+| BF-003 | Regional fouling rate differential — no maintenance cycle calibration | `Challenges/Biofouling.md` | Open | Major |
+| BF-004 | Shed panel reef substrate viability — toxin leach unvalidated | `Challenges/Biofouling.md` | Open | Major |
 
 ### Planned Obsolescence
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| PO-001 | Firmware re-baselining legal boundary doctrine — the Forge's position that firmware lock is a material property, not a legal boundary, is philosophically grounded but operationally untested. Jurisdiction-variable. | `Challenges/Planned_Obsolescence.md` | Open | Major |
-| PO-002 | Potting compound removal chemistry — no validated thermal or chemical protocol exists for removing epoxy potting without damaging enclosed components. Blocks non-destructive recovery of potted assemblies. | `Challenges/Planned_Obsolescence.md` | Open | Major |
-| PO-003 | Proprietary connector adapter coverage — no systematic inventory of connector types in likely salvage streams exists. Feeds EL-001 (Forge-Standard interface spec). | `Challenges/Planned_Obsolescence.md` | Open | Minor |
-| PO-004 | Community re-baselining skill transfer standard — no owning file defines the training and documentation standard for returning repairability to communities. Cross-ref CE-004, EP-004. | `Challenges/Planned_Obsolescence.md` | Open | Major |
+| PO-001 | Firmware re-baselining legal boundary doctrine — operationally untested | `Challenges/Planned_Obsolescence.md` | Open | Major |
+| PO-002 | Potting compound removal chemistry — no validated protocol | `Challenges/Planned_Obsolescence.md` | Open | Major |
+| PO-003 | Proprietary connector adapter coverage — no systematic inventory | `Challenges/Planned_Obsolescence.md` | Open | Minor |
+| PO-004 | Community re-baselining skill transfer standard undefined | `Challenges/Planned_Obsolescence.md` | Open | Major |
 
 ### Water Scarcity
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| WS-001 | Optimal energy harvesting for high-humidity low-kinetic environments — no validated design for off-grid filtration power in still-air, high-humidity contexts. Feeds TH-001 sizing. | `Challenges/Water.md` | Open | Major |
-| WS-002 | Heavy metal stabilization chemistry for tropical climates — long-term stability of isolated outputs in high-temperature, high-humidity storage not characterized. | `Challenges/Water.md` | Open | Major |
-| WS-003 | Stratification diminishing returns threshold — contamination levels at which stratification-based approaches reach declining effectiveness not defined. Cross-ref MG-002, SC-002. | `Challenges/Water.md` | Open | Major |
-| WS-004 | Community adoption and maintenance protocol — the social and institutional layer governing whether a technically sound system is used and maintained. No owning file currently defines this. | `Challenges/Water.md` | Open | Major |
+| WS-001 | Optimal energy harvesting for high-humidity low-kinetic environments | `Challenges/Water.md` | Open | Major |
+| WS-002 | Heavy metal stabilization chemistry for tropical climates | `Challenges/Water.md` | Open | Major |
+| WS-003 | Stratification diminishing returns threshold | `Challenges/Water.md` | Open | Major |
+| WS-004 | Community adoption and maintenance protocol undefined | `Challenges/Water.md` | Open | Major |
 
-*TH-003 (atmospheric moisture yield) remains the Blocking unknown for Living Waters deployment — tracked in Thermal Systems cluster.*
+*TH-003 remains the Blocking unknown for LW-005 atmospheric harvesting.*
 
 ### Living Waters
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| LW-UNK-001 | Volatile co-distillation characterization for LW-001 across salvage-context input stream types | `Tests/Living_Waters.md` | Partially Addressed — LW-TEST-102 defines test approach; empirical validation pending | Critical |
+| LW-UNK-001 | Volatile co-distillation characterization for LW-001 | `Tests/Living_Waters.md` | Partially Addressed — LW-TEST-102 defines test approach; empirical validation pending | Critical |
 | LW-UNK-002 | Membrane survivability for LW-003 at sustained operational depth | `Tests/Living_Waters.md` | Open | Major |
-| LW-UNK-003 | Lumen structural integrity limits for LW-003 freshwater conduit under deep pressure | `Tests/Living_Waters.md` | Partially Addressed — implosion threshold characterized; salvage material validation pending | Critical |
+| LW-UNK-003 | Lumen structural integrity limits for LW-003 under deep pressure | `Tests/Living_Waters.md` | Partially Addressed — implosion threshold characterized; salvage material validation pending | Critical |
 | LW-UNK-004 | Biofouling rate characterization for LW-003 in target deployment zones | `Tests/Living_Waters.md` | Open | Major |
-| LW-UNK-005 | Energy balance: LW-001 with MVR vs. LW-002 surface RO at equivalent throughput | `Tests/Living_Waters.md` | Partially Addressed — energy profiles established; empirical validation at Forge scale pending | Major |
+| LW-UNK-005 | Energy balance: LW-001 with MVR vs. LW-002 surface RO | `Tests/Living_Waters.md` | Partially Addressed — energy profiles established; empirical validation pending | Major |
 | LW-UNK-006 | Salvage-compatible membrane sourcing for any RO pathway | `Tests/Living_Waters.md` | Open | Major |
-| LW-UNK-007 | Draw solution regeneration chemistry and energy cost for LW-007 forward osmosis | `Tests/Living_Waters.md` | Open | Major |
+| LW-UNK-007 | Draw solution regeneration chemistry and energy cost for LW-007 | `Tests/Living_Waters.md` | Open | Major |
 | LW-UNK-008 | Site characterization → pathway selection decision framework | `Tests/Living_Waters.md` | Declared — formal framework not yet written | Minor |
-| LW-UNK-009 | Salvage sourcing path for fence-mounted AWG variant (LW-005a) — required before Forge build candidacy | `Tests/Living_Waters.md` | Open | Minor |
+| LW-UNK-009 | Salvage sourcing path for fence-mounted AWG variant (LW-005a) | `Tests/Living_Waters.md` | Open | Minor |
 
-*LW-UNK-001 (volatile co-distillation) is CRITICAL safety gap — distillate may be concentrated toxin stream without fractional staging. Blocks any potable output claim from LW-001.*
-*LW-UNK-003 (lumen implosion) is CRITICAL for LW-003 deployment — 4.9 MPa net crush load at 500 m.*
-*TH-003 (atmospheric moisture yield under deployment conditions) remains the Blocking unknown for LW-005 atmospheric harvesting — tracked in Thermal Systems cluster.*
+*LW-UNK-001 CRITICAL — distillate may be concentrated toxin stream; blocks potable output claim from LW-001.*
+*LW-UNK-003 CRITICAL — 4.9 MPa net crush load at 500 m; standard salvage tubing will fail.*
 
 ### Trophic Forge
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| TF-001 | Phototaxis yield at Forge scale unvalidated — blocks organizing principle validation | `Tests/Trophic_Forge.md` | Open | Critical |
-| TF-002 | Prior art search incomplete — entomoponics and phototactic tri-trophic aquaponics identified; full literature search pending | `Tests/Trophic_Forge.md` | Partially Addressed | Major |
+| TF-001 | Phototaxis yield at Forge scale unvalidated | `Tests/Trophic_Forge.md` | Open | Critical |
+| TF-002 | Prior art search incomplete | `Tests/Trophic_Forge.md` | Partially Addressed | Major |
 | TF-003 | Fish nutrient output at Forge stocking density uncharacterized | `Tests/Trophic_Forge.md` | Open | Major |
-| TF-004 | Fish species selection not determined — site-conditioned; no universal answer | `Tests/Trophic_Forge.md` | Open | Major |
-| TF-005 | Phytoremediation loop closure unvalidated — auxiliary filtration may be required | `Tests/Trophic_Forge.md` | Open | Major |
-| TF-006 | Non-target insect capture rate — ethical unknown; Ethical_Constraints escalation candidate | `Tests/Trophic_Forge.md` | Partially Addressed — draft nocturnal operating protocol defined; empirical validation pending | High — Ethical_Constraints escalation candidate |
-| TF-007 | Single node failure propagation uncharacterized — resilience claim unvalidated | `Tests/Trophic_Forge.md` | Open | Major |
+| TF-004 | Fish species selection not determined | `Tests/Trophic_Forge.md` | Open | Major |
+| TF-005 | Phytoremediation loop closure unvalidated | `Tests/Trophic_Forge.md` | Open | Major |
+| TF-006 | Non-target insect capture rate — Ethical_Constraints escalation candidate | `Tests/Trophic_Forge.md` | Partially Addressed — draft nocturnal protocol defined; empirical validation pending | High — Ethical_Constraints escalation candidate |
+| TF-007 | Single node failure propagation uncharacterized | `Tests/Trophic_Forge.md` | Open | Major |
 | TF-008 | Minimum viable loop scale unknown | `Tests/Trophic_Forge.md` | Open | Major |
-| TF-009 | Interaction boundary with Living_Waters.md at pond node undefined — joint resolution required | `Tests/Trophic_Forge.md` + `Tests/Living_Waters.md` | Open | Minor |
-| TF-010 | Seasonal and climatic variability uncharacterized — all yield claims are peak-condition estimates only | `Tests/Trophic_Forge.md` | Open | Major |
+| TF-009 | Interaction boundary with Living_Waters.md at pond node undefined | `Tests/Trophic_Forge.md` + `Tests/Living_Waters.md` | Open | Minor |
+| TF-010 | Seasonal and climatic variability uncharacterized | `Tests/Trophic_Forge.md` | Open | Major |
 
-*TF-001 is Critical/Blocking — the entire Trophic Forge organizing principle rests on phototaxis yield being sufficient to sustain the fish node without purchased feed. If this claim fails, the organizing principle fails.*
-*TF-006 is an ethical unknown — if non-target capture rate cannot be bounded below harmful threshold, escalate to Ethical_Constraints.md before any system expansion.*
-*TF-009 joint resolution required with Living_Waters.md — Living_Waters.md governs water quality at pond node; Trophic_Forge.md governs biological productivity.*
+*TF-001 Critical/Blocking — entire organizing principle rests on phototaxis yield.*
+*TF-006 ethical unknown — halt expansion if non-target capture threshold cannot be bounded.*
 
 ### Solar Descent
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| SD-UNK-001 | Flux delivery at Forge-scale salvage fiber unvalidated — telecom fiber likely unsuitable; light wells elevated as alternative | `Tests/Solar_Descent.md` | Open | Critical |
-| SD-UNK-002 | Achievable underground temperature at Forge build quality unknown — conservative 300–800°C; stretch 800–1500°C; research peak 2000°C+ | `Tests/Solar_Descent.md` | Open | Critical |
-| SD-UNK-003 | Molten tin termination (SD-001a) viability unconfirmed — SD-001 viable without it | `Tests/Solar_Descent.md` | Open | Major |
-| SD-UNK-004 | Host geology fracturing threshold unknown — site-specific; blocks all excavation and chamber construction | `Tests/Solar_Descent.md` | Open | Critical — parallels FA-001 |
+| SD-UNK-001 | Flux delivery at Forge-scale salvage fiber unvalidated | `Tests/Solar_Descent.md` | Open | Critical |
+| SD-UNK-002 | Achievable underground temperature at Forge build quality unknown | `Tests/Solar_Descent.md` | Open | Critical |
+| SD-UNK-003 | Molten tin termination (SD-001a) viability unconfirmed | `Tests/Solar_Descent.md` | Open | Major |
+| SD-UNK-004 | Host geology fracturing threshold unknown — blocks all excavation | `Tests/Solar_Descent.md` | Open | Critical — parallels FA-001 |
 | SD-UNK-005 | Working fluid salvage sourcing for SD-002 unconfirmed | `Tests/Solar_Descent.md` | Open | Major |
 | SD-UNK-006 | Parasitic pump load for SD-002 uncharacterized | `Tests/Solar_Descent.md` | Open | Major |
 | SD-UNK-007 | Chamber self-discharge rate unknown | `Tests/Solar_Descent.md` | Open | Major |
 | SD-UNK-008 | Stirling engine salvage availability at required scale unconfirmed | `Tests/Solar_Descent.md` | Open | Major |
-| SD-UNK-009 | Excavation feasibility at Forge scale unassessed — site-conditioned; blocks chamber construction | `Tests/Solar_Descent.md` | Open | Major |
-| SD-UNK-010 | Waste heat cascade interface with Living_Waters.md undefined — joint resolution required | `Tests/Solar_Descent.md` + `Tests/Living_Waters.md` | Open | Minor |
-| SD-UNK-011 | Receiver material survivability uncharacterized — thermal shock, oxidation, creep, spalling at concentrated flux | `Tests/Solar_Descent.md` | Open | Major |
-| SD-UNK-012 | Dust and alignment stability uncharacterized — may become dominant maintenance burden for SD-001 | `Tests/Solar_Descent.md` | Open | Major |
+| SD-UNK-009 | Excavation feasibility at Forge scale unassessed | `Tests/Solar_Descent.md` | Open | Major |
+| SD-UNK-010 | Waste heat cascade interface with Living_Waters.md undefined | `Tests/Solar_Descent.md` + `Tests/Living_Waters.md` | Open | Minor |
+| SD-UNK-011 | Receiver material survivability uncharacterized | `Tests/Solar_Descent.md` | Open | Major |
+| SD-UNK-012 | Dust and alignment stability uncharacterized | `Tests/Solar_Descent.md` | Open | Major |
 
-*SD-UNK-004 carries same governance weight as FA-001 — no excavation, no chamber design, no construction without site geomechanical assessment. Added to Critical Watch.*
-*SD-UNK-002 is Critical — until resolved, all power conversion planning must assume conservative lower bound (~500°C) to avoid designing for temperatures the system cannot reach.*
-*SD-UNK-010 joint resolution required with Living_Waters.md — Living_Waters.md governs temperature and purity requirements at heat exchanger; Solar_Descent.md governs heat delivery up to that point.*
+*SD-UNK-004 carries same governance weight as FA-001 — no excavation without geomechanical assessment.*
+*SD-UNK-002 Critical — all power conversion planning must assume conservative lower bound (~500°C).*
 
 ### Critical Minerals
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| CM-001 | Real-time material assay integration — no validated inline characterization method exists for critical mineral fraction identification during processing. Blocks dynamic routing decisions. Cross-ref CE-002, CE-003. | `Challenges/Critical_Minerals.md` | Open | Major |
-| CM-002 | Acid leach reagent recovery and closed-loop doctrine — where chemical separation is necessary, reagent recovery and waste stream management protocol is undefined. Blocks hydrometallurgical processing. Cross-ref GR-003. | `Challenges/Critical_Minerals.md` | Open | Critical |
-| CM-003 | Functional substitute performance floor — no minimum performance specification exists for alloy substitute applications. No acceptance criterion for substitute development. Cross-ref PR-001, GF-002. | `Challenges/Critical_Minerals.md` | Open | Major |
-| CM-004 | Urban ore database coverage — no systematic inventory of critical mineral content by device type, generation, and condition for likely salvage streams. Recovery yields currently Analogous. | `Challenges/Critical_Minerals.md` | Open | Major |
+| CM-001 | Real-time material assay integration undefined | `Challenges/Critical_Minerals.md` | Open | Major |
+| CM-002 | Acid leach reagent recovery and closed-loop doctrine undefined | `Challenges/Critical_Minerals.md` | Open | Critical |
+| CM-003 | Functional substitute performance floor undefined | `Challenges/Critical_Minerals.md` | Open | Major |
+| CM-004 | Urban ore database coverage insufficient | `Challenges/Critical_Minerals.md` | Open | Major |
 
-*CM-002 is Critical — no hydrometallurgical processing may proceed without closed-loop reagent recovery and waste stream doctrine.*
+*CM-002 Critical — no hydrometallurgical processing before closed-loop reagent recovery specified.*
 
 ### Hardware Modules
 
@@ -357,9 +363,9 @@ These rules are enforced at every audit cycle opening:
 | SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | Medium |
 | SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | Low |
 | SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | Medium |
-| SR-011 | Shell ROI efficiency — panel swap energy cost vs. intake recovery gain | `Tests/Support_Raft.md` | Open | Medium |
-| SR-012 | Mechanical bio-damping — colonization impact on wave-surge converter moving parts | `Tests/Support_Raft.md` | Open | Medium |
-| SR-013 | Buoyancy shift — calcifying organism mass limit before SWATH control overwhelmed | `Tests/Support_Raft.md` | Open | Medium |
+| SR-011 | Shell ROI efficiency | `Tests/Support_Raft.md` | Open | Medium |
+| SR-012 | Mechanical bio-damping | `Tests/Support_Raft.md` | Open | Medium |
+| SR-013 | Buoyancy shift — calcifying organism mass limit | `Tests/Support_Raft.md` | Open | Medium |
 
 ### Salvage & Fabrication
 
@@ -465,8 +471,8 @@ These rules are enforced at every audit cycle opening:
 | WW-004 | Dust toxicity thresholds for mixed-species milling uncharacterized | `Operations/Woodworking.md` | Open | Major |
 | WW-005 | NDT standards for IFM detection not validated | `Operations/Woodworking.md` | Open | Critical |
 
-*WW-004 is Blocking for sustained mixed-species operations without P100 respirator.*
-*WW-005 is Blocking for processing raw urban salvage through any powered machinery.*
+*WW-004 Blocking for sustained mixed-species operations without P100 respirator.*
+*WW-005 Blocking for processing raw urban salvage through any powered machinery.*
 
 ### Facilities
 
@@ -477,7 +483,7 @@ These rules are enforced at every audit cycle opening:
 | FA-003 | Legal zoning and permitting not assessed | `Architecture/Facilities.md` | Open | Major |
 | FA-004 | RDC heat load impact on operator safety not quantified | `Architecture/Facilities.md` | Open | Minor |
 
-*FA-001 is Critical — blocks all hot operations and SP-006 (emergency response).*
+*FA-001 Critical — blocks all hot operations and SP-006 (emergency response).*
 
 ### Safety
 
@@ -490,8 +496,7 @@ These rules are enforced at every audit cycle opening:
 | SP-005 | Regulatory compliance and permitting not assessed | `Admin/Safety_Protocols.md` | Open | Major |
 | SP-006 | Emergency response procedures not defined | `Admin/Safety_Protocols.md` | Open | Major |
 
-*SP-006 is blocked by FA-001 — cannot define site evacuation without a site.*
-*AS-004 (noise exposure limits) cross-references SP-003 — resolve together.*
+*SP-006 blocked by FA-001 — cannot define site evacuation without a site.*
 
 ### Economics
 
@@ -502,7 +507,7 @@ These rules are enforced at every audit cycle opening:
 | EC-004 | Market rate data not maintained | `Admin/Economics.md` | Open | Minor |
 | EC-005 | Legal and tax compliance not assessed | `Admin/Economics.md` | Open | Major |
 
-*EC-002 is Critical — blocks TR-001 closure; depends on EV-001.*
+*EC-002 Critical — blocks TR-001 closure; depends on EV-001.*
 
 ### Governance Migration
 
@@ -511,7 +516,7 @@ These rules are enforced at every audit cycle opening:
 | GMP-003 | Adversarial review underspecified at v0 single-contributor | `Admin/Governance_Migration_Protocol.md` | Open | Major |
 | GMP-004 | Ratification authentication gap mirrors GOV-006 | `Admin/Governance_Migration_Protocol.md` | Open | Major |
 
-*GMP-004 is the highest-risk attack vector on Track B amendment process — depends on SEC-007.*
+*GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007.*
 
 ### Repository Structure
 
@@ -528,23 +533,22 @@ These rules are enforced at every audit cycle opening:
 | PR-003 | Traceable dimensional claims required at Specification | `Architecture/Precision.md` | Open | Major |
 | PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | Major |
 
-*PR-001 is Critical — blocks T1/T2 part claims; closes CO-002 and partially resolves ME-001 when declared.*
-*PR-004 is a prerequisite for PR-001 ceiling declaration.*
+*PR-001 Critical — blocks T1/T2 part claims; PR-004 is a prerequisite.*
 
 ### Pending Corrections
 
 | ID | Title | Files Affected | Status | Priority |
 |---|---|---|---|---|
-| PC-001 | Verification Ref corrections | All 10 files corrected to Admin/Verification_Gates_LF.md | Resolved | Major |
-| PC-002 | Upstream reference corrections — all 7 files now include Facilities.md upstream link | All 7 files corrected | Resolved | Minor |
-| PC-003 | New file cross-reference corrections — all 10 files updated with 2026-06-06 file references | All 10 files corrected | Resolved | Minor |
+| PC-001 | Verification Ref corrections | All 10 files corrected to `Admin/Verification_Gates_LF.md` | Resolved | Major |
+| PC-002 | Upstream reference corrections | All 7 files corrected | Resolved | Minor |
+| PC-003 | New file cross-reference corrections | All 10 files corrected | Resolved | Minor |
 | PC-004 | Stale name corrections — Challenges/Water.md and Planned_Obsolescence.md | Both files corrected | Resolved | Minor |
 
 ### Cross-Module
 
 | ID | Title | Owning Files | Status | Priority |
 |---|---|---|---|---|
-| UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` SC-004 | Open | Major |
+| UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` | Open | Major |
 | UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | Critical |
 
 ### Future / Deferred
@@ -561,7 +565,7 @@ These rules are enforced at every audit cycle opening:
 | RC-005 | Coordination Failure | None yet | Candidate |
 | RC-006 | Institutional Ossification | None yet | Candidate |
 
-*RC-001 through RC-006 are Reflexive Challenge candidates — pressures created by the Forge's own capability and scale. None have owning files yet. Log against Challenges/ directory on next major architecture review.*
+*RC-001 through RC-006 are Reflexive Challenge candidates — log against Challenges/ on next major architecture review.*
 
 ---
 
@@ -580,56 +584,56 @@ These rules are enforced at every audit cycle opening:
 
 *Expiry Rule is active. Check this table at the opening of each audit cycle.*
 
-**Tier 1 Axiom verification is the mandatory first step** — confirm axiom text in `Admin/Governance_Charter.md` matches prior committed version before proceeding to Expiry Watch. Any unratified change is a Constitutional violation.
+**Tier 1 Axiom verification is the mandatory first step** — confirm axiom text in `Admin/Governance_Charter.md` matches prior committed version before proceeding. Any unratified change is a Constitutional violation.
 
 FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
 
-GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path — requires operational cycles.
+GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executing resolution path. GOV-005 remains Critical with no fast resolution path. GOV-007 In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008. GOV-008 exit condition not yet met.
 
-GOV-007 moved to In Progress — Genesis Phase Protocol executing. Full resolution depends on GOV-008 (minimum hardware/agent quorum definition). GOV-008 exit condition not yet met — monitor at next audit opening.
+**RIP-001 Critical** — GitHub releases identified as v0 resolution path. Confirm release cadence established before closing.
 
-**RIP-001 (prior-state archival) — Critical.** GitHub releases identified as v0 resolution path. Confirm release cadence is established before closing this entry.
+**EN-001 Critical/Blocking** — no structural specification may be promoted without validated safety factors for salvaged materials.
 
-**EN-001 (validated safety factors for salvaged materials) — Critical/Blocking.** No structural specification in any Operations/ or Architecture/ file may be promoted to Specification without this resolved.
-
-**CF-001 (hardware watchdog minimum standard) — In Progress/Blocking.** Parameters now defined in Electronics.md (τ=50ms WDT, cryptographic heartbeat, H-bridge cutoff). Remains Blocking until first hardware prototype validates parameters at Measured confidence.
+**CF-001 In Progress/Blocking** — parameters defined (τ=50ms WDT). Remains Blocking until first hardware prototype validates at Measured confidence.
 
 ### Critical Watch
 
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| RIP-001 | Prior-state archival — RS-003 (Archive/ directory) must be created first |
-| SEC-007 | External root-of-trust — flagged Critical from first logging; architectural decision above repository level required |
-| UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007; no fast resolution path |
-| EV-003 | Battery thermal containment — no enclosed battery bank may be commissioned until resolved |
+| RIP-001 | Prior-state archival — confirm GitHub release cadence before closing |
+| SEC-007 | External root-of-trust — architectural decision above repository level required |
+| UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007 |
+| EC-008 | Inferred authorization — softest point in permission model; interim default (no material alteration) in place; formal resolution required before operational deployment |
+| EC-011 | Human governance adversary model — load-bearing assumption under "capability never outruns permission"; no protection if permission source is compromised |
+| EV-003 | Battery thermal containment — no enclosed battery bank until resolved |
 | PL-001 | Halogenated polymer contamination — no hot pyrolysis run before triage protocol validated |
-| WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening workflow validated |
+| WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening validated |
 | EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
-| CF-001 | Hardware watchdog — In Progress; parameters defined (Analogous); Blocking until hardware prototype validates at Measured confidence |
-| TH-003 | Atmospheric moisture yield under deployment conditions — Blocking for Living Waters deployment; requires deployment-specific measurement |
-| FA-001 | Site not confirmed — no hot operations until site physically assessed against Facilities.md constraints |
-| EC-002 | Operating cost baseline not established — blocks TR-001 (v1 profitability); depends on EV-001 |
-| PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; prerequisite PR-004 must run first |
-| EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation; blocks watchdog escalation specification |
-| EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007; no fast resolution path |
+| CF-001 | Hardware watchdog — In Progress; Blocking until hardware prototype validates at Measured confidence |
+| TH-003 | Atmospheric moisture yield — Blocking for Living Waters deployment |
+| FA-001 | Site not confirmed — no hot operations until site physically assessed |
+| EC-002 | Operating cost baseline not established — blocks TR-001; depends on EV-001 |
+| PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; PR-004 prerequisite |
+| EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation |
+| EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007 |
 | WA-002 | Hazardous fraction identification reliability — safety-critical before mixed-waste operations |
-| WA-004 | Negative-value waste fraction disposal — no owning file; no doctrine for hazardous unrecoverable material; mirrors GR-003 gap |
-| CM-002 | Acid leach reagent recovery doctrine — no hydrometallurgical processing before closed-loop reagent recovery specified |
-| CE-003 | Field polymer identification reliability not validated — Critical; blocks first hot pyrolysis run; false negative produces HCl/dioxins |
-| TF-006 | Non-target insect capture — Ethical_Constraints escalation candidate; systematic pollinator/predator capture makes system ecologically negative regardless of yield; halt expansion if threshold cannot be bounded |
-| SD-UNK-004 | Host geology fracturing threshold — no excavation or chamber construction without site geomechanical assessment; parallels FA-001 in governance weight |
-| LW-UNK-001 | Volatile co-distillation in LW-001 — CRITICAL safety gap; without fractional staging distillate may be concentrated toxin stream; blocks potable output claim |
-| LW-UNK-003 | LW-003 lumen implosion threshold — CRITICAL for deployment; 4.9 MPa net crush load at 500 m; standard salvage tubing will fail |
+| WA-004 | Negative-value waste fraction disposal — no owning file; mirrors GR-003 gap |
+| CM-002 | Acid leach reagent recovery doctrine — no hydrometallurgical processing before closed-loop specified |
+| CE-003 | Field polymer identification reliability — Critical; blocks first hot pyrolysis run |
+| TF-006 | Non-target insect capture — Ethical_Constraints escalation candidate; halt expansion if threshold cannot be bounded |
+| SD-UNK-004 | Host geology fracturing threshold — no excavation without geomechanical assessment; parallels FA-001 |
+| LW-UNK-001 | Volatile co-distillation in LW-001 — CRITICAL safety gap; blocks potable output claim |
+| LW-UNK-003 | LW-003 lumen implosion — CRITICAL; 4.9 MPa net crush load at 500 m |
 
 ### Blocking Watch
 
 | ID | Note |
 |----|------|
 | GOV-008 | Minimum quorum — GOV-007 Genesis Phase exit condition not yet met |
-| PL-002 | Reactor pressure control — no reactor fabrication before pressure relief system specified |
-| WW-004 | Mixed-species dust — interim mitigation (P100 mandatory) in place; formal characterization required before close |
-| VG-001 | Gate synchronization authority chain — non-blocking at Exploration; Blocking before first Specification promotion |
+| PL-002 | Reactor pressure control — no reactor fabrication before pressure relief specified |
+| WW-004 | Mixed-species dust — interim mitigation (P100 mandatory); formal characterization required |
+| VG-001 | Gate synchronization authority chain — Blocking before first Specification promotion |
 
 ---
 
@@ -643,21 +647,21 @@ GOV-007 moved to In Progress — Genesis Phase Protocol executing. Full resoluti
 | FL-002 | Reduction module unassigned | Resolved — Operations/Gate_03_Reduction.md created | 2026-05-15 |
 | UNK-007 | Reduction module upstream dependency | Resolved — Gate_03_Reduction.md creation closes the gap | 2026-05-15 |
 | GK-001 | Forge loop definition | Resolved — defined in Architecture/Geck_forge_seed.md Section III | May 2026 |
-| GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created 2026-05-19 | 2026-05-20 |
-| UNK-006 | Master safety registry — facility siting | Resolved — Architecture/Facilities.md created; dependent files reference corrected | 2026-06-06 |
-| GK-005 | Precision_LF.md not yet created | Resolved — Architecture/Precision.md created; stale name corrected | 2026-06-06 |
+| GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created | 2026-05-20 |
+| UNK-006 | Master safety registry — facility siting | Resolved — Architecture/Facilities.md created | 2026-06-06 |
+| GK-005 | Precision_LF.md not yet created | Resolved — Architecture/Precision.md created | 2026-06-06 |
 | PR-005 | GK-005 resolution confirmation pending | Resolved — Geck_forge_seed.md Section V updated | 2026-06-08 |
-| EP-005 | Acceptable risk threshold — partial resolution | Partially resolved — Admin/Safety_Protocols.md Section I defines consequence categories; full threshold definition remains open in Engineer_Protocols.md sidecar | 2026-06-06 |
+| EP-005 | Acceptable risk threshold — partial resolution | Partially resolved — Safety_Protocols.md Section I defines consequence categories; full threshold remains open in Engineer_Protocols.md sidecar | 2026-06-06 |
 | EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine | 2026-06-06 |
-| GOV-001 | Governance migration mechanics incompletely operationalized | Resolved — Admin/Governance_Migration_Protocol.md created with two-track migration system | 2026-06-06 |
-| PC-004 | Stale name corrections — Water.md and Planned_Obsolescence.md | Resolved — corrections applied during Challenges/ retrofit pass | 2026-06-11 |
-| FA-005 | UNK-006 resolution confirmation pending | Resolved — Facilities.md confirmed as owning file; all dependent files updated | 2026-06-11 |
-| SR-010 | Thermal management modularity for optional Gate hosting | Resolved — declared modular/expandable in Support_Raft.md v0.5 Mechanical Design section | 2026-06-11 |
+| GOV-001 | Governance migration mechanics | **Archive entry premature — un-archived 2026-06-18.** `Admin/Governance_Migration_Protocol.md` created 2026-06-06 as resolution path but has not been audited against charter constraints. Status returned to In Progress in active index. | 2026-06-06 / corrected 2026-06-18 |
+| PC-004 | Stale name corrections | Resolved — corrections applied during Challenges/ retrofit pass | 2026-06-11 |
+| FA-005 | UNK-006 resolution confirmation pending | Resolved — Facilities.md confirmed as owning file | 2026-06-11 |
+| SR-010 | Thermal management modularity | Resolved — declared modular/expandable in Support_Raft.md v0.5 | 2026-06-11 |
 | RS-002 | Forge_flow.md casing outlier | Resolved — corrected in Discovery.md Rename Registry | 2026-06-11 |
 | RS-003 | Archive/ directory not created | Resolved — Archive/README.md created with append-only doctrine | 2026-06-11 |
-| FD-004 | Support_Raft.md reverse upstream link to Friction_Dynamics.md | Resolved — bidirectional cross-reference confirmed in Support_Raft.md v0.5 | 2026-06-11 |
-| GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 confirmed resolved; Governance_Migration_Protocol.md ownership confirmed | 2026-06-11 |
-| GMP-002 | Canonical ownership transfer not recorded in Charter | Resolved — ownership transfer from Governance_Charter.md confirmed and logged | 2026-06-11 |
+| FD-004 | Support_Raft.md reverse upstream link | Resolved — bidirectional cross-reference confirmed | 2026-06-11 |
+| GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 confirmed resolved; GMP ownership confirmed | 2026-06-11 |
+| GMP-002 | Canonical ownership transfer not recorded in Charter | Resolved — ownership transfer confirmed and logged | 2026-06-11 |
 | RIP-003 | Violation incident log location undefined | Resolved — Admin/Logs/violations.md declared as canonical violation incident log | 2026-06-11 |
 
 ---
@@ -665,45 +669,25 @@ GOV-007 moved to In Progress — Genesis Phase Protocol executing. Full resoluti
 ## Audit Trail
 
 **v0.1–v0.91:** See prior version history.
-
 **v1.0 — May 2026:** First full audit cycle across all primary documents complete.
-
-**v1.5 — 2026-05-19:** Gate_01_Intake, Gate_03_Reduction, Gate_06_Fabrication audit. GI-006, GI-007, GR-006, GR-007, GR-008, GF-006, GF-007 added.
-
-**v1.6 — 2026-05-20:** Gate_07_Utilization.md created. GU-001 through GU-004 added. Electronics.md retrofitted — EL-005 through EL-008 added. GF-005 resolved.
-
-**v1.7 — 2026-05-23:** Admin reconciliation cycle. GOV-001 through GOV-007, AP-004 through AP-007 added.
-
-**v1.8 — 2026-05-23:** Repository_Integrity_Protocol.md created. RIP-001 through RIP-005 added. GOV-002, GOV-003, AP-007 moved to In Progress.
-
+**v1.5 — 2026-05-19:** Gate_01_Intake, Gate_03_Reduction, Gate_06_Fabrication audit. GI-006, GI-007, GR-006–008, GF-006–007 added.
+**v1.6 — 2026-05-20:** Gate_07_Utilization.md created. GU-001–004 added. EL-005–008 added. GF-005 resolved.
+**v1.7 — 2026-05-23:** Admin reconciliation cycle. GOV-001–007, AP-004–007 added.
+**v1.8 — 2026-05-23:** Repository_Integrity_Protocol.md created. RIP-001–005 added. GOV-002, GOV-003, AP-007 In Progress.
 **v1.9 — 2026-05-25:** Governance_Charter.md v0.5. GOV-007 In Progress. GOV-008, GOV-009, TR-002, GU-005, AS-004 added.
-
-**v1.9a — 2026-05-28:** Security_Protocols.md v0.2 audit. GOV-006, RIP-005 In Progress. SEC-001 through SEC-007, CT-004, UNK-009 added.
-
-**v2.0 — 2026-05-30:** Energy.md, Plastics.md, Woodworking.md reconciled. EV-002, EV-003, PL-001 through PL-005, WW-001 through WW-005 added. Expiry Watch restructured.
-
-**v2.1 — 2026-05-31:** Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md, Engineer_Protocols.md, Verification_Gates_LF.md, Canonical_Terms.md reconciled. EN-001 through EN-005, ME-001, ME-002, CF-001 through CF-003, EP-001 through EP-006, VG-001, CT-001, CT-003, SR-011–013 added. Active Disputes Registry added. EN-001 and CF-001 added to Critical Watch.
-
-**v2.2 — 2026-05-31:** Thermal_Systems.md and Friction_Dynamics.md created. TH-001 through TH-004, FD-001 through FD-004 added. TH-003 added to Critical Watch.
-
-**v2.3 — 2026-06-02:** Chemistry.md created. CE-001 through CE-004 indexed. CE-003 flagged safety-critical.
-
+**v1.9a — 2026-05-28:** Security_Protocols.md v0.2 audit. SEC-001–007, CT-004, UNK-009 added.
+**v2.0 — 2026-05-30:** Energy.md, Plastics.md, Woodworking.md reconciled. EV-002, EV-003, PL-001–005, WW-001–005 added.
+**v2.1 — 2026-05-31:** Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md, Engineer_Protocols.md, Verification_Gates_LF.md, Canonical_Terms.md reconciled. EN-001–005, ME-001–002, CF-001–003, EP-001–006, VG-001, CT-001, CT-003, SR-011–013 added. EN-001 and CF-001 added to Critical Watch.
+**v2.2 — 2026-05-31:** Thermal_Systems.md and Friction_Dynamics.md created. TH-001–004, FD-001–004 added. TH-003 added to Critical Watch.
+**v2.3 — 2026-06-02:** Chemistry.md created. CE-001–004 indexed. CE-003 flagged safety-critical.
 **v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. UNK-006, GK-005, EP-005, EC-003, GOV-001 resolved. FA-001, EC-002, PR-001 added to Critical Watch.
-
-**v2.5 — 2026-06-08:** Retrofit pass — seven files. CF-001, CF-002, CF-003 moved to In Progress. Cognitive_Frameworks.md Section IX added.
-
-**v2.6 — 2026-06-08:** Retrofit pass completed for 14 additional files. PC-001, PC-002, PC-003 closed. GK-005, PR-005 resolved.
-
-**v2.7 — 2026-06-11:** Challenges/Emergence.md created. EM-001 through EM-004 registered. EM-001, EM-004 added to Critical Watch. RC-001 through RC-006 logged as candidates.
-
-**v2.8 — 2026-06-11:** Full Challenges/ retrofit pass. WA-001–004, BF-001–004, PO-001–004, WS-001–004, CM-001–004 registered (20 new unknowns). WA-002, WA-004, CM-002 added to Critical Watch. PC-004 closed.
-
-**v2.9 — 2026-06-11:** Support_Raft.md brought to v0.5. SR-010 resolved. SR-006 In Progress. Dependency Map retired.
-
-**v3.0 — 2026-06-11:** Phase 1 quick-close pass. Six resolved: RS-002, RS-003, FD-004, GMP-001, GMP-002, RIP-003. RS-003 removed from Blocking Watch.
-
-**v3.1 — 2026-06-11:** Location abstraction pass. TH-003, EN-002, FA-004 retitled to deployment-generic framing. No unknowns opened or closed.
-
-**v3.2 — 2026-06-11:** Architecture audit integration pass. Nine new unknowns: ME-003, ME-004, TH-005, TH-006, CE-005, EN-006, FD-005. CE-003 elevated to Critical — added to Critical Watch. CE-004 In Progress. FA-005 resolved.
-
-**v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW cluster (9 unknowns) — LW-UNK-001 and LW-UNK-003 added to Critical Watch. TF cluster (10 unknowns) — TF-006 elevated to Ethical_Constraints escalation candidate and added to Critical Watch; DS-001 naming dispute closed; TF constitutional statement declared pending human ratification. SD cluster (12 unknowns) — SD-UNK-004 added to Critical Watch at FA-001 governance weight; head pressure corrected (40 kPa → 353 kPa). Three files added to Routing.md and Discovery.md. 31 total new unknowns registered.
+**v2.5 — 2026-06-08:** Retrofit pass — seven files. CF-001–003 moved to In Progress.
+**v2.6 — 2026-06-08:** Retrofit pass completed for 14 additional files. PC-001–003 closed.
+**v2.7 — 2026-06-11:** Challenges/Emergence.md created. EM-001–004 registered. EM-001, EM-004 added to Critical Watch.
+**v2.8 — 2026-06-11:** Full Challenges/ retrofit pass. WA-001–004, BF-001–004, PO-001–004, WS-001–004, CM-001–004 registered. WA-002, WA-004, CM-002 added to Critical Watch.
+**v2.9 — 2026-06-11:** Support_Raft.md v0.5. SR-010 resolved. Dependency Map retired.
+**v3.0 — 2026-06-11:** Six resolved: RS-002, RS-003, FD-004, GMP-001, GMP-002, RIP-003.
+**v3.1 — 2026-06-11:** Location abstraction pass. TH-003, EN-002, FA-004 retitled to deployment-generic framing.
+**v3.2 — 2026-06-11:** Architecture audit integration pass. ME-003, ME-004, TH-005, TH-006, CE-005, EN-006, FD-005 added. CE-003 elevated to Critical Watch. CE-004 In Progress. FA-005 resolved.
+**v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW (9), TF (10), SD (12) unknowns. TF-006 and SD-UNK-004 added to Critical Watch. DS-001 closed. 31 total new unknowns.
+**v3.4 — 2026-06-18:** Six new unknowns registered: EC-008, EC-009, EC-010, EC-011 (Ethical_Constraints.md v0.9 audit), GOV-010 (Governance_Charter.md v0.8), CT-005 (Canonical_Terms.md v0.3). GOV-001 un-archived — premature; returned to In Progress pending GMP audit against charter constraints. GOV-006-A declarative-only notice logged. EC-008 and EC-011 added to Critical Watch. EC-010 and GOV-010 cross-referenced to planned Environmental_Constraints.md.
