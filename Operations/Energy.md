@@ -125,6 +125,44 @@ Waste heat reused to stabilize or preheat incoming feedstocks. Not counted as a 
 
 ---
 
+## Superconductivity Horizons (Exploratory / v1+)
+
+### Philosophy & Strategic Value
+Superconductivity represents a high-leverage multiplier for the Forge's core metric: **Value recovered per kWh**. Zero-resistance transmission, high-field magnets, efficient motors, and lossless energy storage could dramatically lower parasitic loads across reduction, fabrication, and Leviathan-scale operations. However, per the Forge doctrine, we treat this as an engineering target rather than a speculative miracle.
+
+Key guiding principles drawn from disciplined analysis:
+- **Superconductivity is a phase transition, not gradual resistance reduction.** Simply purifying materials or lowering scattering does not automatically produce a Cooper-paired condensate. This distinction guards against intuitive but unproductive optimization paths. [](grok_render_citation_card_json={"cardIds":["bde569"]})
+- **Ambient-pressure progress is the priority.** Cryogenic solutions have limited bootstrap utility in salvage/remote contexts. Records such as the 151 K ambient-pressure milestone (Hg-1223 metastable phase) highlight meaningful engineering headroom without extreme infrastructure. [](grok_render_citation_card_json={"cardIds":["cb3628"]})
+- **Shift from discovery to architecture/engineering.** Quantum geometry, deliberate strain, and controlled metastable phases offer more practical levers than multi-element "cocktail" doping, which often leads to segregation, instability, or insulating byproducts. [](grok_render_citation_card_json={"cardIds":["d3263c"]})
+- **Space metallurgy as a long-horizon enabler.** Microgravity and vacuum conditions can stabilize structures difficult on Earth, but they will not magically create superconductors — only enable deliberate engineering of candidate materials. [](grok_render_citation_card_json={"cardIds":["08d9ba"]})
+
+### Integration Pathways for the Forge
+1. **Transmission & Distribution**  
+   Lossless or near-lossless power routing between gates and modules would improve overall energy accounting and enable distributed Leviathan deployments.
+
+2. **Magnetic Systems**  
+   Stronger, more efficient magnets for separation (eddy currents, induction melting), motors/generators, and potential maglev internal logistics.
+
+3. **Energy Storage & Recovery**  
+   Persistent current loops or high-efficiency SMES (Superconducting Magnetic Energy Storage) as buffers, complementing salvaged battery protocols.
+
+### v0–v1 Guardrails & Falsifiable Gates
+- **No dedicated R&D budget at v0.** Monitor external progress and salvage opportunities only.
+- **Test any candidate materials** via simple four-point probe resistance + basic susceptibility checks before integration.
+- **Maintain fallback to conventional conductors.** All designs must support graceful degradation to copper/aluminum baselines.
+- **Unknowns to Track** (link to main Unknowns.md):
+  - SC-H1: Practical ambient-pressure materials viable below 200 K under Forge bootstrap constraints.
+  - SC-H2: Salvage-compatible fabrication routes for superconducting wire/joints.
+  - SC-H3: Net system-level kWh benefit after accounting for cooling/strain infrastructure.
+
+### Cross-References & Migration Path
+- Strong empirical or prototype success → migrate detailed implementation to **Engineering.md** (pragmatic fabrication focus).
+- Ties to: Gate_05_Separation_Thermal.md (induction efficiency), Leviathan testing, Critical_Minerals.md (rare-earth magnet alternatives), and Cognitive_Frameworks.md (emergent optimization of energy loops).
+
+**Drift Indicator:** Treating superconductivity as assumed or near-term rather than exploratory triggers re-audit and potential removal of optimistic language.
+
+---
+
 ## Electrochemical Battery Containment Protocol [Ref: EV-003]
 
 Salvaged battery state-of-health (SoH), cycle history, and remaining capacity are uncharacterized at v0. To safely leverage these assets without risking catastrophic structural fires, the following physical containment rules apply:
