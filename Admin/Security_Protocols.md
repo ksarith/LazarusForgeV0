@@ -27,10 +27,10 @@
 | Status           | Draft                                                               |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-28                                                          |
-| Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 7                                                                   |
+| Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
+| Last Audit       | 2026-06-19                                                          |
+| Auditor          | Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Claude — Synthesizer |
+| Open Unknowns    | 11                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -48,8 +48,10 @@
   behaviors during network division
 - Trust boundary declaration: the relationship between cryptographic enforcement
   and governance legitimacy
-- Incident logging requirements for authentication events
+- Incident logging requirements for authentication events including replay
+  protection requirements
 - Degraded-operation security doctrine notes
+- Compromise detection doctrine (pending — SEC-009)
 
 **This file DOES NOT define:**
 - Component-level infiltration prevention for salvaged hardware — governed by
@@ -63,7 +65,11 @@
   GOV-008 in `Admin/Governance_Charter.md`; quorum threshold is a prerequisite
   input to the multi-signature requirements defined here
 - Trusted initialization environment definition — see SEC-005 and
-  `Admin/Canonical_Terms.md`
+  `Admin/Canonical_Terms.md` CT-004
+- Human-factors attack surface (social engineering, operator coercion) — pending
+  cross-reference to `Admin/Safety_Protocols.md` and `Admin/Ethical_Constraints.md` EC-011
+- Long-duration cryptographic continuity (algorithm migration, entropy
+  exhaustion across decades) — pending SEC-011
 
 ---
 
@@ -92,13 +98,14 @@ implementation has a governed target to build against.
 
 ## Assumptions
 
-| ID          | Assumption                                                                       | Basis                                   | Confidence | Expiry Trigger                                              |
-|-------------|----------------------------------------------------------------------------------|------------------------------------------|------------|-------------------------------------------------------------|
-| SEC-ASM-001 | Human operators have secure local means to preserve physical tokens              | Standard security practice — Analogous External | Medium | Compromise confirmed in operational environment      |
+| ID          | Assumption                                                                       | Basis                                         | Confidence | Expiry Trigger                                              |
+|-------------|----------------------------------------------------------------------------------|-----------------------------------------------|------------|-------------------------------------------------------------|
+| SEC-ASM-001 | Human operators have secure local means to preserve physical tokens              | Standard security practice — Analogous External | Medium   | Compromise confirmed in operational environment             |
 | SEC-ASM-002 | Cryptographic standard libraries (Ed25519/SHA-256) remain robust                 | Current cryptographic consensus — Analogous External | Medium | Algorithmic vulnerability published against these standards |
-| SEC-ASM-003 | GOV-008 minimum quorum definition will precede Phase 3 implementation            | Dependency ordering — Internally Derived | Medium     | Phase 3 implementation proceeds without quorum definition   |
-| SEC-ASM-004 | Electronics.md firmware trust doctrine remains the authoritative component layer | Scope boundary discipline — Internally Derived | High  | Electronics.md scope boundary revised to exclude firmware   |
-| SEC-ASM-005 | Signing hardware maintains power continuity during override operations           | Operational assumption — Placeholder     | Low        | Degraded-power doctrine defined (see SEC-006)               |
+| SEC-ASM-003 | GOV-008 minimum quorum definition will precede Phase 3 implementation            | Dependency ordering — Internally Derived      | Medium     | Phase 3 implementation proceeds without quorum definition   |
+| SEC-ASM-004 | Electronics.md firmware trust doctrine remains the authoritative component layer | Scope boundary discipline — Internally Derived | High      | Electronics.md scope boundary revised to exclude firmware   |
+| SEC-ASM-005 | Signing hardware maintains power continuity during override operations           | Operational assumption — Placeholder          | Low        | Degraded-power doctrine defined (see SEC-006)               |
+| SEC-ASM-006 | Human operators acting as ratification authorities are not compromised, coerced, or impaired | Operational assumption — Placeholder | Low       | Human governance adversary model defined (EC-011); operator impairment doctrine defined (Safety_Protocols.md §V) |
 
 ---
 
@@ -138,6 +145,14 @@ The Trust Boundary Declaration addresses this philosophically. Structural
 enforcement separation (immutable external root-of-trust, offline constitutional
 anchor, human-ratified recovery source outside the repository execution
 environment) is the unresolved mechanical requirement. See SEC-007.
+
+**On permission-source trustworthiness:** Cryptographic verification assumes
+the human operators issuing or ratifying overrides are not compromised, coerced,
+or impaired. This assumption is not validated at current maturity. See SEC-ASM-006
+and `Admin/Ethical_Constraints.md` EC-011 (Human governance adversary model
+undefined). Until EC-011 is resolved, apply the interim authentication
+requirements from `Admin/Governance_Charter.md` §Human Override Doctrine to
+all Constitutional-class decisions.
 
 ---
 
@@ -190,9 +205,22 @@ All override attempts — successful or refused — must be logged with:
 - Scope of override requested
 - Authentication method used
 - Outcome (authorized / refused / escalated)
+- Cryptographic binding token (nonce, monotonic counter, or RIP block-hash) —
+  see replay protection requirement below
 
 Logs are append-only. Override logs are subject to the Resolution Log
 integrity requirements defined in `Admin/Repository_Integrity_Protocol.md`.
+
+**Replay Protection Requirement (SEC-REG-001-A):** All human override
+signatures must bind a cryptographic nonce, a monotonically increasing
+session counter, or a specific block-hash from the prior-state archival
+system defined in `Admin/Repository_Integrity_Protocol.md` RIP-001.
+This binding guarantees transactional uniqueness and prevents replay of
+a valid intercepted signature block within the same session window or
+across closely timed network partitions before log sync completes.
+*(Placeholder — implementation pending RIP-001 resolution. Until operational,
+treat each override as session-unique by requiring a second-operator
+confirmation that the override is a new request, not a replay.)*
 
 **5. Degraded-Operation Security Doctrine Note**
 
@@ -207,6 +235,20 @@ or when clock synchronization is unavailable, the correct behavior is
 constrained operation or halt — not bypassing security requirements to maintain
 throughput. See SEC-006 (timestamp trust) and SEC-001 (quorum under partition)
 for the unresolved specifics.
+
+**6. Human-Factors Attack Surface Note**
+
+The override ratification process assumes operators are uncompromised,
+uncoerced, and cognitively unimpaired. Side-channel attacks, social engineering
+directed at operators holding tokens, and timing attacks on multi-signature
+processes are not addressed at current maturity. Cross-reference:
+- `Admin/Safety_Protocols.md` §V — operator impairment recognition
+- `Admin/Ethical_Constraints.md` EC-011 — human governance adversary model
+- SEC-008 — compromise detection criteria (pending)
+
+Until SEC-008 and EC-011 are resolved, treat anomalous override patterns
+(unusual timing, repeated requests, out-of-character scope) as escalation
+triggers to human review.
 
 ---
 
@@ -251,6 +293,15 @@ Governance Enforcement State must not advance beyond actual implemented
 capability. Claiming Phase 3 enforcement before Phases 1 and 2 are complete
 is integrity theater.
 
+**Note on Phase 2 / RIP-001 circular dependency:** SEC-001 (quorum recovery
+under partition) references archived state access as a prerequisite for
+emergency partition verification. However, archived prior states are a Phase 2
+requirement that depends on RIP-001. To prevent circular blocking: archived
+state read-access for emergency partition verification operates under a
+read-only hardware bootstrap bypass that does not depend on active Phase 3
+cryptographic execution state. This bypass is a manual human-supervised
+procedure, not an automated fallback, until Phase 3 is operational.
+
 ---
 
 ### III. Salvaged Logic & Node Authentication (EL-006)
@@ -283,12 +334,12 @@ Passing one layer does not substitute for the other.
 
 Each node must possess a unique key-pair generated within a trusted
 initialization environment. *(Definition of "trusted initialization
-environment" is pending — see SEC-005. Until defined, apply the most
-restrictive interpretation: human-supervised, air-gapped, on verified
-hardware only.)* Key generation must not occur on the node's own hardware
-before that hardware has completed the Logic-Zero wipe and bootstrap load.
-Key material generated on unverified hardware is untrusted regardless of
-subsequent wipe procedures.
+environment" is pending — see SEC-005 and `Admin/Canonical_Terms.md` CT-004.
+Until defined, apply the most restrictive interpretation: human-supervised,
+air-gapped, on verified hardware only.)* Key generation must not occur on
+the node's own hardware before that hardware has completed the Logic-Zero
+wipe and bootstrap load. Key material generated on unverified hardware is
+untrusted regardless of subsequent wipe procedures.
 
 **3. Key Rotation Cycles**
 
@@ -303,17 +354,20 @@ see SEC-004.
 A node whose key material is suspected compromised must be suspended from
 cluster participation pending investigation. Suspension is reversible;
 revocation is permanent. *(Full revocation doctrine is undefined — see
-SEC-002.)*
+SEC-002.)* Criteria for generating compromise suspicion are undefined —
+see SEC-009.
 
 ---
 
 ## Lessons Learned
 
-| Date       | Evidence Type | What Was Tried                                                      | What Failed                                                                   | What Was Learned                                                                                                          | Confidence | Revalidation Needed |
-|------------|---------------|---------------------------------------------------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|------------|---------------------|
-| 2026-05-26 | Audit Review  | Initial architecture without explicit trust boundary declaration    | Implied "signature therefore authorized" logic left open as attack vector     | Trust boundary must be declared explicitly before cryptographic mechanisms — governance legitimacy precedes enforcement    | Analogous  | Yes                 |
-| 2026-05-27 | Audit Review  | Firmware trust doctrine co-located with administrative security     | Duplicate ownership risk with Electronics.md; scope boundary became ambiguous | Electronics.md owns component-level infiltration prevention; Security_Protocols.md owns administrative authority layer    | Replicated | No                  |
-| 2026-05-28 | Audit Review  | "Specification" used as signing-eligibility threshold without maturity model alignment | Ambiguous — conflates File State status with Verification Maturity Model states | Signing eligibility must reference maturity states (Candidate Specification and above), not raw File State status field | Replicated | No                  |
+| Date       | Evidence Type | What Was Tried                                                                      | What Failed                                                                          | What Was Learned                                                                                                                          | Confidence | Revalidation Needed |
+|------------|---------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|------------|---------------------|
+| 2026-05-26 | Audit Review  | Initial architecture without explicit trust boundary declaration                    | Implied "signature therefore authorized" logic left open as attack vector            | Trust boundary must be declared explicitly before cryptographic mechanisms — governance legitimacy precedes enforcement                    | Analogous  | Yes                 |
+| 2026-05-27 | Audit Review  | Firmware trust doctrine co-located with administrative security                     | Duplicate ownership risk with Electronics.md; scope boundary became ambiguous        | Electronics.md owns component-level infiltration prevention; Security_Protocols.md owns administrative authority layer                    | Replicated | No                  |
+| 2026-05-28 | Audit Review  | "Specification" used as signing-eligibility threshold without maturity model alignment | Ambiguous — conflates File State status with Verification Maturity Model states   | Signing eligibility must reference maturity states (Candidate Specification and above), not raw File State status field                   | Replicated | No                  |
+| 2026-06-19 | Audit Review  | Override logging without replay protection specification                            | Valid signatures could theoretically be replayed within same session window; logging integrity depends on uniqueness not enforced | All override signatures must bind nonce, monotonic counter, or RIP block-hash for transactional uniqueness (SEC-REG-001-A) | Analogous  | Yes                 |
+| 2026-06-19 | Audit Review  | Permission-source trustworthiness assumed without declaration                       | Human operators ratifying overrides assumed uncompromised; assumption was implicit rather than explicit | Permission-source trust assumption must be declared explicitly (SEC-ASM-006) and cross-referenced to EC-011 adversary model | Analogous  | Yes                 |
 
 ---
 
@@ -332,6 +386,7 @@ SEC-002.)*
 | 2026-05-26 | Firmware trust doctrine owned by Security_Protocols.md                      | Electronics.md already owns component-level infiltration prevention; dual ownership creates scope conflict                  | No          |
 | 2026-05-27 | SEC-001 quorum-under-partition resolved independently of GOV-008             | Minimum quorum definition is the same underlying problem; GOV-008 is the correct resolution owner                          | No          |
 | 2026-05-28 | "Specification" as flat signing-eligibility threshold                        | Does not align with Verification Maturity Model; maturity states are the correct eligibility boundary                      | No          |
+| 2026-06-19 | Phase 2/RIP-001 circular dependency resolved through automated fallback      | Any automated fallback that depends on Phase 3 state to access Phase 2 archives is itself circular; resolved via read-only human-supervised bootstrap bypass instead | No |
 
 ---
 
@@ -341,6 +396,7 @@ Mandatory re-audit conditions for this document:
 
 - Trust Boundary Declaration section removed, weakened, or moved below Body sections
 - Circular dependency risk note removed from Trust Boundary Declaration
+- Permission-source trustworthiness note removed from Trust Boundary Declaration
 - Multi-signature requirement simplified to single-key or software-only mechanism
   without corresponding update to `Admin/Governance_Charter.md`
 - Phase 3 automation claims advanced beyond Placeholder status before RIP-001
@@ -352,10 +408,16 @@ Mandatory re-audit conditions for this document:
 - GOV-008 quorum definition referenced as resolved before GOV-008 is closed
 - Node admission procedures removed or made optional
 - Authentication event logging requirement removed or made non-append-only
+- Replay protection requirement (SEC-REG-001-A) removed from authentication
+  event logging before RIP-001 is operational
 - Degraded-operation doctrine note removed from Section I
 - SEC-005 trusted initialization environment closed without canonical definition
+  in `Admin/Canonical_Terms.md` CT-004
 - Abandoned path for SEC-001 independent resolution reopened without human
   ratification and GOV-008 resolution
+- Phase 2 bootstrap bypass for partition verification expanded beyond read-only
+  human-supervised procedure without human ratification
+- SEC-ASM-006 removed before EC-011 (human governance adversary model) is resolved
 - Ethical Anchor field absent, altered, or does not match canonical string
 - Verification Ref field changed from `Admin/Verification_Gates_LF.md`
 
@@ -368,16 +430,16 @@ autonomous audit progression and escalate for human review.
 
 ### SEC-001 — Quorum Recovery Under Terminal Network Division
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | High                             |
-| Priority      | Major                            |
-| Type          | Architecture / Governance        |
-| Blocking      | Yes                              |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-26                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Architecture / Governance          |
+| Blocking      | Yes                                |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-26                         |
+| Last Reviewed | 2026-06-19                         |
 
 **Description:** What cryptographic fallback procedure executes if a
 multi-node swarm experiences a permanent communication partition, leaving
@@ -395,22 +457,23 @@ fallback procedure defined here. SEC-001 cannot be resolved before GOV-008
 closes. Once GOV-008 defines the minimum quorum, revisit with a concrete
 fallback proposal: time-locked decay window, hardware-level fallback protocol,
 or escalation to human override via interim authentication. Cross-reference
-RIP-001 — partition recovery may require archived state access.
+RIP-001 — partition recovery may require archived state access via read-only
+human-supervised bootstrap bypass (see Phase Implementation Ordering note).
 
 ---
 
 ### SEC-002 — Key Revocation and Compromise Response Doctrine Undefined
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | High                             |
-| Priority      | Major                            |
-| Type          | Security / Governance            |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-27                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Security / Governance              |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-27                         |
+| Last Reviewed | 2026-05-28                         |
 
 **Description:** The repository lacks defined procedures for key revocation
 following confirmed or suspected compromise. Distinction between reversible
@@ -421,26 +484,27 @@ to cluster nodes, and post-revocation re-admission criteria are all undefined.
 nominally trusted until the next rotation cycle. In adversarial or degraded
 environments this window may be operationally significant.
 
-**Resolution Path:** Payment via Specification — define revocation authority
+**Resolution Path:** Deferred via Specification — define revocation authority
 chain, propagation mechanism during degraded connectivity, re-admission
 criteria, and suspension vs. revocation distinction. Cross-reference SEC-001
-(partition affects propagation) and GOV-006 (override node revocation
-requires additional safeguards).
+(partition affects propagation), GOV-006 (override node revocation requires
+additional safeguards), and SEC-009 (compromise detection criteria must
+precede revocation trigger definition).
 
 ---
 
 ### SEC-003 — Key Rotation Period Undefined
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | Medium                           |
-| Priority      | Major                            |
-| Type          | Security / Technical             |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-27                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | Medium                             |
+| Priority      | Major                              |
+| Type          | Security / Technical               |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-27                         |
+| Last Reviewed | 2026-05-28                         |
 
 **Description:** No rotation period is defined for node key-pairs. Version-
 transition rotation is the current floor but no time-based or event-based
@@ -450,7 +514,7 @@ schedule exists.
 risk. Without a defined schedule, rotation is ad hoc and audit verification
 of compliance is not possible.
 
-**Resolution Path:** Payment via Specification — define rotation triggers:
+**Resolution Path:** Deferred via Specification — define rotation triggers:
 time-based (calendar interval), event-based (version transition, personnel
 change, suspected exposure), and condition-based (hardware replacement,
 Logic-Zero re-wipe). Cross-reference SEC-002 — rotation and revocation
@@ -460,16 +524,16 @@ must be consistent.
 
 ### SEC-004 — Key Lifecycle Doctrine Incomplete
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | Medium                           |
-| Priority      | Major                            |
-| Type          | Security / Governance            |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-28                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | Medium                             |
+| Priority      | Major                              |
+| Type          | Security / Governance              |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-28                         |
+| Last Reviewed | 2026-05-28                         |
 
 **Description:** Key lifecycle doctrine covers generation and partial rotation
 but does not address: secure key archival for dormant nodes, secure destruction
@@ -481,27 +545,28 @@ exists in undefined states — neither active nor provably destroyed. In
 long-duration autonomous deployments (Leviathan-class), operator incapacitation
 and hardware retirement are expected conditions, not edge cases.
 
-**Resolution Path:** Payment via Specification — define: (1) archival doctrine
+**Resolution Path:** Deferred via Specification — define: (1) archival doctrine
 for dormant key material; (2) secure destruction verification procedure;
 (3) operator-loss continuity — who inherits authority and through what
 authentication path; (4) post-mortem recovery for hardware that cannot be
-physically accessed. Cross-reference SEC-002 (revocation) and SEC-003
-(rotation) — all three must form a coherent lifecycle.
+physically accessed. Cross-reference SEC-002 (revocation), SEC-003 (rotation),
+and SEC-011 (long-duration cryptographic continuity) — all must form a coherent
+lifecycle.
 
 ---
 
 ### SEC-005 — Trusted Initialization Environment Undefined
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | High                             |
-| Priority      | Major                            |
-| Type          | Security / Technical             |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-28                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Security / Technical               |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-28                         |
+| Last Reviewed | 2026-05-28                         |
 
 **Description:** Section III requires key-pair generation within a "trusted
 initialization environment" but the term is undefined. It is currently
@@ -513,27 +578,27 @@ attack surface. An adversary who can influence the initialization environment
 can compromise keys before they are ever used. The term must have a canonical
 definition before this section is promoted.
 
-**Resolution Path:** Payment via Specification — define trusted initialization
-environment in `Admin/Canonical_Terms.md` (CT-004) with at minimum: physical
+**Resolution Path:** Deferred via Specification — define trusted initialization
+environment in `Admin/Canonical_Terms.md` CT-004 with at minimum: physical
 custody requirements, software verification requirements, network isolation
 requirements, and attestation method. Until defined, the most restrictive
 interpretation applies: human-supervised, air-gapped, on verified hardware
-only — per interim note in Section III.2.
+only — per interim note in Section III.2. Closing CT-004 closes this unknown.
 
 ---
 
 ### SEC-006 — Timestamp Trust Under Degraded Clock Synchronization
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | Medium                           |
-| Priority      | Major                            |
-| Type          | Security / Technical             |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-28                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | Medium                             |
+| Priority      | Major                              |
+| Type          | Security / Technical               |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-28                         |
+| Last Reviewed | 2026-05-28                         |
 
 **Description:** Authentication event logging requires ISO 8601 UTC
 timestamps, but partitioned systems and air-gapped nodes frequently lose
@@ -545,7 +610,7 @@ interpretability. Logs with unreliable timestamps cannot establish
 reliable event sequencing, which undermines the primary value of the
 append-only log requirement.
 
-**Resolution Path:** Payment via Specification — define: (1) minimum
+**Resolution Path:** Deferred via Specification — define: (1) minimum
 acceptable clock source for timestamping; (2) behavior when clock
 synchronization is unavailable (hold entries with uncertainty flag,
 use monotonic counter, or reject logging until sync restored); (3)
@@ -557,16 +622,16 @@ primary context where clock sync is lost.
 
 ### SEC-007 — External Root-of-Trust Architecture Undefined
 
-| Field         | Value                            |
-|---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | High                             |
-| Priority      | Critical                         |
-| Type          | Architecture / Governance        |
-| Blocking      | No                               |
-| Owner         | Admin/Security_Protocols.md      |
-| First Logged  | 2026-05-28                       |
-| Last Reviewed | 2026-05-28                       |
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Critical                           |
+| Type          | Architecture / Governance          |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-05-28                         |
+| Last Reviewed | 2026-06-19                         |
 
 **Description:** The governance-cryptography enforcement chain carries a
 circular self-certification risk: governance defines legitimacy, cryptography
@@ -590,7 +655,143 @@ Minimum viable resolution: define at least one external trust anchor that
 cannot be modified through the repository execution environment — offline
 signed constitutional snapshot, hardware security module holding root keys,
 or human-ratified recovery record stored outside all automated systems.
-Log as cross-module unknown in `Unknowns.md`.
+This is an above-repository architectural decision; no automated agent may
+resolve this unilaterally.
+
+---
+
+### SEC-008 — Signature Replay Protection Mechanism Undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Security / Technical               |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-06-19                         |
+| Last Reviewed | 2026-06-19                         |
+
+**Description:** Override signature logging (SEC-REG-001) does not specify
+a mechanism to prevent replay attacks. A valid intercepted signature block
+could be replayed within the same session window or across closely timed
+network partitions before log sync completes, allowing an adversary or
+malfunctioning agent to re-execute an authorized action without new
+ratification.
+
+**Why It Matters:** Ephemeral, transactional override design (Section I.3)
+is undermined if signatures are replayable. The append-only log cannot
+distinguish a replayed signature from a genuine one without a uniqueness
+binding mechanism.
+
+**Resolution Path:** Add mandatory requirement to SEC-REG-001: all override
+signatures must bind a cryptographic nonce, a monotonically increasing session
+counter, or a specific block-hash from RIP-001 prior-state archival. Interim
+procedure (pending RIP-001): require second-operator confirmation that the
+override is a new request, not a replay. SEC-REG-001-A added to Section I.4
+body as the interim declaration.
+
+---
+
+### SEC-009 — Compromise Detection Criteria Undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Security / Technical               |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-06-19                         |
+| Last Reviewed | 2026-06-19                         |
+
+**Description:** Section III.4 specifies that a node whose key material is
+"suspected compromised" must be suspended, but provides no doctrine for how
+suspicion is generated. Detection criteria — checksum disagreement, behavioral
+anomaly, failed attestation, impossible timestamps, anomalous override patterns
+— are entirely absent.
+
+**Why It Matters:** Without defined detection criteria, compromise response
+is reactive and human-dependent. Silent compromise remains undetectable until
+an observable failure occurs, which may be after significant damage.
+
+**Resolution Path:** Add compromise detection subsection to Section III or
+create a linked detection criteria annex. Minimum criteria: (1) checksum
+disagreement with prior signed state; (2) attestation failure on cluster
+admission; (3) timestamp anomaly beyond defined tolerance (cross-ref SEC-006);
+(4) behavioral divergence beyond watchdog threshold (cross-ref CF-001).
+Cross-reference SEC-002 — compromise detection must trigger the revocation
+doctrine defined there.
+
+---
+
+### SEC-010 — Cryptographic Algorithm Migration Doctrine Undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | High                               |
+| Priority      | Major                              |
+| Type          | Security / Architecture            |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-06-19                         |
+| Last Reviewed | 2026-06-19                         |
+
+**Description:** SEC-ASM-002 assumes Ed25519/SHA-256 remain robust, but no
+procedure exists for migrating to replacement algorithms if those standards
+are deprecated or compromised. Algorithm agility — the ability to switch
+cryptographic primitives without breaking the trust chain — is undefined.
+
+**Why It Matters:** Cryptographic standards have finite lifespans. Post-quantum
+concerns and algorithmic vulnerabilities are not theoretical at decadal
+timescales. A system that cannot migrate algorithms loses its trust guarantees
+when the underlying primitives fail, with no recovery path.
+
+**Resolution Path:** Define algorithm migration doctrine: (1) trigger conditions
+for migration (published vulnerability, NIST deprecation, internal review
+schedule); (2) migration procedure preserving audit trail continuity; (3)
+re-signing requirements for existing signed artifacts; (4) transition window
+during which both old and new algorithms are accepted. Cross-reference SEC-004
+(key lifecycle) and SEC-011 (long-duration continuity) — all three form a
+coherent long-duration security posture.
+
+---
+
+### SEC-011 — Long-Duration Cryptographic Continuity Undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open                               |
+| Risk          | Medium                             |
+| Priority      | Major                              |
+| Type          | Security / Architecture            |
+| Blocking      | No                                 |
+| Owner         | `Admin/Security_Protocols.md`      |
+| First Logged  | 2026-06-19                         |
+| Last Reviewed | 2026-06-19                         |
+
+**Description:** Leviathan-class deployments imply decade-scale operation,
+potential operator death or incapacitation, hardware replacement cycles,
+and isolated nodes with no external connectivity. No doctrine addresses:
+cryptographic entropy exhaustion over long timescales, migration across
+cryptographic generations, algorithm deprecation, or authority continuity
+after operator succession.
+
+**Why It Matters:** Long-duration deployments will outlive individual
+operators, specific hardware generations, and potentially current cryptographic
+standards. Without continuity doctrine, trust chain breaks silently at an
+undefined future point with no recovery procedure.
+
+**Resolution Path:** Develop long-duration continuity doctrine addressing:
+(1) entropy refresh mechanisms for isolated nodes; (2) authority succession
+when operators are incapacitated or unavailable; (3) algorithm migration
+timeline (cross-ref SEC-010); (4) hardware retirement and key archival
+cross-ref SEC-004. Route to `Admin/Trajectories.md` as a v1→v2 transition
+planning item — not required for v0 operational status but must exist before
+Leviathan-class deployment is authorized.
 
 ---
 
@@ -619,10 +820,26 @@ Log as cross-module unknown in `Unknowns.md`.
   Drift Indicators updated with new entries. Abandoned Paths updated.
   Lessons Learned entry added. Open Unknowns updated to 7.
 - 2026-06-06: v0.4 revision — Navigation Anchors added. Verification Ref
-  corrected to Admin/Verification_Gates_LF.md. Drift Indicator reference
-  updated to match. Relationship section updated — Governance_Migration_Protocol.md
-  added (GMP-004/SEC-007 cross-reference); Safety_Protocols.md added
-  (operator impairment and ratification validity note). Content unchanged.
+  corrected to `Admin/Verification_Gates_LF.md`. Drift Indicator reference
+  updated. Relationship section updated — `Admin/Governance_Migration_Protocol.md`
+  and `Admin/Safety_Protocols.md` added. Content unchanged.
+- 2026-06-19: v0.5 revision — Four-agent audit pass (Gemini, Grok, ChatGPT,
+  Claude). Nine changes: (1) SEC-ASM-006 added — permission-source
+  trustworthiness assumption made explicit. (2) Trust Boundary Declaration
+  updated with permission-source trustworthiness note and EC-011 cross-ref.
+  (3) SEC-REG-001-A added to Section I.4 — replay protection requirement
+  (nonce/counter/block-hash binding); interim procedure pending RIP-001.
+  (4) Section I.6 added — Human-Factors Attack Surface Note; cross-refs
+  Safety_Protocols.md §V and EC-011. (5) Phase 2/RIP-001 circular dependency
+  clarified in Section II.3 — read-only human-supervised bootstrap bypass
+  declared as resolution. (6) Section III.4 updated — SEC-009 cross-ref
+  added for compromise detection. (7) SEC-008 logged — signature replay
+  protection mechanism undefined. (8) SEC-009 logged — compromise detection
+  criteria undefined. (9) SEC-010 logged — cryptographic algorithm migration
+  doctrine undefined. (10) SEC-011 logged — long-duration cryptographic
+  continuity undefined. (11) Two new Lessons Learned entries added. (12)
+  Phase 2 bootstrap bypass Abandoned Path added. (13) Drift Indicators
+  expanded with five new entries. Open Unknowns updated to 11.
 
 ---
 
@@ -644,65 +861,41 @@ Log as cross-module unknown in `Unknowns.md`.
   SEC-001 and SEC-007
 - `Admin/Ethical_Constraints.md` — co-Tier 1; Anti-Weaponization and Life
   Preservation doctrines are not subject to override by any cryptographic
-  mechanism regardless of signature validity
+  mechanism regardless of signature validity; EC-011 (human governance
+  adversary model) is cross-referenced in Trust Boundary Declaration and
+  SEC-ASM-006
 - `Admin/Safety_Protocols.md` — physical operator safety is outside the
   cryptographic scope of this file; referenced here because operator
   impairment recognition (Safety_Protocols.md §V) is a prerequisite for
   valid human ratification — an impaired operator's cryptographic signature
-  is technically valid but governmentally suspect
+  is technically valid but governmentally suspect; cross-referenced in
+  Section I.6
 - `Admin/Auditor_Protocols.md` — Tier 2; authentication event logs subject
   to audit trail requirements defined there
 - `Admin/Forge_Audit_Kit.md` — Tier 3; Verification Maturity Model referenced
   in Section II for signing eligibility; SEC- prefix in Sidecar ID Reference
 - `Admin/Canonical_Terms.md` — CT-004 (trusted initialization environment
   definition) is a pending addition required before Section III.2 can be
-  promoted
+  promoted; closing CT-004 closes SEC-005
 - `Operations/Electronics.md` — component-level infiltration prevention
   owner; Logic-Zero wipe is Layer 1 prerequisite for node admission here;
   complementary layers, not overlapping owners
-- `Unknowns.md` — GOV-006 and RIP-005 In Progress; SEC-007 to be logged
-  as cross-module unknown at next Unknowns.md update
+- `Admin/Trajectories.md` — SEC-011 (long-duration cryptographic continuity)
+  to be logged as v1→v2 transition planning item
+- `Unknowns.md` — SEC-008 through SEC-011 to be registered at next
+  Unknowns.md update
 
 ---
 
 ## Status
 
-Version 0.4 — Reference corrections and Relationship section updated (2026-06-06).
+Version 0.5 — Four-agent audit pass (2026-06-19).
 
-**Gate status:** G1 partial, G2 pass (Exploration scope), G5 blocked
-(SEC-005 trusted initialization environment undefined).
-
-**Changes from v0.3:**
-- Navigation Anchors block added
-- Verification Ref corrected to `Admin/Verification_Gates_LF.md`
-- Drift Indicator reference updated to match corrected Verification Ref
-- Relationship section updated — `Admin/Governance_Migration_Protocol.md`
-  added (GMP-004 cross-reference to SEC-007); `Admin/Safety_Protocols.md`
-  added (operator impairment and ratification validity note)
-- Content otherwise unchanged
-
-**Changes from v0.2:**
-- Signing eligibility corrected — "Specification status" replaced with
-  "Candidate Specification maturity or above" with explicit maturity model
-  reference; Fallacy 4 finding resolved
-- Trusted initialization environment — flagged as undefined in Section III.2
-  with most-restrictive interim interpretation; SEC-005 logged
-- SEC-ASM-002 provenance label corrected to Analogous External per
-  institutional truth provenance doctrine
-- SEC-ASM-005 added — signing hardware power continuity assumption made explicit
-- Section I.5 added — Degraded-Operation Security Doctrine Note; addresses
-  Fallacy 2 (Friction Blindness) finding from ChatGPT audit
-- Trust Boundary Declaration — circular governance-cryptography dependency
-  risk made explicit; SEC-007 logged as Critical
-- SEC-004 logged — key lifecycle doctrine incomplete (archival, destruction,
-  operator-loss continuity, post-mortem recovery)
-- SEC-006 logged — timestamp trust under degraded clock synchronization
-- SEC-007 logged — external root-of-trust architecture undefined (Critical)
-- Scope Boundary updated — trusted initialization environment gap noted
-- Drift Indicators updated — five new entries added
-- Abandoned Paths updated — flat Specification threshold entry added
-- Lessons Learned updated — signing eligibility correction entry added
-- Open Unknowns updated from 3 to 7
+**Gate status:** G1 cleared, G2 cleared, G3 cleared (Exploration-appropriate),
+G4 cleared, G5 cleared, G6 cleared. No gates blocked at Exploration stage.
+Promotion to Candidate Specification blocked by SEC-007 (external root-of-trust),
+SEC-005/CT-004 (trusted initialization environment), GOV-008 (minimum quorum),
+and SEC-009 (compromise detection criteria).
 
 **What must remain constant:**
 
