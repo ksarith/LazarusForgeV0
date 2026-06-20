@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.5 — 2026-06-19. Nine new unknowns registered across three files: SEC-008 through SEC-011 (Security_Protocols.md v0.5 audit), RIP-006 and RIP-007 (Repository_Integrity_Protocol.md v0.2 audit), GMP-006 through GMP-008 (Governance_Migration_Protocol.md v0.2 audit). RIP-004 discharged — Tier 1 Axiom Verification already implemented in Forge_Audit_Kit.md v1.1 Step 1. GMP-001 resolved. RIP-005 status updated to In Progress. Four files revised this session: Security_Protocols.md v0.5, Repository_Integrity_Protocol.md v0.2, Governance_Migration_Protocol.md v0.2, Unknowns.md v3.5.**
+**Version 3.6 — 2026-06-19. ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. AUDIT_HARNESS.py updated to v8.1 with Environmental_Constraints.md registration. ENV-008 (navigation registration) is the active blocking unknown — closes when Routing.md and Discovery.md are updated.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -38,16 +38,12 @@ These rules are enforced at every audit cycle opening:
 
 ---
 
-## What v3.5 Means
+## What v3.6 Means
 
-- **9 new unknowns registered** from 2026-06-19 session audit pass across three files:
-  - SEC-008 (Signature replay protection undefined), SEC-009 (Compromise detection criteria undefined), SEC-010 (Cryptographic algorithm migration doctrine undefined), SEC-011 (Long-duration cryptographic continuity undefined) — from `Admin/Security_Protocols.md` v0.5 four-agent audit
-  - RIP-006 (Archive retention policy undefined), RIP-007 (Integrity incident ownership undefined) — from `Admin/Repository_Integrity_Protocol.md` v0.2 audit
-  - GMP-006 (Concurrent amendment handling undefined), GMP-007 (Amendment withdrawal procedure undefined), GMP-008 (Stale proposal expiration policy undefined) — from `Admin/Governance_Migration_Protocol.md` v0.2 audit
-- **RIP-004 discharged** — Tier 1 Axiom Verification already implemented in `Admin/Forge_Audit_Kit.md` v1.1 Step 1; detection latency now bounded to one audit cycle. Moved to archive.
-- **GMP-001 resolved** — GOV-001 In Progress confirmed; `Admin/Governance_Migration_Protocol.md` exists as executing resolution path.
-- **RIP-005 status updated** to In Progress — `Admin/Security_Protocols.md` now exists at v0.5; description updated to reflect maturity gap rather than file non-existence.
-- **Four files revised** this session: `Admin/Security_Protocols.md` v0.5, `Admin/Repository_Integrity_Protocol.md` v0.2, `Admin/Governance_Migration_Protocol.md` v0.2.
+- **9 new unknowns registered** — ENV-001 through ENV-009 from `Admin/Environmental_Constraints.md` v0.1 creation
+- **EC-010 and GOV-010 convergence point declared** — both unknowns now have a resolution target in Environmental_Constraints.md
+- **ENV-008 is the active blocking unknown** — file must be registered in Routing.md and Discovery.md before downstream cross-references are reliable
+- **AUDIT_HARNESS.py updated to v8.1** — Environmental_Constraints.md added to FILE_REGISTRY and EXTRA_FILES comment block
 
 ---
 
@@ -542,6 +538,23 @@ These rules are enforced at every audit cycle opening:
 
 *PR-001 Critical — blocks T1/T2 part claims; PR-004 is a prerequisite.*
 
+### Environmental Constraints
+
+| ID | Title | Owning File | Status | Priority (Promo) |
+|---|---|---|---|---|
+| ENV-001 | Site-specific climate parameter baseline not established — all climatic parameters are Placeholder | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-002 | Regulatory compliance framework for bootstrap site not assessed | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-003 | Jurisdiction conflict hierarchy undefined — cross-ref EC-010, GOV-010 | `Admin/Environmental_Constraints.md` | Open | Minor |
+| ENV-004 | Ecological impact assessment protocol undefined — no detection mechanism or monitoring cadence | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-005 | Community engagement protocol undefined — no formal pre-operation disclosure procedure | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-006 | No-externalized-entropy doctrine not operationalized — no metric or threshold defined | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-007 | File not yet added to AUDIT_HARNESS.py FILE_REGISTRY or EXTRA_FILES | `Admin/Environmental_Constraints.md` | Resolved | Minor |
+| ENV-008 | File not yet registered in Routing.md and Discovery.md — blocks reliable cross-referencing | `Admin/Environmental_Constraints.md` | Open | Major |
+| ENV-009 | No site has been assessed against this file's constraints — all values are Placeholder | `Admin/Environmental_Constraints.md` | Open | Critical |
+
+*ENV-009 Critical — file is doctrine only until first site assessment replaces Placeholder values.*
+*ENV-008 Blocking — register in Routing.md and Discovery.md before downstream cross-references are reliable.*
+
 ### Pending Corrections
 
 | ID | Title | Files Affected | Status | Priority |
@@ -672,6 +685,7 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 | RIP-003 | Violation incident log location undefined | Resolved — Admin/Logs/violations.md declared as canonical violation incident log | 2026-06-11 |
 | RIP-004 | Constitutional violation detection latency undefined | Resolved — Tier 1 Axiom Verification implemented as Step 1 of mandatory Audit Opening Checklist in `Admin/Forge_Audit_Kit.md` v1.1; detection latency bounded to one audit cycle | 2026-06-19 |
 | GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 In Progress confirmed; `Admin/Governance_Migration_Protocol.md` exists as executing resolution path; Unknowns.md v3.4/v3.5 reflects corrected status | 2026-06-19 |
+| ENV-007 | Environmental_Constraints.md not in AUDIT_HARNESS.py | Resolved — added to FILE_REGISTRY and EXTRA_FILES comment block in AUDIT_HARNESS.py v8.1 | 2026-06-19 |
 
 ---
 
@@ -701,3 +715,4 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 **v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW (9), TF (10), SD (12) unknowns. TF-006 and SD-UNK-004 added to Critical Watch. DS-001 closed. 31 total new unknowns.
 **v3.4 — 2026-06-18:** Six new unknowns registered: EC-008, EC-009, EC-010, EC-011 (Ethical_Constraints.md v0.9 audit), GOV-010 (Governance_Charter.md v0.8), CT-005 (Canonical_Terms.md v0.3). GOV-001 un-archived — premature; returned to In Progress pending GMP audit against charter constraints. GOV-006-A declarative-only notice logged. EC-008 and EC-011 added to Critical Watch. EC-010 and GOV-010 cross-referenced to planned Environmental_Constraints.md.
 **v3.5 — 2026-06-19:** Nine new unknowns registered: SEC-008–011 (Security_Protocols.md v0.5), RIP-006–007 (Repository_Integrity_Protocol.md v0.2), GMP-006–008 (Governance_Migration_Protocol.md v0.2). RIP-004 discharged — Tier 1 Axiom Verification in Forge_Audit_Kit.md v1.1 Step 1 executes resolution path. GMP-001 resolved. RIP-005 updated to In Progress. GMP-005 In Progress (partial resolution via expanded Track identification rule).
+**v3.6 — 2026-06-19:** ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. ENV-007 resolved (AUDIT_HARNESS.py v8.1 registration). ENV-008 blocking — Routing.md and Discovery.md registration pending.
