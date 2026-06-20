@@ -75,6 +75,7 @@ Admin/                                      — Governance, protocols, and doctr
     ├── Ship_of_Theseus.md                  — Right-to-repair philosophical/legal defense
     ├── Trajectories.md                     — Multi-era version roadmap (v0 to interstellar)
     ├── Economics.md                        — Dynamic resource doctrine; market navigation; barter
+    ├── Environmental_Constraints.md        — Site, regulatory, ecological, and jurisdictional boundary conditions
     ├── Governance_Migration_Protocol.md    — Tier 1 Axiom amendment procedures
     └── AUDIT_HARNESS.py                    — Automated script supporting verification
 
@@ -134,7 +135,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness:** Verified complete as of 2026-06-14 (`Tests/Trophic_Forge.md` and `Tests/Solar_Descent.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+**Routing.md completeness:** Verified complete as of 2026-06-19 (`Admin/Environmental_Constraints.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -184,7 +185,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 
 | File | Status | Spec Gates | Highest Risk |
 |------|--------|-----------|--------------|
-| `Admin/Governance_Charter.md` | Draft | 2/6 | High |
+| `Admin/Governance_Charter.md` | Draft | 1/6 | High |
 | `Admin/Ethical_Constraints.md` | Active | — | Critical |
 | `Admin/Auditor_Protocols.md` | Active | — | Medium |
 | `Admin/Forge_Audit_Kit.md` | Active | — | Low |
@@ -199,6 +200,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Admin/Ship_of_Theseus.md` | Exploration | — | Low |
 | `Admin/Trajectories.md` | Exploration | 1/6 | Medium |
 | `Admin/Economics.md` | Exploration | 0/6 | Medium |
+| `Admin/Environmental_Constraints.md` | Draft | 1/6 | High |
 | `Admin/Governance_Migration_Protocol.md` | Exploration | 0/6 | High |
 | `Admin/AUDIT_HARNESS.py` | Active | — | — |
 | `Architecture/Forge_flow.md` | Exploration | — | High |
@@ -346,6 +348,12 @@ Dynamic resource doctrine. Buy what you need, sell what you don't. Barter doctri
 **Upstream:** Trajectories.md (FRT doctrine); Gate_07_Utilization.md (cycle data); Energy.md (EV-001 cost input).
 **Downstream:** Gate_07_Utilization.md (FRT accounting); Gate_06_Fabrication.md (input cost threshold).
 ⚠️ EC-002 (operating cost baseline) — blocks TR-001 closure; dependent on Energy.md EV-001.
+
+### `Admin/Environmental_Constraints.md`
+Site, regulatory, ecological, and jurisdictional boundary conditions. Four constraint categories: Climatic/Physical, Regulatory/Jurisdictional, Ecological/Resource, Human/Social. Junction file for EC-010 (jurisdiction conflict) and GOV-010 (regulatory compliance friction) convergence. No-externalized-entropy doctrine. Graceful degradation rules tied to environmental conditions.
+**Upstream:** Governance_Charter.md (Tier 1 Axioms P-1, P-3); Ethical_Constraints.md; Facilities.md (Site Initialization Checklist); Safety_Protocols.md.
+**Downstream:** Ethical_Constraints.md (EC-010 resolution); Governance_Charter.md (GOV-010 resolution); Facilities.md (FA-003); Safety_Protocols.md (SP-005); Challenges/Waste.md; Challenges/Water.md; Challenges/Biofouling.md; Tests/Leviathan_testing.md; Tests/Trophic_Forge.md.
+⚠️ ENV-009 (no site assessed against constraints) — Critical; all values Placeholder until first site assessment. ENV-008 — closes on this registration. ENV-001 (climate baseline) and ENV-002 (regulatory assessment) — both blocking for site-specific operations.
 
 ### `Admin/Governance_Migration_Protocol.md`
 Tier 1 Axiom amendment procedures. Two-track migration system. Engineer proposal; human ratification. Hard floor doctrine.
