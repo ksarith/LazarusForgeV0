@@ -48,6 +48,7 @@ FILE_REGISTRY = {
     "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
     "Economics.md":                     "Admin/Economics.md",
     "Engineer_Protocols.md":            "Admin/Engineer_Protocols.md",
+    "Environmental_Constraints.md":     "Admin/Environmental_Constraints.md",
     "Ethical_Constraints.md":           "Admin/Ethical_Constraints.md",
     "File_Template.md":                 "Admin/File_Template.md",
     "Forge_Audit_Kit.md":               "Admin/Forge_Audit_Kit.md",
@@ -206,6 +207,7 @@ EXTRA_FILES = [
     # "Economics.md",                   # if procurement doctrine, surplus disposition, barter, or v1 profitability is relevant
     # "Governance_Migration_Protocol.md", # if Tier 1 amendment or governance migration is relevant
     # "Repository_Structure.md",        # if naming conventions or folder assignment is relevant
+    # "Environmental_Constraints.md",   # if site constraints, regulatory compliance, jurisdiction conflicts, or ecological impact are relevant
     # ── Tests/ ──────────────────────────────────────────────────────
     # "Living_Waters.md",               # if water purification pathways or LW-UNK items are relevant
     # "Trophic_Forge.md",               # if biological cascade architecture or TF-UNK items are relevant
