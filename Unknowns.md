@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.4 — 2026-06-18. Six new unknowns registered from session audit pass (EC-008, EC-009, EC-010, EC-011, GOV-010, CT-005). GOV-001 un-archived — archive entry was premature; GMP exists but has not been audited against charter constraints; status corrected to In Progress. GOV-006-A declarative-only notice logged. EC-011 and EC-008 added to Critical Watch. EC-010 and GOV-010 cross-referenced — both converge on planned Environmental_Constraints.md.**
+**Version 3.5 — 2026-06-19. Nine new unknowns registered across three files: SEC-008 through SEC-011 (Security_Protocols.md v0.5 audit), RIP-006 and RIP-007 (Repository_Integrity_Protocol.md v0.2 audit), GMP-006 through GMP-008 (Governance_Migration_Protocol.md v0.2 audit). RIP-004 discharged — Tier 1 Axiom Verification already implemented in Forge_Audit_Kit.md v1.1 Step 1. GMP-001 resolved. RIP-005 status updated to In Progress. Four files revised this session: Security_Protocols.md v0.5, Repository_Integrity_Protocol.md v0.2, Governance_Migration_Protocol.md v0.2, Unknowns.md v3.5.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -38,18 +38,16 @@ These rules are enforced at every audit cycle opening:
 
 ---
 
-## What v3.4 Means
+## What v3.5 Means
 
-- **6 new unknowns registered** from 2026-06-18 session audit pass across three files:
-  - EC-008 (Inferred authorization doctrine undefined), EC-009 (Human authority conflict resolution undefined), EC-010 (Jurisdiction conflict hierarchy undefined), EC-011 (Human governance adversary model undefined) — from `Admin/Ethical_Constraints.md` v0.9 audit
-  - GOV-010 (Jurisdictional and regulatory compliance friction for physical forge deployment) — from `Admin/Governance_Charter.md` v0.8 audit
-  - CT-005 (Ethical and authorization term placeholders pending canonicalization) — from `Admin/Canonical_Terms.md` v0.3
-- **GOV-001 un-archived** — archive entry (v3.0, 2026-06-06) was premature. `Admin/Governance_Migration_Protocol.md` was created as the resolution path but has not been audited against charter constraints. Status corrected to In Progress. Archive entry annotated.
-- **GOV-006-A declarative-only notice** added — interim authentication rules in `Admin/Governance_Charter.md` are purely declarative with zero automated resistance until `Admin/Security_Protocols.md` reaches Provisional Spec.
-- **EC-011 added to Critical Watch** — human governance adversary model is the load-bearing assumption under "capability never outruns permission"; if the permission source is compromised the entire doctrine fails.
-- **EC-008 added to Critical Watch** — inferred authorization is the softest point in the permission model; interim default (no material alteration) is in place but formal resolution required before operational deployment.
-- **EC-010 and GOV-010 cross-referenced** — both converge on planned `Admin/Environmental_Constraints.md` at v1 transition.
-- **Five files revised** this session: `Admin/AUDIT_HARNESS.py` v8, `Admin/Forge_Audit_Kit.md` v1.1, `Admin/Governance_Charter.md` v0.8, `Admin/Ethical_Constraints.md` v0.9, `Admin/Canonical_Terms.md` v0.3.
+- **9 new unknowns registered** from 2026-06-19 session audit pass across three files:
+  - SEC-008 (Signature replay protection undefined), SEC-009 (Compromise detection criteria undefined), SEC-010 (Cryptographic algorithm migration doctrine undefined), SEC-011 (Long-duration cryptographic continuity undefined) — from `Admin/Security_Protocols.md` v0.5 four-agent audit
+  - RIP-006 (Archive retention policy undefined), RIP-007 (Integrity incident ownership undefined) — from `Admin/Repository_Integrity_Protocol.md` v0.2 audit
+  - GMP-006 (Concurrent amendment handling undefined), GMP-007 (Amendment withdrawal procedure undefined), GMP-008 (Stale proposal expiration policy undefined) — from `Admin/Governance_Migration_Protocol.md` v0.2 audit
+- **RIP-004 discharged** — Tier 1 Axiom Verification already implemented in `Admin/Forge_Audit_Kit.md` v1.1 Step 1; detection latency now bounded to one audit cycle. Moved to archive.
+- **GMP-001 resolved** — GOV-001 In Progress confirmed; `Admin/Governance_Migration_Protocol.md` exists as executing resolution path.
+- **RIP-005 status updated** to In Progress — `Admin/Security_Protocols.md` now exists at v0.5; description updated to reflect maturity gap rather than file non-existence.
+- **Four files revised** this session: `Admin/Security_Protocols.md` v0.5, `Admin/Repository_Integrity_Protocol.md` v0.2, `Admin/Governance_Migration_Protocol.md` v0.2.
 
 ---
 
@@ -117,6 +115,10 @@ These rules are enforced at every audit cycle opening:
 | SEC-005 | Trusted initialization environment undefined | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-006 | Timestamp trust under degraded clock | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-007 | External root-of-trust architecture undefined | `Admin/Security_Protocols.md` | Open | Critical |
+| SEC-008 | Signature replay protection mechanism undefined — nonce/counter/block-hash binding required before operational deployment | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-009 | Compromise detection criteria undefined — no doctrine for generating suspicion; blocks revocation trigger definition | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-010 | Cryptographic algorithm migration doctrine undefined — no procedure if Ed25519/SHA-256 deprecated or compromised | `Admin/Security_Protocols.md` | Open | Major |
+| SEC-011 | Long-duration cryptographic continuity undefined — entropy exhaustion, operator succession, algorithm migration at Leviathan-class timescales | `Admin/Security_Protocols.md` | Open | Major |
 
 ### Governance & Verification
 
@@ -131,8 +133,9 @@ These rules are enforced at every audit cycle opening:
 | AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
 | RIP-001 | Prior-state archival system not yet established | `Admin/Repository_Integrity_Protocol.md` | Open | Critical |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
-| RIP-004 | Constitutional violation detection latency undefined | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
-| RIP-005 | Security_Protocols.md dependency unresolved | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
+| RIP-005 | Security_Protocols.md Phase 3 dependency — file exists at v0.5; cryptographic implementation not yet operational | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
+| RIP-006 | Archive retention policy undefined — duration, scope, compression strategy not defined | `Admin/Repository_Integrity_Protocol.md` | Open | Minor |
+| RIP-007 | Integrity incident ownership undefined — no doctrine for who closes Minor/Major/Constitutional incidents | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 | CT-001 | Legacy script integration name mapping | `Admin/Canonical_Terms.md` | Open | Minor |
 | CT-002 | Component Library Schema standard undefined | `Admin/Canonical_Terms.md` | Open | Major |
 | CT-003 | Dependency_Priority_Map.md needed before v1 | `Admin/Canonical_Terms.md` | Open | Minor |
@@ -515,6 +518,10 @@ These rules are enforced at every audit cycle opening:
 |---|---|---|---|---|
 | GMP-003 | Adversarial review underspecified at v0 single-contributor | `Admin/Governance_Migration_Protocol.md` | Open | Major |
 | GMP-004 | Ratification authentication gap mirrors GOV-006 | `Admin/Governance_Migration_Protocol.md` | Open | Major |
+| GMP-005 | Track A / Track B boundary insufficient for interpretive Tier 1 capture via lower-tier docs — partially resolved in v0.2 via expanded Track identification rule | `Admin/Governance_Migration_Protocol.md` | In Progress | Major |
+| GMP-006 | Concurrent amendment handling undefined — serialization, merging, and blocking rules absent | `Admin/Governance_Migration_Protocol.md` | Open | Major |
+| GMP-007 | Amendment withdrawal procedure undefined — no explicit abandon state | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
+| GMP-008 | Stale proposal expiration policy undefined — proposals could persist indefinitely | `Admin/Governance_Migration_Protocol.md` | Open | Minor |
 
 *GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007.*
 
@@ -663,6 +670,8 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 | GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 confirmed resolved; GMP ownership confirmed | 2026-06-11 |
 | GMP-002 | Canonical ownership transfer not recorded in Charter | Resolved — ownership transfer confirmed and logged | 2026-06-11 |
 | RIP-003 | Violation incident log location undefined | Resolved — Admin/Logs/violations.md declared as canonical violation incident log | 2026-06-11 |
+| RIP-004 | Constitutional violation detection latency undefined | Resolved — Tier 1 Axiom Verification implemented as Step 1 of mandatory Audit Opening Checklist in `Admin/Forge_Audit_Kit.md` v1.1; detection latency bounded to one audit cycle | 2026-06-19 |
+| GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 In Progress confirmed; `Admin/Governance_Migration_Protocol.md` exists as executing resolution path; Unknowns.md v3.4/v3.5 reflects corrected status | 2026-06-19 |
 
 ---
 
@@ -691,3 +700,4 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 **v3.2 — 2026-06-11:** Architecture audit integration pass. ME-003, ME-004, TH-005, TH-006, CE-005, EN-006, FD-005 added. CE-003 elevated to Critical Watch. CE-004 In Progress. FA-005 resolved.
 **v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW (9), TF (10), SD (12) unknowns. TF-006 and SD-UNK-004 added to Critical Watch. DS-001 closed. 31 total new unknowns.
 **v3.4 — 2026-06-18:** Six new unknowns registered: EC-008, EC-009, EC-010, EC-011 (Ethical_Constraints.md v0.9 audit), GOV-010 (Governance_Charter.md v0.8), CT-005 (Canonical_Terms.md v0.3). GOV-001 un-archived — premature; returned to In Progress pending GMP audit against charter constraints. GOV-006-A declarative-only notice logged. EC-008 and EC-011 added to Critical Watch. EC-010 and GOV-010 cross-referenced to planned Environmental_Constraints.md.
+**v3.5 — 2026-06-19:** Nine new unknowns registered: SEC-008–011 (Security_Protocols.md v0.5), RIP-006–007 (Repository_Integrity_Protocol.md v0.2), GMP-006–008 (Governance_Migration_Protocol.md v0.2). RIP-004 discharged — Tier 1 Axiom Verification in Forge_Audit_Kit.md v1.1 Step 1 executes resolution path. GMP-001 resolved. RIP-005 updated to In Progress. GMP-005 In Progress (partial resolution via expanded Track identification rule).
