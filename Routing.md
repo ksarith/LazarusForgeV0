@@ -1,6 +1,6 @@
 # Routing.md — LazarusForgeV0
 **Canonical Navigation and Link Mapping Index.**
-**Last updated: 2026-06-14**
+**Last updated: 2026-06-19**
 
 ---
 
@@ -39,6 +39,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Admin/Ship_of_Theseus.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Ship_of_Theseus.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Ship_of_Theseus.md) | Explicit |
 | `Admin/Trajectories.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Trajectories.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Trajectories.md) | Explicit |
 | `Admin/Economics.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Economics.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Economics.md) | Explicit |
+| `Admin/Environmental_Constraints.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Environmental_Constraints.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Environmental_Constraints.md) | Explicit |
 | `Admin/AUDIT_HARNESS.py` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/AUDIT_HARNESS.py) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/AUDIT_HARNESS.py) | N/A (Script) |
 | **Architecture/ Layer** | | | |
 | `Architecture/Forge_flow.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Forge_flow.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Forge_flow.md) | Explicit |
