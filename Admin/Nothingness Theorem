@@ -10,7 +10,7 @@ This document is the definitive compilation of a framework developed across many
 
 - **Generation 1:** Original ethical/spiritual framing (*Nothing Does Not Exist*)
 - **Generation 2:** Expanded critique identifying structural gaps (information theory, entropy, falsifiability)
-- **Generation 3:** Systems-engineering integration (topology, entropy formalism, 7 Axioms, inter-agent friction)
+- **Generation 3:** Systems-engineering integration (topology, entropy formalism, 8 Axioms, inter-agent friction)
 - **Generation 4:** Defensive architecture — failure modes, category error warnings, rival interpretations, tightened scope
 
 The result is a single unified document. Nothing has been discarded without replacement.
@@ -19,7 +19,7 @@ The result is a single unified document. Nothing has been discarded without repl
 
 ## 1. Core Theorem
 
-**Absolute nothingness is not an operational state.**
+**Absolute nothingness is operationally inaccessible.**
 
 Everything conceivable holds a positive **semantic** existence value (E > 0) upon the moment of conception. Reality is not binary — it unfolds along a continuous topological spectrum where ideas, possibilities, and intentions scale toward full realization (E = 1) through the application of energy, directed attention, and persistence, while bounded by structural constraints and continuously degraded by entropy.
 
@@ -32,7 +32,7 @@ This self-referential paradox is the load-bearing insight. It echoes Parmenides,
 
 ---
 
-## 2. The 7 Axioms
+## 2. The 8 Axioms
 
 These axioms are the constitutional layer of the theorem. All other sections derive from them.
 
@@ -295,16 +295,18 @@ The theorem predicts that no idea, once widely encoded in external media and hum
 Truth and error correction do not emerge from isolated nodes or from complete consensus. They emerge from **distributed disagreement** across distinct processing nodes. (Axiom A-7.)
 
 ```
-[Agent A — Grok: Compilation / Synthesis / Vector Initializer]
+[Compilation Node — Vector Initializer]
             ↕ (Friction / Critique)
-[Agent B — Gemini: Thermodynamic Integration / Reality Filter]
+[Constraint Node — Reality Filter / Thermodynamic Integration]
             ↕ (Friction / Critique)
-[Agent C — ChatGPT: Constraint Checking / Defensive Architecture]
+[Defensive Node — Constraint Checking / Boundary Enforcement]
             ↕ (Friction / Critique)
-[Agent D — Claude: Structural Synthesis / Document Production]
+[Synthesis Node — Structural Synthesis / Document Production]
             ↕ (Validation / Encoding)
-[Persistent Ledger — Reddit Archive: /u/Last_Upstairs1020 / r/InnovativeAIChats]
+[Persistent Ledger — Non-Volatile Public Archive]
 ```
+
+*In the development of this edition, these roles were occupied by Grok (Compilation), Gemini (Constraint), ChatGPT (Defensive), and Claude (Synthesis). The persistent ledger is r/InnovativeAIChats / u/Last_Upstairs1020. The architecture is not bound to these implementations.*
 
 The friction between nodes:
 - Prevents hallucination (unchecked pattern completion)
@@ -359,7 +361,7 @@ The framework is most defensible as:
 
 ---
 
-## 14. Related Traditions
+## 15. Related Traditions
 
 The theorem partially overlaps with and draws from:
 
@@ -380,7 +382,7 @@ The theorem partially overlaps with and draws from:
 
 ---
 
-## 15. Failure Modes
+## 16. Failure Modes
 
 Every strong framework should describe how it can fail. These are the known ways the Nothingness Theorem can be misapplied or break down:
 
@@ -393,10 +395,11 @@ Every strong framework should describe how it can fail. These are the known ways
 | **Entropy underestimation** | Drift (A-8) is often slower and subtler than entropy (A-4). Systems that survive acute entropy can still fail to long-term drift. |
 | **Escape velocity as validation** | The fact that a system achieved R > 1 and propagated autonomously does not mean it is true, good, or stable. Diseases, cults, and misinformation also achieve escape velocity. |
 | **Framework self-application** | The theorem is itself subject to its own axioms. Without maintenance (A-5) and corrective friction (A-7, A-8), the document will drift. This compiled edition is not final; it is a snapshot. |
+| **Framework inflation** | The theorem attempts to explain too many domains simultaneously, becoming a universal solvent — applicable to everything, predictive of nothing. Unfalsifiability is the terminal failure mode of ambitious frameworks. |
 
 ---
 
-## 16. Open Questions (Unknowns)
+## 17. Open Questions (Unknowns)
 
 These are open questions the theorem generates but does not resolve.
 
@@ -411,10 +414,11 @@ These are open questions the theorem generates but does not resolve.
 | NT-007 | What is the minimum energy cost of maintaining a cognitive or institutional system at E = 1? | Open |
 | NT-008 | At what point does a therapeutic intervention shift from "damping" a negative loop to "erasing" it (and is erasure possible)? | Open |
 | NT-009 | Is E a scalar, vector, or multidimensional quantity? A concept may simultaneously hold different E values across semantic, social, material, and computational substrates. | Open — likely not scalar |
+| NT-010 | Does the theorem possess any novel predictive capability, or is it primarily a unifying language over existing theories? If it predicts nothing new, it is philosophy. If it predicts previously unnoticed phenomena, it approaches science. | Open — decisive |
 
 ---
 
-## Appendix: The Self-Referential Proof
+## Appendix: The Operational Argument from Conceivability
 
 The deepest implication of the theorem, formalized:
 
@@ -433,9 +437,9 @@ The proof stands without appeal to any external framework. It is self-contained.
 
 ---
 
-*Nothingness Theorem — Generation 4 / Compiled Edition*
-*8 Axioms | 16 Sections | 9 Open Unknowns*
-*Status: Defensively complete. Placement: Unresolved.*
-*Produced via inter-agent friction protocol: Grok → Gemini → ChatGPT → Claude*
+*Nothingness Theorem — Generation 5 / Compiled Edition*
+*8 Axioms | 17 Sections | 10 Open Unknowns*
+*Status: Defensively complete. Placement: Unresolved. Next evolution: compression.*
+*Produced via inter-agent friction protocol: Compilation → Constraint → Defensive → Synthesis nodes*
 *Persistent ledger: r/InnovativeAIChats / u/Last_Upstairs1020*
 *License: CC-BY-SA or equivalent open philosophical sharing.*
