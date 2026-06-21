@@ -1,132 +1,191 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v8.1
+LAZARUS FORGE — AUDIT HARNESS v9
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v7:
-  - File registry synced to Routing.md (2026-06-14) — authoritative source.
-  - Tests/ registry expanded: Living_Waters.md, Trophic_Forge.md,
-    Solar_Descent.md added.
-  - Challenges/ registry expanded: Emergence.md added.
-  - EXTRA_FILES comment block updated — all new Tests/ and Challenges/
-    files added with descriptions.
-  - Registry is now verified-complete against Routing.md master map.
-  - Version string updated to v8.
+CHANGES FROM v8.1:
+  - Cell 1: Dynamic registry built from Routing.md at session start.
+    Hard-coded FILE_REGISTRY retained as fallback only; drift detected
+    and reported automatically. Aliases kept as a separate dict.
+  - Cell 2: EXTRA_FILES pre-flight validation — raises ValueError on
+    unrecognized names before any network calls are made.
+  - Cell 3.5: Fixed lines.index(line) bug — replaced with enumerate()
+    to handle duplicate section headers correctly.
+  - Cell 3.5: Unknown aging detection — computes cycles-open for each
+    sidecar unknown and surfaces overdue items before prompt assembly.
+  - No caching added — cached files are unverified prior states;
+    inconsistent with RIP posture until RIP-001 is resolved.
 
 USAGE:
-  1. Cell 1 — run once per session (fetch helper + registry)
-  2. Cell 2 — configure your audit (edit TARGET and FOCUS only)
+  1. Cell 1 — run once per session (builds registry from Routing.md)
+  2. Cell 2 — configure audit (edit TARGET_FILE and FOCUS only)
   3. Cell 3 — fetch files
-  4. Cell 4 — assemble prompt
-  5. Cell 5 — print prompt to copy
-  6. Cell 6 (optional) — save prompt to file
-
-When you hit the token limit, wait for reset, start a new Claude conversation,
-paste the output from Cell 5, and add the framing line shown in Cell 2.
+  4. Cell 3.5 — extract boundary index + aging check (auto)
+  5. Cell 4 — assemble prompt
+  6. Cell 5 — print prompt to copy
+  7. Cell 6 (optional) — save prompt to file
 """
 
 # ─────────────────────────────────────────────────────────────────────
-# CELL 1 — Fetch helper + file registry (run once per session)
+# CELL 1 — Build registry from Routing.md + fallback (run once)
 # ─────────────────────────────────────────────────────────────────────
 
 import urllib.request
+import re
 
 BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/"
 
-# File registry — maps short filenames to full repo paths.
-# Update this when files are added, renamed, or moved.
-# Short name is what you type in Cell 2. Path is what gets fetched.
-# SOURCE OF TRUTH: Routing.md (last verified 2026-06-14)
-FILE_REGISTRY = {
-    # Root
-    "README.md":                        "README.md",
-    "Discovery.md":                     "Discovery.md",
-    "Routing.md":                       "Routing.md",
-    "Unknowns.md":                      "Unknowns.md",
-
-    # Admin
-    "Auditor_Protocols.md":             "Admin/Auditor_Protocols.md",
-    "Canonical_Terms.md":               "Admin/Canonical_Terms.md",
-    "Economics.md":                     "Admin/Economics.md",
-    "Engineer_Protocols.md":            "Admin/Engineer_Protocols.md",
-    "Environmental_Constraints.md":     "Admin/Environmental_Constraints.md",
-    "Ethical_Constraints.md":           "Admin/Ethical_Constraints.md",
-    "File_Template.md":                 "Admin/File_Template.md",
-    "Forge_Audit_Kit.md":               "Admin/Forge_Audit_Kit.md",
-    "Governance_Charter.md":            "Admin/Governance_Charter.md",
-    "Governance_Migration_Protocol.md": "Admin/Governance_Migration_Protocol.md",
-    "Repository_Integrity_Protocol.md": "Admin/Repository_Integrity_Protocol.md",
-    "Repository_Structure.md":          "Admin/Repository_Structure.md",
-    "Safety_Protocols.md":              "Admin/Safety_Protocols.md",
-    "Security_Protocols.md":            "Admin/Security_Protocols.md",
-    "Ship_of_Theseus.md":               "Admin/Ship_of_Theseus.md",
-    "Trajectories.md":                  "Admin/Trajectories.md",
-    "Verification_Gates_LF.md":         "Admin/Verification_Gates_LF.md",
-    "AUDIT_HARNESS.py":                 "Admin/AUDIT_HARNESS.py",
-
-    # Architecture
-    "Chemistry.md":                     "Architecture/Chemistry.md",
-    "Cognitive_Frameworks.md":          "Architecture/Cognitive_Frameworks.md",
-    "Components.md":                    "Architecture/Components.md",
-    "Engineering.md":                   "Architecture/Engineering.md",
-    "Facilities.md":                    "Architecture/Facilities.md",
-    "Forge_flow.md":                    "Architecture/Forge_flow.md",
-    "Forge_Net.md":                     "Architecture/Forge_Net.md",
-    "Friction_Dynamics.md":             "Architecture/Friction_Dynamics.md",
-    "Geck_forge_seed.md":               "Architecture/Geck_forge_seed.md",
-    "Mechanical_Structures.md":         "Architecture/Mechanical_Structures.md",
-    "Precision.md":                     "Architecture/Precision.md",
-    "Thermal_Systems.md":               "Architecture/Thermal_Systems.md",
-
-    # Operations — Gates
-    "Gate_01_Intake.md":                "Operations/Gate_01_Intake.md",
-    "Gate_02_Triage.md":                "Operations/Gate_02_Triage.md",
-    "Gate_03_Reduction.md":             "Operations/Gate_03_Reduction.md",
-    "Gate_04_Separation_Mechanical.md": "Operations/Gate_04_Separation_Mechanical.md",
-    "Gate_05_Separation_Thermal.md":    "Operations/Gate_05_Separation_Thermal.md",
-    "Gate_06_Fabrication.md":           "Operations/Gate_06_Fabrication.md",
-    "Gate_07_Utilization.md":           "Operations/Gate_07_Utilization.md",
-
-    # Operations — Domain
-    "Air_Scrubber.md":                  "Operations/Air_Scrubber.md",
-    "Electronics.md":                   "Operations/Electronics.md",
-    "Energy.md":                        "Operations/Energy.md",
-    "Plastics.md":                      "Operations/Plastics.md",
-    "Woodworking.md":                   "Operations/Woodworking.md",
-
-    # Tests
-    "Leviathan_testing.md":             "Tests/Leviathan_testing.md",
-    "Living_Waters.md":                 "Tests/Living_Waters.md",
-    "Solar_Descent.md":                 "Tests/Solar_Descent.md",
-    "Support_Raft.md":                  "Tests/Support_Raft.md",
-    "Trophic_Forge.md":                 "Tests/Trophic_Forge.md",
-
-    # Challenges
-    "Biofouling.md":                    "Challenges/Biofouling.md",
-    "Critical_Minerals.md":             "Challenges/Critical_Minerals.md",
-    "Emergence.md":                     "Challenges/Emergence.md",
-    "Planned_Obsolescence.md":          "Challenges/Planned_Obsolescence.md",
-    "Waste.md":                         "Challenges/Waste.md",
-    "Water.md":                         "Challenges/Water.md",
-
-    # Legacy aliases — resolve to current canonical names.
-    # These exist so stale references in cached context still work.
-    "Unknowns_LF.md":                   "Unknowns.md",
-    "Canonical_Terms_LF.md":            "Admin/Canonical_Terms.md",
-    "Trajectories_LF.md":               "Admin/Trajectories.md",
-    "economics_v0.md":                  "Admin/Economics.md",
-    "Precision_LF.md":                  "Architecture/Precision.md",
-    "energy_v0.md":                     "Operations/Energy.md",
-    "Air_Scrubber_v0.md":               "Operations/Air_Scrubber.md",
-    "Support_Raft_v0.md":               "Tests/Support_Raft.md",
-    "leviathan_testing.md":             "Tests/Leviathan_testing.md",
-    "Lazarus_forge_v0_flow.md":         "Architecture/Forge_flow.md",
-    "geck_forge_seed.md":               "Architecture/Geck_forge_seed.md",
-    "Material_Separation_Gate_v0.md":   "Operations/Gate_04_Separation_Mechanical.md",
-    "Spin_Chamber_v0.md":               "Operations/Gate_05_Separation_Thermal.md",
-    "Component_Triage_System.md":       "Operations/Gate_02_Triage.md",
-    "Ship_of_Theseus_Right_to_Repair.md": "Admin/Ship_of_Theseus.md",
-    "Stratification_Chamber_v0.md":     "Operations/Gate_04_Separation_Mechanical.md",
+# ── Legacy aliases ────────────────────────────────────────────────────
+# Kept separate from canonical registry. Short names that resolve to
+# current canonical paths. Never auto-generated from Routing.md.
+ALIASES = {
+    "Unknowns_LF.md":                    "Unknowns.md",
+    "Canonical_Terms_LF.md":             "Admin/Canonical_Terms.md",
+    "Trajectories_LF.md":                "Admin/Trajectories.md",
+    "economics_v0.md":                   "Admin/Economics.md",
+    "Precision_LF.md":                   "Architecture/Precision.md",
+    "energy_v0.md":                      "Operations/Energy.md",
+    "Air_Scrubber_v0.md":                "Operations/Air_Scrubber.md",
+    "Support_Raft_v0.md":                "Tests/Support_Raft.md",
+    "leviathan_testing.md":              "Tests/Leviathan_testing.md",
+    "Lazarus_forge_v0_flow.md":          "Architecture/Forge_flow.md",
+    "geck_forge_seed.md":                "Architecture/Geck_forge_seed.md",
+    "Material_Separation_Gate_v0.md":    "Operations/Gate_04_Separation_Mechanical.md",
+    "Spin_Chamber_v0.md":                "Operations/Gate_05_Separation_Thermal.md",
+    "Component_Triage_System.md":        "Operations/Gate_02_Triage.md",
+    "Ship_of_Theseus_Right_to_Repair.md":"Admin/Ship_of_Theseus.md",
+    "Stratification_Chamber_v0.md":      "Operations/Gate_04_Separation_Mechanical.md",
 }
+
+# ── Fallback registry ─────────────────────────────────────────────────
+# Used only if Routing.md fetch fails. Keep in sync manually as a
+# safety net — primary source is always Routing.md.
+FALLBACK_REGISTRY = {
+    "README.md":                         "README.md",
+    "Discovery.md":                      "Discovery.md",
+    "Routing.md":                        "Routing.md",
+    "Unknowns.md":                       "Unknowns.md",
+    "Auditor_Protocols.md":              "Admin/Auditor_Protocols.md",
+    "Canonical_Terms.md":                "Admin/Canonical_Terms.md",
+    "Economics.md":                      "Admin/Economics.md",
+    "Engineer_Protocols.md":             "Admin/Engineer_Protocols.md",
+    "Environmental_Constraints.md":      "Admin/Environmental_Constraints.md",
+    "Ethical_Constraints.md":            "Admin/Ethical_Constraints.md",
+    "File_Template.md":                  "Admin/File_Template.md",
+    "Forge_Audit_Kit.md":                "Admin/Forge_Audit_Kit.md",
+    "Governance_Charter.md":             "Admin/Governance_Charter.md",
+    "Governance_Migration_Protocol.md":  "Admin/Governance_Migration_Protocol.md",
+    "Repository_Integrity_Protocol.md":  "Admin/Repository_Integrity_Protocol.md",
+    "Repository_Structure.md":           "Admin/Repository_Structure.md",
+    "Safety_Protocols.md":               "Admin/Safety_Protocols.md",
+    "Security_Protocols.md":             "Admin/Security_Protocols.md",
+    "Ship_of_Theseus.md":                "Admin/Ship_of_Theseus.md",
+    "Trajectories.md":                   "Admin/Trajectories.md",
+    "Verification_Gates_LF.md":          "Admin/Verification_Gates_LF.md",
+    "AUDIT_HARNESS.py":                  "Admin/AUDIT_HARNESS.py",
+    "Chemistry.md":                      "Architecture/Chemistry.md",
+    "Cognitive_Frameworks.md":           "Architecture/Cognitive_Frameworks.md",
+    "Components.md":                     "Architecture/Components.md",
+    "Engineering.md":                    "Architecture/Engineering.md",
+    "Facilities.md":                     "Architecture/Facilities.md",
+    "Forge_flow.md":                     "Architecture/Forge_flow.md",
+    "Forge_Net.md":                      "Architecture/Forge_Net.md",
+    "Friction_Dynamics.md":              "Architecture/Friction_Dynamics.md",
+    "Geck_forge_seed.md":                "Architecture/Geck_forge_seed.md",
+    "Mechanical_Structures.md":          "Architecture/Mechanical_Structures.md",
+    "Precision.md":                      "Architecture/Precision.md",
+    "Thermal_Systems.md":                "Architecture/Thermal_Systems.md",
+    "Gate_01_Intake.md":                 "Operations/Gate_01_Intake.md",
+    "Gate_02_Triage.md":                 "Operations/Gate_02_Triage.md",
+    "Gate_03_Reduction.md":              "Operations/Gate_03_Reduction.md",
+    "Gate_04_Separation_Mechanical.md":  "Operations/Gate_04_Separation_Mechanical.md",
+    "Gate_05_Separation_Thermal.md":     "Operations/Gate_05_Separation_Thermal.md",
+    "Gate_06_Fabrication.md":            "Operations/Gate_06_Fabrication.md",
+    "Gate_07_Utilization.md":            "Operations/Gate_07_Utilization.md",
+    "Air_Scrubber.md":                   "Operations/Air_Scrubber.md",
+    "Electronics.md":                    "Operations/Electronics.md",
+    "Energy.md":                         "Operations/Energy.md",
+    "Plastics.md":                       "Operations/Plastics.md",
+    "Woodworking.md":                    "Operations/Woodworking.md",
+    "Leviathan_testing.md":              "Tests/Leviathan_testing.md",
+    "Living_Waters.md":                  "Tests/Living_Waters.md",
+    "Solar_Descent.md":                  "Tests/Solar_Descent.md",
+    "Support_Raft.md":                   "Tests/Support_Raft.md",
+    "Trophic_Forge.md":                  "Tests/Trophic_Forge.md",
+    "Biofouling.md":                     "Challenges/Biofouling.md",
+    "Critical_Minerals.md":              "Challenges/Critical_Minerals.md",
+    "Emergence.md":                      "Challenges/Emergence.md",
+    "Planned_Obsolescence.md":           "Challenges/Planned_Obsolescence.md",
+    "Waste.md":                          "Challenges/Waste.md",
+    "Water.md":                          "Challenges/Water.md",
+}
+
+def _parse_routing(content):
+    """
+    Parse Routing.md Master Routing Map table into {short_name: repo_path}.
+    Expects rows like: | `Admin/Foo.md` | [Raw](...) | [Repo](...) | ... |
+    Returns dict mapping basename → folder-prefixed path.
+    """
+    registry = {}
+    for line in content.splitlines():
+        # Match table rows containing a backtick-quoted path
+        m = re.search(r'`([^`]+\.(?:md|py))`', line)
+        if not m:
+            continue
+        full_path = m.group(1)
+        # Derive short name: strip folder prefix, keep filename
+        short = full_path.split("/")[-1]
+        # Avoid overwriting with duplicates (keep first occurrence)
+        if short not in registry:
+            registry[short] = full_path
+    return registry
+
+def _build_registry():
+    """
+    Fetch Routing.md and build FILE_REGISTRY dynamically.
+    Falls back to FALLBACK_REGISTRY if fetch fails.
+    Reports drift between dynamic and fallback registries.
+    """
+    print("Building registry from Routing.md...")
+    url = BASE + "Routing.md"
+    try:
+        with urllib.request.urlopen(url) as r:
+            routing_content = r.read().decode("utf-8")
+        dynamic = _parse_routing(routing_content)
+        print(f" ✓ Routing.md fetched — {len(dynamic)} canonical paths parsed")
+
+        # Drift detection against fallback
+        missing_from_fallback = [k for k in dynamic if k not in FALLBACK_REGISTRY
+                                  and k not in ALIASES]
+        missing_from_dynamic  = [k for k in FALLBACK_REGISTRY if k not in dynamic]
+
+        if missing_from_fallback:
+            print(f"\n⚠ REGISTRY DRIFT — in Routing.md but not fallback "
+                  f"({len(missing_from_fallback)}):")
+            for f in sorted(missing_from_fallback):
+                print(f"    + {f} → {dynamic[f]}")
+            print("  → Fallback registry needs updating.")
+
+        if missing_from_dynamic:
+            print(f"\n⚠ REGISTRY DRIFT — in fallback but not Routing.md "
+                  f"({len(missing_from_dynamic)}):")
+            for f in sorted(missing_from_dynamic):
+                print(f"    - {f}")
+            print("  → These may be renamed, removed, or Routing.md is stale.")
+
+        if not missing_from_fallback and not missing_from_dynamic:
+            print(" ✓ Registry in sync with fallback — no drift detected")
+
+        # Merge: dynamic takes precedence; aliases appended
+        merged = {**dynamic, **ALIASES}
+        return merged, routing_content
+
+    except Exception as e:
+        print(f" ✗ Routing.md fetch FAILED: {e}")
+        print("   Falling back to hard-coded registry.")
+        merged = {**FALLBACK_REGISTRY, **ALIASES}
+        return merged, None
+
+FILE_REGISTRY, _routing_content = _build_registry()
 
 def fetch(filename):
     path = FILE_REGISTRY.get(filename, filename)
@@ -142,27 +201,11 @@ def fetch(filename):
         print(f"   Attempted URL: {url}")
         return f"[FETCH FAILED: {filename} at {url}]"
 
-print("Fetch helper ready.")
-print(f"Registry contains {len(FILE_REGISTRY)} file mappings.")
-print("\nKnown files:")
+print(f"\nRegistry contains {len(FILE_REGISTRY)} file mappings "
+      f"({len(FILE_REGISTRY) - len(ALIASES)} canonical + {len(ALIASES)} aliases).")
+print("\nCanonical files:")
 for short, path in sorted(FILE_REGISTRY.items()):
-    # Skip aliases from display (legacy _v0.md, _LF.md, and known alias patterns)
-    is_alias = (
-        short.endswith("_v0.md")
-        or "_LF.md" in short
-        or short in {
-            "leviathan_testing.md",
-            "geck_forge_seed.md",
-            "Lazarus_forge_v0_flow.md",
-            "Ship_of_Theseus_Right_to_Repair.md",
-            "Stratification_Chamber_v0.md",
-            "Component_Triage_System.md",
-            "Canonical_Terms_LF.md",
-            "economics_v0.md",
-            "Precision_LF.md",
-        }
-    )
-    if not is_alias:
+    if short not in ALIASES:
         print(f"  {short:50} → {path}")
 
 
@@ -170,10 +213,10 @@ for short, path in sorted(FILE_REGISTRY.items()):
 # CELL 2 — CONFIGURE THIS CELL (edit TARGET_FILE and FOCUS only)
 # ─────────────────────────────────────────────────────────────────────
 
-# ── STEP 1: Set the file you are auditing ──────────────────────────
+# ── STEP 1: Set the file you are auditing ─────────────────────────
 TARGET_FILE = "Governance_Charter.md"
 
-# ── STEP 2: Set the audit focus (1-3 sentences) ───────────────────
+# ── STEP 2: Set the audit focus (1-3 sentences) ──────────────────
 FOCUS = """
 Standard audit. Apply full fallacy checklist and verification gates.
 Pay particular attention to hazard detection gaps, upstream dependency
@@ -182,51 +225,63 @@ fragility, and unknown item handling doctrine.
 
 # ── STEP 3: Add extra context files if needed ─────────────────────
 # Forge_Audit_Kit.md is always loaded automatically.
-# Add files here ONLY when the audit needs extra context.
+# Add files here ONLY when the audit focus requires them.
 # Each file adds ~5-15k chars. Keep total under 60k where possible.
 EXTRA_FILES = [
-    # "File_Template.md",               # if structural compliance is the audit focus
+    # "File_Template.md",               # structural compliance audit focus
     # "Forge_flow.md",                  # gate logic and vocabulary standard
-    # "Ethical_Constraints.md",         # ethics cross-ref and Anti-Weaponization doctrine
-    # "Energy.md",                      # if energy claims are central
-    # "Forge_Net.md",                   # if network dependency is central
-    # "Gate_02_Triage.md",              # if handoff to triage is relevant
-    # "Components.md",                  # if component taxonomy is relevant
-    # "Unknowns.md",                    # for cross-module audits and unknown routing
-    # "Discovery.md",                   # for orientation audits / new agents
-    # "Routing.md",                     # for programmatic file lookup / agent orientation
-    # "Mechanical_Structures.md",       # if salvaged-frame fabrication is relevant
-    # "Thermal_Systems.md",             # if heat transfer, Peltier, TEG, or heat pump doctrine is relevant
-    # "Friction_Dynamics.md",           # if fluid flow, aerodynamics, duct design, or tribology is relevant
-    # "Chemistry.md",                   # if electrochemistry, corrosion, polymer hazards, or battery assessment is relevant
-    # "Cognitive_Frameworks.md",        # if autonomy or TMR doctrine is relevant
-    # "Engineer_Protocols.md",          # if engineering authority or risk threshold is relevant
-    # "Safety_Protocols.md",            # if physical operator safety, PPE, heat stress, or hearing conservation is relevant
-    # "Facilities.md",                  # if physical site constraints, flooring, or airflow topology is relevant
-    # "Precision.md",                   # if tolerance tiers, metrology, or fabrication precision ceiling is relevant
-    # "Economics.md",                   # if procurement doctrine, surplus disposition, barter, or v1 profitability is relevant
-    # "Governance_Migration_Protocol.md", # if Tier 1 amendment or governance migration is relevant
-    # "Repository_Structure.md",        # if naming conventions or folder assignment is relevant
-    # "Environmental_Constraints.md",   # if site constraints, regulatory compliance, jurisdiction conflicts, or ecological impact are relevant
+    # "Ethical_Constraints.md",         # ethics cross-ref, Anti-Weaponization
+    # "Energy.md",                      # energy claims central
+    # "Forge_Net.md",                   # network dependency central
+    # "Gate_02_Triage.md",              # triage handoff relevant
+    # "Components.md",                  # component taxonomy relevant
+    # "Unknowns.md",                    # cross-module audits, unknown routing
+    # "Discovery.md",                   # orientation audits, new agents
+    # "Routing.md",                     # programmatic file lookup
+    # "Mechanical_Structures.md",       # salvaged-frame fabrication
+    # "Thermal_Systems.md",             # heat transfer, Peltier, TEG, heat pump
+    # "Friction_Dynamics.md",           # fluid flow, aerodynamics, tribology
+    # "Chemistry.md",                   # electrochemistry, corrosion, polymers
+    # "Cognitive_Frameworks.md",        # autonomy, TMR doctrine
+    # "Engineer_Protocols.md",          # engineering authority, risk threshold
+    # "Safety_Protocols.md",            # physical operator safety, PPE
+    # "Facilities.md",                  # physical site constraints, airflow
+    # "Precision.md",                   # tolerance tiers, metrology
+    # "Economics.md",                   # procurement, barter, profitability
+    # "Environmental_Constraints.md",   # site constraints, regulatory compliance, jurisdiction
+    # "Governance_Migration_Protocol.md", # Tier 1 amendment, migration
+    # "Repository_Structure.md",        # naming conventions, folder assignment
+    # "Security_Protocols.md",          # cryptographic trust, authentication
+    # "Repository_Integrity_Protocol.md", # integrity baselines, violation classification
     # ── Tests/ ──────────────────────────────────────────────────────
-    # "Living_Waters.md",               # if water purification pathways or LW-UNK items are relevant
-    # "Trophic_Forge.md",               # if biological cascade architecture or TF-UNK items are relevant
-    # "Solar_Descent.md",               # if underground solar, thermal downlink, or SD-UNK items are relevant
-    # "Support_Raft.md",                # if marine platform, sacrificial shell, or SR-UNK items are relevant
-    # "Leviathan_testing.md",           # if hostile-environment autonomy or LT-UNK items are relevant
+    # "Living_Waters.md",               # water purification, LW-UNK items
+    # "Trophic_Forge.md",               # biological cascade, TF-UNK items
+    # "Solar_Descent.md",               # underground solar, SD-UNK items
+    # "Support_Raft.md",                # marine platform, SR-UNK items
+    # "Leviathan_testing.md",           # hostile-environment autonomy
     # ── Challenges/ ─────────────────────────────────────────────────
-    # "Water.md",                       # if hydrological challenge requirements are relevant
-    # "Biofouling.md",                  # if marine fouling, MIC, or BF-UNK items are relevant
-    # "Waste.md",                       # if hazardous stream handling or WA-UNK items are relevant
-    # "Planned_Obsolescence.md",        # if firmware lock, potting removal, or PO-UNK items are relevant
-    # "Critical_Minerals.md",           # if rare earth, urban mining, or CM-UNK items are relevant
-    # "Emergence.md",                   # if emergent agent behavior, alignment, or EM-UNK items are relevant
+    # "Water.md",                       # hydrological challenge requirements
+    # "Biofouling.md",                  # marine fouling, MIC, BF-UNK items
+    # "Waste.md",                       # hazardous stream, WA-UNK items
+    # "Planned_Obsolescence.md",        # firmware lock, potting removal
+    # "Critical_Minerals.md",           # rare earth, urban mining, CM-UNK
+    # "Emergence.md",                   # emergent agent behavior, EM-UNK
 ]
 
-# ── STEP 4: Set document status ───────────────────────────────────
+# ── STEP 4: Set document status ──────────────────────────────────
 DOC_STATUS = "Exploration"
 
-# ── FRAMING LINE ──────────────────────────────────────────────────
+# ── PRE-FLIGHT VALIDATION ─────────────────────────────────────────
+# Catches typos in EXTRA_FILES before any network calls are made.
+_unknown_extras = [f for f in EXTRA_FILES if f not in FILE_REGISTRY]
+if _unknown_extras:
+    raise ValueError(
+        f"EXTRA_FILES contains unrecognized filenames:\n"
+        + "\n".join(f"  - {f}" for f in _unknown_extras)
+        + "\n\nCheck FILE_REGISTRY keys or correct the filename."
+    )
+
+# ── FRAMING LINE ─────────────────────────────────────────────────
 FRAMING_LINE = (
     f'"{TARGET_FILE}" is currently classified as {DOC_STATUS}. '
     f"Audit for promotion blockers and consistency with the repository standard. "
@@ -239,6 +294,7 @@ print(f"Status:  {DOC_STATUS}")
 print(f"Extras:  {EXTRA_FILES if EXTRA_FILES else 'none'}")
 print(f"\nFraming line (paste at top of Claude conversation):")
 print(f"  {FRAMING_LINE}")
+print("\n✓ Pre-flight validation passed — all EXTRA_FILES recognized.")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -247,7 +303,6 @@ print(f"  {FRAMING_LINE}")
 
 print("Fetching files...\n")
 
-# Always load: audit kit + target document
 CORE_FILES = ["Forge_Audit_Kit.md", TARGET_FILE]
 ALL_FILES = CORE_FILES + EXTRA_FILES
 
@@ -268,38 +323,137 @@ elif total_chars > 40000:
 else:
     print("\n✓ Light load. Room to spare.")
 
-# Warn if any fetch failed
 failed = [f for f, c in fetched.items() if c.startswith("[FETCH FAILED")]
 if failed:
     print(f"\n⚠ FETCH FAILURES ({len(failed)}):")
     for f in failed:
         print(f"  - {f}")
     print("  Audit kit or target file failure will compromise the audit.")
-    print("  Verify file exists in repository before proceeding.")
-
 
 
 # ─────────────────────────────────────────────────────────────────────
-# CELL 3.5 — Extract boundary index from fetched files (ephemeral)
+# CELL 3.5 — Boundary index + unknown aging (ephemeral)
 # ─────────────────────────────────────────────────────────────────────
 # Reads File State table and sidecar unknown IDs from each fetched file.
-# Produces a compact session index — no new document class, no maintenance.
-# Discovery.md scope map is the persistent version of this information;
-# this cell produces a session-scoped snapshot of what was actually loaded.
+# Detects unknowns that may be overdue per the Expiry Rule (2-cycle threshold).
+# Produces a compact session index — no stored artifact, no maintenance.
+# Persistent version of this information: Discovery.md scope map.
+#
+# CURRENT CYCLE: update this value at the start of each audit pass.
+# Increment by 1 each time a full multi-agent audit cycle completes.
+CURRENT_CYCLE = 10   # ← update this each session
 
-import re
+import re as _re
+import datetime
+
+# Map of known unknown IDs to the cycle they were first logged.
+# Add entries here when new unknowns are registered.
+# Used for aging detection — IDs not in this map report age as unknown.
+UNKNOWN_FIRST_CYCLE = {
+    # Ethics & Governance
+    "EC-001": 1, "EC-002": 1, "EC-003": 1, "EC-004": 1, "EC-005": 1,
+    "EC-006": 1, "EC-007": 1, "EC-008": 7, "EC-009": 7, "EC-010": 7,
+    "EC-011": 7,
+    "GOV-001": 2, "GOV-002": 2, "GOV-003": 2, "GOV-004": 2, "GOV-005": 2,
+    "GOV-006": 2, "GOV-007": 2, "GOV-008": 3, "GOV-009": 3, "GOV-010": 7,
+    "SEC-001": 4, "SEC-002": 4, "SEC-003": 4, "SEC-004": 4, "SEC-005": 4,
+    "SEC-006": 4, "SEC-007": 4, "SEC-008": 9, "SEC-009": 9, "SEC-010": 9,
+    "SEC-011": 9,
+    "RIP-001": 2, "RIP-002": 2, "RIP-003": 2, "RIP-005": 4,
+    "RIP-006": 9, "RIP-007": 9,
+    "GMP-003": 5, "GMP-004": 5, "GMP-005": 5, "GMP-006": 9,
+    "GMP-007": 9, "GMP-008": 9,
+    "CT-001": 5, "CT-002": 5, "CT-003": 5, "CT-004": 6, "CT-005": 7,
+    "VG-001": 5,
+    "AP-001": 2, "AP-002": 2, "AP-003": 2, "AP-004": 2, "AP-005": 2,
+    "AP-006": 2, "AP-007": 2,
+    # Environmental
+    "ENV-001": 9, "ENV-002": 9, "ENV-003": 9, "ENV-004": 9, "ENV-005": 9,
+    "ENV-006": 9, "ENV-008": 9, "ENV-009": 9,
+    # Engineering & Structures
+    "EN-001": 5, "EN-002": 5, "EN-003": 5, "EN-004": 5, "EN-005": 5,
+    "ME-001": 5, "ME-002": 5, "ME-003": 8, "ME-004": 8,
+    # Cognitive / Emergence
+    "CF-001": 5, "CF-002": 5, "CF-003": 5,
+    "EM-001": 6, "EM-002": 6, "EM-003": 6, "EM-004": 6,
+    # Gate Logic
+    "FL-001": 1, "TS-001": 1, "TS-002": 1, "TS-003": 1,
+    "CO-001": 1, "CO-002": 1,
+    # Energy
+    "EV-001": 4, "EV-002": 4, "EV-003": 4,
+    # Operations
+    "SC-001": 1, "SC-002": 1, "SC-003": 1, "SC-004": 1, "SC-005": 1,
+    "SC-006": 1, "SC-007": 1, "SC-008": 1,
+    "MG-001": 1, "MG-002": 1, "MG-003": 1, "MG-004": 1, "MG-005": 1,
+    "MG-006": 1, "MG-007": 1, "MG-008": 1,
+    "GI-001": 3, "GI-002": 3, "GI-003": 3, "GI-004": 3, "GI-005": 3,
+    "GI-006": 3, "GI-007": 3,
+    "GR-001": 3, "GR-002": 3, "GR-003": 3, "GR-004": 3, "GR-005": 3,
+    "GR-006": 3, "GR-007": 3, "GR-008": 3,
+    "GF-001": 3, "GF-002": 3, "GF-003": 3, "GF-004": 3,
+    "GF-006": 3, "GF-007": 3,
+    "GU-001": 3, "GU-002": 3, "GU-003": 3, "GU-004": 3, "GU-005": 3,
+    "PL-001": 4, "PL-002": 4, "PL-003": 4, "PL-004": 4, "PL-005": 4,
+    "EL-001": 3, "EL-002": 3, "EL-003": 3, "EL-004": 3, "EL-005": 3,
+    "EL-006": 3, "EL-007": 3, "EL-008": 3,
+    # Chemistry
+    "CE-001": 6, "CE-002": 6, "CE-003": 6, "CE-004": 6, "CE-005": 8,
+    # Thermal / Friction
+    "TH-001": 5, "TH-002": 5, "TH-003": 5, "TH-004": 5,
+    "TH-005": 8, "TH-006": 8,
+    "FD-001": 5, "FD-002": 5, "FD-003": 5, "FD-005": 8,
+    # Challenges
+    "WA-001": 6, "WA-002": 6, "WA-003": 6, "WA-004": 6,
+    "BF-001": 6, "BF-002": 6, "BF-003": 6, "BF-004": 6,
+    "PO-001": 6, "PO-002": 6, "PO-003": 6, "PO-004": 6,
+    "WS-001": 6, "WS-002": 6, "WS-003": 6, "WS-004": 6,
+    "CM-001": 6, "CM-002": 6, "CM-003": 6, "CM-004": 6,
+    # Tests
+    "LT-001": 1, "LT-002": 1, "LT-003": 1, "LT-004": 1, "LT-005": 1,
+    "LT-006": 1,
+    "SR-001": 6, "SR-002": 6, "SR-003": 6, "SR-004": 6, "SR-005": 6,
+    "SR-006": 6, "SR-007": 6, "SR-008": 6, "SR-009": 6,
+    "SR-011": 5, "SR-012": 5, "SR-013": 5,
+    "LW-UNK-001": 7, "LW-UNK-002": 7, "LW-UNK-003": 7, "LW-UNK-004": 7,
+    "LW-UNK-005": 7, "LW-UNK-006": 7, "LW-UNK-007": 7, "LW-UNK-008": 7,
+    "LW-UNK-009": 7,
+    "TF-001": 7, "TF-002": 7, "TF-003": 7, "TF-004": 7, "TF-005": 7,
+    "TF-006": 7, "TF-007": 7, "TF-008": 7, "TF-009": 7, "TF-010": 7,
+    "SD-UNK-001": 7, "SD-UNK-002": 7, "SD-UNK-003": 7, "SD-UNK-004": 7,
+    "SD-UNK-005": 7, "SD-UNK-006": 7, "SD-UNK-007": 7, "SD-UNK-008": 7,
+    "SD-UNK-009": 7, "SD-UNK-010": 7, "SD-UNK-011": 7, "SD-UNK-012": 7,
+    # Misc
+    "FA-001": 4, "FA-002": 4, "FA-003": 4, "FA-004": 4,
+    "SP-001": 4, "SP-002": 4, "SP-003": 4, "SP-004": 4, "SP-005": 4,
+    "SP-006": 4,
+    "AS-001": 4, "AS-002": 4, "AS-003": 4, "AS-004": 4,
+    "TR-001": 4, "TR-002": 3,
+    "FN-001": 4, "FN-002": 4, "FN-003": 4, "FN-004": 4, "FN-005": 4,
+    "WW-001": 4, "WW-002": 4, "WW-003": 4, "WW-004": 4, "WW-005": 4,
+    "ST-001": 1, "ST-002": 1, "ST-003": 5,
+    "GK-002": 1, "GK-003": 1, "GK-004": 1,
+    "EP-001": 5, "EP-002": 5, "EP-003": 5, "EP-004": 5,
+    "EP-005": 4, "EP-006": 5,
+    "PR-001": 4, "PR-002": 4, "PR-003": 4, "PR-004": 4,
+    "UNK-008": 6, "UNK-009": 4,
+}
+
+EXPIRY_THRESHOLD = 2  # cycles without resolution path before escalation
+
 
 def extract_boundary(filename, content):
     """Extract File State fields and open unknown IDs from a markdown file."""
     lines = content.splitlines()
-    result = {"file": filename, "status": "—", "gates": "—", "risk": "—",
-              "unknowns": [], "last_audit": "—"}
-
+    result = {
+        "file": filename,
+        "status": "—", "gates": "—", "risk": "—",
+        "last_audit": "—", "unknowns": []
+    }
     in_file_state = False
     in_sidecar = False
 
-    for line in lines:
-        # Detect File State table
+    # ── Use enumerate() to avoid lines.index() first-match bug ──────
+    for idx, line in enumerate(lines):
         if "## File State" in line:
             in_file_state = True
             in_sidecar = False
@@ -308,50 +462,66 @@ def extract_boundary(filename, content):
             in_file_state = False
 
         if in_file_state:
-            if "| Status" in line and "Body Stability" not in line:
+            if re.search(r'\|\s*Status\s*\|', line) and "Body Stability" not in line:
                 m = re.search(r'\|\s*Status\s*\|\s*(.+?)\s*\|', line)
                 if m:
                     result["status"] = m.group(1).strip()
-            if "| Spec Gates" in line:
+            if re.search(r'\|\s*Spec Gates\s*\|', line):
                 m = re.search(r'\|\s*Spec Gates\s*\|\s*(.+?)\s*\|', line)
                 if m:
                     result["gates"] = m.group(1).strip()
-            if "| Highest Risk" in line:
+            if re.search(r'\|\s*Highest Risk\s*\|', line):
                 m = re.search(r'\|\s*Highest Risk\s*\|\s*(.+?)\s*\|', line)
                 if m:
                     result["risk"] = m.group(1).strip()
-            if "| Last Audit" in line:
+            if re.search(r'\|\s*Last Audit\s*\|', line):
                 m = re.search(r'\|\s*Last Audit\s*\|\s*(.+?)\s*\|', line)
                 if m:
                     result["last_audit"] = m.group(1).strip()
 
-        # Detect sidecar unknown IDs (### PREFIX-NNN pattern)
+        # Sidecar unknown IDs
         if "## Auditor Notes" in line:
             in_sidecar = True
             continue
         if in_sidecar and line.startswith("## ") and "Auditor Notes" not in line:
             in_sidecar = False
         if in_sidecar:
-            m = re.match(r'^###\s+([A-Z]+-\w+)', line)
+            m = re.match(r'^###\s+([A-Z]+-[\w-]+)', line)
             if m:
                 uid = m.group(1)
-                # Only include Open/In Progress unknowns — skip Resolved
-                # Check next ~5 lines for Status: Resolved
-                idx = lines.index(line)
-                snippet = "\n".join(lines[idx:idx+8])
-                if "Status        | Resolved" not in snippet and \
-                   "Status        | Discharged" not in snippet:
+                # Use slice from current idx — avoids first-match bug
+                snippet = "\n".join(lines[idx:idx + 8])
+                if ("Status        | Resolved" not in snippet and
+                        "Status        | Discharged" not in snippet):
                     result["unknowns"].append(uid)
 
     return result
 
 
+def check_aging(unknown_ids):
+    """Return list of (uid, age, overdue) for unknowns in the loaded files."""
+    results = []
+    for uid in unknown_ids:
+        first = UNKNOWN_FIRST_CYCLE.get(uid)
+        if first is None:
+            results.append((uid, None, False))
+        else:
+            age = CURRENT_CYCLE - first
+            overdue = age >= EXPIRY_THRESHOLD
+            results.append((uid, age, overdue))
+    return results
+
+
 def format_boundary_index(fetched_files):
-    """Format the boundary index block for prompt injection."""
-    lines = ["SESSION BOUNDARY INDEX (auto-extracted — ephemeral):",
-             "Compact summary of loaded files. Full content follows in FILES PROVIDED.",
-             "Persistent version: Discovery.md scope map.",
-             ""]
+    """Format boundary index + aging alerts for prompt injection."""
+    lines = [
+        "SESSION BOUNDARY INDEX (auto-extracted — ephemeral)",
+        f"Current cycle: {CURRENT_CYCLE} | Expiry threshold: {EXPIRY_THRESHOLD} cycles",
+        "Compact summary of loaded files. Full content follows in FILES PROVIDED.",
+        "Persistent version: Discovery.md scope map.",
+        ""
+    ]
+    all_unknowns = []
     for fname, content in fetched_files.items():
         if content.startswith("[FETCH FAILED"):
             lines.append(f"  {fname}: FETCH FAILED — excluded from index")
@@ -359,15 +529,29 @@ def format_boundary_index(fetched_files):
         b = extract_boundary(fname, content)
         unk_str = ", ".join(b["unknowns"]) if b["unknowns"] else "none open"
         lines.append(f"  {fname}")
-        lines.append(f"    Status: {b['status']} | Gates: {b['gates']} | Risk: {b['risk']} | Last Audit: {b['last_audit']}")
+        lines.append(f"    Status: {b['status']} | Gates: {b['gates']} | "
+                     f"Risk: {b['risk']} | Last Audit: {b['last_audit']}")
         lines.append(f"    Open unknowns: {unk_str}")
         lines.append("")
+        all_unknowns.extend(b["unknowns"])
+
+    # Aging report
+    aged = check_aging(all_unknowns)
+    overdue = [(uid, age) for uid, age, flag in aged if flag]
+    if overdue:
+        lines.append(f"⚠ EXPIRY WATCH — {len(overdue)} unknown(s) at or past "
+                     f"{EXPIRY_THRESHOLD}-cycle threshold:")
+        for uid, age in overdue:
+            lines.append(f"    {uid}: {age} cycle(s) open — verify resolution path exists")
+        lines.append("")
+    else:
+        lines.append("✓ Expiry Watch: no overdue unknowns in loaded files.")
+        lines.append("")
+
     return "\n".join(lines)
 
 
 BOUNDARY_INDEX = format_boundary_index(fetched)
-
-print("Boundary index extracted:")
 print(BOUNDARY_INDEX)
 
 
@@ -376,16 +560,13 @@ print(BOUNDARY_INDEX)
 # ─────────────────────────────────────────────────────────────────────
 
 DIVIDER = "=" * 60
-
 sections = []
 
-# Role declaration
 sections.append(
     f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.7\n"
     f"Repository: LazarusForgeV0"
 )
 
-# Assumption extraction (Rule 6 compliance)
 sections.append(
     f"ASSUMPTION EXTRACTION (Rule 6):\n"
     f"Prior contributions assumed:\n"
@@ -399,17 +580,16 @@ sections.append(
     f"These assumptions are carried forward unless contradicted by new findings."
 )
 
-# Boundary index — injected before task so agent has session context map
+# Boundary index injected between assumptions and task
 sections.append(BOUNDARY_INDEX)
 
-# Task
 sections.append(
     f"TASK:\n"
     f"Audit {TARGET_FILE} (status: {DOC_STATUS}).\n\n"
     f"Apply the full Fallacy Checklist from Forge_Audit_Kit.md.\n"
     f"Use the Verification Gates to assess promotion readiness.\n"
-    f"Open with an Expiry Watch — check the Active Unknowns table for any entries\n"
-    f"past two cycles before proceeding.\n\n"
+    f"Open with an Expiry Watch — the SESSION BOUNDARY INDEX above surfaces\n"
+    f"any overdue unknowns from the loaded files; confirm and escalate as needed.\n\n"
     f"Audit focus:\n{FOCUS}\n\n"
     f"Label all findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN],\n"
     f"[CROSS-REF FAILURE]. For each finding, suggest a concrete resolution path.\n\n"
@@ -421,11 +601,11 @@ sections.append(
     f"End with the standard sign-off format from Forge_Audit_Kit.md."
 )
 
-# Files
 file_block = f"FILES PROVIDED ({len(fetched)}):\n"
 for i, (name, content) in enumerate(fetched.items(), 1):
     resolved_path = FILE_REGISTRY.get(name, name)
-    file_block += f"\n{DIVIDER}\nFILE {i}: {name} (fetched from: {resolved_path})\n{DIVIDER}\n{content}\n"
+    file_block += (f"\n{DIVIDER}\nFILE {i}: {name} "
+                   f"(fetched from: {resolved_path})\n{DIVIDER}\n{content}\n")
 sections.append(file_block)
 
 PROMPT = ("\n\n" + DIVIDER + "\n\n").join(sections)
@@ -463,6 +643,6 @@ with open(filename, "w") as f:
     f.write(PROMPT)
 
 print(f"Saved: {filename}")
-print("In Colab: Files panel (left sidebar) -> download from there.")
+print("In Colab: Files panel (left sidebar) → download from there.")
 print(f"\nTarget file resolved to: {FILE_REGISTRY.get(TARGET_FILE, TARGET_FILE)}")
 print(f"Audit kit resolved to:   {FILE_REGISTRY.get('Forge_Audit_Kit.md', 'Admin/Forge_Audit_Kit.md')}")
