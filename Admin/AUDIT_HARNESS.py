@@ -1,5 +1,5 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v8
+LAZARUS FORGE — AUDIT HARNESS v8.1
 Google Colab notebook cells — paste each block into a separate cell.
 
 CHANGES FROM v7:
@@ -278,6 +278,99 @@ if failed:
     print("  Verify file exists in repository before proceeding.")
 
 
+
+# ─────────────────────────────────────────────────────────────────────
+# CELL 3.5 — Extract boundary index from fetched files (ephemeral)
+# ─────────────────────────────────────────────────────────────────────
+# Reads File State table and sidecar unknown IDs from each fetched file.
+# Produces a compact session index — no new document class, no maintenance.
+# Discovery.md scope map is the persistent version of this information;
+# this cell produces a session-scoped snapshot of what was actually loaded.
+
+import re
+
+def extract_boundary(filename, content):
+    """Extract File State fields and open unknown IDs from a markdown file."""
+    lines = content.splitlines()
+    result = {"file": filename, "status": "—", "gates": "—", "risk": "—",
+              "unknowns": [], "last_audit": "—"}
+
+    in_file_state = False
+    in_sidecar = False
+
+    for line in lines:
+        # Detect File State table
+        if "## File State" in line:
+            in_file_state = True
+            in_sidecar = False
+            continue
+        if in_file_state and line.startswith("##"):
+            in_file_state = False
+
+        if in_file_state:
+            if "| Status" in line and "Body Stability" not in line:
+                m = re.search(r'\|\s*Status\s*\|\s*(.+?)\s*\|', line)
+                if m:
+                    result["status"] = m.group(1).strip()
+            if "| Spec Gates" in line:
+                m = re.search(r'\|\s*Spec Gates\s*\|\s*(.+?)\s*\|', line)
+                if m:
+                    result["gates"] = m.group(1).strip()
+            if "| Highest Risk" in line:
+                m = re.search(r'\|\s*Highest Risk\s*\|\s*(.+?)\s*\|', line)
+                if m:
+                    result["risk"] = m.group(1).strip()
+            if "| Last Audit" in line:
+                m = re.search(r'\|\s*Last Audit\s*\|\s*(.+?)\s*\|', line)
+                if m:
+                    result["last_audit"] = m.group(1).strip()
+
+        # Detect sidecar unknown IDs (### PREFIX-NNN pattern)
+        if "## Auditor Notes" in line:
+            in_sidecar = True
+            continue
+        if in_sidecar and line.startswith("## ") and "Auditor Notes" not in line:
+            in_sidecar = False
+        if in_sidecar:
+            m = re.match(r'^###\s+([A-Z]+-\w+)', line)
+            if m:
+                uid = m.group(1)
+                # Only include Open/In Progress unknowns — skip Resolved
+                # Check next ~5 lines for Status: Resolved
+                idx = lines.index(line)
+                snippet = "\n".join(lines[idx:idx+8])
+                if "Status        | Resolved" not in snippet and \
+                   "Status        | Discharged" not in snippet:
+                    result["unknowns"].append(uid)
+
+    return result
+
+
+def format_boundary_index(fetched_files):
+    """Format the boundary index block for prompt injection."""
+    lines = ["SESSION BOUNDARY INDEX (auto-extracted — ephemeral):",
+             "Compact summary of loaded files. Full content follows in FILES PROVIDED.",
+             "Persistent version: Discovery.md scope map.",
+             ""]
+    for fname, content in fetched_files.items():
+        if content.startswith("[FETCH FAILED"):
+            lines.append(f"  {fname}: FETCH FAILED — excluded from index")
+            continue
+        b = extract_boundary(fname, content)
+        unk_str = ", ".join(b["unknowns"]) if b["unknowns"] else "none open"
+        lines.append(f"  {fname}")
+        lines.append(f"    Status: {b['status']} | Gates: {b['gates']} | Risk: {b['risk']} | Last Audit: {b['last_audit']}")
+        lines.append(f"    Open unknowns: {unk_str}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+BOUNDARY_INDEX = format_boundary_index(fetched)
+
+print("Boundary index extracted:")
+print(BOUNDARY_INDEX)
+
+
 # ─────────────────────────────────────────────────────────────────────
 # CELL 4 — Assemble prompt
 # ─────────────────────────────────────────────────────────────────────
@@ -305,6 +398,9 @@ sections.append(
     f"- Full reference files: Admin/Auditor_Protocols.md | Unknowns.md\n"
     f"These assumptions are carried forward unless contradicted by new findings."
 )
+
+# Boundary index — injected before task so agent has session context map
+sections.append(BOUNDARY_INDEX)
 
 # Task
 sections.append(
