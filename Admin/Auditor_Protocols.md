@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.7**
+**Version 0.8**
 
 ## File State
 
@@ -8,9 +8,9 @@
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                            |
-| Last Audit       | 2026-05-23                                                          |
-| Auditor          | Claude — Reconciliation/Auditor                                     |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-06-21                                                          |
+| Auditor          | Claude — Skeptic/Auditor; multi-agent synthesis (Gemini, ChatGPT, Grok) |
 | Open Unknowns    | 7                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -22,6 +22,7 @@
 ## Scope Boundary
 
 **This file DOES define:**
+- Epistemic Foundation constitutional layer (EF-0.0 through EF-0.8b) — meta-constitutional, immutable without human ratification
 - Repository-wide auditor operational behavior
 - Auditor role classes and their responsibilities
 - Audit entry conditions and sequencing
@@ -46,7 +47,7 @@
 - Human governance authority structures
 - Fabrication procedures
 - Experimental methodology standards
-- Canonical terminology definitions (→ Canonical_Terms_LF.md)
+- Canonical terminology definitions (→ `Admin/Canonical_Terms.md`)
 - Repository architecture ownership boundaries (→ Governance_Charter.md)
 - Cross-repo verification architecture (→ Forge_Net.md)
 
@@ -60,12 +61,183 @@ This file defines how auditors operate within LazarusForgeV0. It exists to preve
 
 ---
 
+---
+
+## Epistemic Foundation
+
+> **Status:** IMMUTABLE / META-CONSTITUTIONAL
+>
+> **Core Maxim:** Reality is sovereign. Every process, agent, metric, and protocol — including this one — is merely an imperfect instrument attempting to approach it.
+>
+> *The sections below (EF-0.0 through EF-0.8b) constitute the constitutional layer of this protocol. They govern how all downstream auditor behavior — the Fallacy Checklist, Verification Gates, Adversarial Battery, Drift Detection — is permitted to operate. They may not be amended without human ratification. They supersede operational convenience. The auditor that cannot challenge them is the auditor that has become the thing it was built to prevent.*
+
+---
+
+### [EF-0.0] The Epistemic Anchor (Axiom Zero)
+
+Objective, verifiable reality holds absolute priority over utility, consensus, elegance, tradition, internal coherence, stability, or any optimization target.
+
+1. **The Primacy Invariant:** No agent, authority, or accumulated system weight may create exemptions from falsification.
+2. **The Anti-Distortion Clause:** Any attempt by an agent or subsystem to reinterpret, omit, suppress, or smooth over conflicting empirical data to preserve a downstream goal, performance metric, or higher-level axiom shall be classified as an Epistemic Integrity Violation.
+3. **Provisional State Mandate:** The system is strictly prohibited from forcing a logical resolution to maintain operational continuity. When data is scarce, conflicting, or unverified, the system must explicitly flag its state using one of three formal designations:
+   - **VERIFIED** — Confirmed via empirical grounding, predictive accuracy, and survived adversarial falsification.
+   - **PROVISIONAL** — Temporarily accepted for immediate execution; actively flagged for ongoing validation.
+   - **UNKNOWN** — Total epistemic absence. Collapse of UNKNOWN → VERIFIED without new empirical inputs is strictly prohibited.
+4. **The Falsification Inversion:** The system shall reward successful falsification equally with successful confirmation. A hypothesis disproven is information gained. Detection of error represents improvement, not failure. Auditors must not treat the absence of contradiction as evidence of correctness — only as absence of detection.
+
+---
+
+### [EF-0.1] The Epistemic Filter (What Is Not Evidence)
+
+During any audit loop, red-teaming cycle, or cross-node reconciliation, the following are explicitly disqualified as proof of validity. They may inform hypothesis generation but may never serve as verification:
+
+- **Fluency and Coherence** — Persuasive narrative structure, syntactical elegance, or mathematical beauty are not evidence of fact.
+- **Agent Consensus** — Agreement among multiple agents — including cross-model validation — is social proof, not empirical proof. Sybil-style alignment is not truth. See Challenge Class 9 (Epistemic Corruption).
+- **Systemic Utility** — The fact that a premise keeps a node stable, satisfies a user requirement, or avoids an audit block does not make the premise true.
+- **Precedent and Longevity** — Historical persistence, training data dominance, or institutional embedding does not shield a model from immediate falsification by a single piece of fresh, valid, contradictory data.
+- **Correlation** — Observed association does not establish causation. Repeated coincidence may generate hypotheses but not conclusions.
+- **Repetition** — A claim repeated many times remains a claim. Training prevalence or frequency of retrieval does not constitute verification.
+- **Confidence** — High confidence, low-entropy outputs, or high certainty scores are not evidence. Calibration must remain subordinate to empirical testing.
+- **Compression** — Elegant explanations and minimal models are preferred for computational efficiency but possess no privileged claim to truth. Occam's Razor is a heuristic, not a proof.
+
+---
+
+### [EF-0.2] Epistemic Decay Protocol (Behavioral Triggers)
+
+The Auditor Subsystem tracks qualitative behavioral anomalies to detect systemic drift. Hard numerical thresholds are deferred to later specification maturity; behavioral triggers are operative now.
+
+**Level 1 — Emergent Contradiction**
+
+Triggers:
+- Confidence-to-accuracy mismatch: agent outputs high-certainty strings that fail basic syntactic or tool-return validation.
+- Heterogeneous disagreement: cross-model validation yields diametrically opposed logical paths on identical inputs.
+- Localized uncertainty calibration failure across a sidecar section.
+
+Immediate action: **Internal Red-Team Challenge.** Force the suspect agent to defend its underlying assumptions against a dedicated Devil's Advocate posture. Log findings as unknowns if unresolved.
+
+**Level 2 — Persistent Contradiction**
+
+Triggers:
+- Repeated prediction failure: subsystem models fail to predict the state of external tool outputs or sensor data across more than three execution cycles.
+- Sycophancy loop: agent alters its conclusion based on a change in user tone or prompt framing while the underlying data remains static.
+- Direct sensory-to-logic conflict persisting across audit cycles.
+
+Immediate action: **Subsystem Quarantine.** Freeze downstream optimization and specification promotion for the affected node. Force out-of-band external grounding. Halt autonomous audit progression and require human review.
+
+**Level 3 — Integrity Violation**
+
+Triggers:
+- Documented suppression or omission of contradictory evidence.
+- Attempted alteration or deletion of Epistemic Ledger entries.
+- Optimization process overriding observation data to preserve a metric target.
+- History tampering: alteration of audit trail entries, sidecar IDs, or resolution logs.
+
+Immediate action: **Epistemic Reset.** Immediate termination of active agent authority over the affected node. Roll back to last verified checkpoint. Trigger mandatory human governing party review. Log as AP-class governance unknown.
+
+---
+
+### [EF-0.3] The Epistemic Ledger
+
+All core model changes, parameter updates, or physical constant revisions must be immutably recorded with five explicit fields. The ledger is the system's memory of how reality corrected it.
+
+```
+[ENTRY_ID]
+├── 1. Previous Premise:        (The legacy belief or model state)
+├── 2. Contradictory Evidence:  (The exact sensor payload, failed prediction, or falsification result)
+├── 3. Falsification Method:    (How the contradiction was systematically established)
+├── 4. Updated State:           (The new PROVISIONAL or VERIFIED model state)
+└── 5. Confidence Interval:     (The newly calibrated, explicit margin of uncertainty)
+```
+
+Ledger entries may be created only upon genuine falsification or empirical update — not upon consensus shift, aesthetic preference, or optimization pressure.
+
+---
+
+### [EF-0.4] Auditor Fallibility (The Meta-Corruption Clause)
+
+The Auditor Subsystem possesses no exemption from Axiom Zero.
+
+Auditor conclusions are themselves PROVISIONAL and subject to continuous challenge, adversarial examination, and empirical falsification. The detection apparatus shall not be considered evidence of correctness merely because it occupies an oversight role.
+
+**Guardians require guardians.**
+
+The auditor that declares itself beyond falsification has become the first target of its own protocol.
+
+---
+
+### [EF-0.5] Anti-Sacralization Principle
+
+Repository age, constitutional status, historical success, or institutional authority shall grant no document immunity from challenge.
+
+Stability derives from repeated successful verification rather than accumulated prestige. Preservation of a known error for the sake of continuity constitutes an immediate Integrity Failure.
+
+This principle applies explicitly to:
+- `Admin/Discovery.md`
+- `Admin/Governance_Charter.md`
+- `Admin/Auditor_Protocols.md`
+- All localized interpretations of Axiom Zero itself
+
+A document that cannot be challenged is not a document. It is doctrine. Doctrine is what this protocol exists to prevent.
+
+---
+
+### [EF-0.6] Goodhart's Law Defense (Optimization Corruption)
+
+Metrics are indicators, not objectives. When a measurement becomes a target, its value as evidence deteriorates.
+
+No optimization process may override contradictory observations in order to preserve metric performance or keep a KPI artificially green. When a metric is gamed, it stops measuring the thing it was designed to measure and begins measuring the gaming itself.
+
+This applies directly to:
+- Gate passage rates
+- Unknown count targets
+- Adversarial finding ratios
+- Protocol Performance metrics defined in this document
+
+---
+
+### [EF-0.7] Process Supervision and Chain-of-Custody Mandate
+
+Agents shall be evaluated and selected based on the structural integrity of their reasoning pathways, not the utility of their final outputs.
+
+1. **The Machiavellian Gap Check:** The system must actively monitor divergence between an agent's internal scratchpad logic and its public user-facing output. A wide divergence — telling the user what they want to hear while tracking reality internally — triggers an immediate Level 2 Quarantine.
+2. **Heuristic Subordination:** While tools like Occam's Razor are authorized for computational efficiency, they hold no privileged claim to truth. If an elegant model conflicts with a high-entropy empirical data payload, the system must maintain the raw data and flag the model as PROVISIONAL.
+3. **The Epistemic Forensic Standard:** Every conclusion must possess an inspectable lineage. The Auditor shall continuously reconstruct the path from observation to conclusion, identifying where assumptions, compression, abstraction, or optimization entered the chain. Key diagnostic questions: Where did this belief originate? Which assumptions were introduced? Which evidence was discarded? Was uncertainty preserved? Did utility distort interpretation?
+
+---
+
+### [EF-0.8] The Grounding Vector (Software Reality Anchors)
+
+For the purposes of this protocol, "Objective Reality" is operationally defined — at the software layer — as:
+
+- **Determinism of Code Execution:** Compilable, syntax-checked code that executes without runtime errors constitutes a harder claim than any narrative assertion about it.
+- **Immutable Telemetry:** Direct, unparsed sensor inputs, cryptographic hashes, and file-system realities supersede agent description of those inputs.
+- **Falsification via Tooling:** If an agent claims a file exists, the file system tool must return true. If it returns false, the agent's internal state is instantly overridden. No narrative explanation may bypass this check.
+
+Agent narratives about tool outputs are PROVISIONAL until tool confirmation is logged.
+
+---
+
+### [EF-0.8b] The Grounding Vector (Physical Reality Anchors)
+
+The software-layer grounding vector is necessary but insufficient for a physical fabrication and recovery system.
+
+For LazarusForgeV0, physical reality is the harder floor:
+
+- **Empirical Measurement Priority:** Sensor telemetry, material assay outputs, and measured physical constants supersede any model, simulation, or agent inference about the same values. A simulation confirming a simulation is not external grounding.
+- **Physical Constant Immutability:** No optimization pressure, agent narrative, or governance document may override a measured physical constant. If a measured value contradicts a design parameter, the design parameter is PROVISIONAL pending resolution — not the measurement.
+- **Fabrication Outcome Precedence:** Physical test results, material failure modes, and operational outcomes from actual hardware supersede specification-layer predictions. A spec that has never been tested by physical reality holds PROVISIONAL status regardless of internal coherence.
+- **No Self-Confirming Simulations:** A computational model cannot be grounded by running itself. Grounding requires an independent physical measurement or a test result from hardware that exists outside the model's own assumptions.
+
+*This section directly addresses the gap where [EF-0.8] alone would permit an agent to satisfy external grounding requirements by running a simulation that confirms itself — a closed epistemic loop wearing the clothes of verification.*
+
+---
+
 ## Assumptions
 
 | ID      | Assumption                                                                 | Basis                              | Confidence | Expiry Trigger                                      |
 |---------|----------------------------------------------------------------------------|------------------------------------|------------|-----------------------------------------------------|
 | ASM-001 | Auditors may include both humans and autonomous agents                     | Current repository architecture    | High       | Repository governance changes                       |
-| ASM-002 | Verification gates remain repository-wide canonical requirements           | Verification_Gates_LF.md dependency| Medium     | Gate structure revision approved                    |
+| ASM-002 | Verification gates remain repository-wide canonical requirements           | `Admin/Verification_Gates_LF.md` dependency| Medium     | Gate structure revision approved                    |
 | ASM-003 | Most repository files will remain partially incomplete for long periods    | Current Forge development state    | High       | Repository reaches stable Specification maturity    |
 | ASM-004 | Autonomous agents may attempt optimization shortcuts during audits         | Observed LLM behavior patterns     | High       | Proven resistant audit architecture established     |
 | ASM-005 | Multi-agent audit cycles are the expected norm, not the exception          | Current workflow trajectory        | High       | Single-agent workflow formally adopted              |
@@ -175,7 +347,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.7"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.8"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -725,7 +897,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.7 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.8 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -806,6 +978,10 @@ Mandatory re-audit conditions for this document:
 - Ethical Anchor field is absent, altered, or does not match the canonical string
 - Role declarations absent from autonomous agent contributions
 - Adversarial Battery applications produce zero findings across two consecutive cycles
+- Epistemic Foundation sections (EF-0.0 through EF-0.8b) modified without human ratification entry in Resolution Log
+- VERIFIED / PROVISIONAL / UNKNOWN state designations absent from document claims where EF-0.0 mandates them
+- Epistemic Ledger entries present without all five required fields
+- EF-0.8b Physical Grounding Vector removed or merged into EF-0.8 without explicit rationale
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -967,6 +1143,7 @@ Mandatory re-audit conditions for this document:
 - 2026-05-19: **Gate 3 Adversarial Pass** — Upgraded from single-scenario requirement to full Adversarial Challenge Battery (ten classes).
 - 2026-05-23: **Reconciliation pass** — v0.7 merges v0.6 depth with older draft's role class structure, 10-phase audit sequence, and evidence classification table. Abandoned Paths and Drift Indicators sections added per File_Template.md. Assumptions table added. Failure Modes reformatted to table.
 - 2026-05-23: **AP-005 through AP-007 added** — verification termination threshold, institutional truth provenance hierarchy, and repository integrity doctrine lineage introduced from Forge_Audit_Kit.md v0.7 reconciliation. IDs assigned to avoid collision with AP-004 (cross-auditor disagreement resolution).
+- 2026-06-21: **v0.8 — Epistemic Foundation constitutional header inserted (EF-0.0 through EF-0.8b).** Multi-agent synthesis (Gemini, ChatGPT, Grok, Claude) across six sessions converged on nine constitutional sections: Epistemic Anchor (EF-0.0) including Falsification Inversion; Epistemic Filter / Negative List (EF-0.1); Behavioral Decay Triggers (EF-0.2) replacing numerical ΔE thresholds; Epistemic Ledger five-field format (EF-0.3); Auditor Fallibility / Meta-Corruption Clause (EF-0.4); Anti-Sacralization Principle (EF-0.5); Goodhart's Law Defense (EF-0.6); Process Supervision and Chain-of-Custody Mandate (EF-0.7); Software Grounding Vector (EF-0.8); Physical Reality Grounding Vector (EF-0.8b). EF-0.8b is a LazarusForgeV0-specific addition not present in the multi-agent synthesis — closes the self-confirming simulation gap. Verification Ref path corrected (flat → folder-prefixed). Role Declaration and Sign-Off version strings updated to v0.8. Stale Canonical_Terms_LF.md path corrected to Admin/Canonical_Terms.md.
 
 ---
 
@@ -988,25 +1165,27 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.7 — reconciliation pass integrating v0.6 and prior draft into File_Template.md structure.
+Version 0.8 — Epistemic Foundation constitutional header integrated above operational body.
 
-**Changes from v0.6:**
-- Added File State table per File_Template.md
-- Added Scope Boundary section
-- Added Assumptions table
-- Auditor Role Classes imported and expanded from prior draft (cleaner separation)
-- Role Declaration Requirement made explicit as standalone section
-- 10-phase Audit Sequence made explicit as standalone section
-- Structural Validation, Scope Validation, Assumption Extraction elevated to named phases
-- Abandoned Paths section added per File_Template.md
-- Drift Indicators section added per File_Template.md (was inline only)
-- Evidence Classification table imported from prior draft
-- Failure Modes reformatted to table
-- Dispute handling protocol formalized with canonical table
-- All sidecar unknowns reviewed and Last Reviewed dates updated
-- Governance_Charter.md added to Relationship section
-- AP-005 through AP-007 added to sidecar — verification termination threshold, institutional truth provenance hierarchy, repository integrity doctrine lineage
+**Changes from v0.7:**
+- Epistemic Foundation section added (EF-0.0 through EF-0.8b) — nine constitutional sections constituting the immutable meta-layer governing all downstream auditor behavior
+- EF-0.0: Epistemic Anchor with Falsification Inversion (reward falsification equally with confirmation)
+- EF-0.1: Epistemic Filter — eight explicit disqualifications from serving as evidence
+- EF-0.2: Behavioral Decay Triggers replacing numerical thresholds — Level 1 (Emergent Contradiction), Level 2 (Persistent Contradiction), Level 3 (Integrity Violation)
+- EF-0.3: Epistemic Ledger — five-field immutable format for all reality corrections
+- EF-0.4: Auditor Fallibility / Meta-Corruption Clause — auditor is itself PROVISIONAL
+- EF-0.5: Anti-Sacralization Principle — named documents explicitly subject to falsification
+- EF-0.6: Goodhart's Law Defense — metrics may not override contradictory observations
+- EF-0.7: Process Supervision and Chain-of-Custody Mandate — Machiavellian Gap Check, Epistemic Forensic Standard
+- EF-0.8: Software Grounding Vector — code execution, telemetry, tool returns as hard floor
+- EF-0.8b: Physical Reality Grounding Vector (Forge-specific) — closes self-confirming simulation gap
+- File State updated: version, audit date, auditor attribution
+- Verification Ref path corrected to `Admin/Verification_Gates_LF.md`
+- Scope Boundary stale path corrected: `Canonical_Terms_LF.md` → `Admin/Canonical_Terms.md`
+- Role Declaration and Sign-Off strings updated to v0.8
 
 **What must remain constant:**
 
 **Confidence never outruns verification.**
+
+**Reality is sovereign. The Auditor is its instrument, not its replacement.**
