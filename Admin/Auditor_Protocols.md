@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.8**
+**Version 0.8.1**
 
 ## File State
 
@@ -11,7 +11,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-21                                                          |
 | Auditor          | Claude — Skeptic/Auditor; multi-agent synthesis (Gemini, ChatGPT, Grok) |
-| Open Unknowns    | 7                                                                   |
+| Open Unknowns    | 10                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -982,12 +982,18 @@ Mandatory re-audit conditions for this document:
 - VERIFIED / PROVISIONAL / UNKNOWN state designations absent from document claims where EF-0.0 mandates them
 - Epistemic Ledger entries present without all five required fields
 - EF-0.8b Physical Grounding Vector removed or merged into EF-0.8 without explicit rationale
+- AP-001 through AP-007 Systemic Risk escalation cleared without documented Resolution Pass completing at least one entry to Payment via Specification or Discharge
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
 ---
 
 ## Auditor Notes & Unknowns
+
+> **SYSTEMIC RISK ESCALATION — 2026-06-21**
+> AP-001 through AP-007 have exceeded the 2-cycle expiry threshold by a material margin (estimated 8 cycles). Per Unknowns Registry doctrine, entries aging past threshold without closure must be escalated to Systemic Risk. A Resolution Pass targeting these seven entries is required before the next standard audit cycle. Autonomous specification progression on dependent modules is suspended pending that pass. This escalation was surfaced independently by both Gemini (Skeptic/Auditor) and Grok (Skeptic/Auditor) in the 2026-06-21 dual audit. Logged in Resolution Log.
+
+---
 
 ### AP-001 — Auditor effectiveness metrics not yet measured
 
@@ -1000,7 +1006,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-04                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** How to measure whether the audit process is actually adding value — productive block ratio, false-positive refusal rate, drift incidents detected per cycle — remains undefined.
 
@@ -1021,7 +1027,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-04                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** Whether the clarification that human override rights do not extend to Ethical_Constraints hard-line doctrines is explicitly stated in both documents in a mutually consistent way.
 
@@ -1042,7 +1048,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-04                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** A machine-readable format (JSON/YAML) for recording gate passages, blocks, and overrides that can be queried and compared across audit cycles does not yet exist.
 
@@ -1063,7 +1069,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-22                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** The repository lacks a formal mechanism for resolving disagreements between different auditor classes or agent instances within the same audit cycle.
 
@@ -1084,7 +1090,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-23                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** The repository lacks formal criteria defining when verification is considered operationally sufficient versus indefinitely expandable.
 
@@ -1105,7 +1111,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-23                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** The repository distinguishes quantitative confidence labels but not institutional truth provenance levels — the distinction between internally derived coherence and externally validated reality.
 
@@ -1126,7 +1132,7 @@ Mandatory re-audit conditions for this document:
 | Blocking      | No                         |
 | Owner         | Admin/Auditor_Protocols.md |
 | First Logged  | 2026-05-23                 |
-| Last Reviewed | 2026-05-23                 |
+| Last Reviewed | 2026-06-21                 |
 
 **Description:** The repository lacks explicit operational doctrine for audit history integrity, rollback detection, canonical-path authority, and institutional memory corruption at the auditor protocol level.
 
@@ -1135,6 +1141,79 @@ Mandatory re-audit conditions for this document:
 **Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture) — that entry covers constitutional enforcement; this entry covers operational auditor doctrine. Distinct but linked.
 
 ---
+
+---
+
+### AP-008 — Technical implementation of quarantine actions undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | High                       |
+| Priority      | Major                      |
+| Type          | Technical / Governance     |
+| Blocking      | No                         |
+| Owner         | `Admin/Auditor_Protocols.md` |
+| First Logged  | 2026-06-21                 |
+| Last Reviewed | 2026-06-21                 |
+
+**Description:** Sections [EF-0.2] (Epistemic Decay Protocol) and [EF-0.7] (Machiavellian Gap Check) define operational actions — "Subsystem Quarantine," "Halt autonomous audit progression," "Epistemic Reset" — as descriptive text. No software interface, structural signaling mechanism, exit code schema, file system lock protocol, or CI/CD branch freeze specification exists to map how an autonomous agent is expected to execute a hard freeze or isolation block without causing downstream crashes or silent state corruption.
+
+**Why It Matters:** Without a concrete automation boundary, quarantine actions remain performative declarations. An agent can acknowledge a Level 2 trigger and continue operating — there is no structural enforcement. This is the gap between "Declared" and "Enforceable" governance states as defined in Governance_Charter.md.
+
+**Resolution Path:** Payment via Specification — define the automation interface in a dedicated sub-section or in `Admin/Security_Protocols.md`. Minimum requirements: (1) specific flag outputs or exit codes that downstream runners can trap; (2) file system or registry signals that constitute a structural freeze; (3) the boundary between what an autonomous agent may self-execute vs. what requires human confirmation before proceeding. Cross-reference GOV-003 (integrity enforcement architecture) — distinct layers, linked resolution.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-06-21 dual audit.*
+
+---
+
+### AP-009 — Epistemic Ledger volume exemption from sidecar metadata guardrail undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Low                        |
+| Priority      | Minor                      |
+| Type          | Governance                 |
+| Blocking      | No                         |
+| Owner         | `Admin/Auditor_Protocols.md` |
+| First Logged  | 2026-06-21                 |
+| Last Reviewed | 2026-06-21                 |
+
+**Description:** The Sidecar Model's 20% metadata guardrail flags files for Resolution Pass when sidecar content exceeds 20% of total document word count. The Epistemic Ledger [EF-0.3] mandates five-field entries per state correction. For complex architectural documents with high falsification activity, rigorous ledger compliance will structurally inflate sidecar word counts, triggering the 20% guardrail not as a signal of governance debt but as a signal of epistemic health. The metric cannot distinguish between bloat (bad) and active ledger entries (good).
+
+**Why It Matters:** The guardrail may suppress epistemic compliance by penalizing the exact behavior the constitutional layer mandates. A document actively correcting its own errors would be flagged for remediation.
+
+**Resolution Path:** Payment via Specification — refine the 20% calculation to exclude character counts contained within valid, active `[ENTRY_ID]` Epistemic Ledger blocks. The guardrail should measure governance debt (stale unknowns, unresolved disputes, administrative overhead), not active falsification records. Define the exclusion syntax in the Sidecar Model section and update `Admin/Forge_Audit_Kit.md` accordingly.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-06-21 dual audit.*
+
+---
+
+### AP-010 — Physical test harness integration with epistemic grounding layer undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Medium                     |
+| Priority      | Major                      |
+| Type          | Governance / Architectural |
+| Blocking      | No                         |
+| Owner         | `Admin/Auditor_Protocols.md` |
+| First Logged  | 2026-06-21                 |
+| Last Reviewed | 2026-06-21                 |
+
+**Description:** EF-0.8b establishes the physical reality grounding doctrine — fabrication outcomes and sensor telemetry supersede model predictions. However, no mandatory coupling path exists between the Epistemic Foundation layer and the repository's physical test harnesses (`Tests/Leviathan_testing.md`, `Tests/Trophic_Forge.md`, `Tests/Solar_Descent.md`). The governance protocols risk remaining epistemic-only: well-grounded in doctrine, ungrounded in physical falsification loops. A specification that satisfies EF-0.8b's text but has never been submitted to a physical test harness remains PROVISIONAL under the doctrine's own terms — but the audit sequence has no phase requiring physical harness confirmation.
+
+**Why It Matters:** Without a mandated coupling path, EF-0.8b functions as aspirational doctrine rather than enforced grounding. An agent could satisfy all six verification gates using internally coherent documentation alone, never triggering the physical grounding requirement the constitutional layer declares sovereign.
+
+**Resolution Path:** Payment via Specification — add a mandatory check to Phase 6 (Evidence Validation) or Phase 10 (Gate Status Determination) requiring that any specification-stage document with physical implementation claims carry at least one confirmed cross-reference to an active test harness file. The cross-reference must specify which harness, what test, and what outcome constitutes the grounding artifact. Documents without physical claims are exempt. Cross-reference EF-0.8b and `Tests/Leviathan_testing.md`.
+
+*Surfaced by Grok (Skeptic/Auditor), 2026-06-21 dual audit.*
+
+---
+
+- 2026-06-21: **v0.8.1 — Dual audit pass (Gemini + Grok, Skeptic/Auditor).** AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry threshold exceeded; Resolution Pass required before next standard cycle). All seven Last Reviewed dates updated. Three new unknowns logged: AP-008 (quarantine action technical implementation, High), AP-009 (Epistemic Ledger volume exemption from 20% guardrail, Low), AP-010 (physical test harness coupling to epistemic grounding layer, Medium). Open Unknowns incremented 7 → 10. Gemini's SHA-256 upstream parity check recommendation deferred to AP-007 resolution path and Security_Protocols.md — not inserted into Phase 1 prose to avoid implying enforcement capability that does not yet exist (Fallacy 7 applied to protocol itself). Gates cleared: G1, G2, G4, G5, G6. Gate blocked: G3 (full Adversarial Battery required at Candidate Spec promotion; partial application appropriate for Exploration stage). File remains Exploration status.
 
 ### Resolution Log
 
@@ -1165,24 +1244,31 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.8 — Epistemic Foundation constitutional header integrated above operational body.
+Version 0.8.1 — dual audit pass; Systemic Risk escalation; three new unknowns logged.
 
-**Changes from v0.7:**
+**Changes from v0.8:**
+- AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry); Resolution Pass required
+- All seven sidecar Last Reviewed dates updated to 2026-06-21
+- AP-008 logged: quarantine action technical implementation (High)
+- AP-009 logged: Epistemic Ledger volume exemption from 20% sidecar guardrail (Low)
+- AP-010 logged: physical test harness coupling to epistemic grounding layer (Medium)
+- Open Unknowns incremented 7 → 10
+- Systemic Risk escalation sentinel added to Drift Indicators
+- File State version and audit metadata updated
+
+**Changes from v0.7 (full v0.8 record):**
 - Epistemic Foundation section added (EF-0.0 through EF-0.8b) — nine constitutional sections constituting the immutable meta-layer governing all downstream auditor behavior
-- EF-0.0: Epistemic Anchor with Falsification Inversion (reward falsification equally with confirmation)
+- EF-0.0: Epistemic Anchor with Falsification Inversion
 - EF-0.1: Epistemic Filter — eight explicit disqualifications from serving as evidence
-- EF-0.2: Behavioral Decay Triggers replacing numerical thresholds — Level 1 (Emergent Contradiction), Level 2 (Persistent Contradiction), Level 3 (Integrity Violation)
-- EF-0.3: Epistemic Ledger — five-field immutable format for all reality corrections
-- EF-0.4: Auditor Fallibility / Meta-Corruption Clause — auditor is itself PROVISIONAL
-- EF-0.5: Anti-Sacralization Principle — named documents explicitly subject to falsification
-- EF-0.6: Goodhart's Law Defense — metrics may not override contradictory observations
-- EF-0.7: Process Supervision and Chain-of-Custody Mandate — Machiavellian Gap Check, Epistemic Forensic Standard
-- EF-0.8: Software Grounding Vector — code execution, telemetry, tool returns as hard floor
-- EF-0.8b: Physical Reality Grounding Vector (Forge-specific) — closes self-confirming simulation gap
-- File State updated: version, audit date, auditor attribution
-- Verification Ref path corrected to `Admin/Verification_Gates_LF.md`
-- Scope Boundary stale path corrected: `Canonical_Terms_LF.md` → `Admin/Canonical_Terms.md`
-- Role Declaration and Sign-Off strings updated to v0.8
+- EF-0.2: Behavioral Decay Triggers — Level 1, 2, 3
+- EF-0.3: Epistemic Ledger — five-field immutable format
+- EF-0.4: Auditor Fallibility / Meta-Corruption Clause
+- EF-0.5: Anti-Sacralization Principle
+- EF-0.6: Goodhart's Law Defense
+- EF-0.7: Process Supervision and Chain-of-Custody Mandate
+- EF-0.8: Software Grounding Vector
+- EF-0.8b: Physical Reality Grounding Vector (Forge-specific)
+- Verification Ref, Canonical_Terms path, Role Declaration, Sign-Off strings corrected/updated
 
 **What must remain constant:**
 
