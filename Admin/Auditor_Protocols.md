@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.8.1**
+**Version 0.9**
 
 ## File State
 
@@ -10,8 +10,8 @@
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-21                                                          |
-| Auditor          | Claude — Skeptic/Auditor; multi-agent synthesis (Gemini, ChatGPT, Grok) |
-| Open Unknowns    | 10                                                                  |
+| Auditor          | Claude — Synthesizer/Auditor                                        |
+| Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -347,7 +347,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.8"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.9"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -483,19 +483,37 @@ Strip to one falsifiable sentence. Does the foundation survive adversarial reduc
 
 ---
 
-## Evidence Classification
+## Evidence Classification and Institutional Truth Provenance Hierarchy
+*§AP-006 — Payment via Specification. Closes AP-006 (logged 2026-05-23). Constitutional anchor: Axiom Q-1 (Reality Grounding) and EF-0.0 (Epistemic Anchor).*
 
-All meaningful claims require evidence classification.
+All meaningful claims require two orthogonal classifications: a **quantitative confidence label** describing how well-supported the claim is, and an **institutional provenance label** describing how the claim was derived. These dimensions are independent — a claim can be high-confidence but internally derived, or low-confidence but empirically measured. Both must be stated.
 
-| Classification | Meaning                                     |
-|----------------|---------------------------------------------|
-| Measured       | Directly observed and recorded              |
-| Replicated     | Independently repeated                      |
-| Simulated      | Derived from computational or procedural models |
-| Analogous      | Inferred from related systems               |
-| Placeholder    | Included pending verification               |
+### Quantitative Confidence Labels
+
+| Label       | Meaning                                              |
+|-------------|------------------------------------------------------|
+| Measured    | Directly observed and recorded from physical reality |
+| Replicated  | Independently repeated across separate instances     |
+| Simulated   | Derived from computational or procedural models      |
+| Analogous   | Inferred from related but distinct systems           |
+| Placeholder | Included pending verification — no confidence basis  |
 
 Placeholder claims may not justify Specification promotion.
+
+### Institutional Provenance Labels
+
+| Label                    | Meaning                                                                 | Maximum Permitted Epistemic State |
+|--------------------------|-------------------------------------------------------------------------|-----------------------------------|
+| Internally Derived       | Supported primarily through repository logic, modeling, or agent reasoning | PROVISIONAL only                |
+| Analogous External       | Derived from comparable external systems not yet directly tested here   | PROVISIONAL only                  |
+| Experimentally Verified  | Validated through documented testing with recorded outcomes             | VERIFIED permitted                |
+| Operationally Hardened   | Repeatedly validated across multiple operational cycles under real conditions | VERIFIED (strongest form)    |
+
+**The provenance ceiling rule:** No internally-derived claim may be represented as VERIFIED regardless of internal coherence, agent consensus, or elegance. Promotion from PROVISIONAL to VERIFIED requires a provenance upgrade — meaning new empirical input that did not exist when the claim was first made. This directly operationalizes Axiom Q-1 (all authority claims must terminate in verifiable external artifacts) and EF-0.0 (collapse of UNKNOWN or PROVISIONAL to VERIFIED without new empirical input is prohibited).
+
+**Provenance collapse** — the silent upgrade of Internally Derived claims to Operationally Hardened status through repetition, consensus, or institutional weight — is an Epistemic Integrity Violation under EF-0.0 §2 (Anti-Distortion Clause) and triggers EF-0.2 Level 1 at minimum.
+
+**Cross-reference:** FN-001 (fabrication node grounding requirements), CF-002 (confidence failure modes). Full constitutional grounding: EF-0.0, Axiom Q-1 in `Admin/Governance_Charter.md`. Operational condensation: `Admin/Forge_Audit_Kit.md` §Truth Provenance Labels.
 
 ---
 
@@ -897,7 +915,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.8 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.9 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1012,7 +1030,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without measurement, the audit protocol cannot demonstrate its own effectiveness. Adversarial Challenge Class 6 (Recursive Justification) applies to the protocol itself — it cannot be its own evidence.
 
-**Resolution Path:** Payment via Specification — metrics defined as Placeholder in Protocol Performance section. Activate measurement after first full audit cycle with Adversarial Battery completes.
+**Resolution Path:** Payment via Specification — metrics defined as Placeholder in Protocol Performance section. Activate measurement after first full audit cycle with Adversarial Battery completes. Note: EF-0.6 (Goodhart's Law Defense) explicitly prohibits gate passage rates, unknown count targets, and Protocol Performance metrics from becoming optimization targets — any metrics defined here must be treated as indicators, not objectives. This constraint shapes what AP-001 is permitted to specify.
 
 ---
 
@@ -1033,7 +1051,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Inconsistency creates an exploit path — a contributor could claim the boundary doesn't exist because it only appears in one file.
 
-**Resolution Path:** Close when both Admin/Auditor_Protocols.md and Admin/Ethical_Constraints.md are committed with consistent language confirming the boundary.
+**Resolution Path:** Close when both `Admin/Auditor_Protocols.md` and `Admin/Ethical_Constraints.md` are committed with consistent language confirming the boundary. Partial progress from v0.8: EF-0.4 (Auditor Fallibility) establishes that the auditor itself has no exemption from falsification, and EF-0.5 (Anti-Sacralization) defines what immutability actually means in this system — stability through repeated verification, not through authority. These sections narrow the boundary definition from the AP side. Full closure requires the matching language to be confirmed in `Admin/Ethical_Constraints.md`.
 
 ---
 
@@ -1054,7 +1072,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Cross-cycle pattern analysis requires structured data, not free text.
 
-**Resolution Path:** Discharge via Trajectory if tooling never materializes — structured markdown remains the permanent format. Activate JSON/YAML when first cross-cycle pattern analysis is needed.
+**Resolution Path:** Discharge via Trajectory if tooling never materializes — structured markdown remains the permanent format. Activate JSON/YAML when first cross-cycle pattern analysis is needed. Partial progress from v0.8: EF-0.3 (Epistemic Ledger) defines a five-field schema for state corrections that constitutes a partial foundation for any machine-readable format — the five fields (Previous Premise, Contradictory Evidence, Falsification Method, Updated State, Confidence Interval) are the minimum structural unit any AP-003 schema must accommodate.
 
 ---
 
@@ -1075,7 +1093,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Multi-auditor systems may deadlock or produce inconsistent audit outcomes without an arbitration pathway.
 
-**Resolution Path:** Payment via Specification — define arbitration and escalation pathways for conflicting audit conclusions. May merge with escalation calibration work in Governance_Charter.md.
+**Resolution Path:** Payment via Specification — define arbitration and escalation pathways for conflicting audit conclusions. May merge with escalation calibration work in `Admin/Governance_Charter.md`. Constraint from v0.8: EF-0.1 (Epistemic Filter) explicitly disqualifies agent consensus as evidence — any arbitration mechanism defined here may not resolve disagreements by majority vote or consensus pressure. Resolution must ground in empirical artifact, tool return, or physical grounding vector. This eliminates a class of naive arbitration designs and narrows the solution space.
 
 ---
 
@@ -1096,7 +1114,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without closure criteria, governance pressure can grow recursively and suppress operational progress — infinite audit recursion is itself a governance failure mode.
 
-**Resolution Path:** Payment via Specification — define closure criteria anchored to the governing principle "Verification seeks sufficient falsifiability, not exhaustive certainty." Cross-reference EC-001 (sufficient confidence threshold) for alignment.
+**Resolution Path:** Payment via Specification — define closure criteria anchored to the governing principle "Verification seeks sufficient falsifiability, not exhaustive certainty." Cross-reference EC-001 (sufficient confidence threshold) for alignment. Partial progress from v0.8: EF-0.2 (Epistemic Decay Protocol) provides the escalation side of the termination picture — behavioral triggers for when verification must intensify (Levels 1, 2, 3). The missing complement is the sufficiency side: criteria for when verification is permitted to stop. These two together define the full termination envelope. AP-005 resolution should be structured as the sufficiency complement to EF-0.2's escalation triggers.
 
 ---
 
@@ -1104,12 +1122,12 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | Resolved                   |
 | Risk          | Medium                     |
 | Priority      | Major                      |
 | Type          | Governance / Epistemic     |
 | Blocking      | No                         |
-| Owner         | Admin/Auditor_Protocols.md |
+| Owner         | `Admin/Auditor_Protocols.md` |
 | First Logged  | 2026-05-23                 |
 | Last Reviewed | 2026-06-21                 |
 
@@ -1117,7 +1135,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Internally coherent documentation can be mistaken for operationally hardened truth, producing provenance collapse and recursive justification loops.
 
-**Resolution Path:** Payment via Specification — formalize the four institutional provenance labels (Internally Derived / Analogous External / Experimentally Verified / Operationally Hardened) into the Evidence Classification section. Cross-reference FN-001 and CF-002.
+**Resolution:** Payment via Specification — 2026-06-21. Four institutional provenance labels (Internally Derived / Analogous External / Experimentally Verified / Operationally Hardened) formalized into the Evidence Classification and Institutional Truth Provenance Hierarchy section (§AP-006). Provenance ceiling rule defined: no internally-derived claim may reach VERIFIED status. Provenance collapse classified as Epistemic Integrity Violation under EF-0.0 §2. Constitutional anchor: Axiom Q-1 and EF-0.0. Operational condensation in `Admin/Forge_Audit_Kit.md` §Truth Provenance Labels. Cross-references to FN-001 and CF-002 confirmed.
 
 ---
 
@@ -1125,12 +1143,12 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | In Progress                |
 | Risk          | High                       |
 | Priority      | Major                      |
 | Type          | Governance / Security      |
 | Blocking      | No                         |
-| Owner         | Admin/Auditor_Protocols.md |
+| Owner         | `Admin/Auditor_Protocols.md` |
 | First Logged  | 2026-05-23                 |
 | Last Reviewed | 2026-06-21                 |
 
@@ -1138,7 +1156,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Governance systems become fragile if repository state itself cannot be trusted — stale doctrine can masquerade as current policy, fabricated resolution logs can close unknowns without evidence, and silent rollback can erase lineage.
 
-**Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture) — that entry covers constitutional enforcement; this entry covers operational auditor doctrine. Distinct but linked.
+**Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture) — that entry covers constitutional enforcement; this entry covers operational auditor doctrine. Distinct but linked. Partial progress from v0.8: EF-0.3 (Epistemic Ledger) directly addresses lineage preservation — all core state corrections must be immutably recorded with five fields, and ledger entries may only be created on genuine falsification. EF-0.2 Level 3 explicitly classifies history tampering and alteration of audit trail entries as Integrity Violations triggering Epistemic Reset and mandatory human governing party review. These two sections constitute the doctrine layer of AP-007's resolution; the remaining gap is the enforcement layer — how tampering is detected structurally rather than declared textually. That enforcement gap feeds into GOV-003 and AP-008. The Gemini (2026-06-21) recommendation to add SHA-256 upstream parity checks belongs here as the next concrete resolution step, to be specified in `Admin/Security_Protocols.md`.
 
 ---
 
@@ -1215,6 +1233,8 @@ Mandatory re-audit conditions for this document:
 
 - 2026-06-21: **v0.8.1 — Dual audit pass (Gemini + Grok, Skeptic/Auditor).** AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry threshold exceeded; Resolution Pass required before next standard cycle). All seven Last Reviewed dates updated. Three new unknowns logged: AP-008 (quarantine action technical implementation, High), AP-009 (Epistemic Ledger volume exemption from 20% guardrail, Low), AP-010 (physical test harness coupling to epistemic grounding layer, Medium). Open Unknowns incremented 7 → 10. Gemini's SHA-256 upstream parity check recommendation deferred to AP-007 resolution path and Security_Protocols.md — not inserted into Phase 1 prose to avoid implying enforcement capability that does not yet exist (Fallacy 7 applied to protocol itself). Gates cleared: G1, G2, G4, G5, G6. Gate blocked: G3 (full Adversarial Battery required at Candidate Spec promotion; partial application appropriate for Exploration stage). File remains Exploration status.
 
+- 2026-06-21: **v0.9 — AP Resolution Pass (Claude, Synthesizer/Auditor).** AP-006 closed — Payment via Specification. Evidence Classification section expanded into Evidence Classification and Institutional Truth Provenance Hierarchy (§AP-006): four institutional provenance labels defined with maximum permitted epistemic states; provenance ceiling rule established (Internally Derived claims may not reach VERIFIED); provenance collapse classified as Epistemic Integrity Violation under EF-0.0 §2. AP-007 moved Open → In Progress: EF-0.3 and EF-0.2 Level 3 constitute doctrine layer; enforcement gap documented, SHA-256 parity check recommendation assigned to Security_Protocols.md resolution path. AP-002 resolution path updated: EF-0.4 and EF-0.5 narrow boundary definition from AP side; full closure requires Ethical_Constraints.md confirmation. AP-003 resolution path updated: EF-0.3 five-field schema is minimum structural unit for any machine-readable format. AP-004 resolution path updated: EF-0.1 disqualifies consensus-based arbitration — resolution must ground in empirical artifact. AP-005 resolution path updated: EF-0.2 provides escalation triggers; AP-005 resolution is the sufficiency complement. AP-001 resolution path updated: EF-0.6 constrains what metrics may be defined — indicators only, not optimization targets. Open Unknowns decremented 10 → 9. Role declaration and sign-off strings updated to v0.9.
+
 ### Resolution Log
 
 - 2026-05-04: **UNK-004 (Expiry Rule enforcement mechanism)** — Discharged. Sidecar Model addresses the underlying accumulation problem structurally.
@@ -1244,17 +1264,20 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.8.1 — dual audit pass; Systemic Risk escalation; three new unknowns logged.
+Version 0.9 — AP Resolution Pass; AP-006 closed; six sidecar entries updated.
 
-**Changes from v0.8:**
-- AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry); Resolution Pass required
-- All seven sidecar Last Reviewed dates updated to 2026-06-21
-- AP-008 logged: quarantine action technical implementation (High)
-- AP-009 logged: Epistemic Ledger volume exemption from 20% sidecar guardrail (Low)
-- AP-010 logged: physical test harness coupling to epistemic grounding layer (Medium)
-- Open Unknowns incremented 7 → 10
-- Systemic Risk escalation sentinel added to Drift Indicators
-- File State version and audit metadata updated
+**Changes from v0.8.1:**
+- Evidence Classification section expanded into Evidence Classification and Institutional Truth Provenance Hierarchy (§AP-006 — Payment via Specification)
+- Provenance ceiling rule, provenance collapse classification, and epistemic state mapping added
+- AP-006 closed (Resolved)
+- AP-007 moved to In Progress; EF-0.3 and EF-0.2 L3 progress documented; SHA-256 path assigned
+- AP-002 resolution path updated with EF-0.4 and EF-0.5 progress
+- AP-003 resolution path updated with EF-0.3 schema foundation
+- AP-004 resolution path updated with EF-0.1 arbitration constraint
+- AP-005 resolution path updated with EF-0.2 as escalation complement
+- AP-001 resolution path updated with EF-0.6 metrics constraint
+- Open Unknowns decremented 10 → 9
+- Role declaration and sign-off strings updated to v0.9
 
 **Changes from v0.7 (full v0.8 record):**
 - Epistemic Foundation section added (EF-0.0 through EF-0.8b) — nine constitutional sections constituting the immutable meta-layer governing all downstream auditor behavior
