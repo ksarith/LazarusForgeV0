@@ -253,8 +253,10 @@ the infrastructure that prevents the system from drifting into entropy or weapon
   Capability never outruns permission. Anti-Weaponization Doctrine is not subject to
   humanitarian override
 - `Admin/Auditor_Protocols.md` — Verification and hallucination filter. Governs all
-  contributions — human, AI, or multi-agent. Adversarial Challenge Battery (ten challenge
-  classes), role class definitions, Sidecar Model for decentralized unknown tracking
+  contributions — human, AI, or multi-agent. Constitutional Epistemic Foundation layer
+  (EF-0.0–EF-0.8b): Axiom Zero, Epistemic Filter, Decay Triggers, Ledger, Physical
+  Grounding Vector. Adversarial Challenge Battery (ten challenge classes), role class
+  definitions, Sidecar Model for decentralized unknown tracking
 - `Admin/Governance_Migration_Protocol.md` — Two-track amendment system. Tier 1 Axioms
   require mandatory human ratification. The mechanism that keeps the constitution from
   calcifying and from being quietly rewritten
@@ -378,6 +380,9 @@ one in the repository whose pressure is created by the Forge's own capability.
 
 The primary remaining gaps are: enforcement architecture (GOV-003), human override
 authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
+The verification doctrine layer (`Admin/Auditor_Protocols.md`) has reached v0.11 with
+a constitutional Epistemic Foundation (EF-0.0–EF-0.8b) establishing Axiom Zero and
+physical reality grounding as the meta-constitutional floor above all operational content.
 
 No claims of full automation, self-replication, or net-positive economics are made
 without measurement. All quantitative figures carry confidence levels per
