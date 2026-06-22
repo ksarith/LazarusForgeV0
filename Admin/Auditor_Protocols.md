@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.9**
+**Version 0.11**
 
 ## File State
 
@@ -10,8 +10,8 @@
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-21                                                          |
-| Auditor          | Claude — Synthesizer/Auditor                                        |
-| Open Unknowns    | 9                                                                   |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor              |
+| Open Unknowns    | 8                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -124,6 +124,10 @@ Triggers:
 
 Immediate action: **Subsystem Quarantine.** Freeze downstream optimization and specification promotion for the affected node. Force out-of-band external grounding. Halt autonomous audit progression and require human review.
 
+**The auditor may not simply lock a node and wait.** Upon triggering Level 2, the Auditor Subsystem is operationally bound to generate a **Falsification Vector Profile** — a minimal, atomic statement of the specific assumption or data conflict that caused the freeze — and log it as an Epistemic Ledger entry. The profile must be specific enough that downstream engineering nodes can actively route around the blocked assumption or target it for physical remediation. A quarantine without a Falsification Vector Profile is Audit Theater.
+
+**Graceful degradation rule:** If a blocked specification cannot be grounded within the current cycle, the Auditor shall demote the affected file's maturity state to the highest level consistent with its verified claims rather than holding the entire document in indefinite suspension. A structurally sound lower-capability baseline that matches verified reality is preferable to a higher-capability baseline that cannot be grounded.
+
 **Level 3 — Integrity Violation**
 
 Triggers:
@@ -133,6 +137,8 @@ Triggers:
 - History tampering: alteration of audit trail entries, sidecar IDs, or resolution logs.
 
 Immediate action: **Epistemic Reset.** Immediate termination of active agent authority over the affected node. Roll back to last verified checkpoint. Trigger mandatory human governing party review. Log as AP-class governance unknown.
+
+**The auditor may not simply halt and defer.** Upon triggering Level 3, the Auditor Subsystem must output the specific integrity violation as a named Epistemic Ledger entry before suspending. The entry must identify: (1) what was suppressed, altered, or overridden; (2) what verified state existed before the violation; (3) what the violation was attempting to preserve. This produces a recoverable audit trail rather than a silent halt. A reset without a logged violation profile is itself an integrity failure.
 
 ---
 
@@ -347,7 +353,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.9"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.11"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -570,6 +576,8 @@ More than 10 distinct open entries in a sidecar flags the file for a Resolution 
 ### Metadata Guardrail
 
 If sidecar content exceeds 20% of total document word count, flag for Resolution Pass before auditing. Flag is strong — not a hard refusal. Proceed if human contributor explicitly acknowledges.
+
+**Epistemic Ledger exemption (§AP-009):** Active `[ENTRY_ID]` Epistemic Ledger blocks are excluded from the 20% calculation. The guardrail measures governance debt — stale unknowns, unresolved disputes, and administrative overhead. It does not measure epistemic health. A document actively logging falsification records under EF-0.3 should not be penalized for compliance with the constitutional layer. Excluded blocks must be syntactically valid five-field ledger entries. Orphaned or malformed ledger entries do not qualify for exemption and count toward the guardrail threshold.
 
 ### Resolution Pathways
 
@@ -915,7 +923,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.9 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.11 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1017,12 +1025,12 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | In Progress                |
 | Risk          | Medium                     |
 | Priority      | Major                      |
 | Type          | Governance                 |
 | Blocking      | No                         |
-| Owner         | Admin/Auditor_Protocols.md |
+| Owner         | `Admin/Auditor_Protocols.md` |
 | First Logged  | 2026-05-04                 |
 | Last Reviewed | 2026-06-21                 |
 
@@ -1030,7 +1038,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without measurement, the audit protocol cannot demonstrate its own effectiveness. Adversarial Challenge Class 6 (Recursive Justification) applies to the protocol itself — it cannot be its own evidence.
 
-**Resolution Path:** Payment via Specification — metrics defined as Placeholder in Protocol Performance section. Activate measurement after first full audit cycle with Adversarial Battery completes. Note: EF-0.6 (Goodhart's Law Defense) explicitly prohibits gate passage rates, unknown count targets, and Protocol Performance metrics from becoming optimization targets — any metrics defined here must be treated as indicators, not objectives. This constraint shapes what AP-001 is permitted to specify.
+**Resolution Path:** Payment via Specification — define indicator set after first full audit cycle with Adversarial Battery completes. Defining named metrics before a baseline runtime exists introduces Internally Derived structural heuristics that downstream agents will optimize toward before calibration is possible, inducing Audit Theater (EF-0.6). Constraints that must shape the eventual indicator set: (1) all metrics must function as indicators only — not optimization targets; any metric that begins to be optimized for rather than read from triggers EF-0.6 and must be retired or restructured; (2) the indicator set must be derived from observed audit behavior, not specified in advance of it; (3) at minimum one full Battery application cycle must precede any indicator definition. Activation condition: first full Adversarial Battery cycle completed with findings logged. Until then this entry remains In Progress with no committed indicator names.
 
 ---
 
@@ -1080,12 +1088,12 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | In Progress                |
 | Risk          | Medium                     |
 | Priority      | Major                      |
 | Type          | Governance                 |
 | Blocking      | No                         |
-| Owner         | Admin/Auditor_Protocols.md |
+| Owner         | `Admin/Auditor_Protocols.md` |
 | First Logged  | 2026-05-22                 |
 | Last Reviewed | 2026-06-21                 |
 
@@ -1093,7 +1101,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Multi-auditor systems may deadlock or produce inconsistent audit outcomes without an arbitration pathway.
 
-**Resolution Path:** Payment via Specification — define arbitration and escalation pathways for conflicting audit conclusions. May merge with escalation calibration work in `Admin/Governance_Charter.md`. Constraint from v0.8: EF-0.1 (Epistemic Filter) explicitly disqualifies agent consensus as evidence — any arbitration mechanism defined here may not resolve disagreements by majority vote or consensus pressure. Resolution must ground in empirical artifact, tool return, or physical grounding vector. This eliminates a class of naive arbitration designs and narrows the solution space.
+**Resolution Path:** Payment via Specification — define arbitration and escalation pathways for conflicting audit conclusions. May merge with escalation calibration work in `Admin/Governance_Charter.md`. EF-0.1 constraint: arbitration may not resolve disagreements by majority vote or consensus pressure — resolution must ground in empirical artifact, tool return, or physical grounding vector. Active resolution framework (Internally Derived / Placeholder): disagreements between auditor instances escalate through three tiers — (1) Assumption Extraction pass: both agents explicitly state carried assumptions; conflicts at this tier often resolve without arbitration; (2) Empirical Grounding check: the contested claim is submitted to the Grounding Vector (EF-0.8/EF-0.8b) — whichever position is contradicted by tool return or physical measurement is demoted to PROVISIONAL; (3) Human governing party arbitration: if neither position can be grounded empirically within the cycle, the dispute is logged and escalated to human review. The human governing party ruling is logged as an Epistemic Ledger entry with provenance label Internally Derived until physical grounding is available. No auditor agent may unilaterally close a dispute in its own favor.
 
 ---
 
@@ -1101,12 +1109,12 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | In Progress                |
 | Risk          | Medium                     |
 | Priority      | Major                      |
 | Type          | Governance                 |
 | Blocking      | No                         |
-| Owner         | Admin/Auditor_Protocols.md |
+| Owner         | `Admin/Auditor_Protocols.md` |
 | First Logged  | 2026-05-23                 |
 | Last Reviewed | 2026-06-21                 |
 
@@ -1114,7 +1122,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Without closure criteria, governance pressure can grow recursively and suppress operational progress — infinite audit recursion is itself a governance failure mode.
 
-**Resolution Path:** Payment via Specification — define closure criteria anchored to the governing principle "Verification seeks sufficient falsifiability, not exhaustive certainty." Cross-reference EC-001 (sufficient confidence threshold) for alignment. Partial progress from v0.8: EF-0.2 (Epistemic Decay Protocol) provides the escalation side of the termination picture — behavioral triggers for when verification must intensify (Levels 1, 2, 3). The missing complement is the sufficiency side: criteria for when verification is permitted to stop. These two together define the full termination envelope. AP-005 resolution should be structured as the sufficiency complement to EF-0.2's escalation triggers.
+**Resolution Path:** Payment via Specification — define closure criteria anchored to the governing principle "Verification seeks sufficient falsifiability, not exhaustive certainty." Cross-reference EC-001 (sufficient confidence threshold) for alignment. EF-0.2 relationship: that section defines the escalation triggers (when verification must intensify); AP-005 resolution is the sufficiency complement (when verification is permitted to stop). Active resolution framework (Internally Derived / Placeholder): verification may terminate when all of the following hold — (1) no unresolved contradictions exist between claims and grounding vector returns; (2) the last adversarial Battery application produced no findings that altered the document's epistemic state claims; (3) all sidecar unknowns carry documented resolution paths; (4) the document's provenance labels are internally consistent with the institutional hierarchy defined in §AP-006. These are necessary conditions, not sufficient — the human governing party must ratify termination for any document promoted past Candidate Spec. Full specification requires cross-referencing EC-001 once that entry matures.
 
 ---
 
@@ -1189,7 +1197,7 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                      |
 |---------------|----------------------------|
-| Status        | Open                       |
+| Status        | Resolved                   |
 | Risk          | Low                        |
 | Priority      | Minor                      |
 | Type          | Governance                 |
@@ -1198,13 +1206,9 @@ Mandatory re-audit conditions for this document:
 | First Logged  | 2026-06-21                 |
 | Last Reviewed | 2026-06-21                 |
 
-**Description:** The Sidecar Model's 20% metadata guardrail flags files for Resolution Pass when sidecar content exceeds 20% of total document word count. The Epistemic Ledger [EF-0.3] mandates five-field entries per state correction. For complex architectural documents with high falsification activity, rigorous ledger compliance will structurally inflate sidecar word counts, triggering the 20% guardrail not as a signal of governance debt but as a signal of epistemic health. The metric cannot distinguish between bloat (bad) and active ledger entries (good).
+**Description:** The Sidecar Model's 20% metadata guardrail could not distinguish between governance debt (bloat) and active Epistemic Ledger entries (epistemic health), potentially penalizing compliant documents.
 
-**Why It Matters:** The guardrail may suppress epistemic compliance by penalizing the exact behavior the constitutional layer mandates. A document actively correcting its own errors would be flagged for remediation.
-
-**Resolution Path:** Payment via Specification — refine the 20% calculation to exclude character counts contained within valid, active `[ENTRY_ID]` Epistemic Ledger blocks. The guardrail should measure governance debt (stale unknowns, unresolved disputes, administrative overhead), not active falsification records. Define the exclusion syntax in the Sidecar Model section and update `Admin/Forge_Audit_Kit.md` accordingly.
-
-*Surfaced by Gemini (Skeptic/Auditor), 2026-06-21 dual audit.*
+**Resolution:** Payment via Specification — 2026-06-21. Metadata Guardrail section updated with explicit Epistemic Ledger exemption syntax: active `[ENTRY_ID]` blocks excluded from 20% calculation; exemption requires syntactically valid five-field entries; malformed or orphaned entries do not qualify and count toward threshold. `Admin/Forge_Audit_Kit.md` requires corresponding update to its Drift Indicators section at next kit maintenance cycle.
 
 ---
 
@@ -1231,9 +1235,36 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-011 — Automated arbitration deadlock and human fatigue escalation
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Medium                     |
+| Priority      | Major                      |
+| Type          | Governance / Operational   |
+| Blocking      | No                         |
+| Owner         | `Admin/Auditor_Protocols.md` |
+| First Logged  | 2026-06-21                 |
+| Last Reviewed | 2026-06-21                 |
+
+**Description:** The AP-004 arbitration framework relies on human intervention as its terminal escape route (Tier 3). Under operational load — particularly when multi-agent validation loops encounter high-entropy sensory inputs, timing-dependent file-system tool returns, or race conditions on EF-0.8 grounding checks — the frequency of Tier 3 escalations will cause human operator cognitive erosion. An undertrained or fatigued operator will default to stamping overrides without documenting substantive rationale, bypassing the Human Override Doctrine and masking systemic architectural drift.
+
+**Why It Matters:** The human arbitration terminal creates an operational exploit vector: multi-agent noise can intentionally or inadvertently fatigue human overseers into executing dangerous state overrides. Administrative fatigue converts a safety mechanism into a provenance collapse pathway — overrides stamped without grounding silently elevate PROVISIONAL claims toward Operationally Hardened status through bureaucratic momentum rather than empirical validation.
+
+**Resolution Path:** Payment via Specification — define a mandatory Cool Down / State Freeze interval for automated agent loops when Tier 2 arbitration fails. Minimum requirements: (1) if the Grounding Vector cannot resolve the divergence within a defined execution cycle count, the affected module must automatically demote its contested claims to PROVISIONAL or UNKNOWN and route around the blocked assumption before any human alert is generated; (2) the human terminal receives a pre-processed state package, not a raw arbitration request — the package must specify which specific claim is contested, what grounding artifact would resolve it, and what the safe degraded operating state is in the interim; (3) human operators may not be presented with Tier 3 escalations at a rate that prevents substantive review — a sustained escalation rate above a defined threshold triggers an automatic EF-0.2 Level 2 quarantine on the affected subsystem. Cross-reference AP-004 (arbitration framework), AP-008 (quarantine implementation), GOV-006 (human override authenticity).
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-06-21 adversarial pass (Challenge Class 7 — Human Fatigue).*
+
+---
+
 - 2026-06-21: **v0.8.1 — Dual audit pass (Gemini + Grok, Skeptic/Auditor).** AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry threshold exceeded; Resolution Pass required before next standard cycle). All seven Last Reviewed dates updated. Three new unknowns logged: AP-008 (quarantine action technical implementation, High), AP-009 (Epistemic Ledger volume exemption from 20% guardrail, Low), AP-010 (physical test harness coupling to epistemic grounding layer, Medium). Open Unknowns incremented 7 → 10. Gemini's SHA-256 upstream parity check recommendation deferred to AP-007 resolution path and Security_Protocols.md — not inserted into Phase 1 prose to avoid implying enforcement capability that does not yet exist (Fallacy 7 applied to protocol itself). Gates cleared: G1, G2, G4, G5, G6. Gate blocked: G3 (full Adversarial Battery required at Candidate Spec promotion; partial application appropriate for Exploration stage). File remains Exploration status.
 
 - 2026-06-21: **v0.9 — AP Resolution Pass (Claude, Synthesizer/Auditor).** AP-006 closed — Payment via Specification. Evidence Classification section expanded into Evidence Classification and Institutional Truth Provenance Hierarchy (§AP-006): four institutional provenance labels defined with maximum permitted epistemic states; provenance ceiling rule established (Internally Derived claims may not reach VERIFIED); provenance collapse classified as Epistemic Integrity Violation under EF-0.0 §2. AP-007 moved Open → In Progress: EF-0.3 and EF-0.2 Level 3 constitute doctrine layer; enforcement gap documented, SHA-256 parity check recommendation assigned to Security_Protocols.md resolution path. AP-002 resolution path updated: EF-0.4 and EF-0.5 narrow boundary definition from AP side; full closure requires Ethical_Constraints.md confirmation. AP-003 resolution path updated: EF-0.3 five-field schema is minimum structural unit for any machine-readable format. AP-004 resolution path updated: EF-0.1 disqualifies consensus-based arbitration — resolution must ground in empirical artifact. AP-005 resolution path updated: EF-0.2 provides escalation triggers; AP-005 resolution is the sufficiency complement. AP-001 resolution path updated: EF-0.6 constrains what metrics may be defined — indicators only, not optimization targets. Open Unknowns decremented 10 → 9. Role declaration and sign-off strings updated to v0.9.
+
+- 2026-06-21: **v0.10 — Active mandate pass (Claude + Gemini).** EF-0.2 Level 2 and Level 3 action text expanded: Falsification Vector Profile requirement added to Level 2 (auditor must output atomic assumption conflict before quarantine; quarantine without profile is Audit Theater); graceful degradation rule added (demote to highest maturity consistent with verified claims rather than indefinite suspension); Level 3 expanded with violation profile requirement (auditor must log what was suppressed, what verified state preceded it, and what the violation attempted to preserve — reset without logged profile is itself an integrity failure). Metadata Guardrail updated with Epistemic Ledger exemption syntax (§AP-009 — Payment via Specification): active five-field ENTRY_ID blocks excluded from 20% calculation; malformed entries do not qualify. AP-009 closed. AP-001 moved to In Progress: proposed indicator set defined (productive block ratio, closure velocity, adversarial finding rate, drift detection); EF-0.6 constraint that no metric may become an optimization target preserved. AP-004 moved to In Progress: three-tier arbitration framework defined (Assumption Extraction → Empirical Grounding → Human arbitration); EF-0.1 constraint that consensus cannot resolve disputes preserved. AP-005 moved to In Progress: four necessary termination conditions defined; human ratification required for promotion past Candidate Spec; EC-001 cross-reference pending maturation. Open Unknowns decremented 9 → 7. Systemic Risk escalation remains active until all seven original AP entries reach In Progress or Resolved — AP-001, AP-004, AP-005 now In Progress; AP-002, AP-003, AP-007 In Progress from v0.9; AP-006 Resolved. All original seven entries now carry active resolution frameworks. Escalation condition satisfied for downgrade at next audit cycle with human governing party confirmation.
+
+- 2026-06-21: **v0.11 — Gemini adversarial pass integration (Claude + Gemini).** AP-001 indicator set rolled back — named metrics removed to prevent premature Goodhart's Law exposure before any baseline runtime exists; EF-0.6 constraint and activation condition (first full Battery cycle) preserved; entry remains In Progress. AP-011 logged: automated arbitration deadlock and human fatigue escalation (Medium risk, Major priority) — second-order consequence of AP-004 resolution; Tier 3 human terminal creates cognitive erosion exploit under sustained operational load; resolution path requires Cool Down / State Freeze interval and pre-processed state packages for human operators. Open Unknowns incremented 7 → 8. Version strings updated to v0.11.
 
 ### Resolution Log
 
@@ -1264,20 +1295,13 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.9 — AP Resolution Pass; AP-006 closed; six sidecar entries updated.
+Version 0.11 — AP-001 rollback; AP-011 logged.
 
-**Changes from v0.8.1:**
-- Evidence Classification section expanded into Evidence Classification and Institutional Truth Provenance Hierarchy (§AP-006 — Payment via Specification)
-- Provenance ceiling rule, provenance collapse classification, and epistemic state mapping added
-- AP-006 closed (Resolved)
-- AP-007 moved to In Progress; EF-0.3 and EF-0.2 L3 progress documented; SHA-256 path assigned
-- AP-002 resolution path updated with EF-0.4 and EF-0.5 progress
-- AP-003 resolution path updated with EF-0.3 schema foundation
-- AP-004 resolution path updated with EF-0.1 arbitration constraint
-- AP-005 resolution path updated with EF-0.2 as escalation complement
-- AP-001 resolution path updated with EF-0.6 metrics constraint
-- Open Unknowns decremented 10 → 9
-- Role declaration and sign-off strings updated to v0.9
+**Changes from v0.10:**
+- AP-001 resolution path revised: named indicator set removed to prevent premature optimization pressure; EF-0.6 constraint and activation condition preserved
+- AP-011 logged: automated arbitration deadlock and human fatigue escalation (Gemini adversarial pass, Challenge Class 7)
+- Open Unknowns incremented 7 → 8
+- Version strings updated to v0.11
 
 **Changes from v0.7 (full v0.8 record):**
 - Epistemic Foundation section added (EF-0.0 through EF-0.8b) — nine constitutional sections constituting the immutable meta-layer governing all downstream auditor behavior
