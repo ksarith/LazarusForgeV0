@@ -28,8 +28,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-11                                                          |
-| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit   |
+| Last Audit       | 2026-06-21                                                          |
+| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21 |
 | Open Unknowns    | 5                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -110,13 +110,14 @@ safety discipline, and practical parameters so that designs are safe, effective,
 and improvable under real-world constraints including salvaged materials, limited
 tools, and variable conditions.
 
-**Role in the Forge doctrine triad:**
-- `Admin/Ethical_Constraints.md` — moral doctrine
-- `Admin/Auditor_Protocols.md` — epistemic doctrine
-- `Architecture/Engineering.md` — physical-world doctrine
+**Role in the Forge operating stack:**
 
-These three together establish the foundational operating constraints for the
-entire repository. Engineering.md is the physical-world layer of that triad.
+This file provides the physical-world constraint layer beneath the governance tier. The governing relationship is:
+- `Admin/Ethical_Constraints.md` (Tier 1) — moral doctrine; hard floors; not subject to engineering override
+- `Admin/Auditor_Protocols.md` (Tier 2) — epistemic doctrine; governs how all claims including engineering claims must be verified
+- `Architecture/Engineering.md` (Tier 5 / Architecture) — physical-world doctrine; downstream of both
+
+Engineering.md operationalizes the physical constraints that engineering work must satisfy. Where an engineering principle conflicts with Ethical_Constraints.md or Auditor_Protocols.md, the higher tier governs without exception. This file does not co-occupy Tier 1 with Ethical_Constraints.md — it is subject to it.
 
 ---
 
@@ -473,7 +474,7 @@ domain authority rather than a survey.
 
 ### Resolution Log
 
-- 2026-06-11: ChatGPT informal audit integrated. Eight findings actioned:
+- 2026-06-21: File Purpose corrected — "doctrine triad" framing replaced with explicit tier stack. Engineering.md is Tier 5 (Architecture), downstream of Ethical_Constraints.md (Tier 1) and Auditor_Protocols.md (Tier 2). Prior framing implied co-equal tier status with Tier 1 governance files, which is architecturally incorrect and creates a potential exploit path where engineering authority could be cited against a hard ethical floor. No body content changed. Eight findings actioned:
   (1) Navigation Anchors, Upstream/Downstream tables added. (2) Spec Gate
   advanced 0→3 — scope boundary, falsifiable safety factors, and peer
   relationships all clearly established. (3) Conservation of Complexity
