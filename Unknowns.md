@@ -716,3 +716,105 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 **v3.4 — 2026-06-18:** Six new unknowns registered: EC-008, EC-009, EC-010, EC-011 (Ethical_Constraints.md v0.9 audit), GOV-010 (Governance_Charter.md v0.8), CT-005 (Canonical_Terms.md v0.3). GOV-001 un-archived — premature; returned to In Progress pending GMP audit against charter constraints. GOV-006-A declarative-only notice logged. EC-008 and EC-011 added to Critical Watch. EC-010 and GOV-010 cross-referenced to planned Environmental_Constraints.md.
 **v3.5 — 2026-06-19:** Nine new unknowns registered: SEC-008–011 (Security_Protocols.md v0.5), RIP-006–007 (Repository_Integrity_Protocol.md v0.2), GMP-006–008 (Governance_Migration_Protocol.md v0.2). RIP-004 discharged — Tier 1 Axiom Verification in Forge_Audit_Kit.md v1.1 Step 1 executes resolution path. GMP-001 resolved. RIP-005 updated to In Progress. GMP-005 In Progress (partial resolution via expanded Track identification rule).
 **v3.6 — 2026-06-19:** ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. ENV-007 resolved (AUDIT_HARNESS.py v8.1 registration). ENV-008 blocking — Routing.md and Discovery.md registration pending.
+
+
+# Unknowns.md v3.7 — Patch Instructions
+**Apply to v3.6 to produce v3.7**
+
+---
+
+## Version Header Change
+
+Replace:
+```
+Version 3.6 — 2026-06-19. ENV cluster registered...
+```
+With:
+```
+Version 3.7 — 2026-06-21. AP cluster updated to reflect Auditor_Protocols.md v0.11 state.
+AP-006 and AP-009 resolved (Payment via Specification). AP-001, AP-002, AP-004, AP-005,
+AP-007 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries.
+```
+
+---
+
+## What v3.7 Means Section
+
+Replace current "What v3.6 Means" section entirely with:
+
+```
+## What v3.7 Means
+
+- **AP cluster updated** — reflects Auditor_Protocols.md v0.11
+- **AP-006 resolved** — Institutional truth provenance hierarchy (Payment via Specification, 2026-06-21)
+- **AP-009 resolved** — Epistemic Ledger volume exemption from 20% guardrail (Payment via Specification, 2026-06-21)
+- **AP-001, AP-002, AP-004, AP-005, AP-007** moved from Open → In Progress
+- **AP-008, AP-010, AP-011** registered as new Open entries
+- **Systemic Risk escalation** on AP-001–AP-007 satisfied at entry level; formal downgrade requires human governing party confirmation at next audit cycle
+- **ENV-008 blocking status** carried forward from v3.6 — Routing.md and Discovery.md registration still pending
+```
+
+---
+
+## Governance & Verification Table — Replace AP Rows
+
+Find the current AP rows in the Governance & Verification table:
+
+```
+| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
+| AP-004 | Cross-auditor disagreement resolution incomplete | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-005 | Verification termination threshold undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+```
+
+Replace with:
+
+```
+| AP-001 | Auditor effectiveness metrics — activation requires first full Battery cycle | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-002 | Override vs. immutability boundary — EF-0.4/EF-0.5 progress; Ethical_Constraints.md confirmation pending | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
+| AP-004 | Cross-auditor disagreement resolution — three-tier framework defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-005 | Verification termination threshold — four necessary conditions defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-007 | Repository integrity and doctrine lineage — EF-0.3/EF-0.2 L3 doctrine layer; enforcement gap in Security_Protocols.md | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-008 | Technical implementation of quarantine actions undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-010 | Physical test harness integration with epistemic grounding layer undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-011 | Automated arbitration deadlock and human fatigue escalation | `Admin/Auditor_Protocols.md` | Open | Major |
+```
+
+Note: AP-006 and AP-009 are removed from the active index — they move to the Resolved & Discharged Archive (see below).
+
+---
+
+## Resolved & Discharged Archive — Add Two Entries
+
+Add to bottom of archive table:
+
+```
+| AP-006 | Institutional truth provenance hierarchy | Payment via Specification — four provenance labels formalized in §AP-006; provenance ceiling rule established; provenance collapse classified as EF-0.0 §2 Integrity Violation | 2026-06-21 |
+| AP-009 | Epistemic Ledger volume exemption from sidecar metadata guardrail | Payment via Specification — Metadata Guardrail updated with ENTRY_ID exemption syntax; five-field validity required for exemption | 2026-06-21 |
+```
+
+---
+
+## Audit Trail — Add v3.7 Entry
+
+Add after the v3.6 entry:
+
+```
+**v3.7 — 2026-06-21:** AP cluster updated to reflect Auditor_Protocols.md v0.11. AP-006 and AP-009 resolved and archived. AP-001, AP-002, AP-004, AP-005 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries. Systemic Risk escalation on original AP-001–AP-007 satisfied at entry level pending human confirmation.
+```
+
+---
+
+## Expiry Watch — Update AP Note
+
+In the Critical Watch table, the AP entries no longer need a Systemic Risk flag since all original seven now have active frameworks. No new row needed — AP entries do not appear in Critical Watch. If any AP escalation note was added to Expiry Watch prose during v3.6, remove it.
+
+---
+
+## Size Check
+
+v3.6 was within compression threshold. v3.7 adds ~6 rows net (3 new AP entries, minus 2 resolved removed from active, net +1 plus archive additions). No compression trigger expected.
