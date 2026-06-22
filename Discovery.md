@@ -62,7 +62,7 @@ Root
 Admin/                                      — Governance, protocols, and doctrine
     ├── Governance_Charter.md               — Constitutional tier; 8 Axioms (Tier 1)
     ├── Ethical_Constraints.md              — Embedded AI governance & anti-weaponization (Tier 1)
-    ├── Auditor_Protocols.md                — Verification doctrine; 10-phase sequence (Tier 2)
+    ├── Auditor_Protocols.md                — Verification doctrine; Epistemic Foundation (EF-0.0–EF-0.8b); 10-phase sequence (Tier 2)
     ├── Forge_Audit_Kit.md                  — Condensed routine multi-agent cycle reference (Tier 3)
     ├── Verification_Gates_LF.md            — Canonical 6 document promotion gates
     ├── File_Template.md                    — 10-section layout standard & Ethical Anchor field
@@ -75,7 +75,7 @@ Admin/                                      — Governance, protocols, and doctr
     ├── Ship_of_Theseus.md                  — Right-to-repair philosophical/legal defense
     ├── Trajectories.md                     — Multi-era version roadmap (v0 to interstellar)
     ├── Economics.md                        — Dynamic resource doctrine; market navigation; barter
-    ├── Environmental_Constraints.md        — Site, regulatory, ecological, and jurisdictional boundary conditions
+    ├── Environmental_Constraints.md        — Site, regulatory, ecological, and jurisdictional boundary conditions; RDC baseline; No-Externalized-Entropy doctrine
     ├── Governance_Migration_Protocol.md    — Tier 1 Axiom amendment procedures
     └── AUDIT_HARNESS.py                    — Automated script supporting verification
 
@@ -353,7 +353,7 @@ Dynamic resource doctrine. Buy what you need, sell what you don't. Barter doctri
 Site, regulatory, ecological, and jurisdictional boundary conditions. Four constraint categories: Climatic/Physical, Regulatory/Jurisdictional, Ecological/Resource, Human/Social. Junction file for EC-010 (jurisdiction conflict) and GOV-010 (regulatory compliance friction) convergence. No-externalized-entropy doctrine. Graceful degradation rules tied to environmental conditions.
 **Upstream:** Governance_Charter.md (Tier 1 Axioms P-1, P-3); Ethical_Constraints.md; Facilities.md (Site Initialization Checklist); Safety_Protocols.md.
 **Downstream:** Ethical_Constraints.md (EC-010 resolution); Governance_Charter.md (GOV-010 resolution); Facilities.md (FA-003); Safety_Protocols.md (SP-005); Challenges/Waste.md; Challenges/Water.md; Challenges/Biofouling.md; Tests/Leviathan_testing.md; Tests/Trophic_Forge.md.
-⚠️ ENV-009 (no site assessed against constraints) — Critical; all values Placeholder until first site assessment. ENV-008 — closes on this registration. ENV-001 (climate baseline) and ENV-002 (regulatory assessment) — both blocking for site-specific operations.
+⚠️ ENV-009 (no site assessed against constraints) — Critical; all values Placeholder until first site assessment. ENV-008 — **Resolved** — file registered in Discovery.md and Routing.md (2026-06-21). ENV-001 (climate baseline) and ENV-002 (regulatory assessment) — both blocking for site-specific operations.
 
 ### `Admin/Governance_Migration_Protocol.md`
 Tier 1 Axiom amendment procedures. Two-track migration system. Engineer proposal; human ratification. Hard floor doctrine.
@@ -408,8 +408,8 @@ Minimum viable seed specification. 8 core G.E.C.K. modules; procurement doctrine
 ⚠️ GK-005 — resolved by Architecture/Precision.md; update on next audit pass.
 
 ### `Architecture/Engineering.md`
-Foundational engineering principles. Rules of thumb; safety factors; Arkansas climate derating; progressive engineering path.
-**Upstream:** Ethical_Constraints.md; Engineer_Protocols.md.
+Foundational engineering principles. Physical-world constraint layer (Tier 5 / Architecture) downstream of Ethical_Constraints.md (Tier 1) and Auditor_Protocols.md (Tier 2). Rules of thumb; safety factors; RDC climate derating; progressive engineering path. File Purpose corrected 2026-06-21 — no longer claims co-equal tier status with governance files.
+**Upstream:** Ethical_Constraints.md (Tier 1 — governs without exception); Auditor_Protocols.md (Tier 2 — epistemic doctrine applies to all engineering claims); Engineer_Protocols.md.
 **Downstream:** All Operations/ and Architecture/ domain files; Mechanical_Structures.md.
 ⚠️ EN-001 (validated safety factors for salvaged materials) — Critical; blocks structural specification.
 
@@ -632,11 +632,9 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 
 | Unknown | Status | See |
 |---------|--------|-----|
-| UNK-006 — Facility siting | **Resolved** — `Architecture/Facilities.md` owns; PC-002 tracks reference corrections | `Unknowns.md` |
 | UNK-008 — Welding wire chemical qualification | Open — no owner assigned | `Unknowns.md` |
 | UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Unknowns.md` |
 | FA-001 — Site not confirmed | Critical — blocks all hot operations | `Unknowns.md` |
 | EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
-| RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
-| PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
+| ENV-009 — No site assessed against constraints | Critical — all ENV values Placeholder | `Unknowns.md` |
