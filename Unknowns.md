@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 3.6 — 2026-06-19. ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. AUDIT_HARNESS.py updated to v8.1 with Environmental_Constraints.md registration. ENV-008 (navigation registration) is the active blocking unknown — closes when Routing.md and Discovery.md are updated.**
+**Version 3.7 — 2026-06-21. AP cluster updated (Auditor_Protocols.md v0.11): AP-006 and AP-009 resolved; AP-001, AP-002, AP-004, AP-005, AP-007 In Progress; AP-008, AP-010, AP-011 registered. ENV-008 resolved (Routing.md + Discovery.md committed). GOV-009, GOV-010, EC-010 moved to In Progress (Environmental_Constraints.md created as resolution vehicle). EP-004 moved to In Progress (Engineering.md tier correction). Systemic Risk escalation on AP-001–AP-007 satisfied at entry level pending human governing party confirmation.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -38,12 +38,17 @@ These rules are enforced at every audit cycle opening:
 
 ---
 
-## What v3.6 Means
+## What v3.7 Means
 
-- **9 new unknowns registered** — ENV-001 through ENV-009 from `Admin/Environmental_Constraints.md` v0.1 creation
-- **EC-010 and GOV-010 convergence point declared** — both unknowns now have a resolution target in Environmental_Constraints.md
-- **ENV-008 is the active blocking unknown** — file must be registered in Routing.md and Discovery.md before downstream cross-references are reliable
-- **AUDIT_HARNESS.py updated to v8.1** — Environmental_Constraints.md added to FILE_REGISTRY and EXTRA_FILES comment block
+- **AP cluster updated** — reflects Auditor_Protocols.md v0.11
+- **AP-006 resolved** — Institutional truth provenance hierarchy (Payment via Specification, 2026-06-21)
+- **AP-009 resolved** — Epistemic Ledger volume exemption from 20% guardrail (Payment via Specification, 2026-06-21)
+- **AP-001, AP-002, AP-004, AP-005, AP-007** moved Open → In Progress
+- **AP-008, AP-010, AP-011** registered as new Open entries
+- **Systemic Risk escalation** on AP-001–AP-007 satisfied at entry level; formal downgrade requires human governing party confirmation at next audit cycle
+- **ENV-008 resolved** — Routing.md and Discovery.md committed 2026-06-21
+- **GOV-009, GOV-010, EC-010** moved Open → In Progress — Environmental_Constraints.md now exists as resolution vehicle
+- **EP-004** moved Open → In Progress — Engineering.md tier correction documents the authority boundary
 
 ---
 
@@ -92,7 +97,7 @@ These rules are enforced at every audit cycle opening:
 | EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Blocking |
 | EC-008 | Inferred authorization doctrine undefined | `Admin/Ethical_Constraints.md` | Open | Major |
 | EC-009 | Human authority conflict resolution undefined | `Admin/Ethical_Constraints.md` | Open | Major |
-| EC-010 | Jurisdiction conflict hierarchy undefined — cross-ref GOV-010; both converge on planned `Admin/Environmental_Constraints.md` | `Admin/Ethical_Constraints.md` | Open | Minor |
+| EC-010 | Jurisdiction conflict hierarchy undefined — cross-ref GOV-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Ethical_Constraints.md` | In Progress | Minor |
 | EC-011 | Human governance adversary model undefined | `Admin/Ethical_Constraints.md` | Open | Major |
 | GOV-001 | Governance migration mechanics incompletely operationalized — `Admin/Governance_Migration_Protocol.md` created; not yet audited against charter constraints | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | In Progress | Major |
@@ -102,8 +107,8 @@ These rules are enforced at every audit cycle opening:
 | GOV-006 | Human override authenticity validation undefined — GOV-006-A: interim authentication rules are declarative-only; zero automated resistance until `Admin/Security_Protocols.md` reaches Provisional Spec | `Admin/Governance_Charter.md` | Open | Major |
 | GOV-007 | Bootstrap governance authority initialization undefined | `Admin/Governance_Charter.md` | In Progress | Major |
 | GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | Major |
-| GOV-009 | Bounded framework for external resource consumption and environmental interaction | `Admin/Governance_Charter.md` | Open | Major |
-| GOV-010 | Jurisdictional and regulatory compliance friction for physical forge deployment — cross-ref EC-010; both converge on planned `Admin/Environmental_Constraints.md` | `Admin/Governance_Charter.md` | Open | Minor |
+| GOV-009 | Bounded framework for external resource consumption and environmental interaction — `Admin/Environmental_Constraints.md` created as resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Major |
+| GOV-010 | Jurisdictional and regulatory compliance friction for physical forge deployment — cross-ref EC-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Minor |
 | SEC-001 | Quorum recovery under terminal partition | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-002 | Key revocation doctrine undefined | `Admin/Security_Protocols.md` | Open | Major |
 | SEC-003 | Key rotation period undefined | `Admin/Security_Protocols.md` | Open | Major |
@@ -120,13 +125,15 @@ These rules are enforced at every audit cycle opening:
 
 | ID | Title | Owning File | Status | Priority (Promo) |
 |---|---|---|---|---|
-| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-001 | Auditor effectiveness metrics — activation requires first full Battery cycle | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-002 | Override vs. immutability boundary — EF-0.4/EF-0.5 progress; Ethical_Constraints.md confirmation pending | `Admin/Auditor_Protocols.md` | In Progress | Major |
 | AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
-| AP-004 | Cross-auditor disagreement resolution incomplete | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-005 | Verification termination threshold undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-004 | Cross-auditor disagreement resolution — three-tier framework defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-005 | Verification termination threshold — four necessary conditions defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-007 | Repository integrity and doctrine lineage — EF-0.3/EF-0.2 L3 doctrine layer; enforcement gap in Security_Protocols.md | `Admin/Auditor_Protocols.md` | In Progress | Major |
+| AP-008 | Technical implementation of quarantine actions undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-010 | Physical test harness integration with epistemic grounding layer undefined | `Admin/Auditor_Protocols.md` | Open | Major |
+| AP-011 | Automated arbitration deadlock and human fatigue escalation | `Admin/Auditor_Protocols.md` | Open | Major |
 | RIP-001 | Prior-state archival system not yet established | `Admin/Repository_Integrity_Protocol.md` | Open | Critical |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | Major |
 | RIP-005 | Security_Protocols.md Phase 3 dependency — file exists at v0.5; cryptographic implementation not yet operational | `Admin/Repository_Integrity_Protocol.md` | In Progress | Major |
@@ -146,7 +153,7 @@ These rules are enforced at every audit cycle opening:
 | EP-001 | Validation of Pragmatic Question Framework | `Admin/Engineer_Protocols.md` | Open | Major |
 | EP-002 | AI vs Human Protocol optimization | `Admin/Engineer_Protocols.md` | Open | Minor |
 | EP-003 | Integration mapping with Auditor_Protocols and Cognitive_Frameworks | `Admin/Engineer_Protocols.md` | Open | Major |
-| EP-004 | Engineering authority boundary undefined | `Admin/Engineer_Protocols.md` | Open | Major |
+| EP-004 | Engineering authority boundary — tier relationship to Ethical_Constraints.md and Auditor_Protocols.md now explicit in Engineering.md File Purpose (2026-06-21 correction) | `Admin/Engineer_Protocols.md` | In Progress | Major |
 | EP-005 | Acceptable risk threshold undefined — partial resolution via Safety_Protocols.md; full threshold definition still open | `Admin/Engineer_Protocols.md` | Open | Major |
 | EP-006 | Unknown lifecycle integration undefined | `Admin/Engineer_Protocols.md` | Open | Major |
 
@@ -548,12 +555,10 @@ These rules are enforced at every audit cycle opening:
 | ENV-004 | Ecological impact assessment protocol undefined — no detection mechanism or monitoring cadence | `Admin/Environmental_Constraints.md` | Open | Major |
 | ENV-005 | Community engagement protocol undefined — no formal pre-operation disclosure procedure | `Admin/Environmental_Constraints.md` | Open | Major |
 | ENV-006 | No-externalized-entropy doctrine not operationalized — no metric or threshold defined | `Admin/Environmental_Constraints.md` | Open | Major |
-| ENV-007 | File not yet added to AUDIT_HARNESS.py FILE_REGISTRY or EXTRA_FILES | `Admin/Environmental_Constraints.md` | Resolved | Minor |
-| ENV-008 | File not yet registered in Routing.md and Discovery.md — blocks reliable cross-referencing | `Admin/Environmental_Constraints.md` | Open | Major |
 | ENV-009 | No site has been assessed against this file's constraints — all values are Placeholder | `Admin/Environmental_Constraints.md` | Open | Critical |
 
 *ENV-009 Critical — file is doctrine only until first site assessment replaces Placeholder values.*
-*ENV-008 Blocking — register in Routing.md and Discovery.md before downstream cross-references are reliable.*
+*ENV-008 Resolved — registered in Routing.md and Discovery.md 2026-06-21.*
 
 ### Pending Corrections
 
@@ -606,6 +611,8 @@ These rules are enforced at every audit cycle opening:
 
 **Tier 1 Axiom verification is the mandatory first step** — confirm axiom text in `Admin/Governance_Charter.md` matches prior committed version before proceeding. Any unratified change is a Constitutional violation.
 
+**Epistemic Foundation integrity check is the mandatory second step** — confirm EF-0.0 through EF-0.8b text in `Admin/Auditor_Protocols.md` matches prior committed version. Any unratified modification = Integrity Violation → STATE_HOLD.
+
 FL-001 and several EC entries have been In Progress since v1.1 — approaching two-cycle threshold. Flag for Full Stop Review trigger assessment at next audit opening if still unresolved.
 
 GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executing resolution path. GOV-005 remains Critical with no fast resolution path. GOV-007 In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008. GOV-008 exit condition not yet met.
@@ -615,6 +622,8 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 **EN-001 Critical/Blocking** — no structural specification may be promoted without validated safety factors for salvaged materials.
 
 **CF-001 In Progress/Blocking** — parameters defined (τ=50ms WDT). Remains Blocking until first hardware prototype validates at Measured confidence.
+
+**AP Systemic Risk escalation** — original AP-001 through AP-007 now all carry active resolution frameworks (AP-006 Resolved; AP-001, AP-002, AP-004, AP-005, AP-007 In Progress). Formal escalation downgrade requires human governing party confirmation at next audit cycle.
 
 ### Critical Watch
 
@@ -686,6 +695,9 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 | RIP-004 | Constitutional violation detection latency undefined | Resolved — Tier 1 Axiom Verification implemented as Step 1 of mandatory Audit Opening Checklist in `Admin/Forge_Audit_Kit.md` v1.1; detection latency bounded to one audit cycle | 2026-06-19 |
 | GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 In Progress confirmed; `Admin/Governance_Migration_Protocol.md` exists as executing resolution path; Unknowns.md v3.4/v3.5 reflects corrected status | 2026-06-19 |
 | ENV-007 | Environmental_Constraints.md not in AUDIT_HARNESS.py | Resolved — added to FILE_REGISTRY and EXTRA_FILES comment block in AUDIT_HARNESS.py v8.1 | 2026-06-19 |
+| AP-006 | Institutional truth provenance hierarchy | Payment via Specification — four provenance labels formalized in §AP-006; provenance ceiling rule established; provenance collapse classified as EF-0.0 §2 Integrity Violation | 2026-06-21 |
+| AP-009 | Epistemic Ledger volume exemption from sidecar metadata guardrail | Payment via Specification — Metadata Guardrail updated with ENTRY_ID exemption syntax; five-field validity required for exemption | 2026-06-21 |
+| ENV-008 | Environmental_Constraints.md not registered in Routing.md and Discovery.md | Resolved — both files updated and committed 2026-06-21; downstream cross-references now reliable | 2026-06-21 |
 
 ---
 
@@ -715,106 +727,5 @@ GOV-003 In Progress — `Admin/Repository_Integrity_Protocol.md` is the executin
 **v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW (9), TF (10), SD (12) unknowns. TF-006 and SD-UNK-004 added to Critical Watch. DS-001 closed. 31 total new unknowns.
 **v3.4 — 2026-06-18:** Six new unknowns registered: EC-008, EC-009, EC-010, EC-011 (Ethical_Constraints.md v0.9 audit), GOV-010 (Governance_Charter.md v0.8), CT-005 (Canonical_Terms.md v0.3). GOV-001 un-archived — premature; returned to In Progress pending GMP audit against charter constraints. GOV-006-A declarative-only notice logged. EC-008 and EC-011 added to Critical Watch. EC-010 and GOV-010 cross-referenced to planned Environmental_Constraints.md.
 **v3.5 — 2026-06-19:** Nine new unknowns registered: SEC-008–011 (Security_Protocols.md v0.5), RIP-006–007 (Repository_Integrity_Protocol.md v0.2), GMP-006–008 (Governance_Migration_Protocol.md v0.2). RIP-004 discharged — Tier 1 Axiom Verification in Forge_Audit_Kit.md v1.1 Step 1 executes resolution path. GMP-001 resolved. RIP-005 updated to In Progress. GMP-005 In Progress (partial resolution via expanded Track identification rule).
+**v3.7 — 2026-06-21:** AP cluster updated to reflect Auditor_Protocols.md v0.11. AP-006 and AP-009 resolved and archived. AP-001, AP-002, AP-004, AP-005 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries. ENV-008 resolved — Routing.md and Discovery.md committed. GOV-009, GOV-010, EC-010 moved to In Progress — Environmental_Constraints.md exists as resolution vehicle. EP-004 moved to In Progress — Engineering.md tier correction documents authority boundary. Epistemic Foundation integrity check added to Expiry Watch mandatory steps.
 **v3.6 — 2026-06-19:** ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. ENV-007 resolved (AUDIT_HARNESS.py v8.1 registration). ENV-008 blocking — Routing.md and Discovery.md registration pending.
-
-
-# Unknowns.md v3.7 — Patch Instructions
-**Apply to v3.6 to produce v3.7**
-
----
-
-## Version Header Change
-
-Replace:
-```
-Version 3.6 — 2026-06-19. ENV cluster registered...
-```
-With:
-```
-Version 3.7 — 2026-06-21. AP cluster updated to reflect Auditor_Protocols.md v0.11 state.
-AP-006 and AP-009 resolved (Payment via Specification). AP-001, AP-002, AP-004, AP-005,
-AP-007 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries.
-```
-
----
-
-## What v3.7 Means Section
-
-Replace current "What v3.6 Means" section entirely with:
-
-```
-## What v3.7 Means
-
-- **AP cluster updated** — reflects Auditor_Protocols.md v0.11
-- **AP-006 resolved** — Institutional truth provenance hierarchy (Payment via Specification, 2026-06-21)
-- **AP-009 resolved** — Epistemic Ledger volume exemption from 20% guardrail (Payment via Specification, 2026-06-21)
-- **AP-001, AP-002, AP-004, AP-005, AP-007** moved from Open → In Progress
-- **AP-008, AP-010, AP-011** registered as new Open entries
-- **Systemic Risk escalation** on AP-001–AP-007 satisfied at entry level; formal downgrade requires human governing party confirmation at next audit cycle
-- **ENV-008 blocking status** carried forward from v3.6 — Routing.md and Discovery.md registration still pending
-```
-
----
-
-## Governance & Verification Table — Replace AP Rows
-
-Find the current AP rows in the Governance & Verification table:
-
-```
-| AP-001 | Auditor effectiveness metrics | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-002 | Override vs. immutability boundary | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
-| AP-004 | Cross-auditor disagreement resolution incomplete | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-005 | Verification termination threshold undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-006 | Institutional truth provenance hierarchy undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-007 | Repository integrity and doctrine lineage protections undefined | `Admin/Auditor_Protocols.md` | In Progress | Major |
-```
-
-Replace with:
-
-```
-| AP-001 | Auditor effectiveness metrics — activation requires first full Battery cycle | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-002 | Override vs. immutability boundary — EF-0.4/EF-0.5 progress; Ethical_Constraints.md confirmation pending | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-003 | Audit trail schema | `Admin/Auditor_Protocols.md` | Open | Minor |
-| AP-004 | Cross-auditor disagreement resolution — three-tier framework defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-005 | Verification termination threshold — four necessary conditions defined | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-007 | Repository integrity and doctrine lineage — EF-0.3/EF-0.2 L3 doctrine layer; enforcement gap in Security_Protocols.md | `Admin/Auditor_Protocols.md` | In Progress | Major |
-| AP-008 | Technical implementation of quarantine actions undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-010 | Physical test harness integration with epistemic grounding layer undefined | `Admin/Auditor_Protocols.md` | Open | Major |
-| AP-011 | Automated arbitration deadlock and human fatigue escalation | `Admin/Auditor_Protocols.md` | Open | Major |
-```
-
-Note: AP-006 and AP-009 are removed from the active index — they move to the Resolved & Discharged Archive (see below).
-
----
-
-## Resolved & Discharged Archive — Add Two Entries
-
-Add to bottom of archive table:
-
-```
-| AP-006 | Institutional truth provenance hierarchy | Payment via Specification — four provenance labels formalized in §AP-006; provenance ceiling rule established; provenance collapse classified as EF-0.0 §2 Integrity Violation | 2026-06-21 |
-| AP-009 | Epistemic Ledger volume exemption from sidecar metadata guardrail | Payment via Specification — Metadata Guardrail updated with ENTRY_ID exemption syntax; five-field validity required for exemption | 2026-06-21 |
-```
-
----
-
-## Audit Trail — Add v3.7 Entry
-
-Add after the v3.6 entry:
-
-```
-**v3.7 — 2026-06-21:** AP cluster updated to reflect Auditor_Protocols.md v0.11. AP-006 and AP-009 resolved and archived. AP-001, AP-002, AP-004, AP-005 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries. Systemic Risk escalation on original AP-001–AP-007 satisfied at entry level pending human confirmation.
-```
-
----
-
-## Expiry Watch — Update AP Note
-
-In the Critical Watch table, the AP entries no longer need a Systemic Risk flag since all original seven now have active frameworks. No new row needed — AP entries do not appear in Critical Watch. If any AP escalation note was added to Expiry Watch prose during v3.6, remove it.
-
----
-
-## Size Check
-
-v3.6 was within compression threshold. v3.7 adds ~6 rows net (3 new AP entries, minus 2 resolved removed from active, net +1 plus archive additions). No compression trigger expected.
