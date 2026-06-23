@@ -1322,3 +1322,128 @@ Version 0.11 — AP-001 rollback; AP-011 logged.
 **Confidence never outruns verification.**
 
 **Reality is sovereign. The Auditor is its instrument, not its replacement.**
+
+
+# Auditor_Protocols.md — Unknowns Registry Additions
+## Target: Unknowns Registry section
+## Insert after: Expiry Rule
+## Version: v0.12 additions
+## Date: 2026-06-23
+
+---
+
+## Priority Demotion Doctrine
+*RC-007 resolution vehicle. Companion to the Expiry Rule.*
+
+Blocking and Critical labels carry two distinct meanings that must not be
+conflated. An unknown classified as Operational Blocking stops a physical
+action — the gate holds until empirical resolution. An unknown classified
+as Epistemic Blocking stops a claim — work continues in a bounded state
+while the assertion awaits grounding. See `Admin/Canonical_Terms.md`
+§Governance and Audit Terms for definitions.
+
+A Blocking label may be demoted without closing the unknown when:
+
+1. The unknown has been correctly reclassified from Operational to Epistemic —
+   the physical action it was protecting is no longer dependent on resolution,
+   but a specification claim remains bounded.
+2. The unknown's resolution path has matured to a documented Vehicle with
+   confirmed forward movement — the label may step down from Blocking to
+   Major pending closure.
+3. A downstream dependency that elevated the priority has itself resolved —
+   the elevation was inherited, not intrinsic.
+
+Demotion requires a logged rationale in the owning file's sidecar and an
+updated Unknowns.md index entry. Demotion without a logged rationale is a
+silent priority change and constitutes a Fallacy 4 (Semantic Drift) violation.
+Priority inflation — escalating to Blocking or Critical without documented
+justification — is governed symmetrically: unsupported escalations receive
+the same scrutiny as unsupported demotions.
+
+**Saturation check (Placeholder threshold):** If more than 40% of active
+index entries carry Blocking or Critical labels, treat this as a signal of
+priority inflation rather than genuine systemic risk — trigger a meta-audit
+of the Blocking cluster before adding new entries at those tiers. The 40%
+figure is Placeholder pending calibration against actual audit history.
+
+---
+
+## Inventory Calcification Check
+*RC-008 resolution vehicle. Companion to the Expiry Rule.*
+
+The Expiry Rule flags individual entries approaching two-cycle threshold.
+The Inventory Calcification Check operates at the index level — it asks
+whether the system as a whole is developing a permanent underclass of entries
+that are acknowledged but no longer interrogated.
+
+At each audit cycle opening, the Skeptic/Auditor role checks for calcification
+signals alongside the standard Expiry Rule review:
+
+1. **Stagnation pattern:** Three or more entries in the same cluster have not
+   changed status across two consecutive audit cycles. Flag the cluster for a
+   targeted resolution pass — not individual entries, the cluster.
+2. **In Progress permanence:** Any entry carrying In Progress status for more
+   than four audit cycles without a logged advancement step is reclassified to
+   Open unless the owning sidecar contains a dated Epistemic Ledger entry
+   demonstrating forward movement within the last two cycles. The four-cycle
+   threshold is Placeholder pending calibration against actual audit history.
+3. **Index growth rate:** If new unknowns registered per cycle consistently
+   outnumber unknowns closed, log this as a calcification signal in the audit
+   trail. The goal is not a closed index — it is an honest one. An index that
+   only grows is not honest either.
+
+Calcification signals do not trigger automatic demotion or closure. They
+trigger interrogation — the human governing authority reviews flagged clusters
+and determines whether entries represent genuine open questions or accumulated
+epistemic debt that should be discharged via Trajectory or Lessons Learned.
+
+---
+
+## Vehicle Advancement Visibility
+*RC-009 resolution vehicle.*
+
+The Vehicle subtype classifies In Progress entries where a resolution document
+exists but content is pending. The failure mode this creates is a visibility
+problem: a document's existence becomes a proxy for progress. From the index,
+a Vehicle that is actively advancing and one that has calcified are
+indistinguishable.
+
+This rule establishes honest accounting, not enforcement:
+
+At each audit cycle opening, for each Vehicle entry in the active index, the
+Skeptic/Auditor role asks one question: *Does the owning file's sidecar contain
+a dated entry — a logged advancement step, a resolved sub-question, or an
+Epistemic Ledger entry — that postdates the last audit cycle?*
+
+- **If yes:** Vehicle status is confirmed. No action required.
+- **If no:** The entry is flagged for reclassification. The human governing
+  authority determines whether the Vehicle should revert to Open with a
+  documented reason, or whether a concrete advancement step can be logged
+  before the cycle closes.
+
+Reversion is not a failure — it is the honest label for the actual epistemic
+state. A Vehicle that has not moved is an Open unknown with extra paperwork.
+
+**Relationship to Reversion Protocol:** Vehicle reversion to Open is distinct
+from the Reversion Protocol defined in Unknowns.md Size Management Rules.
+The Reversion Protocol handles Resolved entries that reopen due to contradictory
+evidence. Vehicle reversion handles In Progress entries that have not advanced.
+Both are honesty mechanisms — neither is punitive.
+
+---
+
+## File State update
+- Open Unknowns: 8 → 8 (no new unknowns added; RC entries registered in Unknowns.md)
+- Last Audit: 2026-06-21 → 2026-06-23
+- Version: v0.11 → v0.12
+
+## Resolution Log entry
+- 2026-06-23: v0.12 — RC governance stubs added to Unknowns Registry.
+  Priority Demotion Doctrine (RC-007): defines Operational vs. Epistemic
+  Blocking distinction; demotion criteria; saturation check (40% threshold
+  Placeholder). Inventory Calcification Check (RC-008): three calcification
+  signals defined; four-cycle In Progress permanence threshold (Placeholder).
+  Vehicle Advancement Visibility (RC-009): honest accounting rule for Vehicle
+  entries; reversion to Open defined as honesty mechanism not failure.
+  Canonical vocabulary anchored in Admin/Canonical_Terms.md v0.3.
+  RC-007 through RC-009 registered in Unknowns.md Future/Deferred cluster.
