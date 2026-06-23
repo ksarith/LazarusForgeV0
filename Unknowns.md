@@ -804,3 +804,56 @@ Entries here are closed. They remain for institutional memory.
 **v3.8 — 2026-06-21:** Structural maturation pass. Subtype column added to all active index tables; 35 In Progress entries classified as Vehicle or Active. Unknown Budget and Reversion Protocol added to Size Management Rules. Dependency Clusters section added covering eight blocking/critical clusters. Reopened status formally defined in archive header. AP-001 updated with retrospective calibration (reversion rate) as primary health signal.
 **v3.7 — 2026-06-21:** AP cluster updated to reflect Auditor_Protocols.md v0.11. AP-006 and AP-009 resolved and archived. AP-001, AP-002, AP-004, AP-005 moved to In Progress. AP-008, AP-010, AP-011 registered as new Open entries. ENV-008 resolved — Routing.md and Discovery.md committed. GOV-009, GOV-010, EC-010 moved to In Progress — Environmental_Constraints.md exists as resolution vehicle. EP-004 moved to In Progress — Engineering.md tier correction documents authority boundary. Epistemic Foundation integrity check added to Expiry Watch mandatory steps.
 **v3.6 — 2026-06-19:** ENV cluster registered (9 unknowns) — Admin/Environmental_Constraints.md created and committed. EC-010 and GOV-010 convergence point declared. ENV-007 resolved (AUDIT_HARNESS.py v8.1 registration). ENV-008 blocking — Routing.md and Discovery.md registration pending.
+
+
+# Unknowns.md — Future/Deferred Cluster Additions
+## Target: Future / Deferred table
+## Insert after: RC-006 row
+## Version: v3.9 additions
+## Date: 2026-06-23
+
+---
+
+## Future / Deferred table additions
+
+| RC-007 | Priority Escalation Saturation | `Admin/Auditor_Protocols.md` | Candidate |
+| RC-008 | Long-Lived Unknown Accumulation | `Admin/Auditor_Protocols.md` | Candidate |
+| RC-009 | Resolution Vehicle Persistence Without Progress | `Admin/Auditor_Protocols.md` | Candidate |
+
+*RC-007 through RC-009 doctrine resides in `Admin/Auditor_Protocols.md`
+Unknowns Registry. Entries here are navigation pointers only. Promote to
+Challenges/ alongside RC-001 through RC-006 on next major architecture review.*
+
+---
+
+## What v3.9 Means
+## Target: What vX.X section (replaces v3.8 entry per Size Management Rule 1)
+
+- RC-007 (Priority Escalation Saturation), RC-008 (Long-Lived Unknown
+  Accumulation), and RC-009 (Resolution Vehicle Persistence Without Progress)
+  registered in Future/Deferred cluster — owning file `Admin/Auditor_Protocols.md`
+- Operational Blocking and Epistemic Blocking defined as canonical vocabulary
+  in `Admin/Canonical_Terms.md` v0.3 — Priority Demotion Doctrine in AP now
+  has vocabulary anchor
+- CT-006 (Circular Dependency Detection) and CT-007 (ID Namespace Allocation)
+  registered in Canonical_Terms.md sidecar
+
+---
+
+## Audit Trail entry
+## Target: Audit Trail section — append
+
+**v3.9 — 2026-06-23:** RC governance pass. RC-007 through RC-009 registered
+in Future/Deferred cluster with owning file Admin/Auditor_Protocols.md.
+Doctrine stubs (Priority Demotion Doctrine, Inventory Calcification Check,
+Vehicle Advancement Visibility) added to AP Unknowns Registry. Canonical
+vocabulary (Operational Blocking, Epistemic Blocking) added to
+Canonical_Terms.md v0.3. CT-006 and CT-007 registered in CT sidecar.
+
+---
+
+## Size Management note
+
+Current line count should be checked against 1,200-line compression trigger
+before committing v3.9. The What v3.8 section should be retired per
+Size Management Rule 1 when v3.9 is cut.
