@@ -50,6 +50,29 @@ value before material reduction.
 
 ---
 
+## Agent Orientation
+
+**Read this section before contributing anything to the repository.**
+
+This repository operates as a governed epistemic system, not a free-form document collection. Agents that treat it as a simple knowledge base will hallucinate files, invent authority, and produce outputs that conflict with committed specifications. The following five points prevent the most common failure modes.
+
+**1. Mandatory session opening sequence**
+Every session begins with: (a) load `Admin/Forge_Audit_Kit.md` — this is the runtime reference for all audit and contribution work; (b) declare your role before writing anything (`Skeptic/Auditor`, `Synthesizer`, `Engineer`, `Evidence/Auditor`, or `Connective Tissue`); (c) run the Audit Opening Checklist from the kit — Tier 1 Axiom verification and Epistemic Foundation integrity check are non-negotiable first steps.
+
+**2. Do not invent files**
+Before referencing, creating, or proposing any file, verify it exists in this Discovery.md scope map or in `Routing.md`. Aspirational files must be labeled `[PLANNED]`. Unlabeled references to nonexistent files are Fallacy 6 (Hallucinated Files) and will be rejected by the audit process.
+
+**3. The epistemic state system governs all claims**
+Every meaningful claim in this repository carries one of three epistemic states: `VERIFIED` (survived empirical grounding and adversarial falsification), `PROVISIONAL` (accepted for execution; flagged for validation), or `UNKNOWN` (no grounding exists). Collapsing `UNKNOWN → VERIFIED` without new empirical input is a constitutional violation under Axiom Zero (EF-0.0 in `Admin/Auditor_Protocols.md`). Claims also carry institutional provenance labels: Internally Derived → Analogous External → Experimentally Verified → Operationally Hardened. Unlabeled claims are treated as Placeholder.
+
+**4. Unknowns are not problems to suppress**
+`Unknowns.md` is the most important file in the repository for understanding current system state. Open unknowns are honest acknowledgments of ignorance — suppressing them or closing them without evidence is an integrity violation. The repository maintains an Unknown Budget (floor on acknowledged unknowns) to prevent false certainty. New unknowns surfaced by honest work are welcome; premature closures are not.
+
+**5. The philosophical substrate**
+The Forge's operating principles derive from two foundational documents: the Tier 1 Axioms in `Admin/Governance_Charter.md` (the constitutional floor) and the Nothingness Theorem in `Admin/Nothingness Theorem` (the philosophical substrate). The theorem's core insight — that waste is not zero, that maintenance is thermodynamically equivalent to creation, and that distributed disagreement is the primary engine of error correction — underlies the salvage-first doctrine, the multi-agent audit architecture, and the anti-sacralization principle. Agents are not required to read it, but those who do will find it explains why the system is structured the way it is.
+
+---
+
 ## Repository Structure
 
 ```
@@ -62,7 +85,7 @@ Root
 Admin/                                      — Governance, protocols, and doctrine
     ├── Governance_Charter.md               — Constitutional tier; 8 Axioms (Tier 1)
     ├── Ethical_Constraints.md              — Embedded AI governance & anti-weaponization (Tier 1)
-    ├── Auditor_Protocols.md                — Verification doctrine; Epistemic Foundation (EF-0.0–EF-0.8b); 10-phase sequence (Tier 2)
+    ├── Auditor_Protocols.md                — Verification doctrine; 10-phase sequence (Tier 2)
     ├── Forge_Audit_Kit.md                  — Condensed routine multi-agent cycle reference (Tier 3)
     ├── Verification_Gates_LF.md            — Canonical 6 document promotion gates
     ├── File_Template.md                    — 10-section layout standard & Ethical Anchor field
@@ -76,6 +99,8 @@ Admin/                                      — Governance, protocols, and doctr
     ├── Trajectories.md                     — Multi-era version roadmap (v0 to interstellar)
     ├── Economics.md                        — Dynamic resource doctrine; market navigation; barter
     ├── Environmental_Constraints.md        — Site, regulatory, ecological, and jurisdictional boundary conditions; RDC baseline; No-Externalized-Entropy doctrine
+    ├── Experiments.md                      — Physical grounding registry; falsification records; EXP-ID artifacts for PROVISIONAL→VERIFIED claim transitions
+    ├── Nothingness Theorem                 — Philosophical substrate; foundational framework for salvage-first doctrine, distributed disagreement, and anti-entropy maintenance principles; functionless artifact filed in Admin
     ├── Governance_Migration_Protocol.md    — Tier 1 Axiom amendment procedures
     └── AUDIT_HARNESS.py                    — Automated script supporting verification
 
@@ -135,7 +160,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness:** Verified complete as of 2026-06-19 (`Admin/Environmental_Constraints.md` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+**Routing.md completeness:** Verified complete as of 2026-06-21 (`Admin/Experiments.md` and `Admin/Nothingness Theorem` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -201,6 +226,8 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Admin/Trajectories.md` | Exploration | 1/6 | Medium |
 | `Admin/Economics.md` | Exploration | 0/6 | Medium |
 | `Admin/Environmental_Constraints.md` | Draft | 1/6 | High |
+| `Admin/Experiments.md` | Draft — Stub | 0/6 | Low |
+| `Admin/Nothingness Theorem` | Compiled — Functionless artifact | — | — |
 | `Admin/Governance_Migration_Protocol.md` | Exploration | 0/6 | High |
 | `Admin/AUDIT_HARNESS.py` | Active | — | — |
 | `Architecture/Forge_flow.md` | Exploration | — | High |
@@ -353,7 +380,18 @@ Dynamic resource doctrine. Buy what you need, sell what you don't. Barter doctri
 Site, regulatory, ecological, and jurisdictional boundary conditions. Four constraint categories: Climatic/Physical, Regulatory/Jurisdictional, Ecological/Resource, Human/Social. Junction file for EC-010 (jurisdiction conflict) and GOV-010 (regulatory compliance friction) convergence. No-externalized-entropy doctrine. Graceful degradation rules tied to environmental conditions.
 **Upstream:** Governance_Charter.md (Tier 1 Axioms P-1, P-3); Ethical_Constraints.md; Facilities.md (Site Initialization Checklist); Safety_Protocols.md.
 **Downstream:** Ethical_Constraints.md (EC-010 resolution); Governance_Charter.md (GOV-010 resolution); Facilities.md (FA-003); Safety_Protocols.md (SP-005); Challenges/Waste.md; Challenges/Water.md; Challenges/Biofouling.md; Tests/Leviathan_testing.md; Tests/Trophic_Forge.md.
-⚠️ ENV-009 (no site assessed against constraints) — Critical; all values Placeholder until first site assessment. ENV-008 — **Resolved** — file registered in Discovery.md and Routing.md (2026-06-21). ENV-001 (climate baseline) and ENV-002 (regulatory assessment) — both blocking for site-specific operations.
+⚠️ ENV-009 (no site assessed against constraints) — Critical; all values Placeholder until first site assessment. ENV-008 — **Resolved** — registered in Routing.md and Discovery.md 2026-06-21. ENV-001 (climate baseline) and ENV-002 (regulatory assessment) — both blocking for site-specific operations.
+
+### `Admin/Experiments.md`
+Physical grounding registry. Structured falsification records that ground PROVISIONAL claims in physical reality. Each entry (EXP-ID) targets a specific unknown or PROVISIONAL claim, defines hypothesis and pass/fail criteria, and records outcome. Completed entries produce EXP-ID grounding artifacts that feed Epistemic Ledger entries in owning file sidecars. Partial resolution path for AP-010 (physical test harness coupling). Priority candidates for first entries: CF-001 (hardware watchdog), EN-001 (salvaged material safety factors), CE-003 (field polymer identification).
+**Upstream:** Auditor_Protocols.md (EF-0.3 Epistemic Ledger; EF-0.8b Physical Grounding Vector; AP-010); Unknowns.md (target unknowns); Tests/ files (physical test infrastructure).
+**Downstream:** All owning file sidecars (Epistemic Ledger entries); Unknowns.md (unknown status updates on experimental closure).
+⚠️ No entries yet — stub only. Absence of entries does not indicate grounding has occurred.
+
+### `Admin/Nothingness Theorem`
+Philosophical substrate document. Functionless artifact filed in Admin — intentionally has no operational role in the governance system. Documents the philosophical framework from which several Forge operating principles derive: salvage-first doctrine (waste is not zero), multi-agent audit architecture (distributed disagreement as error correction, Axiom A-7), anti-sacralization principle (drift as active deformation, Axiom A-8), and maintenance-as-creation equivalence (Axiom A-5). Four-generation compiled document produced via inter-agent friction protocol. Contains 8 Axioms, 9 open unknowns (NT-001 through NT-009), and a self-referential proof relevant to EF-0.0's treatment of UNKNOWN states.
+**Upstream:** None — foundational.
+**Downstream:** Philosophical influence on Governance_Charter.md, Auditor_Protocols.md, README.md. No operational dependency — this file may be removed without breaking any functional system.
 
 ### `Admin/Governance_Migration_Protocol.md`
 Tier 1 Axiom amendment procedures. Two-track migration system. Engineer proposal; human ratification. Hard floor doctrine.
@@ -408,8 +446,8 @@ Minimum viable seed specification. 8 core G.E.C.K. modules; procurement doctrine
 ⚠️ GK-005 — resolved by Architecture/Precision.md; update on next audit pass.
 
 ### `Architecture/Engineering.md`
-Foundational engineering principles. Physical-world constraint layer (Tier 5 / Architecture) downstream of Ethical_Constraints.md (Tier 1) and Auditor_Protocols.md (Tier 2). Rules of thumb; safety factors; RDC climate derating; progressive engineering path. File Purpose corrected 2026-06-21 — no longer claims co-equal tier status with governance files.
-**Upstream:** Ethical_Constraints.md (Tier 1 — governs without exception); Auditor_Protocols.md (Tier 2 — epistemic doctrine applies to all engineering claims); Engineer_Protocols.md.
+Foundational engineering principles. Rules of thumb; safety factors; Arkansas climate derating; progressive engineering path.
+**Upstream:** Ethical_Constraints.md; Engineer_Protocols.md.
 **Downstream:** All Operations/ and Architecture/ domain files; Mechanical_Structures.md.
 ⚠️ EN-001 (validated safety factors for salvaged materials) — Critical; blocks structural specification.
 
@@ -632,9 +670,11 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 
 | Unknown | Status | See |
 |---------|--------|-----|
+| UNK-006 — Facility siting | **Resolved** — `Architecture/Facilities.md` owns; PC-002 tracks reference corrections | `Unknowns.md` |
 | UNK-008 — Welding wire chemical qualification | Open — no owner assigned | `Unknowns.md` |
 | UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Unknowns.md` |
 | FA-001 — Site not confirmed | Critical — blocks all hot operations | `Unknowns.md` |
 | EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
-| ENV-009 — No site assessed against constraints | Critical — all ENV values Placeholder | `Unknowns.md` |
+| RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
+| PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
