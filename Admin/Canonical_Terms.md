@@ -641,3 +641,131 @@ Add to Resolution Log:
 Update Open Unknowns count: 3 → 4.
 
 
+# Canonical_Terms.md — Section 4 Additions
+## Target: Section 4 — Governance and Audit Terms
+## Insert after: Genesis Phase entry
+## Version: v0.3 additions
+## Date: 2026-06-23
+
+---
+
+**Operational Blocking**
+An unknown or condition that stops a physical action from occurring safely.
+The gate holds until empirical or physical resolution is achieved — documentation
+advancement alone is insufficient. Examples: no excavation without geomechanical
+assessment (SD-UNK-004); no hot pyrolysis run before halogenated polymer triage
+protocol is validated (PL-001); no powered machinery contact with raw urban salvage
+before IFM screening is confirmed (WW-005). Operational Blocking unknowns require
+physical or empirical resolution — they cannot be worked around by grounding a
+claim in better documentation. Defined as a priority subtype in
+`Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
+
+**Epistemic Blocking**
+An unknown or condition that stops a claim from being made or a file from being
+promoted, without stopping the underlying work. The file may advance; the
+assertion may not. Examples: no structural specification promotion without
+validated safety factors for salvaged materials (EN-001); no T1/T2 part claims
+without a declared precision ceiling (PR-001). Epistemic Blocking is resolved
+by grounding the claim in empirical evidence sufficient for the relevant
+provenance label — the work continues in a bounded state while that grounding
+is sought. Consistent with the graceful degradation rule in
+`Admin/Auditor_Protocols.md` EF-0.2 — a bounded lower-capability baseline
+that matches verified reality is preferable to a higher-capability baseline
+held in indefinite suspension. Defined as a priority subtype in
+`Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
+
+---
+
+## Anti-Drift Guardrail addition
+## Target: Section 5 — Explicit Term Exclusions table
+## Insert as new row
+
+| Blocking (unqualified) | Operational Blocking or Epistemic Blocking | Always specify which type; unqualified Blocking obscures whether work halts or only claims halt |
+
+---
+
+## File State update
+- Open Unknowns: 4 → 4 (no new unknowns; CT-005 cross-reference noted below)
+- Body Stability: Volatile → Volatile (additions are additive; no conflicts introduced)
+- Last Audit: 2026-05-27 → 2026-06-23
+
+## Resolution Log entry
+- 2026-06-23: Operational Blocking and Epistemic Blocking defined in Section 4.
+  Distinction originates from RC-007 (Priority Demotion Doctrine) governance work.
+  Anti-drift guardrail added for unqualified "Blocking" usage. Cross-reference:
+  CT-005 — when ethical and authorization term placeholders mature, confirm
+  EC-001 (sufficient confidence threshold) language is consistent with
+  Epistemic Blocking definition here.
+
+---
+
+## CT-006 — Circular Dependency Detection Undefined
+## Target: Auditor Notes & Unknowns sidecar — insert after CT-005
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Medium                   |
+| Priority      | Major                    |
+| Type          | Architectural / Governance |
+| Blocking      | No                       |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-06-23               |
+| Last Reviewed | 2026-06-23               |
+
+**Description:** The Dependency Clusters section in Unknowns.md documents
+linear blocking chains (A blocks B blocks C). No doctrine governs the detection
+of circular dependencies (A → B → C → A) or confirms they are forbidden. At
+current repository scale these have not appeared, but no mechanism exists to
+detect or prevent them as the dependency graph grows.
+
+**Why It Matters:** A circular dependency between two blocking unknowns produces
+a deadlock with no resolution path — neither can close without the other closing
+first. Undetected, this becomes a permanent entry pair in the active index,
+indistinguishable from legitimate long-lived unknowns.
+
+**Resolution Path:** Payment via Specification — define circular dependency
+detection criteria and either prohibit cycles formally or specify how they are
+broken (forced ordering, human governing authority arbitration, or trajectory
+discharge of one node). May resolve via AUDIT_HARNESS.py enhancement or as
+a doctrine note in the Dependency Clusters section of Unknowns.md.
+
+---
+
+## CT-007 — ID Namespace Allocation Doctrine Undefined
+## Target: Auditor Notes & Unknowns sidecar — insert after CT-006
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Low                      |
+| Priority      | Minor                    |
+| Type          | Governance / Technical   |
+| Blocking      | No                       |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-06-23               |
+| Last Reviewed | 2026-06-23               |
+
+**Description:** The repository uses file-prefix ID namespaces (AP-, EC-, GOV-,
+SD-UNK-, LW-UNK-, etc.) by convention, but no formal doctrine governs whether
+IDs may be reused after resolution, how ranges are reserved for new clusters,
+how collisions are handled if two files claim the same prefix, or how
+multi-owner cross-module unknowns are numbered.
+
+**Why It Matters:** At current scale, convention is sufficient. As the
+repository grows toward v1 and new file clusters are added, namespace
+collisions become increasingly likely. A reused ID that points to a resolved
+entry in the archive and a new open entry in the active index would break
+AUDIT_HARNESS.py validation and confuse cross-reference traceability.
+
+**Resolution Path:** Discharge via Trajectory — log in Admin/Trajectories.md
+as a v0→v1 transition task. Not blocking at current scale. Minimum doctrine
+when resolved: IDs are never reused; prefixes are registered in this file or
+Repository_Structure.md when a new cluster is created; cross-module unknowns
+use UNK-XXX format (already established); collisions are resolved by
+renaming the newer entry with a logged alias.
+
+---
+
+## Open Unknowns update
+- CT-006 and CT-007 added: 4 → 6
