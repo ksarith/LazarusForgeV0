@@ -40,6 +40,8 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Admin/Trajectories.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Trajectories.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Trajectories.md) | Explicit |
 | `Admin/Economics.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Economics.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Economics.md) | Explicit |
 | `Admin/Environmental_Constraints.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Environmental_Constraints.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Environmental_Constraints.md) | Explicit |
+| `Admin/Experiments.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Experiments.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Experiments.md) | Explicit |
+| `Admin/Nothingness Theorem` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Nothingness%20Theorem) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Nothingness%20Theorem) | Explicit |
 | `Admin/AUDIT_HARNESS.py` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/AUDIT_HARNESS.py) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/AUDIT_HARNESS.py) | N/A (Script) |
 | **Architecture/ Layer** | | | |
 | `Architecture/Forge_flow.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Forge_flow.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Forge_flow.md) | Explicit |
