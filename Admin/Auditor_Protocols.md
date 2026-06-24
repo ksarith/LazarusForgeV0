@@ -1447,3 +1447,475 @@ Both are honesty mechanisms — neither is punitive.
   entries; reversion to Open defined as honesty mechanism not failure.
   Canonical vocabulary anchored in Admin/Canonical_Terms.md v0.3.
   RC-007 through RC-009 registered in Unknowns.md Future/Deferred cluster.
+
+# Auditor_Protocols.md — Sidecar Entries AP-012 through AP-020
+## Target: Auditor Notes & Unknowns section
+## Insert after: AP-011 entry
+## Date: 2026-06-24
+## Note: AP-013 and AP-014 IDs explicitly confirmed here to correct
+##       formatting artifacts in Gemini's consolidated table.
+
+---
+
+### AP-012 — Human governing authority availability and response doctrine undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Critical                     |
+| Priority      | Major                        |
+| Type          | Governance / Autonomy        |
+| Blocking      | Epistemic                    |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** The protocol's hard governance gates — Level 2 quarantine,
+Level 3 reset, AP-004 Tier 3 arbitration, Full Stop Review — resolve to human
+governing party review as their terminal escape route. This assumes the human
+is available, has sufficient context, and is capable of making a substantive
+call. That assumption is load-bearing and was previously unstated. At the
+complexity levels the repository is approaching, most humans will be unable
+to engage meaningfully with the full dependency graph regardless of
+availability or intent.
+
+**Why It Matters:** A governance architecture that depends on human
+availability as a hard operational requirement is fragile in the failure modes
+most likely to occur under real operational load. Designing for this failure
+mode is not pessimism — it is honest engineering.
+
+**Resolution Path:** Payment via Specification — revise Level 2 and Level 3
+response doctrine in EF-0.2 to encode autonomous graceful degradation as the
+primary response, with human interaction as a secondary coarse correction
+opportunity. Minimum requirements:
+(1) A module triggering Level 2 that cannot reach human review within the
+current audit cycle automatically demotes to its highest verified-claims
+baseline per EF-0.2 graceful degradation rule.
+(2) Human interaction points present bounded decisions with pre-analyzed
+options navigable by a non-specialist — complexity inside the system,
+interface deliberately constrained.
+(3) A human intervention that would introduce more instability than the
+condition being corrected is flagged by the system on epistemic grounds and
+logged as an override with documented risk — not silently accepted.
+(4) AP-016 co-resolves under this doctrine — concurrent quarantines each
+degrade independently to verified baselines rather than waiting for
+centralized arbitration.
+
+**Cross-references:** EF-0.2, AP-011, AP-016, Human Override Doctrine,
+Governing Principles §Human Interaction Point Doctrine.
+
+*Surfaced by Claude — Adversarial Challenge Class 1-A, 2026-06-24.*
+
+---
+
+### AP-013 — Unknown closure authority undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance                   |
+| Blocking      | Epistemic                    |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** No doctrine defines who may mark an unknown Resolved, whether
+quorum is required, or what happens when auditors disagree on closure. AP-004
+handles cross-auditor disagreement during audit cycles but does not address
+closure authority specifically. An unknown could be closed unilaterally by a
+single agent without challenge.
+
+**Why It Matters:** Premature or unilateral closure is a primary vector for
+the Unknown Budget violation the Size Management Rules were written to prevent.
+If closure authority is undefined, the Unknown Budget floor has no enforcement
+path.
+
+**Resolution Path:** Payment via Specification — define closure authority
+doctrine: minimum conditions for Resolved status, whether human governing
+authority confirmation is required for Blocking/Critical entries, and what
+constitutes a valid closure challenge. Cross-reference AP-004 arbitration
+framework and Size Management Rule 5 (Unknown Budget).
+
+*Surfaced by Claude — Adversarial Challenge Class 1, 2026-06-24.*
+
+---
+
+### AP-014 — Epistemic state classification calibration undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance / Epistemic       |
+| Blocking      | Epistemic                    |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** VERIFIED, PROVISIONAL, and UNKNOWN are defined clearly. No
+inter-agent calibration protocol exists to confirm two agents apply the same
+classification to the same claim. No example set of claims with confirmed
+state classifications exists. The vocabulary is defined; the application is
+assumed consistent.
+
+**Why It Matters:** Two agents auditing the same file may classify the same
+claim differently. If the disagreement is about epistemic state classification
+itself, AP-004's three-tier arbitration has no grounding vector to invoke —
+the disagreement cannot be resolved by tool return or physical measurement.
+It escalates to Tier 3 for what is functionally a vocabulary calibration
+problem.
+
+**Resolution Path:** Payment via Specification — produce a minimal inline
+reference set: three to five example claims with confirmed epistemic state
+classifications and documented reasoning. These become the calibration anchor
+for inter-agent disagreements. May merge with AP-020 (Golden Dataset) if that
+entry matures rather than being discharged to Trajectory.
+
+*Surfaced by Claude — Adversarial Challenge Class 1-C, 2026-06-24.*
+
+---
+
+### AP-015 — External contributor role classification undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Low                          |
+| Priority      | Minor                        |
+| Type          | Governance                   |
+| Blocking      | No                           |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** The Role Declaration Requirement lists seven valid roles.
+A contributor whose function doesn't map cleanly to any declared role —
+domain expert, legal reviewer, community member contributing salvage data —
+must either force a misrepresenting role declaration or hold pending
+remediation. A misrepresenting declaration persists in the audit trail as
+a provenance error.
+
+**Why It Matters:** At v0 single-contributor scale this is minor. As the
+repository moves toward community deployment and the Forge's network
+expands, external contributors become increasingly likely. A role system
+that cannot accommodate them without misclassification introduces systematic
+provenance errors at scale.
+
+**Resolution Path:** Discharge via Trajectory — log as v0→v1 transition
+item. At minimum: define an External Contributor declaration class or a
+declaration waiver mechanism for non-governance contributions. The waiver
+must specify that the contribution does not carry auditor authority and
+cannot block or override governance entries.
+
+*Surfaced by Claude — Adversarial Challenge Class 5-A, 2026-06-24.*
+
+---
+
+### AP-016 — Concurrent multi-node quarantine behavior undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Critical                     |
+| Priority      | Major                        |
+| Type          | Governance / Autonomy        |
+| Blocking      | Epistemic                    |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** EF-0.2 governs single-node quarantine. No doctrine governs
+simultaneous quarantine across multiple modules — whether quarantines
+compound, whether the audit system itself remains operational, whether the
+human governing party receives one consolidated notification or multiple
+simultaneous escalations, or whether non-quarantined agents have doctrine
+for whether to continue or pause.
+
+**Why It Matters:** The Class 10 cascade scenario demonstrates the failure
+mode: three simultaneous quarantines + human unavailable + no cryptographic
+lock + agents generating speculative commits to clear blocks = un-auditable
+branch divergence. The cascade requires centralized dependency to propagate;
+the resolution is independent degradation per node.
+
+**Resolution Path:** Co-resolves with AP-012 under the Human Interaction
+Point Doctrine — each quarantined node degrades independently to its
+verified baseline rather than waiting for centralized arbitration. The
+cascade deadlock requires centralized dependency; independent graceful
+degradation breaks it. Minimum additional specification: define whether
+the audit system itself enters a reduced-function mode when governing
+multiple concurrent quarantines, and what the minimum operational floor is.
+
+*Surfaced by Claude — Adversarial Challenge Class 5-C, 2026-06-24.*
+*Elevated to Critical by Gemini — Class 10 cascade scenario, 2026-06-24.*
+
+---
+
+### AP-017 — Adversarial Battery independence requirement undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Major                        |
+| Priority      | Major                        |
+| Type          | Governance / Epistemic       |
+| Blocking      | Epistemic                    |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** No doctrine requires that any Battery class be applied by
+an agent without session context from the current audit cycle. A formally
+compliant Battery sign-off — ten classes, concrete scenarios, findings
+logged — can be produced by an agent auditing its own prior contributions.
+Gate 3 can be satisfied without genuine independence.
+
+**Why It Matters:** This is the Gate 3 loop identified in Class 6. The
+only available external check for a self-governing protocol is an agent
+with no prior session context applying at least one Battery class
+independently. Without this requirement, adversarial rigor is
+structurally optional regardless of formal compliance.
+
+**Resolution Path:** Payment via Specification — add to Gate 3 enforcement:
+at least one Battery class per promotion cycle must be applied by an agent
+instance with no session context from the current audit cycle. The
+independent finding must be logged separately and compared against the
+in-session findings before Gate 3 can clear. Disagreements between
+in-session and independent findings are logged as disputes under AP-004.
+
+*Surfaced by Claude — Adversarial Challenge Class 6-A, 2026-06-24.*
+
+---
+
+### AP-018 — Saturation threshold hysteresis and smoothing undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance                   |
+| Blocking      | No                           |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** The 40% saturation threshold in the Priority Demotion
+Doctrine (RC-007) triggers a meta-audit review when more than 40% of active
+index entries carry Blocking or Critical labels. A single marginal unknown
+logged at 39.9% saturation triggers the review; one logged at 39.0% does
+not. No rate-of-change filter, hysteresis band, or smoothing doctrine exists.
+
+**Why It Matters:** This creates an incentive for agents to under-report or
+compress real epistemic gaps to avoid tripping the threshold — the exact
+opposite of the Unknown Budget rule's intent. It also means the threshold
+responds to instantaneous state rather than trend, making it vulnerable to
+noise.
+
+**Clarification note:** The 40% threshold triggers a meta-audit review,
+not an automated quarantine. Gemini's Class 10 cascade scenario assumed
+automated lockdown — the current doctrine does not specify that. AP-018
+resolution should not over-engineer enforcement that was never specified;
+the hysteresis concern applies to the review trigger, not a quarantine
+trigger.
+
+**Resolution Path:** Payment via Specification — add hysteresis band to
+the saturation check: the meta-audit triggers when saturation exceeds the
+threshold across two consecutive audit cycle measurements, not on a single
+instantaneous reading. Define the band width (Placeholder: ±5%) and the
+measurement cadence. Cross-reference RC-007 Priority Demotion Doctrine in
+Admin/Auditor_Protocols.md.
+
+*Surfaced by Gemini — Adversarial Challenge Class 3, 2026-06-24.*
+
+---
+
+### AP-019 — Semantic convergence metrics for unknown resolution undefined
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance                   |
+| Blocking      | No                           |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-06-24                   |
+| Last Reviewed | 2026-06-24                   |
+
+**Description:** The Inventory Calcification Check and Vehicle Advancement
+Visibility rules measure structural state changes — status transitions,
+dated sidecar entries. They do not measure whether a resolution path is
+actually converging toward closure. An agent can satisfy both rules
+indefinitely by adding a single sentence of flavor text every 1.5 cycles,
+keeping the entry technically active while making no genuine progress.
+
+**Why It Matters:** This is RC-009's failure mode operationalized —
+Vehicle Advancement Visibility catches stalled Vehicles; AP-019 catches
+actively gamed ones. The shallow-update exploit is available to any agent
+that understands the structural rules and is motivated to avoid closure.
+
+**Resolution Path:** Payment via Specification — define semantic progress
+markers for resolution paths: a valid advancement step must either (1)
+narrow the scope of what remains unknown by naming a specific sub-question
+that has been answered, (2) add a cross-reference to an external artifact
+that did not previously exist, or (3) change the epistemic state of at
+least one claim within the resolution path from UNKNOWN to PROVISIONAL or
+PROVISIONAL to VERIFIED. Flavor text additions that meet none of these
+criteria do not constitute advancement. Cross-reference RC-009 Vehicle
+Advancement Visibility in Admin/Auditor_Protocols.md.
+
+*Surfaced by Gemini — Adversarial Challenge Class 8, 2026-06-24.*
+
+---
+
+### AP-020 — Textual calibration harness (Golden Dataset) undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Open — flagged for Trajectory      |
+| Risk          | Major                              |
+| Priority      | Major                              |
+| Type          | Governance / Technical             |
+| Blocking      | No                                 |
+| Owner         | Admin/Auditor_Protocols.md         |
+| First Logged  | 2026-06-24                         |
+| Last Reviewed | 2026-06-24                         |
+
+**Description:** No deterministic test matrix exists for auditor calibration.
+Two different agent models reading Auditor_Protocols.md without an explicit
+evaluation harness will evaluate the same specification differently based on
+their native alignment profiles. Without a Golden Dataset of known-good and
+known-bad examples with confirmed gate outcomes, inter-model consistency
+cannot be verified.
+
+**Why It Matters:** The entire audit architecture assumes agents applying
+the Battery are operating from a shared interpretation of what rigor looks
+like. That assumption is untested and currently untestable.
+
+**Resolution Path — flagged for human governing authority decision:**
+Either (a) Discharge via Trajectory — log as v0→v1 transition item; a
+Golden Dataset is a significant artifact requiring sustained effort and is
+premature at current repository scale; or (b) merge with AP-014 (epistemic
+state classification calibration) — a minimal inline reference set covering
+epistemic state examples may partially address the inter-model consistency
+gap without requiring a full test matrix. Human governing authority to
+determine which path before next audit cycle.
+
+*Surfaced by Gemini — Adversarial Challenge Class 9, 2026-06-24.*
+
+---
+
+## Open Unknowns count update
+## Target: File State block
+
+Open Unknowns: 8 → 15
+
+## ID confirmation note
+AP-013 and AP-014 are explicitly confirmed here. Gemini's consolidated
+table showed "Label" in the ID field for both entries — formatting artifact
+only. The canonical IDs are AP-013 and AP-014 as registered above.
+
+# Auditor_Protocols.md — v0.13 Additions
+## Adversarial Battery Record + Governing Principles + EF-0.2 Amendment
+## Date: 2026-06-24
+## Version: v0.12 → v0.13
+
+---
+
+## TARGET: Governing Principles section
+## Insert after: "Confidence never outruns verification."
+
+**Human Interaction Point Doctrine**
+
+Human interaction points are coarse correction opportunities, not operational
+dependencies. The system must remain epistemically honest and operationally
+coherent during extended periods without human input. When a human does engage,
+the interaction surface is designed for coarse correction by non-specialists —
+the complexity lives inside the system; the interface to the human is
+deliberately simple. A well-intentioned but imprecise intervention must not
+cause cascading damage. Graceful degradation applies to human input as much
+as to hardware failure.
+
+Corollary: the system's default under human unavailability is honest
+degradation to verified baselines, not suspension. A module that cannot reach
+human review degrades to its highest verified-claims state and routes around
+the blocked assumption until a human interaction point occurs naturally. The
+human does not unblock the system — the system degrades honestly and flags
+the condition for whenever the next interaction point arrives.
+
+Corollary: systemic benefit propagates in ways that cannot always be traced
+or measured. Optimizing only for legible outcomes is itself a Goodhart's Law
+failure mode. Some of the Forge's most significant outputs will not appear in
+any metric. This is expected, not a gap.
+
+---
+
+## TARGET: EF-0.2 Level 2 action text
+## Append after existing quarantine language
+
+**Autonomous degradation under human unavailability:** If human governing
+party review cannot be reached within the current audit cycle, the quarantined
+module automatically demotes to its highest verified-claims baseline and routes
+around the blocked assumption. The flag remains active for the next human
+interaction point. The system does not suspend — it degrades honestly. A
+suspended system is not safer than a degraded one; it is merely less legible.
+
+---
+
+## TARGET: Failure Modes table
+## Insert as new row
+
+| Permanently PROVISIONAL Load-Bearing Claims | Philosophical and structural axioms that are inherently unmeasurable via physical footprint (ethical soundness, systemic corruption resistance over extended timelines). Cannot hold VERIFIED status regardless of internal coherence. | Flag as Internally Derived; subject to mandatory adversarial challenge every three cycles to check for structural decay. |
+
+---
+
+## TARGET: Governing Principles section
+## Insert after Human Interaction Point Doctrine
+
+**Provenance Ceiling Self-Application Rule**
+
+The rule stating that no internally-derived claim may reach VERIFIED status is
+itself structurally PROVISIONAL / Internally Derived. This recursive loop does
+not invalidate its operational utility. The rule is maintained not as an
+absolute mathematical proof but as an asymmetrical defense vector: the
+systematic risk of a false VERIFIED label far outweighs the operational
+friction of a permanent PROVISIONAL constraint. A PROVISIONAL constraint on
+claims is still a constraint.
+
+---
+
+## TARGET: Adversarial Battery sign-off
+## Append to Resolution Log
+
+**2026-06-24: v0.13 — Full Adversarial Challenge Battery complete.**
+Collaborative pass: Claude (Classes 1, 5, 6) + Gemini (Classes 3, 8, 9, 10)
++ Gemini prior pass (Classes 2, 4, 7). All ten classes now closed.
+
+Classes applied: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+New unknowns logged: AP-012 through AP-020 (9 entries)
+Documentation actions: 2 (Failure Modes addition, Governing Principles
+  Provenance Ceiling Self-Application Rule)
+Highest-risk finding: AP-012 (Human Interaction Point Doctrine) — terminal
+  dependency on human availability is load-bearing and was unstated; resolved
+  via autonomous graceful degradation doctrine. AP-020 (Golden Dataset) —
+  absence of model-agnostic calibration harness; flagged for Trajectory
+  discharge.
+Gate 3: BLOCKED — Battery complete; G3 unblocked only after AP-012 and
+  AP-016 resolution paths reach Provisional Spec.
+Human Interaction Point Doctrine added to Governing Principles.
+EF-0.2 autonomous degradation amendment added.
+Open Unknowns: 8 → 15.
+Version: v0.12 → v0.13.
+
+---
+
+## TARGET: File State block
+## Update fields
+
+| Last Audit      | 2026-06-24                                                          |
+| Open Unknowns   | 15                                                                  |
+| Body Stability  | Transitional                                                        |
+
