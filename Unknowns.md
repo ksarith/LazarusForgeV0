@@ -857,3 +857,95 @@ Canonical_Terms.md v0.3. CT-006 and CT-007 registered in CT sidecar.
 Current line count should be checked against 1,200-line compression trigger
 before committing v3.9. The What v3.8 section should be retired per
 Size Management Rule 1 when v3.9 is cut.
+
+# Unknowns.md — AP Cluster Index Additions
+## Target: Ethics & Governance / Governance & Verification table
+## Insert after: AP-011 row
+## Version: v3.9 → v4.0
+## Date: 2026-06-24
+
+---
+
+## Active Unknowns Index additions
+## Target: Governance & Verification table — append after AP-011
+
+| AP-012 | Human governing authority availability and response doctrine undefined | `Admin/Auditor_Protocols.md` | Open | — | Critical |
+| AP-013 | Unknown closure authority undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
+| AP-014 | Epistemic state classification calibration undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
+| AP-015 | External contributor role classification undefined | `Admin/Auditor_Protocols.md` | Open | — | Minor |
+| AP-016 | Concurrent multi-node quarantine behavior undefined | `Admin/Auditor_Protocols.md` | Open | — | Critical |
+| AP-017 | Adversarial Battery independence requirement undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
+| AP-018 | Saturation threshold hysteresis and smoothing undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
+| AP-019 | Semantic convergence metrics for unknown resolution undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
+| AP-020 | Textual calibration harness (Golden Dataset) undefined — flagged for Trajectory discharge decision | `Admin/Auditor_Protocols.md` | Open | — | Major |
+
+---
+
+## Dependency Clusters addition
+## Target: Dependency Clusters section — append to Epistemic / Governance cluster
+
+**Autonomy & Governance (addition to existing cluster)**
+```
+AP-012 (Human authority availability — autonomous degradation doctrine)
+├── AP-016 (Concurrent quarantine — co-resolves under AP-012 doctrine)
+└── AP-011 (Human fatigue escalation — depends on AP-012 resolution)
+
+AP-017 (Battery independence requirement)
+└── Gate 3 clearance blocked until AP-017 reaches Provisional Spec
+```
+
+---
+
+## Critical Watch additions
+## Target: Critical Watch table — append
+
+| AP-012 | Human authority availability — terminal dependency on human intervention was load-bearing and unstated; autonomous graceful degradation doctrine is the resolution path; co-resolves AP-016 |
+| AP-016 | Concurrent multi-node quarantine — cascade deadlock scenario confirmed by Class 10 adversarial pass; co-resolves under AP-012 doctrine |
+
+---
+
+## What v4.0 Means
+## Target: What vX.X section (replaces v3.9 entry)
+
+- Full Adversarial Challenge Battery completed for Admin/Auditor_Protocols.md
+  (Classes 1–10, collaborative Claude + Gemini pass, 2026-06-24)
+- Nine new unknowns registered: AP-012 through AP-020
+- AP-012 (Critical) and AP-016 (Critical) added to Critical Watch
+- Human Interaction Point Doctrine added to Governing Principles in
+  Auditor_Protocols.md — human interaction as coarse correction opportunity
+  for non-specialists, not operational dependency; autonomous graceful
+  degradation as primary response under human unavailability
+- EF-0.2 autonomous degradation amendment committed
+- Provenance Ceiling Self-Application Rule added to Governing Principles
+- Failure Modes table addition: Permanently PROVISIONAL Load-Bearing Claims
+- Gate 3 remains blocked pending AP-012 and AP-016 resolution paths
+  reaching Provisional Spec
+- AP-020 flagged for human governing authority Trajectory discharge decision
+- AP-013 and AP-014 IDs explicitly confirmed (correcting Gemini formatting
+  artifact in consolidated table)
+
+---
+
+## Audit Trail entry
+## Target: Audit Trail section — append
+
+**v4.0 — 2026-06-24:** Full Adversarial Battery pass on
+Admin/Auditor_Protocols.md complete. Claude (Classes 1, 5, 6) + Gemini
+(Classes 2, 3, 4, 7, 8, 9, 10). Nine new unknowns AP-012 through AP-020
+registered. AP-012 and AP-016 elevated to Critical — cascade deadlock
+scenario confirmed. Human Interaction Point Doctrine added to AP Governing
+Principles: autonomous graceful degradation as primary response; human
+as coarse correction opportunity for non-specialists. EF-0.2 autonomous
+degradation amendment added. Gate 3 blocked pending AP-012/AP-016
+Provisional Spec. AP-020 flagged for Trajectory discharge decision.
+
+---
+
+## Size Management note
+
+Line count must be checked against 1,200-line compression trigger before
+committing v4.0. v3.9 What section should be retired per Size Management
+Rule 1 when v4.0 is cut. AP cluster is now the largest single cluster in
+the active index — verify the 10-Entry Rule is not violated in the
+Auditor_Protocols.md sidecar (current count: 15 open entries against a
+10-entry soft flag threshold; Resolution Pass warranted before next cycle).
