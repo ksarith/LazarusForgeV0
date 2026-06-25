@@ -1,8 +1,18 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v9
+LAZARUS FORGE — AUDIT HARNESS v10
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v8.1:
+CHANGES FROM v9:
+  - Cell 4: Role declaration string updated to Auditor_Protocols.md v0.14.
+  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — AP-008 through AP-020 added
+    (first logged cycle 9-10 per Auditor_Protocols.md v0.11-v0.14 session);
+    GH-001 through GH-006 added (cycle 10, Tests/Cognitive_Salvage_Layer.md v0.1).
+  - Cell 1: FALLBACK_REGISTRY updated — Cognitive_Salvage_Layer.md added
+    under Tests/.
+  - Cell 2: EXTRA_FILES commented list updated — Cognitive_Salvage_Layer.md
+    added under Tests/ section.
+
+CHANGES FROM v8.1 (v9):
   - Cell 1: Dynamic registry built from Routing.md at session start.
     Hard-coded FILE_REGISTRY retained as fallback only; drift detected
     and reported automatically. Aliases kept as a separate dict.
@@ -106,6 +116,7 @@ FALLBACK_REGISTRY = {
     "Energy.md":                         "Operations/Energy.md",
     "Plastics.md":                       "Operations/Plastics.md",
     "Woodworking.md":                    "Operations/Woodworking.md",
+    "Cognitive_Salvage_Layer.md":        "Tests/Cognitive_Salvage_Layer.md",
     "Leviathan_testing.md":              "Tests/Leviathan_testing.md",
     "Living_Waters.md":                  "Tests/Living_Waters.md",
     "Solar_Descent.md":                  "Tests/Solar_Descent.md",
@@ -254,6 +265,7 @@ EXTRA_FILES = [
     # "Security_Protocols.md",          # cryptographic trust, authentication
     # "Repository_Integrity_Protocol.md", # integrity baselines, violation classification
     # ── Tests/ ──────────────────────────────────────────────────────
+    # "Cognitive_Salvage_Layer.md",     # heuristic harvesting pipeline, GH-series unknowns
     # "Living_Waters.md",               # water purification, LW-UNK items
     # "Trophic_Forge.md",               # biological cascade, TF-UNK items
     # "Solar_Descent.md",               # underground solar, SD-UNK items
@@ -367,6 +379,10 @@ UNKNOWN_FIRST_CYCLE = {
     "VG-001": 5,
     "AP-001": 2, "AP-002": 2, "AP-003": 2, "AP-004": 2, "AP-005": 2,
     "AP-006": 2, "AP-007": 2,
+    "AP-008": 9, "AP-009": 9, "AP-010": 9, "AP-011": 9,
+    "AP-012": 10, "AP-013": 10, "AP-014": 10, "AP-015": 10,
+    "AP-016": 10, "AP-017": 10, "AP-018": 10, "AP-019": 10,
+    "AP-020": 10,
     # Environmental
     "ENV-001": 9, "ENV-002": 9, "ENV-003": 9, "ENV-004": 9, "ENV-005": 9,
     "ENV-006": 9, "ENV-008": 9, "ENV-009": 9,
@@ -422,6 +438,9 @@ UNKNOWN_FIRST_CYCLE = {
     "SD-UNK-001": 7, "SD-UNK-002": 7, "SD-UNK-003": 7, "SD-UNK-004": 7,
     "SD-UNK-005": 7, "SD-UNK-006": 7, "SD-UNK-007": 7, "SD-UNK-008": 7,
     "SD-UNK-009": 7, "SD-UNK-010": 7, "SD-UNK-011": 7, "SD-UNK-012": 7,
+    # Cognitive Salvage Layer — GH-series (cycle 10)
+    "GH-001": 10, "GH-002": 10, "GH-003": 10, "GH-004": 10,
+    "GH-005": 10, "GH-006": 10,
     # Misc
     "FA-001": 4, "FA-002": 4, "FA-003": 4, "FA-004": 4,
     "SP-001": 4, "SP-002": 4, "SP-003": 4, "SP-004": 4, "SP-005": 4,
@@ -563,7 +582,7 @@ DIVIDER = "=" * 60
 sections = []
 
 sections.append(
-    f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.7\n"
+    f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.14\n"
     f"Repository: LazarusForgeV0"
 )
 
