@@ -1,5 +1,5 @@
 # Cognitive_Salvage_Layer.md
-**Version 0.1**
+**Version 0.2**
 
 ## File State
 
@@ -7,13 +7,13 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Exploration                                                         |
 | Body Stability   | Draft                                                               |
-| Spec Gates       | 0/6                                                                 |
+| Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-24                                                          |
 | Auditor          | Claude — Synthesizer/Auditor                                        |
-| Open Unknowns    | 5                                                                   |
+| Open Unknowns    | 11                                                                  |
 | Active Disputes  | 0                                                                   |
-| Highest Risk     | Medium                                                              |
+| Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
@@ -24,11 +24,11 @@
 **This file DOES define:**
 - The Cognitive Salvage Layer as a distinct architectural module within LazarusForgeV0
 - The heuristic failure class that motivates human-in-the-loop integration
-- The feedback loop architecture from physical scan to autonomous execution
+- The feedback loop architecture from physical scan to autonomous execution — covering both disassembly/triage and fabrication heuristics
 - The Auditor Decision Tree for candidate heuristic verification (Stages 1–4)
-- The five-status grading classification matrix
+- The six-status grading classification matrix including CANDIDATE_NOVEL
 - The Heuristic Object schema for telemetry and logging
-- Integration points with existing Forge modules
+- Integration points with existing Forge modules including Gate_06_Fabrication.md
 - The Leviathan emergency cognition connection
 - GH-series unknowns governing heuristic governance architecture
 
@@ -41,6 +41,7 @@
 - Auditor protocol operational behavior (→ `Admin/Auditor_Protocols.md`)
 - Canonical terminology (→ `Admin/Canonical_Terms.md`)
 - Leviathan deployment architecture (→ `Operations/Leviathan.md` — planned)
+- Weld qualification standards or fabrication tolerance specifications (→ `Operations/Gate_06_Fabrication.md`)
 
 ---
 
@@ -48,15 +49,17 @@
 
 This file defines the **Cognitive Salvage Layer**: a human-in-the-loop heuristic harvesting pipeline that converts player-solved spatial and triage puzzles into verified, machine-executable protocols for the Lazarus Forge.
 
-The layer exists to address a specific and underserved failure class: **heuristic failure**. This is distinct from sensor failure and mechanical failure. In a heuristic failure, the object is technically visible, the materials are technically identifiable, and the machine technically has the tools — yet the system does not know which bolt to remove first, which cut avoids structural collapse, which sequence minimizes contamination spread, or which edge-case exploitation is worth attempting. These are problems humans solve extraordinarily well.
+The layer exists to address a specific and underserved failure class: **heuristic failure**. This is distinct from sensor failure and mechanical failure. In a heuristic failure, the object is technically visible, the materials are technically identifiable, and the machine technically has the tools — yet the system does not know which bolt to remove first, which cut avoids structural collapse, which weld path routes around a stress concentration, which fixturing sequence stabilizes a non-standard geometry, or which joining order prevents distortion in mismatched salvaged components. These are problems humans solve extraordinarily well, and they appear on both sides of the Forge's operational flow: disassembly and fabrication alike.
 
 The game interface is not the product. **The heuristic extraction pipeline is the product.**
 
-By treating player-generated solution paths as untrusted candidate heuristics — and subjecting them to the same verification discipline applied to all Forge knowledge — this layer extends the Forge's core salvage-first doctrine from physical materials to human cognition itself:
+This layer extends the Forge's core salvage-first doctrine from physical materials to human cognition itself:
 
 > Human problem-solving effort is itself a salvageable resource.
 
 Just as the Forge assumes that discarded materials contain unrealized value, the Cognitive Salvage Layer assumes that millions of hours of distributed human puzzle-solving contain recoverable operational knowledge — provided the extraction and verification pipeline is rigorous enough to separate genuine insight from game-engine artifact.
+
+**Note on heuristic sources:** While the gamified puzzle interface is the primary harvesting mechanism described here, the verification pipeline is source-agnostic. Candidate heuristics could enter from players, operators, technicians, auditors, other Forge nodes, or autonomous model-generated proposals — all passing through the same four-stage verification funnel. The game is one harvesting mechanism, not the definition of the layer.
 
 ---
 
@@ -69,6 +72,9 @@ Just as the Forge assumes that discarded materials contain unrealized value, the
 | CSL-A03 | A gamified interface can abstract real salvage geometry with sufficient fidelity         | Placeholder — no Forge-specific data | Placeholder | Stage 3 validation pass on first physical anomaly       |
 | CSL-A04 | The Forge's existing Auditor Protocols are sufficient to gate heuristic promotion        | Internally Derived                   | PROVISIONAL | GH-003 (adversarial poisoning) resolution               |
 | CSL-A05 | Players will not systematically attempt to poison the heuristic dataset                 | Placeholder — no deployment data     | Placeholder | GH-003 resolution                                       |
+| CSL-A06 | Stage 3 high-fidelity simulation predicts physical outcomes with sufficient accuracy     | Placeholder — no Forge-specific data | Placeholder | First S2R delta measurement on promoted heuristic       |
+
+CSL-A06 is load-bearing: the entire pipeline's safety guarantee rests on Stage 3 catching hazardous sequences. If simulation-to-physical fidelity is low, promoted heuristics may pass Stage 3 while failing in physical execution. This assumption requires empirical validation before any heuristic reaches Operational Spec status.
 
 ---
 
@@ -81,53 +87,70 @@ Standard Forge operational flow assumes:
 3. Agents decide what to do.
 4. Machinery executes.
 
-This flow handles the common case well. It fails silently on a specific class of problem where the sensor and classification layers return valid data but the planning layer lacks the procedural knowledge to act optimally — or at all. Examples:
+This flow fails silently on a specific class of problem where the sensor and classification layers return valid data but the planning layer lacks the procedural knowledge to act optimally — or at all.
 
+**Disassembly manifestations:**
 - A structurally deformed hull section where standard disassembly sequence causes tool-pinching collapse.
 - A biofouled assembly where cut order determines whether contamination spreads to clean components.
 - A non-standard geometry where bolt removal priority is load-bearing and non-obvious.
 - An edge-case material state (severe corrosion, fused joints, unexpected composites) outside the planning agent's training distribution.
 
-These are not failures of sensing or execution. They are failures of procedural knowledge. The Cognitive Salvage Layer is the Forge's mechanism for recovering that knowledge from human cognition rather than leaving it undiscovered.
+**Fabrication manifestations:**
+- A warped salvaged frame where weld path routing must avoid stress concentrations not evident from geometry alone.
+- A non-standard component geometry requiring fixturing sequences that prevent distortion under clamp load.
+- Mismatched salvaged materials where joining order determines whether thermal distortion propagates to structurally critical areas.
+- A recovered assembly where repair sequence must preserve function in adjacent components that cannot be disassembled first.
+
+These are not failures of sensing or execution. They are failures of procedural knowledge. Fabrication heuristic failures are in some respects more dangerous than disassembly failures: a bad disassembly sequence usually fails visibly and immediately; a bad fabrication sequence can produce a structurally compromised output that passes visual inspection and fails under load.
+
+**Canonical Terms candidate:** *Heuristic Failure* as a first-class Forge failure class, distinct from Sensor Failure and Mechanical Failure. Registration proposed in `Admin/Canonical_Terms.md` as HF-001. Until registered, treat as PROVISIONAL vocabulary in this file only.
 
 ---
 
 ## Feedback Loop Architecture
 
-The Cognitive Salvage Layer operates as a verification-gated pipeline from physical anomaly to autonomous execution update:
+The Cognitive Salvage Layer operates as a verification-gated pipeline from physical anomaly to autonomous execution update. The pipeline applies identically to disassembly and fabrication heuristics — the anomaly_class field in the Heuristic Object distinguishes them.
 
 ```
-[Physical Salvage Scan]
-         │
-         │  Deformed geometry, unknown material composition,
-         │  low-confidence triage classification
-         ▼
+[Physical Salvage Scan / Fabrication Task]
+              |
+              |  Deformed geometry, unknown material composition,
+              |  low-confidence triage or fabrication classification
+              v
 [Gamified Simulation Node]
-         │
-         │  Constraint-driven spatial puzzle; player explores
-         │  solution space under abstracted physical rules
-         ▼
+              |
+              |  Constraint-driven spatial puzzle; player explores
+              |  solution space under abstracted physical rules
+              v
 [Heuristic Extraction]
-         │
-         │  Player action sequence captured as
-         │  candidate Heuristic Object
-         ▼
+              |
+              |  Player action sequence captured as
+              |  candidate Heuristic Object
+              v
+[Canonicalization Pass]  <- see GH-011
+              |
+              |  Normalize variant sequences to core heuristic;
+              |  deduplicate evidence across player runs
+              v
 [Auditor Verification Pipeline]
-         │
-         ├─── EXPLOIT ──────► Archive: Engine Exploit Log
-         ├─── UNSAFE ───────► Quarantine: Hazardous Sequence Log
-         ├─── SUBOPTIMAL ───► Archive: Low Priority
-         ├─── FEASIBLE ─────► Queue for Execution
-         └─── NOVEL ────────► Immediate Promotion
-                   │
-                   ▼
-         [Forge Knowledge Base]
-                   │
-                   ▼
-         [Autonomous Execution]
-         (Updated triage, stratification,
-          disassembly protocols)
+              |
+              +--- EXPLOIT -------> Archive: Engine Exploit Log
+              +--- UNSAFE --------> Quarantine: Hazardous Sequence Log
+              +--- SUBOPTIMAL ----> Archive: Low Priority
+              +--- FEASIBLE ------> Queue for Execution
+              +--- CANDIDATE_NOVEL> Pending threshold definition (GH-006)
+              +--- NOVEL ---------> Immediate Promotion (threshold TBD)
+                        |
+                        v
+              [Forge Knowledge Base]
+                        |
+                        v
+              [Autonomous Execution]
+              (Updated triage, fabrication,
+               stratification, disassembly protocols)
 ```
+
+The canonicalization pass is shown as a distinct stage but is currently undefined — see GH-011. Until GH-011 resolves, the pipeline proceeds directly from heuristic extraction to Stage 1 verification, accepting the accumulation of variant sequences as a known limitation.
 
 **The critical distinction:** The player never directly teaches the Forge. The player generates candidate solutions. The Forge verifies them. That separation is what makes the pipeline safe to operate at scale.
 
@@ -135,94 +158,124 @@ The Cognitive Salvage Layer operates as a verification-gated pipeline from physi
 
 ## Core Data Streams
 
-For player action sequences to be translatable into machine-executable protocols, the simulation interface must capture the following data classes:
+**Triage and Disassembly Path Logging**
+Chronological sequence of player actions — where they cut, separate, unbolt, or manipulate a component and in what order. Sequence order is often the entire insight.
 
-**Triage Path Logging**
-Chronological sequence of player actions — where they cut, separate, unbolt, or manipulate a component and in what order. This is the primary heuristic payload. Sequence order is often the entire insight.
+**Fabrication Path Logging**
+Chronological sequence of construction actions — weld path routing, fixturing order, joint sequence, clamp placement and removal order. Sequence order in fabrication determines thermal distortion accumulation, residual stress distribution, and accessibility of subsequent operations.
 
 **Volumetric and Geometric Manipulation**
-How players rotate, align, and fit non-standard geometries into stratification or disassembly configurations. Captures spatial reasoning that planning agents cannot derive from static geometry alone.
+How players rotate, align, and fit non-standard geometries into disassembly or fabrication configurations. Captures spatial reasoning that planning agents cannot derive from static geometry alone.
 
 **Constraint Interactions**
-Where players repeatedly fail, back up, or hit simulation limits. Failure clustering identifies structural stress points, biofouling traps, and load-bearing sequences before physical tools ever contact the material. Failed attempts are data.
+Where players repeatedly fail, back up, or hit simulation limits. Failure clustering identifies structural stress points, biofouling traps, load-bearing sequences, and fabrication distortion patterns before physical tools ever contact the material. Failed attempts are data.
 
 **Optimization Metrics**
-Time, estimated tool wear, contamination risk exposure, and energy proxies for each solution path. Required for Stage 4 efficiency grading.
+Time, estimated tool wear, contamination risk exposure, distortion risk, and energy proxies for each solution path. Required for Stage 4 multi-dimensional efficiency grading.
 
 ---
 
 ## The Heuristic Object Schema
 
-Every candidate solution path is serialized as a Heuristic Object before entering the Auditor pipeline. This is the standard telemetry unit bridging the simulation node and the verification layer.
+Every candidate solution path is serialized as a Heuristic Object before entering the Auditor pipeline.
 
 ```json
 {
   "heuristic_id": "HS-XXXX",
   "anomaly_source": "[Scan ID and anomaly description]",
-  "anomaly_class": "[Deformed geometry | Biofouled | Unknown composite | ...]",
-  "action_sequence": ["ACTION_A", "ACTION_B", "ACTION_C"],
+  "anomaly_class": "[Deformed geometry | Biofouled | Unknown composite |
+                     Fabrication-weld | Fabrication-fixturing |
+                     Fabrication-joint | ...]",
+  "action_sequence": [
+    {
+      "action_type": "[CUT | SEPARATE | UNBOLT | WELD | FIXTURE | CLAMP | ...]",
+      "target_component": "[component ID]",
+      "parameters": {},
+      "timestamp_sim_ms": null
+    }
+  ],
   "constraint_violations_logged": 0,
   "auditor_status": "PENDING_SIMULATION",
+  "simulation_fidelity_version": "[engine version or hash]",
   "stage_outcomes": {
     "stage_1_abstraction": null,
     "stage_2_kinematic": null,
     "stage_3_physical_sim": null,
     "stage_4_efficiency": null
   },
-  "efficiency_delta": null,
-  "novelty_flag": false,
-  "provenance": "Player_Swarm | Single_Player | Operator_Override",
+  "metrics_delta": {
+    "delta_t_seconds": null,
+    "tool_wear_factor": null,
+    "material_yield_value": null,
+    "distortion_risk_delta": null
+  },
+  "candidate_novel_flag": false,
+  "provenance": "Player_Swarm | Single_Player | Operator_Override | Technician | Forge_Node",
   "session_count": 1,
-  "consensus_run_count": 0
+  "consensus_run_count": 0,
+  "validated_on_machinery_revision": null,
+  "physical_grounding_ref": null
 }
 ```
 
-Fields marked `null` are populated by the Auditor pipeline as each stage completes. `efficiency_delta` is calculated in Stage 4 relative to the current autonomous baseline. `consensus_run_count` tracks how many independent solution paths have been aggregated for this anomaly class — relevant to GH-002 (statistical significance threshold).
+**Field notes:**
+
+`action_sequence` — typed structure. Each entry specifies action type, target, parameters, and simulation timestamp. Supports kinematic replay in Stage 2 and canonicalization in GH-011.
+
+`simulation_fidelity_version` — engine version or hash at time of capture. Required for GH-007 (puzzle fidelity drift) detection.
+
+`metrics_delta` — replaces v0.1 `efficiency_delta`. Multi-dimensional object covering time, tool wear, material yield value, and distortion risk. Required for Stage 4 Pareto grading and CANDIDATE_NOVEL evaluation.
+
+`candidate_novel_flag` — replaces v0.1 `novelty_flag`. Set true when Stage 4 identifies a heuristic that improves at least one metrics_delta dimension without degrading others below baseline. Does not constitute NOVEL promotion — GH-006 must close first.
+
+`validated_on_machinery_revision` — machinery revision ID at time of physical validation. Required for GH-008 (heuristic expiration) tracking.
+
+`physical_grounding_ref` — reference to the physical execution outcome record. Constitutes the EF-0.8b grounding artifact. Null until physical execution occurs; heuristics without this field remain PROVISIONAL regardless of Stage 3 outcome.
 
 ---
 
 ## Auditor Decision Tree
 
-When a player submits a successful solution path, the Heuristic Object enters a four-stage verification pipeline. The Forge treats player inputs as untrusted, unverified candidate heuristics at all times. Passage through all four stages is required for knowledge base promotion.
+When a player submits a successful solution path, the Heuristic Object enters a four-stage verification pipeline. The Forge treats player inputs as untrusted, unverified candidate heuristics at all times.
 
 ```
 [Player Solution Submitted]
-              │
-              ▼
-┌─────────────────────────────┐
-│  Stage 1: Abstraction &     │
-│  Exploit Verification       │
-└──────────────┬──────────────┘
-               │
-     Pass ─────┼─────► Fail ──► [Archive: Engine Exploit Log]
-               │
-               ▼
-┌─────────────────────────────┐
-│  Stage 2: Kinematic &       │
-│  Collision Mapping          │
-└──────────────┬──────────────┘
-               │
-     Pass ─────┼─────► Fail ──► [Archive: Kinematic Mismatch]
-               │
-               ▼
-┌─────────────────────────────┐
-│  Stage 3: Physical          │
-│  Simulation & Stress Test   │
-└──────────────┬──────────────┘
-               │
-     Pass ─────┼─────► Fail ──► [Archive: Material Failure /
-               │                 Hazardous Sequence]
-               ▼
-┌─────────────────────────────┐
-│  Stage 4: Efficiency &      │
-│  Yield Grading              │
-└──────────────┬──────────────┘
-               │
-               ▼
+              |
+              v
++-----------------------------+
+|  Stage 1: Abstraction &     |
+|  Exploit Verification       |
++-------------+---------------+
+              |
+     Pass ----+----> Fail --> [Archive: Engine Exploit Log]
+              |
+              v
++-----------------------------+
+|  Stage 2: Kinematic &       |
+|  Collision Mapping          |
++-------------+---------------+
+              |
+     Pass ----+----> Fail --> [Archive: Kinematic Mismatch]
+              |
+              v
++-----------------------------+
+|  Stage 3: Physical          |
+|  Simulation & Stress Test   |
++-------------+---------------+
+              |
+     Pass ----+----> Fail --> [Archive: Material Failure /
+              |                Hazardous Sequence]
+              v
++-----------------------------+
+|  Stage 4: Efficiency &      |
+|  Yield Grading              |
++-------------+---------------+
+              |
+              v
      [Grading Classification]
-     FEASIBLE | NOVEL | SUBOPTIMAL
-               │
-               ▼
+     FEASIBLE | CANDIDATE_NOVEL | SUBOPTIMAL
+              |
+              v
      [Forge Knowledge Base]
 ```
 
@@ -232,179 +285,218 @@ When a player submits a successful solution path, the Heuristic Object enters a 
 
 The Auditor isolates the action sequence from the game engine's rendering and physics layer to confirm the player did not exploit simulation artifacts.
 
-**Boundary Violations:** Did any object surfaces intersect or pass through one another in a way real-world matter cannot? Clipping, Z-fighting exploitation, or geometry tunneling all constitute boundary violations.
+**Boundary Violations:** Did any object surfaces intersect or pass through one another in a way real-world matter cannot?
 
 **Temporal Anomalies:** Did actions occur faster than real-world physical actuators or human reaction times allow within the simulation's stated parameters?
 
-*Fail outcome:* Flag as EXPLOIT. Log the simulation defect to the puzzle engine bug registry for repair. Discard the path — it contains no recoverable physical insight.
+*Fail outcome:* Flag as EXPLOIT. Log the simulation defect to the puzzle engine bug registry. Discard the path.
 
-*Archive value:* Exploit logs are not waste. They are a systematic record of simulation fidelity gaps that must be closed before the pipeline can be trusted for the anomaly class that triggered them.
+*Archive value:* Exploit logs are a systematic record of simulation fidelity gaps. Cross-reference `simulation_fidelity_version` for version-specific exploit patterns (GH-007).
 
 ---
 
 ### Stage 2 — Kinematic and Collision Mapping
 
-Human bodies have highly redundant degrees of freedom — wrists, fingers, elbows — that standard 6-axis industrial robotic arms cannot replicate without encountering gimbal lock or joint limit violations.
+Human bodies have highly redundant degrees of freedom that standard 6-axis industrial robotic arms cannot replicate. This applies to both disassembly and fabrication — a weld path that a human hand can execute may require a robot to approach from an angle that causes chassis collision or reach limit violation.
 
-**Actuator Emulation:** The Auditor replays the player's vector movements through an inverse kinematics model of the target Forge machinery. Can the physical arm reproduce this sequence?
+**Actuator Emulation:** The Auditor replays the player's vector movements through an inverse kinematics model of the target Forge machinery.
 
-**Tooling Clearance:** Does the physical tool geometry (plasma cutters, hydraulic shears, manipulator claws) fit into the physical space the player utilized without chassis collision or reach limit violation?
+**Tooling Clearance:** Does the physical tool geometry fit into the physical space the player utilized without chassis collision? For fabrication tasks, this includes torch angles, electrode access, and clamp arm geometry.
 
-*Fail outcome:* Flag as KINEMATIC_MISMATCH. Archive the path. Use the failure data to adjust the puzzle's tool constraint model so future players are working within the actual machinery's envelope from the start.
-
-*Note:* Kinematic mismatches are not player errors — they are fidelity gaps between the simulation's tool model and the physical machinery. Both the path and the gap are informative.
+*Fail outcome:* Flag as KINEMATIC_MISMATCH. Archive the path. Use the failure data to adjust the puzzle's tool constraint model.
 
 ---
 
 ### Stage 3 — Physical Simulation and Stress Testing
 
-The gamified interface runs on a simplified real-time physics engine optimized for playability, not fidelity. Stage 3 subjects the candidate path to high-fidelity finite element analysis and rigid-body dynamic simulation.
+Stage 3 subjects the candidate path to high-fidelity finite element analysis and rigid-body dynamic simulation.
 
-**Structural Collapse:** If the player cut support element A before unbolting component B, does the remaining geometry deform under gravity, pinching physical tools or damaging the salvage target? Sequence order that appears valid in low-fidelity simulation may be catastrophic in physical reality.
+**For disassembly paths:**
+- Structural collapse under gravity if sequence is incorrect.
+- Contamination and biofouling propagation vectors.
+- Material state assumptions (tensile strength, ductility, joint integrity).
 
-**Contamination and Biofouling Propagation:** Does the disassembly sequence breach a pressurized line or biofouled cavity in a direction that gravity or fluid dynamics would wash contamination over clean components?
+**For fabrication paths:**
+- Thermal distortion accumulation across the weld or joining sequence.
+- Residual stress distribution and potential stress concentration points.
+- Fixturing adequacy — does the proposed clamp arrangement prevent distortion, or does it introduce new stress concentrations?
+- Accessibility of subsequent operations — does the sequence close off access to later joints?
 
-**Material State Assumptions:** Does the path assume material properties (tensile strength, ductility, joint integrity) that may not hold for the actual degraded or unknown-composition salvage item?
+*Fail outcomes:* MATERIAL_FAILURE or HAZARDOUS_SEQUENCE.
 
-*Fail outcomes:*
-- MATERIAL_FAILURE — path causes structural damage to salvage or tooling.
-- HAZARDOUS_SEQUENCE — path causes contamination spread, pressurized release, or operator hazard.
-
-*Both failure types are quarantined, not discarded.* The specific failure mode is logged as a Heuristic Object field and may be recoverable if the sequence is modified. A path that almost passes Stage 3 is more valuable than one that fails Stage 1.
+*S2R Delta trigger (GH-003 partial mitigation):* If physical execution of a promoted heuristic encounters more than a defined variance threshold in expected torque, resistance, or thermal profile, the heuristic is immediately demoted to UNSAFE quarantine and the simulation model is flagged for recalibration. The specific variance threshold is Placeholder pending first physical execution data.
 
 ---
 
 ### Stage 4 — Efficiency and Yield Grading
 
-A path that survives Stages 1–3 is physically feasible. Stage 4 determines its operational value relative to the current autonomous baseline plan for the same anomaly class.
+A path that survives Stages 1–3 is physically feasible. Stage 4 determines its operational value using multi-dimensional grading against the current autonomous baseline.
 
-**Delta-T (Time):** Δ T = T_auto − T_player. Does this sequence reduce operational cycle time?
+**Delta-T:** Reduction in operational cycle time.
 
-**Tool Wear and Energy Proxies:** Does the path require complex high-energy cuts where a simpler mechanical leverage approach would achieve the same result with lower tool wear?
+**Tool Wear Factor:** Does the path reduce tool wear relative to the autonomous baseline?
 
-**Value Retention:** Does the sequence preserve high-value components intact, or does it sacrifice them for throughput? Cross-reference `Economics.md` market replacement cost doctrine for value weighting.
+**Material Yield Value:** Does the sequence preserve high-value components and minimize fabrication waste? Cross-reference `Economics.md`.
 
-*Stage 4 produces a grading classification, not a pass/fail outcome.* All paths reaching Stage 4 are physically valid. The grade determines their disposition in the knowledge base.
+**Distortion Risk Delta:** For fabrication paths — does the sequence reduce thermal distortion and residual stress relative to baseline?
+
+**CANDIDATE_NOVEL evaluation — Pareto criterion (Placeholder):** A heuristic is flagged `candidate_novel_flag: true` when it improves at least one `metrics_delta` dimension without degrading any other below the autonomous baseline. The formal NOVEL promotion threshold remains undefined pending GH-006. Until GH-006 closes, all CANDIDATE_NOVEL entries are held at FEASIBLE disposition.
 
 ---
 
 ## Grading Classification Matrix
 
-| Status Code | Disposition               | Description                                                                                       |
-|-------------|---------------------------|---------------------------------------------------------------------------------------------------|
-| FEASIBLE    | Queue for Execution       | Physically valid. Performs equal to current autonomous baseline. Offers alternative routing.       |
-| NOVEL       | Immediate Promotion       | Exceeds autonomous baseline on at least one efficiency dimension. Pushed to local cache for immediate application. Threshold: Placeholder — see GH-006. |
-| SUBOPTIMAL  | Archive / Low Priority    | Physically valid but slower, higher tool wear, or lower value retention than autonomous baseline.  |
-| UNSAFE      | Quarantine                | Causes tool damage, structural collapse, or contamination spread in high-fidelity simulation.      |
-| EXPLOIT     | Scrub / Bug Log           | Relies on simulation inaccuracies. No physical insight recoverable without simulation repair.      |
-
-**On NOVEL threshold:** The source material specified >10% efficiency improvement as the NOVEL threshold. This figure is Placeholder — it has no derivation in the current repository and must not be treated as a specification claim. The threshold will be defined after first operational cycle data is available. See GH-006.
-
-**On consensus aggregation:** Multiple FEASIBLE runs for the same anomaly class should be aggregated before promotion. The minimum run count for statistical significance is undefined — see GH-002. Until GH-002 resolves, treat single FEASIBLE runs as provisional queue entries pending confirmation.
+| Status Code      | Disposition               | Description                                                                                       |
+|------------------|---------------------------|---------------------------------------------------------------------------------------------------|
+| FEASIBLE         | Queue for Execution       | Physically valid. Performs equal to current autonomous baseline.                                   |
+| CANDIDATE_NOVEL  | Hold — Pending Threshold  | Improves at least one metrics_delta dimension without degrading others. Held at FEASIBLE disposition until GH-006 resolves. |
+| NOVEL            | Immediate Promotion       | Exceeds baseline per formal multi-dimensional threshold. **No heuristic may receive NOVEL status until GH-006 closes.** |
+| SUBOPTIMAL       | Archive / Low Priority    | Physically valid but slower, higher tool wear, lower yield, or higher distortion than baseline.   |
+| UNSAFE           | Quarantine                | Causes damage, collapse, contamination spread, or unacceptable fabrication distortion. Also triggered by S2R delta exceedance post-promotion. |
+| EXPLOIT          | Scrub / Bug Log           | Relies on simulation inaccuracies. No physical insight recoverable without simulation repair.      |
 
 ---
 
 ## Integration Points
 
-### Component_Triage_System.md
-When the automated triage system encounters an item with a classification confidence score below threshold, it flags the asset, generates a puzzle instance abstracted from the scan geometry, and pushes it to the player queue. The Cognitive Salvage Layer is the downstream consumer of triage failures — it exists specifically to handle what the triage system cannot.
+### Component_Triage_System.md / Gate_02_Triage.md
+When triage confidence drops below threshold, the item is flagged and a puzzle instance generated.
 
-### Stratification and Separation Systems
-Players manipulate flow, spin rates, or particle separation mechanics in a simplified fluid and centrifugal simulator, discovering stable sorting configurations. Verified configurations translate to physical spin chamber parameters. The game mechanic here is optimization of a physical process the player experiences as spatial puzzle-solving.
+### Gate_06_Fabrication.md
+When the fabrication planning agent encounters a geometry, material combination, or repair scenario outside its procedural knowledge envelope, it flags the task and generates a fabrication puzzle instance. The anomaly_class field distinguishes fabrication from disassembly heuristics in the pipeline. Weld qualification standards and tolerance specifications remain owned by Gate_06_Fabrication.md.
 
 ### Admin/Auditor_Protocols.md
-The Auditor Decision Tree defined in this file operates under the full epistemic doctrine of `Admin/Auditor_Protocols.md`. All stage outcomes are PROVISIONAL until tool confirmation or physical test result is logged. Stage 3 simulation results are PROVISIONAL pending physical grounding per EF-0.8b — a simulation confirming a simulation is not external grounding.
-
-The UNSAFE and EXPLOIT quarantine classifications map directly to EF-0.2 Level 2 (Subsystem Quarantine) for any heuristic that, if promoted, would constitute a hazardous knowledge state. The Auditor pipeline does not bypass the repository's epistemic governance layer — it operates within it.
+The Auditor Decision Tree operates under the full epistemic doctrine of `Admin/Auditor_Protocols.md`. Stage 3 results are PROVISIONAL pending physical grounding per EF-0.8b. UNSAFE and EXPLOIT classifications map to EF-0.2 Level 2 (Subsystem Quarantine).
 
 ### Forge_Net.md (planned)
-NOVEL-classified Heuristic Objects are serialized and federated across the Forge network as cognitive save states — verified procedural knowledge available to all nodes encountering the same anomaly class. The federation architecture is defined in `Forge_Net.md`.
+NOVEL-classified Heuristic Objects federated as cognitive save states. Dormant until GH-006 resolves.
 
 ### Leviathan / Autonomous Swarm Operations
-The Cognitive Salvage Layer is the Forge's answer to out-of-distribution autonomous failure. When a Leviathan unit encounters a situation outside its planning model's confidence envelope, the standard autonomous response is confidence collapse and halt. The Cognitive Salvage Layer converts that halt into a productive state:
 
 ```
-[Leviathan: Confidence Collapse]
-              │
-              ▼
+[Leviathan: Confidence Collapse on disassembly or fabrication task]
+              |
+              v
 [Generate Puzzle Instance from anomaly scan]
-              │
-              ▼
+              |
+              v
 [Human swarm explores solution space]
-              │
-              ▼
+              |
+              v
 [Auditor pipeline verifies candidate paths]
-              │
-              ▼
+              |
+              v
 [Verified heuristic returned to Leviathan]
-              │
-              ▼
+              |
+              v
 [Autonomous execution resumes with updated knowledge]
 ```
 
-In effect, humanity becomes an emergency cognition layer. The machine asks for help only when reality exceeds its models — and the request is structured, verifiable, and productive rather than a silent failure. This is one of the highest-leverage applications of the layer and the primary motivation for treating it as a core architectural module rather than a game feature.
+### Admin/Security_Protocols.md
+GH-003 adversarial resistance requirements route here: rate-limiting, honeypot anomaly injection, diversity sampling, session isolation.
 
 ---
 
 ## Epistemic State of This Document
 
-This file is at Exploration stage. All claims carry PROVISIONAL / Internally Derived status unless otherwise noted. The Auditor Decision Tree and grading matrix are logical extensions of existing Forge verification doctrine — they are internally coherent but have not been tested against physical salvage operations or actual player behavior. CSL-A02 through CSL-A05 are explicitly Placeholder confidence.
+Exploration stage. All claims PROVISIONAL / Internally Derived unless otherwise noted. Gate 1 passed this session. Gates 2–6 not yet attempted. CSL-A03, CSL-A05, and CSL-A06 are explicitly Placeholder.
 
-The pipeline described here will remain PROVISIONAL until at least one physical anomaly has been run through all four stages with logged outcomes. The GH-series unknowns in the sidecar represent the primary gaps between the current logical architecture and a physically grounded specification.
+---
+
+## Gate 1 Audit Record
+
+```
+Adversarial Challenge Battery:
+- Classes applied: 1 (partial), 3 (partial)
+- Classes deferred: 2, 4, 5, 6, 7, 8, 9, 10 — Exploration stage;
+  full Battery required at Candidate Spec
+- Findings:
+    Class 1: CSL-A06 added (simulation fidelity assumption was hidden);
+             fabrication failure modes added; NOVEL hard constraint added
+    Class 3: CANDIDATE_NOVEL intermediate status added; S2R delta trigger added
+- New unknowns: GH-007 through GH-011 (surfaced by multi-agent review)
+- Highest-risk finding: CSL-A06 — entire pipeline safety guarantee rests
+  on Stage 3 fidelity; assumption was implicit in v0.1
+
+Document: Cognitive_Salvage_Layer.md (Exploration audit, 2026-06-24)
+Auditor: Synthesizer/Auditor — Claude
+Verification maturity: Exploration
+Truth basis: Internally Derived / Analogous External
+Adversarial classes applied: 1 (partial), 3 (partial)
+Adversarial classes deferred: 2-10 — deferred to Candidate Spec
+Highest-risk finding: CSL-A06 simulation-to-physical fidelity implicit in v0.1
+Gates cleared: G1, G2, G4, G5, G6
+Gates blocked: G3 — full Battery required at Candidate Spec
+Unknowns logged: GH-007, GH-008, GH-009, GH-010, GH-011
+Overrides: none
+Sign-off: v0.2 passes G1 at Exploration stage. Pipeline architecture
+internally coherent and Forge-consistent. Five new unknowns logged.
+Full Battery deferred to Candidate Spec. No specification-level claims promoted.
+```
 
 ---
 
 ## Abandoned Paths
 
-| Date      | Path                                                              | Why Abandoned                                                                                                  | Reconsider? |
-|-----------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|
-| Jun 2026  | Inline compilation tags (MUTABLE_HEURISTIC, UNCERTAINTY)          | Parallel epistemic tagging vocabulary inconsistent with VERIFIED/PROVISIONAL/UNKNOWN state system in Auditor_Protocols.md. Creates Fallacy 4 drift immediately. | No |
-| Jun 2026  | 85% consensus threshold for multi-model heuristic review          | Unlabeled Placeholder with no derivation. Would enter repository as false-precision Measured claim.            | Placeholder pending derivation — see GH-002 |
-| Jun 2026  | LayerMD structural template (versioning header, confidence score %) | Hallucinated framework from Grok; not consistent with File_Template.md structure or Forge document architecture. | No |
+| Date      | Path                                                     | Why Abandoned                                                              | Reconsider? |
+|-----------|----------------------------------------------------------|----------------------------------------------------------------------------|-------------|
+| Jun 2026  | Inline compilation tags (MUTABLE_HEURISTIC, UNCERTAINTY) | Parallel epistemic vocabulary — immediate Fallacy 4 drift risk             | No          |
+| Jun 2026  | 85% consensus threshold                                  | Unlabeled Placeholder; false-precision Measured claim                      | Placeholder — see GH-002 |
+| Jun 2026  | LayerMD structural template                              | Hallucinated framework; not consistent with File_Template.md               | No          |
+| Jun 2026  | Flat action_sequence array (v0.1)                        | Insufficient for kinematic replay and canonicalization                     | No          |
+| Jun 2026  | efficiency_delta single-dimension field (v0.1)           | Implied time-only grading; replaced with metrics_delta                     | No          |
+| Jun 2026  | novelty_flag boolean (v0.1)                              | Risk of accidental NOVEL promotion; replaced with candidate_novel_flag     | No          |
 
 ---
 
 ## Drift Indicators
 
-Mandatory re-audit conditions for this document:
-
-- Auditor Decision Tree stages modified without cross-referencing `Admin/Auditor_Protocols.md` gate structure
-- NOVEL threshold hardcoded to 10% without a logged derivation and GH-006 closure
+- Auditor Decision Tree stages modified without cross-referencing `Admin/Auditor_Protocols.md`
+- NOVEL status assigned to any heuristic before GH-006 closes
+- CANDIDATE_NOVEL used as a promotion pathway rather than a hold status
 - Grading matrix status codes diverge from Auditor_Protocols.md epistemic state vocabulary
+- Heuristic Object schema fields changed without version bump and migration note in Resolution Log
 - Integration point references to planned files promoted from *planned* to confirmed without Discovery.md update
 - GH-series unknowns closed without documented Resolution Path
-- Physical test results logged without updating CSL-A02 through CSL-A05 confidence fields
+- Physical test results logged without updating CSL-A02, CSL-A03, CSL-A06 confidence fields
+- S2R delta threshold hardcoded without logged derivation
+- Fabrication heuristic pipeline extended into weld qualification or tolerance specification (→ Gate_06_Fabrication.md)
 - Leviathan integration section expanded into architecture specification before `Operations/Leviathan.md` exists
 - Ethical Anchor field absent, altered, or not matching canonical string
+- validated_on_machinery_revision not updated when Forge machinery revision increments
 
 ---
 
 ## Lessons Learned
 
-| Date     | Evidence Type | What Was Tried                                      | What Failed                                                                   | What Was Learned                                                                              | Confidence | Revalidation Needed |
-|----------|---------------|-----------------------------------------------------|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|------------|---------------------|
-| Jun 2026 | Audit Review  | Inline MUTABLE_HEURISTIC / UNCERTAINTY tagging      | Parallel vocabulary to VERIFIED/PROVISIONAL/UNKNOWN — immediate Fallacy 4 risk | Epistemic state vocabulary must stay singular across the repository; no parallel tagging systems | Analogous | No |
-| Jun 2026 | Audit Review  | 85% consensus threshold adopted from multi-agent synthesis | No derivation; would enter as false-precision Measured claim                 | Threshold figures without derivation are Placeholder until operational data exists             | Analogous  | No                  |
+| Date     | Evidence Type | What Was Tried                              | What Failed                                                    | What Was Learned                                                              | Confidence | Revalidation Needed |
+|----------|---------------|---------------------------------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------|------------|---------------------|
+| Jun 2026 | Audit Review  | Inline MUTABLE_HEURISTIC tagging            | Parallel vocabulary — Fallacy 4 risk                           | Epistemic state vocabulary must stay singular across the repository           | Analogous  | No                  |
+| Jun 2026 | Audit Review  | 85% consensus threshold from synthesis      | No derivation; false-precision Measured claim                  | Threshold figures without derivation are Placeholder                          | Analogous  | No                  |
+| Jun 2026 | Audit Review  | Single-dimension efficiency_delta           | Implied time-only grading; fabrication needs distortion dimension | Multi-dimensional metrics_delta required for Stage 4 Pareto grading        | Analogous  | No                  |
+| Jun 2026 | Audit Review  | Pipeline scoped to disassembly only (v0.1)  | Fabrication failures same class; not surfaced by three external reviews | Fabrication failures more dangerous (silent structural failure); must be explicit | Analogous | No            |
 
 ---
 
 ## Relationship to Existing Documents
 
-- `Admin/Auditor_Protocols.md` — epistemic governance layer; Auditor Decision Tree operates within its doctrine
-- `Admin/Ethical_Constraints.md` — hard-line constraints apply to all Forge modules including this pipeline
-- `Admin/Canonical_Terms.md` — canonical vocabulary; grading status codes must not conflict
+- `Admin/Auditor_Protocols.md` — epistemic governance layer
+- `Admin/Ethical_Constraints.md` — hard-line constraints apply
+- `Admin/Canonical_Terms.md` — HF-001 (Heuristic Failure) registration proposed
 - `Architecture/Forge_flow.md` — reference standard for shared terminology
-- `Unknowns.md` — GH-series unknowns registered in global index
-- `Forge_Net.md` — planned; federation target for NOVEL-classified Heuristic Objects
-- `Operations/Leviathan.md` — planned; primary operational consumer of emergency cognition layer
-- `Economics.md` — value retention weighting for Stage 4 yield grading
-- `Discovery.md` — navigation layer; this file requires registration
+- `Unknowns.md` — GH-series global index
+- `Forge_Net.md` — planned; federation target for NOVEL Heuristic Objects
+- `Operations/Leviathan.md` — planned; primary emergency cognition consumer
+- `Operations/Gate_06_Fabrication.md` — fabrication integration point
+- `Economics.md` — value retention weighting for Stage 4
+- `Admin/Security_Protocols.md` — adversarial resistance requirements (GH-003)
+- `Discovery.md` — registered at v0.1
 
 ---
 
 ## Status
 
-Version 0.1 — Initial Exploration draft. Logical architecture established. No gate passes attempted at Exploration stage.
+Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_NOVEL, GH-007 through GH-011.
 
 **What must remain constant:**
 
@@ -416,130 +508,230 @@ Version 0.1 — Initial Exploration draft. Logical architecture established. No 
 
 ### GH-001 — Heuristic-to-deterministic translation fidelity undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | High                            |
-| Priority      | Major                           |
-| Type          | Architectural / Epistemic       |
-| Blocking      | Epistemic                       |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                             |
+| Priority      | Major                            |
+| Type          | Architectural / Epistemic        |
+| Blocking      | Epistemic                        |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** Can player-derived heuristics be reliably translated into deterministic machine procedures? Human intuition operates on pattern recognition, gestalt spatial reasoning, and learned physical intuition that may not decompose cleanly into discrete, replayable action sequences. The abstraction from human movement to robotic vector string may lose the insight it was meant to capture.
+**Description:** Can player-derived heuristics be reliably translated into deterministic machine procedures? Applies to both disassembly and fabrication — fabrication heuristics (weld path intuition, fixturing feel) may be particularly resistant to decomposition into discrete replayable sequences.
 
-**Why It Matters:** If the translation fidelity is low, the pipeline produces Heuristic Objects that pass Stage 2 kinematic mapping but fail to reproduce the actual physical insight in autonomous execution. The system would appear to function while generating low-value knowledge.
-
-**Resolution Path:** Payment via Specification — requires empirical testing on at least one physical anomaly with logged Stage 1–4 outcomes and post-execution verification that the promoted heuristic produced the predicted efficiency gain. Until then, CSL-A02 remains Placeholder.
+**Resolution Path:** Payment via Specification — requires empirical testing on at least one physical anomaly with logged Stage 1–4 outcomes and post-execution verification. Candidate path: Stage 3 pass → synthetic trajectory → second human cohort validates in simulator → physical promotion. CSL-A02 and CSL-A06 both remain Placeholder until this resolves.
 
 ---
 
 ### GH-002 — Statistical significance threshold for consensus aggregation undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | Medium                          |
-| Priority      | Major                           |
-| Type          | Governance / Epistemic          |
-| Blocking      | No                              |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance / Epistemic           |
+| Blocking      | No                               |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** How many independent player solutions for the same anomaly class are required before a heuristic pattern is considered statistically meaningful and safe to promote? A single NOVEL run may be an outlier, a lucky sequence, or an artifact of one player's idiosyncratic approach. The current schema tracks `consensus_run_count` but defines no threshold for promotion confidence.
+**Description:** How many independent player solutions for the same anomaly class are required before a heuristic pattern is considered statistically meaningful? consensus_run_count tracks this but no threshold is defined.
 
-**Why It Matters:** Premature promotion of low-consensus heuristics introduces unverified procedural knowledge into autonomous execution. This is the epistemic equivalent of Provenance Collapse — internally generated agreement mistaken for empirically validated truth.
-
-**Resolution Path:** Payment via Specification — define minimum independent run counts stratified by anomaly class complexity and risk level. Cross-reference EF-0.1 (consensus is not evidence) — the threshold must be grounded in physical outcome verification, not run count alone.
+**Resolution Path:** Payment via Specification — define minimum independent run counts stratified by anomaly class complexity and risk level. Cross-reference EF-0.1 (consensus is not evidence) — threshold must be grounded in physical outcome verification, not run count alone.
 
 ---
 
 ### GH-003 — Adversarial poisoning of heuristic datasets undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | High                            |
-| Priority      | Major                           |
-| Type          | Security / Governance           |
-| Blocking      | Epistemic                       |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                             |
+| Priority      | Major                            |
+| Type          | Security / Governance            |
+| Blocking      | Epistemic                        |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** Can adversarial players intentionally poison the heuristic dataset by submitting systematically flawed or malicious solution paths that are designed to pass Stage 1–3 verification while producing subtly degraded autonomous execution outcomes? This maps directly to Adversarial Battery Challenge Class 8 (Malicious Actor Simulation) — a knowledgeable actor who understands the Stage 1–3 verification criteria could construct paths that satisfy all formal checks while encoding unsafe sequences that manifest only in physical deployment.
+**Description:** Can adversarial players intentionally poison the heuristic dataset with paths designed to pass Stage 1–3 while encoding subtly unsafe sequences that manifest only in physical deployment? Maps to Adversarial Battery Challenge Class 8.
 
-**Why It Matters:** The pipeline's safety guarantee rests on Stage 3 high-fidelity simulation catching hazardous sequences. If an adversarial actor can identify the gap between Stage 3 simulation fidelity and physical reality, they have an attack surface. CSL-A04 and CSL-A05 are both Placeholder on this point.
-
-**Resolution Path:** Payment via Specification — define adversarial resistance requirements for the pipeline. Minimum: (1) player session isolation so adversarial patterns cannot be coordinated across sessions; (2) anomaly-to-outcome logging that flags promoted heuristics whose physical execution diverges from Stage 3 predictions; (3) rollback doctrine for heuristics whose physical outcomes fail post-execution verification. Cross-reference `Admin/Security_Protocols.md` and AP-008 (quarantine enforcement architecture).
+**Resolution Path:** Payment via Specification — adversarial resistance requirements including player session isolation, per-anomaly submission rate limiting, diversity sampling, honeypot anomalies, S2R delta post-execution monitoring, and rollback doctrine. Route to `Admin/Security_Protocols.md`.
 
 ---
 
 ### GH-004 — Optimal abstraction level for heuristic preservation undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | Medium                          |
-| Priority      | Major                           |
-| Type          | Architectural                   |
-| Blocking      | No                              |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Architectural                    |
+| Blocking      | No                               |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** What abstraction level preserves useful human intuition while remaining computationally tractable for machine execution? Too high an abstraction (e.g., "remove fasteners before cutting") loses the sequence specificity that makes the heuristic valuable. Too low an abstraction (full motion capture at joint level) produces data that cannot generalize across anomaly instances or machinery configurations.
+**Description:** What abstraction level preserves useful human intuition while remaining computationally tractable? The typed action_sequence operates at operation level. Whether this is sufficient is untested.
 
-**Why It Matters:** The Heuristic Object schema currently captures action sequences at the operation level (CUT_A, SEPARATE_B). Whether this granularity is sufficient to encode the physical insight being harvested is untested. GH-001 and GH-004 are related — translation fidelity depends on abstraction level — but GH-004 is the architectural question and GH-001 is the empirical test.
-
-**Resolution Path:** Payment via Specification — define abstraction hierarchy for action sequence encoding. Candidates: operation level (current), tool-path level (vector strings), joint-state level (full kinematic replay). Each carries a different data volume and generalizability tradeoff. Resolution requires input from Stage 2 kinematic modeling and physical test outcomes.
+**Resolution Path:** Payment via Specification — define abstraction hierarchy: Strategic (goal/sequence), Operational (current typed schema), Tactical (tool-path vectors). Store multiple levels when possible. GH-011 (canonicalization) partially addresses this.
 
 ---
 
 ### GH-005 — Human vs. autonomous intervention fraction undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | Low                             |
-| Priority      | Minor                           |
-| Type          | Operational                     |
-| Blocking      | No                              |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Low                              |
+| Priority      | Minor                            |
+| Type          | Operational                      |
+| Blocking      | No                               |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** What fraction of edge-case triage problems actually benefit from human heuristic intervention compared to extended autonomous planning time? If the fraction is small, the pipeline overhead may not justify the integration complexity. If the fraction is large, the Leviathan emergency cognition connection becomes a primary operational dependency rather than an edge-case handler.
+**Description:** What fraction of edge-case triage and fabrication problems actually benefit from human heuristic intervention compared to extended autonomous planning time?
 
-**Why It Matters:** Scoping the actual demand surface for this pipeline determines whether it belongs in core operations or in a lower-priority augmentation layer. This unknown does not block architecture development but should be resolved before the pipeline is treated as a critical path dependency.
-
-**Resolution Path:** Discharge via Trajectory if first Leviathan deployment data is not available within the current development phase. Activate with empirical data from first operational cycles. Cross-reference `Operations/Leviathan.md` (planned).
+**Resolution Path:** Discharge via Trajectory if first Leviathan deployment data not available within current development phase.
 
 ---
 
 ### GH-006 — NOVEL promotion threshold undefined
 
-| Field         | Value                           |
-|---------------|---------------------------------|
-| Status        | Open                            |
-| Risk          | Medium                          |
-| Priority      | Major                           |
-| Type          | Governance                      |
-| Blocking      | No                              |
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance                       |
+| Blocking      | Epistemic                        |
 | Owner         | Tests/Cognitive_Salvage_Layer.md |
-| First Logged  | 2026-06-24                      |
-| Last Reviewed | 2026-06-24                      |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
 
-**Description:** The Grading Classification Matrix uses NOVEL status for heuristics that exceed autonomous baseline performance. The source material specified >10% efficiency improvement as the threshold. That figure is Placeholder — it has no derivation in the repository, was not produced by physical testing, and must not be treated as a specification claim. The threshold also applies to a single efficiency dimension (time) while Stage 4 grades on multiple dimensions (time, tool wear, value retention). No multi-dimensional promotion criteria exist.
+**Description:** NOVEL status requires a formal multi-dimensional threshold. No heuristic may receive NOVEL status until this resolves — enforced via CANDIDATE_NOVEL and hard constraint in Grading Matrix.
 
-**Why It Matters:** A hardcoded threshold without derivation is a Confidence Without Basis violation (Fallacy 7). A threshold that applies only to time while ignoring tool wear and value retention may promote heuristics that win on speed while degrading Forge economics.
+**Resolution Path:** Payment via Specification — define NOVEL threshold after first operational cycle data. Must be multi-dimensional (time, tool wear, material yield, distortion risk). Cross-reference `Economics.md`.
 
-**Resolution Path:** Payment via Specification — define NOVEL threshold after first operational cycle data is available. The threshold must be multi-dimensional, reflecting the Stage 4 grading criteria. Intermediate state: label NOVEL as CANDIDATE_NOVEL in the schema until the threshold is formally defined, to prevent premature promotion. Cross-reference `Economics.md` for value retention weighting methodology.
+---
+
+### GH-007 — Puzzle fidelity drift undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                             |
+| Priority      | Major                            |
+| Type          | Architectural / Governance       |
+| Blocking      | No                               |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** Over time the puzzle engine may diverge from actual Forge machinery. If physical tooling geometry changes but the puzzle engine still models old geometry, players optimize for a machine that no longer exists. This could silently poison the heuristic pipeline — promoted heuristics pass all four stages internally consistent with the simulation, while diverging from physical reality.
+
+**Why It Matters:** Silent pipeline poisoning is the highest-severity failure mode for this architecture. A heuristic valid under engine version A may be KINEMATIC_MISMATCH or UNSAFE under physical machinery updated to version B.
+
+**Resolution Path:** Payment via Specification — puzzle engine configuration hashes tied to machinery revision IDs. When machinery revision increments, all FEASIBLE and CANDIDATE_NOVEL heuristics for affected anomaly classes are demoted to PENDING_REVALIDATION and must pass Stage 2 kinematic mapping against the new machinery model before reinstatement. The `simulation_fidelity_version` and `validated_on_machinery_revision` schema fields support this.
+
+*Surfaced by Gemini review, 2026-06-24.*
+
+---
+
+### GH-008 — Heuristic expiration doctrine undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance                       |
+| Blocking      | No                               |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** Heuristics in the knowledge base are currently treated as persistent. A procedure valid on Spin Chamber revision SC-3 may be invalid on SC-4 if tooling geometry changed. The `validated_on_machinery_revision` field exists but no expiration doctrine governs what happens when the revision increments.
+
+**Resolution Path:** Payment via Specification — when machinery revision increments, flag all heuristics whose `validated_on_machinery_revision` does not match current revision as PENDING_REVALIDATION for affected anomaly classes. Define revalidation pathway (Stage 2 kinematic re-run minimum; Stage 3 re-run if tooling geometry materially changed). Cross-reference GH-007.
+
+*Surfaced by Gemini review, 2026-06-24.*
+
+---
+
+### GH-009 — Emergent heuristic conflict undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                             |
+| Priority      | Major                            |
+| Type          | Architectural / Safety           |
+| Blocking      | Epistemic                        |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** The current architecture evaluates heuristics independently. Two heuristics that each pass all four stages in isolation may interact catastrophically when applied in sequence. Example: Heuristic A changes load-bearing fastener removal order; Heuristic B changes fluid drain sequence. Applied together, the combined sequence creates a structural collapse scenario neither triggers individually.
+
+**Why It Matters:** Independent verification is necessary but not sufficient for compositional safety. This gap grows as the knowledge base grows — larger interaction surface with each promotion.
+
+**Resolution Path:** Payment via Specification — define a compositional verification pass: when a new heuristic is promoted, Stage 3 simulation is re-run on all existing heuristics for the same anomaly class that touch overlapping action sequences. Resolution path must also define scope boundary for what constitutes an overlapping sequence.
+
+*Surfaced by Gemini review, 2026-06-24.*
+
+---
+
+### GH-010 — Simulator overfitting undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Architectural / Epistemic        |
+| Blocking      | No                               |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** A player swarm may become experts at the game rather than experts at salvage. Over time participants discover scoring exploits, simulator biases, and reward hacks without realizing it. The pipeline begins harvesting simulator expertise instead of physical expertise. Distinct from GH-003 (adversarial poisoning) — GH-010 occurs accidentally through natural optimization behavior.
+
+**Why It Matters:** Simulator overfitting produces a pipeline that appears healthy (high FEASIBLE rate, low EXPLOIT rate) while progressively degrading in physical relevance. The degradation is invisible until physical deployment reveals promoted heuristics performing worse than the autonomous baseline.
+
+**Resolution Path:** Payment via Specification — define simulator diversity maintenance: periodic injection of novel anomaly classes to prevent player population over-specialization; monitoring of FEASIBLE-to-physical-outcome correlation rate as primary health signal; mandatory puzzle engine updates at defined intervals. Cross-reference GH-007 — fidelity drift and overfitting interact; a simulator that both drifts from physical reality and attracts overfitted players produces doubly degraded heuristics.
+
+*Surfaced by Gemini review, 2026-06-24.*
+
+---
+
+### GH-011 — Heuristic canonicalization layer undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Architectural                    |
+| Blocking      | No                               |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** Human solutions to the same core problem are noisy. One player executes A→B→C→D; another A→X→B→C→D where X is irrelevant. Without normalization, the knowledge base accumulates thousands of variants of the same insight. This inflates consensus_run_count without adding genuine evidential weight and makes GH-002 (statistical significance threshold) harder to evaluate meaningfully.
+
+**Resolution Path:** Payment via Specification — define canonicalization algorithm: input is a set of Heuristic Objects for the same anomaly class; output is a Canonical Heuristic with confidence score derived from variant count and diversity. Canonical form operates at Strategic abstraction level (GH-004); variant sequences retained as evidence. This is a pre-Stage-1 pass — canonically identical variants are merged before entering the Auditor pipeline rather than passing through four stages independently.
+
+*Surfaced by third-party architectural review, 2026-06-24.*
 
 ---
 
 ### Resolution Log
 
-- 2026-06-24: **v0.1 initial draft.** File created. Cognitive Salvage Layer architecture established at Exploration stage. Auditor Decision Tree (Stages 1–4), Heuristic Object schema, Grading Classification Matrix, and Leviathan emergency cognition connection documented. GH-001 through GH-006 registered in sidecar. Inline compilation tags and LayerMD structure abandoned (logged in Abandoned Paths). NOVEL threshold retained as Placeholder pending GH-006 resolution. File requires registration in Discovery.md and Unknowns.md (GH-series global index entries).
+- 2026-06-24: **v0.1 initial draft.** File created at Exploration stage. GH-001 through GH-006 registered. Inline compilation tags and LayerMD structure abandoned. File registered in Discovery.md and Unknowns.md.
+- 2026-06-24: **v0.2 — Gate 1 pass.** Fabrication heuristics added throughout (Scope Boundary, File Purpose, Heuristic Failure Class, Core Data Streams, Stage 3, Integration Points). Heuristic Object schema updated: typed action_sequence, metrics_delta (replaces efficiency_delta), candidate_novel_flag (replaces novelty_flag), simulation_fidelity_version, validated_on_machinery_revision, physical_grounding_ref. CANDIDATE_NOVEL status added to Grading Matrix with Pareto criterion and GH-006 hard gate. CSL-A06 added (simulation-to-physical fidelity — load-bearing Placeholder). S2R delta trigger added to Stage 3. Canonicalization pass noted in pipeline. HF-001 Canonical Terms registration proposed. GH-007 through GH-011 registered. Gate 1 passed (G1, G2, G4, G5, G6 clear; G3 partial — full Battery deferred to Candidate Spec). Open Unknowns 6 → 11. Spec Gates 0/6 → 1/6. Unknowns.md requires update: GH-007 through GH-011 global index registration.
