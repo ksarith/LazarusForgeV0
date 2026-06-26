@@ -833,3 +833,132 @@ Entries here are closed. They remain for institutional memory.
 **v3.8 — 2026-06-21:** Structural maturation pass. Subtype column added to all active index tables. Unknown Budget and Reversion Protocol added to Size Management Rules. Dependency Clusters section added. Reopened status formally defined. AP-001 updated with retrospective calibration note.
 **v3.9 — 2026-06-23:** RC governance pass. RC-007 through RC-009 registered in Future/Deferred with owning file Admin/Auditor_Protocols.md. Operational Blocking and Epistemic Blocking added to Canonical_Terms.md v0.3 as canonical vocabulary. CT-006 and CT-007 registered in CT sidecar.
 **v4.0 — 2026-06-24:** Full Adversarial Battery pass on Admin/Auditor_Protocols.md complete — Classes 1–10, Claude + Gemini. Nine new unknowns AP-012 through AP-020 registered. AP-012 and AP-016 elevated to Critical Watch — cascade deadlock scenario confirmed. Human Interaction Point Doctrine added to AP Governing Principles; autonomous graceful degradation as primary response. EF-0.2 autonomous degradation amendment committed. Gate 3 blocked pending AP-012/AP-016 Provisional Spec. AP-020 flagged for Trajectory discharge decision.
+
+# Unknowns.md — v4.1 Patch
+## Date: 2026-06-24
+## Application: three targeted insertions to the live Unknowns.md v4.0
+
+---
+
+## CHANGE 1 — Roll What section
+## Target: Replace "## What v4.0 Means" header and body
+## Action: Retire v4.0 narrative per Size Management Rule 1; replace with v4.1
+
+---
+
+REPLACE the entire "## What v4.0 Means" section with:
+
+---
+
+## What v4.1 Means
+
+- Cognitive Salvage Layer (Tests/Cognitive_Salvage_Layer.md) GH-series cluster
+  registered: GH-001 through GH-012 (12 unknowns)
+- GH-009 (Emergent heuristic conflict) elevated to Critical — N² interaction
+  scaling confirmed; Interaction Volume doctrine added to resolution path
+- GH-012 (Discovery yield rate) registered — primary ROI signal for the
+  Cognitive Salvage Layer; cross-reference AP-001
+- GH-009 added to Dependency Clusters (Cognitive Salvage / Interaction Safety)
+- HF-001 (Heuristic Failure) registered as first-class failure class in
+  Canonical_Terms.md v0.3; CT-008 logged for cross-file consistency tracking
+- Canonical_Terms.md v0.3: CT-008 added; Open Unknowns 6 → 7
+- AUDIT_HARNESS.py v10: GH-001 through GH-012 require addition to
+  UNKNOWN_FIRST_CYCLE at cycle 10
+
+---
+
+## CHANGE 2 — Add Cognitive Salvage cluster to Active Unknowns Index
+## Target: Insert after "### Future / Deferred" section (or before Cross-Module,
+##         whichever keeps alpha ordering; recommend before Cross-Module)
+## Insert the following new cluster section:
+
+---
+
+### Cognitive Salvage
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| GH-001 | Heuristic-to-deterministic translation fidelity undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-002 | Statistical significance threshold for consensus aggregation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-003 | Adversarial poisoning of heuristic datasets undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-004 | Optimal abstraction level for heuristic preservation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-005 | Human vs. autonomous intervention fraction undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Minor |
+| GH-006 | NOVEL promotion threshold undefined — CANDIDATE_NOVEL holds qualifying entries until resolved | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-007 | Puzzle fidelity drift undefined — silent pipeline poisoning risk if machinery revision diverges from puzzle engine | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-008 | Heuristic expiration doctrine undefined — validated_on_machinery_revision field exists; expiration logic does not | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-009 | Emergent heuristic conflict undefined — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Critical |
+| GH-010 | Simulator overfitting undefined — pipeline may harvest simulator expertise rather than physical expertise | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-011 | Heuristic canonicalization layer undefined — variant sequences inflate consensus_run_count without adding evidential weight | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-012 | Discovery yield rate undefined — fraction of harvested heuristics that are genuinely novel; primary ROI signal for the layer | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+
+*GH-001 and CSL-A06 are co-blocking: translation fidelity and simulation-to-physical fidelity are the two load-bearing assumptions for operational deployment.*
+*GH-003 maps to Adversarial Battery Challenge Class 8 — route adversarial resistance requirements to Admin/Security_Protocols.md.*
+*GH-009 Critical — interaction surface grows as N²; Interaction Volume doctrine required before knowledge base scales beyond ~20 promoted heuristics.*
+*GH-006 hard gate: no heuristic may receive NOVEL status until GH-006 closes; CANDIDATE_NOVEL intermediate status holds qualifying entries.*
+
+---
+
+## CHANGE 3 — Add GH-009 to Dependency Clusters
+## Target: Dependency Clusters section
+## Insert after the "Epistemic / Governance" block as a new named block:
+
+---
+
+**Cognitive Salvage / Interaction Safety**
+```
+GH-009 (Emergent heuristic conflict — N² interaction scaling)
+└── All heuristic co-deployment decisions blocked until
+    Interaction Volume doctrine is defined
+        └── GH-007 (Fidelity drift) — interaction testing
+            must run against current machinery revision,
+            not stale puzzle engine geometry
+```
+
+---
+
+## CHANGE 4 — Add GH-009 to Critical Watch table
+## Target: Expiry Watch → Critical Watch table
+## Insert as new row:
+
+| GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
+
+---
+
+## CHANGE 5 — Audit Trail entry
+## Target: Audit Trail section — append after v4.0 entry
+
+**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through
+GH-012, owning file Tests/Cognitive_Salvage_Layer.md). GH-009 Critical —
+emergent heuristic conflict N² scaling; Interaction Volume doctrine required.
+GH-012 registered — discovery yield rate as primary ROI signal; cross-reference
+AP-001. GH-009 added to Dependency Clusters and Critical Watch. HF-001
+registered in Canonical_Terms.md v0.3; CT-008 logged.
+
+---
+
+## CHANGE 6 — Version header
+## Target: First line of file
+## Replace:
+## **Version 4.0 — 2026-06-24. [existing text]**
+## With:
+
+**Version 4.1 — 2026-06-24. Cognitive Salvage Layer GH cluster registered
+(GH-001 through GH-012). GH-009 elevated to Critical — N² interaction scaling.
+GH-012 (discovery yield rate) registered. HF-001 registered in
+Canonical_Terms.md v0.3.**
+**Expiry Rule active. Protocol Performance metrics collecting.**
+
+---
+
+## SUMMARY OF NET CHANGES
+
+Files touched: Unknowns.md only
+New entries: GH-001 through GH-012 (12 rows in new Cognitive Salvage cluster)
+Critical Watch additions: GH-009
+Dependency Cluster additions: Cognitive Salvage / Interaction Safety block
+Audit Trail: v4.1 entry
+Version: 4.0 → 4.1
+Estimated line delta: +43 lines (1,100 → ~1,143 — below 1,200 compression trigger)
+AUDIT_HARNESS.py: GH-001 through GH-012 require addition to UNKNOWN_FIRST_CYCLE
+  at cycle 10 (already done in v10 for GH-001 through GH-006; GH-007 through
+  GH-012 need to be verified against the shipped v10)
