@@ -108,3 +108,28 @@ Update this file whenever:
 
 Routing.md completeness is verified against Discovery.md structure map.
 Discrepancies between the two are logged as pending corrections in Discovery.md.
+
+
+# Routing.md — v4.1 Patch
+## Date: 2026-06-24
+## One targeted insertion to Routing.md
+
+---
+
+## CHANGE — Add Cognitive_Salvage_Layer.md to Tests/ Layer table
+
+In the Master Routing Map table, under the **Tests/ Layer** section,
+insert the following row after `Tests/Solar_Descent.md`:
+
+| `Tests/Cognitive_Salvage_Layer.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Cognitive_Salvage_Layer.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Cognitive_Salvage_Layer.md) | Explicit |
+
+## Also update the Last Updated date in the header:
+
+**Last updated: 2026-06-24**
+
+---
+
+## SUMMARY
+Files touched: Routing.md only
+Change type: Single row addition to Tests/ Layer table
+Net line delta: +1 row
