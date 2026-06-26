@@ -1,5 +1,5 @@
 # Cognitive_Salvage_Layer.md
-**Version 0.2**
+**Version 0.3**
 
 ## File State
 
@@ -11,7 +11,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-24                                                          |
 | Auditor          | Claude — Synthesizer/Auditor                                        |
-| Open Unknowns    | 11                                                                  |
+| Open Unknowns    | 12                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -211,10 +211,12 @@ Every candidate solution path is serialized as a Heuristic Object before enterin
   },
   "candidate_novel_flag": false,
   "provenance": "Player_Swarm | Single_Player | Operator_Override | Technician | Forge_Node",
+  "provenance_trust_tier": null,
   "session_count": 1,
   "consensus_run_count": 0,
   "validated_on_machinery_revision": null,
-  "physical_grounding_ref": null
+  "physical_grounding_ref": null,
+  "failure_modes_observed": []
 }
 ```
 
@@ -229,6 +231,10 @@ Every candidate solution path is serialized as a Heuristic Object before enterin
 `candidate_novel_flag` — replaces v0.1 `novelty_flag`. Set true when Stage 4 identifies a heuristic that improves at least one metrics_delta dimension without degrading others below baseline. Does not constitute NOVEL promotion — GH-006 must close first.
 
 `validated_on_machinery_revision` — machinery revision ID at time of physical validation. Required for GH-008 (heuristic expiration) tracking.
+
+`provenance_trust_tier` — differentiates handling in the Auditor pipeline based on source reliability. Tier 1: Operator_Override with physical grounding. Tier 2: Technician or domain expert. Tier 3: Player_Swarm or Single_Player. Tier 4: Forge_Node (autonomous model-generated proposal). Higher-tier provenance may warrant reduced consensus_run_count requirements in GH-002 resolution — the threshold should be stratified by trust tier, not uniform. Null until provenance trust tier doctrine is formally defined.
+
+`failure_modes_observed` — array populated from player constraint violations during simulation and from Stage 3 failure outcomes for paths that did not fully pass. Supports negative learning: a path that fails Stage 3 with a specific structural collapse mode provides information about the anomaly class even though it is not promoted. Empty array at submission; populated by Auditor pipeline during verification.
 
 `physical_grounding_ref` — reference to the physical execution outcome record. Constitutes the EF-0.8b grounding artifact. Null until physical execution occurs; heuristics without this field remain PROVISIONAL regardless of Stage 3 outcome.
 
@@ -496,7 +502,7 @@ Full Battery deferred to Candidate Spec. No specification-level claims promoted.
 
 ## Status
 
-Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_NOVEL, GH-007 through GH-011.
+Version 0.3 — Sidecar triage and schema polish. GH-009 elevated to Critical. GH-012 added. Schema: provenance_trust_tier, failure_modes_observed.
 
 **What must remain constant:**
 
@@ -639,6 +645,8 @@ Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_
 
 **Resolution Path:** Payment via Specification — puzzle engine configuration hashes tied to machinery revision IDs. When machinery revision increments, all FEASIBLE and CANDIDATE_NOVEL heuristics for affected anomaly classes are demoted to PENDING_REVALIDATION and must pass Stage 2 kinematic mapping against the new machinery model before reinstatement. The `simulation_fidelity_version` and `validated_on_machinery_revision` schema fields support this.
 
+**Trajectory note:** If the canonicalization layer (GH-011) matures into a dedicated subsystem, the fidelity drift detection logic may warrant its own file — `Architecture/Cognitive_Canonicalization.md` is a candidate home. Flag for Candidate Spec review.
+
 *Surfaced by Gemini review, 2026-06-24.*
 
 ---
@@ -669,7 +677,7 @@ Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_
 | Field         | Value                            |
 |---------------|----------------------------------|
 | Status        | Open                             |
-| Risk          | High                             |
+| Risk          | Critical                         |
 | Priority      | Major                            |
 | Type          | Architectural / Safety           |
 | Blocking      | Epistemic                        |
@@ -679,11 +687,11 @@ Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_
 
 **Description:** The current architecture evaluates heuristics independently. Two heuristics that each pass all four stages in isolation may interact catastrophically when applied in sequence. Example: Heuristic A changes load-bearing fastener removal order; Heuristic B changes fluid drain sequence. Applied together, the combined sequence creates a structural collapse scenario neither triggers individually.
 
-**Why It Matters:** Independent verification is necessary but not sufficient for compositional safety. This gap grows as the knowledge base grows — larger interaction surface with each promotion.
+**Why It Matters — elevated to Critical:** The interaction surface grows approximately as N² where N is the count of promoted heuristics. At 10 heuristics: 45 pairwise interactions. At 100: 4,950. At 1,000: 499,500. The risk scales faster than repository size. This is a hallmark of a future unmanageable problem if architectural countermeasures are not defined early. A Heuristic Dependency Graph or Heuristic Compatibility Matrix will likely be required to keep the interaction space tractable as the knowledge base matures.
 
-**Resolution Path:** Payment via Specification — define a compositional verification pass: when a new heuristic is promoted, Stage 3 simulation is re-run on all existing heuristics for the same anomaly class that touch overlapping action sequences. Resolution path must also define scope boundary for what constitutes an overlapping sequence.
+**Resolution Path:** Payment via Specification — define a compositional verification pass using risk-stratified interaction testing: run full interaction matrix on high-risk anomaly classes (pressure vessels, load-bearing structures) initially; use sampling for lower-risk classes. Define Interaction Volume per heuristic (spatial and temporal envelope of tools and materials involved) — if a new heuristic's Interaction Volume overlaps with an existing one, Stage 3 simulation must run them concurrently before co-deployment is permitted. Resolution path must also define the scope boundary for what constitutes an overlapping sequence.
 
-*Surfaced by Gemini review, 2026-06-24.*
+*Surfaced by Gemini review, 2026-06-24. Elevated to Critical 2026-06-24 — N² interaction scaling.*
 
 ---
 
@@ -731,7 +739,31 @@ Version 0.2 — Gate 1 passed. Fabrication extension, schema updates, CANDIDATE_
 
 ---
 
+### GH-012 — Discovery yield rate undefined
+
+| Field         | Value                            |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Operational / Governance         |
+| Blocking      | No                               |
+| Owner         | Tests/Cognitive_Salvage_Layer.md |
+| First Logged  | 2026-06-24                       |
+| Last Reviewed | 2026-06-24                       |
+
+**Description:** What percentage of harvested heuristics are genuinely novel? This is distinct from GH-005 (how often are humans needed). GH-005 asks how frequently the pipeline is invoked. GH-012 asks how often invocations produce new knowledge. A system might require human intervention frequently while producing very little novel knowledge, or rarely while producing extremely valuable breakthroughs. The ratio determines the actual return on investment of the layer and whether Cognitive Salvage functions as a high-value augmentation or an expensive edge-case handler. Without this metric, the pipeline cannot demonstrate its own effectiveness — a recursive justification problem (Adversarial Battery Challenge Class 6).
+
+**Why It Matters:** If 100,000 player solutions produce 99,900 duplicates, 99 improvements, and 1 breakthrough, the economics and operational posture of the layer look entirely different than 100,000 solutions producing 5,000 useful improvements. That ratio also determines how aggressively the Leviathan emergency cognition pathway should be pursued versus alternative approaches. This unknown is the primary ROI signal for the entire layer.
+
+**Resolution Path:** Payment via Specification — define a discovery yield rate metric as part of the AP-001 audit effectiveness metrics pass (once that entry matures). Minimum: track CANDIDATE_NOVEL rate as a fraction of total FEASIBLE completions per anomaly class, stratified by anomaly complexity. Cross-reference AP-001 (audit effectiveness metrics) — discovery yield rate is a candidate indicator for that entry's eventual indicator set, subject to EF-0.6 (must remain an indicator, not an optimization target). A pipeline optimized to maximize discovery yield rate rather than genuine novelty detection would produce exactly the epistemic corruption it was designed to prevent.
+
+*Surfaced by Gemini review, 2026-06-24.*
+
+---
+
 ### Resolution Log
 
 - 2026-06-24: **v0.1 initial draft.** File created at Exploration stage. GH-001 through GH-006 registered. Inline compilation tags and LayerMD structure abandoned. File registered in Discovery.md and Unknowns.md.
 - 2026-06-24: **v0.2 — Gate 1 pass.** Fabrication heuristics added throughout (Scope Boundary, File Purpose, Heuristic Failure Class, Core Data Streams, Stage 3, Integration Points). Heuristic Object schema updated: typed action_sequence, metrics_delta (replaces efficiency_delta), candidate_novel_flag (replaces novelty_flag), simulation_fidelity_version, validated_on_machinery_revision, physical_grounding_ref. CANDIDATE_NOVEL status added to Grading Matrix with Pareto criterion and GH-006 hard gate. CSL-A06 added (simulation-to-physical fidelity — load-bearing Placeholder). S2R delta trigger added to Stage 3. Canonicalization pass noted in pipeline. HF-001 Canonical Terms registration proposed. GH-007 through GH-011 registered. Gate 1 passed (G1, G2, G4, G5, G6 clear; G3 partial — full Battery deferred to Candidate Spec). Open Unknowns 6 → 11. Spec Gates 0/6 → 1/6. Unknowns.md requires update: GH-007 through GH-011 global index registration.
+- 2026-06-24: **v0.3 — sidecar triage and schema polish.** GH-009 elevated to Critical (N² interaction scaling argument; resolution path hardened with Interaction Volume and risk-stratified testing). GH-007 Trajectory note added (Cognitive_Canonicalization.md candidate at Candidate Spec). GH-012 registered (discovery yield rate — primary ROI signal for layer; cross-reference AP-001). Schema: provenance_trust_tier subfield added (stratified trust tier for differentiated Auditor handling); failure_modes_observed array added (negative learning from Stage 3 failures and player constraint violations). Open Unknowns 11 → 12. Highest Risk remains High (GH-009 Critical elevates sidecar but file-level risk was already High). Unknowns.md requires update: GH-009 Critical elevation, GH-012 global index registration. AUDIT_HARNESS.py UNKNOWN_FIRST_CYCLE requires GH-012 at cycle 10.
