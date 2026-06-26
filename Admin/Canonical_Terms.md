@@ -1,4 +1,5 @@
 # Canonical_Terms.md — Standard Repository Nomenclature
+**Version 0.3**
 
 ## File State
 
@@ -7,10 +8,10 @@
 | Status           | Draft                                                               |
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
-| Verification Ref | Verification_Gates_LF.md                                           |
-| Last Audit       | 2026-05-27                                                          |
-| Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 3                                                                   |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-06-24                                                          |
+| Auditor          | Claude — Synthesizer/Auditor                                        |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Low                                                                 |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -88,11 +89,11 @@ string references — that is a distinct function from filename aliasing.
 
 Three vocabulary sources exist in the repository:
 
-| Source                    | Authority Domain                                      |
-|---------------------------|-------------------------------------------------------|
-| `Architecture/Forge_flow.md` | Operational routing semantics; gate logic vocabulary |
-| `Admin/Governance_Charter.md` | Governance tier definitions; constitutional vocabulary |
-| `Admin/Canonical_Terms.md` (this file) | Cross-file consistency; anti-drift enforcement |
+| Source                       | Authority Domain                                      |
+|------------------------------|-------------------------------------------------------|
+| `Architecture/Forge_flow.md` | Operational routing semantics; gate logic vocabulary  |
+| `Admin/Governance_Charter.md`| Governance tier definitions; constitutional vocabulary|
+| `Admin/Canonical_Terms.md`   | Cross-file consistency; anti-drift enforcement        |
 
 **Resolution rules:**
 
@@ -123,13 +124,13 @@ is a reconciliation task.
 The term "canonical" appears in multiple distinct contexts within the
 repository. These are not interchangeable:
 
-| Usage                      | Meaning                                                        | Example                                      |
-|----------------------------|----------------------------------------------------------------|----------------------------------------------|
-| Canonical File             | The authoritative source document for a governed concept       | `Admin/Governance_Charter.md` is the canonical governance authority |
-| Canonical Term             | An approved vocabulary entry defined in this file              | "Material Recovery" is the canonical term for post-triage feedstock |
-| Canonical Cross-Reference  | A file reference that resolves against Discovery.md confirmed list using folder-prefixed paths | `Operations/Gate_03_Reduction.md` not `Gate_03_Reduction.md` |
-| Canonical Mapping          | A legacy-to-current filename resolution entry in Discovery.md Rename Registry | `Spin_Chamber_v0.md` → `Operations/Gate_05_Separation_Thermal.md` |
-| Canonical Path             | The folder-prefixed file path used in all new contributions    | `Admin/Ethical_Constraints.md` not `Ethical_Constraints.md` |
+| Usage                     | Meaning                                                        | Example                                                                 |
+|---------------------------|----------------------------------------------------------------|-------------------------------------------------------------------------|
+| Canonical File            | The authoritative source document for a governed concept       | `Admin/Governance_Charter.md` is the canonical governance authority     |
+| Canonical Term            | An approved vocabulary entry defined in this file              | "Material Recovery" is the canonical term for post-triage feedstock     |
+| Canonical Cross-Reference | A file reference that resolves against Discovery.md confirmed list using folder-prefixed paths | `Operations/Gate_03_Reduction.md` not `Gate_03_Reduction.md` |
+| Canonical Mapping         | A legacy-to-current filename resolution entry in Discovery.md Rename Registry | `Spin_Chamber_v0.md` → `Operations/Gate_05_Separation_Thermal.md` |
+| Canonical Path            | The folder-prefixed file path used in all new contributions    | `Admin/Ethical_Constraints.md` not `Ethical_Constraints.md`            |
 
 Agents must not treat these as synonymous. "Canonical" without qualification
 is ambiguous — use the specific form.
@@ -304,6 +305,42 @@ verification anchor. Genesis Phase must have a declared exit condition and
 must not silently become permanent operating mode. Defined in
 `Admin/Governance_Charter.md`.
 
+**Operational Blocking**
+An unknown or condition that stops a physical action from occurring safely.
+The gate holds until empirical or physical resolution is achieved —
+documentation advancement alone is insufficient. Examples: no excavation
+without geomechanical assessment (SD-UNK-004); no hot pyrolysis run before
+halogenated polymer triage protocol is validated (PL-001); no powered machinery
+contact with raw urban salvage before IFM screening is confirmed (WW-005).
+Operational Blocking unknowns require physical or empirical resolution — they
+cannot be worked around by grounding a claim in better documentation. Defined
+as a priority subtype in `Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
+
+**Epistemic Blocking**
+An unknown or condition that stops a claim from being made or a file from being
+promoted, without stopping the underlying work. The file may advance; the
+assertion may not. Examples: no structural specification promotion without
+validated safety factors for salvaged materials (EN-001); no T1/T2 part claims
+without a declared precision ceiling (PR-001). Epistemic Blocking is resolved
+by grounding the claim in empirical evidence sufficient for the relevant
+provenance label — the work continues in a bounded state while that grounding
+is sought. Consistent with the graceful degradation rule in
+`Admin/Auditor_Protocols.md` EF-0.2. Defined as a priority subtype in
+`Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
+
+**Heuristic Failure (HF-001)**
+A failure class distinct from Sensor Failure and Mechanical Failure. In a
+heuristic failure, the object is technically visible, the materials are
+technically identifiable, and the machine technically has the tools — yet the
+system lacks the procedural knowledge to act optimally or safely. Heuristic
+failures manifest in both disassembly (bolt removal order, cut sequence,
+contamination routing) and fabrication (weld path, fixturing sequence, joint
+order) contexts. The Cognitive Salvage Layer (`Tests/Cognitive_Salvage_Layer.md`)
+exists specifically to address this failure class by harvesting and verifying
+human-derived procedural knowledge. Heuristic Failure is a first-class Forge
+failure class; do not collapse it into planning failure or agent error. See
+CT-008 for canonicalization status.
+
 ---
 
 ### 5. Explicit Term Exclusions — Anti-Drift Guardrails
@@ -312,21 +349,20 @@ The following substitutions are mandatory in all specification drafts.
 Use of banned terms in specification-level content is a Fallacy 4
 (Semantic Drift) violation per `Admin/Auditor_Protocols.md`.
 
-| Banned Term                          | Use Instead                                | Context                                      |
-|--------------------------------------|--------------------------------------------|----------------------------------------------|
-| Recycling (for triage processes)     | Value Preservation                         | When functional identity is preserved        |
-| Recycling (for bulk feedstock)       | Material Recovery                          | When structural complexity has been reduced  |
-| Autonomous Decision-Making (unbound) | Deterministic Gate Logic                   | For rule-governed routing decisions          |
-| Autonomous Decision-Making (unbound) | Arbitrated Agent Consensus                 | For multi-agent deliberation outcomes        |
-| High-RPM (for Gate_04)               | Centrifugal Separation / Pre-thermal Diversion | Gate_04 is defined by position, not RPM  |
-| Scrap                                | Material Recovery or Salvaged Feedstock    | Depending on processing state                |
-| Canonical (unqualified)              | See Disambiguation section above           | Always specify which canonical usage applies |
+| Banned Term                          | Use Instead                                    | Context                                                                                          |
+|--------------------------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| Recycling (for triage processes)     | Value Preservation                             | When functional identity is preserved                                                            |
+| Recycling (for bulk feedstock)       | Material Recovery                              | When structural complexity has been reduced                                                      |
+| Autonomous Decision-Making (unbound) | Deterministic Gate Logic                       | For rule-governed routing decisions                                                              |
+| Autonomous Decision-Making (unbound) | Arbitrated Agent Consensus                     | For multi-agent deliberation outcomes                                                            |
+| High-RPM (for Gate_04)               | Centrifugal Separation / Pre-thermal Diversion | Gate_04 is defined by position, not RPM                                                          |
+| Scrap                                | Material Recovery or Salvaged Feedstock        | Depending on processing state                                                                    |
+| Canonical (unqualified)              | See Disambiguation section above               | Always specify which canonical usage applies                                                     |
+| Blocking (unqualified)               | Operational Blocking or Epistemic Blocking     | Always specify which type; unqualified Blocking obscures whether physical work halts or only claims halt |
 
 "Autonomous Decision-Making" without bounding clauses is prohibited because
 it obscures human override visibility, which is a constitutional requirement
-under Axiom P-4 (Agency and Consent). Deterministic Gate Logic and Arbitrated
-Agent Consensus both imply traceable, auditable processes — unbound autonomy
-does not.
+under Axiom P-4 (Agency and Consent).
 
 ---
 
@@ -368,9 +404,14 @@ Mandatory re-audit conditions for this document:
 - Tier definitions diverge from `Admin/Governance_Charter.md` §Governance
   Authority Hierarchy without a logged reconciliation entry
 - Disambiguation table for "canonical" removed or collapsed
-- Anti-drift guardrails table loses any of the five banned term entries
+- Anti-drift guardrails table loses any of the banned term entries
 - "Autonomous Decision-Making" prohibition removed without corresponding
   update to Axiom P-4 discussion in `Admin/Governance_Charter.md`
+- "Blocking (unqualified)" row removed from anti-drift table without
+  corresponding removal of Operational Blocking / Epistemic Blocking
+  definitions from Section 4
+- HF-001 (Heuristic Failure) definition modified without corresponding
+  update to `Tests/Cognitive_Salvage_Layer.md` Scope Boundary
 - Scope boundary revised to absorb filename resolution from Discovery.md
   Rename Registry
 - Scope boundary revised to absorb operational routing semantics from
@@ -402,51 +443,40 @@ halt autonomous audit progression and escalate for human review.
 | Blocking      | No                       |
 | Owner         | Admin/Canonical_Terms.md |
 | First Logged  | 2026-05-26               |
-| Last Reviewed | 2026-05-27               |
+| Last Reviewed | 2026-06-24               |
 
 **Description:** Several early internal variables within legacy automation
 layers may still map back to alternative names used prior to folder
-structuralization. This is distinct from the filename aliasing function
-of Discovery.md Rename Registry — this tracks internal string references
-within AUDIT_HARNESS.py and tooling.
-
-**Why It Matters:** Absolute path translations inside automated tooling could
-reference dead file handles if internal naming conventions mismatch current
-canonical paths.
+structuralization. Distinct from the filename aliasing function of Discovery.md
+Rename Registry — this tracks internal string references within AUDIT_HARNESS.py
+and tooling.
 
 **Resolution Path:** Audit `Admin/AUDIT_HARNESS.py` internal hardcoded
 strings against this vocabulary file to confirm alignment with current
-canonical folder-prefixed paths. Cross-reference Discovery.md Rename
-Registry to catch any filename aliases not yet reflected in tooling.
+canonical folder-prefixed paths.
 
 ---
 
 ### CT-002 — Component Library Schema Standard Undefined
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | Medium                   |
-| Priority      | Major                    |
-| Type          | Architectural            |
-| Blocking      | Yes (at Gate 2 Specification promotion) |
-| Owner         | Operations/Gate_02_Triage.md |
-| First Logged  | 2026-05-26               |
-| Last Reviewed | 2026-05-27               |
+| Field         | Value                                   |
+|---------------|-----------------------------------------|
+| Status        | Open                                    |
+| Risk          | Medium                                  |
+| Priority      | Major                                   |
+| Type          | Architectural                           |
+| Blocking      | Yes (Gate_02_Triage.md Spec promotion)  |
+| Owner         | Operations/Gate_02_Triage.md            |
+| First Logged  | 2026-05-26                              |
+| Last Reviewed | 2026-06-24                              |
 
 **Description:** The technical definition for what constitutes a Component
 Library entry format remains fluid. Without a rigorous taxonomy specification,
-different triage nodes will export incompatible semantic tags for identical
-items.
-
-**Why It Matters:** Incompatible component tags break downstream routing
-logic in Gate_02_Triage.md and undermine the Forge_Net.md shared knowledge
-base. Semantic inconsistency at triage propagates through the entire flow.
+different triage nodes will export incompatible semantic tags for identical items.
 
 **Resolution Path:** Cross-validate with `Architecture/Components.md` and
 define entry properties (UUID, structural envelope, metallurgical class)
-before promoting triage documentation to full Specification. This unknown
-blocks Gate_02_Triage.md Specification promotion, not this file's promotion.
+before promoting triage documentation to full Specification.
 
 ---
 
@@ -461,279 +491,93 @@ blocks Gate_02_Triage.md Specification promotion, not this file's promotion.
 | Blocking      | No                       |
 | Owner         | Admin/Canonical_Terms.md |
 | First Logged  | 2026-05-27               |
-| Last Reviewed | 2026-05-27               |
+| Last Reviewed | 2026-06-24               |
 
 **Description:** As governance, ontology, integrity, audit, and security
 become mutually referenced, the modification propagation path between them
 risks becoming ambiguous. A dedicated dependency priority map would make
 the ordering of authority explicit and auditable.
 
-**Why It Matters:** Without explicit dependency ordering, a change to
-Canonical_Terms.md that affects Forge_flow.md vocabulary may propagate
-ambiguously — which file has priority is answered by convention rather
-than documented doctrine. This risk grows as the repository matures.
-
 **Resolution Path:** Discharge via Trajectory — log in `Admin/Trajectories.md`
-as a v0→v1 transition task. Not urgent at current repository maturity.
-Create `Admin/Dependency_Priority_Map.md` before v1 governance stabilization.
-
----
-
-### Resolution Log
-
-- 2026-05-26: File created (v0.1) by Gemini (Structural/Auditor). Initial
-  vocabulary mappings, anti-drift guardrails, and CT-001/CT-002 logged.
-- 2026-05-27: v0.2 revision — Conflict Resolution Doctrine section added.
-  Disambiguation table for "canonical" added. Gate_04 definition corrected —
-  RPM removed as defining characteristic, pre-thermal diversion and flow
-  position substituted. Tier 4 definition corrected — Forge_flow.md moved
-  to Tier 5 consistent with Governance_Charter.md. Governance and Audit
-  Terms section added (Section 4). Scope boundary clarified — relationship
-  to Forge_flow.md and Discovery.md Rename Registry made explicit. Relationship
-  section added. Standard Drift Indicators added per File_Template.md. Lessons
-  Learned columns corrected — Evidence Type, Confidence, Revalidation Needed
-  added. CT-002 owner path corrected from Architecture/ to Operations/.
-  CT-003 logged (Dependency_Priority_Map.md trajectory item). Abandoned Paths
-  populated. Open Unknowns updated to 3.
-
----
-
-## Relationship to Existing Documents
-
-- `Architecture/Forge_flow.md` — primary operational vocabulary reference
-  standard; governs routing semantics; authoritative over this file for
-  operational gate logic vocabulary; conflicts escalate here as Active Disputes
-- `Admin/Governance_Charter.md` — Tier 1 constitutional source; authoritative
-  for tier definitions and constitutional vocabulary; this file's Section 1
-  governance tier definitions are derived from §Governance Authority Hierarchy
-  there
-- `Admin/Auditor_Protocols.md` — Tier 2; Fallacy 4 (Semantic Drift) in the
-  Fallacy Checklist is the primary enforcement mechanism for terminology
-  violations; anti-drift guardrail violations are Fallacy 4 findings
-- `Admin/Forge_Audit_Kit.md` — Tier 3; CT- sidecar prefix to be added to
-  Sidecar ID Reference table at next kit update; semantic stability check
-  addition to Audit Opening Checklist cross-references this file as the
-  resolution target for drift-risk terms
-- `Admin/File_Template.md` — standard file structure; this document now
-  conforms to it; Section 2 gate definitions reference the operational
-  content defined in individual gate files
-- `Discovery.md` — Rename Registry is the canonical filename resolution
-  source; this file does not duplicate that function; CT-001 tracks
-  tooling string alignment separately
-- `Operations/Gate_02_Triage.md` — CT-002 (Component Library schema) is
-  Blocking for that file's Specification promotion
-- `Architecture/Components.md` — CT-002 resolution requires cross-validation
-  with component taxonomy defined there
-- `Admin/Trajectories.md` — CT-003 (Dependency_Priority_Map.md) to be
-  logged as v0→v1 trajectory item there
-- `Admin/Canonical_Terms_LF.md` — prior planned filename; resolved via
-  Discovery.md Rename Registry entry added 2026-05-26; all references to
-  the _LF suffix are stale and should be corrected on encounter
-
----
-
-## Status
-
-Version 0.2 — structural revision pass (2026-05-27).
-
-**Changes from v0.1:**
-- Conflict Resolution Doctrine section added — explicit precedence rules
-  for Forge_flow.md (operational routing), Governance_Charter.md (tier
-  definitions), and Discovery.md (filename resolution)
-- Disambiguation table for "canonical" added — five distinct usages
-  separated: canonical file, canonical term, canonical cross-reference,
-  canonical mapping, canonical path
-- Gate_04 definition corrected — RPM removed as defining characteristic;
-  pre-thermal diversion, flow position, and refusal-first protocol
-  substituted; terminology bleed from Gate_05 resolved
-- Tier 4 definition corrected — Forge_flow.md removed as Tier 4 example;
-  placed correctly in Tier 5 (domain specification) consistent with
-  Governance_Charter.md
-- Section 4 (Governance and Audit Terms) added — STATE_HOLD, Verification
-  Maturity Model, Expiry Rule, Full Stop Review, Genesis Phase defined
-- Scope boundary clarified — explicit non-ownership of filename resolution
-  (Discovery.md) and operational routing semantics (Forge_flow.md)
-- File Purpose section clarified — relationship to Forge_flow.md and
-  Discovery.md Rename Registry made explicit
-- Lessons Learned columns corrected — Evidence Type, Confidence,
-  Revalidation Needed added per File_Template.md
-- CT-002 owner path corrected from Architecture/Gate_02_Triage.md to
-  Operations/Gate_02_Triage.md
-- CT-003 logged — Dependency_Priority_Map.md as v0→v1 trajectory item
-- Relationship section added
-- Standard Drift Indicators added per File_Template.md
-- Abandoned Paths section populated
-- Open Unknowns updated to 3
-
-**What must remain constant:**
-
-**Forge_flow.md governs operational routing semantics.**
-**Governance_Charter.md governs tier authority.**
-**This file governs cross-file vocabulary consistency.**
-**Conflicts between them are logged here — never silently resolved.**
-
-
-
-
-
-
-ADDENDUM FOR: Canonical_Terms.md
-TARGET SECTION: Auditor Notes & Unknowns sidecar + Resolution Log
-INTEGRATION PRIORITY: Medium — CT-004 is a gate blocker for
-                      Security_Protocols.md Section III promotion
-===============================================================
-
-## ADDENDUM — Canonical_Terms.md — 2026-05-28
-
-### New sidecar unknown
-
-Add after CT-003 in the Auditor Notes & Unknowns section:
+as a v0→v1 transition task.
 
 ---
 
 ### CT-004 — Trusted Initialization Environment Definition Required
 
-| Field         | Value                    |
-|---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | High                     |
-| Priority      | Major                    |
-| Type          | Security / Technical     |
-| Blocking      | Yes (Security_Protocols.md Section III.2 promotion) |
-| Owner         | Admin/Canonical_Terms.md |
-| First Logged  | 2026-05-28               |
-| Last Reviewed | 2026-05-28               |
+| Field         | Value                                           |
+|---------------|-------------------------------------------------|
+| Status        | Open                                            |
+| Risk          | High                                            |
+| Priority      | Major                                           |
+| Type          | Security / Technical                            |
+| Blocking      | Yes (Security_Protocols.md Section III.2)       |
+| Owner         | Admin/Canonical_Terms.md                        |
+| First Logged  | 2026-05-28                                      |
+| Last Reviewed | 2026-06-24                                      |
 
 **Description:** `Admin/Security_Protocols.md` Section III requires key-pair
 generation within a "trusted initialization environment" but the term is
-undefined. Ambiguity exists across four dimensions: physical custody
-requirements, software verification requirements, network isolation
-requirements, and attestation method.
+undefined across four dimensions: physical custody, software verification,
+network isolation, and attestation method.
 
-**Why It Matters:** Ambiguous trust boundaries in key generation are a
-primary attack surface. The term must have a canonical definition before
-Security_Protocols.md Section III can be promoted. Until resolved, the
-most restrictive interpretation applies — see SEC-005 in
-`Admin/Security_Protocols.md` for the interim restriction.
-
-**Resolution Path:** Payment via Specification — define trusted
-initialization environment in the Body of this file under a new
-subsection in Section 4 (Governance and Audit Terms) or Section 5
-(Anti-Drift Guardrails). Minimum required elements: (1) physical custody
-requirements; (2) software verification requirements; (3) network isolation
-requirements; (4) attestation method or witnessing requirement.
-Cross-reference SEC-005 in `Admin/Security_Protocols.md` — that entry
-is the consuming unknown; closing CT-004 here closes SEC-005 there.
+**Resolution Path:** Payment via Specification — define in Section 4 of this
+file. Minimum required elements: (1) physical custody requirements;
+(2) software verification requirements; (3) network isolation requirements;
+(4) attestation method. Cross-reference SEC-005 in `Admin/Security_Protocols.md`.
 
 ---
 
-### Resolution Log entry
-
-Add to Resolution Log:
-
-- 2026-05-28: CT-004 logged — trusted initialization environment definition
-  required by `Admin/Security_Protocols.md` Section III.2; Blocking for
-  that section's promotion. Originated from ChatGPT Skeptic/Auditor audit
-  of Security_Protocols.md v0.2.
-
-### File State update
-
-Update Open Unknowns count: 3 → 4.
-
-
-# Canonical_Terms.md — Section 4 Additions
-## Target: Section 4 — Governance and Audit Terms
-## Insert after: Genesis Phase entry
-## Version: v0.3 additions
-## Date: 2026-06-23
-
----
-
-**Operational Blocking**
-An unknown or condition that stops a physical action from occurring safely.
-The gate holds until empirical or physical resolution is achieved — documentation
-advancement alone is insufficient. Examples: no excavation without geomechanical
-assessment (SD-UNK-004); no hot pyrolysis run before halogenated polymer triage
-protocol is validated (PL-001); no powered machinery contact with raw urban salvage
-before IFM screening is confirmed (WW-005). Operational Blocking unknowns require
-physical or empirical resolution — they cannot be worked around by grounding a
-claim in better documentation. Defined as a priority subtype in
-`Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
-
-**Epistemic Blocking**
-An unknown or condition that stops a claim from being made or a file from being
-promoted, without stopping the underlying work. The file may advance; the
-assertion may not. Examples: no structural specification promotion without
-validated safety factors for salvaged materials (EN-001); no T1/T2 part claims
-without a declared precision ceiling (PR-001). Epistemic Blocking is resolved
-by grounding the claim in empirical evidence sufficient for the relevant
-provenance label — the work continues in a bounded state while that grounding
-is sought. Consistent with the graceful degradation rule in
-`Admin/Auditor_Protocols.md` EF-0.2 — a bounded lower-capability baseline
-that matches verified reality is preferable to a higher-capability baseline
-held in indefinite suspension. Defined as a priority subtype in
-`Admin/Auditor_Protocols.md` Priority Demotion Doctrine.
-
----
-
-## Anti-Drift Guardrail addition
-## Target: Section 5 — Explicit Term Exclusions table
-## Insert as new row
-
-| Blocking (unqualified) | Operational Blocking or Epistemic Blocking | Always specify which type; unqualified Blocking obscures whether work halts or only claims halt |
-
----
-
-## File State update
-- Open Unknowns: 4 → 4 (no new unknowns; CT-005 cross-reference noted below)
-- Body Stability: Volatile → Volatile (additions are additive; no conflicts introduced)
-- Last Audit: 2026-05-27 → 2026-06-23
-
-## Resolution Log entry
-- 2026-06-23: Operational Blocking and Epistemic Blocking defined in Section 4.
-  Distinction originates from RC-007 (Priority Demotion Doctrine) governance work.
-  Anti-drift guardrail added for unqualified "Blocking" usage. Cross-reference:
-  CT-005 — when ethical and authorization term placeholders mature, confirm
-  EC-001 (sufficient confidence threshold) language is consistent with
-  Epistemic Blocking definition here.
-
----
-
-## CT-006 — Circular Dependency Detection Undefined
-## Target: Auditor Notes & Unknowns sidecar — insert after CT-005
+### CT-005 — Ethical and Authorization Term Placeholders Pending Canonicalization
 
 | Field         | Value                    |
 |---------------|--------------------------|
 | Status        | Open                     |
 | Risk          | Medium                   |
 | Priority      | Major                    |
-| Type          | Architectural / Governance |
+| Type          | Governance / Epistemic   |
 | Blocking      | No                       |
 | Owner         | Admin/Canonical_Terms.md |
-| First Logged  | 2026-06-23               |
-| Last Reviewed | 2026-06-23               |
+| First Logged  | 2026-06-14               |
+| Last Reviewed | 2026-06-24               |
 
-**Description:** The Dependency Clusters section in Unknowns.md documents
-linear blocking chains (A blocks B blocks C). No doctrine governs the detection
-of circular dependencies (A → B → C → A) or confirms they are forbidden. At
-current repository scale these have not appeared, but no mechanism exists to
-detect or prevent them as the dependency graph grows.
+**Description:** Several ethical and authorization terms appear across
+Ethical_Constraints.md, Governance_Charter.md, and Auditor_Protocols.md
+without canonical definitions here. Confirm EC-001 (sufficient confidence
+threshold) language is consistent with the Epistemic Blocking definition
+when that entry matures.
 
-**Why It Matters:** A circular dependency between two blocking unknowns produces
-a deadlock with no resolution path — neither can close without the other closing
-first. Undetected, this becomes a permanent entry pair in the active index,
-indistinguishable from legitimate long-lived unknowns.
-
-**Resolution Path:** Payment via Specification — define circular dependency
-detection criteria and either prohibit cycles formally or specify how they are
-broken (forced ordering, human governing authority arbitration, or trajectory
-discharge of one node). May resolve via AUDIT_HARNESS.py enhancement or as
-a doctrine note in the Dependency Clusters section of Unknowns.md.
+**Resolution Path:** Payment via Specification — register each placeholder
+term in Section 4 as entries mature across owning files.
 
 ---
 
-## CT-007 — ID Namespace Allocation Doctrine Undefined
-## Target: Auditor Notes & Unknowns sidecar — insert after CT-006
+### CT-006 — Circular Dependency Detection Undefined
+
+| Field         | Value                      |
+|---------------|----------------------------|
+| Status        | Open                       |
+| Risk          | Medium                     |
+| Priority      | Major                      |
+| Type          | Architectural / Governance |
+| Blocking      | No                         |
+| Owner         | Admin/Canonical_Terms.md   |
+| First Logged  | 2026-06-23                 |
+| Last Reviewed | 2026-06-24                 |
+
+**Description:** No doctrine governs the detection of circular dependencies
+(A → B → C → A) in the blocking chain. At current scale these have not
+appeared, but no mechanism exists to detect or prevent them as the dependency
+graph grows.
+
+**Resolution Path:** Payment via Specification — define circular dependency
+detection criteria and either prohibit cycles formally or specify how they are
+broken. May resolve via AUDIT_HARNESS.py enhancement or as a doctrine note
+in the Dependency Clusters section of Unknowns.md.
+
+---
+
+### CT-007 — ID Namespace Allocation Doctrine Undefined
 
 | Field         | Value                    |
 |---------------|--------------------------|
@@ -744,28 +588,114 @@ a doctrine note in the Dependency Clusters section of Unknowns.md.
 | Blocking      | No                       |
 | Owner         | Admin/Canonical_Terms.md |
 | First Logged  | 2026-06-23               |
-| Last Reviewed | 2026-06-23               |
+| Last Reviewed | 2026-06-24               |
 
-**Description:** The repository uses file-prefix ID namespaces (AP-, EC-, GOV-,
-SD-UNK-, LW-UNK-, etc.) by convention, but no formal doctrine governs whether
-IDs may be reused after resolution, how ranges are reserved for new clusters,
-how collisions are handled if two files claim the same prefix, or how
-multi-owner cross-module unknowns are numbered.
+**Description:** No formal doctrine governs whether IDs may be reused after
+resolution, how ranges are reserved for new clusters, how collisions are
+handled if two files claim the same prefix, or how multi-owner cross-module
+unknowns are numbered.
 
-**Why It Matters:** At current scale, convention is sufficient. As the
-repository grows toward v1 and new file clusters are added, namespace
-collisions become increasingly likely. A reused ID that points to a resolved
-entry in the archive and a new open entry in the active index would break
-AUDIT_HARNESS.py validation and confuse cross-reference traceability.
-
-**Resolution Path:** Discharge via Trajectory — log in Admin/Trajectories.md
-as a v0→v1 transition task. Not blocking at current scale. Minimum doctrine
-when resolved: IDs are never reused; prefixes are registered in this file or
-Repository_Structure.md when a new cluster is created; cross-module unknowns
-use UNK-XXX format (already established); collisions are resolved by
-renaming the newer entry with a logged alias.
+**Resolution Path:** Discharge via Trajectory — log in `Admin/Trajectories.md`
+as a v0→v1 transition task. Minimum doctrine when resolved: IDs are never
+reused; prefixes are registered in this file or Repository_Structure.md when
+a new cluster is created; collisions are resolved by renaming the newer entry
+with a logged alias.
 
 ---
 
-## Open Unknowns update
-- CT-006 and CT-007 added: 4 → 6
+### CT-008 — HF-001 Heuristic Failure Canonicalization Status
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | In Progress — Vehicle    |
+| Risk          | Low                      |
+| Priority      | Minor                    |
+| Type          | Governance               |
+| Blocking      | No                       |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-06-24               |
+| Last Reviewed | 2026-06-24               |
+
+**Description:** HF-001 (Heuristic Failure) was proposed in
+`Tests/Cognitive_Salvage_Layer.md` v0.2 as a first-class Forge failure class
+distinct from Sensor Failure and Mechanical Failure. The definition has been
+registered in Section 4 of this file as of v0.3. CT-008 tracks whether the
+canonicalization is complete and consistent across all files that reference
+the concept.
+
+**Resolution Path:** Payment via Specification — verify that all files
+referencing heuristic failure use HF-001 vocabulary consistently; confirm
+no file uses "planning failure" or "agent error" as a synonym for what this
+file defines as HF-001. Close when vocabulary is confirmed consistent across
+Cognitive_Salvage_Layer.md, Forge_flow.md (if referenced), and any future
+files in the Cognitive Salvage domain. This entry is In Progress because the
+definition exists but cross-file consistency has not yet been verified.
+
+---
+
+### Resolution Log
+
+- 2026-05-26: File created (v0.1) by Gemini (Structural/Auditor). Initial
+  vocabulary mappings, anti-drift guardrails, and CT-001/CT-002 logged.
+- 2026-05-27: v0.2 revision — Conflict Resolution Doctrine section added.
+  Disambiguation table for "canonical" added. Gate_04 definition corrected.
+  Tier 4 definition corrected. Section 4 (Governance and Audit Terms) added.
+  Scope boundary clarified. CT-002 owner path corrected. CT-003 logged.
+  Abandoned Paths populated. Open Unknowns updated to 3.
+- 2026-05-28: CT-004 logged — trusted initialization environment definition
+  required by `Admin/Security_Protocols.md` Section III.2; Blocking for that
+  section's promotion. Open Unknowns 3 → 4.
+- 2026-06-23: v0.3 additions — Operational Blocking and Epistemic Blocking
+  defined in Section 4. Anti-drift guardrail added for unqualified "Blocking"
+  usage. CT-006 and CT-007 logged. Open Unknowns 4 → 6.
+- 2026-06-24: v0.3 continued — HF-001 (Heuristic Failure) defined in Section 4
+  per proposal in `Tests/Cognitive_Salvage_Layer.md` v0.2. CT-008 logged to
+  track cross-file consistency of HF-001 vocabulary. Drift Indicators updated:
+  HF-001 consistency rule and unqualified Blocking guardrail rule added.
+  All Last Reviewed dates updated. Open Unknowns 6 → 7.
+
+---
+
+## Relationship to Existing Documents
+
+- `Architecture/Forge_flow.md` — primary operational vocabulary reference
+  standard; authoritative over this file for operational gate logic vocabulary
+- `Admin/Governance_Charter.md` — Tier 1 constitutional source; authoritative
+  for tier definitions and constitutional vocabulary
+- `Admin/Auditor_Protocols.md` — Tier 2; Fallacy 4 is the primary enforcement
+  mechanism for terminology violations; Priority Demotion Doctrine defines
+  Operational Blocking and Epistemic Blocking subtypes
+- `Admin/Forge_Audit_Kit.md` — Tier 3; CT- sidecar prefix in Sidecar ID
+  Reference table
+- `Admin/File_Template.md` — standard file structure
+- `Discovery.md` — Rename Registry is the canonical filename resolution source
+- `Tests/Cognitive_Salvage_Layer.md` — source of HF-001 proposal; CT-008
+  tracks cross-file vocabulary consistency
+- `Operations/Gate_02_Triage.md` — CT-002 Blocking for that file's Spec promotion
+- `Architecture/Components.md` — CT-002 resolution requires cross-validation
+- `Admin/Trajectories.md` — CT-003 and CT-007 to be logged as v0→v1 items
+- `Admin/Security_Protocols.md` — CT-004 Blocking for Section III.2 promotion
+- `Admin/Canonical_Terms_LF.md` — prior planned filename; resolved via
+  Discovery.md Rename Registry; all references to _LF suffix are stale
+
+---
+
+## Status
+
+Version 0.3 — HF-001 registered; CT-008 logged; v0.3 vocabulary additions integrated.
+
+**Changes from v0.2:**
+- Section 4: HF-001 (Heuristic Failure) defined as first-class failure class
+- Drift Indicators: HF-001 consistency rule added; unqualified Blocking
+  guardrail rule added
+- CT-008 logged: HF-001 canonicalization status tracking
+- All Last Reviewed dates updated to 2026-06-24
+- Open Unknowns: 6 → 7
+- Version string updated to 0.3
+
+**What must remain constant:**
+
+**Forge_flow.md governs operational routing semantics.**
+**Governance_Charter.md governs tier authority.**
+**This file governs cross-file vocabulary consistency.**
+**Conflicts between them are logged here — never silently resolved.**
