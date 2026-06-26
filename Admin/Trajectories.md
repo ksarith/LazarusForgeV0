@@ -16,7 +16,7 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-23; revised 2026-06-08                                      |
+| Last Audit       | 2026-05-23; revised 2026-06-08; revised 2026-06-24              |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -36,6 +36,7 @@
 - Scope routing destination for out-of-version capabilities
 - Design doctrine notes governing version advancement
 - Economic model placeholder for v1 profitability baseline
+- v0→v1 Trajectory Items registry — discharged knowns awaiting deferred activation
 
 **This file DOES NOT define:**
 - Component taxonomy or implementation specs for future versions
@@ -295,6 +296,23 @@ floor value. Gate_07 owns the measurement record.
 
 ---
 
+## v0→v1 Trajectory Items
+
+Items explicitly discharged to this file from owning file sidecars. These are real but out-of-scope for v0 — they activate when the repository transitions toward v1 or when the conditions noted in each entry are met. Full entry detail remains in the owning file's sidecar; this section is the navigation registry.
+
+| ID | Title | Owning File | Activation Condition | First Logged |
+|---|---|---|---|---|
+| CT-003 | Dependency_Priority_Map.md — explicit dependency ordering between governance, ontology, integrity, audit, and security files | `Admin/Canonical_Terms.md` | v0→v1 governance stabilization pass | 2026-05-27 |
+| CT-007 | ID namespace allocation doctrine — IDs may not be reused; prefixes registered on cluster creation; collision resolution defined | `Admin/Canonical_Terms.md` | v0→v1 transition; activate before new file clusters added at v1 scale | 2026-06-23 |
+| AP-015 | External contributor role classification — declaration class or waiver mechanism for non-governance contributors | `Admin/Auditor_Protocols.md` | v0→v1 transition; activate when Forge moves toward community deployment or network expansion | 2026-06-24 |
+| AP-020 | Golden Dataset / textual calibration harness — model-agnostic audit calibration test matrix | `Admin/Auditor_Protocols.md` | v0→v1 transition; activate when multi-contributor or community deployment increases the calibration surface area | 2026-06-24 |
+| GH-005 | Human vs. autonomous intervention fraction — what fraction of edge-case triage and fabrication problems benefit from human heuristic intervention vs. extended autonomous planning | `Tests/Cognitive_Salvage_Layer.md` | Activate with empirical data from first Leviathan operational cycles | 2026-06-24 |
+| FAK-005-ceiling | Forge_Audit_Kit.md character ceiling — 12,000-char limit in Drift Indicators is structurally unachievable with current load-bearing content; ceiling parameter requires revisiting before v1 kit governance | `Admin/Forge_Audit_Kit.md` | v0→v1 kit governance pass; reassess ceiling against actual v1 content volume | 2026-06-24 |
+
+*These entries do not carry unknown IDs — they are discharged knowns routed here for deferred activation, not open questions. They require no resolution pass in the current cycle.*
+
+---
+
 ## Lessons Learned
 
 | Date     | Evidence Type | What Was Tried                                            | What Failed                                                           | What Was Learned                                                                                                   | Confidence | Revalidation Needed |
@@ -411,3 +429,8 @@ economic model.
   (PC-001). Scope Boundary updated — `economics_v0.md` reference corrected
   to `Admin/Economics.md` (PC-003). TR-001 resolution path updated —
   `Admin/Economics.md` now owns economic model and barter doctrine.
+- 2026-06-24: v0→v1 Trajectory Items section added. Six items registered:
+  CT-003 (Dependency_Priority_Map.md), CT-007 (ID namespace allocation),
+  AP-015 (external contributor roles), AP-020 (Golden Dataset),
+  GH-005 (human vs. autonomous intervention fraction),
+  FAK-005-ceiling (Forge_Audit_Kit.md 12,000-char ceiling revisit).
