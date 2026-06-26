@@ -16,7 +16,7 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-23; revised 2026-06-08; revised 2026-06-24              |
+| Last Audit       | 2026-05-23; revised 2026-06-08; revised 2026-06-24; audited 2026-06-26 |
 | Auditor          | Claude — Retrofit/Auditor                                           |
 | Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
@@ -87,7 +87,7 @@ external or proxy validation — see individual notes.*
 
 **Required Capabilities**
 - Melt, refine, and form basic metal stock
-- Recycle scrap into usable feedstock
+- Process recovered material into usable feedstock
 - Maintain thermal control without catastrophic failure
 - Document processes and outcomes
 
@@ -109,7 +109,7 @@ external or proxy validation — see individual notes.*
 - On-site power generation (partial) — see `Operations/Energy.md`; UNK-011 / EV-001 tracks demand baseline
 
 **Required Capabilities**
-- Closed-loop material recycling
+- Closed-loop material recovery
 - Powderization and feedstock standardization
 - Component fabrication for adjacent systems
 - Environmental control (air, slag, heat)
@@ -151,7 +151,7 @@ external or proxy validation — see individual notes.*
 **Required Capabilities**
 - Regolith and asteroid material processing
 - Autonomous maintenance cycles — *contingent on UNK-008 / LT-003 resolution in `Tests/Leviathan_testing.md`*
-- Energy scavenging (solar, nuclear, thermal)
+- Energy scavenging (solar, nuclear, thermal) — *nuclear energy scavenging introduces radiation containment, shielding, and decay management requirements not addressed at v0; a planned containment/safety spec is a prerequisite before nuclear capability is activated. Log as architectural dependency when v3 planning begins.*
 - Zero-waste material flows
 
 **Exit Condition** [Placeholder]
@@ -434,3 +434,10 @@ economic model.
   AP-015 (external contributor roles), AP-020 (Golden Dataset),
   GH-005 (human vs. autonomous intervention fraction),
   FAK-005-ceiling (Forge_Audit_Kit.md 12,000-char ceiling revisit).
+- 2026-06-26: Gemini + ChatGPT dual Skeptic/Auditor pass (Exploration audit).
+  Three findings resolved: (1) Semantic drift — "Recycle scrap" → "Process
+  recovered material" (v0); "Closed-loop material recycling" → "Closed-loop
+  material recovery" (v1). (2) Lifecycle truncation — nuclear energy scavenging
+  (v3) now carries containment/shielding dependency note. TR-001 and TR-002
+  confirmed under Expiry Watch (6–7 cycles open, resolution paths exist).
+  Gates cleared: G1, G2, G4, G5, G6. G3 deferred (Exploration stage).
