@@ -6,6 +6,8 @@
 | Field          | Value                                                               |
 |----------------|---------------------------------------------------------------------|
 | Status         | Draft                                                               |
+| Spec Gates     | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                    |
 | Last Audit     | 2026-06-24                                                          |
 | Auditor        | Claude — Synthesizer                                                |
 | Open Unknowns  | See sidecar                                                         |
@@ -258,3 +260,4 @@ Load additional files only when the audit focus requires them — each adds toke
 
 - 2026-06-21: **v1.2** — Derivation string updated to `Admin/Auditor_Protocols.md` v0.8.1. Epistemic Foundation condensed reference added. Audit Opening Checklist restructured. AP-001–AP-007 Systemic Risk escalation added. Physical harness gate note added. Rule 8 added to AI Contribution Rules. Token ceiling note added.
 - 2026-06-24: **v1.3** — Derivation strings updated to `Admin/Auditor_Protocols.md` v0.14 and `Unknowns.md` v4.0. Role declaration version string updated to v0.14. Human Interaction Point Doctrine added to Governing Principles. EF-0.2 L2 entry updated to reflect autonomous degradation doctrine. Active Unknowns section removed — replaced by critical watch summary integrated into Expiry Watch step. AP Systemic Risk escalation note updated: all seven entries carry resolution frameworks; AP-006 and AP-009 Resolved; AP-012 and AP-016 Critical. GH- prefix added to Governance Sidecar ID Reference. Operational Blocking / Epistemic Blocking added to Semantic Stability table. Gate 3 note updated with AP-017 independence requirement and current block status. AP-010 physical harness note updated. Token ceiling note updated to reflect v0.14 character count. FAK-005 remains Open — actual post-reduction count ~16,950; ceiling parameter needs revisiting, not the content. Reduction pass complete.
+- 2026-06-27: **v1.3 patch** — Spec Gates (0/6) and Verification Ref (Admin/Verification_Gates_LF.md) added to File State block. Phase 1 enforcement (AUDIT_HARNESS.py v11) flagged missing fields — all repository documents follow the same File State schema, no exceptions for meta documents.
