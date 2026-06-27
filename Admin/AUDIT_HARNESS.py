@@ -98,6 +98,7 @@ FALLBACK_REGISTRY = {
     "Trajectories.md":                   "Admin/Trajectories.md",
     "Verification_Gates_LF.md":          "Admin/Verification_Gates_LF.md",
     "AUDIT_HARNESS.py":                  "Admin/AUDIT_HARNESS.py",
+    "Experiments.md":                    "Admin/Experiments.md",
     "Chemistry.md":                      "Architecture/Chemistry.md",
     "Cognitive_Frameworks.md":           "Architecture/Cognitive_Frameworks.md",
     "Components.md":                     "Architecture/Components.md",
@@ -542,20 +543,53 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
                     f"Required field '{field}' missing from File State table."
                 ))
 
-    # ── Check 3: Cross-reference resolution ───────────────────────────
+    # ── Check 3: Cross-reference resolution (classified) ─────────────
+    # Planned renames: paths that appear in docs as future canonical names
+    # before Routing.md has been updated.
+    PLANNED_RENAMES = {
+        "Forge_Flow.md": "Architecture/Forge_flow.md — casing correction pending",
+    }
+    # Archive path pattern — references to versioned archive files
+    _ARCHIVE_PAT = _re.compile(
+        r'(?:Archive/|_v\d+\.|_20\d{6}|v0\.\d+\.md$)', _re.IGNORECASE
+    )
+
     refs = _extract_md_refs(content)
     for ref in refs:
-        # Strip leading ./ if present
         clean = ref.lstrip('./')
-        # Check against registry values (full paths) and keys (short names)
+        # Skip known external repos and explicit planned labels
+        if any(x in ref for x in ['http', 'Lazarus-Forge-', 'Astroid', 'planned']):
+            continue
+
         registry_paths = set(registry.values()) | set(registry.keys())
-        if clean not in registry_paths:
-            # Tolerate planned/ labels and known external repos
-            if not any(x in ref for x in ['planned', 'http', 'Lazarus-Forge-', 'Astroid']):
-                findings.append(Finding(
-                    "WARNING", "REFERENCE", filename,
-                    f"'{ref}' not resolved in FILE_REGISTRY — verify in Routing.md."
-                ))
+
+        if clean in registry_paths:
+            continue  # Resolved — no finding
+
+        # Classify the miss
+        if clean in ALIASES or clean.replace('Admin/', '').replace('Operations/', '') in ALIASES:
+            findings.append(Finding(
+                "WARNING", "REFERENCE", filename,
+                f"[LEGACY] '{ref}' — legacy name; check Rename Registry "
+                f"in Discovery.md for canonical path."
+            ))
+        elif clean in PLANNED_RENAMES:
+            findings.append(Finding(
+                "WARNING", "REFERENCE", filename,
+                f"[PLANNED] '{ref}' — {PLANNED_RENAMES[clean]}"
+            ))
+        elif _ARCHIVE_PAT.search(clean):
+            findings.append(Finding(
+                "WARNING", "REFERENCE", filename,
+                f"[ARCHIVE] '{ref}' — versioned archive reference; "
+                f"expected once Archive/ is established."
+            ))
+        else:
+            findings.append(Finding(
+                "WARNING", "REFERENCE", filename,
+                f"[UNKNOWN] '{ref}' — no canonical or alias match. "
+                f"Investigate: stale reference or missing Routing.md entry."
+            ))
 
 # ── Main Phase 1 runner ───────────────────────────────────────────────
 def run_phase1(fetched_files, registry):
