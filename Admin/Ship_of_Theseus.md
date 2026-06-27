@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08           |
-| Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 3                                                                   |
+| Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08; audited 2026-06-26 (Gemini + Claude dual Skeptic/Auditor) |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor              |
+| Open Unknowns    | 4                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -122,7 +122,15 @@ preserve.
 **Relevance to Lazarus Forge:** Waste components —
 a motor from a scrapped washer, a bearing from
 discarded industrial equipment — are ships with
-embedded value. Forge processes replace damaged
+embedded value. *(Vocabulary note: "waste" and
+"scrap" here describe the source material state
+before Forge intake; once inside the Forge these
+become Salvaged Feedstock or components undergoing
+Value Preservation per `Admin/Canonical_Terms.md`.
+The external-facing terms are retained in this
+section because they reflect the legal and social
+context in which right-to-repair claims are made.)*
+Forge processes replace damaged
 parts while retaining functional identity, turning
 dead items into reborn ones. Grains (1g samples
 from originals) symbolize this continuity, linking
@@ -449,6 +457,26 @@ minimum viable seed for v0. Payment via Specification
 physically stored and tracked, move to Section II
 as Analogous.
 
+**VIN/Serial number analog:** The physical world
+has solved this problem in legally recognized form.
+Vehicle Identification Numbers (VIN, NHTSA 49 CFR
+Part 565), Hull Identification Numbers (HIN), and
+ISO 3779 equipment serialization all attach identity
+to the irreducible structural core rather than to
+replaceable components — and are legally recognized
+as the identity anchor even after total component
+replacement. Substantial case law exists confirming
+what constitutes the "same vehicle." The Grain
+protocol does not need to be invented; it should
+be adapted from these existing legally-hardened
+standards. Minimum viable grain protocol should
+specify: (1) what constitutes the Forge equivalent
+of the chassis/irreducible core, (2) where the
+serial identifier attaches, (3) how provenance
+transfers through the Forge gates. Cross-reference:
+Grain canonical definition being registered in
+`Admin/Canonical_Terms.md`.
+
 ---
 
 ### ST-002 — QR documentation standard not yet specified
@@ -528,6 +556,55 @@ Section IV to Analogous.
 
 ---
 
+### ST-004 — Sub-threshold state tampering vulnerability undefined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | High                                             |
+| Priority      | Major                                            |
+| Type          | Security / Governance                            |
+| Blocking      | Epistemic                                        |
+| Owner         | Admin/Ship_of_Theseus.md                         |
+| First Logged  | 2026-06-26                                       |
+| Last Reviewed | 2026-06-26                                       |
+
+**Description:** The 30% Derivative Identity threshold
+creates an adversarial surface: a compromised node
+could intentionally alter up to 29.9% of its
+cryptographic state vector to remain below the
+threshold while retaining full Canonical Identity
+authority and governance voting weight. No doctrine
+currently addresses detection of sub-threshold
+incremental manipulation.
+
+**Why It Matters:** The Derivative Threshold is
+designed on asymmetric conservatism — a unit
+incorrectly classified as Canonical when compromised
+retains governance authority it should not have.
+A deliberate sub-threshold strategy defeats this
+conservatism without triggering the classification
+mechanism.
+
+**Resolution Path:** Payment via Specification —
+define an adversarial verification loop that
+monitors cumulative state drift over time rather
+than single-event threshold crossings. A unit
+whose state has drifted 5% across each of seven
+cycles has altered 35% cumulatively without
+triggering a single-event threshold. Resolution
+requires a rolling delta mechanism or rate-of-change
+trigger in addition to the single-event threshold.
+Route to `Admin/Security_Protocols.md` for
+cryptographic implementation. Cross-reference
+AP-012 (human authority availability) — the
+verification loop must degrade gracefully under
+human unavailability.
+
+*Surfaced by Gemini Skeptic/Auditor, 2026-06-26.*
+
+---
+
 ### Resolution Log
 
 - 2026-06-08: Navigation Anchors added. File State
@@ -542,3 +619,17 @@ Section IV to Analogous.
   Identity Continuity Doctrine) added — closes
   CF-003 from `Architecture/Cognitive_Frameworks.md`.
   ST-003 status updated to In Progress.
+- 2026-06-26: Gemini + Claude dual Skeptic/Auditor pass.
+  ST-004 logged (sub-threshold state tampering
+  vulnerability — High risk, Epistemic Blocking;
+  rolling delta mechanism required in addition to
+  single-event threshold; route to Security_Protocols.md).
+  ST-001 resolution path expanded with VIN/HIN/ISO 3779
+  serial number analog — existing legally-hardened
+  standards provide implementation pattern for Grain
+  protocol; Grain canonical definition routed to
+  Admin/Canonical_Terms.md. Vocabulary note added to
+  Section I — scrap/waste terms retained for legal
+  context but bounded to pre-intake description.
+  Open Unknowns 3 → 4. Gates cleared: G1, G2, G4,
+  G5, G6. G3 blocked (AP-012/AP-016 pending).
