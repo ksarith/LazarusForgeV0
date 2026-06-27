@@ -11,7 +11,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-24                                                          |
 | Auditor          | Claude — Synthesizer/Auditor                                        |
-| Open Unknowns    | 7                                                                   |
+| Open Unknowns    | 8                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Low                                                                 |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -341,6 +341,37 @@ human-derived procedural knowledge. Heuristic Failure is a first-class Forge
 failure class; do not collapse it into planning failure or agent error. See
 CT-008 for canonicalization status.
 
+**Grain System**
+The physical provenance and identity continuity mechanism for the Lazarus Forge.
+A Grain is a small retained sample (baseline: 1g) taken from a source component
+before or during Forge processing. Grains serve three simultaneous functions:
+(1) philosophical continuity — connecting a rebuilt or fabricated output to its
+material origin, instantiating the Ship of Theseus doctrine; (2) legal artifact
+— providing chain-of-custody evidence that an output is a restoration of owned
+material rather than a new manufacture, supporting right-to-repair legal
+posture; (3) provenance anchor — the physical equivalent of a cryptographic
+hash, binding the output's identity to a verifiable source.
+
+The Grain System is the physical instantiation of the identity continuity
+doctrine defined in `Admin/Ship_of_Theseus.md`. The cognitive equivalent is
+the cryptographic state log defined in Section IV of that file.
+
+Implementation analog: Vehicle Identification Numbers (VIN, NHTSA 49 CFR Part
+565), Hull Identification Numbers (HIN), and ISO 3779 equipment serialization
+all attach identity to the irreducible structural core rather than replaceable
+components and are legally recognized as identity anchors even after total
+component replacement. The Grain protocol should adapt these existing
+legally-hardened standards rather than inventing a new system. Minimum viable
+grain protocol must specify: what constitutes the Forge equivalent of the
+irreducible structural core; where the serial identifier attaches; and how
+provenance transfers through the Forge gates.
+
+*Implementation status: ST-001 (grain storage and tracking protocol) and
+ST-002 (QR documentation standard) in `Admin/Ship_of_Theseus.md` sidecar
+are the open resolution vehicles. The canonical definition here does not
+constitute resolution of either entry — it registers the vocabulary;
+the implementation work remains in the owning sidecar.* See CT-009.
+
 ---
 
 ### 5. Explicit Term Exclusions — Anti-Drift Guardrails
@@ -633,6 +664,39 @@ definition exists but cross-file consistency has not yet been verified.
 
 ---
 
+### CT-009 — Grain System implementation protocol undefined
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Low                      |
+| Priority      | Minor                    |
+| Type          | Governance / Technical   |
+| Blocking      | No                       |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-06-26               |
+| Last Reviewed | 2026-06-26               |
+
+**Description:** The Grain System canonical definition
+has been registered in this file (Section 4), establishing
+the vocabulary and legal analog (VIN/HIN/ISO 3779). The
+implementation protocol — storage container standard,
+label format, chain-of-custody log, serial identifier
+attachment point — remains in ST-001 and ST-002 in
+`Admin/Ship_of_Theseus.md`. CT-009 tracks whether the
+canonical definition here remains consistent with the
+implementation as it matures in the owning sidecar.
+
+**Resolution Path:** Confirm consistency between this
+definition and ST-001/ST-002 resolution when those entries
+close. If the implementation deviates materially from the
+VIN/HIN analog described here, update the canonical
+definition accordingly. Close CT-009 when ST-001 and
+ST-002 both reach Payment via Specification and the
+canonical definition is confirmed consistent.
+
+---
+
 ### Resolution Log
 
 - 2026-05-26: File created (v0.1) by Gemini (Structural/Auditor). Initial
@@ -699,3 +763,8 @@ Version 0.3 — HF-001 registered; CT-008 logged; v0.3 vocabulary additions inte
 **Governance_Charter.md governs tier authority.**
 **This file governs cross-file vocabulary consistency.**
 **Conflicts between them are logged here — never silently resolved.**
+- 2026-06-26: Grain System canonical definition added to Section 4 — vocabulary,
+  legal functions, VIN/HIN/ISO 3779 implementation analog, and implementation
+  status note. CT-009 logged to track consistency between canonical definition
+  and ST-001/ST-002 implementation work in Ship_of_Theseus.md. Open Unknowns
+  7 → 8.
