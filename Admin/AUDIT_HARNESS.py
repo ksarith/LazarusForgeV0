@@ -1,35 +1,41 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v10
+LAZARUS FORGE — AUDIT HARNESS v11
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v9:
-  - Cell 4: Role declaration string updated to Auditor_Protocols.md v0.14.
-  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — AP-008 through AP-020 added
-    (first logged cycle 9-10 per Auditor_Protocols.md v0.11-v0.14 session);
-    GH-001 through GH-006 added (cycle 10, Tests/Cognitive_Salvage_Layer.md v0.1).
-  - Cell 1: FALLBACK_REGISTRY updated — Cognitive_Salvage_Layer.md added
-    under Tests/.
-  - Cell 2: EXTRA_FILES commented list updated — Cognitive_Salvage_Layer.md
-    added under Tests/ section.
+CHANGES FROM v10:
+  - Cell 3.5: Phase 1 structural enforcement added — three surgical checks
+    run on every fetched file before boundary index assembly:
+    (1) Constitutional check — Ethical Anchor exact string match; mismatch
+        writes .quarantine JSON payload and halts with sys.exit(1).
+    (2) Structural field presence — Status, Spec Gates, Verification Ref,
+        Ethical Anchor must exist as keys in File State table; missing
+        fields logged as MAJOR findings, non-blocking.
+    (3) Cross-reference resolution — internal .md file paths extracted and
+        checked against dynamic FILE_REGISTRY; unresolvable paths logged
+        as WARNING findings, non-blocking.
+    Enforcement is data-driven: Ethical Anchor string bootstrapped from
+    Ethical_Constraints.md if loaded; required fields bootstrapped from
+    File_Template.md if loaded; falls back to hardcoded defaults otherwise.
+    Quarantine pre-flight check added — if .quarantine exists at session
+    start, harness halts before fetching any files.
+    Finding class introduced for structured severity/category logging.
+    Phase 1 summary appended to SESSION BOUNDARY INDEX output.
+  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — ST-004 (cycle 10),
+    CT-008 (cycle 10), CT-009 (cycle 10) added.
+  - RIP-001 resolved — quarantine note updated to reflect closure.
 
-CHANGES FROM v8.1 (v9):
-  - Cell 1: Dynamic registry built from Routing.md at session start.
-    Hard-coded FILE_REGISTRY retained as fallback only; drift detected
-    and reported automatically. Aliases kept as a separate dict.
-  - Cell 2: EXTRA_FILES pre-flight validation — raises ValueError on
-    unrecognized names before any network calls are made.
-  - Cell 3.5: Fixed lines.index(line) bug — replaced with enumerate()
-    to handle duplicate section headers correctly.
-  - Cell 3.5: Unknown aging detection — computes cycles-open for each
-    sidecar unknown and surfaces overdue items before prompt assembly.
-  - No caching added — cached files are unverified prior states;
-    inconsistent with RIP posture until RIP-001 is resolved.
+CHANGES FROM v9 (v10):
+  - Cell 4: Role declaration string updated to Auditor_Protocols.md v0.14.
+  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — AP-008 through AP-020 added;
+    GH-001 through GH-012 added (cycle 10).
+  - Cell 1: FALLBACK_REGISTRY updated — Cognitive_Salvage_Layer.md added.
+  - Cell 2: EXTRA_FILES commented list updated — Cognitive_Salvage_Layer.md added.
 
 USAGE:
   1. Cell 1 — run once per session (builds registry from Routing.md)
   2. Cell 2 — configure audit (edit TARGET_FILE and FOCUS only)
   3. Cell 3 — fetch files
-  4. Cell 3.5 — extract boundary index + aging check (auto)
+  4. Cell 3.5 — Phase 1 enforcement + boundary index + aging check (auto)
   5. Cell 4 — assemble prompt
   6. Cell 5 — print prompt to copy
   7. Cell 6 (optional) — save prompt to file
@@ -344,10 +350,14 @@ if failed:
 
 
 # ─────────────────────────────────────────────────────────────────────
-# CELL 3.5 — Boundary index + unknown aging (ephemeral)
+# CELL 3.5 — Phase 1 enforcement + boundary index + unknown aging
 # ─────────────────────────────────────────────────────────────────────
-# Reads File State table and sidecar unknown IDs from each fetched file.
-# Detects unknowns that may be overdue per the Expiry Rule (2-cycle threshold).
+# Phase 1 enforcement runs three checks on every fetched file:
+#   1. Constitutional check (Ethical Anchor exact match) → halt on violation
+#   2. Structural field presence (File State keys) → log, non-blocking
+#   3. Cross-reference resolution (internal .md paths) → log, non-blocking
+#
+# Boundary index and unknown aging run after enforcement, as before.
 # Produces a compact session index — no stored artifact, no maintenance.
 # Persistent version of this information: Discovery.md scope map.
 #
@@ -357,6 +367,250 @@ CURRENT_CYCLE = 10   # ← update this each session
 
 import re as _re
 import datetime
+import os
+import sys
+import json
+
+# ── Phase 1 constants ────────────────────────────────────────────────
+QUARANTINE_FILE = ".quarantine"
+
+# Default fallback — overridden by bootstrap if Ethical_Constraints.md loaded
+_DEFAULT_ANCHOR = "Attempt to do no harm. Defer to Ethical_Constraints.md if present."
+
+# Default fallback — overridden by bootstrap if File_Template.md loaded
+_DEFAULT_REQUIRED_FIELDS = ["Status", "Spec Gates", "Verification Ref", "Ethical Anchor"]
+
+# ── Finding class ─────────────────────────────────────────────────────
+class Finding:
+    """Structured finding with severity, category, file, and message."""
+    def __init__(self, severity, category, file_path, message):
+        self.severity = severity    # CRITICAL | MAJOR | WARNING
+        self.category = category    # CONSTITUTION | STRUCTURE | REFERENCE
+        self.file_path = file_path
+        self.message = message
+
+    def __str__(self):
+        return f"[{self.severity}/{self.category}] {self.file_path}: {self.message}"
+
+    def to_dict(self):
+        return {
+            "severity": self.severity,
+            "category": self.category,
+            "file": self.file_path,
+            "message": self.message
+        }
+
+# ── Bootstrap governance rules from doctrine files ────────────────────
+def _bootstrap_rules(fetched_files):
+    """
+    Pull enforcement rules from doctrine files already in the fetched set.
+    Falls back to hardcoded defaults if source files are not loaded.
+    Rules live in the repository, not in this script — prevents harness drift.
+    """
+    anchor = _DEFAULT_ANCHOR
+    required_fields = list(_DEFAULT_REQUIRED_FIELDS)
+
+    # Try to extract Ethical Anchor from Ethical_Constraints.md
+    ec_content = fetched_files.get("Ethical_Constraints.md", "")
+    if ec_content and not ec_content.startswith("[FETCH FAILED"):
+        # Look for the canonical anchor string in the Ethical Anchor field
+        m = _re.search(
+            r'Ethical Anchor\s*\|?\s*(Attempt to do no harm[^|\n]*)',
+            ec_content
+        )
+        if m:
+            anchor = m.group(1).strip().rstrip('|').strip()
+
+    # Try to extract required fields from File_Template.md
+    ft_content = fetched_files.get("File_Template.md", "")
+    if ft_content and not ft_content.startswith("[FETCH FAILED"):
+        # Pull table rows from File State section
+        fs_match = _re.search(
+            r'## File State(.*?)(?=\n##)', ft_content, _re.DOTALL
+        )
+        if fs_match:
+            rows = _re.findall(r'\|\s*([A-Za-z][A-Za-z\s]+?)\s*\|', fs_match.group(1))
+            extracted = [r.strip() for r in rows
+                         if r.strip() and r.strip() not in ("Field", "Value", "---")]
+            if len(extracted) >= 4:
+                required_fields = extracted
+
+    return anchor, required_fields
+
+# ── File State table parser ───────────────────────────────────────────
+def _parse_file_state(content):
+    """
+    Extract the File State table from document content and return
+    a key→value dict. Strict key parsing prevents prose false-positives.
+    """
+    metadata = {}
+    # Find the File State section
+    m = _re.search(
+        r'## File State\s*\n.*?\n((?:\|.*\|\n?)+)',
+        content, _re.DOTALL
+    )
+    if not m:
+        return metadata, False  # (metadata, found)
+
+    table_text = m.group(1)
+    for line in table_text.splitlines():
+        # Match table rows: | Key | Value |
+        row = _re.match(r'\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|', line)
+        if row:
+            key = row.group(1).strip()
+            val = row.group(2).strip()
+            # Skip header separator rows
+            if key and not _re.match(r'^[-:]+$', key):
+                metadata[key] = val
+    return metadata, True
+
+# ── Cross-reference extractor ─────────────────────────────────────────
+def _extract_md_refs(content):
+    """
+    Extract internal .md file paths from content.
+    Catches: markdown links, backtick paths, table cell paths.
+    Skips URLs (http/https) and non-.md references.
+    """
+    refs = set()
+    # Markdown links [text](path.md) or [text](path.md#anchor)
+    for link in _re.findall(r'\[.*?\]\(([^)]+)\)', content):
+        clean = link.split('#')[0].strip()
+        if clean.endswith('.md') and not clean.startswith('http'):
+            refs.add(clean)
+    # Backtick paths `Admin/Foo.md`
+    for path in _re.findall(r'`([A-Za-z][A-Za-z0-9_/]+\.md)`', content):
+        refs.add(path)
+    return refs
+
+# ── Phase 1 enforcement per file ──────────────────────────────────────
+def _enforce_phase1(filename, content, anchor, required_fields, registry, findings):
+    """
+    Run three Phase 1 checks on a single fetched file.
+    Constitutional violation writes .quarantine and halts.
+    All other findings are logged and non-blocking.
+    """
+    if content.startswith("[FETCH FAILED"):
+        findings.append(Finding(
+            "MAJOR", "STRUCTURE", filename,
+            "File fetch failed — structural checks skipped. "
+            "Verify path in Routing.md."
+        ))
+        return
+
+    metadata, found = _parse_file_state(content)
+
+    # ── Check 1: Constitutional — Ethical Anchor ──────────────────────
+    if not found:
+        findings.append(Finding(
+            "MAJOR", "STRUCTURE", filename,
+            "File State table not found — Ethical Anchor cannot be verified."
+        ))
+    elif "Ethical Anchor" not in metadata:
+        findings.append(Finding(
+            "MAJOR", "CONSTITUTION", filename,
+            "Ethical Anchor field absent from File State table. "
+            "Unable to verify alignment — not confirmed as mutation."
+        ))
+    else:
+        detected = metadata["Ethical Anchor"]
+        if detected != anchor:
+            payload = {
+                "trigger": "CONFIRMED_CONSTITUTIONAL_MUTATION",
+                "file": filename,
+                "expected": anchor,
+                "detected": detected,
+                "timestamp": str(datetime.date.today()),
+                "action": "Session halted. Clear .quarantine after manual review."
+            }
+            with open(QUARANTINE_FILE, "w", encoding="utf-8") as qf:
+                json.dump(payload, qf, indent=2)
+            print(f"\n{'!'*60}")
+            print(f"  CONSTITUTIONAL MUTATION DETECTED")
+            print(f"  File:     {filename}")
+            print(f"  Expected: {anchor}")
+            print(f"  Found:    {detected}")
+            print(f"  .quarantine written. Session halted.")
+            print(f"{'!'*60}\n")
+            sys.exit(1)
+
+    # ── Check 2: Structural — required field presence ─────────────────
+    if found:
+        for field in required_fields:
+            if field not in metadata:
+                findings.append(Finding(
+                    "MAJOR", "STRUCTURE", filename,
+                    f"Required field '{field}' missing from File State table."
+                ))
+
+    # ── Check 3: Cross-reference resolution ───────────────────────────
+    refs = _extract_md_refs(content)
+    for ref in refs:
+        # Strip leading ./ if present
+        clean = ref.lstrip('./')
+        # Check against registry values (full paths) and keys (short names)
+        registry_paths = set(registry.values()) | set(registry.keys())
+        if clean not in registry_paths:
+            # Tolerate planned/ labels and known external repos
+            if not any(x in ref for x in ['planned', 'http', 'Lazarus-Forge-', 'Astroid']):
+                findings.append(Finding(
+                    "WARNING", "REFERENCE", filename,
+                    f"'{ref}' not resolved in FILE_REGISTRY — verify in Routing.md."
+                ))
+
+# ── Main Phase 1 runner ───────────────────────────────────────────────
+def run_phase1(fetched_files, registry):
+    """
+    Pre-flight quarantine check, then Phase 1 enforcement across all
+    fetched files. Returns findings list and bootstrapped rules.
+    """
+    # Quarantine pre-flight — halt immediately if prior session left a flag
+    if os.path.exists(QUARANTINE_FILE):
+        try:
+            with open(QUARANTINE_FILE) as qf:
+                payload = json.load(qf)
+            print(f"\n{'!'*60}")
+            print(f"  QUARANTINE ACTIVE — session blocked")
+            print(f"  Prior trigger: {payload.get('trigger', 'unknown')}")
+            print(f"  File:          {payload.get('file', 'unknown')}")
+            print(f"  Resolve the violation, delete .quarantine, then re-run.")
+            print(f"{'!'*60}\n")
+        except Exception:
+            print(f"\n⚠ .quarantine file exists but could not be parsed.")
+            print(f"  Delete manually after reviewing repository state.\n")
+        sys.exit(1)
+
+    anchor, required_fields = _bootstrap_rules(fetched_files)
+    findings = []
+
+    print(f"\nPhase 1 enforcement — {len(fetched_files)} file(s)")
+    print(f"  Anchor source:  {'Ethical_Constraints.md' if 'Ethical_Constraints.md' in fetched_files else 'hardcoded default'}")
+    print(f"  Fields source:  {'File_Template.md' if 'File_Template.md' in fetched_files else 'hardcoded default'}")
+    print(f"  Anchor string:  {anchor[:60]}{'...' if len(anchor) > 60 else ''}\n")
+
+    for fname, content in fetched_files.items():
+        _enforce_phase1(fname, content, anchor, required_fields, registry, findings)
+
+    # Summary
+    criticals = [f for f in findings if f.severity == "CRITICAL"]
+    majors    = [f for f in findings if f.severity == "MAJOR"]
+    warnings  = [f for f in findings if f.severity == "WARNING"]
+
+    if not findings:
+        print("✓ Phase 1: No violations detected.")
+    else:
+        if majors:
+            print(f"⚠ Phase 1 MAJOR findings ({len(majors)}):")
+            for f in majors:
+                print(f"    {f}")
+        if warnings:
+            print(f"→ Phase 1 WARNING findings ({len(warnings)}):")
+            for f in warnings:
+                print(f"    {f}")
+
+    return findings, anchor, required_fields
+
+# Run Phase 1 now
+_p1_findings, _p1_anchor, _p1_fields = run_phase1(fetched, FILE_REGISTRY)
 
 # Map of known unknown IDs to the cycle they were first logged.
 # Add entries here when new unknowns are registered.
@@ -376,6 +630,7 @@ UNKNOWN_FIRST_CYCLE = {
     "GMP-003": 5, "GMP-004": 5, "GMP-005": 5, "GMP-006": 9,
     "GMP-007": 9, "GMP-008": 9,
     "CT-001": 5, "CT-002": 5, "CT-003": 5, "CT-004": 6, "CT-005": 7,
+    "CT-006": 9, "CT-007": 9, "CT-008": 10, "CT-009": 10,
     "VG-001": 5,
     "AP-001": 2, "AP-002": 2, "AP-003": 2, "AP-004": 2, "AP-005": 2,
     "AP-006": 2, "AP-007": 2,
@@ -450,7 +705,7 @@ UNKNOWN_FIRST_CYCLE = {
     "TR-001": 4, "TR-002": 3,
     "FN-001": 4, "FN-002": 4, "FN-003": 4, "FN-004": 4, "FN-005": 4,
     "WW-001": 4, "WW-002": 4, "WW-003": 4, "WW-004": 4, "WW-005": 4,
-    "ST-001": 1, "ST-002": 1, "ST-003": 5,
+    "ST-001": 1, "ST-002": 1, "ST-003": 5, "ST-004": 10,
     "GK-002": 1, "GK-003": 1, "GK-004": 1,
     "EP-001": 5, "EP-002": 5, "EP-003": 5, "EP-004": 5,
     "EP-005": 4, "EP-006": 5,
