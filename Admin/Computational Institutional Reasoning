@@ -8,7 +8,6 @@ To govern this state, we establish an axiomatic foundation (*Part 0: Axioms of I
  3. **Epistemic Debt Instability:** Modeling the dynamic, non-linear acceleration of systemic risk when knowledge generation outpaces verification, establishing a control-theoretic threshold for automated triage posture.
  4. **Institutional Memory Dominance:** An information-theoretic proof demonstrating that complete provenance retention yields a strictly larger recoverable information set over long horizons compared to selective retention policies, rendering history computationally advantageous.
 Finally, we operationalize these principles through a non-linear *Verification Algebra* that enforces absolute physical grounding floors and categorical provenance ceilings, mapping these mathematical constructs directly onto a production-grade multi-agent runtime implementation. We demonstrate that shifting multi-agent optimization from task throughput to the mitigation of aggregate epistemic debt provides the structural stability required for continuous, multi-year autonomous operations.
-
 # Section 1: Introduction & Prior Work
 ## 1.1 The Horizon Problem in Autonomous Multi-Agent Networks
 Recent advancements in large language models (LLMs) have shifted the focus of artificial intelligence engineering from static, single-prompt inferences to dynamic, multi-agent orchestration frameworks. Contemporary architectures generally coordinate intelligence through explicit task decomposition, routing bounded sub-problems to a population of specialized workers or autonomous personas.
@@ -34,7 +33,6 @@ To overcome the Horizon Problem, this paper proposes a foundational shift in the
 > 
 We define an **Institution** as a computational state machine where knowledge is never merely generated and stored—it is continuously audited, historically tracked, and algorithmically governed. Instead of designing agent frameworks that maximize immediate task throughput or token processing velocity, we orient the entire system architecture around a singular optimization metric: **the mitigation of long-term systemic epistemic debt.**
 By formalizing the interactions of multiple agents under a rigorous mathematical calculus, we treat the body of knowledge maintained by the collective as an evolving institutional artifact. This guarantees that even if the underlying models, individual agents, or implementation nodes are completely replaced over time—satisfying a cognitive analogue to the classic *Ship of Theseus* paradox—the integrity, provenance, and truth value of the system’s knowledge core remain unbroken and computationally secure across years of continuous operation.
-
 # Section 2: Part 0 — Axioms of Institutional Epistemics
 To establish a rigorous framework for long-horizon multi-agent systems, we must abandon qualitative descriptions of agent behaviors and instead treat the entire system as a formal state machine. This section details the axiomatic foundation of **Computational Institutional Reasoning**, formalizing the mathematical objects the institution manipulates and the core invariants that dictate structural validity.
 ## 2.1 The Algebraic Definition of Institutional State
@@ -284,7 +282,7 @@ Let D_e(t) represent the aggregate systemic epistemic debt calculated at time t,
  * **Semantics:** This predicate compiles the automated state-shift for Triage Posture. If the aggregate debt metric breaches the safety limit (\Delta_{\text{max}}), the conditional statement forces the intersection of the insertion set and the concept set to evaluate to empty. The compiler will reject any transaction trying to introduce new concepts, forcing agents to pivot entirely to patches that optimize the active verification term V(t).
 ## 6.3 Domain-Specific Language (DSL) Specification
 To allow multiple diverse language models to interact with the constitutional layer without syntax variance, the ruleset is compiled into a declarative Domain-Specific Language (DSL). This DSL translates predicate logic into a deterministic Abstract Syntax Tree (AST) checked before commit execution.
-### Example DSL Ast Mapping Schema
+### Example DSL AST Mapping Schema
 ```json
 {
   "rule_id": "GAMMA_04_TRIAGE_ENFORCEMENT",
@@ -338,13 +336,13 @@ signature: "0x8f2c...9be3"
 ## 7.2 Empirical Performance Under Load
 To evaluate the mathematical validity of the **Epistemic Debt Instability Theorem (Theorem 3)** and the performance of the **Automated Triage Posture Trigger**, we simulated a multi-month autonomous operational environment.
 The evaluation workload injected synthetic agent mutations into the system over a continuous timeframe. The simulation was split into three distinct phases to observe the closed-loop feedback behaviors of the network.
-### Phase 1: Un-Gated Generation Burst (t = 0 \text{ to } t = 120)
+### Phase 1: Un-Gated Generation Burst (t = 0 to t = 120)
 During the initial phase, the generation rate was intentionally scaled to heavily outpace verification (g(t) \gg v(t)), mimicking standard, un-governed multi-agent frameworks. Agents continually generated dependent architectural claims while omitting explicit uncertainty tracking.
  * **Observed Behavior:** As predicted by Theorem 3, systemic epistemic debt (D_e) accelerated combinatorially. Because parent nodes remained unverified, their nesting depth (d(n)) propagated exponentially to downstream child nodes. The system's calculated debt derivative exhibited a strong positive acceleration (\frac{d^2D_e}{dt^2} > 0), driving the system rapidly toward the critical safety threshold (\Delta_{\text{max}} = 12,000 debt units).
-### Phase 2: Automated Triage Activation (t = 120 \text{ to } t = 200)
-At t = 121, the rolling average of the debt derivative crossed the triage activation ceiling (\varepsilon_{\text{triage}}). The system instantly dropped standard execution and entered **Triage Posture**, executing Rule \gamma_4.
+### Phase 2: Automated Triage Activation (t = 120 to t = 200)
+At t = 121, the rolling average of the debt derivative crossed the triage activation ceiling (\varepsilon_{\text{triage}}). The system instantly dropped standard execution and entered **Triage Posture**, executing Rule $\gamma_4.
  * **Observed Behavior:** The constitutional compiler immediately rejected all transactions attempting to insert new concept vertices (V_c). Generation debt dropped instantly to zero (G(t) \rightarrow 0). Concurrently, the orchestration engine forced the entire active agent population (A_t) into verification loops and contradiction resolution tasks, maximizing the mitigation velocity (V(t) \rightarrow V_{\text{max}}). Systemic debt reached its peak and bent sharply downward, reversing its acceleration trajectory away from the Collapse Region.
-### Phase 3: Stabilization and Recovery (t = 200 \text{ to } t = 300)
+### Phase 3: Stabilization and Recovery (t = 200 to t = 300)
 The system remained locked in Triage Posture for 80 cycles, systematically clearing expired unknowns and validating empirical premises until the rolling debt derivative crossed beneath the strict negative exit boundary (-\varepsilon_{\text{exit}}).
  * **Observed Behavior:** Upon satisfying the exit criteria, the system safely returned to the Stable Operating Zone. The aggregate maturity of the graph core was found to be 314\% higher than its pre-triage state. The system successfully avoided a Hallucination Cascade, empirically proving that control-theoretic debt management guarantees long-horizon structural safety.
 ## 7.3 Quantitative Comparative Analysis
@@ -358,6 +356,3 @@ To validate **Theorem 4 (Institutional Memory Dominance)**, we executed a compar
 | **Agent Replacement Information Loss** | 38% loss of intermediate reasoning | 0% loss of intermediate reasoning | Validates Axiom A4 (Continuity). |
 ## 7.4 Conclusion
 The empirical evaluation confirms that treating multi-agent networks as open-ended, performance-optimized text generators is inherently unstable over deep timelines. By implementing **Computational Institutional Reasoning**, the Lazarus Forge architecture demonstrates that grounding multi-agent orchestration in an axiomatic calculus, a non-linear verification algebra, and automated control-loop feedback mechanisms provides the mathematical stability required for truly durable, multi-year autonomous intelligence.
-
-
-
