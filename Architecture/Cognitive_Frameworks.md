@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-09 (ChatGPT — Synthesizer); revised 2026-06-08              |
-| Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 3                                                                   |
+| Last Audit       | 2026-05-09 (ChatGPT — Synthesizer); revised 2026-06-08; revised 2026-06-27 |
+| Auditor          | Claude — Retrofit/Auditor; revised Claude — Synthesizer/Auditor     |
+| Open Unknowns    | 4                                                                   |
 | Active Disputes  | 2                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -41,6 +41,9 @@
   doctrine
 - Algorithm architecture — the computational structure
   that emerges from Forge doctrine (Section IX)
+- Epistemic Load Regulation — Triage Posture doctrine
+  governing system behavior under epistemic debt
+  accumulation (Section IX)
 - Guiding axioms for safe cognition under uncertainty
 
 **This file DOES NOT define:**
@@ -60,6 +63,8 @@
   (`Admin/Governance_Charter.md`)
 - Hardware watchdog circuit implementation
   (`Operations/Electronics.md` CF-001)
+- Formal debt measurement implementation
+  (CF-004 — see sidecar)
 
 ---
 
@@ -627,6 +632,53 @@ to prevent.
 
 ---
 
+### Epistemic Load Regulation (Triage Doctrine)
+
+*CF-004 sidecar — first logged 2026-06-27.*
+
+The architecture has a third meta-property that
+follows from Asymmetric Conservatism: it is
+**self-throttling under epistemic load**.
+
+When the rate of Unknown accumulation persistently
+exceeds the rate of Unknown resolution, the system
+enters a constrained operational posture:
+
+**Triage Posture:**
+- Knowledge expansion is deprioritized
+- New claims that do not resolve an existing Unknown
+  are deferred or blocked
+- Agent bandwidth shifts toward verification and
+  Unknown resolution
+- Promotion gate advancement is suspended until
+  load normalizes
+
+The transition trigger is the sign of the debt
+derivative, not the absolute debt level. A system
+carrying significant accumulated Unknowns but
+actively resolving them faster than new ones arrive
+remains in normal posture. A system with low
+absolute debt but accelerating accumulation enters
+Triage Posture early — before the load becomes
+unmanageable.
+
+Exit condition: resolution rate exceeds accumulation
+rate for a sustained interval. Exit requires
+explicit re-verification of posture, not mere
+absence of new Unknowns.
+
+This is not a failure state. It is the architecture
+functioning as designed — the same asymmetric
+conservatism that governs individual claims here
+governs system-level operational tempo.
+
+*Dependency: CF-004 (debt measurement mechanism
+undefined — see sidecar). Triage Posture is
+doctrine now; the trigger metric is a v1
+automation target.*
+
+---
+
 ### What Does Not Exist Yet
 
 The architecture is described. The translation layer
@@ -640,6 +692,12 @@ is not. Specifically:
 - **Adversarial loop termination condition** — the
   Skeptic/Engineer cycle has no formal convergence
   criterion
+- **Epistemic debt measurement mechanism** — Triage
+  Posture doctrine is defined (see above) but the
+  trigger metric (Unknown accumulation rate vs.
+  resolution rate over a rolling interval) has no
+  formal implementation. Currently a human judgment
+  call during audit sessions.
 - **ML integration** — the Dependency Map, confidence
   labels, and Drift Indicators are structured for
   machine consumption but no translation layer
@@ -669,13 +727,20 @@ requiring immediate resolution. They belong in
   continuity cross-reference
 - `Admin/Auditor_Protocols.md` — multi-agent audit
   cycle is a real-world implementation of the
-  Skeptic/Engineer adversarial loop (Section IX)
+  Skeptic/Engineer adversarial loop (Section IX);
+  Epistemic Load Regulation doctrine mirrors
+  EF-0.2 graceful degradation under load
 - `Admin/Trajectories.md` — Framework G routes to
-  v2/v3; ML integration and confidence propagation
-  enforcement are v1/v2 automation targets
+  v2/v3; ML integration, confidence propagation
+  enforcement, and debt measurement are v1/v2
+  automation targets
 - `Unknowns.md` — Dependency Map is the confidence
   propagation graph; Expiry Watch implements
   Unknown-Driven Search prioritization
+- `Admin/Computational Institutional Reasoning` —
+  formal theoretical grounding for Epistemic Load
+  Regulation, Triage Posture, and debt dynamics
+  (Theorem 3, Section 5)
 
 ---
 
@@ -837,6 +902,48 @@ policy.
 
 ---
 
+### CF-004 — Epistemic debt measurement mechanism undefined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Low                                              |
+| Priority      | Minor                                            |
+| Type          | Architectural / Automation                       |
+| Blocking      | No                                               |
+| Owner         | Architecture/Cognitive_Frameworks.md             |
+| First Logged  | 2026-06-27                                       |
+| Last Reviewed | 2026-06-27                                       |
+
+**Description:** Epistemic Load Regulation (Triage
+Posture) is defined as doctrine in Section IX, but
+the trigger metric — Unknown accumulation rate vs.
+resolution rate over a rolling interval — has no
+formal implementation. Triage Posture entry and
+exit are currently human judgment calls during
+audit sessions.
+
+**Why It Matters:** Without a measurable trigger,
+Triage Posture cannot be enforced automatically or
+audited consistently. The doctrine exists; the
+instrument does not.
+
+**Resolution Path:** Define a rolling window metric
+(e.g., Unknowns opened vs. closed over the last N
+audit cycles) computable from `Unknowns.md`
+history. Candidate location for implementation is
+`Admin/AUDIT_HARNESS.py` — the harness already reads
+Unknowns.md and could emit a debt ratio alongside
+Phase 1 output. Payment via Specification — once
+a metric is defined and validated against at least
+two audit cycles, update Section IX Triage Posture
+with the concrete threshold. Cross-reference
+`Admin/Computational Institutional Reasoning`
+Section 5 for the formal debt dynamics framework
+that grounds the trigger metric mathematically.
+
+---
+
 ### Resolution Log
 
 - 2026-06-08: Navigation Anchors added. File State
@@ -847,15 +954,23 @@ policy.
   property and development targets. Lessons Learned
   expanded to full template format. Sidecar entries
   expanded to full field tables. Integration Hooks
-  updated — stale filenames corrected:
-  `leviathan_testing.md` → `Tests/Leviathan_testing.md`,
-  `Support_Raft_v0.md` → `Tests/Support_Raft.md`,
-  `Ship_of_Theseus_Right_to_Repair.md` →
-  `Admin/Ship_of_Theseus.md`,
-  `Trajectories_LF.md` → `Admin/Trajectories.md`.
+  updated — stale filenames corrected.
   Active Disputes table expanded with Owner field
   and CF-DS-002 constitutional note. Guiding Axioms
   extended with two additions from doctrinal review.
+- 2026-06-27: Section IX extended — Epistemic Load
+  Regulation (Triage Doctrine) added as third
+  meta-property following Asymmetric Conservatism.
+  "What Does Not Exist Yet" updated — epistemic debt
+  measurement mechanism added as fourth development
+  target. CF-004 logged (debt measurement mechanism
+  undefined — Low risk, Minor priority, v1 automation
+  target). Scope Boundary updated — Triage Posture
+  added to DOES define; CF-004 exclusion added to
+  DOES NOT define. Integration Hooks updated —
+  Auditor_Protocols.md EF-0.2 connection noted;
+  Computational Institutional Reasoning cross-reference
+  added. Open Unknowns 3 → 4. Last Audit date updated.
 
 ---
 
@@ -884,6 +999,8 @@ apply. The following are additional local triggers:
 | CF-DS-002 resolved without escalation to human governing party | Constitutional implications — human ratification required before closing |
 | Salvage score function defined without cross-validation against `Operations/Gate_02_Triage.md` Strategic Recoverability tiers | Score function must extend, not contradict, existing triage doctrine |
 | Human override authority reduced below Layer 6 without Tier 1 Axiom amendment procedure | Governance_Migration_Protocol.md Track B — constitutional amendment required |
+| Triage Posture entry/exit criteria hardcoded without CF-004 resolution | Trigger metric must be derived from operational data, not specified in advance |
+| Epistemic Load Regulation doctrine modified without updating CF-004 status | Doctrine and instrument must evolve together |
 
 **Compound Drift Rule:** If multiple indicators
 activate simultaneously, halt autonomous audit
