@@ -731,6 +731,10 @@ UNKNOWN_FIRST_CYCLE = {
     "GH-001": 10, "GH-002": 10, "GH-003": 10, "GH-004": 10,
     "GH-005": 10, "GH-006": 10, "GH-007": 10, "GH-008": 10,
     "GH-009": 10, "GH-010": 10, "GH-011": 10, "GH-012": 10,
+    # Hydrologic Resource Cascade — HR-series (cycle 10)
+    "HR-UNK-001": 10, "HR-UNK-002": 10,
+    # Cognitive Frameworks (cycle 10)
+    "CF-004": 10,
     # Misc
     "FA-001": 4, "FA-002": 4, "FA-003": 4, "FA-004": 4,
     "SP-001": 4, "SP-002": 4, "SP-003": 4, "SP-004": 4, "SP-005": 4,
