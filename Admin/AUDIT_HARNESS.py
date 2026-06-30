@@ -1,8 +1,31 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v11
+LAZARUS FORGE — AUDIT HARNESS v12
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v10:
+CHANGES FROM v11:
+  - Cell 1: FALLBACK_REGISTRY — added Hydrologic_Resource_Cascade.md
+    (was present in Routing.md's Master Routing Map but missing from
+    fallback; harmless under normal operation since dynamic registry
+    takes precedence, but unreachable if Routing.md fetch ever failed).
+  - Cell 1: FALLBACK_REGISTRY — added Return_To_Eden.md (Challenges/).
+    NOTE: not yet present in Routing.md's Master Routing Map as of this
+    compile. Resolves correctly via fallback regardless; dynamic parse
+    will also pick it up automatically once Routing.md is updated with
+    a matching row, no harness change needed at that point.
+  - Cell 1: ALIASES — added the two non-extension Admin/ files
+    ("Nothingness Theorem", "Computational Institutional Reasoning").
+    These contain spaces and no .md/.py suffix, so _parse_routing()'s
+    regex cannot and will not match them from Routing.md's table —
+    they must be hardcoded aliases pointing at the URL-encoded path.
+  - Cell 1: fetch() — now URL-quotes the resolved path (safe="/%") via
+    urllib.parse.quote before requesting, so registry values containing
+    spaces or other unsafe characters resolve correctly regardless of
+    whether they arrive pre-encoded (e.g. "%20" in an alias) or not.
+  - Cell 1: import urllib.parse added alongside urllib.request.
+  - Cell 2: EXTRA_FILES commented list — added Return_To_Eden.md under
+    Challenges/ section for discoverability.
+
+CHANGES FROM v10 (v11):
   - Cell 3.5: Phase 1 structural enforcement added — three surgical checks
     run on every fetched file before boundary index assembly:
     (1) Constitutional check — Ethical Anchor exact string match; mismatch
@@ -31,6 +54,19 @@ CHANGES FROM v9 (v10):
   - Cell 1: FALLBACK_REGISTRY updated — Cognitive_Salvage_Layer.md added.
   - Cell 2: EXTRA_FILES commented list updated — Cognitive_Salvage_Layer.md added.
 
+KNOWN OPEN ITEM (flag for next session, not fixed here):
+  - Challenges/Return_To_Eden.md has no File State sidecar table as of
+    this compile. Phase 1 will log a MAJOR/STRUCTURE finding
+    ("File State table not found") the first time it's fetched. This is
+    expected/accurate, not a harness bug — add the sidecar to the file
+    itself before it's audited for promotion readiness.
+  - Routing.md (repo file, not this script) does not yet list
+    Challenges/Return_To_Eden.md in its Master Routing Map table.
+    Recommend adding that row to keep Routing.md/Discovery.md/harness
+    in sync; the drift-detection print in _build_registry() will
+    surface this automatically as "in fallback but not Routing.md"
+    until that row is added.
+
 USAGE:
   1. Cell 1 — run once per session (builds registry from Routing.md)
   2. Cell 2 — configure audit (edit TARGET_FILE and FOCUS only)
@@ -46,6 +82,7 @@ USAGE:
 # ─────────────────────────────────────────────────────────────────────
 
 import urllib.request
+import urllib.parse
 import re
 
 BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/"
@@ -53,6 +90,8 @@ BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main
 # ── Legacy aliases ────────────────────────────────────────────────────
 # Kept separate from canonical registry. Short names that resolve to
 # current canonical paths. Never auto-generated from Routing.md.
+# Also home for non-.md/.py Admin/ files whose names contain spaces —
+# _parse_routing()'s regex cannot match those from Routing.md's table.
 ALIASES = {
     "Unknowns_LF.md":                    "Unknowns.md",
     "Canonical_Terms_LF.md":             "Admin/Canonical_Terms.md",
@@ -70,6 +109,8 @@ ALIASES = {
     "Component_Triage_System.md":        "Operations/Gate_02_Triage.md",
     "Ship_of_Theseus_Right_to_Repair.md":"Admin/Ship_of_Theseus.md",
     "Stratification_Chamber_v0.md":      "Operations/Gate_04_Separation_Mechanical.md",
+    "Nothingness Theorem":               "Admin/Nothingness%20Theorem",
+    "Computational Institutional Reasoning": "Admin/Computational%20Institutional%20Reasoning",
 }
 
 # ── Fallback registry ─────────────────────────────────────────────────
@@ -129,12 +170,14 @@ FALLBACK_REGISTRY = {
     "Solar_Descent.md":                  "Tests/Solar_Descent.md",
     "Support_Raft.md":                   "Tests/Support_Raft.md",
     "Trophic_Forge.md":                  "Tests/Trophic_Forge.md",
+    "Hydrologic_Resource_Cascade.md":    "Tests/Hydrologic_Resource_Cascade.md",
     "Biofouling.md":                     "Challenges/Biofouling.md",
     "Critical_Minerals.md":              "Challenges/Critical_Minerals.md",
     "Emergence.md":                      "Challenges/Emergence.md",
     "Planned_Obsolescence.md":           "Challenges/Planned_Obsolescence.md",
     "Waste.md":                          "Challenges/Waste.md",
     "Water.md":                          "Challenges/Water.md",
+    "Return_To_Eden.md":                 "Challenges/Return_To_Eden.md",
 }
 
 def _parse_routing(content):
@@ -142,6 +185,10 @@ def _parse_routing(content):
     Parse Routing.md Master Routing Map table into {short_name: repo_path}.
     Expects rows like: | `Admin/Foo.md` | [Raw](...) | [Repo](...) | ... |
     Returns dict mapping basename → folder-prefixed path.
+    NOTE: only matches backtick-quoted paths ending in .md or .py — files
+    without an extension or containing spaces (e.g. the two Admin/ Tier 0
+    philosophical/theoretical documents) will not be picked up here and
+    must be hand-maintained in ALIASES instead.
     """
     registry = {}
     for line in content.splitlines():
@@ -207,7 +254,10 @@ FILE_REGISTRY, _routing_content = _build_registry()
 
 def fetch(filename):
     path = FILE_REGISTRY.get(filename, filename)
-    url = BASE + path
+    # Encode spaces/special chars in path segments, but preserve existing
+    # %20 (already-encoded aliases) and slashes (folder separators).
+    safe_path = urllib.parse.quote(path, safe="/%")
+    url = BASE + safe_path
     try:
         with urllib.request.urlopen(url) as r:
             content = r.read().decode("utf-8")
@@ -278,6 +328,7 @@ EXTRA_FILES = [
     # "Solar_Descent.md",               # underground solar, SD-UNK items
     # "Support_Raft.md",                # marine platform, SR-UNK items
     # "Leviathan_testing.md",           # hostile-environment autonomy
+    # "Hydrologic_Resource_Cascade.md", # cascade hydrology, HR-UNK items
     # ── Challenges/ ─────────────────────────────────────────────────
     # "Water.md",                       # hydrological challenge requirements
     # "Biofouling.md",                  # marine fouling, MIC, BF-UNK items
@@ -285,6 +336,7 @@ EXTRA_FILES = [
     # "Planned_Obsolescence.md",        # firmware lock, potting removal
     # "Critical_Minerals.md",           # rare earth, urban mining, CM-UNK
     # "Emergence.md",                   # emergent agent behavior, EM-UNK
+    # "Return_To_Eden.md",              # Eden Index cross-system heuristic, no File State sidecar yet
 ]
 
 # ── STEP 4: Set document status ──────────────────────────────────
