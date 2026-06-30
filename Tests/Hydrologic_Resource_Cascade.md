@@ -19,7 +19,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-28                                                          |
 | Auditor          | Grok (Synthesizer); revised Gemini + Claude (Synthesizer/Auditor)   |
-| Open Unknowns    | 2                                                                   |
+| Open Unknowns    | 2 Formal / 6 Unregistered (HR-003–HR-010 pending sidecar registration) |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -33,7 +33,7 @@
 - The Hydrologic Resource Cascade concept as a multi-benefit flood resource recovery system
 - Sequential zones and their functions (intake, heavy mineral concentration, aggregate, fine sediment, wetland polishing, recreation)
 - Episodic flood-driven operation philosophy integrated with continuous base-flow and optional passive circulation
-- Hydraulic operating modes across drought, normal flow, seasonal high water, flood, and recovery conditions
+- Hydraulic operating modes across drought, normal flow, seasonal high water, flood, recovery, and containment conditions
 - Research unknowns and proposed test parameters (HR-001 through HR-010)
 - Integration with Lazarus Forge principles (salvage-first, multi-output, passive systems, landscape-scale salvage)
 - Flood resilience infrastructure framing with recreation and resource recovery as co-benefits
@@ -46,6 +46,8 @@
 - Leviathan marine extensions or Support Raft integration
 - Full economic valuation model (see `Admin/Economics.md`)
 - Detailed contaminant remediation protocols
+- Downstream sediment starvation modeling, water rights doctrine, or diversion permitting law
+- Co-incident risk management for human-machinery conflicts during active material harvesting
 
 ---
 
@@ -67,6 +69,7 @@ This file lives in Tests/ because core assumptions about consistent separation e
 | HR-ASM-004 | Multi-benefit design (flood control + resources + recreation) strengthens regulatory and funding viability | Avoided cost arguments in resilience projects | Medium | Site-specific permitting reveals conflicts |
 | HR-ASM-005 | Optional passive circulation systems (wind, hydraulic ram, animal power) provide sufficient head to maintain recreational and ecological velocity during inter-flood periods | Historical wind-pump performance and low-head hydraulic analogs | Medium | Pilot shows stagnation under average conditions despite passive systems |
 | HR-ASM-006 | Continuous river-coupled base-flow diversion does not cause adverse downstream erosion or siltation in standard bypass mode | River diversion and canal engineering analogs | Medium | Field observation of scouring at return weir or excessive deposition in main channel |
+| HR-ASM-007 | Base-flow diversion volume can be kept low enough to avoid starving the downstream channel of its natural sediment budget ("hungry water" effect) | Diversion/canal engineering literature on downstream channel degradation | Low | Field observation of downstream channel incision, armoring, or bank erosion beyond baseline |
 
 ---
 
@@ -86,13 +89,16 @@ The system functions as a **Flood Resource Recovery Basin** with a **Hydrologic 
 
 The system behaves differently across hydrologic conditions. Operational posture shifts accordingly:
 
-| Mode | Primary Driver | Primary Goal |
-|---|---|---|
-| Drought | Passive/wind circulation or base-flow diversion | Maintain habitat, water quality, and recreation viability |
-| Normal Flow | River base-flow diversion | Recreation, wetland polishing, continuous monitoring |
-| Seasonal High Water | Increased diversion rate | Sediment capture begins; fine fraction lagoons filling |
-| Flood | Natural overflow + maximum intake | Maximum storage and resource recovery; flood attenuation |
-| Recovery | Controlled drainage | Inspection, material harvesting, structural restoration |
+| Mode | Primary Driver | Primary Goal | Trigger / Control Mechanism |
+|---|---|---|---|
+| Drought | Passive/wind circulation or base-flow diversion | Maintain habitat, water quality, recreation | Intake gate at minimum sustaining flow; river at or below normal pool |
+| Normal Flow | River base-flow diversion | Recreation, wetland polishing, monitoring | Passive gravity weir intake |
+| Seasonal High Water | Increased diversion rate | Sediment capture begins | Crest-level overflow spillway activates |
+| Flood | Natural overflow + maximum intake | Maximum storage and resource recovery; flood attenuation | Automated/passive choke-gate limits intake to prevent blowout |
+| Recovery | Controlled drainage | Inspection, material harvesting, structural restoration | Recreation Loop locked out; sluice gates opened for dredging access |
+| Containment | Isolation of affected zone(s) | Prevent contaminated material reaching public-access or recreation zones | Triggered when HR-UNK-002 contaminant thresholds are exceeded in any zone; affected zone sealed from downstream flow and public access until remediation or safe disposal pathway confirmed |
+
+**Containment Mode** is not tied to a hydrologic condition — it can be entered from any other mode upon contaminant threshold breach, and exited only after HR-UNK-002 resolution criteria are met for the affected zone. This converts contamination from a static risk into a defined operational state with entry/exit conditions.
 
 ### Sequential Zones and River-Coupled Flow
 
@@ -137,6 +143,8 @@ The system behaves differently across hydrologic conditions. Operational posture
 
 Each zone improves water quality for the next while generating distinct value streams. Floods replenish sediment; minor restoration maintains function. The spillway/weir entry and exit act as pressure valves — modest base-flow diversion under normal conditions; maximum intake during flood events with excess bypassing safely down the main channel.
 
+**Public Safety / Harvesting Separation:** Zones 3 and 4 are subject to periodic heavy-machinery material harvesting (excavators, vacuum trucks) during Recovery Mode. The Recreation Loop (Zone 6) must be physically isolated or operationally locked out from public access during any active harvesting window in upstream zones. This is a hard operational requirement, not a scheduling preference — see Hydraulic Operating Modes, Recovery row.
+
 ### Integration with Lazarus Forge
 
 - **Salvage-First**: Flood sediment as primary feedstock
@@ -163,7 +171,7 @@ Each zone improves water quality for the next while generating distinct value st
 - **HR-009 (Wind-Kinetic Efficiency)**: Correlate local wind speed intervals with resulting flow velocity (m/s) in the Recreation Loop via passive mechanical pump array. Determines whether wind-driven circulation is viable at the site or whether alternative passive systems are needed.
 - **HR-010 (Diversion Hydraulics)**: Map the optimal intake gate geometry to capture maximum target sediment fractions during a design flood event while preventing system blowout or return weir silting. Informs the transition between operating modes.
 
-**Pilot Approach**: Small-scale basin in a representative site. Monitor one or more flood cycles. Measure deposition, sorting, material properties, hydraulic performance, ecology, and visitor metrics. Track across all five operating modes.
+**Pilot Approach**: Small-scale basin in a representative site. Monitor one or more flood cycles. Measure deposition, sorting, material properties, hydraulic performance, ecology, and visitor metrics. Track across all operating modes, including Containment.
 
 ---
 
@@ -223,7 +231,7 @@ Each zone improves water quality for the next while generating distinct value st
 
 **Why It Matters:** Safety-critical. A cascade that concentrates heavy metals in the fine sediment lagoons creates a liability rather than a resource. The contaminant pathway must be characterized before any material extraction or public access is permitted.
 
-**Resolution Path:** Lab testing of pilot materials (HR-004) including heavy metals screen, pesticide panel, and microbiological assessment. Must establish a contaminant decision tree: what contamination levels trigger remediation mode vs. resource extraction mode. Cross-reference `Challenges/Waste.md` WA-002 (hazardous fraction identification) and `Admin/Ethical_Constraints.md` for harm thresholds. Payment via Specification once contaminant characterization is complete and decision tree is defined.
+**Resolution Path:** Lab testing of pilot materials (HR-004) including heavy metals screen, pesticide panel, and microbiological assessment. Must establish a contaminant decision tree: what contamination levels trigger remediation mode vs. resource extraction mode. Cross-reference `Challenges/Waste.md` WA-002 (hazardous fraction identification) and `Admin/Ethical_Constraints.md` for harm thresholds. Payment via Specification once contaminant characterization is complete and decision tree is defined. Once a contaminant decision tree is defined, its thresholds become the formal trigger conditions for Containment Mode (see Hydraulic Operating Modes). Resolution of this unknown therefore directly defines the Containment Mode entry/exit criteria, not just a static safety note.
 
 *(Additional unknowns for long-term morphology changes, regulatory pathways, recreational compatibility conflicts, and wind-kinetic efficiency are noted as research questions HR-003 through HR-010 in the body. Formal sidecar registration deferred to first audit pass.)*
 
@@ -233,6 +241,7 @@ Each zone improves water quality for the next while generating distinct value st
 
 - 2026-06-28: **Initial file creation** by Grok (Synthesizer). Core architecture, six sequential zones, episodic operation doctrine, four assumptions, eight research questions, two formal unknowns.
 - 2026-06-28: **Agent revision pass** (Gemini + Claude). Wind/river coupling added: river-coupled base-flow doctrine, Optional Passive Momentum Systems framing (technology-agnostic), Hydraulic Operating Modes table (five modes). HR-ASM-005 and HR-ASM-006 added to Assumptions. HR-009 and HR-010 added as extended research parameters. HR-UNK-002 expanded with contaminant pathway detail and cross-references. Open Unknowns corrected 8 → 2 (HR-003 through HR-010 are body research questions; formal sidecar registration deferred to first audit pass). Flow diagram updated with river-coupling architecture.
+- 2026-06-30: **Multi-agent audit pass** (Claude, ChatGPT, Gemini). Open Unknowns metadata corrected to "2 Formal / 6 Unregistered" to resolve self-flagged Drift Indicator violation. HR-ASM-007 added (downstream sediment starvation / "hungry water" risk). Scope Boundary expanded to exclude downstream sediment budgeting/water rights doctrine and human-machinery co-incident risk. Hydraulic Operating Modes table gained a Trigger/Control Mechanism column and a new Containment Mode, converting contaminant exceedance (HR-UNK-002) from a static risk note into a defined operational state. Public Safety / Harvesting Separation note added under Sequential Zones to formally require Recreation Loop lockout during active material harvesting.
 
 ---
 
@@ -255,6 +264,8 @@ Each zone improves water quality for the next while generating distinct value st
 - Open Unknowns count diverges from formally registered sidecar entries
 - River-coupling added as requirement rather than option without site confirmation
 - Unknown count grows without Resolution Pass
+- Containment Mode entry/exit criteria altered without corresponding HR-UNK-002 resolution update
+- Recreation Loop access permitted during active harvesting without explicit override documented
 
 **Compound Drift Rule:** Multiple simultaneous triggers escalate to human review.
 
