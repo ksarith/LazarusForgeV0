@@ -275,6 +275,15 @@ the infrastructure that prevents the system from drifting into entropy or weapon
 - `Admin/Trajectories.md` — Version roadmap from v0 through v5. Each version defined
   by survival threshold and exit condition, not a feature list
 - `Admin/File_Template.md` — Canonical document structure for all repository files
+- `Admin/Computational Institutional Reasoning` — Formal theoretical paper. Treats the
+  multi-agent collective as an axiomatic epistemic state machine and proves four
+  theorems — Unknown Conservation, Governance Stability, Epistemic Debt Instability,
+  Institutional Memory Dominance — that formally justify the Unknown Budget, the
+  Triage Posture trigger, and the provenance ceiling system described above. Not
+  required reading, but it is the proof source several governance claims rest on
+- `Admin/Nothingness Theorem` — Philosophical substrate. Functionless by design; the
+  framework from which salvage-first doctrine, distributed disagreement as error
+  correction, and the maintenance-as-creation equivalence derive
 
 ### Tests
 
@@ -285,6 +294,18 @@ the infrastructure that prevents the system from drifting into entropy or weapon
 - `Tests/Support_Raft.md` — Regional anchor infrastructure for mobile Leviathan units.
   Five anchor roles: Energy, Truth, Recovery, Material, Communication. The Raft does not
   move. Leviathan units do. The anchor is doctrine; the hull is implementation
+- `Tests/Living_Waters.md` — Water purification pathway experiments, site-conditioned
+  selection across ten candidate methods. The salvage principle applied to water scarcity
+  rather than scrap metal
+- `Tests/Trophic_Forge.md` — Biological cascade network: light → insect → fish → nutrient
+  → crop → water. The salvage principle applied to biological and ecological byproducts
+- `Tests/Solar_Descent.md` — Underground concentrated solar architecture. Two downlink
+  pathways converging on a shared subterranean chamber
+- `Tests/Cognitive_Salvage_Layer.md` — Salvages operational wisdom rather than material —
+  harvests machinery-derived heuristics from simulation and field operation so each Forge
+  generation does not relearn what the last one already discovered
+- `Tests/Hydrologic_Resource_Cascade.md` — Flood-driven sediment recovery basin. The
+  salvage principle applied to landscape-scale natural material flows
 
 ### Navigation & Tracking
 
@@ -378,6 +399,35 @@ doctrine layer in full. Six Challenges/ files establish the problem layer. The
 Challenges/Emergence.md file is the first explicitly Reflexive Challenge — the only
 one in the repository whose pressure is created by the Forge's own capability.
 
+**The founding idea has not changed; its scope has.** The original premise — reduce a
+useless item, recover its material, reintegrate it into something useful — is still the
+operational core of every gate from Intake through Utilization, and the primary metric
+is still value recovered per kWh. What grew around that core was not implied by the
+original framing and is worth naming plainly:
+
+1. **Governance now rivals the material pipeline in size.** Eight Tier 1 Axioms, a
+   10-phase audit sequence, cryptographic root-of-trust requirements, and a
+   ten-class Adversarial Challenge Battery exist not because reducing scrap metal
+   demanded them, but because running this system continuously and unsupervised across
+   agent successions does. The material loop needed almost none of this to function
+   once. It needed all of this to function honestly, indefinitely, without a human
+   checking every commit.
+2. **"Useless item" generalized past physical salvage.** `Tests/Living_Waters.md`,
+   `Tests/Trophic_Forge.md`, and `Tests/Hydrologic_Resource_Cascade.md` apply the same
+   reduce-and-reintegrate logic to water scarcity, biological byproducts, and flood
+   sediment. `Tests/Cognitive_Salvage_Layer.md` applies it to discarded machinery
+   wisdom — knowledge that would otherwise be relearned, generation after generation,
+   rather than salvaged once and reintegrated.
+3. **The system salvages its own claims to certainty the same way it salvages
+   materials.** Nothing gets discarded without accounting — not scrap, not a failed
+   hypothesis, not a resolved unknown that later turns out to have been closed too
+   early. The Unknown Budget rule in `Unknowns.md` is the clearest expression of this:
+   the architecture is now structurally suspicious of its own certainty, the same way
+   Gate_02_Triage is suspicious of declaring something truly waste.
+
+None of this is drift away from the founding idea. It is the founding idea taken more
+seriously than a workshop floor alone could demand.
+
 The primary remaining gaps are: enforcement architecture (GOV-003), human override
 authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
 The verification doctrine layer (`Admin/Auditor_Protocols.md`) has reached v0.11 with
@@ -390,4 +440,7 @@ without measurement. All quantitative figures carry confidence levels per
 
 The system is incomplete. Incompleteness is honest.
 
-**Start with `Discovery.md`.**
+---
+
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
