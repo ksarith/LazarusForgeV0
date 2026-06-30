@@ -69,7 +69,7 @@ Every meaningful claim in this repository carries one of three epistemic states:
 `Unknowns.md` is the most important file in the repository for understanding current system state. Open unknowns are honest acknowledgments of ignorance — suppressing them or closing them without evidence is an integrity violation. The repository maintains an Unknown Budget (floor on acknowledged unknowns) to prevent false certainty. New unknowns surfaced by honest work are welcome; premature closures are not.
 
 **5. The philosophical substrate**
-The Forge's operating principles derive from two foundational documents: the Tier 1 Axioms in `Admin/Governance_Charter.md` (the constitutional floor) and the Nothingness Theorem in `Admin/Nothingness Theorem` (the philosophical substrate). The theorem's core insight — that waste is not zero, that maintenance is thermodynamically equivalent to creation, and that distributed disagreement is the primary engine of error correction — underlies the salvage-first doctrine, the multi-agent audit architecture, and the anti-sacralization principle. Agents are not required to read it, but those who do will find it explains why the system is structured the way it is.
+The Forge's operating principles derive from two foundational documents: the Tier 1 Axioms in `Admin/Governance_Charter.md` (the constitutional floor) and the Nothingness Theorem in `Admin/Nothingness Theorem` (the philosophical substrate). The theorem's core insight — that waste is not zero, that maintenance is thermodynamically equivalent to creation, and that distributed disagreement is the primary engine of error correction — underlies the salvage-first doctrine, the multi-agent audit architecture, and the anti-sacralization principle. A third foundational document, `Admin/Computational Institutional Reasoning`, formalizes the system's epistemic governance mathematically — Unknown Conservation, Governance Stability, Epistemic Debt Instability, and Institutional Memory Dominance are proven as theorems there, and the non-linear Verification Algebra (Physical Grounding Gate, Provenance Ceiling Gate, Adversarial Multiplier) that governs claim maturity throughout this repository is specified in full there. Agents are not required to read either document, but those who do will find they explain why the system is structured the way it is.
 
 ---
 
@@ -101,6 +101,7 @@ Admin/                                      — Governance, protocols, and doctr
     ├── Environmental_Constraints.md        — Site, regulatory, ecological, and jurisdictional boundary conditions; RDC baseline; No-Externalized-Entropy doctrine
     ├── Experiments.md                      — Physical grounding registry; falsification records; EXP-ID artifacts for PROVISIONAL→VERIFIED claim transitions
     ├── Nothingness Theorem                 — Philosophical substrate; foundational framework for salvage-first doctrine, distributed disagreement, and anti-entropy maintenance principles; functionless artifact filed in Admin
+    ├── Computational Institutional Reasoning — Formal theoretical paper; axiomatic state-machine model of institutional epistemics; Unknown Conservation, Governance Stability, Epistemic Debt Instability, and Institutional Memory Dominance theorems; non-linear Verification Algebra specification
     ├── Governance_Migration_Protocol.md    — Tier 1 Axiom amendment procedures
     └── AUDIT_HARNESS.py                    — Automated script supporting verification
 
@@ -137,7 +138,9 @@ Tests/                                      — Test frameworks and deployment p
     ├── Leviathan_testing.md                — Deep-ocean autonomous stress-testing
     ├── Living_Waters.md                    — Water purification pathways; site-conditioned selection; LW-001 through LW-010
     ├── Trophic_Forge.md                    — Biological cascade network; light → insect → fish → nutrient → crop → water; bootstrap sequence doctrine
-    └── Solar_Descent.md                    — Underground concentrated solar; SD-001 optical downlink; SD-002 fluid downlink; shared chamber reconvergence
+    ├── Solar_Descent.md                    — Underground concentrated solar; SD-001 optical downlink; SD-002 fluid downlink; shared chamber reconvergence
+    ├── Cognitive_Salvage_Layer.md          — Heuristic salvage pipeline; consensus-aggregated machinery wisdom; NOVEL/CANDIDATE_NOVEL promotion gate; GH-001 through GH-012
+    └── Hydrologic_Resource_Cascade.md      — Flood-driven sediment recovery basin; sequential hydraulic sorting zones; episodic operation doctrine; HR-UNK-001 through HR-UNK-002 (formal); HR-003 through HR-010 (research questions)
 
 Challenges/                                 — Problem layer: why these capabilities exist
     ├── Water.md                            — Water scarcity and contamination (Living Waters)
@@ -148,7 +151,7 @@ Challenges/                                 — Problem layer: why these capabil
     └── Emergence.md                        — Emergent intelligence: alignment-by-environment design
 
 Archive/                                    — Prior states of governance-bearing documents
-    └── [created when first Specification-level file is revised — see Admin/Repository_Structure.md]
+    └── [Discharge via Lessons Learned 2026-06-28 — Git release tags (V0.6–V0.97, GPG-signed) satisfy prior-state archival at v0 scale; see RIP-001 resolution in Unknowns.md. Manual directory deposit deferred pending distillate architecture (RIP-006).]
 ```
 
 **Planned / not yet created:**
@@ -160,7 +163,7 @@ Archive/                                    — Prior states of governance-beari
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
 
-**Routing.md completeness:** Verified complete as of 2026-06-21 (`Admin/Experiments.md` and `Admin/Nothingness Theorem` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+**Routing.md completeness:** Verified complete as of 2026-06-28 (`Tests/Cognitive_Salvage_Layer.md`, `Tests/Hydrologic_Resource_Cascade.md`, and `Admin/Computational Institutional Reasoning` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
 
 ---
 
@@ -228,6 +231,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Admin/Environmental_Constraints.md` | Draft | 1/6 | High |
 | `Admin/Experiments.md` | Draft — Stub | 0/6 | Low |
 | `Admin/Nothingness Theorem` | Compiled — Functionless artifact | — | — |
+| `Admin/Computational Institutional Reasoning` | Compiled — Theoretical paper | — | — |
 | `Admin/Governance_Migration_Protocol.md` | Exploration | 0/6 | High |
 | `Admin/AUDIT_HARNESS.py` | Active | — | — |
 | `Architecture/Forge_flow.md` | Exploration | — | High |
@@ -259,6 +263,8 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Tests/Living_Waters.md` | Exploration | — | High |
 | `Tests/Trophic_Forge.md` | Exploration | 0/6 | High |
 | `Tests/Solar_Descent.md` | Exploration | 0/6 | High |
+| `Tests/Cognitive_Salvage_Layer.md` | Exploration | 0/6 | Medium |
+| `Tests/Hydrologic_Resource_Cascade.md` | Exploration | 0/6 | Medium |
 | `Challenges/Water.md` | Active | — | — |
 | `Challenges/Biofouling.md` | Active | — | — |
 | `Challenges/Waste.md` | Active | — | — |
@@ -305,7 +311,7 @@ Co-Tier 1 control substrate. Anti-Weaponization Doctrine; Life Preservation; Pac
 Tier 2 verification doctrine. 10-phase audit sequence; Fallacy Checklist; Sidecar Model; adversarial audit layer.
 **Upstream:** Governance_Charter.md; Ethical_Constraints.md.
 **Downstream:** Forge_Audit_Kit.md; Verification_Gates_LF.md; all repository files.
-⚠️ AP-004 (cross-auditor disagreement resolution) — open.
+⚠️ AP-004 (cross-auditor disagreement resolution) — open. AP-012 and AP-016 (Critical) — Gate 3 blocked pending Provisional Spec.
 
 ### `Admin/Forge_Audit_Kit.md`
 Tier 3 condensed audit reference. Derived from Auditor_Protocols.md. Load instead of full governance corpus to stay within token limits.
@@ -351,18 +357,19 @@ Cryptographic enforcement layer. Multi-signature override verification; node ide
 Operational integrity enforcement. Violation classification ladder; recovery procedures; automation migration path.
 **Upstream:** Governance_Charter.md; Auditor_Protocols.md; Ethical_Constraints.md.
 **Downstream:** Forge_Audit_Kit.md; AUDIT_HARNESS.py; Security_Protocols.md; Unknowns.md; Discovery.md.
-⚠️ RIP-001 (Archive/ directory not yet created) — Critical. See Repository_Structure.md RS-003.
+⚠️ RIP-001 — **Resolved** 2026-06-28 (Discharge via Lessons Learned; Git release tags satisfy prior-state archival at v0 scale). RIP-006 (archive retention policy) — In Progress; GitHub indefinite retention satisfies Tier 1 requirement, /Archive/ content policy pending distillate architecture.
 
 ### `Admin/Repository_Structure.md`
 Filename conventions; folder assignment doctrine; Archive/ directory doctrine; naming standard.
 **Upstream:** Governance_Charter.md; File_Template.md.
 **Downstream:** All repository files; Discovery.md (Rename Registry forward doctrine).
-⚠️ RS-003 (Archive/ directory not yet physically created) — Medium.
+⚠️ RS-001 (non-markdown file type introduction procedure) — open; relevant given Nothingness Theorem and Computational Institutional Reasoning are filed without extensions.
 
 ### `Admin/Ship_of_Theseus.md`
 Philosophical and legal defense for repair-first doctrine. Right-to-repair framework.
 **Upstream:** Gate_02_Triage.md; Components.md.
 **Downstream:** Gate_02_Triage.md; Geck_forge_seed.md.
+⚠️ ST-004 (sub-threshold state tampering vulnerability in Derivative Identity threshold) — High risk, open.
 
 ### `Admin/Trajectories.md`
 Version trajectory v0–v5. FRT doctrine and floor value. Scope routing for out-of-version capabilities.
@@ -392,6 +399,12 @@ Physical grounding registry. Structured falsification records that ground PROVIS
 Philosophical substrate document. Functionless artifact filed in Admin — intentionally has no operational role in the governance system. Documents the philosophical framework from which several Forge operating principles derive: salvage-first doctrine (waste is not zero), multi-agent audit architecture (distributed disagreement as error correction, Axiom A-7), anti-sacralization principle (drift as active deformation, Axiom A-8), and maintenance-as-creation equivalence (Axiom A-5). Four-generation compiled document produced via inter-agent friction protocol. Contains 8 Axioms, 9 open unknowns (NT-001 through NT-009), and a self-referential proof relevant to EF-0.0's treatment of UNKNOWN states.
 **Upstream:** None — foundational.
 **Downstream:** Philosophical influence on Governance_Charter.md, Auditor_Protocols.md, README.md. No operational dependency — this file may be removed without breaking any functional system.
+
+### `Admin/Computational Institutional Reasoning`
+Formal theoretical paper. Treats the multi-agent collective as a discrete-time deterministic epistemic state machine operating over a persistent Institutional Knowledge Graph. Establishes Part 0 axioms (Persistent Reality, Representational Incompleteness, Explicit Epistemic Accounting / the Nothingness Principle, Institutional Continuity, Governance Precedes Mutation) and derives four core theorems: Unknown Conservation (proves a nonzero unknown floor is mathematically unavoidable — direct formal backing for the Unknown Budget rule in Unknowns.md Size Management Rules); Governance Stability (inductive safety guarantee under constitutional gating); Epistemic Debt Instability (non-linear acceleration of systemic risk when generation outpaces verification — formal backing for CF-004 and the Triage Posture doctrine in Cognitive_Frameworks.md); and Institutional Memory Dominance (information-theoretic case for complete provenance retention — formal backing for RIP-001's resolution rationale and AP-006's provenance ceiling). Section 4 specifies the non-linear Verification Algebra (five-dimensional verification state vector E/R/C/P/S; Physical Grounding Gate; Provenance Ceiling Gate; Adversarial Multiplier) underlying AP-006's provenance labels and the UNKNOWN/PROVISIONAL/VERIFIED classification system referenced throughout Auditor_Protocols.md. Section 7 documents a production mapping onto the file-based repository runtime and reports simulated empirical validation of the Automated Triage Posture Trigger.
+**Upstream:** None — foundational; references Ship of Theseus framing from Admin/Ship_of_Theseus.md as an analogy only (Axiom A4), not a structural dependency.
+**Downstream:** Formal backing for Admin/Auditor_Protocols.md (EF-0.0, EF-0.8b, AP-006 provenance ceiling, AP-001 retrospective calibration); Architecture/Cognitive_Frameworks.md (CF-004 epistemic debt measurement, Triage Posture doctrine); Unknowns.md (Unknown Budget rule, Size Management Rules rationale); Admin/AUDIT_HARNESS.py (constitutional predicate compiler design target — γ1 through γ4 rule semantics). No operational dependency — repository functions without this file being read, but several doctrine files assert claims this paper is the proof source for.
+⚠️ No sidecar unknowns registered — this is a Tier 0 foundational/theoretical document, not an operational doctrine file. If repository practice diverges from a theorem or axiom stated here (e.g., a resolution that violates Governance Stability's inductive guarantee), log as a Non-blocking Unknown in Auditor_Protocols.md per the Repository Role divergence-logging rule.
 
 ### `Admin/Governance_Migration_Protocol.md`
 Tier 1 Axiom amendment procedures. Two-track migration system. Engineer proposal; human ratification. Hard floor doctrine.
@@ -473,19 +486,19 @@ Foundational thermal doctrine. Thermodynamic laws; heat transfer; Peltier; TEG; 
 Fluid mechanics, aerodynamics, and tribology doctrine. Reynolds number; Bernoulli; Darcy-Weisbach; hydrodynamics; Stribeck curve; lubrication selection.
 **Upstream:** Engineering.md; Ethical_Constraints.md.
 **Downstream:** Air_Scrubber.md; Gate_04_Separation_Mechanical.md; Gate_05_Separation_Thermal.md; Support_Raft.md; Leviathan_testing.md; Mechanical_Structures.md; Biofouling.md; Water.md; Woodworking.md.
-⚠️ FD-001 (Gate_04 RPM-to-fluid-doctrine), FD-002 (Air Scrubber duct velocity), FD-003 (salvaged bearing L10) — open.
+⚠️ FD-001 (Gate_04 RPM-to-fluid-doctrine), FD-002 (Air Scrubber duct velocity), FD-003 (salvaged bearing L10) — open. FD-005 (Fluid-Structure Interaction not formally bridged) — open.
 
 ### `Architecture/Chemistry.md`
 Foundational chemical and electrochemical doctrine. Galvanic series; corrosion types; cathodic protection; redox; battery chemistry; polymer degradation; field contamination identification.
 **Upstream:** Engineering.md; Thermal_Systems.md; Friction_Dynamics.md; Ethical_Constraints.md.
 **Downstream:** Plastics.md; Electronics.md; Air_Scrubber.md; Gate_05_Separation_Thermal.md; Gate_03_Reduction.md; Energy.md; Support_Raft.md; Biofouling.md; Mechanical_Structures.md; Gate_01_Intake.md; Gate_02_Triage.md; Woodworking.md.
-⚠️ CE-003 (Beilstein validation) — safety-critical prerequisite before first hot pyrolysis run.
+⚠️ CE-003 (field polymer identification reliability) — Critical; safety-critical prerequisite before first hot pyrolysis run; cross-references PL-001.
 
 ### `Architecture/Cognitive_Frameworks.md`
-Distributed cognition and autonomous safety. Cognitive reliability layers (0–6); confidence collapse states; rogue node containment; AI consensus structures.
-**Upstream:** Ethical_Constraints.md; Electronics.md; Auditor_Protocols.md.
+Distributed cognition and autonomous safety. Cognitive reliability layers (0–6); confidence collapse states; rogue node containment; AI consensus structures. Triage Posture doctrine (epistemic load regulation, canonized via Cognitive_Frameworks.md Section IX).
+**Upstream:** Ethical_Constraints.md; Electronics.md; Auditor_Protocols.md; Admin/Computational Institutional Reasoning (Epistemic Debt Instability theorem and Triage Zone control regime — formal backing for Section IX).
 **Downstream:** Forge_Net.md; Leviathan_testing.md; Support_Raft.md; Trajectories.md.
-⚠️ CF-001 (hardware watchdog standard) — blocks Specification-level autonomous architecture. CF-002 (correlated AI failure modes) — High risk.
+⚠️ CF-001 (hardware watchdog standard) — Critical/Blocking; blocks Specification-level autonomous architecture. CF-002 (correlated AI failure modes) — High risk. CF-004 (epistemic debt measurement mechanism undefined) — Low risk; trigger metric is v1 automation target.
 
 ### `Architecture/Forge_Net.md`
 Decentralized data and physical network. Local-primary doctrine; cluster formation; trust weighting; data privacy classification.
@@ -549,7 +562,7 @@ After-action review. Performance logging; failure capture; feedback to Gate_06; 
 Trust-anchor for all electronic systems. Logic-Zero wipe; TMR hardware; hardware watchdog; counterfeit detection; BFR doctrine.
 **Upstream:** Cognitive_Frameworks.md; Ethical_Constraints.md; Gate_02_Triage.md; Forge_flow.md; Facilities.md.
 **Downstream:** Air_Scrubber.md; Gate_05_Separation_Thermal.md; Leviathan_testing.md; Support_Raft.md; Security_Protocols.md; Cognitive_Frameworks.md.
-⚠️ EL-006 (cryptographic key management) — unassigned.
+⚠️ CF-001 (hardware watchdog minimum standard) — Critical/Blocking; parameters defined (τ=50ms WDT), hardware validation pending.
 
 ### `Operations/Energy.md`
 Energy strategy. Power Demand stub (Bootstrap ~2–5 kW, Nominal ~15–40 kW, Degraded ~1–3 kW). Cross-reference anchor for all energy accounting.
@@ -593,20 +606,32 @@ Hostile-environment test framework. Fail fast; recover often; sensors lie; recor
 ### `Tests/Living_Waters.md`
 Water purification pathways initiative. LW-001 through LW-010 experimental pathways. Site-conditioned pathway selection doctrine. Water Hierarchy (Tier 1–7). Primary candidates: LW-001 Vacuum Distillation (with MVR), LW-003 Deep-Sea RO. Declared trajectory: hydrological counterpart to Energy.md.
 **Upstream:** Energy.md; Safety_Protocols.md; Ethical_Constraints.md; Unknowns.md; Challenges/Water.md; Challenges/Biofouling.md (LW-UNK-004); Architecture/Thermal_Systems.md (TH-003); Architecture/Friction_Dynamics.md.
-**Downstream:** Operations/ (pending validation and promotion criteria); Economics.md (LW-010 mineral recovery); Unknowns.md (LW-UNK-001 through LW-UNK-008).
+**Downstream:** Operations/ (pending validation and promotion criteria); Economics.md (LW-010 mineral recovery); Unknowns.md (LW-UNK-001 through LW-UNK-009); Tests/Trophic_Forge.md (pond node interface, TF-009); Tests/Solar_Descent.md (waste heat cascade interface, SD-UNK-010).
 ⚠️ LW-UNK-001 (volatile co-distillation — CRITICAL safety gap before any potable output claim). LW-UNK-003 (lumen implosion threshold — CRITICAL for LW-003 deployment). TH-003 (atmospheric moisture yield) — Blocking for LW-005 atmospheric harvesting.
 
 ### `Tests/Trophic_Forge.md`
 Biological cascade network architecture. Light node ignition (UV/blue LED phototaxis harvest) → fish production → nutrient cycling → crop fertilization → phytoremediation → pond replenishment. Bootstrap sequence doctrine: each node provides leverage to justify the next. Declared trajectory: seed of Biology/ domain.
 **Upstream:** Ethical_Constraints.md; Energy.md (light node power); Tests/Living_Waters.md (pond water interface — TF-009); Challenges/Biofouling.md (pond fouling — TF-UNK-004); Safety_Protocols.md.
-**Downstream:** Declared future Biology/ domain; Economics.md (closed-loop input cost reduction); Unknowns.md (TF-001 through TF-009).
-⚠️ TF-001 (phototaxis yield at Forge scale — CRITICAL; blocks organizing principle validation). TF-006 (non-target insect capture — ethical unknown; escalates to Ethical_Constraints.md if threshold cannot be met). TF-009 (pond node interface with Living_Waters.md — joint resolution required).
+**Downstream:** Declared future Biology/ domain; Economics.md (closed-loop input cost reduction); Unknowns.md (TF-001 through TF-010).
+⚠️ TF-001 (phototaxis yield at Forge scale — CRITICAL; blocks organizing principle validation). TF-006 (non-target insect capture — ethical unknown; Ethical_Constraints escalation candidate; added to Critical Watch). TF-009 (pond node interface with Living_Waters.md — joint resolution required).
 
 ### `Tests/Solar_Descent.md`
 Underground concentrated solar architecture. Surface collection layer feeds two diverging downlink pathways — SD-001 optical (fiber optic / light well) and SD-002 thermal/fluid (molten salt / synthetic oil) — that reconverge at a shared subterranean chamber. Power conversion cascade (Stirling primary; TEG bootstrap). Waste heat feeds LW-001 and LW-008 in Living_Waters.md.
 **Upstream:** Ethical_Constraints.md; Energy.md; Architecture/Thermal_Systems.md; Operations/Gate_05_Separation_Thermal.md; Tests/Living_Waters.md (waste heat cascade interface — SD-UNK-010); Safety_Protocols.md; Challenges/Biofouling.md (surface collection layer in humid climates).
-**Downstream:** Operations/Energy.md (power output); Operations/Gate_05_Separation_Thermal.md (high-grade process heat); Operations/Plastics.md (pyrolysis heat feed); Tests/Living_Waters.md (LW-001, LW-008 waste heat); Unknowns.md (SD-UNK-001 through SD-UNK-010).
+**Downstream:** Operations/Energy.md (power output); Operations/Gate_05_Separation_Thermal.md (high-grade process heat); Operations/Plastics.md (pyrolysis heat feed); Tests/Living_Waters.md (LW-001, LW-008 waste heat); Unknowns.md (SD-UNK-001 through SD-UNK-012).
 ⚠️ SD-UNK-004 (host geology fracturing threshold — CRITICAL; blocks all excavation and chamber construction; parallels FA-001 in governance weight). SD-UNK-002 (achievable underground temperature — CRITICAL; blocks power conversion pathway selection). SD-UNK-010 (waste heat interface with Living_Waters.md — joint resolution required).
+
+### `Tests/Cognitive_Salvage_Layer.md`
+Heuristic salvage pipeline. Harvests machinery-derived operational wisdom (e.g., gate logic edge cases, separation process tuning) from puzzle/simulator engines, aggregates it through multi-run consensus, and promotes qualifying heuristics through a CANDIDATE_NOVEL → NOVEL gate. Designed to capture tacit "the machine taught us this" knowledge that would otherwise be lost between Forge generations. validated_on_machinery_revision field tracks fidelity to current hardware; no expiration logic defined yet (GH-008).
+**Upstream:** Auditor_Protocols.md (consensus aggregation standards, adversarial challenge framework); Admin/Security_Protocols.md (GH-003 adversarial poisoning resistance — Challenge Class 8); Admin/Canonical_Terms.md (HF-001 Heuristic Failure definition, CT-008 cross-file consistency tracking).
+**Downstream:** Unknowns.md (GH-001 through GH-012); Admin/Canonical_Terms.md (HF-001, CT-008); future heuristic-consuming gate logic (not yet specified — promotion target undefined pending GH-006).
+⚠️ GH-009 (emergent heuristic conflict, N² interaction scaling) — Critical; added to Critical Watch and Dependency Clusters; all heuristic co-deployment decisions blocked until Interaction Volume doctrine defined. GH-006 (NOVEL promotion threshold) — hard gate; no heuristic may receive NOVEL status until resolved. GH-012 (discovery yield rate) — primary ROI signal for the layer; cross-reference AP-001.
+
+### `Tests/Hydrologic_Resource_Cascade.md`
+Flood Resource Recovery Basin. Sequential hydraulic sorting zones (flood intake → heavy mineral concentrators → aggregate → fine sediment lagoons → wetland polishers → recreation loop) treat flood sediment as salvage feedstock rather than waste. Episodic Operation Doctrine: floods are the primary process driver; passive capture during high flows, low-intervention recreation/habitat use otherwise. Landscape-scale salvage seed — companion in spirit to Trophic_Forge.md's biological cascade.
+**Upstream:** Ethical_Constraints.md; Architecture/Friction_Dynamics.md (hydrodynamic sorting principles); Architecture/Chemistry.md (contaminant identification, cross-ref GR-003 hazardous waste doctrine); Safety_Protocols.md.
+**Downstream:** Declared future landscape-scale salvage domain; Economics.md (avoided-cost and recreation/resource valuation); Unknowns.md (HR-UNK-001, HR-UNK-002 formally registered; HR-003 through HR-010 are body-text research questions pending formal registration).
+⚠️ HR-UNK-001 (hydraulic sorting effectiveness unvalidated) — Critical; entire resource recovery premise rests on this. HR-UNK-002 (material quality and contaminant risk uncharacterized) — Critical; safety-critical, added to Critical Watch; flood sediment may carry heavy metals, pesticides, or industrial runoff. **Known discrepancy:** file's own File State declares "Open Unknowns: 8" but only 2 carry formal sidecar entries as of 2026-06-28 — correct on next commit to that file.
 
 ---
 
@@ -672,9 +697,12 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 |---------|--------|-----|
 | UNK-006 — Facility siting | **Resolved** — `Architecture/Facilities.md` owns; PC-002 tracks reference corrections | `Unknowns.md` |
 | UNK-008 — Welding wire chemical qualification | Open — no owner assigned | `Unknowns.md` |
-| UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Unknowns.md` |
+| UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, SEC-007 | `Unknowns.md` |
+| RIP-001 — Prior-state archival | **Resolved** 2026-06-28 — Discharge via Lessons Learned; Git release tags (V0.6–V0.97) satisfy requirement at v0 scale | `Unknowns.md` |
 | FA-001 — Site not confirmed | Critical — blocks all hot operations | `Unknowns.md` |
 | EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
-| RS-003 — Archive/ directory not created | Blocking — blocks RIP-001 full closure | `Unknowns.md` |
 | PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
+| AP-012 / AP-016 — Human authority availability / concurrent quarantine | Critical — Gate 3 blocked pending Provisional Spec; cascade deadlock confirmed | `Unknowns.md` |
+| GH-009 — Emergent heuristic conflict (Cognitive Salvage) | Critical — N² interaction scaling; blocks heuristic co-deployment | `Unknowns.md` |
+| HR-UNK-002 — Hydrologic Resource Cascade material quality | Critical — flood sediment contaminant risk; safety-critical | `Unknowns.md` |
