@@ -1,6 +1,6 @@
 # Routing.md — LazarusForgeV0
 **Canonical Navigation and Link Mapping Index.**
-**Last updated: 2026-06-21**
+**Last updated: 2026-06-28**
 
 ---
 
@@ -42,6 +42,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Admin/Environmental_Constraints.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Environmental_Constraints.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Environmental_Constraints.md) | Explicit |
 | `Admin/Experiments.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Experiments.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Experiments.md) | Explicit |
 | `Admin/Nothingness Theorem` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Nothingness%20Theorem) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Nothingness%20Theorem) | Explicit |
+| `Admin/Computational Institutional Reasoning` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/Computational%20Institutional%20Reasoning) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/Computational%20Institutional%20Reasoning) | Explicit |
 | `Admin/AUDIT_HARNESS.py` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Admin/AUDIT_HARNESS.py) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Admin/AUDIT_HARNESS.py) | N/A (Script) |
 | **Architecture/ Layer** | | | |
 | `Architecture/Forge_flow.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Architecture/Forge_flow.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Architecture/Forge_flow.md) | Explicit |
@@ -75,6 +76,8 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Tests/Living_Waters.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Living_Waters.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Living_Waters.md) | Explicit |
 | `Tests/Trophic_Forge.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Trophic_Forge.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Trophic_Forge.md) | Explicit |
 | `Tests/Solar_Descent.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Solar_Descent.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Solar_Descent.md) | Explicit |
+| `Tests/Cognitive_Salvage_Layer.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Cognitive_Salvage_Layer.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Cognitive_Salvage_Layer.md) | Explicit |
+| `Tests/Hydrologic_Resource_Cascade.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Hydrologic_Resource_Cascade.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Hydrologic_Resource_Cascade.md) | Explicit |
 | **Challenges/ Layer** | | | |
 | `Challenges/Water.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Water.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Water.md) | Explicit |
 | `Challenges/Biofouling.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Biofouling.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Biofouling.md) | Explicit |
@@ -109,27 +112,4 @@ Update this file whenever:
 Routing.md completeness is verified against Discovery.md structure map.
 Discrepancies between the two are logged as pending corrections in Discovery.md.
 
-
-# Routing.md — v4.1 Patch
-## Date: 2026-06-24
-## One targeted insertion to Routing.md
-
----
-
-## CHANGE — Add Cognitive_Salvage_Layer.md to Tests/ Layer table
-
-In the Master Routing Map table, under the **Tests/ Layer** section,
-insert the following row after `Tests/Solar_Descent.md`:
-
-| `Tests/Cognitive_Salvage_Layer.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Cognitive_Salvage_Layer.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Cognitive_Salvage_Layer.md) | Explicit |
-
-## Also update the Last Updated date in the header:
-
-**Last updated: 2026-06-24**
-
----
-
-## SUMMARY
-Files touched: Routing.md only
-Change type: Single row addition to Tests/ Layer table
-Net line delta: +1 row
+**Note on non-extension Admin/ files:** `Admin/Nothingness Theorem` and `Admin/Computational Institutional Reasoning` are intentionally filed without `.md` extensions and contain spaces in their filenames (URL-encoded as `%20` in raw/repo links). `Nothingness Theorem` is a philosophical substrate document (Admin/, intentionally functionless per its own doctrine). `Computational Institutional Reasoning` is the formal theoretical paper containing the axioms, theorems, and Verification Algebra that back CF-004, AP-006, and related epistemic-debt doctrine in Unknowns.md and Auditor_Protocols.md. Neither carries a File State sidecar in the standard format; both are Tier 0 (foundational/philosophical) rather than operational doctrine files.
