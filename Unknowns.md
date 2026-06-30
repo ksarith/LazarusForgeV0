@@ -19,6 +19,7 @@ Cross-module unknowns → listed here, full entry in owning file
 Pending corrections (task list) → PC cluster in this file
 Programmatic URL routing → `Routing.md`
 Navigation map and scope boundaries → `Discovery.md`
+Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and epistemic-debt doctrine → `Admin/Computational Institutional Reasoning`
 
 **Cross-module dependencies** are owned by each file's Upstream/Downstream tables as of the v0.2 retrofit pass. See `Discovery.md` Scope Map for navigation. The Dependency Map section formerly in this file has been retired — it was a compensatory mechanism for files that lacked Upstream/Downstream tables. Those tables now exist across the full active file set and are the authoritative source.
 
@@ -701,6 +702,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 *HR-UNK-001 Critical — entire resource recovery premise rests on hydraulic sorting effectiveness.*
 *HR-UNK-002 Critical — safety-critical; contaminated sediment zones may require remediation rather than resource extraction.*
 *Additional HR unknowns (HR-003 through HR-010) are research questions in the file body; formal sidecar registration deferred to first audit pass.*
+*Known discrepancy: Tests/Hydrologic_Resource_Cascade.md File State declares "Open Unknowns: 8," but only HR-UNK-001 and HR-UNK-002 carry formal sidecar entries as of 2026-06-28. Correct the File State field to 2 on next commit to that file, or register HR-003 through HR-008 formally to match the declared count.*
 
 ### Cross-Module
 
