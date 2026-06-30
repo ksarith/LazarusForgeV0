@@ -17,11 +17,11 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-28                                                      |
-| Auditor          | Grok (Synthesizer)                                                  |
-| Open Unknowns    | 8                                                                   |
+| Last Audit       | 2026-06-28                                                          |
+| Auditor          | Grok (Synthesizer); revised Gemini + Claude (Synthesizer/Auditor)   |
+| Open Unknowns    | 2                                                                   |
 | Active Disputes  | 0                                                                   |
-| Highest Risk     | Medium                                                              |
+| Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
@@ -32,18 +32,19 @@
 **This file DOES define:**
 - The Hydrologic Resource Cascade concept as a multi-benefit flood resource recovery system
 - Sequential zones and their functions (intake, heavy mineral concentration, aggregate, fine sediment, wetland polishing, recreation)
-- Episodic flood-driven operation philosophy integrated with passive hydrology
-- Research unknowns and proposed test parameters (HR-001 through HR-008)
+- Episodic flood-driven operation philosophy integrated with continuous base-flow and optional passive circulation
+- Hydraulic operating modes across drought, normal flow, seasonal high water, flood, and recovery conditions
+- Research unknowns and proposed test parameters (HR-001 through HR-010)
 - Integration with Lazarus Forge principles (salvage-first, multi-output, passive systems, landscape-scale salvage)
 - Flood resilience infrastructure framing with recreation and resource recovery as co-benefits
 - Site characterization needs and promotion criteria
 
 **This file DOES NOT define:**
 - Detailed engineering drawings, site-specific hydrology models, or full permitting doctrine
-- Power systems or energy integration (see Operations/Energy.md)
-- Material processing gate details (see Operations/Gate_05_Separation_Thermal.md)
+- Power systems or energy integration (see `Operations/Energy.md`)
+- Material processing gate details (see `Operations/Gate_05_Separation_Thermal.md`)
 - Leviathan marine extensions or Support Raft integration
-- Full economic valuation model (see Economics.md)
+- Full economic valuation model (see `Admin/Economics.md`)
 - Detailed contaminant remediation protocols
 
 ---
@@ -64,6 +65,8 @@ This file lives in Tests/ because core assumptions about consistent separation e
 | HR-ASM-002 | Recovered silt/clay and sand meet quality thresholds for ceramics/growing media and recreation without extensive additional processing | Analogous river sediment uses | Low | Material testing (HR-004) disproves usability |
 | HR-ASM-003 | Episodic flood operation reduces energy/maintenance needs compared to continuous systems while leveraging natural replenishment | Passive hydrology and nature-based solutions literature | Medium | First flood cycle data shows net negative outcomes |
 | HR-ASM-004 | Multi-benefit design (flood control + resources + recreation) strengthens regulatory and funding viability | Avoided cost arguments in resilience projects | Medium | Site-specific permitting reveals conflicts |
+| HR-ASM-005 | Optional passive circulation systems (wind, hydraulic ram, animal power) provide sufficient head to maintain recreational and ecological velocity during inter-flood periods | Historical wind-pump performance and low-head hydraulic analogs | Medium | Pilot shows stagnation under average conditions despite passive systems |
+| HR-ASM-006 | Continuous river-coupled base-flow diversion does not cause adverse downstream erosion or siltation in standard bypass mode | River diversion and canal engineering analogs | Medium | Field observation of scouring at return weir or excessive deposition in main channel |
 
 ---
 
@@ -71,54 +74,96 @@ This file lives in Tests/ because core assumptions about consistent separation e
 
 ### Organizing Principle
 
-The system functions as a **Flood Resource Recovery Basin** with a **Hydrologic Resource Cascade**. Flood events drive sediment-laden water through sequential zones optimized for velocity reduction, sorting, and value extraction. Between floods, the system supports recreation, habitat, and maintenance. This is landscape-scale salvage: turning natural material flows (flood sediment) and hazards (flooding) into productive outputs.
+The system functions as a **Flood Resource Recovery Basin** with a **Hydrologic Resource Cascade**. Flood events drive sediment-laden water through sequential zones optimized for velocity reduction, sorting, and value extraction. Between floods, the system supports recreation, habitat, and maintenance through continuous base-flow diversion from an adjacent waterway augmented by optional passive circulation.
 
-**Episodic Operation Doctrine:** Floods are the primary "process driver." The system is designed for passive capture during high flows and low-intervention use otherwise. Continuous pumping (e.g., traditional lazy river) is de-emphasized to minimize energy use.
+**Episodic Operation Doctrine:** Floods are the primary process driver. The system is designed for passive capture during high flows and low-intervention use otherwise. Continuous mechanical pumping is de-emphasized in favor of passive gravity-driven and natural hydrology systems.
 
-### Sequential Zones
+**River-Coupled Base Flow:** Where an adjacent waterway exists, a controlled intake gate diverts a modest fraction of base flow through the cascade, returning via a safe weir downstream. This eliminates stagnation, maintains dissolved oxygen, supports wetland function, and keeps recreation viable year-round without large energy inputs.
 
-1. **Flood Intake**  
-   Accepts seasonal overflow, reduces destructive velocity, captures coarse debris. Protects downstream areas.
+**Optional Passive Momentum Systems:** During low-flow periods, circulation may be supplemented by passive mechanical systems. Options include wind-driven Archimedes screws, paddle wheels, hydraulic rams (where elevation permits), animal power, solar pumps, or other locally appropriate technologies. The cascade should not depend on any single circulation method — the appropriate choice is site-specific and should be selected from what is locally salvageable and maintainable.
 
-2. **Heavy Mineral Concentrators**  
-   Spiral bends, drop structures, vortex pits, collection sumps. Targets dense minerals for potential industrial/ceramic use.
+### Hydraulic Operating Modes
 
-3. **Aggregate Zone**  
-   Sand bars for recreation (beaches), construction aggregate, filtration media.
+The system behaves differently across hydrologic conditions. Operational posture shifts accordingly:
 
-4. **Fine Sediment Lagoons**  
-   Clay/silt settling for ceramics, adobe, compressed earth, or growing media.
+| Mode | Primary Driver | Primary Goal |
+|---|---|---|
+| Drought | Passive/wind circulation or base-flow diversion | Maintain habitat, water quality, and recreation viability |
+| Normal Flow | River base-flow diversion | Recreation, wetland polishing, continuous monitoring |
+| Seasonal High Water | Increased diversion rate | Sediment capture begins; fine fraction lagoons filling |
+| Flood | Natural overflow + maximum intake | Maximum storage and resource recovery; flood attenuation |
+| Recovery | Controlled drainage | Inspection, material harvesting, structural restoration |
 
-5. **Wetland Polishers**  
-   Nutrient removal, wildlife habitat, water clarification, biodiversity. Final polishing before return to natural flow.
+### Sequential Zones and River-Coupled Flow
 
-6. **Recreation Loop**  
-   Tubing, kayaks, nature walks, environmental education. Activated in inter-flood periods.
+```
+[ Upstream Main River ]
+        │
+        ├──► [ Controlled Intake Gate ]
+        │           │
+        │           ▼
+        │     (1) Flood/Base-flow Intake
+        │     (reduces velocity, captures coarse debris)
+        │           │
+        │           ▼
+        │     (2) Heavy Mineral Concentrators
+        │     (spiral bends, vortex pits, collection sumps)
+        │           │
+        │           ▼
+        │     (3) Aggregate / Beach Zone ◄── Optional Passive
+        │     (sand bars, recreation beaches,    Circulation Loop
+        │      construction aggregate)               ▲
+        │           │                                │
+        │           ▼                                │
+        │     (4) Fine Sediment Lagoons              │
+        │     (clay/silt for ceramics, adobe,        │
+        │      compressed earth, growing media)      │
+        │           │                                │
+        │           ▼                                │
+        │     (5) Wetland Polishers ─────────────────┘
+        │     (nutrient removal, habitat,
+        │      water clarification)
+        │           │
+        │           ▼
+        │     (6) Recreation Loop
+        │     (tubing, kayaks, nature walks,
+        │      environmental education)
+        │           │
+        │           ▼
+        └──◄ [ Safe Return Weir ]
+                    │
+[ Downstream Main River ]
+```
 
-Each zone improves water quality for the next while generating distinct value streams. Floods replenish sediment; minor restoration maintains function.
+Each zone improves water quality for the next while generating distinct value streams. Floods replenish sediment; minor restoration maintains function. The spillway/weir entry and exit act as pressure valves — modest base-flow diversion under normal conditions; maximum intake during flood events with excess bypassing safely down the main channel.
 
 ### Integration with Lazarus Forge
 
-- **Salvage-First**: Flood sediment as primary feedstock.
-- **Multi-Output**: Resources, flood mitigation (peak attenuation, erosion reduction, recharge), recreation, habitat, education.
-- **Passive/Low-Energy**: Gravity and natural hydrology dominant.
-- **Resilience**: Floods as asset; design for overbank flows and natural restoration.
-- **Public Goods**: Avoided costs (dredging, damage) + direct benefits support funding.
+- **Salvage-First**: Flood sediment as primary feedstock
+- **Multi-Output**: Resources, flood mitigation, recreation, habitat, education, water quality
+- **Passive/Low-Energy**: Gravity and natural hydrology dominant; mechanical inputs are supplements not requirements
+- **Resilience**: Floods as asset; design for overbank flows and natural restoration
+- **Public Goods**: Avoided costs (dredging, damage) + direct benefits support funding
 
-**Framing**: Position as flood resilience infrastructure with co-benefits, improving public and regulatory acceptance.
+**Framing**: Position as flood resilience infrastructure with co-benefits, improving public and regulatory acceptance. The recreational and habitat dimensions are not afterthoughts — they are the primary mechanism for public support and permitting.
 
 ### Proposed Test Parameters / Research Questions
 
+**Core parameters (HR-001 through HR-008):**
 - **HR-001**: Can engineered hydraulic geometry consistently separate useful fractions? (Pilot channel tests)
-- **HR-002**: Annual sediment yield vs. maintenance cost.
-- **HR-003**: Heavy mineral concentration efficiency.
-- **HR-004**: Clay/silt suitability for ceramics/growing media (lab analysis).
-- **HR-005**: Flood resilience after repeated high-flow events.
-- **HR-006**: Ecological impacts vs. traditional detention basins.
-- **HR-007**: Contaminant management and water quality post-cascade.
-- **HR-008**: Net economic/public value including avoided costs.
+- **HR-002**: Annual sediment yield vs. maintenance cost
+- **HR-003**: Heavy mineral concentration efficiency
+- **HR-004**: Clay/silt suitability for ceramics/growing media (lab analysis)
+- **HR-005**: Flood resilience after repeated high-flow events
+- **HR-006**: Ecological impacts vs. traditional detention basins
+- **HR-007**: Contaminant management and water quality post-cascade
+- **HR-008**: Net economic/public value including avoided costs
 
-**Pilot Approach**: Small-scale basin in representative site. Monitor one or more flood cycles. Measure deposition, sorting, material properties, hydraulic performance, ecology, and visitor metrics.
+**Extended parameters (HR-009 through HR-010 — added 2026-06-28):**
+- **HR-009 (Wind-Kinetic Efficiency)**: Correlate local wind speed intervals with resulting flow velocity (m/s) in the Recreation Loop via passive mechanical pump array. Determines whether wind-driven circulation is viable at the site or whether alternative passive systems are needed.
+- **HR-010 (Diversion Hydraulics)**: Map the optimal intake gate geometry to capture maximum target sediment fractions during a design flood event while preventing system blowout or return weir silting. Informs the transition between operating modes.
+
+**Pilot Approach**: Small-scale basin in a representative site. Monitor one or more flood cycles. Measure deposition, sorting, material properties, hydraulic performance, ecology, and visitor metrics. Track across all five operating modes.
 
 ---
 
@@ -126,7 +171,7 @@ Each zone improves water quality for the next while generating distinct value st
 
 | Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
 |------|---------------|----------------|-------------|------------------|------------|---------------------|
-| —    | —             | —              | —           | No entries yet — pre-deployment | — | — |
+| — | — | — | — | No entries yet — pre-deployment | — | — |
 
 ---
 
@@ -134,7 +179,7 @@ Each zone improves water quality for the next while generating distinct value st
 
 | ID | Summary | Positions in Conflict | Risk | Status | Owner |
 |----|---------|----------------------|------|--------|-------|
-| —  | No active disputes | — | — | — | — |
+| — | No active disputes | — | — | — | — |
 
 ---
 
@@ -148,43 +193,46 @@ Each zone improves water quality for the next while generating distinct value st
 | Risk          | High                                             |
 | Priority      | Critical                                         |
 | Type          | Technical                                        |
-| Blocking      | Yes                                              |
+| Blocking      | Operational                                      |
 | Owner         | Tests/Hydrologic_Resource_Cascade.md             |
 | First Logged  | 2026-06-28                                       |
 | Last Reviewed | 2026-06-28                                       |
 
-**Description:** Hydraulic geometry and zone design may not reliably segregate fractions across variable flood magnitudes, sediment loads, and velocities.
+**Description:** Hydraulic geometry and zone design may not reliably segregate fractions across variable flood magnitudes, sediment loads, and velocities. The sorting efficiency that works for a 2-year flood may be completely different from a 10-year or 50-year event.
 
-**Why It Matters:** Core value proposition depends on usable material yields.
+**Why It Matters:** Core value proposition depends on usable material yields. If the cascade sorts well only at specific flow rates, the economic case weakens significantly. The entire resource recovery premise rests on this assumption.
 
-**Resolution Path:** Pilot deployment and monitoring (HR-001). Payment via Specification once data validates.
+**Resolution Path:** Pilot deployment and monitoring (HR-001). Payment via Specification once pilot data validates consistent separation across at least two flood cycles of different magnitudes.
 
-### HR-UNK-002 — Material quality and usability thresholds
+---
+
+### HR-UNK-002 — Material quality, contaminant risk, and usability thresholds
 
 | Field         | Value                                            |
 |---------------|--------------------------------------------------|
 | Status        | Open                                             |
 | Risk          | High                                             |
 | Priority      | Critical                                         |
-| Type          | Technical                                        |
-| Blocking      | Yes                                              |
+| Type          | Technical / Safety                               |
+| Blocking      | Operational                                      |
 | Owner         | Tests/Hydrologic_Resource_Cascade.md             |
 | First Logged  | 2026-06-28                                       |
 | Last Reviewed | 2026-06-28                                       |
 
-**Description:** Recovered fractions (especially silt/clay) may require additional processing or fail quality specs for target uses due to contaminants or composition.
+**Description:** Recovered fractions (especially silt/clay from first-flush urban or agricultural runoff) may contain heavy metals, pesticides, E. coli, or industrial contaminants. If fine clay lagoons accumulate toxins, zones 4 and 5 pivot from resource generation to hazardous waste remediation. Material usability thresholds for ceramics, growing media, and construction aggregate are unvalidated.
 
-**Why It Matters:** Without viable outputs, resource recovery component collapses.
+**Why It Matters:** Safety-critical. A cascade that concentrates heavy metals in the fine sediment lagoons creates a liability rather than a resource. The contaminant pathway must be characterized before any material extraction or public access is permitted.
 
-**Resolution Path:** Lab testing of pilot materials (HR-004).
+**Resolution Path:** Lab testing of pilot materials (HR-004) including heavy metals screen, pesticide panel, and microbiological assessment. Must establish a contaminant decision tree: what contamination levels trigger remediation mode vs. resource extraction mode. Cross-reference `Challenges/Waste.md` WA-002 (hazardous fraction identification) and `Admin/Ethical_Constraints.md` for harm thresholds. Payment via Specification once contaminant characterization is complete and decision tree is defined.
 
-*(Additional unknowns for contaminant management, long-term morphology changes, regulatory pathways, etc., can be expanded in future audits.)*
+*(Additional unknowns for long-term morphology changes, regulatory pathways, recreational compatibility conflicts, and wind-kinetic efficiency are noted as research questions HR-003 through HR-010 in the body. Formal sidecar registration deferred to first audit pass.)*
 
 ---
 
 ### Resolution Log
 
-*(empty — pre-deployment)*
+- 2026-06-28: **Initial file creation** by Grok (Synthesizer). Core architecture, six sequential zones, episodic operation doctrine, four assumptions, eight research questions, two formal unknowns.
+- 2026-06-28: **Agent revision pass** (Gemini + Claude). Wind/river coupling added: river-coupled base-flow doctrine, Optional Passive Momentum Systems framing (technology-agnostic), Hydraulic Operating Modes table (five modes). HR-ASM-005 and HR-ASM-006 added to Assumptions. HR-009 and HR-010 added as extended research parameters. HR-UNK-002 expanded with contaminant pathway detail and cross-references. Open Unknowns corrected 8 → 2 (HR-003 through HR-010 are body research questions; formal sidecar registration deferred to first audit pass). Flow diagram updated with river-coupling architecture.
 
 ---
 
@@ -192,20 +240,24 @@ Each zone improves water quality for the next while generating distinct value st
 
 | Date | Path | Why Abandoned | Reconsider? |
 |------|------|---------------|-------------|
-| —    | —    | —             | —           |
+| 2026-06-28 | Wind-driven circulation as primary circulation mechanism | Locks system to single technology; site conditions vary; Forge doctrine favors technology-agnosticism | No — replaced with Optional Passive Momentum Systems framing |
+| 2026-06-28 | Continuous mechanical pumping (lazy river style) for recreation loop | High energy cost; contradicts Episodic Operation Doctrine and low-energy design philosophy | No |
 
 ---
 
 ## Drift Indicators
 
-- Body claims separation efficiency or material usability without pilot data.
-- Continuous pumping reintroduced as primary mode without energy justification.
-- Flood mitigation benefits overstated without hydraulic modeling.
-- Ethical constraints on contaminants or downstream impacts weakened.
-- Unknown count grows without Resolution Pass.
+- Body claims separation efficiency or material usability without pilot data
+- Continuous pumping reintroduced as primary mode without energy justification
+- Flood mitigation benefits overstated without hydraulic modeling
+- Ethical constraints on contaminants or downstream impacts weakened
+- Passive Momentum Systems locked to a specific technology without site characterization
+- Open Unknowns count diverges from formally registered sidecar entries
+- River-coupling added as requirement rather than option without site confirmation
+- Unknown count grows without Resolution Pass
 
 **Compound Drift Rule:** Multiple simultaneous triggers escalate to human review.
 
 ---
 
-*This file seeds the Hydrologic Resource Cascade experiment. Promotion to partial Operations/ requires validated pilot data on at least one primary pathway (separation + one output stream) and resolution of blocking unknowns.*
+*This file seeds the Hydrologic Resource Cascade experiment. Promotion to partial Operations/ requires validated pilot data on at least one primary pathway (separation + one output stream) and resolution of blocking unknowns. The current architecture remains Exploration — testable hypotheses, not confirmed doctrine.*
