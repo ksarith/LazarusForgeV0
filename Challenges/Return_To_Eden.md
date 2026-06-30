@@ -2,7 +2,7 @@
 `Challenges/Return_To_Eden.md`
 
 * **Author:** ksarith
-* **Version:** 1.0.1
+* **Version:** 1.0.2
 * **Date:** June 2026
 
 ---
@@ -21,8 +21,8 @@
 | Spec Gates | None cleared |
 | Verification Ref | None |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
-| Highest Risk | RE-UNK-001 — Eden Index variables lack defined measurement protocols; index is formally specified but not yet operationally measurable |
-| Last Audit | 2026-06-30 (partial — Phase 1 blocked by 404 on initial run; content audit pending re-run) |
+| Highest Risk | RE-UNK-001 — Eden Index variables lack defined measurement protocols; index is formally specified but not yet operationally measurable. RE-UNK-005 is a direct dependency. |
+| Last Audit | 2026-06-30 (Grok + ChatGPT dual audit; G1–G2 conditional, G4–G6 cleared; dimensional consistency corrected v1.0.1 → v1.0.2) |
 
 ---
 
@@ -48,18 +48,21 @@ This heuristic prevents hyper-optimization of isolated components at the cost of
 
 ## 3. Mathematical Formulation & The Eden Index
 
-To prevent abstract drift, progress toward Eden conditions is computed via the localized **Eden Index ($I_E$)**. The index models the ratio of self-sustaining biological and thermodynamic order against structural waste and external dependencies. Let the system be represented by:
+To prevent abstract drift, progress toward Eden conditions is computed via the localized **Eden Index ($I_E$)**. The index models the ratio of self-sustaining biological and thermodynamic order against structural waste and external dependencies, normalized against system baseline references established at site entry. Let the system be represented by:
 
-$$I_E = \frac{\sum (B_d \times \Omega_r) + \eta_{sys}}{W_{out} + \Phi_{ext}}$$
+$$I_E = \frac{\displaystyle\sum\left(\frac{B_d}{B_{d,0}} \cdot \frac{\Omega_r}{\Omega_{r,0}}\right) + \eta_{sys}}{\dfrac{W_{out}}{W_{out,0}} + \dfrac{\Phi_{ext}}{\Phi_{ext,0}}}$$
 
 Where:
 * **$B_d$** = Localized Biodiversity Index (Shannon-Wiener variant for target micro-climate).
 * **$\Omega_r$** = Regenerative Velocity (rate of soil, water, and atmospheric detoxification).
-* **$\eta_{sys}$** = Systemic Autonomy (fraction of internal loops operating without external material imports).
+* **$\eta_{sys}$** = Systemic Autonomy (fraction of internal loops operating without external material imports). Dimensionless [0, 1].
 * **$W_{out}$** = Unassimilated Waste Output (entropy shed outside the system boundary).
 * **$\Phi_{ext}$** = External Energy/Resource subsidy requirements.
+* **$B_{d,0}$, $\Omega_{r,0}$, $W_{out,0}$, $\Phi_{ext,0}$** = Baseline reference values measured at system entry (pre-intervention state). Normalization renders all ratio terms dimensionless; the sum over contributing subsystem zones remains dimensionless throughout.
 
-An ideal Eden state achieves $W_{out} \rightarrow 0$ and $\Phi_{ext} \rightarrow 0$, indicating a perfectly closed metabolic loop where civilization operates as a symbiotic, self-stabilizing element of the biosphere.
+At baseline (system entry, before intervention), all normalized ratios equal 1 and $I_E = (1 + \eta_{sys}) / 2$. An ideal Eden state achieves $W_{out}/W_{out,0} \rightarrow 0$ and $\Phi_{ext}/\Phi_{ext,0} \rightarrow 0$, with the numerator growing as biodiversity and regenerative capacity exceed baseline. Baseline measurement protocol is currently undefined — see RE-UNK-005.
+
+**Note:** The formulation is PROVISIONAL pending instrument specifications and calibration procedures for all five primary variables. See RE-UNK-001 and RE-UNK-005.
 
 ---
 
@@ -78,7 +81,7 @@ The challenge is structured into four distinct engineering gates to track evolut
 
 ## 5. Primary Challenge Metrics
 
-* **Closed-Loop Material Cycles:** Total mass of system outputs redirected into inputs divided by total mass generated. Minimum passing threshold for Tier I is $M_{recyc} \ge 98.4\%$.
+* **Closed-Loop Material Cycles:** Total mass of system outputs redirected into inputs divided by total mass generated. Minimum passing threshold for Tier I is $M_{recyc} \ge 98.4\%$. *(Threshold provenance unverified — see RE-UNK-002.)*
 * **Ecosystem Net-Positivity:** Quantifiable increase in topsoil depth, microbiological activity, and organic carbon content within the zone of influence.
 * **Toxin Mitigation:** Reduction of target industrial residues (e.g., heavy metals, persistent organic pollutants) to parts-per-billion levels using localized biological or chemical processing.
 * **Caloric Autonomy:** Stable production of micro-nutrient and macro-nutrient baselines via closed-loop cascade agriculture with low energy-per-calorie investments.
@@ -109,7 +112,7 @@ As the Lazarus Forge catalog expands, this file serves as the definitive archite
 | Field | Value |
 | :--- | :--- |
 | ID | RE-UNK-001 |
-| Description | Eden Index variable measurement protocols undefined. All five variables ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) lack instrument specifications, calibration procedures, and sampling intervals. Index is formally defined but not yet operationally measurable. Per Computational Institutional Reasoning Physical Grounding Gate (Φ), S-dimension score cannot be advanced through documentation alone — measurement trials required. |
+| Description | Eden Index variable measurement protocols undefined. All five primary variables ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) lack instrument specifications, calibration procedures, and sampling intervals. Index is formally defined but not yet operationally measurable. Per Computational Institutional Reasoning Physical Grounding Gate (Φ), S-dimension score cannot be advanced through documentation alone — measurement trials required. |
 | Subtype | Active |
 | Status | Open |
 | Blocking | Tier I gate advancement — $I_E$ cannot be computed without at least $W_{out}$ and $\Phi_{ext}$ baselines. Non-blocking at Exploration. |
@@ -147,4 +150,15 @@ As the Lazarus Forge catalog expands, this file serves as the definitive archite
 | Status | Open |
 | Blocking | Non-blocking. Required before Discovery.md Scope Map entry can be fully populated. |
 | Resolution Vehicle | Discovery.md Scope Map update; coordinate with next full multi-agent audit cycle |
+| First Cycle | 11 |
+
+### RE-UNK-005
+| Field | Value |
+| :--- | :--- |
+| ID | RE-UNK-005 |
+| Description | Eden Index baseline reference values ($B_{d,0}$, $\Omega_{r,0}$, $W_{out,0}$, $\Phi_{ext,0}$) are required by the v1.0.2 normalized formulation but have no defined measurement protocol. All four baselines must be established at site entry before $I_E$ can be computed for any Tier. Normalization resolves the dimensional consistency problem identified in audit cycle 11 but introduces this upstream measurement dependency. RE-UNK-005 is a dependency of RE-UNK-001 — both must be resolved together before the index is operational. |
+| Subtype | Active |
+| Status | Open |
+| Blocking | Tier I gate advancement — inherits RE-UNK-001 blocking condition. Non-blocking at Exploration. |
+| Resolution Vehicle | Experiments.md — baseline characterization protocol (site-entry measurement campaign); cross-ref Admin/Environmental_Constraints.md (site characterization), Tests/Living_Waters.md ($\Omega_r$ proxy candidates), Challenges/Water.md ($W_{out}$ baselines) |
 | First Cycle | 11 |
