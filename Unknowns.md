@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.0 — 2026-06-24. Full Adversarial Battery pass on Admin/Auditor_Protocols.md complete. Nine new unknowns AP-012 through AP-020 registered. AP-012 and AP-016 elevated to Critical Watch. Human Interaction Point Doctrine added to AP Governing Principles. Gate 3 blocked pending AP-012/AP-016 Provisional Spec.**
+**Version 4.2 — 2026-06-28. GH cluster registered (GH-001 through GH-012). RIP-001 closed — Git release tags fulfill prior-state archival requirement. ST-004, CT-008, CT-009, CF-004 registered. HR cluster added (Hydrologic Resource Cascade). Cognitive_Frameworks.md CF-004 indexed.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -42,21 +42,19 @@ These rules are enforced at every audit cycle opening:
 
 ---
 
-## What v4.0 Means
+## What v4.2 Means
 
-- Full Adversarial Challenge Battery completed for Admin/Auditor_Protocols.md (Classes 1–10, collaborative Claude + Gemini pass, 2026-06-24)
-- Nine new unknowns registered: AP-012 through AP-020
-- AP-012 (Critical) and AP-016 (Critical) added to Critical Watch
-- Human Interaction Point Doctrine added to Governing Principles in Auditor_Protocols.md — human interaction as coarse correction opportunity for non-specialists, not operational dependency; autonomous graceful degradation as primary response under human unavailability
-- EF-0.2 autonomous degradation amendment committed
-- Provenance Ceiling Self-Application Rule added to Governing Principles
-- Failure Modes table addition: Permanently PROVISIONAL Load-Bearing Claims
-- Gate 3 remains blocked pending AP-012 and AP-016 resolution paths reaching Provisional Spec
-- AP-020 flagged for human governing authority Trajectory discharge decision
-- AP-013 and AP-014 IDs explicitly confirmed (correcting Gemini formatting artifact in consolidated table)
-- RC-007 (Priority Escalation Saturation), RC-008 (Long-Lived Unknown Accumulation), and RC-009 (Resolution Vehicle Persistence Without Progress) registered in Future/Deferred cluster
-- Operational Blocking and Epistemic Blocking defined as canonical vocabulary in Canonical_Terms.md v0.3
-- CT-006 (Circular Dependency Detection) and CT-007 (ID Namespace Allocation) registered in CT sidecar
+- Cognitive Salvage Layer GH cluster registered: GH-001 through GH-012
+- GH-009 (Emergent heuristic conflict) elevated to Critical — N² interaction scaling confirmed; Interaction Volume doctrine added to resolution path
+- GH-012 (Discovery yield rate) registered — primary ROI signal for the Cognitive Salvage Layer; cross-reference AP-001
+- RIP-001 closed — Discharge via Lessons Learned. Git release tag system (V0.6 through V0.97, GPG-signed) fulfills prior-state archival requirement at v0 scale. Manual /Archive/ directory deposit is redundant.
+- RIP-006 partially resolved — GitHub indefinite retention satisfies Tier 1 permanent retention requirement; remaining gap is /Archive/ directory content retention policy pending distillate architecture definition.
+- ST-004 registered (High risk) — sub-threshold state tampering vulnerability in Ship_of_Theseus.md Derivative Identity threshold
+- CT-008 registered (In Progress Vehicle) — HF-001 Heuristic Failure canonicalization consistency tracking
+- CT-009 registered (Low risk) — Grain System implementation consistency tracking between Canonical_Terms.md definition and Ship_of_Theseus.md ST-001/ST-002 implementation
+- CF-004 registered (Low risk) — epistemic debt measurement mechanism undefined; Triage Posture doctrine exists in Cognitive_Frameworks.md; trigger metric is v1 automation target
+- HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade)
+- GH-009 added to Dependency Clusters and Critical Watch
 
 ---
 
@@ -69,7 +67,6 @@ Critical and Blocking unknowns only. Shows which entries block others — not a 
 UNK-009 (External root-of-trust — cross-module)
 ├── GOV-003 (Integrity enforcement architecture)
 ├── GOV-005 (Constitutional stability unproven)
-├── RIP-001 (Prior-state archival)
 └── SEC-007 (External root-of-trust architecture)
         └── GMP-004 (Ratification authentication gap)
 ```
@@ -130,6 +127,16 @@ AP-012 (Human authority availability — autonomous degradation doctrine)
 
 AP-017 (Battery independence requirement)
 └── Gate 3 clearance blocked until AP-017 reaches Provisional Spec
+```
+
+**Cognitive Salvage / Interaction Safety**
+```
+GH-009 (Emergent heuristic conflict — N² interaction scaling)
+└── All heuristic co-deployment decisions blocked until
+    Interaction Volume doctrine is defined
+        └── GH-007 (Fidelity drift) — interaction testing must run
+            against current machinery revision, not stale puzzle
+            engine geometry
 ```
 
 ---
@@ -225,16 +232,17 @@ AP-017 (Battery independence requirement)
 | AP-018 | Saturation threshold hysteresis and smoothing undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-019 | Semantic convergence metrics for unknown resolution undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-020 | Textual calibration harness (Golden Dataset) undefined — flagged for Trajectory discharge decision | `Admin/Auditor_Protocols.md` | Open | — | Major |
-| RIP-001 | Prior-state archival system not yet established | `Admin/Repository_Integrity_Protocol.md` | Open | — | Critical |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
 | RIP-005 | Security_Protocols.md Phase 3 dependency — file exists at v0.5; cryptographic implementation not yet operational | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Major |
-| RIP-006 | Archive retention policy undefined | `Admin/Repository_Integrity_Protocol.md` | Open | — | Minor |
+| RIP-006 | Archive retention policy — partially resolved; GitHub indefinite retention satisfies Tier 1 requirement; /Archive/ directory content retention pending distillate architecture | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Minor |
 | RIP-007 | Integrity incident ownership undefined | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
 | CT-001 | Legacy script integration name mapping | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-002 | Component Library Schema standard undefined | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-003 | Dependency_Priority_Map.md needed before v1 | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-004 | Trusted initialization environment definition | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-005 | Ethical and authorization term placeholders pending canonicalization | `Admin/Canonical_Terms.md` | Open | — | Major |
+| CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
+| CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | VG-001 | Gate definition synchronization authority chain undefined | `Admin/Verification_Gates_LF.md` | Open | — | Major |
 
 ### Engineer Protocols
@@ -306,6 +314,7 @@ AP-017 (Battery independence requirement)
 | CF-001 | Hardware watchdog minimum standard — parameters defined, hardware validation pending | `Operations/Electronics.md` | In Progress | Active | Critical |
 | CF-002 | Correlated AI failure modes — test protocol defined, swarm deployment pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Vehicle | Major |
 | CF-003 | Identity continuity during split-brain — doctrine defined, threshold calibration pending | `Architecture/Cognitive_Frameworks.md` | In Progress | Vehicle | Major |
+| CF-004 | Epistemic debt measurement mechanism undefined — Triage Posture doctrine exists; trigger metric has no formal implementation; v1 automation target | `Architecture/Cognitive_Frameworks.md` | Open | — | Minor |
 
 *CF-001 remains Blocking — parameters are Analogous confidence pending first hardware prototype validation.*
 
@@ -474,6 +483,7 @@ AP-017 (Battery independence requirement)
 | ST-001 | Grain storage and tracking protocol | `Admin/Ship_of_Theseus.md` | Open | — | Low |
 | ST-002 | QR documentation standard | `Admin/Ship_of_Theseus.md` | Open | — | Low |
 | ST-003 | AI identity continuity under split-brain | `Admin/Ship_of_Theseus.md` | In Progress | Active | Medium |
+| ST-004 | Sub-threshold state tampering vulnerability — Derivative Identity threshold (30%) has adversarial bypass; rolling delta mechanism required | `Admin/Ship_of_Theseus.md` | Open | — | Major |
 | EL-001 | Forge-Standard interface spec | `Operations/Electronics.md` | Open | — | Medium |
 | EL-002 | PCB trace width for v0 tooling | `Operations/Electronics.md` | Open | — | Low |
 | EL-003 | TMR voter implementation | `Operations/Electronics.md` | Open | — | Medium |
@@ -659,6 +669,39 @@ AP-017 (Battery independence requirement)
 | PC-003 | New file cross-reference corrections | All 10 files corrected | Resolved | — | Minor |
 | PC-004 | Stale name corrections | Both files corrected | Resolved | — | Minor |
 
+### Cognitive Salvage
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| GH-001 | Heuristic-to-deterministic translation fidelity undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-002 | Statistical significance threshold for consensus aggregation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-003 | Adversarial poisoning of heuristic datasets undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-004 | Optimal abstraction level for heuristic preservation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-005 | Human vs. autonomous intervention fraction undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Minor |
+| GH-006 | NOVEL promotion threshold undefined — CANDIDATE_NOVEL holds qualifying entries until resolved | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-007 | Puzzle fidelity drift undefined — silent pipeline poisoning risk if machinery revision diverges from puzzle engine | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-008 | Heuristic expiration doctrine undefined — validated_on_machinery_revision field exists; expiration logic does not | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-009 | Emergent heuristic conflict undefined — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Critical |
+| GH-010 | Simulator overfitting undefined — pipeline may harvest simulator expertise rather than physical expertise | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-011 | Heuristic canonicalization layer undefined — variant sequences inflate consensus_run_count without adding evidential weight | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-012 | Discovery yield rate undefined — fraction of harvested heuristics that are genuinely novel; primary ROI signal for the layer | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+
+*GH-001 and CSL-A06 are co-blocking: translation fidelity and simulation-to-physical fidelity are the two load-bearing assumptions for operational deployment.*
+*GH-003 maps to Adversarial Battery Challenge Class 8 — route adversarial resistance requirements to Admin/Security_Protocols.md.*
+*GH-009 Critical — interaction surface grows as N²; Interaction Volume doctrine required before knowledge base scales beyond ~20 promoted heuristics.*
+*GH-006 hard gate: no heuristic may receive NOVEL status until GH-006 closes; CANDIDATE_NOVEL intermediate status holds qualifying entries.*
+
+### Hydrologic Resource Cascade
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| HR-UNK-001 | Hydraulic sorting effectiveness at Forge-scale unvalidated — particle separation efficiency across all zones uncharacterized | `Tests/Hydrologic_Resource_Cascade.md` | Open | — | Critical |
+| HR-UNK-002 | Material quality and contaminant risk uncharacterized — flood sediment may contain heavy metals, pesticides, or industrial runoff | `Tests/Hydrologic_Resource_Cascade.md` | Open | — | Critical |
+
+*HR-UNK-001 Critical — entire resource recovery premise rests on hydraulic sorting effectiveness.*
+*HR-UNK-002 Critical — safety-critical; contaminated sediment zones may require remediation rather than resource extraction.*
+*Additional HR unknowns (HR-003 through HR-010) are research questions in the file body; formal sidecar registration deferred to first audit pass.*
+
 ### Cross-Module
 
 | ID | Title | Owning Files | Status | Subtype | Priority |
@@ -711,7 +754,7 @@ FL-001 and several EC entries have been In Progress since v1.1 — approaching t
 
 GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path. GOV-007 In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008. GOV-008 exit condition not yet met.
 
-**RIP-001 Critical** — confirm GitHub release cadence established before closing.
+**RIP-001 Resolved** — Git release tag system (V0.6–V0.97, GPG-signed) fulfills prior-state archival at v0 scale. Discharged via Lessons Learned 2026-06-28.
 
 **EN-001 Critical/Blocking** — no structural specification may be promoted without validated safety factors for salvaged materials.
 
@@ -724,7 +767,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| RIP-001 | Prior-state archival — confirm GitHub release cadence before closing |
 | SEC-007 | External root-of-trust — architectural decision above repository level required |
 | UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007 |
 | EC-008 | Inferred authorization — softest point in permission model; interim default (no material alteration) in place; formal resolution required before operational deployment |
@@ -750,6 +792,8 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | LW-UNK-003 | LW-003 lumen implosion — CRITICAL; 4.9 MPa net crush load at 500 m |
 | AP-012 | Human authority availability — terminal dependency on human intervention was load-bearing and unstated; autonomous graceful degradation doctrine is resolution path; co-resolves AP-016 |
 | AP-016 | Concurrent multi-node quarantine — cascade deadlock scenario confirmed by Class 10 adversarial pass; co-resolves under AP-012 doctrine |
+| GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
+| HR-UNK-002 | Hydrologic Resource Cascade material quality — flood sediment contaminant risk; safety-critical before any resource extraction operations |
 
 ### Blocking Watch
 
@@ -799,6 +843,7 @@ Entries here are closed. They remain for institutional memory.
 | AP-006 | Institutional truth provenance hierarchy | Payment via Specification — four provenance labels formalized; provenance ceiling rule established | 2026-06-21 |
 | AP-009 | Epistemic Ledger volume exemption from sidecar metadata guardrail | Payment via Specification — Metadata Guardrail updated with ENTRY_ID exemption syntax | 2026-06-21 |
 | ENV-008 | Environmental_Constraints.md not registered in Routing.md and Discovery.md | Resolved — both files updated and committed | 2026-06-21 |
+| RIP-001 | Prior-state archival system not yet established | Discharge via Lessons Learned — Git release tag system (V0.6 through V0.97, GPG-signed autogenerated source zips) fulfills prior-state preservation requirement at v0 scale. Manual /Archive/ directory deposit is redundant. GitHub indefinite retention satisfies permanent retention requirement. RIP-006 partially resolved simultaneously. | 2026-06-28 |
 
 ---
 
@@ -833,413 +878,5 @@ Entries here are closed. They remain for institutional memory.
 **v3.8 — 2026-06-21:** Structural maturation pass. Subtype column added to all active index tables. Unknown Budget and Reversion Protocol added to Size Management Rules. Dependency Clusters section added. Reopened status formally defined. AP-001 updated with retrospective calibration note.
 **v3.9 — 2026-06-23:** RC governance pass. RC-007 through RC-009 registered in Future/Deferred with owning file Admin/Auditor_Protocols.md. Operational Blocking and Epistemic Blocking added to Canonical_Terms.md v0.3 as canonical vocabulary. CT-006 and CT-007 registered in CT sidecar.
 **v4.0 — 2026-06-24:** Full Adversarial Battery pass on Admin/Auditor_Protocols.md complete — Classes 1–10, Claude + Gemini. Nine new unknowns AP-012 through AP-020 registered. AP-012 and AP-016 elevated to Critical Watch — cascade deadlock scenario confirmed. Human Interaction Point Doctrine added to AP Governing Principles; autonomous graceful degradation as primary response. EF-0.2 autonomous degradation amendment committed. Gate 3 blocked pending AP-012/AP-016 Provisional Spec. AP-020 flagged for Trajectory discharge decision.
-
-# Unknowns.md — v4.1 Patch
-## Date: 2026-06-24
-## Application: three targeted insertions to the live Unknowns.md v4.0
-
----
-
-## CHANGE 1 — Roll What section
-## Target: Replace "## What v4.0 Means" header and body
-## Action: Retire v4.0 narrative per Size Management Rule 1; replace with v4.1
-
----
-
-REPLACE the entire "## What v4.0 Means" section with:
-
----
-
-## What v4.1 Means
-
-- Cognitive Salvage Layer (Tests/Cognitive_Salvage_Layer.md) GH-series cluster
-  registered: GH-001 through GH-012 (12 unknowns)
-- GH-009 (Emergent heuristic conflict) elevated to Critical — N² interaction
-  scaling confirmed; Interaction Volume doctrine added to resolution path
-- GH-012 (Discovery yield rate) registered — primary ROI signal for the
-  Cognitive Salvage Layer; cross-reference AP-001
-- GH-009 added to Dependency Clusters (Cognitive Salvage / Interaction Safety)
-- HF-001 (Heuristic Failure) registered as first-class failure class in
-  Canonical_Terms.md v0.3; CT-008 logged for cross-file consistency tracking
-- Canonical_Terms.md v0.3: CT-008 added; Open Unknowns 6 → 7
-- AUDIT_HARNESS.py v10: GH-001 through GH-012 require addition to
-  UNKNOWN_FIRST_CYCLE at cycle 10
-
----
-
-## CHANGE 2 — Add Cognitive Salvage cluster to Active Unknowns Index
-## Target: Insert after "### Future / Deferred" section (or before Cross-Module,
-##         whichever keeps alpha ordering; recommend before Cross-Module)
-## Insert the following new cluster section:
-
----
-
-### Cognitive Salvage
-
-| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
-|---|---|---|---|---|---|
-| GH-001 | Heuristic-to-deterministic translation fidelity undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-002 | Statistical significance threshold for consensus aggregation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-003 | Adversarial poisoning of heuristic datasets undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-004 | Optimal abstraction level for heuristic preservation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-005 | Human vs. autonomous intervention fraction undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Minor |
-| GH-006 | NOVEL promotion threshold undefined — CANDIDATE_NOVEL holds qualifying entries until resolved | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-007 | Puzzle fidelity drift undefined — silent pipeline poisoning risk if machinery revision diverges from puzzle engine | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-008 | Heuristic expiration doctrine undefined — validated_on_machinery_revision field exists; expiration logic does not | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-009 | Emergent heuristic conflict undefined — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Critical |
-| GH-010 | Simulator overfitting undefined — pipeline may harvest simulator expertise rather than physical expertise | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-011 | Heuristic canonicalization layer undefined — variant sequences inflate consensus_run_count without adding evidential weight | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-012 | Discovery yield rate undefined — fraction of harvested heuristics that are genuinely novel; primary ROI signal for the layer | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-
-*GH-001 and CSL-A06 are co-blocking: translation fidelity and simulation-to-physical fidelity are the two load-bearing assumptions for operational deployment.*
-*GH-003 maps to Adversarial Battery Challenge Class 8 — route adversarial resistance requirements to Admin/Security_Protocols.md.*
-*GH-009 Critical — interaction surface grows as N²; Interaction Volume doctrine required before knowledge base scales beyond ~20 promoted heuristics.*
-*GH-006 hard gate: no heuristic may receive NOVEL status until GH-006 closes; CANDIDATE_NOVEL intermediate status holds qualifying entries.*
-
----
-
-## CHANGE 3 — Add GH-009 to Dependency Clusters
-## Target: Dependency Clusters section
-## Insert after the "Epistemic / Governance" block as a new named block:
-
----
-
-**Cognitive Salvage / Interaction Safety**
-```
-GH-009 (Emergent heuristic conflict — N² interaction scaling)
-└── All heuristic co-deployment decisions blocked until
-    Interaction Volume doctrine is defined
-        └── GH-007 (Fidelity drift) — interaction testing
-            must run against current machinery revision,
-            not stale puzzle engine geometry
-```
-
----
-
-## CHANGE 4 — Add GH-009 to Critical Watch table
-## Target: Expiry Watch → Critical Watch table
-## Insert as new row:
-
-| GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
-
----
-
-## CHANGE 5 — Audit Trail entry
-## Target: Audit Trail section — append after v4.0 entry
-
-**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through
-GH-012, owning file Tests/Cognitive_Salvage_Layer.md). GH-009 Critical —
-emergent heuristic conflict N² scaling; Interaction Volume doctrine required.
-GH-012 registered — discovery yield rate as primary ROI signal; cross-reference
-AP-001. GH-009 added to Dependency Clusters and Critical Watch. HF-001
-registered in Canonical_Terms.md v0.3; CT-008 logged.
-
----
-
-## CHANGE 6 — Version header
-## Target: First line of file
-## Replace:
-## **Version 4.0 — 2026-06-24. [existing text]**
-## With:
-
-**Version 4.1 — 2026-06-24. Cognitive Salvage Layer GH cluster registered
-(GH-001 through GH-012). GH-009 elevated to Critical — N² interaction scaling.
-GH-012 (discovery yield rate) registered. HF-001 registered in
-Canonical_Terms.md v0.3.**
-**Expiry Rule active. Protocol Performance metrics collecting.**
-
----
-
-## SUMMARY OF NET CHANGES
-
-Files touched: Unknowns.md only
-New entries: GH-001 through GH-012 (12 rows in new Cognitive Salvage cluster)
-Critical Watch additions: GH-009
-Dependency Cluster additions: Cognitive Salvage / Interaction Safety block
-Audit Trail: v4.1 entry
-Version: 4.0 → 4.1
-Estimated line delta: +43 lines (1,100 → ~1,143 — below 1,200 compression trigger)
-AUDIT_HARNESS.py: GH-001 through GH-012 require addition to UNKNOWN_FIRST_CYCLE
-  at cycle 10 (already done in v10 for GH-001 through GH-006; GH-007 through
-  GH-012 need to be verified against the shipped v10)
-
-# Unknowns.md — Consolidated Patch v4.1 → v4.2
-## Date: 2026-06-28
-## Covers all changes since v4.0 in a single application pass
-## Apply in order: Changes 1 through 11
-
----
-
-## CHANGE 1 — Version header
-## Target: First line of file
-## Replace existing version header with:
-
-**Version 4.2 — 2026-06-28. GH cluster registered (GH-001 through GH-012).
-RIP-001 closed — Git release tags fulfill prior-state archival requirement.
-ST-004, CT-008, CT-009, CF-004 registered. HR cluster added (Hydrologic
-Resource Cascade). Cognitive_Frameworks.md CF-004 indexed.**
-**Expiry Rule active. Protocol Performance metrics collecting.**
-
----
-
-## CHANGE 2 — Roll What section
-## Target: Replace "## What v4.0 Means" section entirely with v4.2
-
-## What v4.2 Means
-
-- Cognitive Salvage Layer GH cluster registered: GH-001 through GH-012
-- GH-009 (Emergent heuristic conflict) elevated to Critical — N² interaction
-  scaling confirmed; Interaction Volume doctrine added to resolution path
-- GH-012 (Discovery yield rate) registered — primary ROI signal for the
-  Cognitive Salvage Layer; cross-reference AP-001
-- RIP-001 closed — Discharge via Lessons Learned. Git release tag system
-  (V0.6 through V0.97, GPG-signed) fulfills prior-state archival requirement
-  at v0 scale. Manual /Archive/ directory deposit is redundant.
-- RIP-006 partially resolved — GitHub indefinite retention satisfies Tier 1
-  permanent retention requirement; remaining gap is /Archive/ directory content
-  retention policy pending distillate architecture definition.
-- ST-004 registered (High risk) — sub-threshold state tampering vulnerability
-  in Ship_of_Theseus.md Derivative Identity threshold
-- CT-008 registered (In Progress Vehicle) — HF-001 Heuristic Failure
-  canonicalization consistency tracking
-- CT-009 registered (Low risk) — Grain System implementation consistency
-  tracking between Canonical_Terms.md definition and Ship_of_Theseus.md
-  ST-001/ST-002 implementation
-- CF-004 registered (Low risk) — epistemic debt measurement mechanism
-  undefined; Triage Posture doctrine exists in Cognitive_Frameworks.md;
-  trigger metric is v1 automation target
-- HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade)
-- GH-009 added to Dependency Clusters and Critical Watch
-
----
-
-## CHANGE 3 — Dependency Clusters
-## Target: After "Epistemic / Governance" block, insert new block:
-
-**Cognitive Salvage / Interaction Safety**
-```
-GH-009 (Emergent heuristic conflict — N² interaction scaling)
-└── All heuristic co-deployment decisions blocked until
-    Interaction Volume doctrine is defined
-        └── GH-007 (Fidelity drift) — interaction testing must run
-            against current machinery revision, not stale puzzle
-            engine geometry
-```
-
----
-
-## CHANGE 4 — Active Unknowns Index
-## Target: Insert new Cognitive Salvage section before Cross-Module section
-## Also update: RIP-001 removed from Governance & Verification table
-##              RIP-006 status updated in Governance & Verification table
-##              ST-004 added to Salvage & Fabrication table
-##              CT-008 and CT-009 added to Governance & Verification CT cluster
-##              CF-004 added to Cognitive Frameworks table
-##              HR cluster added as new section
-
-### 4a — Remove RIP-001 from Governance & Verification table
-## (RIP-001 moves to Resolved & Discharged Archive — see Change 7)
-## Delete the RIP-001 row from the table
-
-### 4b — Update RIP-006 in Governance & Verification table
-## Replace RIP-006 row with:
-| RIP-006 | Archive retention policy — partially resolved; GitHub indefinite retention satisfies Tier 1 requirement; /Archive/ directory content retention pending distillate architecture | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Minor |
-
-### 4c — Add ST-004 to Salvage & Fabrication table
-| ST-004 | Sub-threshold state tampering vulnerability — Derivative Identity threshold (30%) has adversarial bypass; rolling delta mechanism required | `Admin/Ship_of_Theseus.md` | Open | — | Major |
-
-### 4d — Add CT-008 and CT-009 to Governance & Verification CT cluster
-| CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
-| CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
-
-### 4e — Add CF-004 to Cognitive Frameworks table
-| CF-004 | Epistemic debt measurement mechanism undefined — Triage Posture doctrine exists; trigger metric has no formal implementation; v1 automation target | `Architecture/Cognitive_Frameworks.md` | Open | — | Minor |
-
-### 4f — Add Cognitive Salvage section (NEW — insert before Cross-Module)
-
-### Cognitive Salvage
-
-| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
-|---|---|---|---|---|---|
-| GH-001 | Heuristic-to-deterministic translation fidelity undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-002 | Statistical significance threshold for consensus aggregation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-003 | Adversarial poisoning of heuristic datasets undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-004 | Optimal abstraction level for heuristic preservation undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-005 | Human vs. autonomous intervention fraction undefined | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Minor |
-| GH-006 | NOVEL promotion threshold undefined — CANDIDATE_NOVEL holds qualifying entries until resolved | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-007 | Puzzle fidelity drift undefined — silent pipeline poisoning risk if machinery revision diverges from puzzle engine | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-008 | Heuristic expiration doctrine undefined — validated_on_machinery_revision field exists; expiration logic does not | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-009 | Emergent heuristic conflict undefined — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Critical |
-| GH-010 | Simulator overfitting undefined — pipeline may harvest simulator expertise rather than physical expertise | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-011 | Heuristic canonicalization layer undefined — variant sequences inflate consensus_run_count without adding evidential weight | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-| GH-012 | Discovery yield rate undefined — fraction of harvested heuristics that are genuinely novel; primary ROI signal for the layer | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
-
-*GH-001 and CSL-A06 are co-blocking: translation fidelity and simulation-to-physical fidelity are the two load-bearing assumptions for operational deployment.*
-*GH-003 maps to Adversarial Battery Challenge Class 8 — route adversarial resistance requirements to Admin/Security_Protocols.md.*
-*GH-009 Critical — interaction surface grows as N²; Interaction Volume doctrine required before knowledge base scales beyond ~20 promoted heuristics.*
-*GH-006 hard gate: no heuristic may receive NOVEL status until GH-006 closes; CANDIDATE_NOVEL intermediate status holds qualifying entries.*
-
-### 4g — Add Hydrologic Resource Cascade section (NEW — insert after Cognitive Salvage)
-
-### Hydrologic Resource Cascade
-
-| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
-|---|---|---|---|---|---|
-| HR-UNK-001 | Hydraulic sorting effectiveness at Forge-scale unvalidated — particle separation efficiency across all zones uncharacterized | `Tests/Hydrologic_Resource_Cascade.md` | Open | — | Critical |
-| HR-UNK-002 | Material quality and contaminant risk uncharacterized — flood sediment may contain heavy metals, pesticides, or industrial runoff | `Tests/Hydrologic_Resource_Cascade.md` | Open | — | Critical |
-
-*HR-UNK-001 Critical — entire resource recovery premise rests on hydraulic sorting effectiveness.*
-*HR-UNK-002 Critical — safety-critical; contaminated sediment zones may require remediation rather than resource extraction.*
-*Additional HR unknowns (HR-003 through HR-010) are research questions in the file body; formal sidecar registration deferred to first audit pass.*
-
----
-
-## CHANGE 5 — Critical Watch table
-## Target: Expiry Watch → Critical Watch table
-## Insert two new rows:
-
-| GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
-| HR-UNK-002 | Hydrologic Resource Cascade material quality — flood sediment contaminant risk; safety-critical before any resource extraction operations |
-
----
-
-## CHANGE 6 — Resolved & Discharged Archive
-## Target: Insert new row in archive table for RIP-001
-
-| RIP-001 | Prior-state archival system not yet established | Discharge via Lessons Learned — 2026-06-28. Git release tag system (V0.6 through V0.97, GPG-signed autogenerated source zips) fulfills prior-state preservation requirement at v0 scale. Manual /Archive/ directory deposit is redundant. GitHub indefinite retention satisfies permanent retention requirement. RIP-006 partially resolved simultaneously. | 2026-06-28 |
-
----
-
-## CHANGE 7 — Audit Trail
-## Target: Append after v4.0 entry
-
-**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through
-GH-012). GH-009 Critical — emergent heuristic conflict N² scaling; Interaction
-Volume doctrine required. GH-012 registered — discovery yield rate. GH-009
-added to Dependency Clusters and Critical Watch. HF-001 registered in
-Canonical_Terms.md v0.3; CT-008 logged.
-
-**v4.2 — 2026-06-28:** RIP-001 closed (Discharge via Lessons Learned — Git
-release tags fulfill prior-state archival). RIP-006 In Progress / partially
-resolved. ST-004 registered (High risk — sub-threshold tampering). CT-008
-(In Progress Vehicle) and CT-009 (Open) registered in CT cluster. CF-004
-registered (Low risk — epistemic debt measurement, v1 automation target).
-HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade,
-both Critical). GH-009 and HR-UNK-002 added to Critical Watch.
-
----
-
-## CHANGE 8 — Routing.md additions
-## Two new rows needed in Tests/ layer:
-
-| `Tests/Cognitive_Salvage_Layer.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Cognitive_Salvage_Layer.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Cognitive_Salvage_Layer.md) | Explicit |
-| `Tests/Hydrologic_Resource_Cascade.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Hydrologic_Resource_Cascade.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Hydrologic_Resource_Cascade.md) | Explicit |
-
-## Also update Routing.md Last updated date: 2026-06-28
-
----
-
-## CHANGE 9 — AUDIT_HARNESS.py UNKNOWN_FIRST_CYCLE additions
-## Add to UNKNOWN_FIRST_CYCLE dict (cycle 10 or 11 depending on session count):
-
-    # Hydrologic Resource Cascade — HR-series (cycle 10)
-    "HR-UNK-001": 10, "HR-UNK-002": 10,
-
-## Also confirm these are already present (from v10/v11):
-## GH-001 through GH-012: cycle 10 — YES (verified)
-## ST-004: cycle 10 — YES (verified in v11)
-## CT-008: cycle 10 — YES (verified in v11)
-## CT-009: cycle 10 — YES (verified in v11)
-## CF-004: NOT YET — add:
-    "CF-004": 10,
-
----
-
-## CHANGE 10 — Hydrologic_Resource_Cascade.md Open Unknowns count correction
-## Target: File State block in Tests/Hydrologic_Resource_Cascade.md
-## Current: Open Unknowns | 8
-## Correct: Open Unknowns | 2
-## Rationale: Only HR-UNK-001 and HR-UNK-002 have formal sidecar entries.
-##            HR-003 through HR-010 are research questions in body text;
-##            they will become formal entries in the first audit pass.
-
----
-
-## CHANGE 11 — Gemini/ChatGPT additions to Hydrologic_Resource_Cascade.md
-## The agents added wind-driven circulation and river-coupled base flow.
-## These are legitimate architectural improvements consistent with Forge doctrine.
-## Specific additions to integrate in next commit to that file:
-##
-## Assumptions table: add HR-ASM-005 and HR-ASM-006
-## HR-ASM-005: Direct mechanical wind pumping provides sufficient head
-##             for recreational circulation during inter-flood periods.
-##             Basis: Historical wind-pump performance and low-head hydraulic
-##             analogs. Confidence: Medium.
-##             Expiry: Pilot shows stagnation under average wind conditions.
-##
-## HR-ASM-006: Continuous river-coupled diversion does not cause adverse
-##             downstream erosion/siltation in base-flow mode.
-##             Basis: River diversion engineering precedents. Confidence: High.
-##             Expiry: Field observation of scouring at return weir.
-##
-## Test vectors: add HR-009 and HR-010 to body (not sidecar — body only)
-## HR-009: Wind-Kinetic Efficiency — correlate wind speed to loop velocity
-## HR-010: Diversion Hydraulics — optimize intake/weir geometry
-##
-## New unknown to register (Gemini suggestion):
-## HR-UNK-009: Recreational compatibility with operational objectives —
-##             conflicting requirements between recreation, wildlife habitat,
-##             sediment harvesting, and flood operations
-##
-## Note: Defer HR-UNK-009 formal sidecar registration to first audit pass
-##       consistent with HR-003 through HR-008 treatment.
-##
-## Hydraulic Operating Modes table (ChatGPT/Gemini suggestion — strong addition):
-## Mode | Primary Driver | Primary Goal
-## Drought | Passive/wind circulation | Maintain habitat and water quality
-## Normal Flow | River diversion | Recreation and polishing
-## Seasonal High Water | Increased diversion | Sediment capture begins
-## Flood | Natural overflow | Maximum storage and resource recovery
-## Recovery | Controlled drainage | Inspection, harvesting, restoration
-##
-## "Optional Passive Momentum Systems" framing (Gemini — correct framing):
-## Do NOT lock to windmills specifically. Frame as:
-## "Optional Passive Momentum Systems — may include wind-driven Archimedes
-##  screws, paddle wheels, hydraulic rams, animal power, solar pumps, or
-##  other locally appropriate technologies. Cascade should not depend on
-##  any single circulation method."
-
----
-
-## NET CHANGE SUMMARY
-
-Files touched: Unknowns.md, Routing.md, AUDIT_HARNESS.py,
-               Tests/Hydrologic_Resource_Cascade.md
-
-Unknowns.md changes:
-- Version 4.0 → 4.2
-- What section rolled to v4.2
-- GH-001 through GH-012 cluster added (12 new entries)
-- HR-UNK-001 and HR-UNK-002 cluster added (2 new entries)
-- ST-004, CT-008, CT-009, CF-004 added to existing tables
-- RIP-006 status updated to In Progress / Vehicle
-- RIP-001 removed from active index, added to archive
-- GH-009 and HR-UNK-002 added to Critical Watch
-- GH-009 added to Dependency Clusters
-- v4.1 and v4.2 Audit Trail entries added
-
-Routing.md changes:
-- CSL row added to Tests/ layer
-- HRC row added to Tests/ layer
-- Last updated date updated
-
-AUDIT_HARNESS.py changes:
-- HR-UNK-001, HR-UNK-002, CF-004 added to UNKNOWN_FIRST_CYCLE
-
-Tests/Hydrologic_Resource_Cascade.md changes:
-- Open Unknowns 8 → 2 (count correction)
-- HR-ASM-005, HR-ASM-006 added to Assumptions table
-- HR-009, HR-010 added as body test vectors
-- Hydraulic Operating Modes table added
-- Optional Passive Momentum Systems framing added
-- HR-UNK-009 noted for first audit pass registration
+**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through GH-012). GH-009 Critical — emergent heuristic conflict N² scaling; Interaction Volume doctrine required. GH-012 registered — discovery yield rate. GH-009 added to Dependency Clusters and Critical Watch. HF-001 registered in Canonical_Terms.md v0.3; CT-008 logged.
+**v4.2 — 2026-06-28:** RIP-001 closed (Discharge via Lessons Learned — Git release tags fulfill prior-state archival). RIP-006 In Progress / partially resolved. ST-004 registered (High risk — sub-threshold tampering). CT-008 (In Progress Vehicle) and CT-009 (Open) registered in CT cluster. CF-004 registered (Low risk — epistemic debt measurement, v1 automation target). HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade, both Critical). GH-009 and HR-UNK-002 added to Critical Watch.
