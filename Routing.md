@@ -1,6 +1,6 @@
 # Routing.md — LazarusForgeV0
 **Canonical Navigation and Link Mapping Index.**
-**Last updated: 2026-06-28**
+**Last updated: 2026-06-30**
 
 ---
 
@@ -85,6 +85,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Challenges/Planned_Obsolescence.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Planned_Obsolescence.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Planned_Obsolescence.md) | Explicit |
 | `Challenges/Critical_Minerals.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Critical_Minerals.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Critical_Minerals.md) | Explicit |
 | `Challenges/Emergence.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Emergence.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Emergence.md) | Explicit |
+| `Challenges/Return_To_Eden.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Return_To_Eden.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Return_To_Eden.md) | Explicit |
 
 *\* **Discovery.md Description Context:** The foundational navigational directory and behavior scope boundary map for the active working repository layer. It anchors incoming multi-agent analysis runs and human code reviews, defining active document maturity gates, dependency maps, and evolutionary path tracking parameters without cluttering data extraction queries with long textual strings.*
 
@@ -112,24 +113,4 @@ Update this file whenever:
 Routing.md completeness is verified against Discovery.md structure map.
 Discrepancies between the two are logged as pending corrections in Discovery.md.
 
-**Note on non-extension Admin/ files:** `Admin/Nothingness Theorem` and `Admin/Computational Institutional Reasoning` are intentionally filed without `.md` extensions and contain spaces in their filenames (URL-encoded as `%20` in raw/repo links). `Nothingness Theorem` is a philosophical substrate document (Admin/, intentionally functionless per its own doctrine). `Computational Institutional Reasoning` is the formal theoretical paper containing the axioms, theorems, and Verification Algebra that back CF-004, AP-006, and related epistemic-debt doctrine in Unknowns.md and Auditor_Protocols.md. Neither carries a File State sidecar in the standard format; both are Tier 0 (foundational/philosophical) rather than operational doctrine files.
-
-ROUTING.MD PATCH — add to Challenges/ layer after the Emergence.md row
-──────────────────────────────────────────────────────────────────────
-
-LOCATION: Master Routing Map → Challenges/ Layer section
-AFTER this existing row:
-  | `Challenges/Emergence.md` | [Raw](...) | [Repo](...) | Explicit |
-
-INSERT:
-  | `Challenges/Return_To_Eden.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Return_To_Eden.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Return_To_Eden.md) | Explicit |
-
-Also update the Last Updated header at the top of Routing.md:
-  BEFORE: **Last updated: 2026-06-28**
-  AFTER:  **Last updated: 2026-06-30**
-
-──────────────────────────────────────────────────────────────────────
-Effect: v12 harness drift detector will stop reporting Return_To_Eden.md
-as "in fallback but not Routing.md" once this row is committed.
-No other harness changes required — FALLBACK_REGISTRY already has the entry.
-
+**Note on non-extension Admin/ files:** `Admin/Nothingness Theorem` and `Admin/Computational Institutional Reasoning` are intentionally filed without `.md` extensions and contain spaces in their filenames (URL-encoded as `%20` in raw/repo links). `Nothingness Theorem` is a philosophical substrate document (Admin/, intentionally functionless per its own doctrine); it carries a minimal Tier 0 File State sidecar sufficient for Phase 1 Ethical Anchor verification but is exempt from operational promotion gates. `Computational Institutional Reasoning` is the formal theoretical paper containing the axioms, theorems, and Verification Algebra that back CF-004, AP-006, and related epistemic-debt doctrine in Unknowns.md and Auditor_Protocols.md; it carries a full standard File State sidecar as of v0.16 (2026-06-30) and is subject to standard promotion gate tracking. Neither file carries a `.md` extension; both resolve via hardcoded ALIASES entries in `Admin/AUDIT_HARNESS.py` rather than through the dynamic `_parse_routing()` registry builder.
