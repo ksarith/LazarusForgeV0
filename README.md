@@ -157,6 +157,17 @@ Challenges are permanent. Solutions are temporary local answers.
   is not a constraint placed on agents by the Forge — it is a structural property the
   Forge claims for itself, by design
 
+**Integration Challenge** — what success looks like when the external and reflexive
+pressures have both been answered:
+- `Challenges/Return_To_Eden.md` — The Forge's synthesis target and cross-system
+  integration heuristic. Defines "Eden Conditions" as an operational matrix — not a
+  philosophical aspiration — and computes progress via the localized Eden Index ($I_E$):
+  the ratio of biological and thermodynamic order to waste output and external dependency.
+  Every architectural choice in the repository can be evaluated against a single question
+  this document makes precise: *does this move the localized ecosystem closer to Eden
+  conditions, or further away?* Structured as four engineering tiers from single-node
+  metabolic autonomy through decentralized civilizational persistence.
+
 ---
 
 ## How the System Works
@@ -276,11 +287,12 @@ the infrastructure that prevents the system from drifting into entropy or weapon
   by survival threshold and exit condition, not a feature list
 - `Admin/File_Template.md` — Canonical document structure for all repository files
 - `Admin/Computational Institutional Reasoning` — Formal theoretical paper. Treats the
-  multi-agent collective as an axiomatic epistemic state machine and proves four
+  multi-agent collective as an axiomatic epistemic state machine and proves five
   theorems — Unknown Conservation, Governance Stability, Epistemic Debt Instability,
-  Institutional Memory Dominance — that formally justify the Unknown Budget, the
-  Triage Posture trigger, and the provenance ceiling system described above. Not
-  required reading, but it is the proof source several governance claims rest on
+  Institutional Memory Dominance, and Compiler Soundness — that formally justify the
+  Unknown Budget, the Triage Posture trigger, and the provenance ceiling system described
+  above. Not required reading for operators, but it is the proof source several governance
+  claims rest on
 - `Admin/Nothingness Theorem` — Philosophical substrate. Functionless by design; the
   framework from which salvage-first doctrine, distributed disagreement as error
   correction, and the maintenance-as-creation equivalence derive
@@ -395,9 +407,11 @@ All seven operational gates exist (Gate_01 through Gate_07). The governance laye
 reached constitutional maturity with Tier 1 Axioms in place. The architecture layer
 now includes five peer foundational files (Engineering.md, Mechanical_Structures.md,
 Thermal_Systems.md, Friction_Dynamics.md, Chemistry.md) covering the physical-world
-doctrine layer in full. Six Challenges/ files establish the problem layer. The
-Challenges/Emergence.md file is the first explicitly Reflexive Challenge — the only
-one in the repository whose pressure is created by the Forge's own capability.
+doctrine layer in full. Seven Challenges/ files establish the problem layer across three
+categories: external pressures, reflexive pressures created by the Forge's own capability,
+and the integration target that defines what success looks like when both have been
+answered. `Challenges/Emergence.md` remains the first explicitly Reflexive Challenge —
+the only one whose pressure is created by the Forge's own capability.
 
 **The founding idea has not changed; its scope has.** The original premise — reduce a
 useless item, recover its material, reintegrate it into something useful — is still the
@@ -430,7 +444,7 @@ seriously than a workshop floor alone could demand.
 
 The primary remaining gaps are: enforcement architecture (GOV-003), human override
 authentication (GOV-006), and the operational hardware unknowns tracked in `Unknowns.md`.
-The verification doctrine layer (`Admin/Auditor_Protocols.md`) has reached v0.11 with
+The verification doctrine layer (`Admin/Auditor_Protocols.md`) has reached v0.14 with
 a constitutional Epistemic Foundation (EF-0.0–EF-0.8b) establishing Axiom Zero and
 physical reality grounding as the meta-constitutional floor above all operational content.
 
