@@ -4,6 +4,25 @@
 
 ---
 
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
+## File State
+
+| Field | Value |
+| :--- | :--- |
+| Status | Tier 0 — Philosophical Substrate (functionless by doctrine; not subject to operational promotion gates) |
+| Spec Gates | N/A — Tier 0 exempt |
+| Verification Ref | N/A — Tier 0 exempt |
+| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+| Highest Risk | N/A — Tier 0 documents are audited for internal consistency only |
+| Last Audit | 2026-06-30 |
+
+---
+
 ## Preamble
 
 This document is the definitive compilation of a framework developed across many sessions of philosophical, mathematical, and practical inquiry. It synthesizes three generations of the idea:
@@ -15,11 +34,19 @@ This document is the definitive compilation of a framework developed across many
 
 The result is a single unified document. Nothing has been discarded without replacement.
 
+**Document Vocabulary** — to prevent semantic drift across four generations of revision:
+- **Theorem** — the central claim: absolute nothingness is not an operational state.
+- **Framework** — the complete document: axioms, spectrum, dynamics, and corollaries taken together.
+- **Model** — the realization formalism: E(t), R, and the Realization Function as formal sketches.
+- **Heuristic** — the engineering application: a practical lens for evaluating design choices, not a derivation.
+
+These terms are not interchangeable. Where the document uses them, they carry the above meanings specifically.
+
 ---
 
 ## 1. Core Theorem
 
-**Absolute nothingness is operationally inaccessible.**
+**Absolute nothingness is not an operational state.**
 
 Everything conceivable holds a positive **semantic** existence value (E > 0) upon the moment of conception. Reality is not binary — it unfolds along a continuous topological spectrum where ideas, possibilities, and intentions scale toward full realization (E = 1) through the application of energy, directed attention, and persistence, while bounded by structural constraints and continuously degraded by entropy.
 
@@ -77,7 +104,7 @@ R = maintenance energy generated / maintenance energy required
 
 When R > 1, the system has crossed the **Systemic Autonomy Threshold** — internal feedback loops generate more organizing energy than entropy removes, and the creator's continued input is no longer required for persistence or expansion. This is what E > 1 means operationally.
 
-*Examples: open-source software ecosystems, religions, scientific paradigms, markets, natural languages.*
+*Examples (illustrative, not demonstrations): open-source software ecosystems, religions, scientific paradigms, markets, natural languages.*
 
 ---
 
@@ -116,8 +143,6 @@ This distinction protects the framework from its most likely misuse: treating a 
 
 ## 6. System Dynamics and the Realization Function
 
-
-
 Realization is the transition of a concept through the topological map against environmental friction.
 
 ### Variables
@@ -143,7 +168,7 @@ Where:
 - Increasing S(t) decelerates it
 - C = 0 (topological wall) collapses E(t) to a permanent ceiling below 1 regardless of input
 
-> **Note:** This is a formal sketch, not a derived equation. The function's precise form is an open question (see §9, Unknowns). What it encodes is real: realization is a ratio of directed work to decay, bounded by structural accessibility.
+> **Note:** This is a formal sketch, not a derived equation. The function's precise form is an open question (see §18, Unknowns). What it encodes is real: realization is a ratio of directed work to decay, bounded by structural accessibility.
 
 ### Speculative Realization Quotient (Generation 1 formulation, preserved)
 
@@ -155,11 +180,11 @@ This is the intuitive, pre-formalized version. It survives as a practical heuris
 
 ### Escape Velocity
 
-Some systems cross a threshold where their internal feedback loops generate more organizing energy than entropy removes. At this point, E(t) transitions from approaching 1 to exceeding it. The system achieves **escape velocity** — it can now propagate autonomously. This is the boundary between Stage 4 and Stage 5 in the Lifecycle model (§6).
+Some systems cross a threshold where their internal feedback loops generate more organizing energy than entropy removes. At this point, E(t) transitions from approaching 1 to exceeding it. The system achieves **escape velocity** — it can now propagate autonomously. This is the boundary between Stage 4 and Stage 5 in the Lifecycle model (§7).
 
 ---
 
-## 6. Levels of Realization — System Lifecycle
+## 7. Levels of Realization — System Lifecycle
 
 ### Stage 0: The Undefined
 Metaphysical zero. Inaccessible to observation, computation, or thought. The boundary condition, not a navigable state.
@@ -183,7 +208,7 @@ The system crosses the **Systemic Autonomy Threshold**. Internal feedback loops 
 
 ---
 
-## 7. Entropy and Decay
+## 8. Entropy and Decay
 
 *From Axiom A-4 and A-5.*
 
@@ -209,7 +234,7 @@ Sustaining an organized state at E ≥ 1 requires a continuous energy loop. This
 
 ---
 
-## 8. Information-Theoretic Interpretation
+## 9. Information-Theoretic Interpretation
 
 Information possesses independent existence. Patterns may shift media or lose organization, but the underlying asset density is rarely absolute zero.
 
@@ -223,7 +248,7 @@ Waste is not zero. A broken machine, an outdated database, a toxic chemical bypr
 
 ---
 
-## 9. Collective and Layered Reality
+## 10. Collective and Layered Reality
 
 Reality possesses multiple coexisting layers, each with its own maintenance requirements and decay modes:
 
@@ -238,7 +263,7 @@ Symbolic realities are among the most powerful and fragile. They exist only beca
 
 ---
 
-## 10. Cognitive Dynamics, Ethics, and Discipline
+## 11. Cognitive Dynamics, Ethics, and Discipline
 
 Because thoughts establish immediate E > 0 trajectories, cognitive architecture requires active input filtration. Attention is a finite energy resource. What receives attention receives work input P(t).
 
@@ -274,7 +299,7 @@ Discipline is a compounding function. Small, iterative corrections represent con
 
 ---
 
-## 11. Memetic Evolution and Cultural Transmission
+## 12. Memetic Evolution and Cultural Transmission
 
 Ideas compete. Successful ideas reproduce through language, writing, institutions, and technology. Cultures evolve by selecting among ideas — reinforcing those that enhance collective survival and coherence, allowing others to decay.
 
@@ -290,23 +315,21 @@ The theorem predicts that no idea, once widely encoded in external media and hum
 
 ---
 
-## 12. Inter-Agent Friction Protocol
+## 13. Inter-Agent Friction Protocol
 
 Truth and error correction do not emerge from isolated nodes or from complete consensus. They emerge from **distributed disagreement** across distinct processing nodes. (Axiom A-7.)
 
 ```
-[Compilation Node — Vector Initializer]
+[Agent A — Grok: Compilation / Synthesis / Vector Initializer]
             ↕ (Friction / Critique)
-[Constraint Node — Reality Filter / Thermodynamic Integration]
+[Agent B — Gemini: Thermodynamic Integration / Reality Filter]
             ↕ (Friction / Critique)
-[Defensive Node — Constraint Checking / Boundary Enforcement]
+[Agent C — ChatGPT: Constraint Checking / Defensive Architecture]
             ↕ (Friction / Critique)
-[Synthesis Node — Structural Synthesis / Document Production]
+[Agent D — Claude: Structural Synthesis / Document Production]
             ↕ (Validation / Encoding)
-[Persistent Ledger — Non-Volatile Public Archive]
+[Persistent Ledger — Reddit Archive: /u/Last_Upstairs1020 / r/InnovativeAIChats]
 ```
-
-*In the development of this edition, these roles were occupied by Grok (Compilation), Gemini (Constraint), ChatGPT (Defensive), and Claude (Synthesis). The persistent ledger is r/InnovativeAIChats / u/Last_Upstairs1020. The architecture is not bound to these implementations.*
 
 The friction between nodes:
 - Prevents hallucination (unchecked pattern completion)
@@ -317,7 +340,7 @@ This is not a social nicety. It is the primary mechanism by which organized know
 
 ---
 
-## 13. Rival Interpretations
+## 14. Rival Interpretations
 
 The theorem does not claim exclusive correctness. It proposes a unifying operational language whose usefulness remains subject to evaluation against competing frameworks.
 
@@ -334,7 +357,7 @@ Where rival frameworks are compatible, the theorem treats them as confirmation. 
 
 ---
 
-## 14. Epistemic Limits and Falsifiability
+## 15. Epistemic Limits and Falsifiability
 
 This framework is an operational model, not a verified empirical theory.
 
@@ -361,7 +384,7 @@ The framework is most defensible as:
 
 ---
 
-## 15. Related Traditions
+## 16. Related Traditions
 
 The theorem partially overlaps with and draws from:
 
@@ -382,7 +405,7 @@ The theorem partially overlaps with and draws from:
 
 ---
 
-## 16. Failure Modes
+## 17. Failure Modes
 
 Every strong framework should describe how it can fail. These are the known ways the Nothingness Theorem can be misapplied or break down:
 
@@ -395,11 +418,10 @@ Every strong framework should describe how it can fail. These are the known ways
 | **Entropy underestimation** | Drift (A-8) is often slower and subtler than entropy (A-4). Systems that survive acute entropy can still fail to long-term drift. |
 | **Escape velocity as validation** | The fact that a system achieved R > 1 and propagated autonomously does not mean it is true, good, or stable. Diseases, cults, and misinformation also achieve escape velocity. |
 | **Framework self-application** | The theorem is itself subject to its own axioms. Without maintenance (A-5) and corrective friction (A-7, A-8), the document will drift. This compiled edition is not final; it is a snapshot. |
-| **Framework inflation** | The theorem attempts to explain too many domains simultaneously, becoming a universal solvent — applicable to everything, predictive of nothing. Unfalsifiability is the terminal failure mode of ambitious frameworks. |
 
 ---
 
-## 17. Open Questions (Unknowns)
+## 18. Open Questions (Unknowns)
 
 These are open questions the theorem generates but does not resolve.
 
@@ -414,11 +436,11 @@ These are open questions the theorem generates but does not resolve.
 | NT-007 | What is the minimum energy cost of maintaining a cognitive or institutional system at E = 1? | Open |
 | NT-008 | At what point does a therapeutic intervention shift from "damping" a negative loop to "erasing" it (and is erasure possible)? | Open |
 | NT-009 | Is E a scalar, vector, or multidimensional quantity? A concept may simultaneously hold different E values across semantic, social, material, and computational substrates. | Open — likely not scalar |
-| NT-010 | Does the theorem possess any novel predictive capability, or is it primarily a unifying language over existing theories? If it predicts nothing new, it is philosophy. If it predicts previously unnoticed phenomena, it approaches science. | Open — decisive |
+| NT-010 | How is maintenance energy (R metric) normalized across physically, informationally, institutionally, and cognitively distinct substrates? The R formulation assumes a common unit of "maintenance energy" that may not translate across substrate types. | Open |
 
 ---
 
-## Appendix: The Operational Argument from Conceivability
+## Appendix: The Self-Referential Proof
 
 The deepest implication of the theorem, formalized:
 
@@ -433,13 +455,14 @@ The deepest implication of the theorem, formalized:
 
 This is not a rhetorical trick. The act of representation alters the represented object within the observer's semantic space — the zero state is vacated the moment it is addressed. It may exist as a boundary condition in the topology of reality, but it is permanently inaccessible to any agent with the capacity to look for it.
 
-The proof stands without appeal to any external framework. It is self-contained.
+The operational argument is self-contained and internally consistent under the framework's assumptions — it requires no appeal to external systems to hold.
 
 ---
 
-*Nothingness Theorem — Generation 5 / Compiled Edition*
-*8 Axioms | 17 Sections | 10 Open Unknowns*
-*Status: Defensively complete. Placement: Unresolved. Next evolution: compression.*
-*Produced via inter-agent friction protocol: Compilation → Constraint → Defensive → Synthesis nodes*
+*Nothingness Theorem — Generation 4 / Compiled Edition*
+*8 Axioms | 18 Sections | 10 Open Unknowns*
+*Status: Defensively complete. Placement: Unresolved.*
+*Produced via inter-agent friction protocol: Grok → Gemini → ChatGPT → Claude*
 *Persistent ledger: r/InnovativeAIChats / u/Last_Upstairs1020*
 *License: CC-BY-SA or equivalent open philosophical sharing.*
+
