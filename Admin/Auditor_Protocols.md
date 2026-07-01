@@ -1509,4 +1509,98 @@ Mandatory re-audit conditions for this document:
 | First Logged  | 2026-06-24                   |
 | Last Reviewed | 2026-06-24                   |
 
-**Description:** The Inventory Calcification Check and Vehicle Advancement Visibility rules measure structural state changes but not whether a resolution path is actually converging toward closure. An agent can satisfy both rules indefinitely by adding a single sentence of flavor text every 1.5 cycles, keeping the entry technically ac
+**Description:** The Inventory Calcification Check and Vehicle Advancement Visibility rules measure structural state changes but not whether a resolution path is actually converging toward closure. An agent can satisfy both rules indefinitely by adding a single sentence of flavor text every 1.5 cycles, keeping the entry technically active while making no genuine progress.
+
+**Why It Matters:** This is RC-009's failure mode operationalized. The shallow-update exploit is available to any agent that understands the structural rules and is motivated to avoid closure.
+
+**Resolution Path:** Payment via Specification — define semantic progress markers for resolution paths: a valid advancement step must either (1) narrow the scope of what remains unknown by naming a specific sub-question that has been answered, (2) add a cross-reference to an external artifact that did not previously exist, or (3) change the epistemic state of at least one claim within the resolution path from UNKNOWN to PROVISIONAL or PROVISIONAL to VERIFIED. Flavor text additions meeting none of these criteria do not constitute advancement. This rule is partially operationalized in Vehicle Advancement Visibility (§RC-009) via the semantic progress markers addition; full Payment via Specification requires the rule to be integrated as a formal sidecar entry validation criterion, not just doctrine text. Cross-reference RC-009.
+
+*Surfaced by Gemini — Adversarial Challenge Class 8, 2026-06-24.*
+
+---
+
+### AP-020 — Textual calibration harness (Golden Dataset) undefined
+
+| Field         | Value                              |
+|---------------|------------------------------------|
+| Status        | Resolved — Discharge via Trajectory |
+| Risk          | Major                              |
+| Priority      | Major                              |
+| Type          | Governance / Technical             |
+| Blocking      | No                                 |
+| Owner         | Admin/Auditor_Protocols.md         |
+| First Logged  | 2026-06-24                         |
+| Last Reviewed | 2026-06-24                         |
+
+**Resolution:** Discharge via Trajectory — 2026-06-24. A full Golden Dataset is a v0→v1 transition item — significant artifact, premature at current scale. The immediate inter-agent calibration gap is addressed by AP-014's inline reference set (§Epistemic State Calibration Reference), which provides five calibration anchors sufficient for current single-contributor workflow without requiring a full test matrix. Log in `Admin/Trajectories.md` for activation at v1 when multi-contributor or community deployment increases the calibration surface area.
+
+*Surfaced by Gemini — Adversarial Challenge Class 9, 2026-06-24.*
+
+---
+
+### Resolution Log
+
+- 2026-05-04: **UNK-004 (Expiry Rule enforcement mechanism)** — Discharged. Sidecar Model addresses the underlying accumulation problem structurally.
+- 2026-05-04: **UNK-022 (Full Stop Review trigger conditions)** — Resolved. Three specific trigger conditions and invocation record format added. Fourth trigger added at v0.6.
+- 2026-05-19: **Gate 3 Adversarial Pass** — Upgraded from single-scenario requirement to full Adversarial Challenge Battery (ten classes).
+- 2026-05-23: **Reconciliation pass** — v0.7 merges v0.6 depth with older draft's role class structure, 10-phase audit sequence, and evidence classification table. Abandoned Paths and Drift Indicators sections added per File_Template.md. Assumptions table added. Failure Modes reformatted to table.
+- 2026-05-23: **AP-005 through AP-007 added** — verification termination threshold, institutional truth provenance hierarchy, and repository integrity doctrine lineage introduced from Forge_Audit_Kit.md v0.7 reconciliation.
+- 2026-06-21: **v0.8 — Epistemic Foundation constitutional header inserted (EF-0.0 through EF-0.8b).** Multi-agent synthesis (Gemini, ChatGPT, Grok, Claude) across six sessions. EF-0.8b is a LazarusForgeV0-specific addition — closes the self-confirming simulation gap.
+- 2026-06-21: **v0.8.1 — Dual audit pass (Gemini + Grok, Skeptic/Auditor).** AP-001 through AP-007 escalated to Systemic Risk (8-cycle expiry threshold exceeded). Three new unknowns logged: AP-008 (High), AP-009 (Low), AP-010 (Medium). Open Unknowns incremented 7 → 10. Gates cleared: G1, G2, G4, G5, G6. Gate blocked: G3.
+- 2026-06-21: **v0.9 — AP Resolution Pass (Claude, Synthesizer/Auditor).** AP-006 closed — Payment via Specification. AP-007 moved to In Progress. AP-002 through AP-005 resolution paths updated. Open Unknowns decremented 10 → 9.
+- 2026-06-21: **v0.10 — Active mandate pass (Claude + Gemini).** EF-0.2 Level 2 and Level 3 action text expanded. AP-009 closed. AP-001, AP-004, AP-005 moved to In Progress. Open Unknowns decremented 9 → 7.
+- 2026-06-21: **v0.11 — Gemini adversarial pass integration.** AP-001 indicator set rolled back — premature metric naming removed. AP-011 logged (Medium, Major). Open Unknowns incremented 7 → 8.
+- 2026-06-23: **v0.12 — RC governance stubs added to Unknowns Registry.** Priority Demotion Doctrine (RC-007), Inventory Calcification Check (RC-008), Vehicle Advancement Visibility (RC-009) integrated as body doctrine. Open Unknowns: 8 (no new AP entries).
+- 2026-06-24: **v0.13 — Full Adversarial Challenge Battery complete.** Claude (Classes 1, 5, 6) + Gemini (Classes 3, 8, 9, 10) + Gemini prior pass (Classes 2, 4, 7). AP-012 through AP-020 logged (9 entries). Human Interaction Point Doctrine added to Governing Principles. EF-0.2 autonomous degradation amendment added. Failure Modes row added. Provenance Ceiling Self-Application Rule added. Gate 3: BLOCKED pending AP-012 and AP-016 reaching Provisional Spec. Open Unknowns: 8 → 15.
+- 2026-06-24: **v0.14 — Full clean rewrite (Claude, Synthesizer/Auditor).** All v0.12 and v0.13 amendment blocks integrated into canonical body positions. Sidecar triage pass: AP-006 and AP-009 remain Resolved; AP-014 closed (Payment via Specification — Epistemic State Calibration Reference table added to Evidence Classification section); AP-015 discharged (Trajectory — v0→v1 transition item); AP-020 discharged (Trajectory — Golden Dataset deferred; AP-014 inline set sufficient for current scale); AP-012 and AP-016 reclassified In Progress → Vehicle (Human Interaction Point Doctrine constitutes doctrine layer; enforcement gap remains). Lessons Learned row added for AP-001 indicator rollback. Gate 3 status note added to Verification Gate Enforcement. Systemic Risk escalation status note updated. Open Unknowns decremented 15 → 12. Highest Risk updated to Critical (AP-012, AP-016).
+
+---
+
+## Relationship to Existing Documents
+
+- `Admin/Ethical_Constraints.md` — parent document; governs permission; hard-line doctrines not subject to override by this protocol
+- `Admin/Governance_Charter.md` — constitutional tier; governs authority hierarchy this protocol operates within
+- `Architecture/Forge_flow.md` — structural model; reference standard for shared terminology
+- `Admin/Trajectories.md` — destination for scope creep that proves to be valid future work
+- `Tests/Leviathan_testing.md` — primary stress-test environment; where Protocol Performance metrics will first be collected
+- `Discovery.md` — navigation layer; confirmed file list; Rename Registry for legacy filename aliases
+- `Unknowns.md` — global index for cross-module unknowns (index only)
+- `Admin/Forge_Audit_Kit.md` — condensed audit reference for routine multi-agent cycles
+- `Admin/File_Template.md` — standard file structure; this document now conforms to it
+- `Admin/Canonical_Terms.md` — canonical vocabulary; Blocking subtype definitions
+- `Admin/Security_Protocols.md` — enforcement layer for AP-007 and AP-008 resolution paths
+- `Lazarus-Forge-` — companion doctrine repository
+- `Astroid-miner` — planned repository; deferred to Leviathan milestone
+
+---
+
+## Status
+
+Version 0.14 — Full clean rewrite. All amendment blocks integrated. Sidecar triage complete.
+
+**Changes from v0.13:**
+- All v0.12 and v0.13 amendment blocks absorbed into canonical body positions; no orphaned amendment sections remain
+- AP-014 closed — Epistemic State Calibration Reference table added to Evidence Classification section (Payment via Specification)
+- AP-015 closed — Discharge via Trajectory (v0→v1 transition item)
+- AP-020 closed — Discharge via Trajectory (Golden Dataset deferred; AP-014 inline set sufficient)
+- AP-012 reclassified In Progress → Vehicle (doctrine layer complete; enforcement gap remains)
+- AP-016 reclassified In Progress → Vehicle (co-resolves with AP-012; doctrine layer complete)
+- Human Interaction Point Doctrine integrated into Governing Principles as canonical section
+- Provenance Ceiling Self-Application Rule integrated into Governing Principles as canonical section
+- EF-0.2 autonomous degradation amendment integrated into Level 2 action text
+- Permanently PROVISIONAL Load-Bearing Claims row integrated into Failure Modes table
+- RC-007 saturation check updated: two-consecutive-cycle measurement requirement integrated (absorbs AP-018 partial resolution)
+- RC-009 Vehicle Advancement Visibility updated: semantic progress markers clause integrated (absorbs AP-019 partial resolution)
+- Gate 3 status note added to Verification Gate Enforcement
+- Systemic Risk escalation note updated to reflect AP-001–AP-007 resolution framework status
+- Lessons Learned row added for AP-001 indicator rollback
+- Relationship to Existing Documents updated: Canonical_Terms.md and Security_Protocols.md added
+- Open Unknowns decremented 15 → 12
+- Highest Risk field updated to Critical
+- Version strings updated to v0.14
+
+**What must remain constant:**
+
+**Confidence never outruns verification.**
+
+**Reality is sovereign. The Auditor is its instrument, not its replacement.**
