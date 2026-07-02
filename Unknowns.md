@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.2 — 2026-06-28. GH cluster registered (GH-001 through GH-012). RIP-001 closed — Git release tags fulfill prior-state archival requirement. ST-004, CT-008, CT-009, CF-004 registered. HR cluster added (Hydrologic Resource Cascade). Cognitive_Frameworks.md CF-004 indexed.**
+**Version 4.3 — 2026-07-01. Structural compression: Resolved & Discharged Archive retired — full resolution detail now lives in owning file sidecars per Lessons Learned doctrine. Audit Trail v1.0–v3.0 condensed. Dead prose removed. RE-UNK-001 through RE-UNK-005 registered (Return_To_Eden.md, cycle 11). NT-010 registered (Admin/Nothingness Theorem, cycle 11).**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -21,41 +21,37 @@ Programmatic URL routing → `Routing.md`
 Navigation map and scope boundaries → `Discovery.md`
 Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and epistemic-debt doctrine → `Admin/Computational Institutional Reasoning`
 
-**Cross-module dependencies** are owned by each file's Upstream/Downstream tables as of the v0.2 retrofit pass. See `Discovery.md` Scope Map for navigation. The Dependency Map section formerly in this file has been retired — it was a compensatory mechanism for files that lacked Upstream/Downstream tables. Those tables now exist across the full active file set and are the authoritative source.
+**Cross-module dependencies** are owned by each file's Upstream/Downstream tables as of the v0.2 retrofit pass. See `Discovery.md` Scope Map for navigation.
 
-**Discovery.md task tables have been retired.** Pending corrections are tracked here as PC clusters. Discovery.md is a navigation map, not a task list.
+---
 
-### Size Management Rules
+## What v4.3 Means
+
+- Structural compression pass:
+  - Resolved & Discharged Archive retired. Full resolution detail lives in each owning file's sidecar under Lessons Learned. The Audit Trail's one-line resolution notes are the only navigation-layer record maintained here. This eliminates a permanent accumulator and resolves the contradiction with the stated purpose of this file ("navigation layer only").
+  - Audit Trail v1.0–v3.0 condensed to a single arc summary entry.
+  - Dead prose removed: paragraphs explaining the retired Dependency Map and retired Discovery.md task tables were describing their own absence and have been dropped.
+  - Size Management Rule 2 updated to reflect archive removal.
+- RE-UNK-001 through RE-UNK-005 registered — Return_To_Eden.md audit cycle 11. RE-UNK-001 (measurement protocols) and RE-UNK-005 (baseline reference values) are co-blocking at Tier I gate; non-blocking at Exploration.
+- NT-010 registered — Admin/Nothingness Theorem, cycle 11. Maintenance energy normalization across substrates. NT-001 through NT-009 are tracked in the Nothingness Theorem internal unknowns table and are not cross-module; not registered here.
+
+---
+
+## Size Management Rules
 
 These rules are enforced at every audit cycle opening:
 
 1. **What vX.X Means — rolling single section.** Only the current version's What section is kept live. When a new version is cut, the prior What section is retired. Its content is already captured in the Audit Trail entry for that version. Keeping stacked What sections is redundant.
 
-2. **Resolved entries leave the Active Index immediately.** Once an unknown is resolved, it moves to the Resolved & Discharged Archive. It does not linger in the Active Index with a Resolved status badge. Active tables show Open, In Progress, and Reopened only.
+2. **Resolved entries leave the Active Index immediately.** Once an unknown is resolved, it is removed from the Active Index. Full resolution detail is recorded in the owning file's sidecar under Lessons Learned. This file carries no persistent archive of resolved entries — the Audit Trail's brief resolution notes are the only navigation-layer record maintained here. Active tables show Open, In Progress, and Reopened only.
 
-3. **Compression trigger at 1,200 lines.** If this file exceeds 1,200 lines, a compression pass is mandatory before new entries are added. Compression scope: retire old What sections, verify all resolved actives have moved to archive, confirm Dependency Map remains retired.
+3. **Compression trigger at 1,200 lines.** If this file exceeds 1,200 lines, a compression pass is mandatory before new entries are added. Compression scope: retire old What sections, verify all resolved actives have been removed from the index, confirm no archive accumulation has restarted.
 
 4. **Audit Trail entries are concise.** Two to three sentences maximum: what changed, what was resolved, what moved to watch lists. The What vX.X section carries the full narrative during the session; the Audit Trail is the permanent compressed record.
 
 5. **Unknown Budget — floor on acknowledged unknowns.** A healthy repository maintains a nonzero active unknown count. If the active index drops below 10 open entries across all clusters, treat this as a signal of premature closure rather than epistemic health — trigger a meta-audit to verify recent resolutions were genuinely grounded and not closed under optimization pressure. The goal is not an empty index; it is an honest one.
 
-6. **Reversion Protocol — when Resolved entries reopen.** A Resolved entry transitions to `Reopened` status when: (a) new empirical input contradicts the evidence that justified closure, (b) the resolution vehicle is shown to be insufficient or incorrect, or (c) a downstream dependency failure exposes the closure as premature. Reversion requires: an Epistemic Ledger entry in the owning file's sidecar documenting the contradictory evidence; an updated archive entry noting the reversion date and reason; and re-registration in the active index with status `Reopened` and Subtype `Active`. A closed unknown that reopens is not a failure — it is the falsification mechanism working correctly.
-
----
-
-## What v4.2 Means
-
-- Cognitive Salvage Layer GH cluster registered: GH-001 through GH-012
-- GH-009 (Emergent heuristic conflict) elevated to Critical — N² interaction scaling confirmed; Interaction Volume doctrine added to resolution path
-- GH-012 (Discovery yield rate) registered — primary ROI signal for the Cognitive Salvage Layer; cross-reference AP-001
-- RIP-001 closed — Discharge via Lessons Learned. Git release tag system (V0.6 through V0.97, GPG-signed) fulfills prior-state archival requirement at v0 scale. Manual /Archive/ directory deposit is redundant.
-- RIP-006 partially resolved — GitHub indefinite retention satisfies Tier 1 permanent retention requirement; remaining gap is /Archive/ directory content retention policy pending distillate architecture definition.
-- ST-004 registered (High risk) — sub-threshold state tampering vulnerability in Ship_of_Theseus.md Derivative Identity threshold
-- CT-008 registered (In Progress Vehicle) — HF-001 Heuristic Failure canonicalization consistency tracking
-- CT-009 registered (Low risk) — Grain System implementation consistency tracking between Canonical_Terms.md definition and Ship_of_Theseus.md ST-001/ST-002 implementation
-- CF-004 registered (Low risk) — epistemic debt measurement mechanism undefined; Triage Posture doctrine exists in Cognitive_Frameworks.md; trigger metric is v1 automation target
-- HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade)
-- GH-009 added to Dependency Clusters and Critical Watch
+6. **Reversion Protocol — when Resolved entries reopen.** A Resolved entry transitions to `Reopened` status when: (a) new empirical input contradicts the evidence that justified closure, (b) the resolution vehicle is shown to be insufficient or incorrect, or (c) a downstream dependency failure exposes the closure as premature. Reversion requires: an Epistemic Ledger entry in the owning file's sidecar documenting the contradictory evidence; an Audit Trail note in this file recording the reversion date and reason; and re-registration in the active index with status `Reopened` and Subtype `Active`. A closed unknown that reopens is not a failure — it is the falsification mechanism working correctly.
 
 ---
 
@@ -437,6 +433,19 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 
 *CM-002 Critical — no hydrometallurgical processing before closed-loop reagent recovery specified.*
 
+### Return to Eden
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| RE-UNK-001 | Eden Index variable measurement protocols undefined — $B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$ all lack instrument specifications, calibration procedures, and sampling intervals | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
+| RE-UNK-002 | 98.4% closed-loop material cycle threshold provenance unverified — empirical target, thermodynamic bound, or external specification; precision implies measurement capability that RE-UNK-001 flags as absent | `Challenges/Return_To_Eden.md` | Open | Active | Major |
+| RE-UNK-003 | Tier-to-tier advancement criteria undefined — no explicit pass/fail gate logic for progression between Tiers I–IV | `Challenges/Return_To_Eden.md` | Open | Active | Major |
+| RE-UNK-004 | Upstream/downstream dependency map absent — file references several modules implicitly but carries no formal dependency declaration; blocks Discovery.md Scope Map completion | `Challenges/Return_To_Eden.md` | Open | Active | Minor |
+| RE-UNK-005 | Eden Index baseline reference values undefined — $B_{d,0}$, $\Omega_{r,0}$, $W_{out,0}$, $\Phi_{ext,0}$ required by normalized formulation (v1.0.2) but have no measurement protocol; co-blocking dependency of RE-UNK-001 | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
+
+*RE-UNK-001 and RE-UNK-005 are co-blocking at Tier I gate — both must be resolved before $I_E$ can be computed. Non-blocking at Exploration.*
+*RE-UNK-002 and RE-UNK-003 become blocking at Tier I gate review; non-blocking at Exploration.*
+
 ### Hardware Modules
 
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
@@ -704,6 +713,14 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 *Additional HR unknowns (HR-003 through HR-010) are research questions in the file body; formal sidecar registration deferred to first audit pass.*
 *Known discrepancy: Tests/Hydrologic_Resource_Cascade.md File State declares "Open Unknowns: 8," but only HR-UNK-001 and HR-UNK-002 carry formal sidecar entries as of 2026-06-28. Correct the File State field to 2 on next commit to that file, or register HR-003 through HR-008 formally to match the declared count.*
 
+### Philosophical / Foundational
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| NT-010 | Maintenance energy normalization undefined — R metric assumes a common unit of "maintenance energy" across physical, informational, institutional, and cognitive substrates; normalization methodology undefined | `Admin/Nothingness Theorem` | Open | Active | Minor |
+
+*NT-001 through NT-009 are tracked in the Admin/Nothingness Theorem internal unknowns table. They are not cross-module and are not registered here.*
+
 ### Cross-Module
 
 | ID | Title | Owning Files | Status | Subtype | Priority |
@@ -756,7 +773,7 @@ FL-001 and several EC entries have been In Progress since v1.1 — approaching t
 
 GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolution path. GOV-005 remains Critical with no fast resolution path. GOV-007 In Progress — Genesis Phase Protocol executing; full resolution depends on GOV-008. GOV-008 exit condition not yet met.
 
-**RIP-001 Resolved** — Git release tag system (V0.6–V0.97, GPG-signed) fulfills prior-state archival at v0 scale. Discharged via Lessons Learned 2026-06-28.
+**RIP-001 Resolved** — Git release tag system (V0.6–V0.97, GPG-signed) fulfills prior-state archival at v0 scale. Discharged via Lessons Learned 2026-06-28. Full resolution detail in Admin/Repository_Integrity_Protocol.md sidecar.
 
 **EN-001 Critical/Blocking** — no structural specification may be promoted without validated safety factors for salvaged materials.
 
@@ -808,68 +825,9 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 
 ---
 
-## Resolved & Discharged Archive
-
-Entries here are closed. They remain for institutional memory.
-
-**Status definitions:**
-- **Resolved** — closed via Payment via Specification, Discharge via Lessons Learned, or Discharge via Trajectory
-- **Reopened** — previously resolved; re-entered active index due to contradictory evidence, insufficient resolution vehicle, or downstream dependency failure. The archive entry is annotated with reversion date and reason; the active index entry carries status `Reopened` and Subtype `Active`.
-
-| ID | Title | Resolution | Date |
-|---|---|---|---|
-| UNK-002 | Repo topology — Astroid-miner | Resolved — human confirmation; deferred to Leviathan milestone | May 2026 |
-| UNK-004 | Expiry Rule enforcement | Discharged — Sidecar Model addresses structurally | May 2026 |
-| UNK-022 | Full Stop Review trigger conditions | Resolved — added to Auditor_Protocols.md v0.5 | May 2026 |
-| FL-002 | Reduction module unassigned | Resolved — Operations/Gate_03_Reduction.md created | 2026-05-15 |
-| UNK-007 | Reduction module upstream dependency | Resolved — Gate_03_Reduction.md creation closes the gap | 2026-05-15 |
-| GK-001 | Forge loop definition | Resolved — defined in Architecture/Geck_forge_seed.md Section III | May 2026 |
-| GF-005 | Utilization stage has no owning file | Resolved — Operations/Gate_07_Utilization.md created | 2026-05-20 |
-| UNK-006 | Master safety registry — facility siting | Resolved — Architecture/Facilities.md created | 2026-06-06 |
-| GK-005 | Precision_LF.md not yet created | Resolved — Architecture/Precision.md created | 2026-06-06 |
-| PR-005 | GK-005 resolution confirmation pending | Resolved — Geck_forge_seed.md Section V updated | 2026-06-08 |
-| EP-005 | Acceptable risk threshold — partial resolution | Partially resolved — Safety_Protocols.md Section I defines consequence categories; full threshold remains open in Engineer_Protocols.md sidecar | 2026-06-06 |
-| EC-003 | Barter valuation standard undefined | Resolved — Admin/Economics.md Section VI defines barter doctrine | 2026-06-06 |
-| GOV-001 | Governance migration mechanics | **Archive entry premature — un-archived 2026-06-18.** Governance_Migration_Protocol.md created as resolution path but not yet audited against charter constraints. Status returned to In Progress. | 2026-06-06 / corrected 2026-06-18 |
-| PC-004 | Stale name corrections | Resolved — corrections applied during Challenges/ retrofit pass | 2026-06-11 |
-| FA-005 | UNK-006 resolution confirmation pending | Resolved — Facilities.md confirmed as owning file | 2026-06-11 |
-| SR-010 | Thermal management modularity | Resolved — declared modular/expandable in Support_Raft.md v0.5 | 2026-06-11 |
-| RS-002 | Forge_flow.md casing outlier | Resolved — corrected in Discovery.md Rename Registry | 2026-06-11 |
-| RS-003 | Archive/ directory not created | Resolved — Archive/README.md created with append-only doctrine | 2026-06-11 |
-| FD-004 | Support_Raft.md reverse upstream link | Resolved — bidirectional cross-reference confirmed | 2026-06-11 |
-| GMP-001 | GOV-001 resolution confirmation pending | Resolved — GOV-001 In Progress confirmed; Governance_Migration_Protocol.md exists as executing resolution path | 2026-06-11 / 2026-06-19 |
-| GMP-002 | Canonical ownership transfer not recorded in Charter | Resolved — ownership transfer confirmed and logged | 2026-06-11 |
-| RIP-003 | Violation incident log location undefined | Resolved — Admin/Logs/violations.md declared as canonical violation incident log | 2026-06-11 |
-| RIP-004 | Constitutional violation detection latency undefined | Resolved — Tier 1 Axiom Verification implemented as Step 1 of mandatory Audit Opening Checklist in Forge_Audit_Kit.md v1.1 | 2026-06-19 |
-| ENV-007 | Environmental_Constraints.md not in AUDIT_HARNESS.py | Resolved — added to FILE_REGISTRY and EXTRA_FILES in AUDIT_HARNESS.py v8.1 | 2026-06-19 |
-| AP-006 | Institutional truth provenance hierarchy | Payment via Specification — four provenance labels formalized; provenance ceiling rule established | 2026-06-21 |
-| AP-009 | Epistemic Ledger volume exemption from sidecar metadata guardrail | Payment via Specification — Metadata Guardrail updated with ENTRY_ID exemption syntax | 2026-06-21 |
-| ENV-008 | Environmental_Constraints.md not registered in Routing.md and Discovery.md | Resolved — both files updated and committed | 2026-06-21 |
-| RIP-001 | Prior-state archival system not yet established | Discharge via Lessons Learned — Git release tag system (V0.6 through V0.97, GPG-signed autogenerated source zips) fulfills prior-state preservation requirement at v0 scale. Manual /Archive/ directory deposit is redundant. GitHub indefinite retention satisfies permanent retention requirement. RIP-006 partially resolved simultaneously. | 2026-06-28 |
-
----
-
 ## Audit Trail
 
-**v0.1–v0.91:** See prior version history.
-**v1.0 — May 2026:** First full audit cycle across all primary documents complete.
-**v1.5 — 2026-05-19:** Gate_01_Intake, Gate_03_Reduction, Gate_06_Fabrication audit. GI-006, GI-007, GR-006–008, GF-006–007 added.
-**v1.6 — 2026-05-20:** Gate_07_Utilization.md created. GU-001–004 added. EL-005–008 added. GF-005 resolved.
-**v1.7 — 2026-05-23:** Admin reconciliation cycle. GOV-001–007, AP-004–007 added.
-**v1.8 — 2026-05-23:** Repository_Integrity_Protocol.md created. RIP-001–005 added. GOV-002, GOV-003, AP-007 In Progress.
-**v1.9 — 2026-05-25:** Governance_Charter.md v0.5. GOV-007 In Progress. GOV-008, GOV-009, TR-002, GU-005, AS-004 added.
-**v1.9a — 2026-05-28:** Security_Protocols.md v0.2 audit. SEC-001–007, CT-004, UNK-009 added.
-**v2.0 — 2026-05-30:** Energy.md, Plastics.md, Woodworking.md reconciled. EV-002, EV-003, PL-001–005, WW-001–005 added.
-**v2.1 — 2026-05-31:** Engineering.md, Mechanical_Structures.md, Cognitive_Frameworks.md, Engineer_Protocols.md, Verification_Gates_LF.md, Canonical_Terms.md reconciled. EN-001–005, ME-001–002, CF-001–003, EP-001–006, VG-001, CT-001, CT-003, SR-011–013 added. EN-001 and CF-001 added to Critical Watch.
-**v2.2 — 2026-05-31:** Thermal_Systems.md and Friction_Dynamics.md created. TH-001–004, FD-001–004 added. TH-003 added to Critical Watch.
-**v2.3 — 2026-06-02:** Chemistry.md created. CE-001–004 indexed. CE-003 flagged safety-critical.
-**v2.4 — 2026-06-06:** Six new files created and indexed. FA, SP, EC, GMP, RS, PR clusters added. PC cluster migrated from Discovery.md. FA-001, EC-002, PR-001 added to Critical Watch.
-**v2.5 — 2026-06-08:** Retrofit pass — seven files. CF-001–003 moved to In Progress.
-**v2.6 — 2026-06-08:** Retrofit pass completed for 14 additional files. PC-001–003 closed.
-**v2.7 — 2026-06-11:** Challenges/Emergence.md created. EM-001–004 registered. EM-001, EM-004 added to Critical Watch.
-**v2.8 — 2026-06-11:** Full Challenges/ retrofit pass. WA-001–004, BF-001–004, PO-001–004, WS-001–004, CM-001–004 registered. WA-002, WA-004, CM-002 added to Critical Watch.
-**v2.9 — 2026-06-11:** Support_Raft.md v0.5. SR-010 resolved. Dependency Map retired.
-**v3.0 — 2026-06-11:** Six resolved: RS-002, RS-003, FD-004, GMP-001, GMP-002, RIP-003.
+**v1.0–v3.0 (May–June 2026):** Full audit cycle across all primary documents. Seven operational gates, all Challenges/ and Tests/ clusters, and core Admin/ files indexed. Approximately 250 unknowns registered across GI, GR, GF, GU, EL, GOV, AP, RIP, SEC, EC, GMP, RS, PR, FA, SP, LW, TF, SD, EM, WA, BF, PO, WS, CM, CF clusters. Dependency Map and Discovery.md task tables retired. Twelve items resolved.
 **v3.1 — 2026-06-11:** Location abstraction pass. TH-003, EN-002, FA-004 retitled to deployment-generic framing.
 **v3.2 — 2026-06-11:** Architecture audit integration pass. ME-003, ME-004, TH-005, TH-006, CE-005, EN-006, FD-005 added. CE-003 elevated to Critical Watch. CE-004 In Progress. FA-005 resolved.
 **v3.3 — 2026-06-14:** Three new Tests/ file clusters registered. LW (9), TF (10), SD (12) unknowns. TF-006 and SD-UNK-004 added to Critical Watch. DS-001 closed. 31 total new unknowns.
@@ -879,6 +837,7 @@ Entries here are closed. They remain for institutional memory.
 **v3.7 — 2026-06-21:** AP cluster updated per Auditor_Protocols.md v0.11. AP-006, AP-009 resolved. AP-001, AP-002, AP-004, AP-005 moved to In Progress. AP-008, AP-010, AP-011 registered. ENV-008 resolved. GOV-009, GOV-010, EC-010 moved to In Progress. EP-004 In Progress.
 **v3.8 — 2026-06-21:** Structural maturation pass. Subtype column added to all active index tables. Unknown Budget and Reversion Protocol added to Size Management Rules. Dependency Clusters section added. Reopened status formally defined. AP-001 updated with retrospective calibration note.
 **v3.9 — 2026-06-23:** RC governance pass. RC-007 through RC-009 registered in Future/Deferred with owning file Admin/Auditor_Protocols.md. Operational Blocking and Epistemic Blocking added to Canonical_Terms.md v0.3 as canonical vocabulary. CT-006 and CT-007 registered in CT sidecar.
-**v4.0 — 2026-06-24:** Full Adversarial Battery pass on Admin/Auditor_Protocols.md complete — Classes 1–10, Claude + Gemini. Nine new unknowns AP-012 through AP-020 registered. AP-012 and AP-016 elevated to Critical Watch — cascade deadlock scenario confirmed. Human Interaction Point Doctrine added to AP Governing Principles; autonomous graceful degradation as primary response. EF-0.2 autonomous degradation amendment committed. Gate 3 blocked pending AP-012/AP-016 Provisional Spec. AP-020 flagged for Trajectory discharge decision.
-**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through GH-012). GH-009 Critical — emergent heuristic conflict N² scaling; Interaction Volume doctrine required. GH-012 registered — discovery yield rate. GH-009 added to Dependency Clusters and Critical Watch. HF-001 registered in Canonical_Terms.md v0.3; CT-008 logged.
-**v4.2 — 2026-06-28:** RIP-001 closed (Discharge via Lessons Learned — Git release tags fulfill prior-state archival). RIP-006 In Progress / partially resolved. ST-004 registered (High risk — sub-threshold tampering). CT-008 (In Progress Vehicle) and CT-009 (Open) registered in CT cluster. CF-004 registered (Low risk — epistemic debt measurement, v1 automation target). HR cluster added: HR-UNK-001 and HR-UNK-002 (Hydrologic Resource Cascade, both Critical). GH-009 and HR-UNK-002 added to Critical Watch.
+**v4.0 — 2026-06-24:** Full Adversarial Battery pass on Admin/Auditor_Protocols.md complete — Classes 1–10, Claude + Gemini. Nine new unknowns AP-012 through AP-020 registered. AP-012 and AP-016 elevated to Critical Watch. Human Interaction Point Doctrine added. EF-0.2 autonomous degradation amendment committed. Gate 3 blocked pending AP-012/AP-016 Provisional Spec. AP-020 flagged for Trajectory discharge decision.
+**v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through GH-012). GH-009 Critical. GH-012 registered. GH-009 added to Dependency Clusters and Critical Watch. HF-001 registered in Canonical_Terms.md v0.3; CT-008 logged.
+**v4.2 — 2026-06-28:** RIP-001 closed (Git release tags fulfill prior-state archival; full detail in Repository_Integrity_Protocol.md sidecar). RIP-006 In Progress. ST-004 registered. CT-008 In Progress, CT-009 Open. CF-004 registered. HR cluster added: HR-UNK-001 and HR-UNK-002 (both Critical). GH-009 and HR-UNK-002 added to Critical Watch.
+**v4.3 — 2026-07-01:** Structural compression pass. Resolved & Discharged Archive retired — resolution detail lives in owning file sidecars per Lessons Learned doctrine; archive was a permanent accumulator contradicting the stated navigation-layer purpose. Audit Trail v1.0–v3.0 condensed to arc summary. Dead prose removed. Size Management Rule 2 updated. RE-UNK-001 through RE-UNK-005 registered (Challenges/Return_To_Eden.md, cycle 11); RE-UNK-001 and RE-UNK-005 co-blocking at Tier I gate. NT-010 registered (Admin/Nothingness Theorem, cycle 11). Philosophical/Foundational cluster added.
