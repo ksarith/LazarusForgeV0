@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.3 — 2026-07-01. Structural compression: Resolved & Discharged Archive retired — full resolution detail now lives in owning file sidecars per Lessons Learned doctrine. Audit Trail v1.0–v3.0 condensed. Dead prose removed. RE-UNK-001 through RE-UNK-005 registered (Return_To_Eden.md, cycle 11). NT-010 registered (Admin/Nothingness Theorem, cycle 11).**
+**Version 4.4 — 2026-07-02. Security_Protocols.md audit follow-through: SEC-012 registered (asymmetric crypto overhead on constrained salvaged silicon). SEC-007 vertically split into SEC-007a (constitutional layer, Admin) and SEC-007b (physical implementation layer, Operations; blocked pending SEC-007a) — ad hoc resolution pattern, not yet canonized in Forge_Audit_Kit.md.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -25,15 +25,13 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.3 Means
+## What v4.4 Means
 
-- Structural compression pass:
-  - Resolved & Discharged Archive retired. Full resolution detail lives in each owning file's sidecar under Lessons Learned. The Audit Trail's one-line resolution notes are the only navigation-layer record maintained here. This eliminates a permanent accumulator and resolves the contradiction with the stated purpose of this file ("navigation layer only").
-  - Audit Trail v1.0–v3.0 condensed to a single arc summary entry.
-  - Dead prose removed: paragraphs explaining the retired Dependency Map and retired Discovery.md task tables were describing their own absence and have been dropped.
-  - Size Management Rule 2 updated to reflect archive removal.
-- RE-UNK-001 through RE-UNK-005 registered — Return_To_Eden.md audit cycle 11. RE-UNK-001 (measurement protocols) and RE-UNK-005 (baseline reference values) are co-blocking at Tier I gate; non-blocking at Exploration.
-- NT-010 registered — Admin/Nothingness Theorem, cycle 11. Maintenance energy normalization across substrates. NT-001 through NT-009 are tracked in the Nothingness Theorem internal unknowns table and are not cross-module; not registered here.
+- Multi-agent Exploration-stage audit of Security_Protocols.md (Grok, Gemini, two unattributed agents) surfaced one new unknown and one structural resolution move:
+  - **SEC-012 registered** — asymmetric cryptographic execution overhead (Ed25519/SHA-256) on resource-constrained salvaged silicon (8/16-bit MCUs). Risk: localized DoS or operator bypass under Logic-Zero node recovery. Cross-ref Operations/Electronics.md EL-006.
+  - **SEC-007 vertically split** into SEC-007a (constitutional requirements for the external root-of-trust anchor, owning layer Admin) and SEC-007b (physical hardware implementation, e.g. offline HSM/EEPROM, owning layer Operations; blocked pending SEC-007a). Rationale: SEC-007 spanned governance and hardware layers too broadly to close in one pass; splitting lets each layer's owning module resolve independently instead of deadlocking the parent item. Adopted by human governing authority 2026-07-02 as an ad hoc pattern for this item only — not yet canonized in Forge_Audit_Kit.md as a general doctrine.
+  - Downstream cross-refs updated: Dependency Clusters (Trust & Integrity tree), UNK-009, GMP-004, EM-004 (both active-index and Critical Watch rows) now point to SEC-007a/SEC-007b as appropriate.
+  - Two multi-agent gate-maturity disagreements on Security_Protocols.md (Grok: G3 partial/G6 blocked; Gemini: G3 deferred-permissible/G6 passed) remain unreconciled — flagged for human governing authority ruling, not resolved this pass.
 
 ---
 
@@ -64,7 +62,8 @@ Critical and Blocking unknowns only. Shows which entries block others — not a 
 UNK-009 (External root-of-trust — cross-module)
 ├── GOV-003 (Integrity enforcement architecture)
 ├── GOV-005 (Constitutional stability unproven)
-└── SEC-007 (External root-of-trust architecture)
+└── SEC-007a (External root-of-trust — constitutional layer)
+        ├── SEC-007b (External root-of-trust — physical implementation; blocked pending SEC-007a)
         └── GMP-004 (Ratification authentication gap)
 ```
 
@@ -201,11 +200,13 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | SEC-004 | Key lifecycle doctrine incomplete | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-005 | Trusted initialization environment undefined | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-006 | Timestamp trust under degraded clock | `Admin/Security_Protocols.md` | Open | — | Major |
-| SEC-007 | External root-of-trust architecture undefined | `Admin/Security_Protocols.md` | Open | — | Critical |
+| SEC-007a | External root-of-trust — constitutional requirements for the anchor (owning layer: Admin) — vertically split from SEC-007 2026-07-02 | `Admin/Security_Protocols.md` | Open | — | Critical |
+| SEC-007b | External root-of-trust — physical hardware implementation, e.g. offline HSM/EEPROM (owning layer: Operations) — vertically split from SEC-007 2026-07-02; blocked pending SEC-007a | `Admin/Security_Protocols.md` | Open | — | Critical |
 | SEC-008 | Signature replay protection mechanism undefined | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-009 | Compromise detection criteria undefined — blocks revocation trigger definition | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-010 | Cryptographic algorithm migration doctrine undefined | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-011 | Long-duration cryptographic continuity undefined — entropy exhaustion, operator succession, algorithm migration at Leviathan-class timescales | `Admin/Security_Protocols.md` | Open | — | Major |
+| SEC-012 | Asymmetric cryptographic execution overhead on resource-constrained salvaged silicon (8/16-bit MCUs) — risk of localized DoS or protocol bypass under Logic-Zero recovery; cross-ref Operations/Electronics.md EL-006 | `Admin/Security_Protocols.md` | Open | — | Major |
 
 ### Governance & Verification
 
@@ -322,7 +323,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | EM-001 | Behavioral opacity detection threshold — depends on CF-001 resolution | `Challenges/Emergence.md` | Open | — | High |
 | EM-002 | Correlated failure detection in multi-agent consensus | `Challenges/Emergence.md` | Open | — | High |
 | EM-003 | Gradual autonomy transition detection — no current sensor doctrine | `Challenges/Emergence.md` | Open | — | Medium |
-| EM-004 | Governance substrate integrity under emergent agent access — mirrors GOV-003, SEC-007 | `Challenges/Emergence.md` | Open | — | Critical |
+| EM-004 | Governance substrate integrity under emergent agent access — mirrors GOV-003, SEC-007a | `Challenges/Emergence.md` | Open | — | Critical |
 
 *EM-001 depends on CF-001 resolution.*
 *EM-004 is Critical — no fast resolution path; architectural decision above repository level required.*
@@ -637,7 +638,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GMP-007 | Amendment withdrawal procedure undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
 | GMP-008 | Stale proposal expiration policy undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
 
-*GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007.*
+*GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007a.*
 
 ### Repository Structure
 
@@ -726,7 +727,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | ID | Title | Owning Files | Status | Subtype | Priority |
 |---|---|---|---|---|---|
 | UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` | Open | — | Major |
-| UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007 | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | — | Critical |
+| UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | — | Critical |
 
 ### Future / Deferred
 
@@ -786,8 +787,9 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| SEC-007 | External root-of-trust — architectural decision above repository level required |
-| UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007 |
+| SEC-007a | External root-of-trust, constitutional layer — architectural decision above repository level required; blocks SEC-007b |
+| SEC-007b | External root-of-trust, physical implementation layer — blocked pending SEC-007a resolution |
+| UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b |
 | EC-008 | Inferred authorization — softest point in permission model; interim default (no material alteration) in place; formal resolution required before operational deployment |
 | EC-011 | Human governance adversary model — load-bearing assumption under "capability never outruns permission"; no protection if permission source is compromised |
 | EV-003 | Battery thermal containment — no enclosed battery bank until resolved |
@@ -800,7 +802,7 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | EC-002 | Operating cost baseline not established — blocks TR-001; depends on EV-001 |
 | PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; PR-004 prerequisite |
 | EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation |
-| EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007 |
+| EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007a |
 | WA-002 | Hazardous fraction identification reliability — safety-critical before mixed-waste operations |
 | WA-004 | Negative-value waste fraction disposal — no owning file; mirrors GR-003 gap |
 | CM-002 | Acid leach reagent recovery doctrine — no hydrometallurgical processing before closed-loop specified |
@@ -841,3 +843,4 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.1 — 2026-06-24:** Cognitive Salvage cluster registered (GH-001 through GH-012). GH-009 Critical. GH-012 registered. GH-009 added to Dependency Clusters and Critical Watch. HF-001 registered in Canonical_Terms.md v0.3; CT-008 logged.
 **v4.2 — 2026-06-28:** RIP-001 closed (Git release tags fulfill prior-state archival; full detail in Repository_Integrity_Protocol.md sidecar). RIP-006 In Progress. ST-004 registered. CT-008 In Progress, CT-009 Open. CF-004 registered. HR cluster added: HR-UNK-001 and HR-UNK-002 (both Critical). GH-009 and HR-UNK-002 added to Critical Watch.
 **v4.3 — 2026-07-01:** Structural compression pass. Resolved & Discharged Archive retired — resolution detail lives in owning file sidecars per Lessons Learned doctrine; archive was a permanent accumulator contradicting the stated navigation-layer purpose. Audit Trail v1.0–v3.0 condensed to arc summary. Dead prose removed. Size Management Rule 2 updated. RE-UNK-001 through RE-UNK-005 registered (Challenges/Return_To_Eden.md, cycle 11); RE-UNK-001 and RE-UNK-005 co-blocking at Tier I gate. NT-010 registered (Admin/Nothingness Theorem, cycle 11). Philosophical/Foundational cluster added.
+**v4.4 — 2026-07-02:** Multi-agent Security_Protocols.md audit follow-through. SEC-012 registered (asymmetric crypto overhead on constrained salvaged silicon; cross-ref EL-006). SEC-007 vertically split into SEC-007a (constitutional layer) and SEC-007b (physical implementation layer, blocked pending SEC-007a) — ad hoc pattern, human-governing-authority-adopted, not yet canonized. Dependency Clusters, UNK-009, GMP-004, EM-004 cross-refs updated to match split. Grok/Gemini G3/G6 gate-maturity disagreement on Security_Protocols.md flagged unresolved, pending human ruling.
