@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.7 — 2026-07-02. Added reciprocal pointer to Discovery.md scope maps. Discovery.md's Attention Required table refreshed to match this file's current state (was pinned to v4.4-era content).**
+**Version 4.8 — 2026-07-03. AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md v0.15). VG-001 discharged. A separately-drafted "v0.15" patch claiming AP-001/012/016 individually resolved was received but not incorporated — held for review, not verified.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,11 +27,11 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.7 Means
+## What v4.8 Means
 
-- **Discovery.md ↔ Unknowns.md reciprocal pointer added.** Discovery.md's "Pending Corrections" migration to this file's PC cluster (documented back in `Discovery.md`'s own text, and confirmed here in v4.3's Audit Trail as the source of the "retired Discovery.md task tables" dead-prose removal) was reviewed and confirmed as the correct architectural call, not a mistake — same "keep the index thin" principle as this file's own v4.3 archive retirement. But `Discovery.md`'s replacement mechanism (its "Cross-Module Unknowns — Attention Required" table) had drifted stale since creation, still referencing pre-split SEC-007 and missing everything from this session. Refreshed. This file's Purpose section now explicitly points back to `Discovery.md`'s per-file Scope Map entries for Upstream/Downstream context this file doesn't carry.
-- **VG-001 (Verification_Gates_LF.md) — first concrete incident logged.** A Forge_Audit_Kit.md v1.5 edit cited Auditor_Protocols.md directly, skipping the intermediate canonical gate-definition layer (Verification_Gates_LF.md was outside session context at the time) — exactly the risk VG-001 has described since 2026-05-29. Checked post-hoc: no actual divergence, citation path corrected, kit bumped to v1.6. VG-001 itself remains Open; one caught near-miss is incident evidence, not a fix for the missing synchronization-authority mechanism.
-- **Discovery.md — Objectives section added.** Previously stated only "what this repository is," not what it's trying to achieve or in what priority order. New section states v0 done-criteria and four standing objectives (governance before autonomy, physical plausibility before elegance, honest unknowns over false certainty, institutional memory over session continuity).
+- **AP-001–007 Systemic Risk escalation downgrade confirmed.** Human governing authority (ksarith) confirmed the downgrade condition set at Auditor_Protocols.md's 2026-06-24 ESCALATION STATUS note. Auditor_Protocols.md → v0.15. This clears the *escalation*, not the underlying unknowns — AP-001 through AP-005 and AP-007 remain In Progress with documented resolution frameworks. Open Unknowns in that file unchanged at 12.
+- **A separate, unrequested "v0.15" patch was received the same session** claiming AP-001, AP-012, and AP-016 individually Resolved via a new Auditor Fidelity framework and expanded EF-0.2/Human Interaction Point Doctrine content. **Not incorporated.** It conflicted with the actually-authorized action (a narrower, previously-drafted confirmation), arrived as a summary claim rather than full specification text, and AP-012/AP-016 are Gate-3-blocking Critical items whose closure needs full-text review before acceptance — a status-line claim isn't sufficient evidence for closing a Critical, Gate-blocking unknown. Held for separate review.
+- **VG-001 discharged** (Payment via Specification). Verification_Gates_LF.md → v0.4. The Gate Definition Synchronization Protocol resolves all four items in the original resolution path by naming existing mechanisms (the file's own Active Disputes table, the Skeptic/Auditor role) as the enforcement point, rather than proposing new infrastructure. Removed from this file's active index and Critical Watch.
 
 ---
 
@@ -241,7 +241,6 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | CT-005 | Ethical and authorization term placeholders pending canonicalization | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
 | CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
-| VG-001 | Gate definition synchronization authority chain undefined | `Admin/Verification_Gates_LF.md` | Open | — | Major |
 
 ### Engineer Protocols
 
@@ -823,7 +822,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | GOV-008 | Minimum quorum — GOV-007 Genesis Phase exit condition not yet met |
 | PL-002 | Reactor pressure control — no reactor fabrication before pressure relief specified |
 | WW-004 | Mixed-species dust — interim mitigation (P100 mandatory); formal characterization required |
-| VG-001 | Gate synchronization authority chain — Blocking before first Specification promotion |
 
 ---
 
@@ -847,3 +845,4 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.5 — 2026-07-02:** External Design Lineage (EDL) registry added to Security_Protocols.md (PAT-001 through PAT-004; anchors SEC-007a, SEC-007b, SEC-005, SEC-011). Cross-refs added to corresponding rows above. Corrected a drafting error conflating a proposed symmetric-fallback-tree unknown with SEC-012 (unrelated; SEC-012 stays scoped to asymmetric-crypto/salvaged-silicon overhead). Declined to adopt a companion proposal (GOV-MAND-009) canonizing EDL as a repository-wide constitutional promotion gate with automated harness enforcement — routed to Governance_Migration_Protocol.md for future human ratification instead of session-level adoption. Known drift at close: Security_Protocols.md's own SEC-007 sidecar entry not yet split to match; Grok/Gemini G3/G6 gate-maturity disagreement unresolved, pending human ruling.
 **v4.6 — 2026-07-02:** Two items closed from v4.5. (1) Security_Protocols.md's SEC-007 sidecar reconciled into SEC-007a/SEC-007b (file → v0.7). (2) Grok/Gemini G3/G6 dispute logged as SEC-DS-001 in Security_Protocols.md Active Disputes per Auditor_Protocols.md §Dispute Handling Protocol, and resolved via Forge_Audit_Kit.md v1.5's new Gate Scope vs. Promotion Readiness clarification (sourced from Auditor_Protocols.md §Specification Promotion Rules — gates test execution quality; open-unknown blocking is a separate promotion condition). Gemini's original scoring confirmed structurally correct. Forge_Audit_Kit.md bumped to v1.5; its stale Unknowns.md derivation string (v4.0) corrected. Process correction: an earlier attempt to record item (1) mutated already-committed v4.5 text in place rather than version-bumping — reverted; v4.5 entry above is the original committed text, unedited.
 **v4.7 — 2026-07-02:** Discovery.md reconciliation. Confirmed Discovery.md's historical Pending-Corrections-to-PC-cluster migration was correctly principled, not a mistake; refreshed Discovery.md's stale Attention Required table (was pre-dating the SEC-007 split) to current state and added an explicit reciprocal pointer here to Discovery.md's per-file Scope Map Upstream/Downstream context. Discovery.md gained a new Objectives section. Verification_Gates_LF.md's VG-001 logged its first concrete incident (Forge_Audit_Kit.md v1.5 citation gap, caught, no actual divergence, kit → v1.6); VG-001 remains Open.
+**v4.8 — 2026-07-03:** AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md → v0.15); underlying AP-001–005/007 unknowns unchanged, In Progress. A separately-drafted, unrequested "v0.15" patch claiming AP-001/012/016 individually resolved was received and explicitly not incorporated — held for review pending full specification text (AP-012/AP-016 are Gate-3-blocking Critical items). VG-001 discharged via Gate Definition Synchronization Protocol (Verification_Gates_LF.md → v0.4); removed from active index and Critical Watch.
