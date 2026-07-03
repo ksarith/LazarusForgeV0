@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.4**
+**Version 1.6**
 
 ## File State
 
@@ -13,7 +13,7 @@
 | Open Unknowns  | See sidecar                                                         |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.14 | `Unknowns.md` v4.0
+**Derived from:** `Admin/Auditor_Protocols.md` v0.14 | `Admin/Verification_Gates_LF.md` v0.2 | `Unknowns.md` v4.5
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -172,7 +172,16 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 | G5 | Cross-reference integrity — all paths use canonical folder-prefixed names? | Hold at draft |
 | G6 | Conflict check — no contradiction with existing committed specs? | Resolve before committing |
 
-**Gate 3 note:** At least one Battery class per promotion cycle must be applied by an agent with no session context from the current audit cycle (AP-017). Gate 3 currently blocked on AP-012 and AP-016 reaching Provisional Spec.
+**Gate scope vs. promotion readiness (clarified 2026-07-02, source: `Admin/Verification_Gates_LF.md` §Gate 3, §Gate 6, §Promotion Requirements Summary — the canonical gate-definition layer this kit condenses; independently traceable to `Admin/Auditor_Protocols.md` §Specification Promotion Rules and §Adversarial Audit Layer, which Verification_Gates_LF.md itself derives from):** Gates test a document's own execution quality — was the check actually done, documented, and does the committed text avoid contradiction. Gates do **not** test whether unknowns a check surfaced have been resolved. "All six gates pass" and "open unknowns are non-blocking" are two separate, independently required conditions for Specification promotion (§Specification Promotion Rules / §Promotion Requirements Summary) — a document can clear all six gates while promotion stays blocked by open unknowns, and that is not a gate failure.
+
+*Process note: this clarification was first drafted 2026-07-02 citing only `Admin/Auditor_Protocols.md` directly, bypassing `Admin/Verification_Gates_LF.md` — the file this kit's condensed gate table is actually supposed to derive from (see VG-001). Verification_Gates_LF.md was made available later the same session and checked against the drafted text: independently consistent, no divergence found. Citation corrected here to route through the correct canonical layer. See VG-001 Resolution Log for the full incident record.*
+
+- **G3** passes if the Adversarial Battery was applied and documented — full Battery, or partial with deferred classes named and reasoned (Exploration-stage default per §Adversarial Audit Layer "When to Apply"). G3 does not require that findings from the Battery be resolved; unresolved Critical findings block *promotion*, tracked as open unknowns, not as a G3 failure.
+- **G6** passes if the committed text does not contradict itself or another *committed* spec. G6 does not test whether upstream dependencies are resolved — that is a promotion-readiness question.
+
+**Known source ambiguity:** `Admin/Auditor_Protocols.md`'s own Gate 3 status entry states Gate 3 "BLOCKED pending AP-012 and AP-016" in the same line as "Battery application is complete" — correct in substance (coverage complete, promotion blocked) but the phrasing blends the two axes this note separates. Source document remains authoritative; flagged here as a legibility issue worth a future wording pass, not a governance error.
+
+**Gate 3 note:** Battery coverage complete for `Admin/Auditor_Protocols.md` (v0.13). At least one Battery class per promotion cycle must be applied by an agent with no session context from the current audit cycle (AP-017). Promotion to Specification remains blocked pending AP-012 and AP-016 reaching Provisional Spec — a Specification Promotion Rules block, not a Gate 3 coverage failure.
 
 **Physical harness note (AP-010 pending):** For documents with physical implementation claims, Gate 6 requires at least one confirmed cross-reference to an active test harness specifying test and grounding artifact. Documents without physical claims are exempt.
 
@@ -253,6 +262,7 @@ Load additional files only when the audit focus requires them — each adds toke
 - Governance sidecar ID reference contains stale or flat filenames
 - Ethical Anchor absent or altered
 - Resolved unknown missing Lessons Learned narrative field, matching top-table row, or discharge status suffix (Resolved Unknown Discharge Procedure skipped)
+- Gate status language conflates "check coverage complete" with "promotion blocked by open unknowns" (see Gate scope vs. promotion readiness note)
 - Kit character count exceeds 12,000 — flag for reduction pass
 
 **Compound Drift Rule:** Multiple simultaneous indicators → halt autonomous progression, escalate for human review.
@@ -269,6 +279,12 @@ Load additional files only when the audit focus requires them — each adds toke
 
 **FAK-006** — Resolved Unknown Discharge Procedure canonized here at v1.4 (2026-07-02) from organically-emerged RIP-001 practice, since no formal doctrine existed anywhere in the repository despite the pattern being in active use. Per this kit's own Scope Boundary, full auditor procedural doctrine belongs in `Admin/Auditor_Protocols.md` — this kit should carry only the condensed checklist form, consistent with every other section here. `Admin/Auditor_Protocols.md` was not available this session to receive the full version. Status: Open — condensed version live here; full-doctrine migration to `Admin/Auditor_Protocols.md` pending.
 
+**FAK-007** — `Unknowns.md` derivation string was stale at v4.0 while actual file had reached v4.5 (three version-bump maintenance triggers missed per this kit's own How to Use §Maintenance trigger rule). Corrected 2026-07-02. Critical watch summary (Audit Opening Checklist step 3) was derived against v4.0 and has not been refreshed against the intervening SEC-007a/b split, SEC-012, EDL registry, or Resolved Unknown Discharge Procedure additions — a full refresh pass is still needed, not done this session. Status: Open.
+
+**FAK-008** — Gate scope vs. promotion readiness ambiguity (see Verification Gates section) resolved a live cross-agent dispute: Grok scored Security_Protocols.md's G3/G6 as partial/blocked by folding unresolved upstream unknowns into gate status; Gemini scored both as passing, treating gate status as coverage/textual-only per `Admin/Auditor_Protocols.md` §Specification Promotion Rules' explicit separation of "gates pass" from "open unknowns non-blocking." Gemini's reading is structurally correct per source doctrine. Logged as a Synthesizer-level resolution (reversible if reasoning is disputed, not a Tier 1 ratification) in `Admin/Security_Protocols.md` Active Disputes per `Admin/Auditor_Protocols.md` §Dispute Handling Protocol. Status: Resolved.
+
+**FAK-009** — `Admin/Verification_Gates_LF.md` was unavailable when FAK-008's clarification was drafted, so it cited `Admin/Auditor_Protocols.md` directly instead of the intermediate canonical layer this kit is actually supposed to derive from. This is a concrete instance of the exact risk VG-001 (logged in Verification_Gates_LF.md since 2026-05-29) describes: derived files diverging silently at derivation boundaries. Made available later the same session; checked and found independently consistent — no actual divergence occurred, but the citation path was wrong. Corrected: kit's Derived-from line now includes Verification_Gates_LF.md; gate note citation corrected to route through it. Full incident logged in Verification_Gates_LF.md's own Resolution Log as the first concrete evidence for VG-001, which remains Open — the underlying synchronization-authority-chain gap (no defined update trigger, reconciliation owner, or promotion freeze condition) is not fixed by this one manual catch. Status: Open (VG-001 itself unresolved; this kit's citation is corrected).
+
 ---
 
 ## Resolution Log
@@ -277,3 +293,14 @@ Load additional files only when the audit focus requires them — each adds toke
 - 2026-06-24: **v1.3** — Derivation strings updated to `Admin/Auditor_Protocols.md` v0.14 and `Unknowns.md` v4.0. Role declaration version string updated to v0.14. Human Interaction Point Doctrine added to Governing Principles. EF-0.2 L2 entry updated to reflect autonomous degradation doctrine. Active Unknowns section removed — replaced by critical watch summary integrated into Expiry Watch step. AP Systemic Risk escalation note updated: all seven entries carry resolution frameworks; AP-006 and AP-009 Resolved; AP-012 and AP-016 Critical. GH- prefix added to Governance Sidecar ID Reference. Operational Blocking / Epistemic Blocking added to Semantic Stability table. Gate 3 note updated with AP-017 independence requirement and current block status. AP-010 physical harness note updated. Token ceiling note updated to reflect v0.14 character count. FAK-005 remains Open — actual post-reduction count ~16,950; ceiling parameter needs revisiting, not the content. Reduction pass complete.
 - 2026-06-27: **v1.3 patch** — Spec Gates (0/6) and Verification Ref (Admin/Verification_Gates_LF.md) added to File State block. Phase 1 enforcement (AUDIT_HARNESS.py v11) flagged missing fields — all repository documents follow the same File State schema, no exceptions for meta documents.
 - 2026-07-02: **v1.4** — Resolved Unknown Discharge Procedure section added, canonizing the RIP-001 pattern (permanent sidecar retention, Resolution + Lessons Learned narrative fields, matching top-table row, one-line Unknowns.md pointer — no centralized archive). Placed between Verification Gates and Sign-Off Format. Matching Drift Indicator added. FAK-006 logged — condensed version lives here per Scope Boundary; full doctrine migration to `Admin/Auditor_Protocols.md` still pending (file unavailable this session). Prompted by retroactive correction of RIP-004's discharge record, which had skipped the Lessons Learned narrative field and matching table row for six weeks despite being correctly resolved in substance.
+- 2026-07-02: **v1.5** — Gate scope vs. promotion readiness clarification added to Verification Gates, sourced from `Admin/Auditor_Protocols.md` §Specification Promotion Rules and §Adversarial Audit Layer (file made available this session for the first time). Resolves the standing Grok/Gemini G3/G6 disagreement on `Admin/Security_Protocols.md`: gates test a document's own execution quality (check applied and documented, text non-contradictory); "open unknowns are non-blocking" is a separate, independently required promotion condition, not folded into G3 or G6. Flagged a legibility issue in the source: `Admin/Auditor_Protocols.md`'s own Gate 3 status entry blends "battery coverage complete" with "promotion blocked" in one line — correct in substance, ambiguous in phrasing. Gate 3 note rewritten to separate the two explicitly. `Unknowns.md` derivation string corrected from stale v4.0 to v4.5 (three missed maintenance-trigger updates). New Drift Indicator added for gate/promotion-status conflation. FAK-007 logged — critical watch summary still needs a full refresh against v4.0→v4.5 changes, not done this session. FAK-008 logged — dispute resolution recorded as Synthesizer-level, reversible, cross-referenced into `Admin/Security_Protocols.md` Active Disputes per `Admin/Auditor_Protocols.md` §Dispute Handling Protocol.
+- 2026-07-02: **v1.6** — `Admin/Verification_Gates_LF.md` reconciliation.
+  Derivation line corrected to include it (was citing `Auditor_Protocols.md`
+  only, skipping the intermediate canonical layer this kit's gate table is
+  actually derived from). Gate scope vs. promotion readiness note's citation
+  corrected to route through Verification_Gates_LF.md §Gate 3/§Gate 6/
+  §Promotion Requirements Summary; checked against it and confirmed
+  independently consistent — no actual divergence, wrong citation path only.
+  FAK-009 logged as the first concrete incident evidence for VG-001 (open
+  since 2026-05-29, previously hypothetical risk). VG-001 remains Open —
+  see Verification_Gates_LF.md Resolution Log for the full record.
