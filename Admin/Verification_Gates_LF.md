@@ -335,7 +335,7 @@ triggers re-entry into the gate sequence.
 | Blocking      | No (Exploration/Draft); Yes (Specification promotion) |
 | Owner         | Admin/Verification_Gates_LF.md  |
 | First Logged  | 2026-05-29                      |
-| Last Reviewed | 2026-05-29                      |
+| Last Reviewed | 2026-07-02                      |
 
 **Description:** The three-layer gate definition chain
 (Auditor_Protocols.md → Verification_Gates_LF.md → Forge_Audit_Kit.md)
@@ -349,12 +349,28 @@ mechanism, gate definitions in the three files can silently diverge — each
 appearing internally coherent while disagreeing on what a gate actually
 requires.
 
+**First concrete incident (2026-07-02):** A gate-scope clarification was
+drafted directly into `Admin/Forge_Audit_Kit.md` citing only
+`Admin/Auditor_Protocols.md`, because this file was not in context at the
+time — the intermediate layer was skipped entirely, exactly as this unknown
+predicted. Checked against this file once it became available: the drafted
+text turned out to be independently consistent (Gate 3 partial-battery
+criteria and Gate 6's textual-contradiction-only scope both matched this
+file's definitions, and the Promotion Requirements Summary here already
+states the same gates/open-unknowns separation). No actual divergence
+resulted, but the near-miss confirms the risk this unknown describes is
+live, not hypothetical — it was luck that both derivations landed on the
+same reading of Auditor_Protocols.md, not a mechanism that guarantees it.
+
 **Resolution Path:** Payment via Specification — define: (1) update
 trigger when Auditor_Protocols.md gate definitions change; (2) reconciliation
 owner (Skeptic/Auditor role); (3) conflict escalation path if derived files
 diverge; (4) promotion freeze condition if divergence is detected.
 Cross-reference AP-007 (repository integrity doctrine), GOV-003 (integrity
-enforcement architecture), RIP-001 (prior-state archival).
+enforcement architecture), RIP-001 (prior-state archival — Resolved
+2026-06-27, see Admin/Repository_Integrity_Protocol.md). Still Open — a
+single caught near-miss is evidence for prioritizing this, not a
+resolution; the four resolution-path items above are unaddressed.
 
 ---
 
@@ -374,6 +390,14 @@ enforcement architecture), RIP-001 (prior-state archival).
   ASM-004 (canonical status clarification) added to Assumptions. VG-001
   logged — gate synchronization authority chain undefined. Open Unknowns
   updated 0 → 1. Navigation Anchors block added 2026-06-06.
+- 2026-07-02: VG-001 first concrete incident logged — a Forge_Audit_Kit.md
+  edit skipped this file entirely (unavailable in session context) and
+  cited Auditor_Protocols.md directly. Checked post-hoc: no actual
+  divergence, gate definitions matched. Incident recorded as evidence the
+  risk is live; resolution path itself unchanged and still unaddressed.
+  Forge_Audit_Kit.md's derivation line and gate-note citation corrected to
+  route through this file (kit bumped to v1.6). Last Audit still 2026-05-29
+  — this was an incident log update, not a full re-audit.
 
 ---
 
@@ -434,8 +458,8 @@ halt autonomous audit progression and escalate for human review.
 
 ## Status
 
-Version 0.2 — ChatGPT Skeptic/Auditor findings actioned; Navigation
-Anchors added; structural cleanup (2026-06-06).
+Version 0.3 — VG-001 first concrete incident logged; Forge_Audit_Kit.md
+reconciliation confirmed no actual gate-definition divergence (2026-07-02).
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
 G6 require formal audit pass against Auditor_Protocols.md before claiming.
