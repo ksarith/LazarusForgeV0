@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.6**
+**Version 1.7**
 
 ## File State
 
@@ -13,7 +13,7 @@
 | Open Unknowns  | See sidecar                                                         |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.14 | `Admin/Verification_Gates_LF.md` v0.2 | `Unknowns.md` v4.5
+**Derived from:** `Admin/Auditor_Protocols.md` v0.14 | `Admin/Verification_Gates_LF.md` v0.3 | `Unknowns.md` v4.7
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -304,3 +304,19 @@ Load additional files only when the audit focus requires them — each adds toke
   FAK-009 logged as the first concrete incident evidence for VG-001 (open
   since 2026-05-29, previously hypothetical risk). VG-001 remains Open —
   see Verification_Gates_LF.md Resolution Log for the full record.
+- 2026-07-02: **v1.7** — Derivation line was stale within the same session
+  that fixed it: v1.6 cited `Verification_Gates_LF.md v0.2` after that file
+  had already been bumped to v0.3 in the same pass, and still cited
+  `Unknowns.md v4.5` after Unknowns.md had moved to v4.6 then v4.7. Both
+  corrected. Caught via a user-initiated live-repo check (Grok retrieval of
+  File State fields across five files) following a file-management incident
+  (accidental cloning, ~10% truncation of `Auditor_Protocols.md`, five
+  duplicate `Unknowns.md` versions consolidated back to one). Check found
+  no content loss — `Unknowns.md` confirmed v4.7, this file confirmed v1.6,
+  `Security_Protocols.md` Open Unknowns confirmed at 12 (only possible if
+  the SEC-007a/b split edit persisted) — but did catch this kit's own
+  derivation-citation drift, a same-session recurrence of the exact pattern
+  VG-001 and FAK-007 describe. Note: this check verified File State header
+  fields only, not full body content (SEC-DS-001, EDL registry, RIP-004
+  Lessons Learned fields, Discovery.md Objectives section unconfirmed by
+  this pass).
