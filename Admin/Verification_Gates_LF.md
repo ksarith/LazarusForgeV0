@@ -18,7 +18,7 @@
 | Verification Ref | Self (this file is the verification reference)                      |
 | Last Audit       | 2026-05-29                                                          |
 | Auditor          | ChatGPT — Skeptic/Auditor (findings actioned by Claude)             |
-| Open Unknowns    | 1                                                                   |
+| Open Unknowns    | 0                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -289,6 +289,37 @@ the gate sequence from the appropriate stage.
 
 ---
 
+## Gate Definition Synchronization Protocol
+
+Resolves VG-001. Governs the three-layer chain: `Admin/Auditor_Protocols.md`
+(source) → this file (canonical gate-definition layer) → `Admin/Forge_Audit_Kit.md`
+(condensed derivative).
+
+1. **Update trigger:** any Resolution Log entry in `Admin/Auditor_Protocols.md`
+   touching §Verification Gate Enforcement, §Specification Promotion Rules,
+   or §Adversarial Audit Layer requires a same-cycle review of this file for
+   consistency. The reviewing agent logs the review in this file's Resolution
+   Log even if no change is needed — a reviewed-and-consistent entry, not
+   silence, is the evidence the trigger fired.
+2. **Reconciliation owner:** whichever agent holds the Skeptic/Auditor role
+   for the current audit cycle, per `Admin/Auditor_Protocols.md` File State
+   Auditor field. If no Skeptic/Auditor is active that cycle, the trigger in
+   item 1 queues until one is assigned rather than being skipped.
+3. **Conflict escalation path:** if this file and `Admin/Auditor_Protocols.md`
+   are found to define a gate differently, `Admin/Auditor_Protocols.md`
+   prevails (per this file's own File Purpose section). The divergence itself
+   must be logged as a new row in this file's Active Disputes table within
+   the same cycle it is found — corrected silently is not an option, matching
+   `Admin/Auditor_Protocols.md` §Dispute Handling Protocol's requirement that
+   disputes be tracked explicitly, not left to silently disappear.
+4. **Promotion freeze condition:** no file — this one, `Forge_Audit_Kit.md`,
+   or any other consumer — may record a Spec Gate as passed using a gate
+   definition currently named in an open, unresolved row of this file's
+   Active Disputes table. The freeze lifts when the dispute row's Status
+   changes to Resolved.
+
+---
+
 ## Promotion Requirements Summary
 
 A file may only reach Specification status if all six gates have been
@@ -311,6 +342,7 @@ triggers re-entry into the gate sequence.
 |------------|---------------|-------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------|---------------------|
 | 2026-05-28 | Audit Review  | Gates defined in two places simultaneously (Auditor_Protocols.md and Forge_Audit_Kit.md) | No stable canonical reference; Verification Ref field pointed to nonexistent file | Gate definitions need a stable dedicated home; derived representations must be clearly subordinate to it | Replicated | No                  |
 | 2026-05-28 | Audit Review  | First draft claimed Specification/6/6 without audit against existing gate definitions | Draft defined different gates than existing governance system | Self-referential authority claims on first-draft governance files are premature promotion — gates must be verified against source before promotion | Replicated | No |
+| 2026-07-03 | Audit Review  | VG-001 (gate-definition synchronization chain) treated as needing new infrastructure | An abstract three-file drift risk had no forcing function until a real near-miss occurred | Naming an existing tracked-disputes mechanism as the enforcement point resolved it — check for reusable existing mechanisms before proposing new tooling for a derivation-chain unknown | Operationally Hardened | No |
 
 ---
 
@@ -328,14 +360,14 @@ triggers re-entry into the gate sequence.
 
 | Field         | Value                           |
 |---------------|---------------------------------|
-| Status        | Open                            |
+| Status        | Resolved — Discharge via Lessons Learned |
 | Risk          | High                            |
 | Priority      | Major                           |
 | Type          | Governance                      |
 | Blocking      | No (Exploration/Draft); Yes (Specification promotion) |
 | Owner         | Admin/Verification_Gates_LF.md  |
 | First Logged  | 2026-05-29                      |
-| Last Reviewed | 2026-07-02                      |
+| Last Reviewed | 2026-07-03                      |
 
 **Description:** The three-layer gate definition chain
 (Auditor_Protocols.md → Verification_Gates_LF.md → Forge_Audit_Kit.md)
@@ -362,15 +394,25 @@ resulted, but the near-miss confirms the risk this unknown describes is
 live, not hypothetical — it was luck that both derivations landed on the
 same reading of Auditor_Protocols.md, not a mechanism that guarantees it.
 
-**Resolution Path:** Payment via Specification — define: (1) update
-trigger when Auditor_Protocols.md gate definitions change; (2) reconciliation
-owner (Skeptic/Auditor role); (3) conflict escalation path if derived files
-diverge; (4) promotion freeze condition if divergence is detected.
-Cross-reference AP-007 (repository integrity doctrine), GOV-003 (integrity
-enforcement architecture), RIP-001 (prior-state archival — Resolved
-2026-06-27, see Admin/Repository_Integrity_Protocol.md). Still Open — a
-single caught near-miss is evidence for prioritizing this, not a
-resolution; the four resolution-path items above are unaddressed.
+**Resolution:** Gate Definition Synchronization Protocol added above (2026-07-03),
+answering all four items: update trigger tied to Auditor_Protocols.md
+Resolution Log entries touching gate-relevant sections; reconciliation owner
+set to the active Skeptic/Auditor; conflict escalation routed through this
+file's own Active Disputes table per Auditor_Protocols.md's Dispute Handling
+Protocol; promotion freeze tied to unresolved Active Disputes rows.
+Cross-reference AP-007, GOV-003, RIP-001 (Resolved 2026-06-27) retained as
+originally scoped.
+
+**Lessons Learned:** The resolution didn't require new tooling — it required
+naming an existing mechanism (this file's own Active Disputes table, and the
+Skeptic/Auditor role already defined elsewhere) as the enforcement point for
+a problem that looked like it needed a new synchronization system. The
+2026-07-02 near-miss was the forcing function: an abstract "these three files
+could drift" risk became concrete once an actual citation was drafted against
+the wrong layer. Future derivation-chain unknowns should check first whether
+an existing tracked-disputes mechanism can serve as the escalation path
+before proposing new infrastructure — this is the same pattern RIP-004's
+Lessons Learned entry already names for detection-latency unknowns.
 
 ---
 
@@ -398,6 +440,14 @@ resolution; the four resolution-path items above are unaddressed.
   Forge_Audit_Kit.md's derivation line and gate-note citation corrected to
   route through this file (kit bumped to v1.6). Last Audit still 2026-05-29
   — this was an incident log update, not a full re-audit.
+- 2026-07-03: **VG-001 discharged** (Payment via Specification). Gate
+  Definition Synchronization Protocol added, answering all four resolution-
+  path items by naming this file's own Active Disputes table and the
+  Skeptic/Auditor role as the enforcement mechanism rather than proposing
+  new infrastructure. Status → Resolved — Discharge via Lessons Learned;
+  Resolution and Lessons Learned narrative fields added to the sidecar
+  entry per the Resolved Unknown Discharge Procedure (`Admin/Forge_Audit_Kit.md`
+  v1.4+). Matching top-table Lessons Learned row added. Open Unknowns 1 → 0.
 
 ---
 
@@ -458,8 +508,9 @@ halt autonomous audit progression and escalate for human review.
 
 ## Status
 
-Version 0.3 — VG-001 first concrete incident logged; Forge_Audit_Kit.md
-reconciliation confirmed no actual gate-definition divergence (2026-07-02).
+Version 0.4 — VG-001 discharged via Gate Definition Synchronization Protocol
+(2026-07-03); Open Unknowns 0. Underlying gate definitions unchanged since
+initial derivation from Auditor_Protocols.md v0.7.
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
 G6 require formal audit pass against Auditor_Protocols.md before claiming.
