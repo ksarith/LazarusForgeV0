@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.8 — 2026-07-03. AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md v0.15). VG-001 discharged. A separately-drafted "v0.15" patch claiming AP-001/012/016 individually resolved was received but not incorporated — held for review, not verified.**
+**Version 4.9 — 2026-07-03. AP-001, AP-012, AP-016 resolved in Auditor_Protocols.md v0.16 (multi-agent synthesis, full specification text verified against original blocking conditions). Removed from active index and Critical Watch. Cascading Gate 3 note fixes applied to Forge_Audit_Kit.md.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,11 +27,12 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.8 Means
+## What v4.9 Means
 
-- **AP-001–007 Systemic Risk escalation downgrade confirmed.** Human governing authority (ksarith) confirmed the downgrade condition set at Auditor_Protocols.md's 2026-06-24 ESCALATION STATUS note. Auditor_Protocols.md → v0.15. This clears the *escalation*, not the underlying unknowns — AP-001 through AP-005 and AP-007 remain In Progress with documented resolution frameworks. Open Unknowns in that file unchanged at 12.
-- **A separate, unrequested "v0.15" patch was received the same session** claiming AP-001, AP-012, and AP-016 individually Resolved via a new Auditor Fidelity framework and expanded EF-0.2/Human Interaction Point Doctrine content. **Not incorporated.** It conflicted with the actually-authorized action (a narrower, previously-drafted confirmation), arrived as a summary claim rather than full specification text, and AP-012/AP-016 are Gate-3-blocking Critical items whose closure needs full-text review before acceptance — a status-line claim isn't sufficient evidence for closing a Critical, Gate-blocking unknown. Held for separate review.
-- **VG-001 discharged** (Payment via Specification). Verification_Gates_LF.md → v0.4. The Gate Definition Synchronization Protocol resolves all four items in the original resolution path by naming existing mechanisms (the file's own Active Disputes table, the Skeptic/Auditor role) as the enforcement point, rather than proposing new infrastructure. Removed from this file's active index and Critical Watch.
+- **The "v0.15" patch flagged unverified at v4.8 was followed up with full specification text**, showing genuine iterative multi-agent critique (contingent-authority wording fix, Administrative Fatigue Governor recursion protection, hard-coded threshold removed in favor of a configurable placeholder). Checked each closure against its *original* sidecar blocking conditions in Auditor_Protocols.md before accepting — not just the summary claims this time available in full. All three held up: AP-001 (Payment via Constitutional Decision — the productivity-metrics precondition didn't apply to the qualitative-dimensions approach actually taken), AP-012 and AP-016 (Payment via Specification — all original minimum requirements independently verified met). Auditor_Protocols.md → v0.16. Open Unknowns 12 → 9; Highest Risk Critical → High.
+- **New Resolution Taxonomy formalized** in Auditor_Protocols.md — five payment types (Specification, Validation, Constitutional Decision, Refactoring, Discharge), independently proposed across multiple drafts. Worth propagating to Forge_Audit_Kit.md eventually, not done this pass.
+- **Cascading Gate 3 note fixed** in Forge_Audit_Kit.md — was still citing AP-012/AP-016 as blocking, now stale. Corrected to note both Resolved as of Auditor_Protocols.md v0.16, with an explicit caution that a resolved blocker isn't automatically a passed gate — re-evaluation at next audit is still needed, not assumed.
+- **Process note:** two heading-deletion self-corrections occurred during the Auditor_Protocols.md edit (str_replace boundary errors dropping section headings), both caught and fixed same-session — the same failure class as an earlier Forge_Audit_Kit.md incident this session. Flagged as worth a standing pre-edit checklist item; not yet added anywhere.
 
 ---
 
@@ -117,9 +118,9 @@ AP-008 (Quarantine implementation)
 GOV-008 (Minimum quorum)
 └── GOV-007 (Bootstrap governance — Genesis Phase exit condition)
 
-AP-012 (Human authority availability — autonomous degradation doctrine)
-├── AP-016 (Concurrent quarantine — co-resolves under AP-012 doctrine)
-└── AP-011 (Human fatigue escalation — depends on AP-012 resolution)
+AP-012 (Resolved 2026-07-03 — Human authority availability — autonomous degradation doctrine)
+├── AP-016 (Resolved 2026-07-03 — Concurrent quarantine — co-resolved under AP-012 doctrine)
+└── AP-011 (Human fatigue escalation — depends on AP-012's now-resolved doctrine)
 
 AP-017 (Battery independence requirement)
 └── Gate 3 clearance blocked until AP-017 reaches Provisional Spec
@@ -221,11 +222,9 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | AP-008 | Technical implementation of quarantine actions undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-010 | Physical test harness integration with epistemic grounding layer undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-011 | Automated arbitration deadlock and human fatigue escalation | `Admin/Auditor_Protocols.md` | Open | — | Major |
-| AP-012 | Human governing authority availability and response doctrine undefined | `Admin/Auditor_Protocols.md` | Open | — | Critical |
 | AP-013 | Unknown closure authority undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-014 | Epistemic state classification calibration undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-015 | External contributor role classification undefined | `Admin/Auditor_Protocols.md` | Open | — | Minor |
-| AP-016 | Concurrent multi-node quarantine behavior undefined | `Admin/Auditor_Protocols.md` | Open | — | Critical |
 | AP-017 | Adversarial Battery independence requirement undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-018 | Saturation threshold hysteresis and smoothing undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-019 | Semantic convergence metrics for unknown resolution undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
@@ -779,7 +778,7 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 
 **CF-001 In Progress/Blocking** — parameters defined (τ=50ms WDT). Remains Blocking until first hardware prototype validates at Measured confidence.
 
-**AP Systemic Risk escalation** — AP-001, AP-002, AP-004, AP-005, AP-007 In Progress; AP-012 and AP-016 Critical. Formal escalation downgrade requires human governing party confirmation at next audit cycle.
+**AP Systemic Risk escalation** — Downgrade confirmed by human governing authority 2026-07-03 (Auditor_Protocols.md v0.15). AP-001, AP-002, AP-004, AP-005, AP-007 remain In Progress. AP-012 and AP-016 Resolved 2026-07-03 (v0.16) — no longer Critical Watch items.
 
 ### Critical Watch
 
@@ -810,8 +809,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | SD-UNK-004 | Host geology fracturing threshold — no excavation without geomechanical assessment; parallels FA-001 |
 | LW-UNK-001 | Volatile co-distillation in LW-001 — CRITICAL safety gap; blocks potable output claim |
 | LW-UNK-003 | LW-003 lumen implosion — CRITICAL; 4.9 MPa net crush load at 500 m |
-| AP-012 | Human authority availability — terminal dependency on human intervention was load-bearing and unstated; autonomous graceful degradation doctrine is resolution path; co-resolves AP-016 |
-| AP-016 | Concurrent multi-node quarantine — cascade deadlock scenario confirmed by Class 10 adversarial pass; co-resolves under AP-012 doctrine |
 | GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
 | HR-UNK-002 | Hydrologic Resource Cascade material quality — flood sediment contaminant risk; safety-critical before any resource extraction operations |
 
@@ -846,3 +843,4 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.6 — 2026-07-02:** Two items closed from v4.5. (1) Security_Protocols.md's SEC-007 sidecar reconciled into SEC-007a/SEC-007b (file → v0.7). (2) Grok/Gemini G3/G6 dispute logged as SEC-DS-001 in Security_Protocols.md Active Disputes per Auditor_Protocols.md §Dispute Handling Protocol, and resolved via Forge_Audit_Kit.md v1.5's new Gate Scope vs. Promotion Readiness clarification (sourced from Auditor_Protocols.md §Specification Promotion Rules — gates test execution quality; open-unknown blocking is a separate promotion condition). Gemini's original scoring confirmed structurally correct. Forge_Audit_Kit.md bumped to v1.5; its stale Unknowns.md derivation string (v4.0) corrected. Process correction: an earlier attempt to record item (1) mutated already-committed v4.5 text in place rather than version-bumping — reverted; v4.5 entry above is the original committed text, unedited.
 **v4.7 — 2026-07-02:** Discovery.md reconciliation. Confirmed Discovery.md's historical Pending-Corrections-to-PC-cluster migration was correctly principled, not a mistake; refreshed Discovery.md's stale Attention Required table (was pre-dating the SEC-007 split) to current state and added an explicit reciprocal pointer here to Discovery.md's per-file Scope Map Upstream/Downstream context. Discovery.md gained a new Objectives section. Verification_Gates_LF.md's VG-001 logged its first concrete incident (Forge_Audit_Kit.md v1.5 citation gap, caught, no actual divergence, kit → v1.6); VG-001 remains Open.
 **v4.8 — 2026-07-03:** AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md → v0.15); underlying AP-001–005/007 unknowns unchanged, In Progress. A separately-drafted, unrequested "v0.15" patch claiming AP-001/012/016 individually resolved was received and explicitly not incorporated — held for review pending full specification text (AP-012/AP-016 are Gate-3-blocking Critical items). VG-001 discharged via Gate Definition Synchronization Protocol (Verification_Gates_LF.md → v0.4); removed from active index and Critical Watch.
+**v4.9 — 2026-07-03:** Full specification text for the held-for-review AP-001/AP-012/AP-016 patch was provided; verified against original blocking conditions and incorporated (Auditor_Protocols.md → v0.16). AP-001 Payment via Constitutional Decision; AP-012/AP-016 Payment via Specification. Open Unknowns 12 → 9, Highest Risk Critical → High. New Resolution Taxonomy (5 payment types) formalized in Auditor_Protocols.md. Forge_Audit_Kit.md's stale Gate 3 note corrected. Removed AP-012/AP-016 from this file's active index and Critical Watch.
