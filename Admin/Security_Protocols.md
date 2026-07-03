@@ -30,7 +30,7 @@
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | Last Audit       | 2026-06-19                                                          |
 | Auditor          | Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Claude — Synthesizer |
-| Open Unknowns    | 11                                                                  |
+| Open Unknowns    | 12                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -144,7 +144,7 @@ stack — is the highest-order failure mode this architecture must prevent.
 The Trust Boundary Declaration addresses this philosophically. Structural
 enforcement separation (immutable external root-of-trust, offline constitutional
 anchor, human-ratified recovery source outside the repository execution
-environment) is the unresolved mechanical requirement. See SEC-007.
+environment) is the unresolved mechanical requirement. See SEC-007a/SEC-007b.
 
 **On permission-source trustworthiness:** Cryptographic verification assumes
 the human operators issuing or ratifying overrides are not compromised, coerced,
@@ -153,6 +153,75 @@ and `Admin/Ethical_Constraints.md` EC-011 (Human governance adversary model
 undefined). Until EC-011 is resolved, apply the interim authentication
 requirements from `Admin/Governance_Charter.md` §Human Override Doctrine to
 all Constitutional-class decisions.
+
+---
+
+## External Design Lineage (EDL)
+
+**Purpose:** Log external engineering patterns — industry standards, historical
+precedent, or cross-domain design ancestry (not limited to security or IT
+standards; future rows may draw from aerospace redundancy doctrine, biological
+systems, distributed consensus, or other domains) — as evidence weighed
+against Forge doctrine, not as authority. Lazarus Forge's problem — rebuilding
+trust from near-zero in a salvage-first, potentially decade-isolated
+environment — is related to but not identical to the problem most external
+standards solve ("protect a system that already exists"). This library makes
+each departure from, or adoption of, external practice an explicit,
+falsifiable design decision rather than an implicit assumption, and gives
+future agents a place to see *why* without re-litigating the comparison.
+
+External design patterns and standards are treated as evidence of successful
+prior engineering, not evidence of universal truth. They provide tested
+starting points, not binding authority. Forge adopts, modifies, departs from,
+or observes external practices only after evaluating them against
+constitutional principles, operational constraints, and empirical reality.
+This guards against two opposite failure modes: Not-Invented-Here rejection
+of external wisdom out of isolationist bias, and uncritical Appeal to
+Authority adoption purely because a practice is an established standard.
+Ties to EF-0.0 (Reality is sovereign) and EF-0.1 (What Is Not Evidence) —
+industry consensus is prior evidence, not verification.
+
+**Scope note:** This registry is local to Security_Protocols.md for now. A
+repository-wide mandatory schema, and any automated harness enforcement tied
+to it, is a structural governance change requiring human ratification per
+`Admin/Governance_Migration_Protocol.md` — proposed but **not adopted** this
+session. See Resolution Log.
+
+### Lineage Status Lifecycle
+
+Every entry holds one of these explicit states:
+
+- **Researching** — source identified; analysis of intent, edge cases, and failure modes underway
+- **Survey Complete** — external practice fully mapped; dependencies and failure modes documented
+- **Decision Drafted** — Forge-specific posture (Adopt/Modify/Depart/Observe) formulated but unverified
+- **Validated** — validation path cleared; decision active in a specification layer
+- **Superseded** — shifting reality or higher-priority doctrine has rendered the decision obsolete
+
+**Decision definitions:**
+- **Adopt** — external pattern applies with no material change
+- **Modify** — core principle adopted, mechanism changed for Forge's constraints (no trusted hardware assumed, no continuous connectivity, no external institutions)
+- **Depart** — the pattern's underlying assumption does not hold for Forge; different approach required
+- **Observe** — external practice has not converged, or is moving too fast to standardize on; inherits a hard 2-cycle Expiry Watch — failure to advance to Survey Complete or Decision Drafted within that window is a review trigger, not an automated repository-wide hold (see Scope note above)
+
+*Note on Validation Needed vocabulary: labels below are descriptive, not yet
+checked against `Admin/Canonical_Terms.md` for drift against the Verification
+Maturity Model states in `Admin/Forge_Audit_Kit.md`. Flag for reconciliation
+at next Canonical_Terms.md audit.*
+
+### External Design Lineage Registry
+
+| PAT-ID | Target Unknown | External Source | Problem | External Pattern | Forge Decision | Validation Needed | Status | Rationale |
+|---|---|---|---|---|---|---|---|---|
+| PAT-001 | SEC-007a | NIST SP 800-57 / FIPS 140-3; PKI root anchor governance | External root-of-trust — constitutional requirements for the anchor | Hardened, centralized HSMs + formal cryptographic key lifecycles | **Modify** | Constitutional ratification (human governing authority) | Decision Drafted | Adopts the principle that an anchor must be unmodifiable through the system it anchors. Departs from assuming permanent trusted hardware exists — Forge's anchor must survive salvage/bootstrap conditions. Constitutional floor requires human ratification, not technical proof alone; ties to the circular self-certification risk named in the Trust Boundary Declaration. |
+| PAT-002 | SEC-007b | TCG / IETF secure and measured boot; air-gapped bootstrapping via manufacturer device certificates | External root-of-trust — physical implementation (offline HSM/EEPROM or equivalent) | Cryptographic signature validation baked into pristine, vendor-provisioned silicon | **Modify** | Hardware-in-the-loop testing; multi-agent review | Decision Drafted | Adopts measured-boot and air-gap principles. Departs from assuming manufacturer-issued device provenance — salvaged hardware carries none; bridges the gap with multi-operator physical validation tokens. Blocked pending SEC-007a; physical anchor design must implement whatever constitutional floor SEC-007a defines. |
+| PAT-003 | SEC-005 | NIST SP 800-90; TPM/vTPM attestation, secure/measured boot | Trusted initialization environment for key generation | Isolated, high-entropy automated clean-room execution environments | **Modify** | Multi-agent review; operational deployment during Genesis Phase | Decision Drafted | Departs from clean-room and hardware-attestation-as-default assumptions. Interim definition uses human-supervised, air-gapped generation on Logic-Zero-verified hardware only (current restrictive interpretation, Section III.2). Formal closure gated on CT-004 (`Admin/Canonical_Terms.md`). |
+| PAT-004 | SEC-011 | NIST post-quantum migration guidance; IETF hybrid classical+PQC transition patterns | Long-duration cryptographic continuity — entropy exhaustion, algorithm migration at Leviathan-class timescales | Phased migration to lattice-based post-quantum primitives | **Observe**, with a mandated extension | Future research; Observe entry, 2-cycle Expiry Watch | Researching | Monitors PQC convergence rather than standardizing early — industry has not converged and Forge cannot assume continuous access to current PQC infrastructure decades out. Extension: mandates an explicit low-overhead symmetric-key fallback path under entropy exhaustion. **Note:** this fallback is not covered by SEC-012 (SEC-012 is registered for asymmetric-crypto execution overhead on salvaged silicon — a different problem). If a symmetric-fallback-tree unknown is wanted, log it as a new ID (proposed SEC-013) rather than folding it into SEC-012. Routed to `Admin/Trajectories.md` as v1→v2 item. |
+
+**Notes:**
+- Add rows as new patterns or blockers surface; not limited to security-domain sources.
+- Each Forge Decision should cite Axiom or doctrine ties where applicable.
+- "Modify" is expected to be the most common outcome.
+- Reconciled 2026-07-02 — this file's SEC-007 sidecar entry (below, Auditor Notes & Unknowns) is now split into SEC-007a/SEC-007b, matching `Unknowns.md` v4.4 and the split IDs PAT-001/PAT-002 are written against.
 
 ---
 
@@ -375,7 +444,7 @@ see SEC-009.
 
 | ID | Summary            | Positions in Conflict | Risk | Status | Owner |
 |----|--------------------|-----------------------|------|--------|-------|
-| —  | No active disputes | —                     | —    | —      | —     |
+| SEC-DS-001 | G3/G6 gate-maturity divergence on this file's 2026-07-02 Exploration audit | Grok: G3 partial, G6 blocked — folds unresolved upstream unknowns (SEC-007a/b, GOV-008, etc.) into gate status. Gemini: G3 deferred-permissible, G6 passed — treats gate status as coverage/textual-only. | Low — interpretive, not factual | Resolved — 2026-07-02, via `Admin/Forge_Audit_Kit.md` v1.5 Gate Scope vs. Promotion Readiness clarification, sourced from `Admin/Auditor_Protocols.md` §Specification Promotion Rules ("all six gates pass" and "open unknowns are non-blocking" are separate, independently required promotion conditions). Gemini's reading is structurally correct. Grok's underlying concern is valid but belongs to promotion-readiness tracking — already carried in this file's Status footer (SEC-007a/b, SEC-005/CT-004, GOV-008, SEC-009 listed as promotion blockers), not to G3/G6 scoring. Synthesizer-level resolution — reversible if reasoning is disputed, not a Tier 1 ratification. | `Admin/Security_Protocols.md` |
 
 ---
 
@@ -620,43 +689,84 @@ primary context where clock sync is lost.
 
 ---
 
-### SEC-007 — External Root-of-Trust Architecture Undefined
+### SEC-007a — External Root-of-Trust: Constitutional Requirements Undefined
 
 | Field         | Value                              |
-|---------------|------------------------------------|
-| Status        | Open                               |
-| Risk          | High                               |
-| Priority      | Critical                           |
-| Type          | Architecture / Governance          |
-| Blocking      | No                                 |
-| Owner         | `Admin/Security_Protocols.md`      |
-| First Logged  | 2026-05-28                         |
-| Last Reviewed | 2026-06-19                         |
+|---------------|-------------------------------------|
+| Status        | Open                                |
+| Risk          | High                                |
+| Priority      | Critical                            |
+| Type          | Architecture / Governance           |
+| Blocking      | No                                  |
+| Owner         | `Admin/Security_Protocols.md` (constitutional layer) |
+| First Logged  | 2026-05-28 (as SEC-007)             |
+| Last Reviewed | 2026-07-02                          |
+| Split From    | SEC-007, vertically split 2026-07-02 |
+| Design Lineage | PAT-001 (see External Design Lineage above) |
 
 **Description:** The governance-cryptography enforcement chain carries a
 circular self-certification risk: governance defines legitimacy, cryptography
-enforces it, and integrity systems may eventually depend on both. A sufficiently
-compromised authority chain could theoretically rewrite governance, sign the
-rewrite, and validate through its own enforcement pipeline. No immutable
-external root-of-trust, offline constitutional anchor, or human-ratified
-recovery source outside the repository execution environment is defined.
+enforces it, and integrity systems may eventually depend on both. A
+sufficiently compromised authority chain could theoretically rewrite
+governance, sign the rewrite, and validate through its own enforcement
+pipeline. This entry scopes the **constitutional question**: what must be
+true of an external anchor for it to actually break the self-certification
+loop — not how that anchor is physically built (see SEC-007b).
 
 **Why It Matters:** This is the highest-order failure mode for the entire
 enforcement architecture. The Trust Boundary Declaration addresses it
-philosophically; structural enforcement separation is the unresolved
-mechanical requirement. Until an external trust anchor exists, the system
-depends entirely on human discipline and the integrity of the governance
-documents themselves — which are the things being protected.
+philosophically; this entry is the unresolved mechanical requirement. Until
+an external trust anchor exists, the system depends entirely on human
+discipline and the integrity of the governance documents themselves — which
+are the things being protected.
 
-**Resolution Path:** Cross-module resolution — this unknown spans
-GOV-003 (integrity enforcement architecture), GOV-005 (long-term
-constitutional stability), and RIP-001 (prior-state archival) intersection.
+**Resolution Path:** Cross-module — spans GOV-003 (integrity enforcement
+architecture), GOV-005 (long-term constitutional stability). RIP-001 (prior-
+state archival) is Resolved as of 2026-06-27 — GPG-signed Git release tags
+establish a tamper-evident archival substrate that a signed offline
+constitutional snapshot could build on, though a dedicated anchor is a
+distinct requirement from general prior-state archival and remains open.
 Minimum viable resolution: define at least one external trust anchor that
 cannot be modified through the repository execution environment — offline
 signed constitutional snapshot, hardware security module holding root keys,
 or human-ratified recovery record stored outside all automated systems.
-This is an above-repository architectural decision; no automated agent may
-resolve this unilaterally.
+This is an above-repository architectural decision requiring human
+ratification; no automated agent may resolve this unilaterally. Blocks
+SEC-007b.
+
+---
+
+### SEC-007b — External Root-of-Trust: Physical Implementation Undefined
+
+| Field         | Value                              |
+|---------------|-------------------------------------|
+| Status        | Open                                |
+| Risk          | High                                |
+| Priority      | Critical                            |
+| Type          | Architecture / Hardware             |
+| Blocking      | No — blocked pending SEC-007a       |
+| Owner         | `Admin/Security_Protocols.md` (owning layer: Operations) |
+| First Logged  | 2026-05-28 (as SEC-007)             |
+| Last Reviewed | 2026-07-02                          |
+| Split From    | SEC-007, vertically split 2026-07-02 |
+| Design Lineage | PAT-002 (see External Design Lineage above) |
+
+**Description:** Once SEC-007a defines what the constitutional anchor must
+guarantee, this entry covers **how it is physically realized**: offline HSM,
+EEPROM, signed physical media, or equivalent salvaged-hardware-compatible
+mechanism. Salvaged hardware carries no manufacturer-issued device
+provenance, so standard secure/measured-boot assumptions (pristine,
+vendor-provisioned silicon) do not directly apply — see PAT-002.
+
+**Why It Matters:** A well-defined constitutional anchor is inert without a
+physical mechanism that actually implements it. This is the bridge between
+governance doctrine and salvage-environment reality.
+
+**Resolution Path:** Blocked pending SEC-007a — physical design cannot be
+finalized until the constitutional floor it implements is defined. Cross-ref
+`Operations/Electronics.md` for salvaged-hardware constraints and Logic-Zero
+node admission. Requires hardware-in-the-loop testing and multi-agent review
+per PAT-002's Validation Needed field before advancing past Decision Drafted.
 
 ---
 
@@ -841,6 +951,49 @@ Leviathan-class deployment is authorized.
   Phase 2 bootstrap bypass Abandoned Path added. (13) Drift Indicators
   expanded with five new entries. Open Unknowns updated to 11.
 
+- **2026-07-02** — External Design Lineage (EDL) section added, positioned
+  after Trust Boundary Declaration and before Body. Four entries logged:
+  PAT-001 (SEC-007a), PAT-002 (SEC-007b), PAT-003 (SEC-005), PAT-004
+  (SEC-011). Renamed from working title "Security Pattern Library" per
+  multi-agent review — EDL better reflects that future entries need not be
+  security-domain sources. Lineage Status Lifecycle adopted (Researching /
+  Survey Complete / Decision Drafted / Validated / Superseded). PAT-004
+  rationale corrected: a proposed symmetric-fallback-tree unknown is
+  explicitly distinguished from SEC-012 (SEC-012 remains scoped to
+  asymmetric-crypto overhead on salvaged silicon; a symmetric fallback
+  unknown would require new ID SEC-013 if logged). A companion proposal to
+  canonize EDL as a repository-wide constitutional gate (GOV-MAND-009,
+  blocking Exploration→Candidate Specification promotion file-wide, with
+  automated AUDIT_HARNESS.py enforcement) was **not adopted** this session —
+  flagged as a structural governance change requiring routing through
+  `Admin/Governance_Migration_Protocol.md` two-track ratification, not
+  session-level multi-agent consensus. Known drift: this file's own SEC-007
+  sidecar entry has not yet been split into SEC-007a/SEC-007b to match
+  `Unknowns.md` v4.4; PAT-001/PAT-002 are written against the split IDs
+  pending that reconciliation. Open Unknowns unchanged at 11 (EDL logs
+  decisions on existing unknowns; introduces no new ones itself).
+
+- **2026-07-02** — SEC-007 sidecar entry split into SEC-007a (constitutional
+  requirements, owning layer Admin) and SEC-007b (physical implementation,
+  owning layer Operations; blocked pending SEC-007a), closing the reconciliation
+  gap flagged in the entry immediately above. Downstream references corrected:
+  Trust Boundary Declaration pointer, Relationship section (GOV-003/GOV-005
+  dependency, GMP-004 cross-ref, RIP-001 cross-ref — RIP-001 also noted as
+  Resolved), Status footer promotion-blocker list, and the EDL section's
+  known-drift note. Open Unknowns 11 → 12 (split adds one entry; no new
+  unknown introduced).
+
+- **2026-07-02** — SEC-DS-001 logged and resolved in Active Disputes: the
+  Grok/Gemini G3/G6 gate-maturity divergence flagged at this file's audit,
+  per `Admin/Auditor_Protocols.md` §Dispute Handling Protocol (disputes are
+  interpretation conflicts, tracked explicitly, not left to silently
+  disappear). Resolved via `Admin/Forge_Audit_Kit.md` v1.5's new Gate Scope
+  vs. Promotion Readiness clarification — gates test execution quality;
+  open-unknown blocking is a separate promotion condition. Gemini's original
+  scoring is structurally correct. No change to this file's promotion-blocker
+  list (SEC-007a/b, SEC-005/CT-004, GOV-008, SEC-009) — those unknowns were
+  never in dispute, only whether they belonged inside G3/G6 scoring.
+
 ---
 
 ## Relationship to Existing Documents
@@ -850,15 +1003,15 @@ Leviathan-class deployment is authorized.
   originating unknowns this file resolves; Trust Boundary Declaration defers
   to the governance hierarchy defined there; Tier 1 Axioms are not subject
   to cryptographic override; GOV-003 and GOV-005 are cross-module dependencies
-  for SEC-007
+  for SEC-007a
 - `Admin/Governance_Migration_Protocol.md` — GMP-004 (ratification
-  authentication gap) explicitly cross-references SEC-007 as the resolution
+  authentication gap) explicitly cross-references SEC-007a as the resolution
   path; Tier 1 amendment ratification records are a primary use case for the
-  external root-of-trust architecture defined in SEC-007
+  external root-of-trust architecture defined in SEC-007a/SEC-007b
 - `Admin/Repository_Integrity_Protocol.md` — RIP-005 is the originating
   unknown for Phase 3 enforcement; Phases 1 and 2 defined there are
-  prerequisites to Phase 3 implementation here; RIP-001 cross-references
-  SEC-001 and SEC-007
+  prerequisites to Phase 3 implementation here; RIP-001 (Resolved) cross-
+  references SEC-001 and SEC-007a
 - `Admin/Ethical_Constraints.md` — co-Tier 1; Anti-Weaponization and Life
   Preservation doctrines are not subject to override by any cryptographic
   mechanism regardless of signature validity; EC-011 (human governance
@@ -882,18 +1035,27 @@ Leviathan-class deployment is authorized.
   complementary layers, not overlapping owners
 - `Admin/Trajectories.md` — SEC-011 (long-duration cryptographic continuity)
   to be logged as v1→v2 transition planning item
-- `Unknowns.md` — SEC-008 through SEC-011 to be registered at next
-  Unknowns.md update
+- `Unknowns.md` — SEC-008 through SEC-012 to be registered/reconciled at
+  next Unknowns.md update; SEC-007 split (SEC-007a/SEC-007b) registered
+  there as of v4.4 pending sync into this file's own sidecar
+- External Design Lineage registry (this file, above) — PAT-001 through
+  PAT-004 anchor SEC-007a, SEC-007b, SEC-005, and SEC-011 respectively;
+  citable from Unknowns.md and future audits
 
 ---
 
 ## Status
 
-Version 0.5 — Four-agent audit pass (2026-06-19).
+Version 0.8 — SEC-DS-001 (Grok/Gemini G3/G6 dispute) logged and resolved via
+`Admin/Forge_Audit_Kit.md` v1.5 (2026-07-02). SEC-007 sidecar split into
+SEC-007a/SEC-007b, reconciling with
+`Unknowns.md` v4.4/v4.5 (2026-07-02); underlying audit maturity unchanged
+since four-agent pass (2026-06-19).
 
 **Gate status:** G1 cleared, G2 cleared, G3 cleared (Exploration-appropriate),
 G4 cleared, G5 cleared, G6 cleared. No gates blocked at Exploration stage.
-Promotion to Candidate Specification blocked by SEC-007 (external root-of-trust),
+Promotion to Candidate Specification blocked by SEC-007a/SEC-007b (external
+root-of-trust — constitutional and physical layers),
 SEC-005/CT-004 (trusted initialization environment), GOV-008 (minimum quorum),
 and SEC-009 (compromise detection criteria).
 
