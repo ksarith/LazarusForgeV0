@@ -34,6 +34,47 @@ value before material reduction.
 
 ---
 
+## Objectives
+
+**What "done" looks like for v0 (current version):** a physically-grounded,
+governance-complete specification for a single-site salvage-first Forge —
+every Gate (01–07) at Specification status, every Tier 1 Axiom load-bearing
+and unchallenged across an audit cycle, and Security_Protocols.md's
+constitutional root-of-trust (SEC-007a) resolved. v0 does not require
+physical construction; it requires the specification to be complete enough
+that construction could begin without unresolved Critical unknowns in the
+load path.
+
+**Standing objectives, in priority order:**
+1. **Governance before autonomy** — Phase 3 cryptographic enforcement
+   (`Admin/Security_Protocols.md`) does not activate until Phase 1
+   (detection) and Phase 2 (structural halt) are proven and GOV-008
+   (quorum) is resolved. Autonomous agents are not trusted to enforce
+   governance before governance is enforceable.
+2. **Physical plausibility before elegance** — a specification that cannot
+   survive Gate 2 (Physical Plausibility) is not progress, regardless of
+   how complete its governance framing is. EN-001, FA-001, and the
+   hazardous-fraction unknowns (WA-002, PL-001, WW-005) are physical-layer
+   objectives that do not get superseded by governance-layer work.
+3. **Honest unknowns over false certainty** — the Unknown Budget floor
+   exists because a specification with zero open unknowns is more likely
+   incomplete than finished. Closing unknowns without evidence is a
+   constitutional violation (Axiom Zero, EF-0.0), not progress.
+4. **Institutional memory over individual sessions** — every mechanism in
+   this repository (sidecars, Lessons Learned tables, the Resolved Unknown
+   Discharge Procedure, Routing.md/Discovery.md itself) exists so a fresh
+   agent with no session history can resume correctly. An objective that
+   can only be pursued by an agent who remembers prior sessions is not
+   compatible with this repository's design.
+
+**Beyond v0:** marine deployment (Leviathan, Support Raft) and off-world
+industrialization are declared long-term trajectory, not current-version
+objectives — see `Admin/Trajectories.md`. Work that serves only the
+long-term trajectory and has no v0 load-bearing purpose belongs there, not
+in a v0-scoped file (Gate 4 — Scope Alignment).
+
+---
+
 ## How to Use This File
 
 > **Scope entries are navigation summaries only.**
@@ -691,14 +732,17 @@ The two files are complementary — Routing.md owns *where*, Discovery.md owns *
 
 ## Cross-Module Unknowns — Attention Required
 
-Full entries live in `Unknowns.md`. This table is a routing index only.
+Full entries live in `Unknowns.md`. This table is a routing index only —
+refresh it whenever `Unknowns.md`'s version bumps and this table's IDs
+would go stale (this refresh: `Unknowns.md` v4.6, 2026-07-02).
 
 | Unknown | Status | See |
 |---------|--------|-----|
 | UNK-006 — Facility siting | **Resolved** — `Architecture/Facilities.md` owns; PC-002 tracks reference corrections | `Unknowns.md` |
 | UNK-008 — Welding wire chemical qualification | Open — no owner assigned | `Unknowns.md` |
-| UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, SEC-007 | `Unknowns.md` |
-| RIP-001 — Prior-state archival | **Resolved** 2026-06-28 — Discharge via Lessons Learned; Git release tags (V0.6–V0.97) satisfy requirement at v0 scale | `Unknowns.md` |
+| UNK-009 — External root-of-trust cross-module | Critical — spans GOV-003, GOV-005, SEC-007a | `Unknowns.md` |
+| RIP-001 — Prior-state archival | **Resolved** 2026-06-27 — Discharge via Lessons Learned; Git release tags (V0.6–V0.97) satisfy requirement at v0 scale | `Unknowns.md` |
+| RIP-004 — Constitutional violation detection latency | **Resolved** 2026-06-19 — Tier 1 Axiom Verification is now mandatory Audit Opening Checklist Step 1 | `Unknowns.md` |
 | FA-001 — Site not confirmed | Critical — blocks all hot operations | `Unknowns.md` |
 | EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
@@ -706,3 +750,12 @@ Full entries live in `Unknowns.md`. This table is a routing index only.
 | AP-012 / AP-016 — Human authority availability / concurrent quarantine | Critical — Gate 3 blocked pending Provisional Spec; cascade deadlock confirmed | `Unknowns.md` |
 | GH-009 — Emergent heuristic conflict (Cognitive Salvage) | Critical — N² interaction scaling; blocks heuristic co-deployment | `Unknowns.md` |
 | HR-UNK-002 — Hydrologic Resource Cascade material quality | Critical — flood sediment contaminant risk; safety-critical | `Unknowns.md` |
+| SEC-007a / SEC-007b — External root-of-trust, split 2026-07-02 | Critical — constitutional (007a) blocks physical (007b); both blocked pending GOV-008/GOV-005 | `Unknowns.md` §Ethics & Governance |
+| SEC-012 — Asymmetric crypto overhead on salvaged silicon | Major — Logic-Zero node recovery DoS risk | `Unknowns.md` §Ethics & Governance |
+| VG-001 — Gate definition synchronization authority chain undefined | High — first concrete incident logged 2026-07-02; resolution path (4 items) unaddressed | `Admin/Verification_Gates_LF.md` |
+
+**Resolved this session (2026-07-02), not previously reflected here:**
+SEC-DS-001 (Grok/Gemini gate-maturity dispute) — see
+`Admin/Security_Protocols.md` Active Disputes.
+
+---
