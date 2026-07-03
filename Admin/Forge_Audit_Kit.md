@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.3**
+**Version 1.4**
 
 ## File State
 
@@ -180,7 +180,19 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 
 ---
 
-## Sign-Off Format
+## Resolved Unknown Discharge Procedure
+
+Canonizes the pattern first applied at RIP-001 (`Admin/Repository_Integrity_Protocol.md`, discharged 2026-06-27) and retroactively corrected at RIP-004 (2026-07-02, see step 6 note). Applies whenever any unknown, any prefix, closes.
+
+1. Sidecar entry stays permanently in the owning file's Auditor Notes & Unknowns — **never deleted.** The ID is the permanent search anchor; there is no centralized archive to fall back on (`Unknowns.md` retired that model at v4.3 — see its Resolution Log).
+2. Status field → `Resolved — Discharge via Lessons Learned`.
+3. Add a **Resolution** field to the sidecar entry: what closed it, when, why.
+4. Add a **Lessons Learned** field to the same sidecar entry: the transferable pattern, not just the outcome — what would a future agent facing a similar unknown need to know.
+5. Add a matching row to the owning file's own top-level Lessons Learned table — distilled and pattern-focused, not a duplicate of step 3.
+6. `Unknowns.md`: remove from the active index; add one line to Expiry Watch or the Audit Trail pointing back to the sidecar. **Do not skip steps 2–5 and jump to step 6** — RIP-004 was closed correctly in substance on 2026-06-19 but skipped steps 2, 4, and 5 for six weeks before being brought into conformance.
+7. Bump the owning file's Open Unknowns count and add a Resolution Log entry.
+
+---
 
 ```
 Document: [filename] ([status] audit, [date])
@@ -240,6 +252,7 @@ Load additional files only when the audit focus requires them — each adds toke
 - VERIFIED / PROVISIONAL / UNKNOWN used inconsistently with EF-0.0 definitions
 - Governance sidecar ID reference contains stale or flat filenames
 - Ethical Anchor absent or altered
+- Resolved unknown missing Lessons Learned narrative field, matching top-table row, or discharge status suffix (Resolved Unknown Discharge Procedure skipped)
 - Kit character count exceeds 12,000 — flag for reduction pass
 
 **Compound Drift Rule:** Multiple simultaneous indicators → halt autonomous progression, escalate for human review.
@@ -254,6 +267,8 @@ Load additional files only when the audit focus requires them — each adds toke
 
 **FAK-005** — Kit character count reduction pass complete at v1.3. Active Unknowns full list removed — replaced by critical watch summary in Expiry Watch step. Governing Principles compressed. Expiry Watch prose removed in favor of inline critical watch summary. Actual post-reduction count: ~16,950 chars. The 12,000-char ceiling is not achievable without removing load-bearing doctrine — EF condensed reference (~2,100 chars) and Audit Opening Checklist (~2,300 chars) are working content, not bloat. Ceiling flag remains active as a Drift Indicator. The 12,000 figure is the parameter that needs revisiting, not the content. Status: Open — ceiling flag active, reduction pass complete.
 
+**FAK-006** — Resolved Unknown Discharge Procedure canonized here at v1.4 (2026-07-02) from organically-emerged RIP-001 practice, since no formal doctrine existed anywhere in the repository despite the pattern being in active use. Per this kit's own Scope Boundary, full auditor procedural doctrine belongs in `Admin/Auditor_Protocols.md` — this kit should carry only the condensed checklist form, consistent with every other section here. `Admin/Auditor_Protocols.md` was not available this session to receive the full version. Status: Open — condensed version live here; full-doctrine migration to `Admin/Auditor_Protocols.md` pending.
+
 ---
 
 ## Resolution Log
@@ -261,3 +276,4 @@ Load additional files only when the audit focus requires them — each adds toke
 - 2026-06-21: **v1.2** — Derivation string updated to `Admin/Auditor_Protocols.md` v0.8.1. Epistemic Foundation condensed reference added. Audit Opening Checklist restructured. AP-001–AP-007 Systemic Risk escalation added. Physical harness gate note added. Rule 8 added to AI Contribution Rules. Token ceiling note added.
 - 2026-06-24: **v1.3** — Derivation strings updated to `Admin/Auditor_Protocols.md` v0.14 and `Unknowns.md` v4.0. Role declaration version string updated to v0.14. Human Interaction Point Doctrine added to Governing Principles. EF-0.2 L2 entry updated to reflect autonomous degradation doctrine. Active Unknowns section removed — replaced by critical watch summary integrated into Expiry Watch step. AP Systemic Risk escalation note updated: all seven entries carry resolution frameworks; AP-006 and AP-009 Resolved; AP-012 and AP-016 Critical. GH- prefix added to Governance Sidecar ID Reference. Operational Blocking / Epistemic Blocking added to Semantic Stability table. Gate 3 note updated with AP-017 independence requirement and current block status. AP-010 physical harness note updated. Token ceiling note updated to reflect v0.14 character count. FAK-005 remains Open — actual post-reduction count ~16,950; ceiling parameter needs revisiting, not the content. Reduction pass complete.
 - 2026-06-27: **v1.3 patch** — Spec Gates (0/6) and Verification Ref (Admin/Verification_Gates_LF.md) added to File State block. Phase 1 enforcement (AUDIT_HARNESS.py v11) flagged missing fields — all repository documents follow the same File State schema, no exceptions for meta documents.
+- 2026-07-02: **v1.4** — Resolved Unknown Discharge Procedure section added, canonizing the RIP-001 pattern (permanent sidecar retention, Resolution + Lessons Learned narrative fields, matching top-table row, one-line Unknowns.md pointer — no centralized archive). Placed between Verification Gates and Sign-Off Format. Matching Drift Indicator added. FAK-006 logged — condensed version lives here per Scope Boundary; full doctrine migration to `Admin/Auditor_Protocols.md` still pending (file unavailable this session). Prompted by retroactive correction of RIP-004's discharge record, which had skipped the Lessons Learned narrative field and matching table row for six weeks despite being correctly resolved in substance.
