@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.7**
+**Version 1.8**
 
 ## File State
 
@@ -13,7 +13,7 @@
 | Open Unknowns  | See sidecar                                                         |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.14 | `Admin/Verification_Gates_LF.md` v0.3 | `Unknowns.md` v4.7
+**Derived from:** `Admin/Auditor_Protocols.md` v0.16 | `Admin/Verification_Gates_LF.md` v0.4 | `Unknowns.md` v4.9
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -104,7 +104,7 @@ Confirm EF-0.0 through EF-0.8b text in `Admin/Auditor_Protocols.md` matches prio
 **3. Expiry Watch**
 Check `Unknowns.md` for Blocking entries approaching two-cycle threshold without a documented Resolution Path. Escalate to Systemic Risk or demote dependent module. If AUDIT_HARNESS.py boundary index is present in session, use it — aging alerts are pre-computed. Otherwise load `Unknowns.md` directly.
 
-**Current critical watch (v4.0):** AP-012 and AP-016 Critical (Gate 3 blocked pending Provisional Spec) · GOV-003 / GOV-005 Critical · RIP-001 Critical · CF-001 Blocking · SEC-007 Critical · EN-001 Blocking · WA-002 / WA-004 Critical · FA-001 Critical · EC-002 Critical · PR-001 Critical · EM-004 Critical · TF-006 Ethical_Constraints escalation candidate · LW-UNK-001 / LW-UNK-003 Critical safety gaps.
+**Current critical watch (v4.0, partially corrected — full refresh still pending, see FAK-007):** AP-012 and AP-016 Resolved 2026-07-03, no longer Critical Watch (was: Gate 3 blocked pending Provisional Spec) · GOV-003 / GOV-005 Critical · RIP-001 Resolved 2026-06-27 · CF-001 Blocking · SEC-007 split into SEC-007a/SEC-007b, both Critical · EN-001 Blocking · WA-002 / WA-004 Critical · FA-001 Critical · EC-002 Critical · PR-001 Critical · EM-004 Critical · TF-006 Ethical_Constraints escalation candidate · LW-UNK-001 / LW-UNK-003 Critical safety gaps.
 
 AP-001 through AP-007 Systemic Risk escalation active — all seven entries now carry resolution frameworks; formal downgrade requires human governing party confirmation at next audit cycle.
 
@@ -181,7 +181,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 
 **Known source ambiguity:** `Admin/Auditor_Protocols.md`'s own Gate 3 status entry states Gate 3 "BLOCKED pending AP-012 and AP-016" in the same line as "Battery application is complete" — correct in substance (coverage complete, promotion blocked) but the phrasing blends the two axes this note separates. Source document remains authoritative; flagged here as a legibility issue worth a future wording pass, not a governance error.
 
-**Gate 3 note:** Battery coverage complete for `Admin/Auditor_Protocols.md` (v0.13). At least one Battery class per promotion cycle must be applied by an agent with no session context from the current audit cycle (AP-017). Promotion to Specification remains blocked pending AP-012 and AP-016 reaching Provisional Spec — a Specification Promotion Rules block, not a Gate 3 coverage failure.
+**Gate 3 note:** Battery coverage complete for `Admin/Auditor_Protocols.md` (v0.13). At least one Battery class per promotion cycle must be applied by an agent with no session context from the current audit cycle (AP-017). AP-012 and AP-016 — the two entries previously blocking promotion — are Resolved as of `Admin/Auditor_Protocols.md` v0.16 (2026-07-03, Payment via Specification). Gate 3 blocking status should be re-evaluated at next audit rather than assumed clear — a resolved blocker is not automatically a passed gate.
 
 **Physical harness note (AP-010 pending):** For documents with physical implementation claims, Gate 6 requires at least one confirmed cross-reference to an active test harness specifying test and grounding artifact. Documents without physical claims are exempt.
 
@@ -320,3 +320,12 @@ Load additional files only when the audit focus requires them — each adds toke
   fields only, not full body content (SEC-DS-001, EDL registry, RIP-004
   Lessons Learned fields, Discovery.md Objectives section unconfirmed by
   this pass).
+- 2026-07-03: **v1.8** — Derivation line updated (`Auditor_Protocols.md`
+  v0.14 → v0.16, `Verification_Gates_LF.md` v0.3 → v0.4, `Unknowns.md`
+  v4.7 → v4.9). Gate 3 note corrected: AP-012 and AP-016 Resolved as of
+  `Auditor_Protocols.md` v0.16 (2026-07-03, Payment via Specification,
+  full multi-agent specification text verified against original blocking
+  conditions) — was still citing them as blocking. Critical watch summary
+  partially corrected for the same reason (AP-012/AP-016 removed, RIP-001
+  and SEC-007 updated to current split/resolved state); full v4.0→v4.9
+  refresh still not done, FAK-007 remains open.
