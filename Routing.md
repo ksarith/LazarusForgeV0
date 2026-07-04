@@ -1,6 +1,6 @@
 # Routing.md — LazarusForgeV0
 **Canonical Navigation and Link Mapping Index.**
-**Last updated: 2026-06-30**
+**Last updated: 2026-07-04**
 
 ---
 
@@ -78,6 +78,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Tests/Solar_Descent.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Solar_Descent.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Solar_Descent.md) | Explicit |
 | `Tests/Cognitive_Salvage_Layer.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Cognitive_Salvage_Layer.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Cognitive_Salvage_Layer.md) | Explicit |
 | `Tests/Hydrologic_Resource_Cascade.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Hydrologic_Resource_Cascade.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Hydrologic_Resource_Cascade.md) | Explicit |
+| `Tests/Chaos_Dynamics.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Tests/Chaos_Dynamics.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Tests/Chaos_Dynamics.md) | **Missing** — file does not yet carry the required Navigation Anchors block; flagged 2026-07-04, see Discovery.md Scope Map entry |
 | **Challenges/ Layer** | | | |
 | `Challenges/Water.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Water.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Water.md) | Explicit |
 | `Challenges/Biofouling.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Biofouling.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Biofouling.md) | Explicit |
@@ -114,3 +115,5 @@ Routing.md completeness is verified against Discovery.md structure map.
 Discrepancies between the two are logged as pending corrections in Discovery.md.
 
 **Note on non-extension Admin/ files:** `Admin/Nothingness Theorem` and `Admin/Computational Institutional Reasoning` are intentionally filed without `.md` extensions and contain spaces in their filenames (URL-encoded as `%20` in raw/repo links). `Nothingness Theorem` is a philosophical substrate document (Admin/, intentionally functionless per its own doctrine); it carries a minimal Tier 0 File State sidecar sufficient for Phase 1 Ethical Anchor verification but is exempt from operational promotion gates. `Computational Institutional Reasoning` is the formal theoretical paper containing the axioms, theorems, and Verification Algebra that back CF-004, AP-006, and related epistemic-debt doctrine in Unknowns.md and Auditor_Protocols.md; it carries a full standard File State sidecar as of v0.16 (2026-06-30) and is subject to standard promotion gate tracking. Neither file carries a `.md` extension; both resolve via hardcoded ALIASES entries in `Admin/AUDIT_HARNESS.py` rather than through the dynamic `_parse_routing()` registry builder.
+
+**2026-07-04 addition:** `Tests/Chaos_Dynamics.md` registered — created same date, resolution vehicle for EN-005 (see `Architecture/Engineering.md` sidecar and `Discovery.md` Scope Map for status caveats). Its Backlink Requirement is marked **Missing**, not Explicit — the file does not yet carry the mandatory Navigation Anchors block. This is the only row in this table currently in that state; treat as a standing pending correction until patched.
