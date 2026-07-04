@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.9 — 2026-07-03. AP-001, AP-012, AP-016 resolved in Auditor_Protocols.md v0.16 (multi-agent synthesis, full specification text verified against original blocking conditions). Removed from active index and Critical Watch. Cascading Gate 3 note fixes applied to Forge_Audit_Kit.md.**
+**Version 4.10 — 2026-07-03. GOV-011 and CT-010 registered (Gate/Checkpoint naming collision fix and its fallout — see Governance_Charter.md and Canonical_Terms.md). GOV-011 added to Critical Watch given possible repo-wide scope.**
 **Expiry Rule active. Protocol Performance metrics collecting.**
 
 ---
@@ -27,12 +27,12 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.9 Means
+## What v4.10 Means
 
-- **The "v0.15" patch flagged unverified at v4.8 was followed up with full specification text**, showing genuine iterative multi-agent critique (contingent-authority wording fix, Administrative Fatigue Governor recursion protection, hard-coded threshold removed in favor of a configurable placeholder). Checked each closure against its *original* sidecar blocking conditions in Auditor_Protocols.md before accepting — not just the summary claims this time available in full. All three held up: AP-001 (Payment via Constitutional Decision — the productivity-metrics precondition didn't apply to the qualitative-dimensions approach actually taken), AP-012 and AP-016 (Payment via Specification — all original minimum requirements independently verified met). Auditor_Protocols.md → v0.16. Open Unknowns 12 → 9; Highest Risk Critical → High.
-- **New Resolution Taxonomy formalized** in Auditor_Protocols.md — five payment types (Specification, Validation, Constitutional Decision, Refactoring, Discharge), independently proposed across multiple drafts. Worth propagating to Forge_Audit_Kit.md eventually, not done this pass.
-- **Cascading Gate 3 note fixed** in Forge_Audit_Kit.md — was still citing AP-012/AP-016 as blocking, now stale. Corrected to note both Resolved as of Auditor_Protocols.md v0.16, with an explicit caution that a resolved blocker isn't automatically a passed gate — re-evaluation at next audit is still needed, not assumed.
-- **Process note:** two heading-deletion self-corrections occurred during the Auditor_Protocols.md edit (str_replace boundary errors dropping section headings), both caught and fixed same-session — the same failure class as an earlier Forge_Audit_Kit.md incident this session. Flagged as worth a standing pre-edit checklist item; not yet added anywhere.
+- **Gate/Checkpoint naming collision fixed.** `Admin/Governance_Charter.md`'s "Canonical Verification Gates" and `Admin/Verification_Gates_LF.md`'s "Six Canonical Verification Gates" were two independently-named, materially different six-item systems sharing "Gate N" numbering — surfaced while drafting the (still-unratified) External Design Lineage amendment. Renamed Governance_Charter.md's set to **Enforcement Checkpoints**; `Admin/Canonical_Terms.md` gained formal disambiguation entries for both terms and added Verification_Gates_LF.md as a fourth vocabulary authority source it had never been registered as, despite being the file every `Spec Gates X/6` field actually references.
+- **GOV-011 registered** — the rename surfaced something deeper: Governance_Charter.md's own `Spec Gates 1/6` field was reporting its internal checkpoint status under a label naming Verification_Gates_LF.md as reference. The "1/6" was never actually audited against that file. Added to Critical Watch — whether this is isolated to Governance_Charter.md or a repo-wide pattern is unknown and worth a spot-check across other governance files before assuming it's contained.
+- **CT-010 registered** — tracks whether any other file still cites the old unqualified "Gate N" for what is now Enforcement Checkpoints.
+- **Governance_Charter.md's EDL amendment stays deliberately unratified** — a considered decision, not neglect. The draft doesn't decay by sitting: it isn't claiming to be true, only proposed, and its own phased-rollout logic already assumes a waiting period. Given GOV-011 and the Gate/Checkpoint collision both surfaced from the same review pass, ratifying a repository-wide mandate right now would be building on ground still settling.
 
 ---
 
@@ -195,6 +195,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | — | Major |
 | GOV-009 | Bounded framework for external resource consumption and environmental interaction — `Admin/Environmental_Constraints.md` created as resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Vehicle | Major |
 | GOV-010 | Jurisdictional and regulatory compliance friction for physical forge deployment — cross-ref EC-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Vehicle | Minor |
+| GOV-011 | File State Spec Gates field scored against wrong gate system — this file's own promotion tracker cited `Admin/Verification_Gates_LF.md` as Verification Ref while reporting status from its own (now-renamed) internal checkpoint system; "1/6" was never audited against the file it claims to reference; may not be isolated — spot-check other governance files recommended | `Admin/Governance_Charter.md` | Open | — | Major |
 | SEC-001 | Quorum recovery under terminal partition | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-002 | Key revocation doctrine undefined | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-003 | Key rotation period undefined | `Admin/Security_Protocols.md` | Open | — | Major |
@@ -240,6 +241,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | CT-005 | Ethical and authorization term placeholders pending canonicalization | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
 | CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
+| CT-010 | Verification Gate / Enforcement Checkpoint rename propagation — confirm no file still cites unqualified "Gate N" for Governance_Charter.md's renamed checkpoints, outside Verification_Gates_LF.md and Operations/Gate_01–07 | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Major |
 
 ### Engineer Protocols
 
@@ -785,6 +787,7 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
+| GOV-011 | Spec Gates field integrity — one file's promotion score confirmed scored against the wrong system; unaudited whether this is repo-wide, not just Governance_Charter.md |
 | SEC-007a | External root-of-trust, constitutional layer — architectural decision above repository level required; blocks SEC-007b |
 | SEC-007b | External root-of-trust, physical implementation layer — blocked pending SEC-007a resolution |
 | UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b |
@@ -844,3 +847,4 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.7 — 2026-07-02:** Discovery.md reconciliation. Confirmed Discovery.md's historical Pending-Corrections-to-PC-cluster migration was correctly principled, not a mistake; refreshed Discovery.md's stale Attention Required table (was pre-dating the SEC-007 split) to current state and added an explicit reciprocal pointer here to Discovery.md's per-file Scope Map Upstream/Downstream context. Discovery.md gained a new Objectives section. Verification_Gates_LF.md's VG-001 logged its first concrete incident (Forge_Audit_Kit.md v1.5 citation gap, caught, no actual divergence, kit → v1.6); VG-001 remains Open.
 **v4.8 — 2026-07-03:** AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md → v0.15); underlying AP-001–005/007 unknowns unchanged, In Progress. A separately-drafted, unrequested "v0.15" patch claiming AP-001/012/016 individually resolved was received and explicitly not incorporated — held for review pending full specification text (AP-012/AP-016 are Gate-3-blocking Critical items). VG-001 discharged via Gate Definition Synchronization Protocol (Verification_Gates_LF.md → v0.4); removed from active index and Critical Watch.
 **v4.9 — 2026-07-03:** Full specification text for the held-for-review AP-001/AP-012/AP-016 patch was provided; verified against original blocking conditions and incorporated (Auditor_Protocols.md → v0.16). AP-001 Payment via Constitutional Decision; AP-012/AP-016 Payment via Specification. Open Unknowns 12 → 9, Highest Risk Critical → High. New Resolution Taxonomy (5 payment types) formalized in Auditor_Protocols.md. Forge_Audit_Kit.md's stale Gate 3 note corrected. Removed AP-012/AP-016 from this file's active index and Critical Watch.
+**v4.10 — 2026-07-03:** Gate/Checkpoint naming collision resolved (Governance_Charter.md's "Canonical Verification Gates" → Enforcement Checkpoints; Canonical_Terms.md gained formal disambiguation and added Verification_Gates_LF.md as a 4th vocabulary authority). GOV-011 registered and added to Critical Watch — Governance_Charter.md's own Spec Gates field was scored against the wrong system, unaudited whether isolated. CT-010 registered tracking rename propagation. EDL amendment remains deliberately unratified pending GOV-011 and general system stability — logged as a considered decision, not an oversight.
