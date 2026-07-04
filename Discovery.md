@@ -181,7 +181,8 @@ Tests/                                      — Test frameworks and deployment p
     ├── Trophic_Forge.md                    — Biological cascade network; light → insect → fish → nutrient → crop → water; bootstrap sequence doctrine
     ├── Solar_Descent.md                    — Underground concentrated solar; SD-001 optical downlink; SD-002 fluid downlink; shared chamber reconvergence
     ├── Cognitive_Salvage_Layer.md          — Heuristic salvage pipeline; consensus-aggregated machinery wisdom; NOVEL/CANDIDATE_NOVEL promotion gate; GH-001 through GH-012
-    └── Hydrologic_Resource_Cascade.md      — Flood-driven sediment recovery basin; sequential hydraulic sorting zones; episodic operation doctrine; HR-UNK-001 through HR-UNK-002 (formal); HR-003 through HR-010 (research questions)
+    ├── Hydrologic_Resource_Cascade.md      — Flood-driven sediment recovery basin; sequential hydraulic sorting zones; episodic operation doctrine; HR-UNK-001 through HR-UNK-002 (formal); HR-003 through HR-010 (research questions)
+    └── Chaos_Dynamics.md                   — Exploration/R&D pipeline doctrine; Sandbox (Level ≤4 hypothesis generation) → Promotion Gate → EXP-ID → physical testing → Engineering derating; resolution vehicle for EN-005; feeder for EN-001a
 
 Challenges/                                 — Problem layer: why these capabilities exist
     ├── Water.md                            — Water scarcity and contamination (Living Waters)
@@ -189,7 +190,8 @@ Challenges/                                 — Problem layer: why these capabil
     ├── Waste.md                            — Discretionary waste and repair capacity loss
     ├── Planned_Obsolescence.md             — Deliberate unrepairability and locked hardware
     ├── Critical_Minerals.md                — Rare earth and critical mineral supply chains
-    └── Emergence.md                        — Emergent intelligence: alignment-by-environment design
+    ├── Emergence.md                        — Emergent intelligence: alignment-by-environment design
+    └── Return_To_Eden.md                   — Closed-loop material cycle framework; Eden Index (I_E); Tier I–IV progression doctrine
 
 Archive/                                    — Prior states of governance-bearing documents
     └── [Discharge via Lessons Learned 2026-06-28 — Git release tags (V0.6–V0.97, GPG-signed) satisfy prior-state archival at v0 scale; see RIP-001 resolution in Unknowns.md. Manual directory deposit deferred pending distillate architecture (RIP-006).]
@@ -203,8 +205,11 @@ Archive/                                    — Prior states of governance-beari
 - `Admin/Repository_Structure.md` — created 2026-06-05 ✓
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
+- `Tests/Chaos_Dynamics.md` — created 2026-07-04 ✓ (see Tests/ structure tree and Scope Map below); supersedes EN-005's original never-created candidate names (`Tests/Verification_Methods.md`, `Admin/Test_Protocols.md`).
 
 **Routing.md completeness:** Verified complete as of 2026-06-28 (`Tests/Cognitive_Salvage_Layer.md`, `Tests/Hydrologic_Resource_Cascade.md`, and `Admin/Computational Institutional Reasoning` added). Any gaps found on future audit passes are tracked as PC cluster entries in `Unknowns.md`.
+
+> ⚠️ **Correction, 2026-07-04:** The above completeness check missed `Challenges/Return_To_Eden.md`, which was already present in `Routing.md`'s master table and in `Unknowns.md`'s active index (RE-UNK-001 through RE-UNK-005, registered cycle 11) but absent from this file's structure tree, Maturity Snapshot, and Scope Map. Added in this pass — see entries below. This file's own "verified complete" claims should be read as bounded by what was checked at the time, not as a standing guarantee; this gap sat unnoticed since the RE-UNK cluster's registration.
 
 ---
 
@@ -306,12 +311,14 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Tests/Solar_Descent.md` | Exploration | 0/6 | High |
 | `Tests/Cognitive_Salvage_Layer.md` | Exploration | 0/6 | Medium |
 | `Tests/Hydrologic_Resource_Cascade.md` | Exploration | 0/6 | Medium |
+| `Tests/Chaos_Dynamics.md` | Exploration (per file's own declared status) | — (no File State table exists) | Unrated — no Highest Risk field declared |
 | `Challenges/Water.md` | Active | — | — |
 | `Challenges/Biofouling.md` | Active | — | — |
 | `Challenges/Waste.md` | Active | — | — |
 | `Challenges/Planned_Obsolescence.md` | Active | — | — |
 | `Challenges/Critical_Minerals.md` | Active | — | — |
 | `Challenges/Emergence.md` | Exploration | 0/6 | High |
+| `Challenges/Return_To_Eden.md` | *Unverified* — not yet reconciled against source file; provisionally Exploration | *Unverified* (0/6 unconfirmed) | *Unverified* — Critical if RE-UNK-001/RE-UNK-005 (Blocking at Tier I gate) are taken at face value, but this row should be confirmed against the file's own File State on next audit rather than trusted as-is |
 
 ---
 
@@ -500,7 +507,7 @@ Minimum viable seed specification. 8 core G.E.C.K. modules; procurement doctrine
 ⚠️ GK-005 — resolved by Architecture/Precision.md; update on next audit pass.
 
 ### `Architecture/Engineering.md`
-Foundational engineering principles. Rules of thumb; safety factors; Arkansas climate derating; progressive engineering path.
+Foundational engineering principles. Rules of thumb; safety factors; RDC (Reference Deployment Context) climate derating; progressive engineering path.
 **Upstream:** Ethical_Constraints.md; Engineer_Protocols.md.
 **Downstream:** All Operations/ and Architecture/ domain files; Mechanical_Structures.md.
 ⚠️ EN-001 (validated safety factors for salvaged materials) — Critical; blocks structural specification.
@@ -676,6 +683,14 @@ Flood Resource Recovery Basin. Sequential hydraulic sorting zones (flood intake 
 
 ---
 
+### `Tests/Chaos_Dynamics.md`
+Exploration/R&D pipeline doctrine. Two-phase structure: Sandbox (Level ≤4 informal exploration; every artifact terminates as Discarded, Deferred, or Promoted — no direct path to guidance or claims) and R&D (EXP-ID minted at promotion or intake; Intake → NDE → Sampling → Destructive Testing → Statistical Analysis → Derating Recommendations). Explicit feedback loop on EXP-ID completion (Confirmed / Partially Confirmed / Refuted / Inconclusive) updates the originating sandbox hypothesis; refuted hypotheses remain visible for institutional memory rather than being deleted. Operational Invariant: exploration capacity is never constrained by current engineering certainty, and engineering certainty is never increased by exploration alone. Declares itself the EN-005 resolution vehicle and the intended feeder pipeline for EN-001a; author's note flags the same pattern as reusable for ME-001.
+**Upstream:** `Architecture/Engineering.md` (Hierarchy of Engineering Evidence, EN-001, EN-005); `Admin/Experiments.md` (EXP-ID registry).
+**Downstream:** `Admin/Experiments.md` (EXP-ID entries); `Architecture/Engineering.md` EN-001/EN-001a (derating inputs); `Unknowns.md` (new unknowns surfaced during exploration).
+⚠️ **Structural gaps found on 2026-07-04 review, not yet corrected in the file:** missing the mandatory Navigation Anchors block required by Routing.md's File Template Backlink Requirement for every markdown asset in the repository; no File State table (no Verification Ref, Auditor, Open Unknowns count, or Spec Gates field), leaving it untracked by the standard promotion-gate bookkeeping every peer Tests/ file carries; §1 and §7 duplicate the Operational Invariant verbatim. None of these are content problems — patch on next revision. **EN-005 status:** treat as In Progress / Vehicle, not Resolved — this file establishes the general process framework EN-005 asked for, but doesn't yet specify what a Level 5/6 test looks like for any specific component type; that requires actual EXP-ID cycles to run. The file's own §8 self-declares EN-005 resolved — that declaration should not be taken as a closed unknown without that follow-through.
+
+---
+
 ## Scope Map — Challenges/
 
 > Challenges/ files define problems and requirements. They do not freeze solutions.
@@ -716,6 +731,13 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 **Downstream:** Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Forge_Net.md; Leviathan_testing.md; Support_Raft.md; Verification_Gates_LF.md.
 ⚠️ EM-001 (behavioral opacity detection threshold) — High; blocks watchdog specification. EM-004 (governance substrate integrity under emergent agent access) — Critical; mirrors GOV-003, SEC-007.
 
+### `Challenges/Return_To_Eden.md`
+Closed-loop material cycle framework. Eden Index ($I_E$) — a composite metric ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) targeting a declared 98.4% closed-loop material cycle threshold, normalized against baseline reference values in its v1.0.2 formulation. Tier I–IV progression doctrine for advancing closed-loop maturity, gated by explicit (if not yet fully defined) pass/fail criteria between tiers.
+> ⚠️ **Entry added 2026-07-04, reconstructed from `Unknowns.md`'s RE-UNK cluster and `Routing.md`'s master table — this file was missing from Discovery.md's structure tree, Maturity Snapshot, and Scope Map despite existing in both other navigation files since at least cycle 11.** The Upstream/Downstream below are inferred, not sourced from the file's own Scope Boundary — they should be confirmed against the actual file on next audit pass rather than treated as authoritative. This entry is offered as the resolution step for RE-UNK-004 (Discovery.md Scope Map completion) but should not be considered to fully close RE-UNK-004 until reconciled against the source file directly.
+**Upstream (inferred, unconfirmed):** Likely `Admin/Ethical_Constraints.md`; `Admin/Economics.md` (closed-loop resource doctrine); `Operations/Gate_07_Utilization.md` (FRT/material cycle data) — verify against file.
+**Downstream (inferred, unconfirmed):** None formally declared yet in this file — itself the subject of RE-UNK-004's dependency-map gap.
+⚠️ RE-UNK-001 (Eden Index variable measurement protocols undefined) and RE-UNK-005 (baseline reference values undefined) — co-blocking at Tier I gate; non-blocking at Exploration. RE-UNK-002 (98.4% threshold provenance unverified) and RE-UNK-003 (tier advancement criteria undefined) — become blocking at Tier I gate review. RE-UNK-004 (this Scope Map gap) — partially addressed by this entry; full resolution requires reconciliation against the source file.
+
 ---
 
 ## Cross-Repo Relationship
@@ -755,6 +777,8 @@ would go stale (this refresh: `Unknowns.md` v4.10, 2026-07-03).
 | VG-001 — Gate definition synchronization authority chain undefined | **Resolved** 2026-07-03 — Gate Definition Synchronization Protocol | `Admin/Verification_Gates_LF.md` |
 | GOV-011 — Spec Gates field scored against wrong gate system | Major, Critical Watch — Governance_Charter.md's own promotion score unaudited against its stated reference; may not be isolated | `Unknowns.md` §Ethics & Governance |
 | CT-010 — Enforcement Checkpoint rename propagation | Major — confirm no file still cites old unqualified "Gate N" for Governance_Charter.md's renamed checkpoints | `Unknowns.md` §Ethics & Governance |
+| RE-UNK-001 / RE-UNK-005 — Return_To_Eden Eden Index measurement/baseline undefined | Blocking (Tier I gate); non-blocking at Exploration | `Unknowns.md` §Return to Eden |
+| RE-UNK-004 — Return_To_Eden dependency map absent | Partially addressed 2026-07-04 — Discovery.md Scope Map entry added; pending reconciliation against source file | `Unknowns.md` §Return to Eden |
 
 **Parked, not open work:** Governance_Charter.md's External Design Lineage
 amendment is drafted and ready but deliberately unratified — a considered
