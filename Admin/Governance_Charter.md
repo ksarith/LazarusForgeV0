@@ -379,6 +379,97 @@ Requirements:
 
 ---
 
+## External Design Lineage Governance — PROPOSED, NOT RATIFIED
+
+> **STATUS: DRAFT.** This section is a proposed amendment, not adopted
+> governance text. It requires `Admin/Governance_Migration_Protocol.md`
+> two-track ratification before it binds anything. Included here in draft
+> form at the location it would occupy if ratified, per standard practice
+> for proposed amendments awaiting human governing authority review.
+> Drafted 2026-07-03, synthesizing multi-agent proposals (ChatGPT, Gemini,
+> Grok) reviewed and narrowed by Claude — Synthesizer/Auditor.
+
+**Proposed placement note:** the original proposal cited "Gate 3 or Gate 4"
+as the attachment point. Given the Gate 3/Gate 4 divergence flagged above,
+this draft does not attach to either gate directly — it stands as its own
+subsection pending that divergence being resolved, so ratifying EDL doesn't
+inherit an unrelated ambiguity.
+
+### 1. The Constitutional Question
+
+External design patterns, historical precedent, and industry standards are
+evidence of prior engineering utility, not universal truth. A governance
+gap exists: nothing currently requires a file departing from established
+external practice to document why, and nothing prevents uncritical
+adoption of external practice either. `Admin/Security_Protocols.md`
+piloted a local answer — the External Design Lineage (EDL) registry,
+positioned after its Trust Boundary Declaration — with four entries
+(PAT-001 through PAT-004) as of 2026-07-03.
+
+**What this amendment would do, if ratified:** extend that single-file
+pilot into a mandatory, repository-wide requirement.
+
+**What this draft deliberately does NOT propose**, departing from earlier
+drafts of this idea: automated harness enforcement (regex modifiers, hard
+promotion-blocking circuit breakers), a mandatory nine-cell schema
+requirement worded as unbypassable, or immediate repository-wide scope.
+Those are implementation mechanics that belong in `Admin/AUDIT_HARNESS.py`'s
+own spec if adopted, not baked into constitutional text — and immediate
+repository-wide mandate on the strength of one pilot file is more
+enforcement than one data point supports. See §4.
+
+### 2. Proposed Mandate (if ratified)
+
+> No departure from established external engineering practice may advance
+> a file from *Exploration* to *Candidate Specification* without an EDL
+> entry documenting the originating source, the Forge Decision made, and
+> the validation still required to justify that decision.
+
+This guards against two opposite failure modes: Not-Invented-Here rejection
+of external wisdom out of isolationist bias, and uncritical Appeal to
+Authority adoption purely because a practice is an established standard.
+Ties to EF-0.0 (Reality is sovereign) and EF-0.1 (What Is Not Evidence) in
+`Admin/Auditor_Protocols.md` — industry consensus is prior evidence, not
+verification.
+
+### 3. Schema and Lifecycle (canonical reference, not redefinition)
+
+This amendment does not redefine the EDL schema or Lineage Status
+Lifecycle — both already exist in `Admin/Security_Protocols.md` §External
+Design Lineage and are referenced here, not duplicated, to avoid the exact
+derivation-drift problem VG-001 describes for the gate-definition chain.
+Ratifying this amendment would make that existing schema and lifecycle
+repository-canonical rather than Security_Protocols.md-local.
+
+### 4. Proposed Rollout — Phased, Not Immediate
+
+Given EDL has exactly one file's worth of real usage as of this draft, a
+repository-wide mandate on that basis alone is more confidence than the
+evidence supports. Proposed phasing, if ratified:
+
+1. **Now → next 2 audit cycles:** EDL remains Security_Protocols.md-local.
+   Treat it as the pilot. Track whether the schema holds up under a second
+   and third real file's usage before generalizing.
+2. **After pilot review:** if the schema needed no material changes across
+   at least one additional file, propose repository-wide mandate as a
+   follow-up amendment — at that point with real cross-file evidence
+   instead of a single pilot.
+3. **Enforcement mechanics** (harness regex, automated promotion-blocking)
+   are a separate proposal, scoped to `Admin/AUDIT_HARNESS.py`, evaluated
+   only after the schema itself is proven across more than one file.
+
+### 5. Open Items Before Ratification
+
+- Gate 3/Gate 4 divergence (flagged above) — does not block this amendment
+  directly, but affects how "Candidate Specification" promotion criteria
+  are evaluated repository-wide, which this amendment references.
+- `Admin/Canonical_Terms.md` cross-check on Validation Needed vocabulary —
+  previously flagged in Security_Protocols.md's EDL section, not yet done.
+- This section's own placement — pending Gate 3/Gate 4 resolution, may
+  need to move once that's settled.
+
+---
+
 ## Truth Provenance Doctrine
 
 | Provenance Level          | Meaning                                              |
@@ -851,6 +942,21 @@ Mandatory re-audit conditions for this document:
 ---
 
 ### Resolution Log
+
+- 2026-07-03: **DRAFT ADDED, NOT RATIFIED** — External Design Lineage
+  Governance section added, synthesizing multi-agent proposals (ChatGPT,
+  Gemini, Grok) into a narrower draft: references rather than duplicates
+  the existing schema/lifecycle already live in `Admin/Security_Protocols.md`
+  §External Design Lineage; proposes phased rollout (pilot review before
+  repository-wide mandate) instead of immediate global enforcement; omits
+  automated-harness enforcement mechanics as out of scope for constitutional
+  text. Flagged in passing, not addressed: `Admin/Verification_Gates_LF.md`'s
+  Six Canonical Verification Gates and this file's own §Canonical
+  Verification Gates define materially different Gate 3 and Gate 4 criteria
+  — an undocumented divergence discovered while locating this amendment's
+  attachment point, separate from EDL itself. Requires
+  `Admin/Governance_Migration_Protocol.md` two-track ratification before
+  this section binds anything.
 
 - 2026-05-23: GOV-LEGACY-01 — Governance hierarchy formalized into constitutional tier structure.
 - 2026-05-23: GOV-LEGACY-02 — Recursive governance escalation partially stabilized through closure doctrine.
