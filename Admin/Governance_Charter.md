@@ -14,11 +14,11 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 1/6 (Gate 2 Blocked — Bootstrap Paradox; see Resolution Log)        |
+| Spec Gates       | 1/6 vs. `Admin/Verification_Gates_LF.md` (unaudited against actual criteria — see GOV-011); Enforcement Checkpoint 2 also Blocked — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-17                                                          |
 | Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor                  |
-| Open Unknowns    | 10                                                                  |
+| Open Unknowns    | 11                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -206,7 +206,7 @@ In bootstrap states:
 
 **Resolution — Genesis Phase Protocol:** Until a multi-agent quorum is established, the independent skeptical layer is satisfied by static human configuration files, signed human authorization records, or direct human-in-the-loop oversight. A human operator acting as the independent verification anchor during bootstrap is constitutionally valid under Axiom Q-2 — provided the operator satisfies Q-2 through role separation: the authorization record must be generated in a separate session or external medium from the runtime session executing the action. A single operator both issuing and consuming authorization within the same session does not satisfy Q-2. The separation may be accomplished by: (a) a signed external record (dated document, cryptographic token, or physical log) created before the runtime session begins; (b) a second human operator confirming the authorization; or (c) a static configuration file committed to the repository before the runtime session that specifies the authorized action scope. The key requirement is that the planning/authorization function and the execution/self-authorization function are demonstrably separated in artifact, time, or identity.
 
-During Genesis Phase, Gate 5 (Truth Provenance Layering) and Gate 6 (Audit Lineage Integrity) verification artifacts may be satisfied by signed human validation logs created outside the runtime session, in lieu of automated multi-agent confirmation. This does not relax the provenance labeling requirements of Gate 5 — all claims must still be labeled — but the external grounding required by Axiom Q-1 may be provided by the human anchor rather than by independent agent verification until quorum exists.
+During Genesis Phase, Enforcement Checkpoint 5 (Truth Provenance Layering) and Checkpoint 6 (Audit Lineage Integrity) verification artifacts may be satisfied by signed human validation logs created outside the runtime session, in lieu of automated multi-agent confirmation. This does not relax the provenance labeling requirements of Checkpoint 5 — all claims must still be labeled — but the external grounding required by Axiom Q-1 may be provided by the human anchor rather than by independent agent verification until quorum exists.
 
 **Genesis Phase constraints:**
 - All initialization actions must be logged with human authorization reference
@@ -304,9 +304,17 @@ The Tier 1 Axioms are currently Declared and Detectable. Enforcement architectur
 
 ---
 
-## Canonical Verification Gates
+## Enforcement Checkpoints
 
-### Gate 1 — Internal Coherence
+*Renamed 2026-07-03 from "Canonical Verification Gates" — see GOV-011 and
+`Admin/Canonical_Terms.md` §4. Distinct from `Admin/Verification_Gates_LF.md`'s
+Verification Gates: these checkpoints govern the legitimacy of a governance
+**action**, not the promotion readiness of a **document**. A file's
+`Spec Gates X/6` File State field always refers to Verification_Gates_LF.md's
+Verification Gates — never to these checkpoints, regardless of which file
+the field appears in.*
+
+### Checkpoint 1 — Internal Coherence
 
 Requirements:
 - No unresolved contradiction
@@ -317,7 +325,7 @@ Requirements:
 
 ---
 
-### Gate 2 — Structural Plausibility
+### Checkpoint 2 — Structural Plausibility
 
 Requirements:
 - Governance systems must remain operationally tractable
@@ -326,11 +334,11 @@ Requirements:
 - Governance overhead must remain proportional to repository value
 - Axiom layer remains sparse — operational detail not present in Tier 1
 
-**Current status: BLOCKED — Bootstrap Paradox.** Operational multi-agent quorum absent; human override mechanisms remain declarative-only (GOV-006-A). Gate 2 cannot clear until at least one Genesis Phase exit pathway is satisfied with human ratification.
+**Current status: BLOCKED — Bootstrap Paradox.** Operational multi-agent quorum absent; human override mechanisms remain declarative-only (GOV-006-A). Checkpoint 2 cannot clear until at least one Genesis Phase exit pathway is satisfied with human ratification.
 
 ---
 
-### Gate 3 — Adversarial Pass
+### Checkpoint 3 — Adversarial Pass
 
 Requirements:
 - Proportional adversarial challenge review
@@ -342,7 +350,7 @@ Requirements:
 
 ---
 
-### Gate 4 — Cross-Module Integration
+### Checkpoint 4 — Cross-Module Integration
 
 Requirements:
 - Explicit dependency mapping
@@ -353,7 +361,7 @@ Requirements:
 
 ---
 
-### Gate 5 — Truth Provenance Layering
+### Checkpoint 5 — Truth Provenance Layering
 
 All meaningful claims must distinguish:
 - internally derived reasoning
@@ -367,7 +375,7 @@ During Genesis Phase, the external grounding required by Axiom Q-1 may be satisf
 
 ---
 
-### Gate 6 — Audit Lineage Integrity
+### Checkpoint 6 — Audit Lineage Integrity
 
 Requirements:
 - Traceable governance revisions
@@ -390,10 +398,12 @@ Requirements:
 > Grok) reviewed and narrowed by Claude — Synthesizer/Auditor.
 
 **Proposed placement note:** the original proposal cited "Gate 3 or Gate 4"
-as the attachment point. Given the Gate 3/Gate 4 divergence flagged above,
-this draft does not attach to either gate directly — it stands as its own
-subsection pending that divergence being resolved, so ratifying EDL doesn't
-inherit an unrelated ambiguity.
+as the attachment point. That referred to this file's internal gate system,
+since renamed to Enforcement Checkpoints (2026-07-03) specifically to
+eliminate the naming collision with `Admin/Verification_Gates_LF.md`'s
+Verification Gates — see GOV-011. This draft attaches as its own subsection
+rather than under Checkpoint 3 or 4, since EDL concerns document-level
+external-pattern evidence, not governance-action legitimacy.
 
 ### 1. The Constitutional Question
 
@@ -460,13 +470,18 @@ evidence supports. Proposed phasing, if ratified:
 
 ### 5. Open Items Before Ratification
 
-- Gate 3/Gate 4 divergence (flagged above) — does not block this amendment
-  directly, but affects how "Candidate Specification" promotion criteria
-  are evaluated repository-wide, which this amendment references.
+- **Resolved 2026-07-03:** the naming collision this file's Enforcement
+  Checkpoints once had with Verification_Gates_LF.md's Verification Gates
+  is fixed via rename — see GOV-011. Still open from that same discovery:
+  this file's own File State `Spec Gates 1/6` field was scored against the
+  (now-renamed) internal checkpoints rather than the Verification Gates it
+  claims to reference via `Verification Ref`. Whether "1/6" is accurate
+  against the actual Verification Gates is unaudited — GOV-011, not yet
+  resolved.
 - `Admin/Canonical_Terms.md` cross-check on Validation Needed vocabulary —
   previously flagged in Security_Protocols.md's EDL section, not yet done.
-- This section's own placement — pending Gate 3/Gate 4 resolution, may
-  need to move once that's settled.
+- This section's placement is no longer blocked by the rename; may still
+  move once GOV-011's audit gap is resolved.
 
 ---
 
@@ -719,7 +734,7 @@ Mandatory re-audit conditions for this document:
 - Ethical Anchor field absent, altered, or does not match canonical string
 - Governance Failure Modes table loses Axiom Erosion, Axiom Theater, or Constitutional Capture entries
 - Tier 1 Axioms cited to justify actions they were designed to prevent
-- Gate 2 block status removed from File State or Gate 2 body text without Genesis Phase exit condition being satisfied and ratified
+- Checkpoint 2 block status removed from File State or Checkpoint 2 body text without Genesis Phase exit condition being satisfied and ratified
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -941,6 +956,47 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### GOV-011 — File State Spec Gates field scored against wrong gate system
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance / Audit Integrity     |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-03                       |
+| Last Reviewed | 2026-07-03                       |
+
+**Description:** This file's File State `Verification Ref` field names
+`Admin/Verification_Gates_LF.md` as the authority for its `Spec Gates X/6`
+score. But the score itself ("1/6, Gate 2 Blocked — Bootstrap Paradox")
+was being reported against this file's own internal gate system — since
+renamed to Enforcement Checkpoints — not against Verification_Gates_LF.md's
+actual Verification Gates. Discovered while resolving a naming collision
+between the two systems (both were called "Gate N," now disambiguated).
+The naming fix does not resolve this: it only makes visible that the
+underlying score was never actually computed against the file it claims
+to reference.
+
+**Why It Matters:** Every file in the repository uses this same File State
+schema. If this file's own promotion tracker has been silently scoring
+against the wrong standard, the question of whether other files have the
+same problem is now open too — this may not be isolated to
+Governance_Charter.md.
+
+**Resolution Path:** Audit this file against Verification_Gates_LF.md's
+actual six Verification Gates (Fallacy Checklist, Physical Plausibility,
+Adversarial Battery, Scope Alignment, Cross-reference integrity, Conflict
+check) and report a real score. Separately, spot-check at least two other
+governance-tier files' `Spec Gates X/6` fields against their own stated
+`Verification Ref` to determine whether this is isolated or systemic. If
+systemic, escalate to a repository-wide unknown rather than resolving
+file-by-file.
+
+---
+
 ### Resolution Log
 
 - 2026-07-03: **DRAFT ADDED, NOT RATIFIED** — External Design Lineage
@@ -957,6 +1013,23 @@ Mandatory re-audit conditions for this document:
   attachment point, separate from EDL itself. Requires
   `Admin/Governance_Migration_Protocol.md` two-track ratification before
   this section binds anything.
+
+- 2026-07-03: **GOV-011 logged; Enforcement Checkpoints rename applied.**
+  The Gate 3/Gate 4 divergence flagged in the entry above was resolved by
+  renaming this file's "Canonical Verification Gates" (Gate 1–6) to
+  "Enforcement Checkpoints" (Checkpoint 1–6) throughout the live section,
+  File State, Genesis Phase text, and Drift Indicators — eliminating the
+  naming collision with `Admin/Verification_Gates_LF.md`'s Verification
+  Gates. A second, deeper issue surfaced in the same review: this file's
+  File State `Spec Gates 1/6 (Gate 2 Blocked...)` field was reporting
+  Enforcement Checkpoint 2's status under a label whose `Verification Ref`
+  points to Verification_Gates_LF.md — the two systems test different
+  things (governance-action legitimacy vs. document promotion readiness),
+  so "1/6" has never been audited against the file it claims to reference.
+  Logged as **GOV-011**, Open, not resolved by the rename alone. File
+  State field rewritten to state this explicitly rather than imply a
+  score that was never actually computed. Cross-referenced in
+  `Admin/Canonical_Terms.md` §4 and `Admin/Verification_Gates_LF.md`.
 
 - 2026-05-23: GOV-LEGACY-01 — Governance hierarchy formalized into constitutional tier structure.
 - 2026-05-23: GOV-LEGACY-02 — Recursive governance escalation partially stabilized through closure doctrine.
