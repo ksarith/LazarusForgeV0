@@ -65,3 +65,80 @@ New uncertainties exposed during exploration → Unknowns.md entry. Verification
 
 ---
 *Last updated: 2026-07-04.*
+
+
+PATCH — Tests/Chaos_Dynamics.md
+================================
+This is an INSERTION PATCH, not a full-file replacement. I don't have
+byte-exact original text for this file in this session, so rewriting the
+whole thing risks silently dropping body content. Paste these two blocks
+in at the indicated positions in the actual committed file; leave
+everything else (§1–§8 body content) untouched.
+
+--------------------------------------------------------------------
+INSERTION 1 — immediately after the top-level "# Chaos_Dynamics.md"
+title line, before any existing body content:
+--------------------------------------------------------------------
+
+---
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+---
+
+--------------------------------------------------------------------
+INSERTION 2 — immediately after Insertion 1, before existing §1:
+--------------------------------------------------------------------
+
+## File State
+
+| Field            | Value                                                               |
+|------------------|-----------------------------------------------------------------------|
+| Status           | Exploration                                                         |
+| Body Stability   | Transitional                                                        |
+| Spec Gates       | 0/6                                                                 |
+| Verification Ref | Admin/Verification_Gates_LF.md                                      |
+| Last Audit       | 2026-07-04 (informal review — Claude, ChatGPT; no formal Skeptic/Auditor sign-off yet) |
+| Auditor          | None yet — informal review only, see Last Audit                    |
+| Open Unknowns    | 0                                                                   |
+| Active Disputes  | 0                                                                   |
+| Highest Risk     | Medium — gatekeeps the evidentiary pipeline feeding EN-001/EN-001a; misuse risk if sandbox output is cited past its Level ≤4 ceiling |
+| Sidecar Link     | #auditor-notes--unknowns                                            |
+| Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+--------------------------------------------------------------------
+WHY THESE VALUES, SPECIFICALLY
+--------------------------------------------------------------------
+- Ethical Anchor string is copied EXACTLY from Engineering.md and the
+  harness default (_DEFAULT_ANCHOR in AUDIT_HARNESS.py). This field is
+  checked for an EXACT string match by the harness's Phase 1
+  constitutional check — any deviation (even punctuation) writes a
+  .quarantine file and halts the session. Do not paraphrase this line.
+- Status/Spec Gates/Highest Risk reflect the file's own declared
+  Exploration-tier framing, not an inflated score — consistent with the
+  session's earlier decision not to touch Engineering.md's Spec Gates
+  field without a real gate audit.
+- Auditor/Last Audit are deliberately marked "informal review, no formal
+  sign-off" — this session's conversation-based review (mine, Grok's,
+  ChatGPT's) is not a substitute for an actual Skeptic/Auditor pass
+  through Forge_Audit_Kit.md's opening sequence.
+- Open Unknowns is 0, not blank — this is a process-doctrine file with no
+  sidecar entries yet, which is accurate, not a gap. It will likely gain
+  its first entries once a hypothesis actually completes the pipeline.
+- Sidecar Link points at a section that doesn't exist yet
+  ("Auditor Notes & Unknowns"). Add a minimal stub section with that
+  header at the end of the file (can be as short as "No unknowns
+  registered yet — first entries expected once the pipeline processes
+  its first hypothesis.") so the anchor resolves.
+
+--------------------------------------------------------------------
+NOT INCLUDED IN THIS PATCH — separate follow-ups, not urgent
+--------------------------------------------------------------------
+- Trimming the duplicated Operational Invariant text between §1 and §7.
+- ChatGPT's HYP-### identifier proposal — deferred per this session's
+  discussion; log as a forward-looking note near §3/§4 if desired, not
+  as new infrastructure yet.
+- A fourth Phase 1 harness check for Navigation Anchors block presence —
+  AUDIT_HARNESS.py currently has no such check at all (any file lacking
+  one goes undetected). Worth raising as a new non-blocking unknown
+  (harness enhancement) rather than bundling into this patch.
