@@ -87,6 +87,18 @@ formally reconciled and the conflict logged.
 
 ## The Six Canonical Verification Gates
 
+*Disambiguation (2026-07-03): "Gate" and "canonical" here refer only to this
+file's six Verification Gates — document promotion readiness. Two other
+repository uses of "Gate" exist and are distinct: `Operations/Gate_01`
+through `Gate_07` (physical material-flow pipeline stages, owned by
+`Architecture/Forge_flow.md`) and `Admin/Governance_Charter.md`'s
+Enforcement Checkpoints (governance-action legitimacy, renamed from "Gate
+1–6" 2026-07-03 specifically to end a naming collision with this section
+— see GOV-011 and `Admin/Canonical_Terms.md` §4). A file's `Spec Gates X/6`
+File State field always refers to this file's Verification Gates, never
+to Enforcement Checkpoints, regardless of which document the field
+appears in.*
+
 Gates are sequential. An auditor has binding block authority at each gate.
 Self-approval loops are not permitted — an agent may not pass its own output
 through a gate it authored. Blocks require documented rebuttal and a
@@ -448,6 +460,12 @@ Lessons Learned entry already names for detection-latency unknowns.
   Resolution and Lessons Learned narrative fields added to the sidecar
   entry per the Resolved Unknown Discharge Procedure (`Admin/Forge_Audit_Kit.md`
   v1.4+). Matching top-table Lessons Learned row added. Open Unknowns 1 → 0.
+- 2026-07-03: Disambiguation note added atop §The Six Canonical Verification
+  Gates, confirming this file as sole owner of unqualified "Gate"/"canonical"
+  terminology within its domain, distinct from Operations/Gate_01–07 (physical
+  pipeline, Forge_flow.md) and `Admin/Governance_Charter.md`'s Enforcement
+  Checkpoints (renamed from "Gate 1–6" the same day to end the naming
+  collision — see GOV-011, `Admin/Canonical_Terms.md` §4).
 
 ---
 
@@ -508,9 +526,8 @@ halt autonomous audit progression and escalate for human review.
 
 ## Status
 
-Version 0.4 — VG-001 discharged via Gate Definition Synchronization Protocol
-(2026-07-03); Open Unknowns 0. Underlying gate definitions unchanged since
-initial derivation from Auditor_Protocols.md v0.7.
+Version 0.5 — Disambiguation note added confirming sole ownership of
+"Gate"/"canonical" terminology within this file's domain (2026-07-03).
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
 G6 require formal audit pass against Auditor_Protocols.md before claiming.
