@@ -28,9 +28,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-21                                                          |
-| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21 |
-| Open Unknowns    | 5                                                                   |
+| Last Audit       | 2026-07-04                                                          |
+| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21; Gemini — Exploration audit 2026-07-04; Claude — Documentation correction pass 2026-07-04 |
+| Open Unknowns    | 6                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -139,8 +139,10 @@ Engineering.md operationalizes the physical constraints that engineering work mu
   energy, material properties) rather than analogy or tradition.
 - **Margin of Safety** — Apply minimum 2×–4× factors depending on application (higher
   for critical/human-occupied structures, fatigue, or uncertainty).
-- **Fail Safe, Not Fail Operational** — Design so that failures lead to safe states,
-  not continued operation.
+- **Fail Safe, Not Fail Operational** — Design so that failures lead to non-energetic,
+  fail-passive mechanical configurations (cross-reference `Admin/Safety_Protocols.md`
+  for the operator-facing definition of an acceptable failed state), not continued
+  operation.
 - **Murphy's Law Discipline** — Assume what can go wrong will. Design accordingly.
 - **Conservation of Complexity** — Complexity should only be introduced when simpler
   solutions have been exhausted. Every component, adjustment, and interface becomes
@@ -220,8 +222,12 @@ climate via `Architecture/Facilities.md` §VII.
   vs brittle failure modes differ critically), plastics, composites.
 - **Derating for salvaged materials:** Reduce allowable stresses for temperature,
   moisture, fatigue, and unknown history. Default derating table pending EN-001
-  resolution — until then apply minimum 3× safety factor on any unknown-history
-  structural member.
+  resolution — until then, unknown-history structural members carry the mandatory
+  **6×+ floor** defined in §8 [Internally Derived — pending EN-001 destructive
+  testing]. This floor may not be reduced by citing this section; §8 is the
+  authoritative value. (Corrected 2026-07-04 — this section previously stated a
+  3× interim figure that conflicted with §8 and the EN-001 sidecar; see
+  Resolution Log.)
 - See `Architecture/Chemistry.md` for corrosion behavior. See `Architecture/
   Mechanical_Structures.md` for fabricated-frame specifics.
 
@@ -244,7 +250,15 @@ climate via `Architecture/Facilities.md` §VII.
 - Sketching → CAD → FEA → Physical prototype → Testing (see §2 Hierarchy of Evidence).
 - **FMEA:** Before any design is built, identify: what can fail, how likely, what the
   consequence is, and what the detection mechanism is. A design with no identified
-  failure modes has not been analyzed — it has been assumed safe.
+  failure modes has not been analyzed — it has not been shown free of failure modes,
+  only assumed to be, and an unlabeled assumption is not a substitute for analysis.
+- **Low-tech detection methods:** In resource-constrained, sensor-scarce deployments,
+  detection mechanisms need not be instrumented. Acceptable analog methods include:
+  visual witness marks across fasteners and joints (paint or scribe lines to reveal
+  slip), plumb lines or string lines to reveal structural creep or drift over time,
+  and manual tap-testing to reveal delamination or internal voids in composite or
+  laminated members. An FMEA's "detection mechanism" field may cite one of these
+  without requiring instrumentation.
 - Tolerance analysis: worst-case vs. statistical. For salvage stock, always worst-case.
 - **High-performance caution:** Topology optimization, lattice structures, and
   composites are powerful tools that also create failure modes that are harder to
@@ -258,7 +272,9 @@ climate via `Architecture/Facilities.md` §VII.
 **Common Safety Factors:**
 - Static non-critical: 2–3×
 - Structural/human load: 4×
-- Fatigue/impact/unknown-history salvage materials: 6×+ (EN-001 blocks reduction)
+- Fatigue/impact/unknown-history salvage materials: **6×+** (EN-001 blocks reduction)
+  [Internally Derived — pending EN-001 destructive testing; this is the single
+  authoritative interim value for unknown-history structural members — see §5]
 
 **Units:** Default metric (mm, N, MPa) with imperial soft conversions. Be explicit.
 
@@ -268,6 +284,11 @@ climate via `Architecture/Facilities.md` §VII.
 - Wood strength: Reduce 20–30% for sustained high humidity (RDC). Arid deployments
   may use lesser derating; tropical deployments verify against local species data.
 - Fastener corrosion: Specify galvanized or stainless in wet/humid environments.
+- **Facilities.md unavailable fallback:** If `Architecture/Facilities.md` site
+  parameters are unavailable, unverified, or not yet initialized for the
+  deployment, builders must default unconditionally to the most conservative
+  values within the RDC baseline stated in this file. Do not interpolate,
+  average, or assume a milder climate in the absence of confirmed site data.
 
 **Measurement Standards:** Calibrate tools regularly. Use moisture meters for wood,
 torque wrenches for critical fasteners.
@@ -317,6 +338,9 @@ torque wrenches for critical fasteners.
 - Conservation of Complexity principle removed or softened — trigger re-audit.
 - Hierarchy of Evidence table removed or simplified below 5 levels — trigger re-audit.
 - Verification Ref changed away from `Admin/Verification_Gates_LF.md`.
+- §5 and §8 interim safety-factor values diverge again — trigger immediate
+  re-audit; this file has already had one uncaught internal contradiction on
+  this exact value (see Resolution Log, 2026-07-04).
 
 ---
 
@@ -333,12 +357,15 @@ torque wrenches for critical fasteners.
 | Blocking | **Yes** |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
-| Last Reviewed | 2026-06-11 |
+| Last Reviewed | 2026-07-04 |
 
 **Description:** No Forge-specific tested safety factor table exists for salvaged
 materials with unknown history. The current default (6×+) is conservative but
 undifferentiated — it applies the same factor to unknown structural steel and
-unknown timber without basis.
+unknown timber without basis. (Reconciled 2026-07-04: §5 previously cited a 3×
+interim figure inconsistent with this sidecar and §8; all three now read 6×+.
+This does not resolve EN-001 — it only removes an internal inconsistency in how
+the unresolved interim floor was stated.)
 
 **Why It Matters:** A salvage system without conservative derating tables is
 effectively operating blind. No structural specification in any Forge file may
@@ -434,7 +461,7 @@ Not blocking.
 | Blocking | No |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
-| Last Reviewed | 2026-06-11 |
+| Last Reviewed | 2026-07-04 |
 
 **Description:** Standardized verification testing protocols for Forge-built
 components do not exist. The Hierarchy of Evidence (§2) defines confidence levels
@@ -442,8 +469,10 @@ but does not specify what a Level 5 or Level 6 test looks like for specific
 component types.
 
 **Resolution Path:** As the Forge matures, testing doctrine will likely grow into
-a dedicated file (`Tests/Verification_Methods.md` or `Admin/Test_Protocols.md`).
-The Hierarchy of Evidence in §2 is the interim framework.
+a dedicated file (`Tests/Verification_Methods.md` (planned) or
+`Admin/Test_Protocols.md` (planned)). Neither file currently exists in
+Routing.md's canonical registry — these are aspirational targets, not active
+references. The Hierarchy of Evidence in §2 is the interim framework.
 
 ---
 
@@ -458,13 +487,15 @@ The Hierarchy of Evidence in §2 is the interim framework.
 | Blocking | No |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-06-11 |
-| Last Reviewed | 2026-06-11 |
+| Last Reviewed | 2026-07-04 |
 
 **Description:** Section 7 (high-performance engineering) covers topology
 optimization, lattice structures, and composites. These subjects are deep enough
 to eventually warrant their own file. As the Forge matures, this section is the
-most likely to require splitting into `Architecture/Advanced_Engineering.md` or
-`Architecture/Performance_Engineering.md`.
+most likely to require splitting into `Architecture/Advanced_Engineering.md`
+(planned) or `Architecture/Performance_Engineering.md` (planned). Neither file
+currently exists in Routing.md's canonical registry — these are aspirational
+targets, not active references.
 
 **Resolution Path:** Monitor section length and complexity. Trigger split when
 Section 7 exceeds 150 lines or when a downstream file begins citing it as a
@@ -474,6 +505,37 @@ domain authority rather than a survey.
 
 ### Resolution Log
 
+- 2026-07-04: Documentation correction pass following Gemini Exploration audit
+  (2026-07-04) and Claude review. Six findings actioned: (1) §5's interim
+  unknown-history safety factor corrected from 3× to 6×+ to match §8 and the
+  EN-001 sidecar — this was an uncaught internal contradiction, not an
+  intentional two-tier system; a Drift Indicator was added to catch recurrence.
+  (2) File State Open Unknowns field corrected 5→6 — the 2026-06-21 Resolution
+  Log entry claimed this update but the field itself was never changed. (3)
+  EN-005 and EN-006 references to `Tests/Verification_Methods.md`,
+  `Admin/Test_Protocols.md`, `Architecture/Advanced_Engineering.md`, and
+  `Architecture/Performance_Engineering.md` tagged `(planned)` per Discovery.md's
+  Fallacy 6 (Hallucinated Files) rule — none exist in Routing.md's canonical
+  registry. (4) "Safe" language tightened in §1 (Fail Safe principle now
+  cross-references Safety_Protocols.md and specifies non-energetic/fail-passive
+  states) and §7 (FMEA text no longer uses unbounded "assumed safe"). (5) §7
+  gained a low-tech hazard detection sub-clause (witness marks, plumb lines,
+  tap-testing) addressing a gap where FMEA's "detection mechanism" requirement
+  had no guidance for sensor-scarce deployments. (6) §8 gained an explicit
+  fallback clause for when Facilities.md site parameters are unavailable or
+  unverified — defaults unconditionally to RDC conservative baseline.
+  **Not actioned:** Gemini's recommendation to apply Truth Provenance Labels
+  to every quantitative value in §5/§8 (2–3×, 4×, 20–30%, etc.) was reviewed
+  and judged disproportionate for a Draft-tier, 3/6-gate file — full
+  provenance labeling is treated as Specification-tier rigor. A lighter label
+  was applied only to the corrected 6×+ value, since that number was the
+  subject of this session's correction. **Also not actioned:** Spec Gates
+  field left at 3/6 despite Gemini's gate-by-gate table showing five of six
+  gates passing — self-approval of gate status is prohibited, and this was a
+  documentation pass, not a formal gate audit against Verification_Gates_LF.md.
+  Flagged for a dedicated gate-verification session before that field is
+  touched, particularly given GOV-011 (Unknowns.md) was just registered for
+  this exact failure pattern elsewhere in the repository.
 - 2026-06-21: File Purpose corrected — "doctrine triad" framing replaced with explicit tier stack. Engineering.md is Tier 5 (Architecture), downstream of Ethical_Constraints.md (Tier 1) and Auditor_Protocols.md (Tier 2). Prior framing implied co-equal tier status with Tier 1 governance files, which is architecturally incorrect and creates a potential exploit path where engineering authority could be cited against a hard ethical floor. No body content changed. Eight findings actioned:
   (1) Navigation Anchors, Upstream/Downstream tables added. (2) Spec Gate
   advanced 0→3 — scope boundary, falsifiable safety factors, and peer
@@ -489,7 +551,8 @@ domain authority rather than a survey.
   stronger "operating blind" framing. (7) EN-006 added — Section 7 advanced
   engineering drift risk. (8) All Arkansas/RDC abstraction applied — ASM-003
   updated, §3 and §8 environmental notes updated. Role in doctrine triad
-  added to File Purpose. Open Unknowns updated 5→6. Last Audit updated.
+  added to File Purpose. Open Unknowns updated 5→6 (note: this field update
+  did not actually take effect — see 2026-07-04 entry above). Last Audit updated.
 - 2026-05-31: Scope boundary updated — peer file references added.
   Stale references to retired planned files removed. Verification Ref corrected.
   Safety advisory cross-references updated. Drift Indicators section added.
