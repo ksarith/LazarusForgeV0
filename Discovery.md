@@ -734,7 +734,7 @@ The two files are complementary — Routing.md owns *where*, Discovery.md owns *
 
 Full entries live in `Unknowns.md`. This table is a routing index only —
 refresh it whenever `Unknowns.md`'s version bumps and this table's IDs
-would go stale (this refresh: `Unknowns.md` v4.6, 2026-07-02).
+would go stale (this refresh: `Unknowns.md` v4.10, 2026-07-03).
 
 | Unknown | Status | See |
 |---------|--------|-----|
@@ -747,14 +747,22 @@ would go stale (this refresh: `Unknowns.md` v4.6, 2026-07-02).
 | EC-002 — Operating cost baseline | Critical — blocks TR-001; depends on EV-001 | `Unknowns.md` |
 | PR-001 — Precision ceiling not declared | Critical — blocks T1/T2 part claims | `Unknowns.md` |
 | PC-001 — Verification Ref corrections | Blocking — 10 files; affects AUDIT_HARNESS.py | `Unknowns.md` |
-| AP-012 / AP-016 — Human authority availability / concurrent quarantine | Critical — Gate 3 blocked pending Provisional Spec; cascade deadlock confirmed | `Unknowns.md` |
+| AP-012 / AP-016 — Human authority availability / concurrent quarantine | **Resolved** 2026-07-03 — Payment via Specification; Auditor_Protocols.md v0.16 | `Unknowns.md` |
 | GH-009 — Emergent heuristic conflict (Cognitive Salvage) | Critical — N² interaction scaling; blocks heuristic co-deployment | `Unknowns.md` |
 | HR-UNK-002 — Hydrologic Resource Cascade material quality | Critical — flood sediment contaminant risk; safety-critical | `Unknowns.md` |
 | SEC-007a / SEC-007b — External root-of-trust, split 2026-07-02 | Critical — constitutional (007a) blocks physical (007b); both blocked pending GOV-008/GOV-005 | `Unknowns.md` §Ethics & Governance |
 | SEC-012 — Asymmetric crypto overhead on salvaged silicon | Major — Logic-Zero node recovery DoS risk | `Unknowns.md` §Ethics & Governance |
-| VG-001 — Gate definition synchronization authority chain undefined | High — first concrete incident logged 2026-07-02; resolution path (4 items) unaddressed | `Admin/Verification_Gates_LF.md` |
+| VG-001 — Gate definition synchronization authority chain undefined | **Resolved** 2026-07-03 — Gate Definition Synchronization Protocol | `Admin/Verification_Gates_LF.md` |
+| GOV-011 — Spec Gates field scored against wrong gate system | Major, Critical Watch — Governance_Charter.md's own promotion score unaudited against its stated reference; may not be isolated | `Unknowns.md` §Ethics & Governance |
+| CT-010 — Enforcement Checkpoint rename propagation | Major — confirm no file still cites old unqualified "Gate N" for Governance_Charter.md's renamed checkpoints | `Unknowns.md` §Ethics & Governance |
 
-**Resolved this session (2026-07-02), not previously reflected here:**
+**Parked, not open work:** Governance_Charter.md's External Design Lineage
+amendment is drafted and ready but deliberately unratified — a considered
+decision given GOV-011 and general system fragility, not neglect. No
+expiry watch applies to it; it doesn't decay by sitting since it isn't
+claiming to be true yet, only proposed.
+
+**Resolved this session (2026-07-02/03), not previously reflected here:**
 SEC-DS-001 (Grok/Gemini gate-maturity dispute) — see
 `Admin/Security_Protocols.md` Active Disputes.
 
