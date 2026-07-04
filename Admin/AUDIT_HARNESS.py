@@ -1,8 +1,32 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v12
+LAZARUS FORGE — AUDIT HARNESS v13
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v11:
+CHANGES FROM v12:
+  - Cell 1: FALLBACK_REGISTRY — added Chaos_Dynamics.md (Tests/).
+    Already discoverable via dynamic parse — Routing.md's Master Routing
+    Map gained a real row for it 2026-07-04 (created same date). Added
+    here per this file's own established practice of also mirroring new
+    files into the fallback safety net, not because dynamic parse needs it.
+  - Cell 2: EXTRA_FILES commented list — added Chaos_Dynamics.md under
+    Tests/ section for discoverability, flagged no-File-State-table.
+  - KNOWN OPEN ITEM list — closed out the v12 item "Routing.md does not
+    yet list Challenges/Return_To_Eden.md": that row was added 2026-07-04.
+    Drift-detection print in _build_registry() should now report sync on
+    that entry; if it still reports drift, Routing.md's row format may not
+    match the backtick-path regex in _parse_routing() and needs a look.
+    New KNOWN OPEN ITEM added for Chaos_Dynamics.md: no File State table
+    as of this compile (confirmed via direct fetch, 2026-07-04) — same
+    situation Return_To_Eden.md was already flagged for. Phase 1 will log
+    a MAJOR/STRUCTURE "File State table not found" finding the first time
+    it's fetched. Also missing the mandatory Navigation Anchors block
+    (Routing.md backlink requirement) — this harness does not currently
+    check for that block's presence at all (Phase 1 checks File State
+    fields and cross-references, not the Navigation Anchors block itself),
+    so it will NOT surface as a Phase 1 finding; tracked here instead until
+    either the file is patched or a fourth Phase 1 check is added for it.
+
+CHANGES FROM v11 (v12):
   - Cell 1: FALLBACK_REGISTRY — added Hydrologic_Resource_Cascade.md
     (was present in Routing.md's Master Routing Map but missing from
     fallback; harmless under normal operation since dynamic registry
@@ -60,12 +84,12 @@ KNOWN OPEN ITEM (flag for next session, not fixed here):
     ("File State table not found") the first time it's fetched. This is
     expected/accurate, not a harness bug — add the sidecar to the file
     itself before it's audited for promotion readiness.
-  - Routing.md (repo file, not this script) does not yet list
-    Challenges/Return_To_Eden.md in its Master Routing Map table.
-    Recommend adding that row to keep Routing.md/Discovery.md/harness
-    in sync; the drift-detection print in _build_registry() will
-    surface this automatically as "in fallback but not Routing.md"
-    until that row is added.
+  - Tests/Chaos_Dynamics.md has no File State table as of this compile
+    (confirmed 2026-07-04) — same situation as Return_To_Eden.md above.
+    Also missing the mandatory Navigation Anchors block; this harness has
+    no check for that block's presence, so it will not surface via Phase 1
+    — tracked here only, not enforced. Patch the file directly (add both)
+    before treating it as audit-complete.
 
 USAGE:
   1. Cell 1 — run once per session (builds registry from Routing.md)
@@ -171,6 +195,7 @@ FALLBACK_REGISTRY = {
     "Support_Raft.md":                   "Tests/Support_Raft.md",
     "Trophic_Forge.md":                  "Tests/Trophic_Forge.md",
     "Hydrologic_Resource_Cascade.md":    "Tests/Hydrologic_Resource_Cascade.md",
+    "Chaos_Dynamics.md":                 "Tests/Chaos_Dynamics.md",
     "Biofouling.md":                     "Challenges/Biofouling.md",
     "Critical_Minerals.md":              "Challenges/Critical_Minerals.md",
     "Emergence.md":                      "Challenges/Emergence.md",
@@ -329,6 +354,7 @@ EXTRA_FILES = [
     # "Support_Raft.md",                # marine platform, SR-UNK items
     # "Leviathan_testing.md",           # hostile-environment autonomy
     # "Hydrologic_Resource_Cascade.md", # cascade hydrology, HR-UNK items
+    # "Chaos_Dynamics.md",              # sandbox/R&D pipeline doctrine, EN-005 vehicle; no File State table yet
     # ── Challenges/ ─────────────────────────────────────────────────
     # "Water.md",                       # hydrological challenge requirements
     # "Biofouling.md",                  # marine fouling, MIC, BF-UNK items
