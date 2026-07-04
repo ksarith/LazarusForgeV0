@@ -16,7 +16,7 @@
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | Last Audit       | 2026-06-19                                                          |
 | Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer |
-| Open Unknowns    | 8                                                                   |
+| Open Unknowns    | 9                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -722,6 +722,48 @@ restart Phase 1. Cross-reference GMP-006 (serialization) and GMP-007
 
 ---
 
+### GMP-009 — Track classification undefined for non-Axiom content changes to the Tier 1 file itself
+
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | Medium                                     |
+| Priority      | Major                                      |
+| Type          | Governance                                 |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-07-03                                 |
+| Last Reviewed | 2026-07-03                                 |
+
+**Description:** The Track identification rule classifies migrations by
+whether they touch Tier 1 *Axiom* text, scope, or interpretation. It does
+not address a distinct case: a new section added to `Admin/Governance_Charter.md`
+itself that is not an Axiom and does not touch Axiom enforcement — procedural
+or epistemic content sharing the file with, but not part of, the Protections
+and Prohibitions Clauses. Track A's own scope description ("all governance
+documents below Tier 1") does not cleanly include this case, since the
+target file is Tier 1 by location even though the content is not.
+
+**Why It Matters:** Surfaced by a real proposed amendment (External Design
+Lineage Governance, drafted 2026-07-03) that needed classification with no
+clean answer in the existing rule. "When in doubt, treat as Track B" is
+the stated default, but applying full Track B process (Friction Log,
+adversarial Constitutional Capture review, human ratification record) to
+non-Axiom procedural content is disproportionate and would likely deter
+exactly the kind of housekeeping addition Governance_Charter.md already
+contains elsewhere (e.g., the Canonical Verification Gates section).
+
+**Resolution Path:** Define a third classification, or an explicit Track A
+sub-case, for "content changes to the Tier 1 file that do not touch Axiom
+text, scope, or enforcement." Minimum requirement carried over from Track
+A's existing Tier-2 rule: explicit confirmation that no Tier 1 Axiom
+enforcement bound is altered, plus human operator review before commit
+(strongly recommended, not mandatory, matching existing Track A treatment
+of Tier 2 documents). Cross-reference the EDL amendment itself as the
+worked example once classified.
+
+---
+
 ### Resolution Log
 
 - 2026-06-05: File created (v0.1) — GOV-001 resolution path initiated.
@@ -752,6 +794,14 @@ restart Phase 1. Cross-reference GMP-006 (serialization) and GMP-007
   transfer abandoned path added. (15) Drift Indicators expanded — six new
   entries. Open Unknowns updated to 8 (GMP-001 resolved, GMP-006/007/008
   added).
+- 2026-07-03: v0.3 — GMP-009 logged. Surfaced by a real proposed amendment
+  (External Design Lineage Governance, drafted in `Admin/Governance_Charter.md`,
+  not yet ratified) that the existing Track identification rule could not
+  cleanly classify: non-Axiom content added to the Tier 1 file itself.
+  Provisional classification applied to the EDL case pending this unknown's
+  resolution: treated as Track A with Track A's existing Tier-2 discipline
+  (explicit no-enforcement-bound-altered confirmation, human review before
+  commit) rather than full Track B. Open Unknowns updated to 9.
 
 ---
 
@@ -788,7 +838,8 @@ restart Phase 1. Cross-reference GMP-006 (serialization) and GMP-007
 
 ## Status
 
-Version 0.2 — Three-agent audit pass (2026-06-19).
+Version 0.3 — GMP-009 logged: track classification gap for non-Axiom
+content changes to the Tier 1 file (2026-07-03).
 
 **What must remain constant:**
 
