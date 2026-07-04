@@ -454,10 +454,11 @@ Not blocking.
 
 | Field | Value |
 |-------|-------|
-| Status | Open |
+| Status | In Progress |
 | Risk | Medium |
 | Priority | Major |
 | Type | Governance |
+| Subtype | Vehicle |
 | Blocking | No |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
@@ -468,11 +469,21 @@ components do not exist. The Hierarchy of Evidence (§2) defines confidence leve
 but does not specify what a Level 5 or Level 6 test looks like for specific
 component types.
 
-**Resolution Path:** As the Forge matures, testing doctrine will likely grow into
-a dedicated file (`Tests/Verification_Methods.md` (planned) or
-`Admin/Test_Protocols.md` (planned)). Neither file currently exists in
-Routing.md's canonical registry — these are aspirational targets, not active
-references. The Hierarchy of Evidence in §2 is the interim framework.
+**Resolution Path — updated 2026-07-04:** `Tests/Chaos_Dynamics.md` was created
+2026-07-04 and supersedes this entry's original candidate names
+(`Tests/Verification_Methods.md`, `Admin/Test_Protocols.md` — neither was ever
+created). It defines the general Sandbox → Promotion Gate → EXP-ID → destructive
+testing → derating pipeline this unknown asked for, with an explicit
+Confirmed/Partially Confirmed/Refuted/Inconclusive feedback loop back to the
+originating hypothesis. Status held at **In Progress / Vehicle** rather than
+Resolved: the new file provides the process framework, but does not yet specify
+what a Level 5/6 test looks like for any *specific* component type — that
+requires actual EXP-ID cycles to run through the pipeline. Tests/Chaos_Dynamics.md
+§8 self-declares this unknown resolved; that declaration is not accepted at face
+value here pending that follow-through, consistent with the repository's
+self-approval prohibition. Full resolution trigger: first completed EXP-ID cycle
+producing a concrete Level 5/6 test definition for at least one component
+category.
 
 ---
 
@@ -505,6 +516,18 @@ domain authority rather than a survey.
 
 ### Resolution Log
 
+- 2026-07-04 (second entry, same day): EN-005 sidecar updated following
+  confirmation that `Tests/Chaos_Dynamics.md` was created and committed.
+  Status moved Open → In Progress, Subtype Vehicle — not closed to Resolved,
+  despite the new file's own §8 declaring EN-005 "resolved here," because the
+  file provides only the general process framework and has not yet run a
+  single hypothesis through to a concrete Level 5/6 test definition for any
+  component type. Cross-reference note: `Discovery.md` and `Routing.md` both
+  updated same session to register the real file (previously tracked only as
+  a `[PLANNED]` entry); two structural gaps were found on review and are not
+  yet patched in the file itself — missing mandatory Navigation Anchors block
+  and no File State table (Verification Ref, Auditor, Open Unknowns, Spec
+  Gates all absent).
 - 2026-07-04: Documentation correction pass following Gemini Exploration audit
   (2026-07-04) and Claude review. Six findings actioned: (1) §5's interim
   unknown-history safety factor corrected from 3× to 6×+ to match §8 and the
