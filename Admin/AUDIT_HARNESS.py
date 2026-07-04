@@ -26,57 +26,6 @@ CHANGES FROM v12:
     so it will NOT surface as a Phase 1 finding; tracked here instead until
     either the file is patched or a fourth Phase 1 check is added for it.
 
-CHANGES FROM v11 (v12):
-  - Cell 1: FALLBACK_REGISTRY — added Hydrologic_Resource_Cascade.md
-    (was present in Routing.md's Master Routing Map but missing from
-    fallback; harmless under normal operation since dynamic registry
-    takes precedence, but unreachable if Routing.md fetch ever failed).
-  - Cell 1: FALLBACK_REGISTRY — added Return_To_Eden.md (Challenges/).
-    NOTE: not yet present in Routing.md's Master Routing Map as of this
-    compile. Resolves correctly via fallback regardless; dynamic parse
-    will also pick it up automatically once Routing.md is updated with
-    a matching row, no harness change needed at that point.
-  - Cell 1: ALIASES — added the two non-extension Admin/ files
-    ("Nothingness Theorem", "Computational Institutional Reasoning").
-    These contain spaces and no .md/.py suffix, so _parse_routing()'s
-    regex cannot and will not match them from Routing.md's table —
-    they must be hardcoded aliases pointing at the URL-encoded path.
-  - Cell 1: fetch() — now URL-quotes the resolved path (safe="/%") via
-    urllib.parse.quote before requesting, so registry values containing
-    spaces or other unsafe characters resolve correctly regardless of
-    whether they arrive pre-encoded (e.g. "%20" in an alias) or not.
-  - Cell 1: import urllib.parse added alongside urllib.request.
-  - Cell 2: EXTRA_FILES commented list — added Return_To_Eden.md under
-    Challenges/ section for discoverability.
-
-CHANGES FROM v10 (v11):
-  - Cell 3.5: Phase 1 structural enforcement added — three surgical checks
-    run on every fetched file before boundary index assembly:
-    (1) Constitutional check — Ethical Anchor exact string match; mismatch
-        writes .quarantine JSON payload and halts with sys.exit(1).
-    (2) Structural field presence — Status, Spec Gates, Verification Ref,
-        Ethical Anchor must exist as keys in File State table; missing
-        fields logged as MAJOR findings, non-blocking.
-    (3) Cross-reference resolution — internal .md file paths extracted and
-        checked against dynamic FILE_REGISTRY; unresolvable paths logged
-        as WARNING findings, non-blocking.
-    Enforcement is data-driven: Ethical Anchor string bootstrapped from
-    Ethical_Constraints.md if loaded; required fields bootstrapped from
-    File_Template.md if loaded; falls back to hardcoded defaults otherwise.
-    Quarantine pre-flight check added — if .quarantine exists at session
-    start, harness halts before fetching any files.
-    Finding class introduced for structured severity/category logging.
-    Phase 1 summary appended to SESSION BOUNDARY INDEX output.
-  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — ST-004 (cycle 10),
-    CT-008 (cycle 10), CT-009 (cycle 10) added.
-  - RIP-001 resolved — quarantine note updated to reflect closure.
-
-CHANGES FROM v9 (v10):
-  - Cell 4: Role declaration string updated to Auditor_Protocols.md v0.14.
-  - Cell 3.5: UNKNOWN_FIRST_CYCLE updated — AP-008 through AP-020 added;
-    GH-001 through GH-012 added (cycle 10).
-  - Cell 1: FALLBACK_REGISTRY updated — Cognitive_Salvage_Layer.md added.
-  - Cell 2: EXTRA_FILES commented list updated — Cognitive_Salvage_Layer.md added.
 
 KNOWN OPEN ITEM (flag for next session, not fixed here):
   - Challenges/Return_To_Eden.md has no File State sidecar table as of
