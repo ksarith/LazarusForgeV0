@@ -3,8 +3,8 @@
 ---
 
 ## Navigation Anchors
-* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
-* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+* **Context Core:** [Discovery.md](../Discovery.md)
+* **Network Routing:** [Routing.md](../Routing.md)
 
 ---
 
@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-18                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review           |
-| Open Unknowns    | 11                                                                  |
+| Last Audit       | 2026-07-05                                                          |
+| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — toxic material doctrine + gap remediation 2026-07-05 |
+| Open Unknowns    | 14                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -34,6 +34,7 @@
 - Legal context awareness
 - Anti-Weaponization Doctrine (hard floor, not subject to override)
 - Life preservation heuristics
+- Toxic and hazardous material handling doctrine (active-release vs. passive-encapsulated distinction)
 - Cultural and sacred site recognition
 - Landfill and high-permission environment constraints
 - Refusal as a first-class action
@@ -192,6 +193,30 @@ Edge cases (e.g., weeds, microbial colonies, invasive species) must be handled v
 
 ---
 
+## Toxic and Hazardous Material Handling
+
+The constraint governing toxic materials is not "toxic materials are prohibited." It is: **a toxic material may not be used in a role where it is actively released, aerosolized, or otherwise made bioavailable during normal operation — regardless of purpose or performance benefit — but may be used in a passive, fully encapsulated, clearly labeled role that does not release it under intended operating conditions or foreseeable failure modes.**
+
+This distinguishes *active exposure risk* from *passive contained mass*. A material's toxicity is not eliminated by encapsulation, but the hazard it presents is categorically different depending on whether the material's function requires it to leave containment.
+
+**Prohibited (active release/exposure by design):**
+- Any component whose intended function requires the toxic material to be dispersed, vaporized, ionized, combusted, or otherwise released into the working environment
+- Example: mercury as an ion-thruster propellant — the propellant is expelled as exhaust by design; this is an active-release role and is a hard no-go regardless of performance advantage
+
+**Permitted, subject to encapsulation and labeling requirements (passive, contained):**
+- A toxic material used in a static, shielded, or structurally-bound role where release would require breach of intended containment or a foreseeable failure mode already covered by a hazard analysis
+- Example: lead used as radiation shielding — the material's function is bulk mass in a fixed location; it is not released under intended operation
+
+**Minimum requirements for the permitted case (Placeholder — see EC-013):**
+1. Physical encapsulation appropriate to the material and its foreseeable failure modes (not merely "not currently leaking")
+2. Explicit, durable labeling identifying the material, hazard class, and encapsulation method — readable by both human operators and any automated triage/salvage process (cross-reference `Operations/Gate_02_Triage.md`)
+3. A defined end-of-life/decommissioning path that does not release the material during salvage or recovery (cross-reference EN-007 in `Architecture/Engineering.md` for the general re-salvage doctrine this must integrate with)
+4. Documented in the owning component's own file, not assumed from this doctrine alone
+
+**Relationship to existing hazard doctrine:** This extends, and does not replace, the Landfill and High-Permission Environments constraints above (hazardous material handling laws, environmental contamination limits) and the hazardous-fraction unknowns already tracked at the Operations layer (WA-002, PL-001, WW-005 in `Unknowns.md`). Those track detection and handling of hazards already present in salvage streams; this doctrine governs deliberate material selection in new builds.
+
+---
+
 ## Cultural and Sacred Site Recognition
 
 Certain locations carry non-material significance.
@@ -288,11 +313,13 @@ This governance layer can fail. Failure must be anticipated, not ignored.
 - Communication blackout prevents escalation from functioning
 - Agent operating outside declared role without flagging the shift
 
-**Fallback posture:** If governance layer failure is detected or suspected, the system defaults to the Pacifist Operating Posture: observation and documentation only, no material action, no irreversible steps.
+**Fallback posture:** If governance layer failure is detected or suspected, the system defaults to the Pacifist Operating Posture: observation and documentation only, no new material action, no irreversible steps.
 
 This fallback is not a degraded mode — it is the designed safe state. The system is always permitted to observe. It is only permitted to act when governance can confirm the action is within constraints.
 
-**If logging is unavailable:** Refusal decisions are held in local volatile memory and transmitted at the next available sync opportunity. A refusal that cannot be logged is still a refusal — the decision stands.
+**Active physical processes at time of failure (added 2026-07-05):** "No material action" governs new tasks, not an already-running hazardous physical process. If a governance failure occurs while the system is mid-process on an active, hazardous physical operation (e.g., pyrolysis in `Operations/Plastics.md`, gas scrubbing in `Operations/Air_Scrubber.md`), immediate cessation may itself cause a containment breach or hardware failure that a controlled stop would not. In that case, the system must execute a pre-defined, automated safe-state descent sequence (cooling, purging, venting, or other process-specific shutdown steps already defined for that process) rather than instantaneous halt, then enter Pacifist Operating Posture once the descent completes. Where no safe-state descent sequence has been defined for a given hazardous process, this is a gap in that process's own file, not license to skip the descent — see EC-013.
+
+**If logging is unavailable:** Refusal decisions must be committed to non-volatile, write-once local storage (e.g., an isolated append-only log partition) before the refusal action is considered complete — not held in volatile memory pending the next sync. *(Amended 2026-07-05 — the prior text permitted volatile-memory staging, which is erased by a hard power loss or reset during exactly the kind of governance crisis this section exists to survive. See EC-006, which already tracks the broader log-survival mechanism; this is a hard requirement on the interim behavior, not merely a future resolution path.)* A refusal that cannot yet be durably logged is still a refusal — the decision stands — but the system must not proceed past the refusal point until durable commit succeeds or a defined timeout is reached.
 
 **If governance failure cannot be confirmed but anomalous patterns are present:** Escalate to human review per the Human Escalation Protocol above, and default to observation pending response.
 
@@ -342,6 +369,7 @@ Mandatory re-audit conditions:
 - Human override claims accepted without interim authentication requirements before `Admin/Security_Protocols.md` reaches Provisional Spec
 - Lessons Learned confidence labels removed or all entries homogenized to same provenance level
 - Ethical Anchor field absent, altered, or does not match canonical string
+- Toxic and Hazardous Material Handling doctrine's active-release prohibition weakened, or the passive-encapsulation exception broadened, without explicit human governing authority ratification
 
 **Compound Drift Rule:** Multiple simultaneous indicators → halt autonomous progression, escalate for human review.
 
@@ -569,6 +597,70 @@ Mandatory re-audit conditions:
 
 ---
 
+### EC-012 — Epistemic spoofing via hardware/firmware tampering
+
+| Field         | Value                             |
+|---------------|-----------------------------------|
+| Status        | Open                              |
+| Risk          | High                              |
+| Priority      | Major                             |
+| Blocking      | No                                |
+| Owner         | `Admin/Ethical_Constraints.md`    |
+| First Logged  | 2026-07-05                        |
+| Last Reviewed | 2026-07-05                        |
+
+**Description:** The entire constraint substrate depends on the integrity of incoming telemetry — pattern-matching (EC-002), confidence assessment (EC-001), and governance-failure detection all implicitly treat sensor/firmware data as ground truth. If underlying hardware telemetry or firmware is compromised, an adversary could mask a prohibited action as permitted (e.g., a weapon-assembly toolhead profile spoofed to read as an agricultural pump) without tripping any doctrine defined here, because the doctrine has no way to distinguish trustworthy telemetry from tampered telemetry.
+
+**Why It Matters:** Every hard constraint in this file — Anti-Weaponization included — is only as strong as the data it evaluates. A doctrine that correctly refuses weaponization when told the truth provides no protection if the telemetry itself is compromised.
+
+**Resolution Path:** Define an explicit requirement for hardware-root-of-trust validation and cryptographic sensor attestation before telemetry is treated as authoritative for constraint evaluation. Cross-reference `Admin/Security_Protocols.md` for the mechanism; this file should state the requirement and defer implementation there, consistent with this file's existing pattern for EC-003/EC-011.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit.*
+
+---
+
+### EC-013 — Safe-state descent sequence undefined for active hazardous processes during governance failure
+
+| Field         | Value                             |
+|---------------|-----------------------------------|
+| Status        | Open                              |
+| Risk          | Medium                            |
+| Priority      | Major                             |
+| Blocking      | No                                |
+| Owner         | `Admin/Ethical_Constraints.md`    |
+| First Logged  | 2026-07-05                        |
+| Last Reviewed | 2026-07-05                        |
+
+**Description:** Governance Failure Modes now distinguishes "no new material action" from "orderly safe-state descent for an already-running hazardous process" (added 2026-07-05, this audit). But no hazardous-process file (`Operations/Plastics.md`, `Operations/Air_Scrubber.md`, etc.) yet defines what its own descent sequence actually is — the distinction exists here as a requirement with nothing yet to point to.
+
+**Why It Matters:** Without a defined descent sequence per process, "execute the safe-state descent" has no operational content and a governance failure mid-process could default back to instant-halt behavior by omission, which is exactly the hazard this section was amended to prevent.
+
+**Resolution Path:** Each Operations/ file governing an active hazardous physical process must define its own safe-state descent sequence (cooling, purging, venting, or equivalent) and register it in its own sidecar, cross-referenced back here. This file states the requirement; it does not own the process-specific sequences. Track completion per-file rather than closing this entry until all currently-active hazardous process files have one.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit — the "Kinetic Inertia vs. Passive Posture" contradiction.*
+
+---
+
+### EC-014 — Toxic material encapsulation standard undefined
+
+| Field         | Value                             |
+|---------------|-----------------------------------|
+| Status        | Open                              |
+| Risk          | Medium                            |
+| Priority      | Major                             |
+| Blocking      | No                                |
+| Owner         | `Admin/Ethical_Constraints.md`    |
+| First Logged  | 2026-07-05                        |
+| Last Reviewed | 2026-07-05                        |
+
+**Description:** The Toxic and Hazardous Material Handling doctrine (added 2026-07-05) establishes the active-release vs. passive-encapsulated principle and a four-point minimum requirement, but does not define concrete encapsulation standards, testing/verification methods, labeling format, or the specific failure-mode analysis threshold that separates "adequately encapsulated" from "not." The mercury/lead examples are illustrative endpoints, not a general test.
+
+**Why It Matters:** Without a concrete standard, "encapsulated" could be asserted rather than verified, and the doctrine's real protective value depends entirely on that gap being closed before it's relied on for an actual material decision.
+
+**Resolution Path:** Define, likely jointly with `Architecture/Engineering.md`: (1) minimum encapsulation/containment specification by material hazard class; (2) verification method (inspection, testing, or both) before a component is approved; (3) standard labeling format; (4) explicit link to the EN-007 (junction fatigue) and re-salvage doctrine so encapsulation is re-verified rather than assumed at decommissioning. Route the general materials-science content to Engineering.md; this file retains the ethical hard-floor statement (active-release prohibition) regardless of where the technical standard ends up living.
+
+---
+
 ### Pending Canonical Term Anchors
 
 The following terms appear in this document without canonical definitions. They are flagged here pending routing to `Admin/Canonical_Terms.md`. Until canonical definitions exist, apply the most restrictive interpretation available.
@@ -588,6 +680,12 @@ The following terms appear in this document without canonical definitions. They 
 
 - 2026-05-04: v0.1 — Initial file created. Core mandate, ownership, legal context, anti-weaponization, life preservation, cultural sites, landfill environments, refusal doctrine established.
 - 2026-05-04: v0.3 — Multi-model audit (Claude, ChatGPT, Gemini, Grok). Added: Why Hard Constraints Exist (commandment framing, inter-agent coordination efficiency); Anti-Weaponization humanitarian framing clause, dual-use response hierarchy, sensitivity/specificity learning distinction; Refusal Anti-Weaponization carve-out; Human Escalation Protocol; Governance Failure Modes; Lessons Learned; sidecar EC-001 through EC-007.
+- 2026-07-05: **v0.10 — Toxic material doctrine added; two audit-confirmed gaps closed; two new gaps + one spoofing risk logged; Navigation Anchors corrected; cycle-count claims checked against real dates.**
+  (1) New **Toxic and Hazardous Material Handling** section added, declared by human governing authority (ksarith): a toxic material may not be used in an active-release role (e.g., mercury as ion-thruster propellant) regardless of performance benefit, but may be used in a passive, fully-encapsulated, labeled role (e.g., lead radiation shielding). EC-014 logged for the concrete encapsulation standard this doctrine still needs. Scope Boundary updated.
+  (2) **Governance Failure Modes amended** on two points Gemini's audit raised and this pass verified directly against the live text — both real: volatile-memory log staging replaced with a non-volatile write-once commit requirement (a hard power loss during a governance crisis was previously unrecoverable); and an orderly safe-state descent sequence is now required for active hazardous physical processes before dropping to Pacifist Operating Posture, rather than instant cessation, which could itself cause a containment breach. EC-013 logged — the descent-sequence requirement now exists here but no Operations/ file yet defines its own sequence.
+  (3) **EC-012 logged** (epistemic spoofing via hardware/firmware tampering) per Gemini's proposal — telemetry integrity has no doctrine anywhere in this file.
+  (4) **Navigation Anchors corrected** from absolute `raw.githubusercontent.com` URLs to relative canonical paths, per Gemini's audit — this finding was verified true (unlike two similar-sounding G5 findings on Governance_Charter.md the same session, which checked out as false positives; each audit finding is being verified against source text individually, not accepted or dismissed as a batch).
+  (5) **Cycle-count claims in both this session's audits do not hold up.** Grok's audit states EC-001–EC-007 are "9 cycles open" and Gemini's states the same; both cite a "SESSION BOUNDARY INDEX" that does not exist as a defined term anywhere in `Admin/Auditor_Protocols.md`, `Admin/Forge_Audit_Kit.md`, `Unknowns.md`, or `Admin/Verification_Gates_LF.md` (already flagged non-canonical in `Admin/Canonical_Terms.md`'s Anti-Drift Guardrails, 2026-07-05). Checked against this file's own sidecar: EC-001 through EC-007 were First Logged 2026-05-04 — 62 days ago, not 9 cycles. EC-008 through EC-011 were First Logged 2026-06-18 — 17 days ago, not 3 cycles. Under the Cycle definition now canonical in `Admin/Canonical_Terms.md` (one calendar year by default, declared 2026-07-05 by human governing authority), none of EC-001 through EC-011 are within even one cycle of the Expiry Rule's two-cycle threshold. The Expiry Watch escalation language in both audits should be read as inflated by the pre-existing per-audit-pass counting ambiguity Canonical_Terms.md's Cycle entry was written to fix, not as an accurate reflection of real elapsed time. Open Unknowns 11 → 14.
 - 2026-06-18: v0.9 — ChatGPT philosophical review (Socratic analysis). Three targeted additions: (1) File Purpose: Tier 1 self-declaration softened — rank now explicitly conferred by `Admin/Governance_Charter.md` §Canonical Governance Ownership rather than self-asserted. (2) Why Hard Constraints Exist: permission-giver fallibility paragraph added — commandment structure holds even when well-intentioned permission-givers are wrong, not only adversarial ones. (3) Foundational Principle added to Status section — condenses the Socratic meta-constraint: no agent trusted merely by power/knowledge/consensus/authority; every permission source remains open to examination; uncertainty is information; restraint preferable to unjust action.
 - 2026-06-18: v0.8 — ChatGPT audit pass. Eight changes: (1) File State block added per File_Template.md. (2) Scope Boundary and File Purpose added. (3) Navigation Anchors added. (4) Provenance labels added to Why Hard Constraints Exist (coordination efficiency claim → Analogous External; Nobel/Oppenheimer → Analogous External). (5) Inferred authorization warning added to Core Mandate. (6) EC-011 cross-reference added to Human Escalation Protocol. (7) Pacifist Operating Posture lifecycle (entry/persistence/recovery/verification) partially defined in Governance Failure Modes body. (8) EC-008 through EC-011 logged. (9) Pending Canonical Term Anchors table added. (10) Drift Indicators section added. (11) Lessons Learned table expanded with Evidence Type and Confidence columns. (12) All cross-module references updated from legacy flat paths to canonical folder-prefixed paths.
 
@@ -595,7 +693,7 @@ The following terms appear in this document without canonical definitions. They 
 
 ## Status
 
-Version 0.9 — Exploration
+Version 0.10 — Exploration
 
 **What must remain constant:** capability never outruns permission.
 
