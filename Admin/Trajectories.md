@@ -153,6 +153,7 @@ external or proxy validation — see individual notes.*
 - Autonomous maintenance cycles — *contingent on UNK-008 / LT-003 resolution in `Tests/Leviathan_testing.md`*
 - Energy scavenging (solar, nuclear, thermal) — *nuclear energy scavenging introduces radiation containment, shielding, and decay management requirements not addressed at v0; a planned containment/safety spec is a prerequisite before nuclear capability is activated. Log as architectural dependency when v3 planning begins.*
 - Zero-waste material flows
+- Autonomous structural repair against micro-collision damage — *proposed capability, see TR-MET-001 in v3+ Trajectory Items (Proposed) below; contingent on the same autonomy dependency as autonomous maintenance cycles above*
 
 **Exit Condition** [Placeholder]
 > The Forge can survive without Earth resupply.
@@ -313,6 +314,25 @@ Items explicitly discharged to this file from owning file sidecars. These are re
 
 ---
 
+## v3+ Trajectory Items (Proposed)
+
+Items proposed during session discussion but not yet part of any owning file's
+active sidecar — distinct from the v0→v1 registry above, which routes items
+*discharged from* existing sidecars. These are candidate future capabilities
+only; logging them here prevents loss, not commitment. No resolution pass or
+activation work is implied until a version's planning phase formally begins.
+
+| ID | Title | Notes | First Logged |
+|---|---|---|---|
+| TR-MET-001 | Autonomous micro-meteorite repair swarm — small-scale autonomous units detecting and repairing micro-collision damage to off-world Forge structures/hulls | Proposed mid-session, not yet developed into a capability spec or routed to an owning file. Likely shares the UNK-008 / LT-003 autonomy dependency already tracked for v3/v4. No owning file assigned yet — candidate: `Tests/Leviathan_testing.md` (autonomy testbed) or a future off-world-specific test file. | 2026-07-05 |
+
+*This section holds candidate ideas only. An item graduates out of this table
+when it is either (a) assigned an owning file and registered as a proper
+sidecar entry there, or (b) explicitly declined and moved to Abandoned Paths
+below with rationale.*
+
+---
+
 ## Lessons Learned
 
 | Date     | Evidence Type | What Was Tried                                            | What Failed                                                           | What Was Learned                                                                                                   | Confidence | Revalidation Needed |
@@ -419,6 +439,22 @@ economic model.
 ---
 
 ### Resolution Log
+
+- 2026-07-05: **TR-MET-001 logged** (autonomous micro-meteorite repair
+  swarm) as a proposed candidate item — new `v3+ Trajectory Items
+  (Proposed)` section added, distinct from the existing v0→v1 discharged-
+  knowns registry since this item was never anchored in an owning file's
+  sidecar. No owning file assigned yet; not yet a formal unknown. v3's
+  Required Capabilities gained one cross-reference line. Same dual-audit
+  session (Grok + Gemini, Exploration audit) proposed six additional
+  "institutional integrity" gaps (mission drift, value transmission,
+  constitutional preservation, incentive capture, institutional memory
+  degradation, cultural forking, external capture) — not registered here.
+  These are real candidate questions worth a future look, but registering
+  six new speculative unknowns in one pass during an already-heavy
+  escalation period runs against the spirit of the Administrative Fatigue
+  Governor doctrine (`Admin/Auditor_Protocols.md`) — held for human
+  governing authority decision rather than auto-logged.
 
 - May 2026: All exit conditions labeled [Placeholder]. Verification notes added per condition.
 - May 2026: v5 designated as conceptual horizon — explicit rationale for absent exit condition.
