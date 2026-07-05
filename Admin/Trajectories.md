@@ -18,7 +18,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-23; revised 2026-06-08; revised 2026-06-24; audited 2026-06-26 |
 | Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 2                                                                   |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -151,7 +151,7 @@ external or proxy validation — see individual notes.*
 **Required Capabilities**
 - Regolith and asteroid material processing
 - Autonomous maintenance cycles — *contingent on UNK-008 / LT-003 resolution in `Tests/Leviathan_testing.md`*
-- Energy scavenging (solar, nuclear, thermal) — *nuclear energy scavenging introduces radiation containment, shielding, and decay management requirements not addressed at v0; a planned containment/safety spec is a prerequisite before nuclear capability is activated. Log as architectural dependency when v3 planning begins.*
+- Energy scavenging (solar, nuclear, thermal) — *nuclear energy scavenging introduces radiation containment, shielding, and decay management requirements not addressed at v0; see TR-003 (formalized 2026-07-05) — nuclear capability must not activate before that entry reaches Provisional Spec.*
 - Zero-waste material flows
 - Autonomous structural repair against micro-collision damage — *proposed capability, see TR-MET-001 in v3+ Trajectory Items (Proposed) below; contingent on the same autonomy dependency as autonomous maintenance cycles above*
 
@@ -438,7 +438,59 @@ economic model.
 
 ---
 
+### TR-003 — Off-world nuclear containment architecture undefined
+
+| Field         | Value                  |
+|---------------|------------------------|
+| Status        | Open                   |
+| Risk          | High                   |
+| Priority      | Major                  |
+| Type          | Architectural / Safety |
+| Blocking      | No — not yet active; blocks v3 nuclear capability specifically |
+| Owner         | Admin/Trajectories.md  |
+| First Logged  | 2026-07-05             |
+| Last Reviewed | 2026-07-05             |
+
+**Description:** v3's Required Capabilities list nuclear energy scavenging
+as a candidate power source, with inline text already noting that it
+"introduces radiation containment, shielding, and decay management
+requirements not addressed at v0" and flagging itself as an "architectural
+dependency when v3 planning begins." That flag was prose, not a tracked
+unknown — this entry formalizes it. No containment/safety specification
+exists anywhere in the repository for off-world nuclear capability.
+
+**Why It Matters:** This is a hazard class distinct from everything else
+currently tracked (structural, economic, governance) — radiation containment
+failure is not a gracefully-degrading condition. Leaving it as inline prose
+rather than a tracked unknown means it could be silently missed when v3
+planning actually begins, since it would not appear in any Expiry Watch or
+Open Unknowns count.
+
+**Resolution Path:** Not active work at v0/v1 — this is a placeholder to
+prevent the dependency from being lost. When v3 planning begins: (1) define
+minimum containment/shielding/decay-management specification before nuclear
+capability is activated in any v3 build; (2) route to whichever
+Architecture/ file eventually owns power systems for off-world deployment;
+(3) cross-reference `Admin/Ethical_Constraints.md` Life Preservation and
+`Admin/Safety_Protocols.md` for hazard doctrine that should extend to this
+case. Do not activate nuclear capability in any deployment before this
+entry reaches at least Provisional Spec.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit —
+formalizing a dependency the file's own v3 text had already flagged in
+prose since 2026-06-26 but never registered as a tracked unknown.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-05 (second entry, same day): **TR-003 logged** (off-world nuclear
+  containment architecture) — formalizes a dependency v3's own text had
+  flagged in prose since 2026-06-26 but never registered as a tracked
+  unknown. Open Unknowns 2 → 3. High risk, not currently Blocking (v3 is
+  not active), but nuclear capability may not activate before this reaches
+  Provisional Spec. v3's Required Capabilities line updated to cross-
+  reference it directly.
 
 - 2026-07-05: **TR-MET-001 logged** (autonomous micro-meteorite repair
   swarm) as a proposed candidate item — new `v3+ Trajectory Items
