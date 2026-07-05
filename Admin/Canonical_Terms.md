@@ -1,5 +1,5 @@
 # Canonical_Terms.md — Standard Repository Nomenclature
-**Version 0.3**
+**Version 0.5**
 
 ## File State
 
@@ -9,9 +9,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-24                                                          |
-| Auditor          | Claude — Synthesizer/Auditor                                        |
-| Open Unknowns    | 9                                                                   |
+| Last Audit       | 2026-07-05                                                          |
+| Auditor          | Claude — Synthesizer/Auditor (2026-06-24); Claude — Cycle definition + version-string correction (2026-07-05) |
+| Open Unknowns    | 10                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Low                                                                 |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -327,10 +327,44 @@ specification passes all six Verification Gates but exhibits systemic
 inconsistency or unclear real-world viability, or when specific trigger
 conditions defined in `Admin/Auditor_Protocols.md` are met.
 
+**Cycle (Governance / Audit Cycle)**
+The time unit against which Expiry Watch, the Expiry Rule, Systemic Risk
+escalation, and all "N cycles open" language are measured. **Default: one
+calendar year**, declared by human governing authority (ksarith) 2026-07-05
+at current operating pace. The human governing authority may declare a
+shorter interval at their own discretion as automation, throughput, or
+operational maturity increases — this is an operator-adjustable parameter,
+not a fixed constant, and any change should be logged here with the date
+and rationale. Absent an explicit shorter declaration, one calendar year
+applies repository-wide to every file that references "audit cycle" or
+"cycle" without its own more specific definition.
+
+This definition exists because none previously existed: `Admin/Auditor_
+Protocols.md`'s own text (§Expiry Rule, §Expiry check) operationally treated
+a "cycle" as *each time the Skeptic/Auditor role opens* — i.e., each audit
+pass, not a fixed duration. Under that reading, two independent same-day
+audits already satisfy a "2-cycle" expiry threshold regardless of real
+elapsed time, which produced escalation language ("6 cycles open," "8-cycle
+threshold exceeded") far outpacing actual operational aging. This entry
+supersedes that reading for elapsed-time purposes; per-audit-pass counting
+may still be useful for other doctrine (e.g., AP-017's independence
+requirement) and is not banned, but it may not be conflated with the
+calendar-time "cycle" used for Expiry Watch aging without saying so
+explicitly. See CT-011 for propagation status into Auditor_Protocols.md's
+own text.
+
+**Distinct from:** `Admin/Trajectories.md`'s Forge Regeneration Threshold
+"operating cycle" (material throughput/reinvestment measurement — see TR-002),
+which remains its own separately-declared placeholder and is not resolved
+by this entry. The two concepts share a word, not a definition — do not
+assume they're interchangeable.
+
 **Expiry Rule**
 The governance requirement that Blocking or Non-blocking unknowns without a
 documented Resolution Path for more than two audit cycles escalate to Systemic
 Risk or trigger demotion of the dependent module. Checked at audit opening.
+"Audit cycles" here means Cycle (above) — one calendar year by default, not
+one audit pass.
 
 **Genesis Phase**
 The bootstrap governance period before a minimum multi-agent quorum is
@@ -425,6 +459,7 @@ Use of banned terms in specification-level content is a Fallacy 4
 | Canonical (unqualified)              | See Disambiguation section above               | Always specify which canonical usage applies                                                     |
 | Gate N (unqualified, N=1–6)           | Verification Gate N or Enforcement Checkpoint N | Always specify which system; both are six-item, numbered, and were once both called "Canonical Verification Gates" — see GOV-011 |
 | Blocking (unqualified)               | Operational Blocking or Epistemic Blocking     | Always specify which type; unqualified Blocking obscures whether physical work halts or only claims halt |
+| SESSION BOUNDARY INDEX               | Audit Cycle (Section 4, this file)             | Not a defined term anywhere in `Admin/Auditor_Protocols.md`, `Admin/Forge_Audit_Kit.md`, `Unknowns.md`, or `Admin/Verification_Gates_LF.md` as of 2026-07-05, despite appearing in multiple audit headers as if citing established doctrine. Treat any audit opening with this phrase as citing an unverified/external convention, not repository doctrine, until traced to a real source or formally adopted here. |
 
 "Autonomous Decision-Making" without bounding clauses is prohibited because
 it obscures human override visibility, which is a constitutional requirement
@@ -778,7 +813,71 @@ updating) and correct accordingly. Close when no ambiguous unqualified
 
 ---
 
+### CT-011 — Cycle definition propagation into Auditor_Protocols.md
+
+| Field         | Value                    |
+|---------------|--------------------------|
+| Status        | Open                     |
+| Risk          | Medium                   |
+| Priority      | Major                    |
+| Type          | Governance               |
+| Blocking      | No                       |
+| Owner         | Admin/Canonical_Terms.md |
+| First Logged  | 2026-07-05               |
+| Last Reviewed | 2026-07-05               |
+
+**Description:** This file now defines Cycle (Section 4) as one calendar
+year by default, superseding the operational reading in
+`Admin/Auditor_Protocols.md` (§Expiry Rule, §Expiry check) that measured a
+"cycle" as each individual audit pass. Auditor_Protocols.md's own text has
+not yet been updated to reflect or cross-reference this definition — the
+same class of gap CT-010 tracks for the Gate/Checkpoint rename, applied to
+a different term.
+
+**Why It Matters:** Until Auditor_Protocols.md's Expiry Rule and Expiry
+check text explicitly point to this file's Cycle definition, an agent
+reading Auditor_Protocols.md in isolation will still apply the old
+per-audit-pass counting and reproduce the same escalation-inflation problem
+this definition was created to fix.
+
+**Resolution Path:** Payment via Specification — update
+`Admin/Auditor_Protocols.md`'s §Expiry Rule and §Expiry check text to
+cross-reference `Admin/Canonical_Terms.md`'s Cycle definition rather than
+leaving "audit cycle" undefined in place. Also grep other files using
+"cycle" language in an aging/escalation sense (Forge_Audit_Kit.md's Expiry
+Watch summaries, any file's own Drift Indicators) for the same
+cross-reference gap. Close when no file computes cycle-based aging without
+pointing back to this definition.
+
+---
+
 ### Resolution Log
+
+- 2026-07-05: **v0.5 — Cycle defined; version-string mismatch corrected.**
+  Section 4 gained a canonical **Cycle (Governance / Audit Cycle)** entry:
+  one calendar year by default, declared by human governing authority at
+  current operating pace, adjustable shorter at operator discretion —
+  resolves the ambiguity found when `Admin/Auditor_Protocols.md`'s own
+  Expiry Rule text implicitly treated a "cycle" as each individual audit
+  pass, which was inflating escalation language ("6 cycles open," "8-cycle
+  threshold exceeded") far faster than real elapsed time. CT-011 logged to
+  track propagation of this definition into Auditor_Protocols.md's own
+  text, mirroring CT-010's rename-propagation pattern. Anti-drift guardrail
+  table gained a row flagging "SESSION BOUNDARY INDEX" — a phrase used as
+  if authoritative in recent Grok/Gemini audit headers but absent from
+  Auditor_Protocols.md, Forge_Audit_Kit.md, Unknowns.md, and
+  Verification_Gates_LF.md; treat citations to it as unverified until
+  traced or formally adopted. Separately, corrected a live version-string
+  mismatch unrelated to today's substantive changes: this file's header
+  read "Version 0.3" while the Status section below already documented
+  changes through "Version 0.4" — the header had not been updated since at
+  least the 2026-07-03 CT-010/Verification-Gate-disambiguation pass. Header
+  now reads 0.5, matching this entry. Open Unknowns 9 → 10. **Process note:**
+  a `str_replace` edit while adding CT-011 silently dropped the "Resolution
+  Log" heading at the old_str/new_str boundary — caught and restored
+  same-session via post-edit grep, per the standing recommendation in prior
+  session handoffs to verify heading survival after any edit near a
+  section boundary.
 
 - 2026-05-26: File created (v0.1) by Gemini (Structural/Auditor). Initial
   vocabulary mappings, anti-drift guardrails, and CT-001/CT-002 logged.
@@ -833,7 +932,24 @@ updating) and correct accordingly. Close when no ambiguous unqualified
 
 ## Status
 
-Version 0.4 — Verification Gate / Enforcement Checkpoint disambiguation added; CT-010 logged; Verification_Gates_LF.md registered as fourth vocabulary authority source.
+Version 0.5 — Cycle (Governance / Audit Cycle) defined in Section 4 (one
+calendar year default, operator-adjustable); CT-011 logged tracking
+propagation into Auditor_Protocols.md; SESSION BOUNDARY INDEX flagged as
+non-canonical in Anti-Drift Guardrails; header version-string corrected
+from stale 0.3 to match this file's actual state (see Resolution Log,
+2026-07-05, for the mismatch this fixes).
+
+**Changes from v0.4:**
+- Section 4: Cycle (Governance / Audit Cycle) defined
+- CT-011 logged: Cycle definition propagation into Auditor_Protocols.md
+- Anti-drift guardrail table gained SESSION BOUNDARY INDEX row
+- Open Unknowns: 9 → 10
+- Header version string corrected 0.3 → 0.5 (was out of sync with this
+  Status section since at least the prior v0.4 entry below)
+
+**Prior — Version 0.4 (2026-07-03):** Verification Gate / Enforcement
+Checkpoint disambiguation added; CT-010 logged; Verification_Gates_LF.md
+registered as fourth vocabulary authority source.
 
 **Changes from v0.2:**
 - Section 4: HF-001 (Heuristic Failure) defined as first-class failure class
