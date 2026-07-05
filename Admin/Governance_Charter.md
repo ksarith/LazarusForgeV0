@@ -18,7 +18,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-06-17                                                          |
 | Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor                  |
-| Open Unknowns    | 11                                                                  |
+| Open Unknowns    | 12                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -997,7 +997,71 @@ file-by-file.
 
 ---
 
+### GOV-012 — Constitutional Stagnation Decay (no automated demotion for long-idle unknowns)
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance / Audit Integrity     |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-05                       |
+| Last Reviewed | 2026-07-05                       |
+
+**Description:** The sidecar model correctly anchors unknowns permanently in
+their owning file, preventing historical erasure. But no mechanism exists for
+what happens when an unknown simply sits Open across many cycles without a
+substantively updated Resolution Path. Ten of this file's own unknowns
+(GOV-001 through GOV-010) reached or exceeded the 2-cycle Expiry Watch
+threshold with no resolution-path movement logged between audits — Expiry
+Watch correctly *detects* this, but detection alone does not change the
+file's claimed maturity state. A file can carry a long tail of stale unknowns
+indefinitely while still presenting as an actively-maintained Exploration
+document.
+
+**Why It Matters:** Without a consequence attached to prolonged stagnation,
+Expiry Watch is observational rather than corrective — the same
+"documentation vs. enforcement" gap this file already names elsewhere
+(Declarative vs. Enforceable governance states, GOV-003/AP-008). A stagnant
+unknown and a freshly-discovered one currently carry identical formal weight.
+
+**Resolution Path:** Payment via Specification — define an automated maturity
+demotion: if a Tier 1 or Tier 2 unknown remains Status: Open for more than a
+defined consecutive-cycle threshold (candidate: 10 cycles) without a
+committed, substantively-changed Resolution Path entry, the owning
+document's File State Status field is flagged for mandatory re-review before
+any further promotion, rather than silently carrying forward. This should be
+specified as a Verification Gate Enforcement note or `Admin/AUDIT_HARNESS.py`
+check, not a manual convention, to avoid becoming another declarative-only
+rule. Cross-reference AP-008 (same declarative-vs-enforceable gap, different
+subsystem) before specifying independently — a shared mechanism may serve
+both.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-05: **GOV-012 logged** (Constitutional Stagnation Decay — see
+  sidecar above). Surfaced during a dual Grok/Gemini Exploration audit that
+  otherwise disagreed sharply on Gate status for this file. Open Unknowns
+  11 → 12. Two of Gemini's other findings from the same audit were checked
+  against live text and did not hold up: (1) the `Lazarus-Forge-` companion
+  repository reference flagged as a broken/hanging G5 cross-reference is an
+  established repo-wide convention for naming the external companion repo
+  (Discovery.md uses the identical bare form) — not an internal file path,
+  never meant to resolve through the routing harness. (2) the "Gate 3 or
+  Gate 4" phrasing in the EDL draft's Proposed Placement Note, flagged as
+  lingering stale Semantic Drift, is itself the disambiguating annotation —
+  the very next clause names the rename and points to GOV-011. Neither
+  finding is treated as a gate failure; logged here for audit calibration
+  only, consistent with the standing practice of checking specific factual
+  claims against source text rather than accepting an audit's self-report
+  (see `Tests/Chaos_Dynamics.md` CD-DS-001 for the prior instance of this
+  same check).
 
 - 2026-07-03: **DRAFT ADDED, NOT RATIFIED** — External Design Lineage
   Governance section added, synthesizing multi-agent proposals (ChatGPT,
