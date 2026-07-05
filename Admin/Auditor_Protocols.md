@@ -751,7 +751,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 
 **Gate 3 is formally gated on the Adversarial Audit Layer.** A single concrete failure scenario is insufficient. The Adversarial Challenge Battery below defines the minimum requirement. Gate 3 additionally requires that at least one Battery class per promotion cycle be applied by an agent instance with no session context from the current audit cycle — see AP-017.
 
-**Current Gate 3 status:** BLOCKED pending AP-012 and AP-016 resolution paths reaching Provisional Spec. Battery application is complete (v0.13); the block is on resolution depth, not battery coverage.
+**Current Gate 3 status:** Resolved/re-evaluate-pending-AP-017 resolution paths reaching Provisional Spec. Battery application is complete (v0.13); the block is on resolution depth, not battery coverage.
 
 ---
 
