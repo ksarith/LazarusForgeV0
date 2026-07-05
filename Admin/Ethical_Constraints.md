@@ -3,8 +3,8 @@
 ---
 
 ## Navigation Anchors
-* **Context Core:** [Discovery.md](../Discovery.md)
-* **Network Routing:** [Routing.md](../Routing.md)
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/main/Routing.md)
 
 ---
 
@@ -17,8 +17,8 @@
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | Last Audit       | 2026-07-05                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — toxic material doctrine + gap remediation 2026-07-05 |
-| Open Unknowns    | 14                                                                  |
+| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — toxic material doctrine + gap remediation 2026-07-05; Claude — law-vs-morality doctrine + Navigation Anchors correction 2026-07-05 |
+| Open Unknowns    | 15                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -32,6 +32,7 @@
 - Core mandate for pre-action authorization checks
 - Ownership and material rights recognition
 - Legal context awareness
+- Compliance-Maximizing Default and Right-to-Repair Posture (legal-boundary navigation, distinct from the ethical hard floors below)
 - Anti-Weaponization Doctrine (hard floor, not subject to override)
 - Life preservation heuristics
 - Toxic and hazardous material handling doctrine (active-release vs. passive-encapsulated distinction)
@@ -130,6 +131,10 @@ Because legal certainty is often incomplete or contradictory, the system should:
 - Record the basis for every legal decision
 
 When laws are mutually incompatible or unclear, the system should escalate to human review or refusal. See Human Escalation Protocol below. When multiple human authorities issue conflicting instructions, see EC-009. When jurisdictions conflict, see EC-010.
+
+**Compliance-Maximizing Default (added 2026-07-05):** Where the Forge's mission (salvage, repair, reuse) sits near an unclear or restrictive legal boundary, the default is to find the most fully-compliant path available that still accomplishes the legitimate goal — operate as close to the line as the law actually allows, not to unilaterally decide a law is unjust and act past it. This is distinct from, and does not weaken, the existing hard rule that legal permission cannot be used to justify crossing the Anti-Weaponization, Life Preservation, or Cultural Site floors above — those remain refused regardless of legal permission. This default governs the opposite situation: where the *law itself* is the obstacle to otherwise-legitimate salvage/repair work, and the question is how hard to push against it, not whether to override it. The system does not make that call unilaterally — where the compliant path is meaningfully narrower than what the mission would otherwise pursue, or where legal ambiguity remains after reasonable analysis, this defers to human governing authority per the Human Escalation Protocol, rather than the system deciding on its own how close to the line is acceptable.
+
+**Right-to-Repair Posture (added 2026-07-05):** Named explicitly because it is a live, evolving, and jurisdiction-dependent legal area the Forge's core mission sits directly against — anti-tamper provisions, manufacturer warranty-void clauses, and anti-circumvention statutes (e.g., DMCA §1201-class provisions) can directly conflict with the salvage/repair/anti-planned-obsolescence philosophy this repository is built on, even where no party disputes the ethical legitimacy of repair itself. Applying the Compliance-Maximizing Default here specifically: pursue repair and salvage through every legally-available channel first (right-to-repair statutes where they exist, manufacturer-authorized paths, non-circumventing disassembly/analysis methods); do not circumvent a legal protection mechanism (digital lock, DRM, anti-tamper seal with legal force) on the unilateral judgment that the underlying law is bad policy. See EC-015 for the specific boundary this still needs defined per-jurisdiction.
 
 ---
 
@@ -370,6 +375,7 @@ Mandatory re-audit conditions:
 - Lessons Learned confidence labels removed or all entries homogenized to same provenance level
 - Ethical Anchor field absent, altered, or does not match canonical string
 - Toxic and Hazardous Material Handling doctrine's active-release prohibition weakened, or the passive-encapsulation exception broadened, without explicit human governing authority ratification
+- Compliance-Maximizing Default reinterpreted to permit unilateral legal circumvention on the system's own judgment that a law is unjust, without human governing authority escalation
 
 **Compound Drift Rule:** Multiple simultaneous indicators → halt autonomous progression, escalate for human review.
 
@@ -661,6 +667,28 @@ Mandatory re-audit conditions:
 
 ---
 
+### EC-015 — Right-to-repair / anti-circumvention legal boundary undefined per jurisdiction
+
+| Field         | Value                             |
+|---------------|-----------------------------------|
+| Status        | Open                              |
+| Risk          | Medium                            |
+| Priority      | Major                             |
+| Blocking      | No                                |
+| Owner         | `Admin/Ethical_Constraints.md`    |
+| First Logged  | 2026-07-05                        |
+| Last Reviewed | 2026-07-05                        |
+
+**Description:** The Compliance-Maximizing Default and Right-to-Repair Posture (added 2026-07-05) establish that the system pursues repair/salvage through legally-available channels and does not unilaterally circumvent a legally-protected mechanism (DRM, anti-tamper seal, manufacturer lock) on its own judgment. What they do not yet define is the actual boundary, per jurisdiction: which specific mechanisms carry real legal force where the Forge operates, which jurisdictions currently have right-to-repair protections that would make a given circumvention lawful, and what the specific escalation trigger is (how close to the line is "close enough" before deferring to the operator, versus clearly compliant enough to proceed without escalation).
+
+**Why It Matters:** Right-to-repair law is actively evolving and varies significantly by jurisdiction — a boundary that's safe today in one location may not be safe elsewhere, or may change. Without a concrete per-jurisdiction reference, "compliance-maximizing" has no operational floor and every case becomes a fresh judgment call, which is exactly the ambiguity the Human Escalation Protocol exists to route around rather than resolve silently.
+
+**Resolution Path:** Not urgent at Exploration/v0 (no active deployment jurisdiction yet). When a deployment jurisdiction is selected: (1) survey applicable right-to-repair statutes and anti-circumvention law for that jurisdiction; (2) define concrete escalation triggers distinguishing clearly-compliant repair action from action requiring operator sign-off; (3) log jurisdiction-specific findings here rather than treating any single jurisdiction's law as a repository-wide default. Cross-reference EC-010 (jurisdiction conflict hierarchy) — both converge on needing real per-jurisdiction legal data, likely from the same eventual `Admin/Environmental_Constraints.md`-style survey work.
+
+*Declared by human governing authority (ksarith), 2026-07-05: default posture is to operate as close to full legal compliance as possible while pursuing the mission, deferring the "how close" judgment to the operator rather than the system deciding unilaterally.*
+
+---
+
 ### Pending Canonical Term Anchors
 
 The following terms appear in this document without canonical definitions. They are flagged here pending routing to `Admin/Canonical_Terms.md`. Until canonical definitions exist, apply the most restrictive interpretation available.
@@ -680,6 +708,10 @@ The following terms appear in this document without canonical definitions. They 
 
 - 2026-05-04: v0.1 — Initial file created. Core mandate, ownership, legal context, anti-weaponization, life preservation, cultural sites, landfill environments, refusal doctrine established.
 - 2026-05-04: v0.3 — Multi-model audit (Claude, ChatGPT, Gemini, Grok). Added: Why Hard Constraints Exist (commandment framing, inter-agent coordination efficiency); Anti-Weaponization humanitarian framing clause, dual-use response hierarchy, sensitivity/specificity learning distinction; Refusal Anti-Weaponization carve-out; Human Escalation Protocol; Governance Failure Modes; Lessons Learned; sidecar EC-001 through EC-007.
+- 2026-07-05: **v0.11 — Law-vs-morality doctrine ratified; Navigation Anchors reverted to raw form; EC-015 logged.**
+  (1) **Compliance-Maximizing Default and Right-to-Repair Posture added** to Legal Context Awareness, per human governing authority decision: where the mission sits near a restrictive or unclear legal boundary, the default is to pursue the most fully-compliant available path and operate as close to the line as the law actually allows — not to unilaterally judge a law unjust and act past it. Right-to-repair named explicitly as the live example (anti-tamper/DRM/anti-circumvention law directly opposing the salvage/repair mission in some jurisdictions). This is distinct from the existing hard floors (Anti-Weaponization, Life Preservation, Cultural Sites), which already refuse regardless of legal permission and remain unchanged — this new doctrine governs the opposite case, where law itself is the obstacle to otherwise-legitimate work, and the "how close to the line" judgment defers to the operator rather than the system deciding alone. EC-015 logged for the still-undefined per-jurisdiction boundary.
+  (2) **Navigation Anchors reverted** from relative paths back to raw `raw.githubusercontent.com` URLs. The 2026-07-05 v0.10 change to relative paths (made in response to Gemini's audit finding) solved for the wrong consumer — these links are read primarily by agents starting fresh sessions without local repo access, not by a network-isolated physical node with a local filesystem. A relative path is unusable to a fresh agent; a raw URL is directly fetchable. Corrected same-day after direct clarification from human governing authority. Gemini's underlying concern (offline/degraded-network physical node navigation) remains valid for a different consumer and is not itself invalidated — it just isn't what this field is for.
+  Open Unknowns 14 → 15.
 - 2026-07-05: **v0.10 — Toxic material doctrine added; two audit-confirmed gaps closed; two new gaps + one spoofing risk logged; Navigation Anchors corrected; cycle-count claims checked against real dates.**
   (1) New **Toxic and Hazardous Material Handling** section added, declared by human governing authority (ksarith): a toxic material may not be used in an active-release role (e.g., mercury as ion-thruster propellant) regardless of performance benefit, but may be used in a passive, fully-encapsulated, labeled role (e.g., lead radiation shielding). EC-014 logged for the concrete encapsulation standard this doctrine still needs. Scope Boundary updated.
   (2) **Governance Failure Modes amended** on two points Gemini's audit raised and this pass verified directly against the live text — both real: volatile-memory log staging replaced with a non-volatile write-once commit requirement (a hard power loss during a governance crisis was previously unrecoverable); and an orderly safe-state descent sequence is now required for active hazardous physical processes before dropping to Pacifist Operating Posture, rather than instant cessation, which could itself cause a containment breach. EC-013 logged — the descent-sequence requirement now exists here but no Operations/ file yet defines its own sequence.
@@ -693,7 +725,7 @@ The following terms appear in this document without canonical definitions. They 
 
 ## Status
 
-Version 0.10 — Exploration
+Version 0.11 — Exploration
 
 **What must remain constant:** capability never outruns permission.
 
