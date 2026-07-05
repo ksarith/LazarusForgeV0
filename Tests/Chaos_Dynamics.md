@@ -39,8 +39,10 @@ Sandbox ≤ Level 4 (hypotheses only). Promotion requires physical Level 5/6 wor
 
 ## 3. Exploration Phase (Sandbox)
 
+Before starting new exploration, check the Sandbox Log (§9) for prior entries on the same or adjacent hypothesis — the log exists specifically to prevent repeated investigation of previously explored dead ends. If a matching Discarded or Deferred entry exists, review it before proceeding; do not silently duplicate it.
+
 Outputs = engineering *questions*.
-Every artifact terminates in: **Discarded** | **Deferred** | **Promoted** (→ EXP-ID proposal).
+Every artifact terminates in: **Discarded** | **Deferred** | **Promoted** (→ EXP-ID proposal). All three dispositions are recorded in the Sandbox Log (§9) — none of them mean the artifact disappears.
 No direct path to guidance, rules, or claims.
 
 ## 4. R&D Phase & EXP-ID Lifecycle
@@ -63,12 +65,15 @@ Update originating sandbox hypothesis (if any) with:
 
 **Mechanics:**
 - Keep original hypothesis intact + append refutation/confirmation data (prevents re-exploration of dead ends).
+- **Deferred-item reuse:** When a Deferred sandbox hypothesis is revisited, update its existing Sandbox Log entry (§9) in place — append the new activity and outcome — rather than creating a new entry. Mirrors `Unknowns.md`'s Reopened-status handling: revisiting isn't a fresh start, it's a continuation of the same record.
 - **Inconclusive results:** Automatic trigger for a maximum of **two** re-test cycles with refined parameters. If the hypothesis remains unresolved after two cycles, it automatically degrades to an **Epistemic Block** — physical testing on that specific hypothesis halts, and the state is logged as a non-blocking entry in `Unknowns.md` (escalate to Critical only if the hypothesis is itself safety-relevant; routine inconclusive results do not inherit Critical severity by default). This cap exists to prevent unbounded consumption of physical material, fuel, and operator/agent bandwidth on a premise that has twice failed to resolve.
 - Refuted hypotheses remain visible (with clear physical counter-evidence) for institutional memory.
 
 ## 6. Unknown Generation
 
 New uncertainties exposed during exploration are logged as `Unknowns.md` entries following that file's standard registration procedure (owning-file sidecar first, index second). Verification still requires the full pipeline in §3–§5 regardless of how an uncertainty was surfaced.
+
+A Discarded or Refuted sandbox hypothesis and a newly-registered Unknown are not mutually exclusive. A specific hypothesis can fail (and be logged Discarded/Refuted in the Sandbox Log, §9) while still surfacing a genuine, separate uncertainty worth tracking in `Unknowns.md` — e.g., a hypothesis about a specific joint geometry can be wrong while still revealing that no one knows how a whole material category behaves. Disposition in §9 and registration in `Unknowns.md` are independent events; neither implies the other.
 
 ## 7. Operational Invariant
 
@@ -80,7 +85,24 @@ New uncertainties exposed during exploration are logged as `Unknowns.md` entries
 - **EN-001 / EN-001a** (owning file: `Architecture/Engineering.md`) — this pipeline is the intended feeder for EN-001a's characterization data once that split is formally registered in `Unknowns.md`.
 - Pattern reusable for **ME-001** (owning file: `Architecture/Mechanical_Structures.md`) — not yet adopted there; flagged for future consideration, not an active dependency.
 
-## Active Disputes
+## 9. Sandbox Log
+
+Every sandbox artifact is recorded here at disposition — Discarded, Deferred, or Promoted — regardless of outcome. This is the mechanism that makes §3's "no direct path to guidance" doctrine compatible with institutional memory: exploration artifacts remain permanently discoverable after disposition, so no idea has to be investigated twice by someone who doesn't know it was already tried.
+
+| SB-ID | Date | Hypothesis (one line) | Disposition | Note |
+|-------|------|------------------------|--------------|------|
+| — | — | — | — | No entries yet — this section activates on first sandbox use. |
+
+**Schema notes:**
+- **SB-ID** — sequential (`SB-001`, `SB-002`, ...), scoped to this file only. This is a lightweight reference ID for cross-linking within the Sandbox Log and from Promoted entries to their resulting EXP-ID — it is not a repository-wide provenance chain. (A fuller UNK→HYP→EXP chain was proposed separately this session and deliberately deferred — see Resolution Log.)
+- **Discarded** entries: hypothesis + one-line reason. No further tracking expected.
+- **Deferred** entries: hypothesis + the specific condition that would justify revisiting it (not just "later"). Updated in place on reuse per §5's Deferred-item reuse rule — never duplicated.
+- **Promoted** entries: hypothesis + the resulting EXP-ID. Full detail lives in `Admin/Experiments.md`; this row is a pointer, not a duplicate record.
+- **Search-first duty:** per §3, check this table before starting new exploration on a hypothesis that might already have an entry.
+
+**Size management — placeholder, not yet specified:** this table grows by design and will eventually need a compression or graduation trigger, similar to `Unknowns.md`'s 1,200-line rule or Engineering.md's EN-006 150-line split trigger. No specific threshold is set here — inventing one now, before any real growth data exists, would be the same "confidence without basis" problem flagged elsewhere this session. Revisit once the table has real entries to size against.
+
+
 
 | ID | Dispute Summary | Positions in Conflict | Risk | Status |
 |----|-----------------|------------------------|------|--------|
@@ -94,6 +116,23 @@ No unknowns are currently open under this file's own ownership. EN-001, EN-001a,
 
 ### Resolution Log
 
+- 2026-07-04 (second entry, same day): Added §9 Sandbox Log, implementing ChatGPT's
+  "exploration artifacts remain permanently discoverable" suggestion. This exposed
+  a real gap rather than being pure doctrine-polish: §3 already promised three
+  dispositions (Discarded/Deferred/Promoted) but only Promoted artifacts had
+  anywhere to go (an EXP-ID). Discarded and Deferred artifacts had no record at
+  all prior to this entry. Added: the log table itself (schema only, zero
+  entries — same "stub, absence isn't evidence of anything" posture Experiments.md
+  already takes); a lightweight SB-### ID scoped to this file only (deliberately
+  smaller than the fuller UNK→HYP→EXP→EN-001a provenance chain ChatGPT floated
+  earlier this session — that remains deferred as premature infrastructure until
+  the pipeline has processed at least one real hypothesis); a check-first
+  instruction in §3; a Deferred-item-reuse rule in §5 (update in place, mirroring
+  Unknowns.md's Reopened status rather than duplicating); and a one-sentence
+  clarification in §6 that a hypothesis's disposition here and a separate
+  Unknowns.md registration are independent events. Size-management trigger for
+  the table is explicitly left unspecified pending real growth data, rather than
+  guessing a threshold now.
 - 2026-07-04: Full revision following three independent audits (Gemini, Grok, ChatGPT) run same day, before this patch. Canonical paths corrected (§Scope Boundary, §4). Inconclusive-retest loop bounded to two cycles with automatic Epistemic Block degradation (§5) — closes Gemini's resource-exhaustion GAP without adopting her G2-blocking severity. EN- prefix ownership made explicit inline (§8) rather than registering a new tracked unknown (CD-UNK-001 not adopted — Unknowns.md's Active Index already unambiguously owns this). §8's "EN-005 resolved here" language softened to explicitly defer to Engineering.md's sidecar (In Progress/Vehicle) rather than self-declaring closure — addresses Gemini's Resolved-Unknown-Discharge-Procedure contradiction finding. Duplicated Operational Invariant text (previously in both §1 and §7) trimmed to a single canonical location (§7), per Grok's and this session's prior note. Navigation Anchors block and File State table added — previously entirely absent. CD-DS-001 logged and resolved same session per the Active Disputes table above.
 
 ---
