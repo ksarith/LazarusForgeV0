@@ -28,9 +28,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-04                                                          |
-| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21; Gemini — Exploration audit 2026-07-04; Claude — Documentation correction pass 2026-07-04 |
-| Open Unknowns    | 6                                                                   |
+| Last Audit       | 2026-07-05                                                          |
+| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21; Gemini — Exploration audit 2026-07-04; Claude — Documentation correction pass 2026-07-04; Gemini — Exploration audit 2026-07-05; Claude — EN-007 registration + reference cleanup 2026-07-05 |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -470,9 +470,11 @@ but does not specify what a Level 5 or Level 6 test looks like for specific
 component types.
 
 **Resolution Path — updated 2026-07-04:** `Tests/Chaos_Dynamics.md` was created
-2026-07-04 and supersedes this entry's original candidate names
-(`Tests/Verification_Methods.md`, `Admin/Test_Protocols.md` — neither was ever
-created). It defines the general Sandbox → Promotion Gate → EXP-ID → destructive
+2026-07-04 and supersedes this entry's original candidate names — the
+previously-considered *Tests/Verification Methods* and *Admin/Test Protocols*
+file names (retired, neither was ever created; rendered here as plain text,
+not folder-prefixed paths, so no cross-reference parser attempts to resolve
+them — see EN-006 Resolution Log, 2026-07-05). It defines the general Sandbox → Promotion Gate → EXP-ID → destructive
 testing → derating pipeline this unknown asked for, with an explicit
 Confirmed/Partially Confirmed/Refuted/Inconclusive feedback loop back to the
 originating hypothesis. Status held at **In Progress / Vehicle** rather than
@@ -514,7 +516,62 @@ domain authority rather than a survey.
 
 ---
 
+### EN-007 — Dissimilar material junction fatigue profiles undefined
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | `Architecture/Engineering.md` |
+| First Logged | 2026-07-05 |
+| Last Reviewed | 2026-07-05 |
+
+**Description:** §6 (Interface Management) addresses broad materials selection
+but has no standard treatment for junctions between highly dissimilar salvaged
+materials under cyclic or environmental loading — e.g., high-stiffness
+unknown-history metal fastened directly to low-stiffness, moisture-variable
+timber. Such junctions concentrate stress at the fastener interface and are
+prone to silent tear-out, shear, or localized rot/galvanic degradation that
+isn't visible until failure.
+
+**Why It Matters:** This compounds EN-001 (undifferentiated safety factors) —
+even a correctly-derated individual member can fail at a poorly-isolated
+junction to a dissimilar material, which the current 6×+ floor doctrine does
+not address because it is a bulk-material margin, not a joint-interface
+specification.
+
+**Resolution Path:** Define standard mechanical isolation methods for
+junctions coupling salvaged metals to anisotropic organic or dissimilar
+materials — e.g., sacrificial composite shims, specified fastener
+distribution/spacing, or galvanic isolation layers. Candidate feeder into the
+`Tests/Chaos_Dynamics.md` pipeline once a concrete joint geometry hypothesis
+exists to test.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-05: **EN-007 logged** (dissimilar material junction fatigue — see
+  sidecar above), surfaced by Gemini's Exploration audit. Open Unknowns
+  6 → 7. Same audit's G5 finding on EN-005's two retired candidate file
+  names (`Tests/Verification_Methods.md`, `Admin/Test_Protocols.md`) was
+  checked directly and found partially valid: the 2026-06-21 Resolution Log
+  claimed all four aspirational/retired file references in this section were
+  tagged `(planned)`, but only the two EN-006 references
+  (`Architecture/Advanced_Engineering.md`, `Architecture/Performance_Engineering.md`)
+  actually carried that tag — the two EN-005 names never did. Corrected:
+  the two EN-005 names are no longer rendered as folder-prefixed backtick
+  paths (they were never planned files, only retired candidate names, so
+  `(planned)` would have been inaccurate; converted to plain text instead
+  to remove them from cross-reference parsing entirely). Gemini's broader
+  claim that this "breaks automated compilation" was not independently
+  verified against `Admin/AUDIT_HARNESS.py` in this pass — treat the parser
+  risk as plausible, not confirmed.
 
 - 2026-07-04 (second entry, same day): EN-005 sidecar updated following
   confirmation that `Tests/Chaos_Dynamics.md` was created and committed.
