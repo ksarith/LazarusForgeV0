@@ -14,11 +14,11 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 1/6 vs. `Admin/Verification_Gates_LF.md` (unaudited against actual criteria — see GOV-011); Enforcement Checkpoint 2 also Blocked — Bootstrap Paradox |
+| Spec Gates       | 6/6 vs. `Admin/Verification_Gates_LF.md` — execution quality (see GOV-011, resolved 2026-07-05); promotion separately blocked by open unknowns (GOV-003, GOV-005) and Enforcement Checkpoint 2 — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-17                                                          |
-| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor                  |
-| Open Unknowns    | 12                                                                  |
+| Last Audit       | 2026-07-05                                                          |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05 |
+| Open Unknowns    | 11                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -472,16 +472,18 @@ evidence supports. Proposed phasing, if ratified:
 
 - **Resolved 2026-07-03:** the naming collision this file's Enforcement
   Checkpoints once had with Verification_Gates_LF.md's Verification Gates
-  is fixed via rename — see GOV-011. Still open from that same discovery:
-  this file's own File State `Spec Gates 1/6` field was scored against the
-  (now-renamed) internal checkpoints rather than the Verification Gates it
-  claims to reference via `Verification Ref`. Whether "1/6" is accurate
-  against the actual Verification Gates is unaudited — GOV-011, not yet
-  resolved.
+  is fixed via rename — see GOV-011. **Resolved 2026-07-05:** GOV-011 itself
+  is now closed — this file's File State `Spec Gates` field was re-audited
+  against the actual Verification Gates (real score: 6/6 execution quality)
+  and confirmed isolated to this file via spot-check of all other
+  governance-tier files.
 - `Admin/Canonical_Terms.md` cross-check on Validation Needed vocabulary —
   previously flagged in Security_Protocols.md's EDL section, not yet done.
-- This section's placement is no longer blocked by the rename; may still
-  move once GOV-011's audit gap is resolved.
+- This section's placement is no longer blocked by the rename or by
+  GOV-011's audit gap (both resolved); it remains DRAFT/NOT RATIFIED per
+  the separate, deliberate decision to await pilot evidence from more than
+  one file before generalizing (see Open Items header above) — a distinct
+  question from either fix.
 
 ---
 
@@ -960,14 +962,15 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                           |
 |---------------|----------------------------------|
-| Status        | Open                             |
-| Risk          | Medium                           |
-| Priority      | Major                            |
+| Status        | Resolved                        |
+| Risk          | Medium (was)                    |
+| Priority      | Major (was)                     |
 | Type          | Governance / Audit Integrity     |
 | Blocking      | No                                |
 | Owner         | `Admin/Governance_Charter.md`    |
 | First Logged  | 2026-07-03                       |
-| Last Reviewed | 2026-07-03                       |
+| Last Reviewed | 2026-07-05                       |
+| Resolved      | 2026-07-05                       |
 
 **Description:** This file's File State `Verification Ref` field names
 `Admin/Verification_Gates_LF.md` as the authority for its `Spec Gates X/6`
@@ -980,20 +983,64 @@ The naming fix does not resolve this: it only makes visible that the
 underlying score was never actually computed against the file it claims
 to reference.
 
-**Why It Matters:** Every file in the repository uses this same File State
-schema. If this file's own promotion tracker has been silently scoring
+**Why It Mattered:** Every file in the repository uses this same File State
+schema. If this file's own promotion tracker had been silently scoring
 against the wrong standard, the question of whether other files have the
-same problem is now open too — this may not be isolated to
+same problem was open too — this could have been systemic, not isolated to
 Governance_Charter.md.
 
-**Resolution Path:** Audit this file against Verification_Gates_LF.md's
-actual six Verification Gates (Fallacy Checklist, Physical Plausibility,
-Adversarial Battery, Scope Alignment, Cross-reference integrity, Conflict
-check) and report a real score. Separately, spot-check at least two other
-governance-tier files' `Spec Gates X/6` fields against their own stated
-`Verification Ref` to determine whether this is isolated or systemic. If
-systemic, escalate to a repository-wide unknown rather than resolving
-file-by-file.
+**Resolution — both parts closed 2026-07-05:**
+
+*Part 1 — real audit against Verification_Gates_LF.md's actual six gates:*
+A dual multi-agent audit (Grok, Gemini) plus independent verification of
+each specific finding against this file's live text found: **G1 (Fallacy
+Checklist), G2 (Physical Plausibility), G4 (Scope Alignment), and G6
+(Conflict Check) Pass** with no dispute between auditors. G3 (Adversarial
+Battery) and G5 (Cross-Reference Integrity) were disputed — Gemini scored
+both as blocked/failed; on direct verification against source text, neither
+finding held up. G5's "hanging `Lazarus-Forge-` reference" is an
+established repository-wide convention for the external companion repo
+(Discovery.md cites it identically) and was never meant to resolve as an
+internal file path. G3's "DEGRADED/BLOCKED" reading re-litigates a question
+already settled by SEC-DS-001 (Gate Scope vs. Promotion Readiness): partial
+adversarial coverage with explicitly deferred classes is the correct,
+passing standard for Exploration-stage content — Grok's "Passed (coverage
+complete; unresolved findings tracked as unknowns, not gate failure)"
+reading is the one consistent with existing repository doctrine. **Real
+score: 6/6 for current execution quality.** Promotion to Candidate Spec
+remains separately blocked by open unknowns (GOV-003, GOV-005, and this
+entry's own resolution, per the Gate Scope vs. Promotion Readiness
+doctrine) — a real gate score has never meant the document is ready to
+promote, and isn't intended to here either.
+
+*Part 2 — isolated or systemic:* Spot-checked all eight other
+governance-tier (Admin/) files carrying a `Spec Gates X/6` field:
+`Ethical_Constraints.md`, `Canonical_Terms.md`, `Auditor_Protocols.md`,
+`Forge_Audit_Kit.md`, `Verification_Gates_LF.md`,
+`Repository_Integrity_Protocol.md`, `Security_Protocols.md`, and
+`Governance_Migration_Protocol.md`. **All eight correctly cite
+`Admin/Verification_Gates_LF.md` as their sole Verification Ref, with no
+competing internal gate system.** Security_Protocols.md and
+Governance_Migration_Protocol.md's own changelogs show they already caught
+and corrected a Verification Ref mismatch on their own, independently,
+months before GOV-011 was ever logged here. **Confirmed isolated to this
+file** — the specific failure mode (an internal gate-numbered system
+colliding with Verification_Gates_LF.md's own "Gate N" numbering) could
+only occur in the one file that owns such a system, which is this one.
+
+**Lessons Learned:** The rename (Enforcement Checkpoints) fixed the naming
+collision but was a separate action from actually re-scoring against the
+real standard — worth remembering that a vocabulary fix and a re-audit are
+two different tasks even when they're triggered by the same discovery, and
+neither substitutes for the other. Also: disputed audit findings should be
+checked against source text individually before being treated as evidence
+either way — two of Gemini's three findings on this file this cycle did not
+hold up on inspection, and the correct response was verification, not
+either blanket acceptance or blanket dismissal.
+
+**File State updated:** `Spec Gates` field below changed from `1/6
+(unaudited)` to `6/6 (execution quality; promotion separately blocked by
+open unknowns, not a gate failure — see GOV-003, GOV-005)`.
 
 ---
 
@@ -1044,6 +1091,32 @@ both.
 ---
 
 ### Resolution Log
+
+- 2026-07-05 (second entry, same day): **GOV-011 Resolved.** Real audit
+  against Verification_Gates_LF.md's actual six gates: G1, G2, G4, G6 pass
+  uncontested; G3 and G5 were disputed by Gemini's same-day audit but
+  neither dispute held up against direct source-text verification (G5's
+  `Lazarus-Forge-` reference is an established repo-wide external-repo
+  naming convention, not a broken path; G3's "blocked" reading re-litigates
+  SEC-DS-001, already-settled doctrine on partial-coverage-passes-at-
+  Exploration-stage). Real score: 6/6 execution quality; promotion remains
+  separately blocked by GOV-003/GOV-005, unaffected by this resolution.
+  Spot-checked all eight other governance-tier Spec-Gates-bearing files
+  (Ethical_Constraints.md, Canonical_Terms.md, Auditor_Protocols.md,
+  Forge_Audit_Kit.md, Verification_Gates_LF.md,
+  Repository_Integrity_Protocol.md, Security_Protocols.md,
+  Governance_Migration_Protocol.md) — all correctly cite
+  Verification_Gates_LF.md with no competing gate system; two of them
+  (Security_Protocols.md, Governance_Migration_Protocol.md) had already
+  self-corrected an unrelated Verification Ref issue independently, months
+  earlier. **Confirmed isolated to this file** — the failure mode requires
+  an internal gate-numbered system to collide with, which only this file
+  has. File State `Spec Gates` field updated from `1/6 (unaudited)` to
+  `6/6 (execution quality)`. EDL amendment's Open Items section updated to
+  reflect both this and the 2026-07-03 rename as resolved (the amendment's
+  DRAFT/NOT RATIFIED status itself is unchanged — that was always a
+  separate, deliberate pilot-evidence decision, not a consequence of
+  GOV-011). Open Unknowns 12 → 11.
 
 - 2026-07-05: **GOV-012 logged** (Constitutional Stagnation Decay — see
   sidecar above). Surfaced during a dual Grok/Gemini Exploration audit that
