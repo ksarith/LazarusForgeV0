@@ -152,6 +152,7 @@ FALLBACK_REGISTRY = {
     "Waste.md":                          "Challenges/Waste.md",
     "Water.md":                          "Challenges/Water.md",
     "Return_To_Eden.md":                 "Challenges/Return_To_Eden.md",
+    "Closed_Loop_Feedstock.md":          "Challenges/Closed_Loop_Feedstock.md",
 }
 
 def _parse_routing(content):
