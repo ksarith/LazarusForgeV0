@@ -29,7 +29,7 @@
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-05                                                          |
-| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21; Gemini — Exploration audit 2026-07-04; Claude — Documentation correction pass 2026-07-04; Gemini — Exploration audit 2026-07-05; Claude — EN-007 registration + reference cleanup 2026-07-05 |
+| Auditor          | Grok (2026-05-29); ChatGPT informal (2026-06-11); Claude retrofit; Claude — Architecture review 2026-06-21; Gemini — Exploration audit 2026-07-04; Claude — Documentation correction pass 2026-07-04; Gemini — Exploration audit 2026-07-05; Claude — EN-007 registration + reference cleanup 2026-07-05; Claude — EN-001 differentiated safety factor table 2026-07-05 |
 | Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -221,13 +221,16 @@ climate via `Architecture/Facilities.md` §VII.
 - Common Forge materials: Wood (anisotropic, moisture sensitive), metals (ductile
   vs brittle failure modes differ critically), plastics, composites.
 - **Derating for salvaged materials:** Reduce allowable stresses for temperature,
-  moisture, fatigue, and unknown history. Default derating table pending EN-001
-  resolution — until then, unknown-history structural members carry the mandatory
-  **6×+ floor** defined in §8 [Internally Derived — pending EN-001 destructive
-  testing]. This floor may not be reduced by citing this section; §8 is the
-  authoritative value. (Corrected 2026-07-04 — this section previously stated a
-  3× interim figure that conflicted with §8 and the EN-001 sidecar; see
-  Resolution Log.)
+  moisture, fatigue, and unknown history. As of 2026-07-05, unknown-history
+  structural members follow the **differentiated interim safety factor table**
+  in §8 by material category (structural steel 4×, aluminum 6×, timber 5×
+  plus mandatory inspection, unidentified material — do not use structurally
+  until classified). This replaces the prior single undifferentiated 6×+
+  blanket floor. §8 is the authoritative table; this section may not restate
+  or override it. (History: this section previously stated a 3× interim
+  figure that conflicted with §8 and the EN-001 sidecar, corrected 2026-07-04
+  to a uniform 6×+; that uniform floor has now itself been superseded by the
+  differentiated table — see Resolution Log.)
 - See `Architecture/Chemistry.md` for corrosion behavior. See `Architecture/
   Mechanical_Structures.md` for fabricated-frame specifics.
 
@@ -271,10 +274,23 @@ climate via `Architecture/Facilities.md` §VII.
 
 **Common Safety Factors:**
 - Static non-critical: 2–3×
-- Structural/human load: 4×
-- Fatigue/impact/unknown-history salvage materials: **6×+** (EN-001 blocks reduction)
-  [Internally Derived — pending EN-001 destructive testing; this is the single
-  authoritative interim value for unknown-history structural members — see §5]
+- Structural/human load, known material with certified spec: 4×
+
+**Salvaged/unknown-history structural materials (interim differentiated table
+— added 2026-07-05, see EN-001):**
+
+| Material Category | Interim Factor | Basis (brief) |
+|---|---|---|
+| Structural steel, unknown grade (ferrous, non-cast, magnetic, no visible casting texture) | **4×** | Ductile failure mode gives visible warning (yielding/deflection) before fracture. Scrap structural steel's real-world strength band is comparatively narrow — most unidentified structural steel meets or exceeds mild-steel-equivalent yield strength. Lower than the prior blanket floor specifically because the failure mode itself is forgiving, not because the material is better-characterized. |
+| Aluminum extrusion, unknown alloy | **6×** | Alloy series (2000/6000/7000-class) vary roughly 3–4× in yield strength and differ in notch sensitivity and fatigue tolerance. Visual inspection alone cannot distinguish series. Kept at the prior blanket floor — the material class itself carries too much property variance to justify reduction without testing. |
+| Salvaged timber, unknown species/moisture history | **5×**, plus **mandatory** moisture-content check and visual probe for rot/insect damage before the factor applies at all | Species and moisture content both swing strength significantly, and decay may not be visible externally. Partial offset: failure mode is usually progressive and visible (splintering, creaking) rather than sudden, and the mandatory inspection step removes the single largest hidden variable (active decay) before the factor is even relied on. |
+| Unidentified alloy/material — cannot be placed in any category above | **Do not use structurally until classified.** No factor applies to an unclassified material. | Without knowing the base material class, no safety factor is trustworthy — a factor implies a known failure mode to derate against, and an unclassified material has none. Minimum field identification (magnet test, spark test, density/float test, or streak test — see `Operations/Gate_02_Triage.md`) is a precondition, not an optional refinement. |
+
+*[Internally Derived — pending EN-001 destructive testing across all four
+categories. This table replaces, not merely restates, the prior single 6×+
+blanket floor — see Resolution Log. It remains conservative by design; it is
+differentiated because failure mode and property variance genuinely differ
+by category, not because any category is considered well-characterized yet.]*
 
 **Units:** Default metric (mm, N, MPa) with imperial soft conversions. Be explicit.
 
@@ -350,34 +366,40 @@ torque wrenches for critical fasteners.
 
 | Field | Value |
 |-------|-------|
-| Status | Open |
+| Status | In Progress |
 | Risk | High |
 | Priority | **Critical** |
 | Type | Technical |
 | Blocking | **Yes** |
 | Owner | `Architecture/Engineering.md` |
 | First Logged | 2026-05-29 |
-| Last Reviewed | 2026-07-04 |
+| Last Reviewed | 2026-07-05 |
 
-**Description:** No Forge-specific tested safety factor table exists for salvaged
-materials with unknown history. The current default (6×+) is conservative but
-undifferentiated — it applies the same factor to unknown structural steel and
-unknown timber without basis. (Reconciled 2026-07-04: §5 previously cited a 3×
-interim figure inconsistent with this sidecar and §8; all three now read 6×+.
-This does not resolve EN-001 — it only removes an internal inconsistency in how
-the unresolved interim floor was stated.)
+**Description:** No Forge-specific *tested* safety factor table exists for
+salvaged materials with unknown history — that part is still true. What
+changed 2026-07-05: the blanket, undifferentiated 6×+ floor has been
+replaced with a differentiated interim table (§8) reasoned per material
+category from failure-mode behavior and known property variance (structural
+steel 4×, aluminum 6×, timber 5× + mandatory inspection, unidentified
+material barred from structural use until classified). This is real
+progress, not resolution — every value in that table remains Internally
+Derived, none are backed by an actual destructive test yet.
 
 **Why It Matters:** A salvage system without conservative derating tables is
-effectively operating blind. No structural specification in any Forge file may
-be promoted to Specification confidence until this is resolved. This is the
-most important unknown in the Architecture layer.
+effectively operating blind. No structural specification in any Forge file
+may be promoted to Specification confidence until this is resolved. This is
+the most important unknown in the Architecture layer.
 
-**Resolution Path:** Develop tested safety factor table for common salvaged
-material categories: structural steel (unknown grade), aluminum extrusion
-(unknown alloy), salvaged timber (unknown species/moisture history), unknown
-alloy bar/plate. Promote to Specification when validated against at least one
-destructive test series per category. Interim: document the 6×+ floor as the
-mandatory default and flag all dependent specifications.
+**Resolution Path:** Four Sandbox hypotheses registered in
+`Tests/Chaos_Dynamics.md` §9 (SB-001 through SB-004, 2026-07-05), one per
+material category in the §8 table, defining the destructive test each
+would need to move from Internally Derived to Experimentally Verified.
+Currently logged **Deferred** pending confirmation of physical testing
+capability — promote to EXP-ID and begin physical execution per category
+as testing resources become available. EN-001 moves to Resolved only when
+all four categories have completed at least one destructive test series
+and the §8 table is updated with real data; partial completion should
+update individual category rows in place rather than waiting for all four.
 
 ---
 
@@ -537,11 +559,11 @@ timber. Such junctions concentrate stress at the fastener interface and are
 prone to silent tear-out, shear, or localized rot/galvanic degradation that
 isn't visible until failure.
 
-**Why It Matters:** This compounds EN-001 (undifferentiated safety factors) —
-even a correctly-derated individual member can fail at a poorly-isolated
-junction to a dissimilar material, which the current 6×+ floor doctrine does
-not address because it is a bulk-material margin, not a joint-interface
-specification.
+**Why It Matters:** This compounds EN-001 — even a correctly-derated
+individual member (per the §8 differentiated table) can fail at a
+poorly-isolated junction to a dissimilar material, which no per-material
+safety factor addresses because it is a bulk-material margin, not a
+joint-interface specification.
 
 **Resolution Path:** Define standard mechanical isolation methods for
 junctions coupling salvaged metals to anisotropic organic or dissimilar
@@ -555,6 +577,21 @@ exists to test.
 ---
 
 ### Resolution Log
+
+- 2026-07-05 (second entry, same day): **EN-001 — blanket 6×+ floor replaced
+  with differentiated interim table.** §8 now carries four material-category
+  rows (structural steel 4×, aluminum 6×, timber 5× + mandatory moisture/rot
+  inspection, unidentified material barred from structural use until
+  classified) reasoned from failure-mode behavior (ductile vs. brittle) and
+  known material-property variance per category, not from new test data —
+  every value remains Internally Derived. §5's cross-reference updated to
+  match. EN-001 status moved Open → In Progress; this is real movement, not
+  resolution. Four Sandbox hypotheses (SB-001–SB-004) registered in
+  `Tests/Chaos_Dynamics.md` §9, one per category, logged Deferred pending
+  confirmation of physical destructive-testing capability — this is the
+  first real use of that file's Sandbox pipeline since it was built.
+  EN-007's cross-reference to EN-001 updated to point at the table rather
+  than the retired single-value floor.
 
 - 2026-07-05: **EN-007 logged** (dissimilar material junction fatigue — see
   sidecar above), surfaced by Gemini's Exploration audit. Open Unknowns
