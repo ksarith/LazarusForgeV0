@@ -1,5 +1,5 @@
 # Canonical_Terms.md — Standard Repository Nomenclature
-**Version 0.5**
+**Version 0.6**
 
 ## File State
 
@@ -10,8 +10,8 @@
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-05                                                          |
-| Auditor          | Claude — Synthesizer/Auditor (2026-06-24); Claude — Cycle definition + version-string correction (2026-07-05) |
-| Open Unknowns    | 10                                                                  |
+| Auditor          | Claude — Synthesizer/Auditor (2026-06-24); Claude — Cycle definition + version-string correction (2026-07-05); Claude — CT-011 resolution 2026-07-05 |
+| Open Unknowns    | 9                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Low                                                                 |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -817,14 +817,15 @@ updating) and correct accordingly. Close when no ambiguous unqualified
 
 | Field         | Value                    |
 |---------------|--------------------------|
-| Status        | Open                     |
-| Risk          | Medium                   |
-| Priority      | Major                    |
+| Status        | Resolved                 |
+| Risk          | Medium (was)             |
+| Priority      | Major (was)              |
 | Type          | Governance               |
 | Blocking      | No                       |
 | Owner         | Admin/Canonical_Terms.md |
 | First Logged  | 2026-07-05               |
 | Last Reviewed | 2026-07-05               |
+| Resolved      | 2026-07-05               |
 
 **Description:** This file now defines Cycle (Section 4) as one calendar
 year by default, superseding the operational reading in
@@ -834,24 +835,39 @@ not yet been updated to reflect or cross-reference this definition — the
 same class of gap CT-010 tracks for the Gate/Checkpoint rename, applied to
 a different term.
 
-**Why It Matters:** Until Auditor_Protocols.md's Expiry Rule and Expiry
-check text explicitly point to this file's Cycle definition, an agent
-reading Auditor_Protocols.md in isolation will still apply the old
+**Why It Mattered:** Until Auditor_Protocols.md's Expiry Rule and Expiry
+check text explicitly pointed to this file's Cycle definition, an agent
+reading Auditor_Protocols.md in isolation would still apply the old
 per-audit-pass counting and reproduce the same escalation-inflation problem
-this definition was created to fix.
+this definition was created to fix. This was not hypothetical — a same-day
+dual audit of `Admin/Ethical_Constraints.md` reported unknowns 62 and 17
+days old as "9 cycles" and "3 cycles open" before this propagation closed.
 
-**Resolution Path:** Payment via Specification — update
-`Admin/Auditor_Protocols.md`'s §Expiry Rule and §Expiry check text to
-cross-reference `Admin/Canonical_Terms.md`'s Cycle definition rather than
-leaving "audit cycle" undefined in place. Also grep other files using
-"cycle" language in an aging/escalation sense (Forge_Audit_Kit.md's Expiry
-Watch summaries, any file's own Drift Indicators) for the same
-cross-reference gap. Close when no file computes cycle-based aging without
-pointing back to this definition.
+**Resolution:** `Admin/Auditor_Protocols.md` v0.17 (2026-07-05) — §Expiry
+Rule and §Expiry check now explicitly cross-reference this file's Cycle
+definition and distinguish audit *pass* (can recur many times) from Cycle
+*threshold* (calendar-based, advances independently of pass frequency). The
+broader grep this entry called for — other files computing cycle-based
+aging without cross-referencing this definition — has not been performed
+yet; `Admin/Forge_Audit_Kit.md`'s Expiry Watch summaries specifically are
+still unchecked. If that broader sweep surfaces further gaps, log a new
+entry rather than reopening this one — this entry's scope was
+Auditor_Protocols.md specifically, which is now closed.
 
 ---
 
 ### Resolution Log
+
+- 2026-07-05 (second entry, same day): **v0.6 — CT-011 resolved.**
+  `Admin/Auditor_Protocols.md` v0.17 now cross-references this file's Cycle
+  definition in its Expiry Rule and Expiry check text, closing the
+  propagation gap. Confirmed against a real case: a same-day dual audit of
+  `Admin/Ethical_Constraints.md` had reported 62- and 17-day-old unknowns as
+  "9 cycles" and "3 cycles open" — exactly the inflation this definition
+  exists to prevent, now closed at the source file. Broader sweep for the
+  same gap in other files (Forge_Audit_Kit.md's Expiry Watch summaries
+  specifically) not yet performed — flagged in CT-011's Resolution field
+  for whoever does that pass next. Open Unknowns 10 → 9.
 
 - 2026-07-05: **v0.5 — Cycle defined; version-string mismatch corrected.**
   Section 4 gained a canonical **Cycle (Governance / Audit Cycle)** entry:
@@ -932,12 +948,21 @@ pointing back to this definition.
 
 ## Status
 
-Version 0.5 — Cycle (Governance / Audit Cycle) defined in Section 4 (one
-calendar year default, operator-adjustable); CT-011 logged tracking
-propagation into Auditor_Protocols.md; SESSION BOUNDARY INDEX flagged as
-non-canonical in Anti-Drift Guardrails; header version-string corrected
-from stale 0.3 to match this file's actual state (see Resolution Log,
-2026-07-05, for the mismatch this fixes).
+Version 0.6 — CT-011 resolved: `Admin/Auditor_Protocols.md` v0.17 now
+cross-references this file's Cycle definition in its Expiry Rule and Expiry
+check text, closing the propagation gap logged at v0.5. Open Unknowns
+10 → 9.
+
+**Changes from v0.5:**
+- CT-011 marked Resolved (was Open)
+- Open Unknowns: 10 → 9
+- Header version string 0.5 → 0.6
+
+**Prior — Version 0.5 (2026-07-05):** Cycle (Governance / Audit Cycle)
+defined in Section 4 (one calendar year default, operator-adjustable);
+CT-011 logged tracking propagation into Auditor_Protocols.md; SESSION
+BOUNDARY INDEX flagged as non-canonical in Anti-Drift Guardrails; header
+version-string corrected from stale 0.3 to match this file's actual state.
 
 **Changes from v0.4:**
 - Section 4: Cycle (Governance / Audit Cycle) defined
