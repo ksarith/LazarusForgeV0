@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.16**
+**Version 0.17**
 
 ## File State
 
@@ -662,9 +662,9 @@ Unknowns may not remain permanently ownerless.
 
 **Priority tags:** Blocking | Non-blocking | Exploratory
 
-**The Expiry Rule:** For global index entries — if a Blocking or Non-blocking unknown remains without a documented Resolution Path for more than two audit cycles, escalate to Systemic Risk or demote the dependent module.
+**The Expiry Rule:** For global index entries — if a Blocking or Non-blocking unknown remains without a documented Resolution Path for more than two audit cycles, escalate to Systemic Risk or demote the dependent module. **"Audit cycle" here means Cycle as defined in `Admin/Canonical_Terms.md` §4 — one calendar year by default, operator-adjustable — not one audit pass.** (Corrected 2026-07-05 — see CT-011 in Canonical_Terms.md. Prior text left "cycle" undefined here, which was operationally read by multiple auditor agents as "each time the Skeptic/Auditor role opens," inflating aging language — e.g. "9 cycles open" for an unknown 62 days old — far beyond real elapsed time.)
 
-**Expiry check:** Skeptic/Auditor role opens each audit cycle by reviewing the global index for entries approaching two cycles.
+**Expiry check:** Skeptic/Auditor role opens each audit pass by reviewing the global index for entries approaching the Cycle threshold above. Note the distinction: the role checks at every audit *pass* (however frequent), but the threshold it checks against is measured in calendar Cycles, not passes — an entry can be reviewed many times within a single still-open Cycle without that reviewing itself advancing the count.
 
 A verification pass that surfaces no unknowns on a complex document should itself be treated with suspicion.
 
@@ -751,7 +751,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 
 **Gate 3 is formally gated on the Adversarial Audit Layer.** A single concrete failure scenario is insufficient. The Adversarial Challenge Battery below defines the minimum requirement. Gate 3 additionally requires that at least one Battery class per promotion cycle be applied by an agent instance with no session context from the current audit cycle — see AP-017.
 
-**Current Gate 3 status:** Resolved/re-evaluate-pending-AP-017 resolution paths reaching Provisional Spec. Battery application is complete (v0.13); the block is on resolution depth, not battery coverage.
+**Current Gate 3 status:** BLOCKED pending AP-012 and AP-016 resolution paths reaching Provisional Spec. Battery application is complete (v0.13); the block is on resolution depth, not battery coverage.
 
 ---
 
@@ -1592,6 +1592,22 @@ Mandatory re-audit conditions for this document:
 ---
 
 ### Resolution Log
+
+- 2026-07-05: **v0.17 — CT-011 resolved.** The Expiry Rule and Expiry check
+  (§Unknowns Registry doctrine) now explicitly cross-reference
+  `Admin/Canonical_Terms.md` §4's Cycle definition (one calendar year by
+  default, operator-adjustable) rather than leaving "audit cycle" undefined.
+  Prior text was silently read by multiple auditor agents as "each time the
+  Skeptic/Auditor role opens," which inflated aging language well past real
+  elapsed time — e.g., unknowns 62 and 17 days old were reported as "9
+  cycles" and "3 cycles open" in a same-day dual audit of
+  `Admin/Ethical_Constraints.md`. Expiry check text now distinguishes audit
+  *pass* (can happen many times) from Cycle *threshold* (calendar-based,
+  advances independently of how often the role opens). No change to the
+  two-cycle threshold number itself, only to what a cycle means. Gate 3's
+  "per promotion cycle" language (AP-017) is a distinct, narrower sense of
+  cycle and is unaffected — already noted as such in Canonical_Terms.md's
+  Cycle entry.
 
 - 2026-05-04: **UNK-004 (Expiry Rule enforcement mechanism)** — Discharged. Sidecar Model addresses the underlying accumulation problem structurally.
 - 2026-05-04: **UNK-022 (Full Stop Review trigger conditions)** — Resolved. Three specific trigger conditions and invocation record format added. Fourth trigger added at v0.6.
