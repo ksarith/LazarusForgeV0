@@ -731,6 +731,12 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 **Downstream:** Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Forge_Net.md; Leviathan_testing.md; Support_Raft.md; Verification_Gates_LF.md.
 ⚠️ EM-001 (behavioral opacity detection threshold) — High; blocks watchdog specification. EM-004 (governance substrate integrity under emergent agent access) — Critical; mirrors GOV-003, SEC-007.
 
+### `Challenges/Closed_Loop_Feedstock.md`
+Closed-loop feedstock generation from salvaged materials as the v0 persistence threshold. Defines the **Persistence Yield (\( Y_p = FIR \times PIR \))** telemetry model, recursive epistemic ascent loop (characterize → process → fabricate → upgrade), and engineering pressures for transforming uncertain salvage into standardized inputs (polymers, metals). Prioritizes mechanical robustness and contamination tolerance over absolute purity. Owns cross-gate coordination between Reduction, Separation, and Fabrication. Highest-risk unknowns: polymer blending stability and nozzle wear under variance (CF-001–CF-003).  
+**Upstream:** `Architecture/Forge_flow.md`, `Gate_03_Reduction.md`, `Architecture/Chemistry.md`, `Architecture/Thermal_Systems.md`.  
+**Downstream:** `Operations/Gate_06_Fabrication.md`, `Operations/Plastics.md`, `Operations/Metals.md`, Eden Index (\( \Phi_{\text{ext}} \) reduction).  
+**Status:** Active / Core Doctrinal. File_Template.md compliant.
+
 ### `Challenges/Return_To_Eden.md`
 Closed-loop material cycle framework. Eden Index ($I_E$) — a composite metric ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) targeting a declared 98.4% closed-loop material cycle threshold, normalized against baseline reference values in its v1.0.2 formulation. Tier I–IV progression doctrine for advancing closed-loop maturity, gated by explicit (if not yet fully defined) pass/fail criteria between tiers.
 > ℹ️ **Reconciled against the source file 2026-07-05** (v1.0.2, last audited 2026-06-30 — Grok+ChatGPT dual audit, G1–G2 conditional, G4–G6 cleared). The 2026-07-04 entry below was reconstructed from `Unknowns.md`'s RE-UNK cluster with Upstream/Downstream inferred and explicitly flagged unconfirmed — those guesses (Ethical_Constraints.md, Economics.md, Gate_07_Utilization.md) did not match the actual file. Corrected below using RE-UNK-004's own text, which names real upstreams directly.
