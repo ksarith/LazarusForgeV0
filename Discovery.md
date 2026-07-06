@@ -318,7 +318,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Challenges/Planned_Obsolescence.md` | Active | — | — |
 | `Challenges/Critical_Minerals.md` | Active | — | — |
 | `Challenges/Emergence.md` | Exploration | 0/6 | High |
-| `Challenges/Return_To_Eden.md` | *Unverified* — not yet reconciled against source file; provisionally Exploration | *Unverified* (0/6 unconfirmed) | *Unverified* — Critical if RE-UNK-001/RE-UNK-005 (Blocking at Tier I gate) are taken at face value, but this row should be confirmed against the file's own File State on next audit rather than trusted as-is |
+| `Challenges/Return_To_Eden.md` | Exploration | 0/6 (per file's own File State: "None cleared") | High — RE-UNK-001/RE-UNK-005 Blocking at Tier I gate, non-blocking at Exploration; confirmed directly against the file's own Highest Risk field 2026-07-05, no longer inferred |
 
 ---
 
@@ -733,10 +733,10 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 
 ### `Challenges/Return_To_Eden.md`
 Closed-loop material cycle framework. Eden Index ($I_E$) — a composite metric ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) targeting a declared 98.4% closed-loop material cycle threshold, normalized against baseline reference values in its v1.0.2 formulation. Tier I–IV progression doctrine for advancing closed-loop maturity, gated by explicit (if not yet fully defined) pass/fail criteria between tiers.
-> ⚠️ **Entry added 2026-07-04, reconstructed from `Unknowns.md`'s RE-UNK cluster and `Routing.md`'s master table — this file was missing from Discovery.md's structure tree, Maturity Snapshot, and Scope Map despite existing in both other navigation files since at least cycle 11.** The Upstream/Downstream below are inferred, not sourced from the file's own Scope Boundary — they should be confirmed against the actual file on next audit pass rather than treated as authoritative. This entry is offered as the resolution step for RE-UNK-004 (Discovery.md Scope Map completion) but should not be considered to fully close RE-UNK-004 until reconciled against the source file directly.
-**Upstream (inferred, unconfirmed):** Likely `Admin/Ethical_Constraints.md`; `Admin/Economics.md` (closed-loop resource doctrine); `Operations/Gate_07_Utilization.md` (FRT/material cycle data) — verify against file.
-**Downstream (inferred, unconfirmed):** None formally declared yet in this file — itself the subject of RE-UNK-004's dependency-map gap.
-⚠️ RE-UNK-001 (Eden Index variable measurement protocols undefined) and RE-UNK-005 (baseline reference values undefined) — co-blocking at Tier I gate; non-blocking at Exploration. RE-UNK-002 (98.4% threshold provenance unverified) and RE-UNK-003 (tier advancement criteria undefined) — become blocking at Tier I gate review. RE-UNK-004 (this Scope Map gap) — partially addressed by this entry; full resolution requires reconciliation against the source file.
+> ℹ️ **Reconciled against the source file 2026-07-05** (v1.0.2, last audited 2026-06-30 — Grok+ChatGPT dual audit, G1–G2 conditional, G4–G6 cleared). The 2026-07-04 entry below was reconstructed from `Unknowns.md`'s RE-UNK cluster with Upstream/Downstream inferred and explicitly flagged unconfirmed — those guesses (Ethical_Constraints.md, Economics.md, Gate_07_Utilization.md) did not match the actual file. Corrected below using RE-UNK-004's own text, which names real upstreams directly.
+**Upstream (per RE-UNK-004, the file's own acknowledged gap — no formal declaration exists in the file itself, only this list of evident references):** `Operations/Air_Scrubber.md`, `Operations/Plastics.md`, `Operations/Woodworking.md` (implicit process references); `Admin/Governance_Charter.md`, `Admin/Auditor_Protocols.md` (§6.2 Human Drift and Governance Decay antidote); `Tests/Trophic_Forge.md`, `Tests/Living_Waters.md`, `Challenges/Water.md`, `Architecture/Chemistry.md` (evident undeclared upstreams per the file's own RE-UNK-004 text).
+**Downstream:** None formally declared — Section 7 (Future Integration Roadmap) anticipates future modules declaring their interface with $I_E$, but no downstream file does so yet. This file does not yet model the requirement it sets for others (RE-UNK-004 names this explicitly).
+⚠️ RE-UNK-001 (Eden Index variable measurement protocols undefined) and RE-UNK-005 (baseline reference values undefined) — co-blocking at Tier I gate; non-blocking at Exploration; RE-UNK-005 is a direct dependency of RE-UNK-001 per the file's own Highest Risk field. RE-UNK-002 (98.4% threshold provenance unverified) and RE-UNK-003 (tier advancement criteria undefined) — become blocking at Tier I gate review. RE-UNK-004 (this Scope Map gap) — **the Discovery.md portion is now resolved** (this entry is reconciled against the source file directly, not inferred); the file's own formal Upstream/Downstream declaration (Navigation Anchors / File State) is still absent and remains open — RE-UNK-004 should not be marked fully Resolved in `Unknowns.md` until that's added to the file itself.
 
 ---
 
@@ -778,7 +778,7 @@ would go stale (this refresh: `Unknowns.md` v4.10, 2026-07-03).
 | GOV-011 — Spec Gates field scored against wrong gate system | Major, Critical Watch — Governance_Charter.md's own promotion score unaudited against its stated reference; may not be isolated | `Unknowns.md` §Ethics & Governance |
 | CT-010 — Enforcement Checkpoint rename propagation | Major — confirm no file still cites old unqualified "Gate N" for Governance_Charter.md's renamed checkpoints | `Unknowns.md` §Ethics & Governance |
 | RE-UNK-001 / RE-UNK-005 — Return_To_Eden Eden Index measurement/baseline undefined | Blocking (Tier I gate); non-blocking at Exploration | `Unknowns.md` §Return to Eden |
-| RE-UNK-004 — Return_To_Eden dependency map absent | Partially addressed 2026-07-04 — Discovery.md Scope Map entry added; pending reconciliation against source file | `Unknowns.md` §Return to Eden |
+| RE-UNK-004 — Return_To_Eden dependency map absent | Discovery.md portion resolved 2026-07-05 (reconciled against source file directly); file's own formal Upstream/Downstream declaration still absent — not fully closeable in `Unknowns.md` until that's added | `Unknowns.md` §Return to Eden |
 
 **Parked, not open work:** Governance_Charter.md's External Design Lineage
 amendment is drafted and ready but deliberately unratified — a considered
