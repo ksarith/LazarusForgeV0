@@ -8,9 +8,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-05                                                          |
-| Auditor          | Claude — Architect/Auditor                                          |
-| Open Unknowns    | 4                                                                   |
+| Last Audit       | 2026-07-06                                                          |
+| Auditor          | Claude — Skeptic/Auditor                                            |
+| Open Unknowns    | 4 (ECN-001, ECN-002, ECN-004, ECN-005)                              |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -45,9 +45,9 @@
 - Component procurement manifest (→ `Architecture/Geck_forge_seed.md`)
 - Revenue allocation above FRT floor (→ `Admin/Trajectories.md`
   — operator-defined domain)
-- Pricing schedules or market rate data (→ EC-004 — real-time,
+- Pricing schedules or market rate data (→ ECN-004 — real-time,
   operator-maintained)
-- Legal or tax compliance (→ EC-005 — human decision,
+- Legal or tax compliance (→ ECN-005 — human decision,
   jurisdiction-specific)
 
 ---
@@ -228,7 +228,7 @@ internal need:
 |---|---|---|
 | Recovered ferrous metal | Iron, steel separated from mixed feedstock | Bulk scrap, sorted billet |
 | Recovered non-ferrous metal | Copper, aluminum, zinc, lead from mixed feedstock | Bulk scrap, sorted bar |
-| Recovered rare and critical minerals | From electronics, batteries, catalytic converters | Concentrated fraction — EC-001 |
+| Recovered rare and critical minerals | From electronics, batteries, catalytic converters | Concentrated fraction — ECN-001 |
 | Fabricated components | Parts made to spec, beyond internal need | Functional parts, tooling |
 | Processing capacity | Gate operations as a service — triage, reduction, separation | Service offering |
 | Recovered functional items | Items triaged as reusable, beyond internal need | Sold as-is or reconditioned |
@@ -376,7 +376,7 @@ TR-001 in `Admin/Trajectories.md` blocks the v0→v1 transition
 because "profitably" in the v1 exit condition has no defined
 meaning. This section provides the framework for that definition.
 It is not the final baseline — that requires operational data
-(EC-002). It is the structure that operational data will fill.
+(ECN-002). It is the structure that operational data will fill.
 
 ### Profitability Definition
 
@@ -541,7 +541,7 @@ logging in Gate_07_Utilization.md.
 
 | Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
 |------|---------------|----------------|-------------|------------------|------------|---------------------|
-| —    | —             | —              | —           | No entries yet — pre-deployment file | — | — |
+| 2026-07-06 | Governance | CT-007 (Canonical_Terms.md) identified an `EC-` prefix collision between this file and `Ethical_Constraints.md` | Rename not yet executed | ECN-001 through ECN-005 (all five of this file's own EC- entries, including Resolved ECN-003) renamed from `EC-` to `ECN-` to close the collision. CT-007's original write-up cited EC-008 as a sixth colliding ID — verified against this file directly: EC-008 does not exist here, that citation was in error. It also omitted EC-003 as a collision, likely because it is Resolved and drops out of Unknowns.md's active index — resolved status does not retire an ID from the shared namespace. | High — verified directly against source text | Update Unknowns.md's Economics table, CT-007 entry, and Canonical_Terms.md's ID-prefix registry to reflect `ECN-` |
 
 ---
 
@@ -555,7 +555,7 @@ logging in Gate_07_Utilization.md.
 
 ## Auditor Notes & Unknowns
 
-### EC-001 — Rare and critical mineral surplus disposition path undefined
+### ECN-001 — Rare and critical mineral surplus disposition path undefined
 
 | Field         | Value              |
 |---------------|--------------------|
@@ -587,7 +587,7 @@ Payment via Specification.
 
 ---
 
-### EC-002 — Operating cost baseline not yet established
+### ECN-002 — Operating cost baseline not yet established
 
 | Field         | Value              |
 |---------------|--------------------|
@@ -617,7 +617,7 @@ Component 1 from framework to figures. Cross-reference TR-001.
 
 ---
 
-### EC-003 — Barter valuation standard
+### ECN-003 — Barter valuation standard
 
 | Field         | Value              |
 |---------------|--------------------|
@@ -638,7 +638,7 @@ of all barter doctrine assigned to this file.
 
 ---
 
-### EC-004 — Pricing and market rate data not maintained
+### ECN-004 — Pricing and market rate data not maintained
 
 | Field         | Value              |
 |---------------|--------------------|
@@ -663,13 +663,13 @@ on the operator having current market information.
 
 **Resolution Path:** At v0, operator-maintained local record is
 sufficient — a simple log of transaction prices and channel
-used per cycle. This feeds into the revenue model (EC-002)
+used per cycle. This feeds into the revenue model (ECN-002)
 and informs future channel selection decisions. No repository
 file needs to own price data — it is operational data, not doctrine.
 
 ---
 
-### EC-005 — Legal and tax compliance not assessed
+### ECN-005 — Legal and tax compliance not assessed
 
 | Field         | Value              |
 |---------------|--------------------|
@@ -721,14 +721,14 @@ Facilities.md — both are pre-operation human compliance decisions.
 *Standard drift indicators per `Admin/File_Template.md` apply.
 Additional triggers specific to this file:*
 
-- TR-001 remains open after EC-002 (operating cost baseline) resolves
+- TR-001 remains open after ECN-002 (operating cost baseline) resolves
 - Surplus is held beyond its declared review horizon without a
   logged reassessment
 - Procurement occurs against unconfirmed need without a logged
   exception
 - Barter transactions excluded from FRT and profitability
   calculations without a declared rationale
-- EC-005 (legal compliance) not assigned to a human owner before
+- ECN-005 (legal compliance) not assigned to a human owner before
   first commercial transaction
 - Value ladder doctrine used to justify holding surplus indefinitely
   in pursuit of a higher ladder position
