@@ -1,5 +1,5 @@
 # Canonical_Terms.md — Standard Repository Nomenclature
-**Version 0.6**
+**Version 0.7**
 
 ## File State
 
@@ -460,6 +460,7 @@ Use of banned terms in specification-level content is a Fallacy 4
 | Gate N (unqualified, N=1–6)           | Verification Gate N or Enforcement Checkpoint N | Always specify which system; both are six-item, numbered, and were once both called "Canonical Verification Gates" — see GOV-011 |
 | Blocking (unqualified)               | Operational Blocking or Epistemic Blocking     | Always specify which type; unqualified Blocking obscures whether physical work halts or only claims halt |
 | SESSION BOUNDARY INDEX               | Audit Cycle (Section 4, this file)             | Not a defined term anywhere in `Admin/Auditor_Protocols.md`, `Admin/Forge_Audit_Kit.md`, `Unknowns.md`, or `Admin/Verification_Gates_LF.md` as of 2026-07-05, despite appearing in multiple audit headers as if citing established doctrine. Treat any audit opening with this phrase as citing an unverified/external convention, not repository doctrine, until traced to a real source or formally adopted here. |
+| EC-00X (bare, no owning file named) | EC-00X (`Admin/Ethical_Constraints.md`) or the pending `ECN-` renumbering (`Admin/Economics.md`) | Ambiguous as of 2026-07-05 — see CT-007. EC-001, EC-002, EC-004, EC-005, and EC-008 are each claimed by both files with unrelated content. Never cite a bare "EC-00X" without naming the owning file until CT-007's rename is complete. |
 
 "Autonomous Decision-Making" without bounding clauses is prohibited because
 it obscures human override visibility, which is a constitutional requirement
@@ -687,24 +688,59 @@ in the Dependency Clusters section of Unknowns.md.
 | Field         | Value                    |
 |---------------|--------------------------|
 | Status        | Open                     |
-| Risk          | Low                      |
-| Priority      | Minor                    |
+| Risk          | **High (escalated 2026-07-05, was Low)** |
+| Priority      | **Major (escalated 2026-07-05, was Minor)** |
 | Type          | Governance / Technical   |
-| Blocking      | No                       |
+| Blocking      | **Epistemic — see below** |
 | Owner         | Admin/Canonical_Terms.md |
 | First Logged  | 2026-06-23               |
-| Last Reviewed | 2026-06-24               |
+| Last Reviewed | 2026-07-05               |
 
 **Description:** No formal doctrine governs whether IDs may be reused after
 resolution, how ranges are reserved for new clusters, how collisions are
 handled if two files claim the same prefix, or how multi-owner cross-module
 unknowns are numbered.
 
-**Resolution Path:** Discharge via Trajectory — log in `Admin/Trajectories.md`
-as a v0→v1 transition task. Minimum doctrine when resolved: IDs are never
-reused; prefixes are registered in this file or Repository_Structure.md when
-a new cluster is created; collisions are resolved by renaming the newer entry
-with a logged alias.
+**Escalation 2026-07-05 — this stopped being hypothetical.** Confirmed via
+direct check of `Unknowns.md`: the `EC-` prefix is claimed by **both**
+`Admin/Ethical_Constraints.md` and `Admin/Economics.md`, with five actual
+colliding IDs already live in the global index — EC-001, EC-002, EC-004,
+EC-005, EC-008. Each ID currently points to two entirely different unknowns
+depending on which file's context you're in (e.g., EC-002 is
+"Anti-Weaponization pattern-matching" in Ethical_Constraints.md and
+"Operating cost baseline not established" in Economics.md — one Blocking,
+one Critical, unrelated in substance). `Admin/Forge_Audit_Kit.md`'s own
+Governance Sidecar ID Reference already documents `EC-` as belonging to
+Ethical_Constraints.md — Economics.md's usage was never registered there
+and appears to be the erroneous claim, not the reverse. Any reference to an
+"EC-00X" unknown anywhere in the repository is now ambiguous without an
+explicit file qualifier until this is fixed.
+
+**Why It Matters:** This is a live G5 (Cross-Reference Integrity) problem
+at the repository level, not a future risk to plan around. Every past and
+future reference to an EC-numbered unknown that doesn't name its owning
+file explicitly is currently unreliable.
+
+**Resolution Path:** Economics.md's five colliding entries need renaming to
+a non-colliding prefix — candidate: `ECN-` (Economics.md is not yet
+formally represented in the Governance Sidecar ID Reference at all, so this
+also closes that gap). Update `Unknowns.md`'s global index and
+Economics.md's own sidecar to match. Register `ECN-` in
+`Admin/Forge_Audit_Kit.md`'s Governance Sidecar ID Reference table
+alongside the existing entries. Until renamed, any reference to EC-001,
+EC-002, EC-004, EC-005, or EC-008 must explicitly name the owning file. The
+original Discharge-via-Trajectory resolution path (below) remains correct
+for the *general* doctrine question (reuse, range reservation, future
+collision handling) — this escalation only accelerates the specific,
+already-occurred collision, which shouldn't wait for the general doctrine
+to be resolved first.
+
+**Original Resolution Path (general doctrine, still valid):** Discharge via
+Trajectory — log in `Admin/Trajectories.md` as a v0→v1 transition task.
+Minimum doctrine when resolved: IDs are never reused; prefixes are
+registered in this file or Repository_Structure.md when a new cluster is
+created; collisions are resolved by renaming the newer entry with a logged
+alias.
 
 ---
 
@@ -857,6 +893,23 @@ Auditor_Protocols.md specifically, which is now closed.
 ---
 
 ### Resolution Log
+
+- 2026-07-05 (third entry, same day): **v0.7 — CT-007 escalated: confirmed
+  active `EC-` prefix collision, not hypothetical.** Direct check of
+  `Unknowns.md` found EC-001, EC-002, EC-004, EC-005, and EC-008 each
+  claimed by both `Admin/Ethical_Constraints.md` and `Admin/Economics.md`
+  with unrelated content under each ID. `Admin/Forge_Audit_Kit.md`'s own
+  Governance Sidecar ID Reference already reserves `EC-` for
+  Ethical_Constraints.md — Economics.md was never registered there.
+  Risk/Priority escalated Low/Minor → High/Major. Anti-Drift Guardrails
+  gained a row requiring the owning file be named explicitly for any bare
+  "EC-00X" reference until resolved. Resolution path split: the original
+  general-doctrine question (Discharge via Trajectory) stays as-is; a new,
+  faster path added for the already-occurred collision specifically —
+  rename Economics.md's five entries to a new `ECN-` prefix and register
+  it. Surfaced incidentally while gathering current data for
+  `Admin/Forge_Audit_Kit.md`'s FAK-007 refresh — not something either file
+  was being audited for directly.
 
 - 2026-07-05 (second entry, same day): **v0.6 — CT-011 resolved.**
   `Admin/Auditor_Protocols.md` v0.17 now cross-references this file's Cycle
