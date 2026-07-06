@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.17**
+**Version 0.18**
 
 ## File State
 
@@ -751,7 +751,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 
 **Gate 3 is formally gated on the Adversarial Audit Layer.** A single concrete failure scenario is insufficient. The Adversarial Challenge Battery below defines the minimum requirement. Gate 3 additionally requires that at least one Battery class per promotion cycle be applied by an agent instance with no session context from the current audit cycle — see AP-017.
 
-**Current Gate 3 status:** Resolved/re-evaluate-pending-AP-017 resolution paths reaching Provisional Spec. Battery application is complete (v0.13); the block is on resolution depth, not battery coverage.
+**Current Gate 3 status:** Resolved — AP-012 and AP-016 reached Provisional Spec (v0.16, 2026-07-03). Battery application is complete (v0.13). Re-evaluate before treating Gate 3 as fully clear: AP-017's independence requirement (at least one Battery class per promotion cycle applied by an agent instance with no session context from the current audit cycle) is still Open and separately gates Gate 3 — a resolved blocker is not automatically a passed gate. (Corrected 2026-07-05 — this line was stale since v0.16 resolved AP-012/AP-016; `Admin/Forge_Audit_Kit.md` caught and fixed the same stale text same-day at v1.8, this file did not. Fixed here twice now — see Resolution Log for the first pass and this note for why it didn't hold.)
 
 ---
 
@@ -1592,6 +1592,20 @@ Mandatory re-audit conditions for this document:
 ---
 
 ### Resolution Log
+
+- 2026-07-05 (second entry, same day): **v0.18 — Line 754 Gate 3 status
+  re-corrected after regression.** This was already identified and fixed
+  earlier the same session, but the copy this file's edits were being made
+  from still carried the stale "BLOCKED pending AP-012 and AP-016" text —
+  the earlier fix did not persist into the version uploaded for the CT-011
+  pass, so v0.17 was shipped still carrying it. Now reads Resolved, with
+  the AP-017 re-evaluation caveat, matching `Admin/Forge_Audit_Kit.md`'s
+  already-correct v1.8 text. **Process note for human governing authority:**
+  if edits are being made against local/live copies in parallel with copies
+  uploaded here, worth confirming which is authoritative before each
+  session's edits, or a fix can silently regress like this one did — not
+  flagging blame, just the mechanism, since it's the same class of
+  drift-via-desync this repository tracks everywhere else.
 
 - 2026-07-05: **v0.17 — CT-011 resolved.** The Expiry Rule and Expiry check
   (§Unknowns Registry doctrine) now explicitly cross-reference
