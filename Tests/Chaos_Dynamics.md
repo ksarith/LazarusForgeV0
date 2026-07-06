@@ -14,7 +14,7 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-04 — three independent informal reviews (Gemini, Grok, ChatGPT); adjudicated same day; no formal Skeptic/Auditor sign-off through Forge_Audit_Kit.md opening sequence yet |
+| Last Audit       | 2026-07-05 — Claude added first Sandbox Log entries (SB-001–SB-004); no formal Skeptic/Auditor sign-off through Forge_Audit_Kit.md opening sequence yet |
 | Auditor          | None formal yet — see Last Audit and Active Disputes                |
 | Open Unknowns    | 0                                                                   |
 | Active Disputes  | 1 (CD-DS-001, Resolved same session — see below)                    |
@@ -82,7 +82,7 @@ A Discarded or Refuted sandbox hypothesis and a newly-registered Unknown are not
 ## 8. Reconciliation & Cross-File Status
 
 - **EN-005** (owning file: `Architecture/Engineering.md`) — this file establishes the general process framework EN-005 asked for. Status is held at **In Progress / Vehicle** in Engineering.md's own sidecar, *not* Resolved — full resolution requires a completed EXP-ID cycle producing a concrete Level 5/6 test definition for at least one component type. This file does not have standing to unilaterally close another file's unknown; Engineering.md's sidecar is the authoritative status, not this section.
-- **EN-001 / EN-001a** (owning file: `Architecture/Engineering.md`) — this pipeline is the intended feeder for EN-001a's characterization data once that split is formally registered in `Unknowns.md`.
+- **EN-001 / EN-001a** (owning file: `Architecture/Engineering.md`) — this pipeline is the intended feeder for EN-001a's characterization data once that split is formally registered in `Unknowns.md`. As of 2026-07-05, SB-001 through SB-004 (§9) are the first real hypotheses registered against this pipeline, one per EN-001 material category — currently Deferred pending physical testing capability, not yet promoted to EXP-ID.
 - Pattern reusable for **ME-001** (owning file: `Architecture/Mechanical_Structures.md`) — not yet adopted there; flagged for future consideration, not an active dependency.
 
 ## 9. Sandbox Log
@@ -91,7 +91,10 @@ Every sandbox artifact is recorded here at disposition — Discarded, Deferred, 
 
 | SB-ID | Date | Hypothesis (one line) | Disposition | Note |
 |-------|------|------------------------|--------------|------|
-| — | — | — | — | No entries yet — this section activates on first sandbox use. |
+| SB-001 | 2026-07-05 | Unknown-grade structural steel salvage, tested to yield/failure in tension and bending, will meet or exceed mild-steel-equivalent yield strength in ≥90% of samples drawn from typical Forge input streams (framing, angle stock, rebar-class material) | Deferred | From `Architecture/Engineering.md` EN-001. Would validate/tighten the interim 4× factor. Test sketch: minimum 10 samples across visually-distinct sources, tension test to failure, record yield/ultimate/elongation, compare against mild-steel baseline. Deferred pending confirmation of physical testing capability (tensile test rig or equivalent access) — see Engineering.md EN-001 Resolution Path. |
+| SB-002 | 2026-07-05 | Unknown-alloy aluminum extrusion salvage shows yield-strength variance ≥3× across samples when grouped only by visual/magnetic sorting (i.e., confirms alloy series cannot be reliably distinguished without testing, justifying the 6× floor rather than a reduction) | Deferred | From `Architecture/Engineering.md` EN-001. This hypothesis, if confirmed, justifies keeping the 6× factor rather than lowering it — a valid and useful outcome either way. Test sketch: minimum 10 samples, hardness test (cheap proxy) cross-checked against tension test on a subsample, group by visual similarity, measure within-group variance. Deferred pending physical testing capability. |
+| SB-003 | 2026-07-05 | Salvaged timber, screened first by moisture content (<19%) and visual/probe rot inspection, shows bending-strength variance narrow enough to support a factor below 5× for the screened subset (i.e., the mandatory inspection step in EN-001's table is doing most of the real risk reduction, and screened material may not need the full margin) | Deferred | From `Architecture/Engineering.md` EN-001. Test sketch: minimum 10 screened samples spanning at least 3 species, 3-point bend test to failure, compare variance within screened set against published unscreened-salvage variance. Deferred pending physical testing capability. |
+| SB-004 | 2026-07-05 | A low-cost field identification protocol (magnet test + spark test + density/float test, per `Operations/Gate_02_Triage.md`) can correctly sort ≥95% of an unidentified scrap-metal sample set into steel/aluminum/other-with-caution categories without lab equipment | Deferred | From `Architecture/Engineering.md` EN-001's "unidentified material — barred until classified" row. If confirmed, this converts the current hard bar into a practical field-triage step rather than an indefinite block. Test sketch: assemble a mixed sample set of known-identity scrap, apply the three-test protocol blind, score against ground truth. Deferred pending physical testing capability. |
 
 **Schema notes:**
 - **SB-ID** — sequential (`SB-001`, `SB-002`, ...), scoped to this file only. This is a lightweight reference ID for cross-linking within the Sandbox Log and from Promoted entries to their resulting EXP-ID — it is not a repository-wide provenance chain. (A fuller UNK→HYP→EXP chain was proposed separately this session and deliberately deferred — see Resolution Log.)
@@ -115,6 +118,19 @@ Every sandbox artifact is recorded here at disposition — Discarded, Deferred, 
 No unknowns are currently open under this file's own ownership. EN-001, EN-001a, and EN-005 are referenced in §8 but owned by `Architecture/Engineering.md` — see that file's sidecar for authoritative status. First unknowns native to this file are expected once a hypothesis completes a full Sandbox → EXP-ID → feedback cycle for the first time.
 
 ### Resolution Log
+
+- 2026-07-05: **First real Sandbox Log entries — SB-001 through SB-004.**
+  Four hypotheses registered, one per material category in
+  `Architecture/Engineering.md` EN-001's new differentiated safety factor
+  table (structural steel, aluminum, timber, unidentified-material field
+  triage). All four logged **Deferred** — pending confirmation of physical
+  destructive-testing capability, not yet promoted to EXP-ID or physically
+  executed. This is the pipeline's first use since §9 was built 2026-07-04;
+  everything in §9 prior to this was schema with zero entries. §8
+  Reconciliation note updated to reflect it. No unknowns native to this
+  file yet — per this file's own doctrine, that's expected until a
+  hypothesis completes a full Sandbox → EXP-ID → feedback cycle, which
+  hasn't happened yet.
 
 - 2026-07-04 (second entry, same day): Added §9 Sandbox Log, implementing ChatGPT's
   "exploration artifacts remain permanently discoverable" suggestion. This exposed
