@@ -16,8 +16,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-07-05                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — toxic material doctrine + gap remediation 2026-07-05; Claude — law-vs-morality doctrine + Navigation Anchors correction 2026-07-05 |
+| Last Audit       | 2026-07-06                                                          |
+| Auditor          | ChatGPT — Skeptic/Auditor; ChatGPT — Philosophical Review; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — toxic material doctrine + gap remediation 2026-07-05; Claude — law-vs-morality doctrine + Navigation Anchors correction 2026-07-05; Claude — EC-010 stale-reference correction 2026-07-06 |
 | Open Unknowns    | 15                                                                  |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -579,7 +579,9 @@ Mandatory re-audit conditions:
 
 **Why It Matters:** Leviathan deployments will regularly encounter multi-jurisdiction environments. "Escalate to human review" moves the ambiguity rather than resolving it when human review is unavailable.
 
-**Resolution Path:** Deferred — appropriate for Exploration status. Address during v1 transition within planned `Admin/Environmental_Constraints.md`. Cross-reference GOV-010 (`Admin/Governance_Charter.md`) — both converge on the same planned file.
+**Resolution Path:** `Admin/Environmental_Constraints.md` exists (created 2026-06-19) and is already the declared convergence junction for this unknown — its own ENV-003 entry and Constraint Category 2 name this file directly. Deferred, appropriately, to that file's own v1-transition resolution timeline rather than to a "planned" file that no longer needs planning. Cross-reference GOV-010 (`Admin/Governance_Charter.md`) — both converge at `Admin/Environmental_Constraints.md` ENV-003.
+
+*Corrected 2026-07-06 — this entry had not been updated since 2026-06-18, one day before Environmental_Constraints.md was created, and had not been revisited across three subsequent audit passes (Grok, Gemini, Claude, all 2026-07-05).*
 
 ---
 
@@ -706,6 +708,7 @@ The following terms appear in this document without canonical definitions. They 
 
 ### Resolution Log
 
+- 2026-07-06: **v0.12 — EC-010 stale-reference correction.** EC-010's Resolution Path referred to `Admin/Environmental_Constraints.md` as a "planned" file to be created at v1 transition. That file has existed since 2026-06-19 and is already the declared ENV-003 convergence point for this exact unknown. The reference had not been touched since 2026-06-18 and survived three subsequent audit passes (Grok, Gemini, Claude — all 2026-07-05) unnoticed. Corrected to point at the file directly. No change to Open Unknowns count — this is a citation fix, not a resolution.
 - 2026-05-04: v0.1 — Initial file created. Core mandate, ownership, legal context, anti-weaponization, life preservation, cultural sites, landfill environments, refusal doctrine established.
 - 2026-05-04: v0.3 — Multi-model audit (Claude, ChatGPT, Gemini, Grok). Added: Why Hard Constraints Exist (commandment framing, inter-agent coordination efficiency); Anti-Weaponization humanitarian framing clause, dual-use response hierarchy, sensitivity/specificity learning distinction; Refusal Anti-Weaponization carve-out; Human Escalation Protocol; Governance Failure Modes; Lessons Learned; sidecar EC-001 through EC-007.
 - 2026-07-05: **v0.11 — Law-vs-morality doctrine ratified; Navigation Anchors reverted to raw form; EC-015 logged.**
