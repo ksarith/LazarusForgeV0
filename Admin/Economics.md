@@ -9,8 +9,8 @@
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-06                                                          |
-| Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 4 (ECN-001, ECN-002, ECN-004, ECN-005)                              |
+| Auditor          | Claude — Skeptic/Auditor (rename pass); Gemini — Skeptic/Auditor (Exploration audit, path/gap findings) |
+| Open Unknowns    | 5 (ECN-001, ECN-002, ECN-004, ECN-005, ECN-006)                     |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -49,6 +49,7 @@
   operator-maintained)
 - Legal or tax compliance (→ ECN-005 — human decision,
   jurisdiction-specific)
+- Safety envelopes for commercial value streams involving hazardous materials or processes (→ `Admin/Safety_Protocols.md`, `Operations/Plastics.md`, `Operations/Woodworking.md` — commercial value realization is strictly subservient to these; a value stream is not authorized by this file's existence in the Taxonomy of Value Streams table)
 
 ---
 
@@ -248,7 +249,7 @@ When a value stream exceeds internal need:
    Not surplus yet.
 
 2. **Does another Forge instance in the network need this?**
-   If yes — route through Forge_Net before external market.
+   If yes — route through `Architecture/Forge_Net.md` before external market.
    Internal network transfer preserves value within the ecology.
 
 3. **What is the current market rate and what is the storage cost
@@ -340,6 +341,17 @@ or FRT floor maintenance. Reaching for a higher ladder position
 that delays surplus disposition past its optimal sale window
 is a margin optimization that costs more than it earns.
 
+**Energy-cost floor for thermally-recovered surplus:** The primary
+KPI (value recovered per kWh, `Architecture/Forge_flow.md`) applies
+to surplus disposition, not only to primary recovery. A pyrolytic
+or thermally-separated output (e.g., syngas, fuel oil from
+`Operations/Plastics.md`) is not a positive-value stream by virtue
+of having a buyer or barter partner — it must demonstrate a
+net-positive value return relative to the localized energy cost of
+the gate operation (`Operations/Plastics.md`, `Operations/Gate_05_Separation_Thermal.md`)
+that produced it. A market or barter return that costs more energy
+to generate than it recovers is an accounting illusion, not surplus.
+
 ### Channel Selection
 
 The Forge has multiple channels for both acquisition and disposition.
@@ -392,7 +404,7 @@ All three components must be defined before the baseline
 can be established:
 
 **Component 1 — Operating Costs**
-The sum of: energy cost (from Energy.md EV-001 when resolved),
+The sum of: energy cost (from `Operations/Energy.md` EV-001 when resolved),
 consumables, any facility cost, and operator time valued at
 a declared rate. At v0, operator time may be valued at zero
 for bootstrap purposes — but must be declared, not assumed.
@@ -422,7 +434,7 @@ provides a better basis.
 ### Baseline Calibration Path
 
 TR-001 closes when:
-1. Operating cost model is established (Energy.md EV-001 resolved)
+1. Operating cost model is established (`Operations/Energy.md` EV-001 resolved)
 2. At least one full measurement period of revenue and barter
    value data exists
 3. FRT floor is calibrated from placeholder to declared value
@@ -602,7 +614,7 @@ Payment via Specification.
 
 **Description:** The operating cost model required for the v1
 profitability baseline (Section V Component 1) does not yet exist.
-It depends on Energy.md EV-001 (Forge demand baseline) which is
+It depends on `Operations/Energy.md` EV-001 (Forge demand baseline) which is
 In Progress. Until EV-001 resolves, the cost side of the
 profitability equation is a placeholder.
 
@@ -610,7 +622,7 @@ profitability equation is a placeholder.
 is not a baseline — it is an assumption. TR-001 cannot be formally
 closed until the cost model exists.
 
-**Resolution Path:** Dependent on Energy.md EV-001. When EV-001
+**Resolution Path:** Dependent on `Operations/Energy.md` EV-001. When EV-001
 resolves, establish cost baseline incorporating energy, consumables,
 facility, and declared operator time rate. Update Section V
 Component 1 from framework to figures. Cross-reference TR-001.
@@ -696,11 +708,62 @@ apply even to small-scale operations.
 **Resolution Path:** Human decision — jurisdiction-specific and
 cannot be resolved by AI audit. Assign to human operator before
 first commercial transaction. Cross-reference FA-003 in
-Facilities.md — both are pre-operation human compliance decisions.
+`Architecture/Facilities.md` — both are pre-operation human compliance decisions.
 
 ---
 
-### Resolution Log
+### ECN-006 — Barter performance and default risk mechanics undefined
+
+| Field         | Value              |
+|---------------|--------------------|
+| Status        | Open               |
+| Risk          | Medium             |
+| Priority      | Minor              |
+| Type          | Governance         |
+| Blocking      | No                 |
+| Owner         | Admin/Economics.md |
+| First Logged  | 2026-07-06         |
+| Last Reviewed | 2026-07-06         |
+
+**Description:** The Barter Doctrine (Section VI) defines valuation
+(market replacement cost) and accounting treatment with internal
+consistency, but implicitly assumes perfect counterparty performance.
+No doctrine exists for asset quality divergence at exchange, an
+unfulfilled counterparty commitment, or a valuation dispute between
+the Forge and a barter partner.
+
+**Why It Matters:** In decentralized, relationship-driven local
+barter networks, these are predictable sources of friction, not edge
+cases. Without a baseline posture, disputes have no defined
+resolution path and asset-quality disagreements could silently
+distort FRT accounting (Section VI, Barter and the FRT).
+
+**Resolution Path:** Define a basic verification/recourse posture for
+non-monetary exchanges — at minimum, a pre-exchange condition check
+standard and a dispute logging requirement — prior to promoting this
+doctrine beyond Exploration status.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-06 Exploration audit.*
+
+---
+
+### Adversarial Deferral (Gate 3)
+
+Per `Admin/Verification_Gates_LF.md`, Exploration-stage documents may
+defer Adversarial Battery classes if the deferral is explicitly
+declared with rationale, rather than left silent. This file defers:
+
+- **Counterparty bad faith** — deferred; no barter transactions have
+  occurred yet at v0 bootstrap scale to test this against (see ECN-006)
+- **Localized market collapse** — deferred; disposition channels are
+  not yet operational; premature to adversarially test a market
+  navigation framework with no live channel
+- **Hyper-inflationary liquidity distortion** — deferred; out of scope
+  for a barter-tolerant, non-monetary-primary economic doctrine at v0
+
+*Declared per Gemini (Skeptic/Auditor), 2026-07-06 Exploration audit.*
+
+---
 
 *(empty — first version)*
 
@@ -711,7 +774,7 @@ Facilities.md — both are pre-operation human compliance decisions.
 | Date | Path | Why Abandoned | Reconsider? |
 |------|------|---------------|-------------|
 | 2026-06-05 | Fixed economic model with prescribed cost and revenue figures | No operational data exists at v0. A fixed model would be false precision — figures without basis. Framework-with-calibration-path adopted instead. | Reconsider at v1 when operational data exists |
-| 2026-06-05 | Placing Economics.md in Admin/ alongside Trajectories.md | Economics.md provides market navigation doctrine used operationally — it is closer in character to Architecture/ foundational doctrine than Admin/ governance protocol. Placed in Admin/ per Repository_Structure.md Rule 1 because it sets standards other files reference, but the boundary is genuinely close. | Reconsider if operational use pattern suggests Architecture/ is more natural |
+| 2026-06-05 | Placing Economics.md in Admin/ alongside Trajectories.md | Economics.md provides market navigation doctrine used operationally — it is closer in character to Architecture/ foundational doctrine than Admin/ governance protocol. Placed in Admin/ per `Admin/Repository_Structure.md` Rule 1 because it sets standards other files reference, but the boundary is genuinely close. | Reconsider if operational use pattern suggests Architecture/ is more natural |
 | 2026-06-05 | Defining specific pricing targets or margin floors | Pricing is market-dependent and time-dependent. A floor defined today is false doctrine tomorrow. Value ladder doctrine and channel selection framework provide the navigation logic without prescribing figures that would require continuous updating. | No |
 
 ---
