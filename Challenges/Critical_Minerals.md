@@ -58,7 +58,7 @@
 | `Architecture/Facilities.md` | Site constraints for high-temperature metal recovery operations |
 | `Architecture/Chemistry.md` | Elemental identification; galvanic series; CE-002 (oxide burden) |
 | `Operations/Gate_02_Triage.md` | Preprocessing and complexity-preservation triage before mineral recovery |
-| `Admin/Economics.md` | EC-001 (critical mineral surplus disposition path) |
+| `Admin/Economics.md` | ECN-001 (critical mineral surplus disposition path) |
 
 ---
 
@@ -156,7 +156,7 @@ The landfill is a mine. The question is whether we build the tools to work it.
 
 ---
 
-*See: `Operations/Gate_04_Separation_Mechanical.md` MG-002 and MG-003 for RPM calibration unknowns governing centrifugal mineral separation. See: `Operations/Gate_05_Separation_Thermal.md` SC-001 and SC-008 for induction separation unknowns. See: `Admin/Economics.md` EC-001 for the critical mineral surplus disposition path unknown. See: `Unknowns.md` for all cross-module tracked unknowns.*
+*See: `Operations/Gate_04_Separation_Mechanical.md` MG-002 and MG-003 for RPM calibration unknowns governing centrifugal mineral separation. See: `Operations/Gate_05_Separation_Thermal.md` SC-001 and SC-008 for induction separation unknowns. See: `Admin/Economics.md` ECN-001 for the critical mineral surplus disposition path unknown. See: `Unknowns.md` for all cross-module tracked unknowns.*
 
 ---
 
