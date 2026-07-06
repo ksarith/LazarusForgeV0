@@ -1,6 +1,6 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.10 — 2026-07-03. GOV-011 and CT-010 registered (Gate/Checkpoint naming collision fix and its fallout — see Governance_Charter.md and Canonical_Terms.md). GOV-011 added to Critical Watch given possible repo-wide scope.**
-**Expiry Rule active. Protocol Performance metrics collecting.**
+**Version 4.11 — 2026-07-05. GOV-011 Resolved (confirmed isolated to Governance_Charter.md). Seven new entries registered (GOV-012, EN-007, TR-003, EC-012 through EC-015). CT-007 escalated and added to cross-module index — confirmed active `EC-`/`ECN-` prefix collision between Ethical_Constraints.md and Economics.md.**
+**Expiry Rule active — see `Admin/Canonical_Terms.md` §4 for the Cycle definition this rule now explicitly references (one calendar year default, not one audit pass — see CT-011). Protocol Performance metrics collecting.**
 
 ---
 
@@ -27,12 +27,13 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.10 Means
+## What v4.11 Means
 
-- **Gate/Checkpoint naming collision fixed.** `Admin/Governance_Charter.md`'s "Canonical Verification Gates" and `Admin/Verification_Gates_LF.md`'s "Six Canonical Verification Gates" were two independently-named, materially different six-item systems sharing "Gate N" numbering — surfaced while drafting the (still-unratified) External Design Lineage amendment. Renamed Governance_Charter.md's set to **Enforcement Checkpoints**; `Admin/Canonical_Terms.md` gained formal disambiguation entries for both terms and added Verification_Gates_LF.md as a fourth vocabulary authority source it had never been registered as, despite being the file every `Spec Gates X/6` field actually references.
-- **GOV-011 registered** — the rename surfaced something deeper: Governance_Charter.md's own `Spec Gates 1/6` field was reporting its internal checkpoint status under a label naming Verification_Gates_LF.md as reference. The "1/6" was never actually audited against that file. Added to Critical Watch — whether this is isolated to Governance_Charter.md or a repo-wide pattern is unknown and worth a spot-check across other governance files before assuming it's contained.
-- **CT-010 registered** — tracks whether any other file still cites the old unqualified "Gate N" for what is now Enforcement Checkpoints.
-- **Governance_Charter.md's EDL amendment stays deliberately unratified** — a considered decision, not neglect. The draft doesn't decay by sitting: it isn't claiming to be true, only proposed, and its own phased-rollout logic already assumes a waiting period. Given GOV-011 and the Gate/Checkpoint collision both surfaced from the same review pass, ratifying a repository-wide mandate right now would be building on ground still settling.
+- **GOV-011 Resolved.** Real audit against Verification_Gates_LF.md's actual six gates found G1, G2, G4, G6 uncontested pass; G3 and G5 were disputed by a same-day Gemini audit but neither dispute held up on direct source-text verification. Real score: 6/6 execution quality; promotion remains separately blocked by GOV-003/GOV-005. Spot-checked all eight other governance-tier Spec-Gates-bearing files (Ethical_Constraints.md, Canonical_Terms.md, Auditor_Protocols.md, Forge_Audit_Kit.md, Verification_Gates_LF.md, Repository_Integrity_Protocol.md, Security_Protocols.md, Governance_Migration_Protocol.md) — all correctly cite Verification_Gates_LF.md with no competing gate system. **Confirmed isolated to Governance_Charter.md** — the failure mode required an internal gate-numbered system to collide with, which only that file has.
+- **CT-007 escalated from hypothetical to confirmed.** What CT-007 flagged in the abstract (ID namespace collisions) has actually occurred: EC-001, EC-002, EC-004, EC-005, and EC-008 are each claimed by both `Admin/Ethical_Constraints.md` and `Admin/Economics.md` with unrelated content under each shared ID. `Admin/Forge_Audit_Kit.md`'s own Governance Sidecar ID Reference already reserves `EC-` for Ethical_Constraints.md — Economics.md's usage was never registered there. Proposed fix: rename Economics.md's five entries to a new `ECN-` prefix — not yet done; requires a coordinated edit to Economics.md's own sidecar, which has not been available this session. Until renamed, any bare "EC-00X" reference is ambiguous without naming the owning file.
+- **EN-001 advanced to In Progress.** The blanket, undifferentiated 6×+ safety factor floor has been replaced with a differentiated interim table by material category (structural steel, aluminum, timber, unidentified material), each reasoned from failure-mode behavior — still not resolved, no destructive test data yet. Four Sandbox hypotheses (SB-001–SB-004) registered in `Tests/Chaos_Dynamics.md`, currently Deferred pending physical testing capability.
+- **RE-UNK-004 partially resolved.** The Discovery.md Scope Map portion is now reconciled directly against `Challenges/Return_To_Eden.md`'s own source text (previous entry was inferred and, on reconciliation, partly wrong). The file's own formal Upstream/Downstream declaration still does not exist — RE-UNK-004 stays Open until that's added to the file itself.
+- **New entries registered:** GOV-012 (Constitutional Stagnation Decay — no automated consequence for unknowns that sit Open past the Cycle threshold without resolution-path movement), EN-007 (dissimilar-material junction fatigue), TR-003 (off-world nuclear containment architecture, formalizing a dependency Trajectories.md's own text had flagged in prose since 2026-06-26), EC-012 (epistemic spoofing via hardware/firmware tampering), EC-013 (safe-state descent sequence undefined for active hazardous processes during governance failure), EC-014 (toxic material encapsulation standard undefined), EC-015 (right-to-repair/anti-circumvention legal boundary undefined per jurisdiction).
 
 ---
 
@@ -185,6 +186,10 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | EC-009 | Human authority conflict resolution undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
 | EC-010 | Jurisdiction conflict hierarchy undefined — cross-ref GOV-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Ethical_Constraints.md` | In Progress | Vehicle | Minor |
 | EC-011 | Human governance adversary model undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
+| EC-012 | Epistemic spoofing via hardware/firmware tampering | `Admin/Ethical_Constraints.md` | Open | — | Major |
+| EC-013 | Safe-state descent sequence undefined for active hazardous processes during governance failure | `Admin/Ethical_Constraints.md` | Open | — | Major |
+| EC-014 | Toxic material encapsulation standard undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
+| EC-015 | Right-to-repair / anti-circumvention legal boundary undefined per jurisdiction | `Admin/Ethical_Constraints.md` | Open | — | Major |
 | GOV-001 | Governance migration mechanics incompletely operationalized — `Admin/Governance_Migration_Protocol.md` created; not yet audited against charter constraints | `Admin/Governance_Charter.md` | In Progress | Vehicle | Major |
 | GOV-002 | Provenance operationalization immature | `Admin/Governance_Charter.md` | In Progress | Active | Major |
 | GOV-003 | Integrity enforcement architecture undefined | `Admin/Governance_Charter.md` | In Progress | Active | Critical |
@@ -195,7 +200,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GOV-008 | Minimum hardware and agent quorum for bootstrap compliance | `Admin/Governance_Charter.md` | Open | — | Major |
 | GOV-009 | Bounded framework for external resource consumption and environmental interaction — `Admin/Environmental_Constraints.md` created as resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Vehicle | Major |
 | GOV-010 | Jurisdictional and regulatory compliance friction for physical forge deployment — cross-ref EC-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Governance_Charter.md` | In Progress | Vehicle | Minor |
-| GOV-011 | File State Spec Gates field scored against wrong gate system — this file's own promotion tracker cited `Admin/Verification_Gates_LF.md` as Verification Ref while reporting status from its own (now-renamed) internal checkpoint system; "1/6" was never audited against the file it claims to reference; may not be isolated — spot-check other governance files recommended | `Admin/Governance_Charter.md` | Open | — | Major |
+| GOV-012 | Constitutional Stagnation Decay — no automated demotion mechanism for unknowns that remain Open past the Cycle threshold without substantively updated Resolution Path | `Admin/Governance_Charter.md` | Open | — | Major |
 | SEC-001 | Quorum recovery under terminal partition | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-002 | Key revocation doctrine undefined | `Admin/Security_Protocols.md` | Open | — | Major |
 | SEC-003 | Key rotation period undefined | `Admin/Security_Protocols.md` | Open | — | Major |
@@ -239,6 +244,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | CT-003 | Dependency_Priority_Map.md needed before v1 | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-004 | Trusted initialization environment definition | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-005 | Ethical and authorization term placeholders pending canonicalization | `Admin/Canonical_Terms.md` | Open | — | Major |
+| CT-007 | ID Namespace Allocation Doctrine — escalated 2026-07-05 from hypothetical to confirmed: `EC-` prefix actively collides between `Admin/Ethical_Constraints.md` and `Admin/Economics.md` (EC-001, EC-002, EC-004, EC-005, EC-008 all shared with unrelated content). Proposed fix: rename Economics.md's entries to `ECN-`, not yet done. | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
 | CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-010 | Verification Gate / Enforcement Checkpoint rename propagation — confirm no file still cites unqualified "Gate N" for Governance_Charter.md's renamed checkpoints, outside Verification_Gates_LF.md and Operations/Gate_01–07 | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Major |
@@ -258,12 +264,13 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
 |---|---|---|---|---|---|
-| EN-001 | Validated safety factors for salvaged materials | `Architecture/Engineering.md` | Open | — | Critical |
+| EN-001 | Validated safety factors for salvaged materials — blanket 6×+ floor replaced 2026-07-05 with differentiated per-material interim table (steel/aluminum/timber/unidentified); still Internally Derived, no destructive test data yet | `Architecture/Engineering.md` | In Progress | Active | Critical |
 | EN-002 | Deployment-specific environmental load data not compiled | `Architecture/Engineering.md` | Open | — | Major |
 | EN-003 | Materials database for salvaged alloy identification | `Architecture/Engineering.md` | Open | — | Major |
 | EN-004 | High-performance low-tech fabrication methods | `Architecture/Engineering.md` | Open | — | Minor |
 | EN-005 | Verification testing protocols for structural claims | `Architecture/Engineering.md` | Open | — | Major |
 | EN-006 | Advanced engineering section drift risk (topology, composites) | `Architecture/Engineering.md` | Open | — | Minor |
+| EN-007 | Dissimilar material junction fatigue profiles undefined | `Architecture/Engineering.md` | Open | — | Major |
 | ME-001 | Vibration resonance mapping on mismatched salvaged rails | `Architecture/Mechanical_Structures.md` | Open | — | Major |
 | ME-002 | Pneumatic purge volume requirements vs. Air Scrubber capacity | `Architecture/Mechanical_Structures.md` | Open | — | Minor |
 | ME-003 | Structural creep and damp-fill aging not characterized | `Architecture/Mechanical_Structures.md` | Open | — | Major |
@@ -441,7 +448,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | RE-UNK-001 | Eden Index variable measurement protocols undefined — $B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$ all lack instrument specifications, calibration procedures, and sampling intervals | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
 | RE-UNK-002 | 98.4% closed-loop material cycle threshold provenance unverified — empirical target, thermodynamic bound, or external specification; precision implies measurement capability that RE-UNK-001 flags as absent | `Challenges/Return_To_Eden.md` | Open | Active | Major |
 | RE-UNK-003 | Tier-to-tier advancement criteria undefined — no explicit pass/fail gate logic for progression between Tiers I–IV | `Challenges/Return_To_Eden.md` | Open | Active | Major |
-| RE-UNK-004 | Upstream/downstream dependency map absent — file references several modules implicitly but carries no formal dependency declaration; blocks Discovery.md Scope Map completion | `Challenges/Return_To_Eden.md` | Open | Active | Minor |
+| RE-UNK-004 | Upstream/downstream dependency map absent — Discovery.md Scope Map portion reconciled directly against source file 2026-07-05 (prior entry was inferred and partly incorrect); the file's own formal Upstream/Downstream declaration (Navigation Anchors/File State) still does not exist — stays Open until added to the file itself | `Challenges/Return_To_Eden.md` | Open | Active | Minor |
 | RE-UNK-005 | Eden Index baseline reference values undefined — $B_{d,0}$, $\Omega_{r,0}$, $W_{out,0}$, $\Phi_{ext,0}$ required by normalized formulation (v1.0.2) but have no measurement protocol; co-blocking dependency of RE-UNK-001 | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
 
 *RE-UNK-001 and RE-UNK-005 are co-blocking at Tier I gate — both must be resolved before $I_E$ can be computed. Non-blocking at Exploration.*
@@ -566,6 +573,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 |---|---|---|---|---|---|
 | TR-001 | v1 profitability baseline | `Admin/Trajectories.md` | Open | — | Blocking |
 | TR-002 | FRT floor value not yet calibrated | `Admin/Trajectories.md` | Open | — | Major |
+| TR-003 | Off-world nuclear containment architecture undefined — formalizes a dependency the file's own v3 text had flagged in prose since 2026-06-26 but never registered as a tracked unknown; not active until v3 planning begins | `Admin/Trajectories.md` | Open | — | Major |
 
 ### Plastics
 
@@ -787,16 +795,17 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| GOV-011 | Spec Gates field integrity — one file's promotion score confirmed scored against the wrong system; unaudited whether this is repo-wide, not just Governance_Charter.md |
+| CT-007 | ID Namespace Allocation — confirmed active collision, `EC-` prefix shared by Ethical_Constraints.md and Economics.md across 5 IDs; rename to `ECN-` proposed, not yet executed |
 | SEC-007a | External root-of-trust, constitutional layer — architectural decision above repository level required; blocks SEC-007b |
 | SEC-007b | External root-of-trust, physical implementation layer — blocked pending SEC-007a resolution |
 | UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b |
 | EC-008 | Inferred authorization — softest point in permission model; interim default (no material alteration) in place; formal resolution required before operational deployment |
 | EC-011 | Human governance adversary model — load-bearing assumption under "capability never outruns permission"; no protection if permission source is compromised |
+| EC-012 | Epistemic spoofing via hardware/firmware tampering — every constraint in Ethical_Constraints.md assumes telemetry is honest; no doctrine addresses compromised sensor/firmware data |
 | EV-003 | Battery thermal containment — no enclosed battery bank until resolved |
 | PL-001 | Halogenated polymer contamination — no hot pyrolysis run before triage protocol validated |
 | WW-005 | IFM detection — no powered machinery contact with raw urban salvage until screening validated |
-| EN-001 | Validated safety factors for salvaged materials — no structural specification promotion until resolved |
+| EN-001 | Validated safety factors for salvaged materials — blanket floor replaced with differentiated per-material interim table 2026-07-05; still no destructive test data; no structural specification promotion until resolved |
 | CF-001 | Hardware watchdog — In Progress; Blocking until hardware prototype validates at Measured confidence |
 | TH-003 | Atmospheric moisture yield — Blocking for Living Waters deployment |
 | FA-001 | Site not confirmed — no hot operations until site physically assessed |
@@ -848,3 +857,4 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.8 — 2026-07-03:** AP-001–007 Systemic Risk escalation downgrade confirmed by human governing authority (Auditor_Protocols.md → v0.15); underlying AP-001–005/007 unknowns unchanged, In Progress. A separately-drafted, unrequested "v0.15" patch claiming AP-001/012/016 individually resolved was received and explicitly not incorporated — held for review pending full specification text (AP-012/AP-016 are Gate-3-blocking Critical items). VG-001 discharged via Gate Definition Synchronization Protocol (Verification_Gates_LF.md → v0.4); removed from active index and Critical Watch.
 **v4.9 — 2026-07-03:** Full specification text for the held-for-review AP-001/AP-012/AP-016 patch was provided; verified against original blocking conditions and incorporated (Auditor_Protocols.md → v0.16). AP-001 Payment via Constitutional Decision; AP-012/AP-016 Payment via Specification. Open Unknowns 12 → 9, Highest Risk Critical → High. New Resolution Taxonomy (5 payment types) formalized in Auditor_Protocols.md. Forge_Audit_Kit.md's stale Gate 3 note corrected. Removed AP-012/AP-016 from this file's active index and Critical Watch.
 **v4.10 — 2026-07-03:** Gate/Checkpoint naming collision resolved (Governance_Charter.md's "Canonical Verification Gates" → Enforcement Checkpoints; Canonical_Terms.md gained formal disambiguation and added Verification_Gates_LF.md as a 4th vocabulary authority). GOV-011 registered and added to Critical Watch — Governance_Charter.md's own Spec Gates field was scored against the wrong system, unaudited whether isolated. CT-010 registered tracking rename propagation. EDL amendment remains deliberately unratified pending GOV-011 and general system stability — logged as a considered decision, not an oversight.
+**v4.11 — 2026-07-05:** GOV-011 Resolved — real audit found 6/6 execution quality against Verification_Gates_LF.md; spot-check of all eight other governance-tier files confirmed isolated to Governance_Charter.md; removed from active index and Critical Watch. CT-011 Resolved in Admin/Canonical_Terms.md (Cycle definition propagated into Auditor_Protocols.md's Expiry Rule) — not previously in this file's active index, no removal needed; Expiry Rule line above now cross-references the Cycle definition. CT-007 escalated Low/Minor → High/Major and added to this file's cross-module index for the first time — confirmed active `EC-`/`ECN-` prefix collision between Ethical_Constraints.md and Economics.md (EC-001, EC-002, EC-004, EC-005, EC-008 shared), added to Critical Watch; rename to `ECN-` proposed, not yet executed. EN-001 advanced Open → In Progress (blanket 6×+ floor replaced with differentiated per-material interim table; four Sandbox hypotheses registered in Tests/Chaos_Dynamics.md, Deferred pending physical testing capability). RE-UNK-004 partially resolved — Discovery.md Scope Map portion reconciled directly against source file (prior entry inferred and partly wrong); file's own formal dependency declaration still absent, stays Open. Seven new entries registered: GOV-012 (Constitutional Stagnation Decay), EN-007 (dissimilar material junction fatigue), TR-003 (off-world nuclear containment), EC-012 (epistemic spoofing via hardware/firmware tampering, added to Critical Watch), EC-013 (safe-state descent sequence for active hazardous processes), EC-014 (toxic material encapsulation standard), EC-015 (right-to-repair/anti-circumvention boundary per jurisdiction). FAK-007 (Forge_Audit_Kit.md's own critical watch summary refresh) Resolved — not tracked in this cross-module index, noted here only because it was the occasion this pass's changes were gathered under.
