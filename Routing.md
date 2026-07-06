@@ -87,6 +87,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Challenges/Critical_Minerals.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Critical_Minerals.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Critical_Minerals.md) | Explicit |
 | `Challenges/Emergence.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Emergence.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Emergence.md) | Explicit |
 | `Challenges/Return_To_Eden.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Return_To_Eden.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Return_To_Eden.md) | Explicit |
+| `Challenges/Closed_Loop_Feedstock.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Closed_Loop_Feedstock.md) | [Repo] | Explicit |
 
 *\* **Discovery.md Description Context:** The foundational navigational directory and behavior scope boundary map for the active working repository layer. It anchors incoming multi-agent analysis runs and human code reviews, defining active document maturity gates, dependency maps, and evolutionary path tracking parameters without cluttering data extraction queries with long textual strings.*
 
