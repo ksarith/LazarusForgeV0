@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.11 — 2026-07-05. GOV-011 Resolved (confirmed isolated to Governance_Charter.md). Seven new entries registered (GOV-012, EN-007, TR-003, EC-012 through EC-015). CT-007 escalated and added to cross-module index — confirmed active `EC-`/`ECN-` prefix collision between Ethical_Constraints.md and Economics.md.**
+**Version 4.12 — 2026-07-06. CT-007 Resolved — `ECN-` rename verified and applied (Economics.md's own five entries, EC-008 citation error corrected, ECN-003 identified as the actual fifth collision). New `Challenges/Closed_Loop_Feedstock.md` CLF- cluster registered (10 entries; CLF-003/004/006 Critical). ENV-DS-001 registered in Active Disputes (Environmental_Constraints.md doctrine conflict, pending ratification). PC-005 registered (Closed_Loop_Feedstock.md not yet in Routing.md/Discovery.md/AUDIT_HARNESS.py).**
 **Expiry Rule active — see `Admin/Canonical_Terms.md` §4 for the Cycle definition this rule now explicitly references (one calendar year default, not one audit pass — see CT-011). Protocol Performance metrics collecting.**
 
 ---
@@ -27,13 +27,15 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.11 Means
+## What v4.12 Means
 
-- **GOV-011 Resolved.** Real audit against Verification_Gates_LF.md's actual six gates found G1, G2, G4, G6 uncontested pass; G3 and G5 were disputed by a same-day Gemini audit but neither dispute held up on direct source-text verification. Real score: 6/6 execution quality; promotion remains separately blocked by GOV-003/GOV-005. Spot-checked all eight other governance-tier Spec-Gates-bearing files (Ethical_Constraints.md, Canonical_Terms.md, Auditor_Protocols.md, Forge_Audit_Kit.md, Verification_Gates_LF.md, Repository_Integrity_Protocol.md, Security_Protocols.md, Governance_Migration_Protocol.md) — all correctly cite Verification_Gates_LF.md with no competing gate system. **Confirmed isolated to Governance_Charter.md** — the failure mode required an internal gate-numbered system to collide with, which only that file has.
-- **CT-007 escalated from hypothetical to confirmed.** What CT-007 flagged in the abstract (ID namespace collisions) has actually occurred: EC-001, EC-002, EC-004, EC-005, and EC-008 are each claimed by both `Admin/Ethical_Constraints.md` and `Admin/Economics.md` with unrelated content under each shared ID. `Admin/Forge_Audit_Kit.md`'s own Governance Sidecar ID Reference already reserves `EC-` for Ethical_Constraints.md — Economics.md's usage was never registered there. Proposed fix: rename Economics.md's five entries to a new `ECN-` prefix — not yet done; requires a coordinated edit to Economics.md's own sidecar, which has not been available this session. Until renamed, any bare "EC-00X" reference is ambiguous without naming the owning file.
-- **EN-001 advanced to In Progress.** The blanket, undifferentiated 6×+ safety factor floor has been replaced with a differentiated interim table by material category (structural steel, aluminum, timber, unidentified material), each reasoned from failure-mode behavior — still not resolved, no destructive test data yet. Four Sandbox hypotheses (SB-001–SB-004) registered in `Tests/Chaos_Dynamics.md`, currently Deferred pending physical testing capability.
-- **RE-UNK-004 partially resolved.** The Discovery.md Scope Map portion is now reconciled directly against `Challenges/Return_To_Eden.md`'s own source text (previous entry was inferred and, on reconciliation, partly wrong). The file's own formal Upstream/Downstream declaration still does not exist — RE-UNK-004 stays Open until that's added to the file itself.
-- **New entries registered:** GOV-012 (Constitutional Stagnation Decay — no automated consequence for unknowns that sit Open past the Cycle threshold without resolution-path movement), EN-007 (dissimilar-material junction fatigue), TR-003 (off-world nuclear containment architecture, formalizing a dependency Trajectories.md's own text had flagged in prose since 2026-06-26), EC-012 (epistemic spoofing via hardware/firmware tampering), EC-013 (safe-state descent sequence undefined for active hazardous processes during governance failure), EC-014 (toxic material encapsulation standard undefined), EC-015 (right-to-repair/anti-circumvention legal boundary undefined per jurisdiction).
+- **CT-007 Resolved.** The `ECN-` rename proposed since v4.11 was verified directly against `Admin/Economics.md`'s own source text and found already executed there: ECN-001, ECN-002, ECN-004, ECN-005 (all Open), plus ECN-003 (Resolved, barter valuation). This closes a discrepancy in how CT-007 was originally described — the write-up that escalated it cited a fifth colliding ID (EC-008) that does not actually exist anywhere in Economics.md; the real fifth collision was ECN-003, missed because Resolved entries don't appear in either file's active index. Removed from Active Index and Critical Watch per Size Management Rule 2.
+- **EC-010's Resolution Path corrected.** It had described `Admin/Environmental_Constraints.md` as a file to be created at v1 transition — that file has existed since 2026-06-19 and is already the confirmed convergence point via its own ENV-003 entry. The stale reference survived three intervening audit passes unnoticed.
+- **ENV-007 and ENV-008 status made explicit.** Both were already correctly absent from this file's active index (consistent with them being Resolved/Partially Addressed), but `Admin/Environmental_Constraints.md`'s own sidecar had never been updated to match — it still showed both as Open, dated to file creation. Corrected at the source file; this file's footnote now says so explicitly rather than leaving the consistency implicit. ENV-010 registered (Facilities.md checklist reciprocity unverified).
+- **New Closed-Loop Feedstock cluster.** `Challenges/Closed_Loop_Feedstock.md` is a new file; CLF-001 through CLF-010 registered. Notable history: this file's unknowns were originally numbered `CF-001`–`CF-003`, an exact collision with `Architecture/Cognitive_Frameworks.md`/`Operations/Electronics.md`'s existing CF- entries; an intervening pass renamed them to `FL-001`–`FL-004`, which collided again, this time with `Architecture/Forge_flow.md`'s FL-001 (Blocking); settled on `CLF-`, which is unique in this index. CLF-003, CLF-004, and CLF-006 (Critical) added to Critical Watch. Two cross-module ambiguities logged rather than resolved: CLF-005 flags a possible symbol collision with `Challenges/Return_To_Eden.md`'s Φ_ext (cross-referenced at RE-UNK-001); CLF-004 shares its underlying acid-reclamation question with CM-002 (`Challenges/Critical_Minerals.md`), a different material stream, same open problem.
+- **ENV-DS-001 registered in Active Disputes.** `Admin/Environmental_Constraints.md`'s Bootstrap operating doctrine and `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default were found structurally incompatible (self-directed gray-zone operation vs. mandatory deference to human authority under ambiguity). A reconciled text is already drafted in Environmental_Constraints.md, held pending human governing authority ratification rather than adopted by audit alone.
+- **PC-005 registered.** `Challenges/Closed_Loop_Feedstock.md` itself is not yet registered in `Routing.md`, `Discovery.md`, or `Admin/AUDIT_HARNESS.py` — same class of gap `Admin/Environmental_Constraints.md` had as ENV-008, now resolved there. First priority action on the new file, ahead of further content work.
+- **Not yet done:** `Discovery.md`'s mirrored "Cross-Module Unknowns — Attention Required" table has not been refreshed to match this version bump, though this file's own stated rule says it should be whenever a version bump materially changes that set. Flagged for the next pass rather than left silently stale.
 
 ---
 
@@ -90,6 +92,10 @@ PL-001 (Halogenated polymer contamination)
 
 WW-005 (IFM detection)
 └── All powered machinery contact with raw urban salvage blocked
+
+CLF-004 (Closed_Loop_Feedstock.md — electrolytic chemical footprint undefined)
+└── Blocks construction of any electrolytic/electrorefining pathway
+        └── Intersects PL-001, CE-003, WA-002 hazardous-material cluster
 ```
 
 **Autonomy & Hardware**
@@ -107,7 +113,7 @@ TH-003 (Atmospheric moisture yield)
 **Economics**
 ```
 EV-001 (Forge power demand)
-└── EC-002 (Operating cost baseline)
+└── ECN-002 (Operating cost baseline)
         └── TR-001 (v1 profitability baseline)
 ```
 
@@ -184,7 +190,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | EC-007 | Governance fail-safe | `Admin/Ethical_Constraints.md` | In Progress | Active | Blocking |
 | EC-008 | Inferred authorization doctrine undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
 | EC-009 | Human authority conflict resolution undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
-| EC-010 | Jurisdiction conflict hierarchy undefined — cross-ref GOV-010; `Admin/Environmental_Constraints.md` created as convergence resolution vehicle | `Admin/Ethical_Constraints.md` | In Progress | Vehicle | Minor |
+| EC-010 | Jurisdiction conflict hierarchy undefined — `Admin/Environmental_Constraints.md` exists (created 2026-06-19) and is the declared convergence junction via its own ENV-003 entry; deferred to that file's v1-transition resolution timeline | `Admin/Ethical_Constraints.md` | In Progress | Vehicle | Minor |
 | EC-011 | Human governance adversary model undefined | `Admin/Ethical_Constraints.md` | Open | — | Major |
 | EC-012 | Epistemic spoofing via hardware/firmware tampering | `Admin/Ethical_Constraints.md` | Open | — | Major |
 | EC-013 | Safe-state descent sequence undefined for active hazardous processes during governance failure | `Admin/Ethical_Constraints.md` | Open | — | Major |
@@ -244,7 +250,6 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | CT-003 | Dependency_Priority_Map.md needed before v1 | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-004 | Trusted initialization environment definition | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-005 | Ethical and authorization term placeholders pending canonicalization | `Admin/Canonical_Terms.md` | Open | — | Major |
-| CT-007 | ID Namespace Allocation Doctrine — escalated 2026-07-05 from hypothetical to confirmed: `EC-` prefix actively collides between `Admin/Ethical_Constraints.md` and `Admin/Economics.md` (EC-001, EC-002, EC-004, EC-005, EC-008 all shared with unrelated content). Proposed fix: rename Economics.md's entries to `ECN-`, not yet done. | `Admin/Canonical_Terms.md` | Open | — | Major |
 | CT-008 | HF-001 Heuristic Failure canonicalization status — cross-file consistency tracking | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Minor |
 | CT-009 | Grain System implementation consistency — tracks Canonical_Terms.md definition against ST-001/ST-002 implementation | `Admin/Canonical_Terms.md` | Open | — | Minor |
 | CT-010 | Verification Gate / Enforcement Checkpoint rename propagation — confirm no file still cites unqualified "Gate N" for Governance_Charter.md's renamed checkpoints, outside Verification_Gates_LF.md and Operations/Gate_01–07 | `Admin/Canonical_Terms.md` | In Progress | Vehicle | Major |
@@ -439,13 +444,13 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | CM-003 | Functional substitute performance floor undefined | `Challenges/Critical_Minerals.md` | Open | — | Major |
 | CM-004 | Urban ore database coverage insufficient | `Challenges/Critical_Minerals.md` | Open | — | Major |
 
-*CM-002 Critical — no hydrometallurgical processing before closed-loop reagent recovery specified.*
+*CM-002 Critical — no hydrometallurgical processing before closed-loop reagent recovery specified. Cross-ref CLF-004 (`Challenges/Closed_Loop_Feedstock.md`) — same underlying acid-reclamation problem, different material stream.*
 
 ### Return to Eden
 
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
 |---|---|---|---|---|---|
-| RE-UNK-001 | Eden Index variable measurement protocols undefined — $B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$ all lack instrument specifications, calibration procedures, and sampling intervals | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
+| RE-UNK-001 | Eden Index variable measurement protocols undefined — $B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$ all lack instrument specifications, calibration procedures, and sampling intervals. **Cross-ref CLF-005** (`Challenges/Closed_Loop_Feedstock.md`) — that file uses $\Phi_{\text{ext}}$ operationally without confirming whether it is this same variable; do not treat CLF-005's usage as resolving this measurement gap until explicitly confirmed. | `Challenges/Return_To_Eden.md` | Open | Active | Blocking (Tier I gate) |
 | RE-UNK-002 | 98.4% closed-loop material cycle threshold provenance unverified — empirical target, thermodynamic bound, or external specification; precision implies measurement capability that RE-UNK-001 flags as absent | `Challenges/Return_To_Eden.md` | Open | Active | Major |
 | RE-UNK-003 | Tier-to-tier advancement criteria undefined — no explicit pass/fail gate logic for progression between Tiers I–IV | `Challenges/Return_To_Eden.md` | Open | Active | Major |
 | RE-UNK-004 | Upstream/downstream dependency map absent — Discovery.md Scope Map portion reconciled directly against source file 2026-07-05 (prior entry was inferred and partly incorrect); the file's own formal Upstream/Downstream declaration (Navigation Anchors/File State) still does not exist — stays Open until added to the file itself | `Challenges/Return_To_Eden.md` | Open | Active | Minor |
@@ -628,12 +633,14 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
 |---|---|---|---|---|---|
-| EC-001 | Critical mineral surplus disposition path undefined | `Admin/Economics.md` | Open | — | Major |
-| EC-002 | Operating cost baseline not established | `Admin/Economics.md` | Open | — | Critical |
-| EC-004 | Market rate data not maintained | `Admin/Economics.md` | Open | — | Minor |
-| EC-005 | Legal and tax compliance not assessed | `Admin/Economics.md` | Open | — | Major |
+| ECN-001 | Critical mineral surplus disposition path undefined | `Admin/Economics.md` | Open | — | Major |
+| ECN-002 | Operating cost baseline not established | `Admin/Economics.md` | Open | — | Critical |
+| ECN-004 | Market rate data not maintained | `Admin/Economics.md` | Open | — | Minor |
+| ECN-005 | Legal and tax compliance not assessed | `Admin/Economics.md` | Open | — | Major |
+| ECN-006 | Barter performance and default risk mechanics undefined — no verification/recourse posture for non-monetary exchanges yet | `Admin/Economics.md` | Open | — | Minor |
 
-*EC-002 Critical — blocks TR-001 closure; depends on EV-001.*
+*ECN-002 Critical — blocks TR-001 closure; depends on EV-001.*
+*ID prefix note: renamed from `EC-` to `ECN-` 2026-07-06 per CT-007 resolution — see Governance & Verification section and Audit Trail below. ECN-003 (barter valuation standard) is Resolved and does not appear in this active index per Size Management Rule 2.*
 
 ### Governance Migration
 
@@ -676,8 +683,29 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | ENV-005 | Community engagement protocol undefined | `Admin/Environmental_Constraints.md` | Open | — | Major |
 | ENV-006 | No-externalized-entropy doctrine not operationalized | `Admin/Environmental_Constraints.md` | Open | — | Major |
 | ENV-009 | No site has been assessed against this file's constraints — all values are Placeholder | `Admin/Environmental_Constraints.md` | Open | — | Critical |
+| ENV-010 | Upstream Facilities.md checklist reciprocity unverified — whether Facilities.md's Site Initialization Checklist actually mandates collection of this file's Category 1 parameters is unconfirmed | `Admin/Environmental_Constraints.md` | Open | — | Major |
 
 *ENV-009 Critical — file is doctrine only until first site assessment replaces Placeholder values.*
+*ENV-007 and ENV-008 are Resolved/Partially Addressed respectively as of 2026-07-06 and do not appear in this active index per Size Management Rule 2 — see Environmental_Constraints.md's own sidecar and Discovery.md's 2026-06-21 registration note.*
+
+### Closed-Loop Feedstock
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| CLF-001 | Blending ratios and thermal stabilizer performance for mixed, un-refined polymer streams across multiple thermal cycles | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+| CLF-002 | Minimal viable field assay protocols (spot tests, melt-flow, etc.) for copper/aluminum alloys from salvage | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+| CLF-003 | Nozzle and die wear tolerances when processing high-variance, particulate-laden salvage feedstocks | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Critical |
+| CLF-004 | Chemical footprint of electrolytic/electrorefining pathways undefined — local/organic acid sourcing vs. closed-loop acid reclamation not decided; cross-ref `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, `Operations/Gate_03_Reduction.md` GR-003, PL-001/CE-003, `Challenges/Critical_Minerals.md` CM-002 | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Critical |
+| CLF-005 | External Flux (Φ_ext) symbol may collide with `Challenges/Return_To_Eden.md`'s Eden Index variable of the same name — cross-ref RE-UNK-001 | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+| CLF-006 | Recursive cascading contamination thresholds, bleed-off, and purge metrics undefined | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Critical |
+| CLF-007 | PIR aggregation function undefined — four sub-vectors collapsed to a scalar with no stated operator; arithmetic mean would contradict the file's own single-fatal-dependency framing | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+| CLF-008 | Downstream destination for degraded/bleed-off material and hazardous byproducts undefined — no link to full-reduction diversion or waste-output accumulation tracking | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+| CLF-009 | Interface contract for characterization→fabrication data handoff undefined (e.g. a "Material Certainty Manifest" form factor) | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Minor |
+| CLF-010 | FIR boundary conditions undefined — how donated virgin resin, reclaimed-but-unprocessed wire, and reused fasteners count toward salvaged vs. total mass is unspecified | `Challenges/Closed_Loop_Feedstock.md` | Open | — | Major |
+
+*CLF-003 and CLF-006 are Critical — CLF-003 blocks sustained polymer extrusion operations; CLF-006 blocks safe recursive-loop operation.*
+*CLF-004 is Critical — no electrolytic/electrorefining pathway may proceed without a chemical footprint decision.*
+*ID collision history: originally registered `CF-001`–`CF-003` (collided with `Architecture/Cognitive_Frameworks.md`/`Operations/Electronics.md`); briefly renamed `FL-001`–`FL-004` by an intervening pass, which collided with `Architecture/Forge_flow.md`'s FL-001 (Blocking); settled on `CLF-` prefix, unique in this index as of this version.*
 
 ### Pending Corrections
 
@@ -687,6 +715,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | PC-002 | Upstream reference corrections | All 7 files corrected | Resolved | — | Minor |
 | PC-003 | New file cross-reference corrections | All 10 files corrected | Resolved | — | Minor |
 | PC-004 | Stale name corrections | Both files corrected | Resolved | — | Minor |
+| PC-005 | `Challenges/Closed_Loop_Feedstock.md` not registered in `Routing.md`, `Discovery.md`, or `Admin/AUDIT_HARNESS.py` | Closed_Loop_Feedstock.md | Open | — | Major |
 
 ### Cognitive Salvage
 
@@ -765,8 +794,10 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 |---|---|---|---|---|---|
 | CF-DS-001 | Centralized vs. distributed cognition | `Architecture/Cognitive_Frameworks.md` | Single executive AI vs. fleet consensus | High | Open |
 | CF-DS-002 | Human override authority scope | `Architecture/Cognitive_Frameworks.md` | Absolute override vs. bounded override (see `Admin/Ethical_Constraints.md`) | High | Open |
+| ENV-DS-001 | Bootstrap operating doctrine vs. Compliance-Maximizing Default | `Admin/Environmental_Constraints.md` | Self-directed gray-zone operation with regulator-stop-order exit condition vs. `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (defer to human authority when ambiguity remains after reasonable analysis) | High | Open — reconciled text drafted, pending human governing authority ratification |
 
 *CF-DS-002 has constitutional implications — resolution must be consistent with Anti-Weaponization and Life Preservation doctrines. Escalate to human governing party before closing.*
+*ENV-DS-001 — proposed reconciliation text already drafted in Environmental_Constraints.md Constraint Category 2; this is the highest-stakes open item on that file specifically.*
 
 ---
 
@@ -795,7 +826,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | ID | Note |
 |----|------|
 | GOV-005 | Constitutional stability — no fast resolution path; requires operational cycles |
-| CT-007 | ID Namespace Allocation — confirmed active collision, `EC-` prefix shared by Ethical_Constraints.md and Economics.md across 5 IDs; rename to `ECN-` proposed, not yet executed |
 | SEC-007a | External root-of-trust, constitutional layer — architectural decision above repository level required; blocks SEC-007b |
 | SEC-007b | External root-of-trust, physical implementation layer — blocked pending SEC-007a resolution |
 | UNK-009 | External root-of-trust cross-module — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b |
@@ -809,7 +839,7 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | CF-001 | Hardware watchdog — In Progress; Blocking until hardware prototype validates at Measured confidence |
 | TH-003 | Atmospheric moisture yield — Blocking for Living Waters deployment |
 | FA-001 | Site not confirmed — no hot operations until site physically assessed |
-| EC-002 | Operating cost baseline not established — blocks TR-001; depends on EV-001 |
+| ECN-002 | Operating cost baseline not established — blocks TR-001; depends on EV-001 |
 | PR-001 | Precision ceiling not declared — blocks T1/T2 part claims; PR-004 prerequisite |
 | EM-001 | Behavioral opacity detection threshold — depends on CF-001 hardware validation |
 | EM-004 | Governance substrate integrity under emergent agent access — Critical; mirrors GOV-003, SEC-007a |
@@ -823,6 +853,9 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 | LW-UNK-003 | LW-003 lumen implosion — CRITICAL; 4.9 MPa net crush load at 500 m |
 | GH-009 | Emergent heuristic conflict — N² interaction scaling; two independently verified heuristics may fail catastrophically in combination; Interaction Volume doctrine required before knowledge base scales |
 | HR-UNK-002 | Hydrologic Resource Cascade material quality — flood sediment contaminant risk; safety-critical before any resource extraction operations |
+| CLF-003 | Nozzle/die wear tolerances — blocks sustained polymer extrusion operations |
+| CLF-004 | Electrolytic chemical footprint undefined — no electrorefining pathway before acid sourcing/reclamation decision made |
+| CLF-006 | Recursive contamination thresholds/bleed-off undefined — blocks safe recursive-loop operation |
 
 ### Blocking Watch
 
@@ -858,3 +891,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.9 — 2026-07-03:** Full specification text for the held-for-review AP-001/AP-012/AP-016 patch was provided; verified against original blocking conditions and incorporated (Auditor_Protocols.md → v0.16). AP-001 Payment via Constitutional Decision; AP-012/AP-016 Payment via Specification. Open Unknowns 12 → 9, Highest Risk Critical → High. New Resolution Taxonomy (5 payment types) formalized in Auditor_Protocols.md. Forge_Audit_Kit.md's stale Gate 3 note corrected. Removed AP-012/AP-016 from this file's active index and Critical Watch.
 **v4.10 — 2026-07-03:** Gate/Checkpoint naming collision resolved (Governance_Charter.md's "Canonical Verification Gates" → Enforcement Checkpoints; Canonical_Terms.md gained formal disambiguation and added Verification_Gates_LF.md as a 4th vocabulary authority). GOV-011 registered and added to Critical Watch — Governance_Charter.md's own Spec Gates field was scored against the wrong system, unaudited whether isolated. CT-010 registered tracking rename propagation. EDL amendment remains deliberately unratified pending GOV-011 and general system stability — logged as a considered decision, not an oversight.
 **v4.11 — 2026-07-05:** GOV-011 Resolved — real audit found 6/6 execution quality against Verification_Gates_LF.md; spot-check of all eight other governance-tier files confirmed isolated to Governance_Charter.md; removed from active index and Critical Watch. CT-011 Resolved in Admin/Canonical_Terms.md (Cycle definition propagated into Auditor_Protocols.md's Expiry Rule) — not previously in this file's active index, no removal needed; Expiry Rule line above now cross-references the Cycle definition. CT-007 escalated Low/Minor → High/Major and added to this file's cross-module index for the first time — confirmed active `EC-`/`ECN-` prefix collision between Ethical_Constraints.md and Economics.md (EC-001, EC-002, EC-004, EC-005, EC-008 shared), added to Critical Watch; rename to `ECN-` proposed, not yet executed. EN-001 advanced Open → In Progress (blanket 6×+ floor replaced with differentiated per-material interim table; four Sandbox hypotheses registered in Tests/Chaos_Dynamics.md, Deferred pending physical testing capability). RE-UNK-004 partially resolved — Discovery.md Scope Map portion reconciled directly against source file (prior entry inferred and partly wrong); file's own formal dependency declaration still absent, stays Open. Seven new entries registered: GOV-012 (Constitutional Stagnation Decay), EN-007 (dissimilar material junction fatigue), TR-003 (off-world nuclear containment), EC-012 (epistemic spoofing via hardware/firmware tampering, added to Critical Watch), EC-013 (safe-state descent sequence for active hazardous processes), EC-014 (toxic material encapsulation standard), EC-015 (right-to-repair/anti-circumvention boundary per jurisdiction). FAK-007 (Forge_Audit_Kit.md's own critical watch summary refresh) Resolved — not tracked in this cross-module index, noted here only because it was the occasion this pass's changes were gathered under.
+**v4.12 — 2026-07-06:** Multi-file catch-up pass — this index had not reflected several changes already committed to owning files this session. **CT-007 Resolved** — `ECN-` rename verified directly against `Admin/Economics.md`'s own source text: ECN-001 through ECN-005 executed (all five of that file's own EC- entries, including Resolved ECN-003/barter). The originally-cited fifth colliding ID (EC-008) was a citation error — it does not exist in Economics.md; ECN-003 (Resolved, therefore invisible to the prior active-index-only view) was the actual fifth. CT-007 removed from active index and Critical Watch per Size Management Rule 2. **Economics cluster renamed** ECN-001/002/004/005 in this file's Active Index; ECN-006 (barter counterparty/default risk) registered as new. **EC-010's Resolution Path corrected** — no longer describes Environmental_Constraints.md as "planned"; that file has existed since 2026-06-19 and is confirmed as the live ENV-003 convergence point. **ENV-007/ENV-008 status corrected** to match what was already true in this file's own prior versions (neither ever carried an active-index row) — now explicit rather than silently consistent; ENV-010 registered (Facilities.md checklist reciprocity). **New Closed-Loop Feedstock cluster registered** — CLF-001 through CLF-010, ten entries for `Challenges/Closed_Loop_Feedstock.md`, a new file. Collision history noted: originally `CF-` (collided with Cognitive_Frameworks.md/Electronics.md), briefly `FL-` during an intervening pass (collided with Forge_flow.md's FL-001), settled on `CLF-`. CLF-003, CLF-004, CLF-006 added to Critical Watch. **ENV-DS-001 registered** in Active Disputes Registry — Environmental_Constraints.md's Bootstrap operating doctrine vs. Ethical_Constraints.md's Compliance-Maximizing Default, reconciliation text drafted but pending human governing authority ratification. **PC-005 registered** — Closed_Loop_Feedstock.md itself is not yet in Routing.md, Discovery.md, or AUDIT_HARNESS.py; first priority action on that file. **Cross-refs added:** RE-UNK-001 ↔ CLF-005 (Φ_ext symbol ambiguity, not resolved either direction); CM-002 ↔ CLF-004 (same acid-reclamation problem, different material stream). **Not yet done, flagged for next pass:** Discovery.md's mirrored "Cross-Module Unknowns — Attention Required" table has not been refreshed to match this version bump, per this file's own stated rule that it should be.
+
+---
