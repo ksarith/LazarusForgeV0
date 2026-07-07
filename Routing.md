@@ -1,6 +1,6 @@
 # Routing.md — LazarusForgeV0
 **Canonical Navigation and Link Mapping Index.**
-**Last updated: 2026-07-04**
+**Last updated: 2026-07-06**
 
 ---
 
@@ -87,7 +87,7 @@ These files are complementary — Routing.md owns *where*, Discovery.md owns *wh
 | `Challenges/Critical_Minerals.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Critical_Minerals.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Critical_Minerals.md) | Explicit |
 | `Challenges/Emergence.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Emergence.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Emergence.md) | Explicit |
 | `Challenges/Return_To_Eden.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Return_To_Eden.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Return_To_Eden.md) | Explicit |
-| `Challenges/Closed_Loop_Feedstock.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Closed_Loop_Feedstock.md) | [Repo] | Explicit |
+| `Challenges/Closed_Loop_Feedstock.md` | [Raw](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Challenges/Closed_Loop_Feedstock.md) | [Repo](https://github.com/ksarith/LazarusForgeV0/blob/main/Challenges/Closed_Loop_Feedstock.md) | Explicit |
 
 *\* **Discovery.md Description Context:** The foundational navigational directory and behavior scope boundary map for the active working repository layer. It anchors incoming multi-agent analysis runs and human code reviews, defining active document maturity gates, dependency maps, and evolutionary path tracking parameters without cluttering data extraction queries with long textual strings.*
 
@@ -118,3 +118,5 @@ Discrepancies between the two are logged as pending corrections in Discovery.md.
 **Note on non-extension Admin/ files:** `Admin/Nothingness Theorem` and `Admin/Computational Institutional Reasoning` are intentionally filed without `.md` extensions and contain spaces in their filenames (URL-encoded as `%20` in raw/repo links). `Nothingness Theorem` is a philosophical substrate document (Admin/, intentionally functionless per its own doctrine); it carries a minimal Tier 0 File State sidecar sufficient for Phase 1 Ethical Anchor verification but is exempt from operational promotion gates. `Computational Institutional Reasoning` is the formal theoretical paper containing the axioms, theorems, and Verification Algebra that back CF-004, AP-006, and related epistemic-debt doctrine in Unknowns.md and Auditor_Protocols.md; it carries a full standard File State sidecar as of v0.16 (2026-06-30) and is subject to standard promotion gate tracking. Neither file carries a `.md` extension; both resolve via hardcoded ALIASES entries in `Admin/AUDIT_HARNESS.py` rather than through the dynamic `_parse_routing()` registry builder.
 
 **2026-07-04 addition:** `Tests/Chaos_Dynamics.md` registered — created same date, resolution vehicle for EN-005 (see `Architecture/Engineering.md` sidecar and `Discovery.md` Scope Map for status caveats). Its Backlink Requirement is marked **Missing**, not Explicit — the file does not yet carry the mandatory Navigation Anchors block. This is the only row in this table currently in that state; treat as a standing pending correction until patched.
+
+**2026-07-06 correction:** `Challenges/Closed_Loop_Feedstock.md` row's Repository URL was committed as a broken `[Repo]` link with no target — the only malformed link in this table. Corrected to a working link matching the standard pattern. File confirmed to carry the Navigation Anchors block (Backlink Requirement: Explicit) as of its v0.5.0 revision; cross-reference `Unknowns.md` v4.12 PC-005 for this file's remaining registration gaps in Discovery.md and `Admin/AUDIT_HARNESS.py`.
