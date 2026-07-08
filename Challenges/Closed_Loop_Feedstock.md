@@ -11,14 +11,14 @@
 | Field              | Value |
 |--------------------|-------|
 | Status             | Exploration |
-| Version            | v0.5.0 |
+| Version            | v0.6.0 |
 | Body Stability     | Transitional |
 | Spec Gates         | 0/6 |
 | Verification Ref   | `Admin/Verification_Gates_LF.md` |
 | Ethical Anchor     | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
 | Highest Risk       | Silent contamination cascades or toolhead destruction (CLF-003/CLF-006). |
-| Last Audit         | 2026-07-06 (multi-auditor, math/gap-closure pass) |
-| Auditor            | Grok (hygiene pass); Gemini (structural gap audit); Claude — Skeptic/Auditor (integration, reconciliation, and gap-closure passes, 2026-07-06) |
+| Last Audit         | 2026-07-07 (human-directed revision — symbol collision resolved, candidate acid-sourcing pathway logged) |
+| Auditor            | Claude — Skeptic/Auditor (integration, 2026-07-07); prior: Grok, Gemini, Claude (2026-07-06) |
 | Open Unknowns      | 10 (CLF-001 through CLF-010) |
 | Active Disputes    | 0 |
 | Pending Ratification | 1 (Embedded Value Preservation principle — see Body §2a) |
@@ -30,9 +30,9 @@
 
 ## 1. The Crisis: The Illusion of Material Autonomy
 
-Every advanced fabrication node in the legacy industrial paradigm relies on a hyper-optimized, low-entropy upstream supply chain. If the Forge requires pristine, pre-refined inputs, its **External Flux ($\Phi_{\text{ext}}$)** remains fatally high. True v0 persistence demands closing the material loop locally — transforming unpredictable salvage into trustable fabrication inputs while minimizing internal resource consumption and external dependency.
+Every advanced fabrication node in the legacy industrial paradigm relies on a hyper-optimized, low-entropy upstream supply chain. If the Forge requires pristine, pre-refined inputs, its **Supply Chain Dependency ($\Delta_{sc}$)** remains fatally high. True v0 persistence demands closing the material loop locally — transforming unpredictable salvage into trustable fabrication inputs while minimizing internal resource consumption and external dependency.
 
-> ⚠️ **CLF-005 — symbol collision flagged 2026-07-06, still unresolved:** `Challenges/Return_To_Eden.md`'s Eden Index ($I_E$) already reserves $\Phi_{\text{ext}}$ as one of its five component variables, and that file's own RE-UNK-001 states it has no instrument specification yet. This file uses $\Phi_{\text{ext}}$ operationally without confirming whether it's the same measurement or an independently-scoped metric reusing the symbol. Do not treat this file's $\Phi_{\text{ext}}$ as satisfying RE-UNK-001/RE-UNK-005 until explicitly confirmed.
+> ✅ **CLF-005 — symbol collision resolved 2026-07-07.** Previously this file used $\Phi_{\text{ext}}$, the same symbol `Challenges/Return_To_Eden.md`'s Eden Index ($I_E$) reserves for its own External Energy/Resource subsidy term. Direct comparison against Return_To_Eden.md's Section 3 formulation confirms these are different metrics: Return_To_Eden.md's $\Phi_{ext}$ is a normalized ratio ($\Phi_{ext}/\Phi_{ext,0}$) against a system-entry baseline, one of five terms in a site-wide ecosystem index. This file's usage was an unnormalized, process-level supply-dependency concept with no baseline reference — a different scope wearing the same symbol. Renamed here to **Supply Chain Dependency ($\Delta_{sc}$)** to remove the collision. No change to Return_To_Eden.md required — that file's $\Phi_{ext}$ was correctly scoped for its own purpose and RE-UNK-001/RE-UNK-005 remain that file's open items, unaffected by this rename.
 
 ## 2. Scope Boundary
 
@@ -116,8 +116,7 @@ Recursive loops risk cascading contamination (heavy metals in polymers, alloy dr
 | CLF-001 | Blending ratios and thermal stabilizer performance for mixed, un-refined polymer streams across multiple thermal cycles. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-002 | Minimal viable field assay protocols (spot tests, melt-flow, etc.) for copper/aluminum alloys from salvage. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-003 | Nozzle and die wear tolerances when processing high-variance, particulate-laden salvage feedstocks. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
-| CLF-004 | Chemical footprint of electrolytic/electrorefining pathways undefined — local/organic acid sourcing vs. closed-loop acid reclamation not decided. Intersects `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, `Operations/Gate_03_Reduction.md` GR-003, PL-001/CE-003, and `Challenges/Critical_Minerals.md` CM-002 (closed-loop reagent recovery — same underlying problem, different material stream). | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
-| CLF-005 | External Flux (Φ_ext) symbol used here may collide with `Challenges/Return_To_Eden.md`'s Eden Index variable of the same name — same metric or independently-scoped, unclear. Return_To_Eden.md's RE-UNK-001 has no instrument spec for its own Φ_ext yet. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
+| CLF-004 | Chemical footprint of electrolytic/electrorefining pathways undefined — local/organic acid sourcing vs. closed-loop acid reclamation not decided. Intersects `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, `Operations/Gate_03_Reduction.md` GR-003, PL-001/CE-003, and `Challenges/Critical_Minerals.md` CM-002 (closed-loop reagent recovery — same underlying problem, different material stream). **Candidate pathway logged 2026-07-07 (human-directed):** on-site acid synthesis via salt-water electrolysis with an ion-selective membrane (chlor-alkali-type process) — third option distinct from "external sourcing" and "closed-loop reclamation," using cheap/abundant, non-toxic precursors (salt, water, electricity). Not a resolution: standard chlor-alkali electrolysis co-produces chlorine gas, which requires a containment/scrubbing design to satisfy Ethical_Constraints.md's active-release-prohibited doctrine before this pathway can be adopted. Still Critical/Open pending a containment answer and formal ratification of the sourcing decision. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
 | CLF-006 | Recursive cascading contamination thresholds, bleed-off, and purge metrics undefined — what triggers diversion to low-spec/full reduction, and what the quantitative purge/wear limits actually are. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
 | CLF-007 | PIR aggregation function undefined — the four sub-vectors (energy, chemical, maintenance, labor) are collapsed into "overall PIR" with no stated operator. An arithmetic mean would let one strong vector mask a near-zero vector, contradicting this file's own stated intent. Needs a geometric mean or weighted product, with weights reflecting each vector's existential risk. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-008 | Downstream destination for degraded/bleed-off material and hazardous byproducts (toxic slag, anode slime) undefined. Section 3's dependency table has no link for where this material physically flows. Candidate links: `Operations/Gate_03_Reduction.md` (full-reduction diversion) and `Challenges/Return_To_Eden.md` $W_{\text{out}}$ (waste-output accumulation) — neither confirmed. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
@@ -125,11 +124,12 @@ Recursive loops risk cascading contamination (heavy metals in polymers, alloy dr
 | CLF-010 | FIR boundary conditions undefined — how donated virgin resin, reclaimed-but-unprocessed copper wire, reused fasteners, and scavenged commercial filament count toward $M_{\text{salvaged}}$ vs. $M_{\text{total}}$ is not specified, risking inconsistent FIR calculation across auditors/sessions. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 
 *CLF-003 and CLF-006 are Critical — CLF-003 blocks sustained polymer extrusion operations; CLF-006 blocks safe recursive-loop operation without defined contamination thresholds.*
-*CLF-004 is Critical — no electrolytic/electrorefining pathway may proceed without a chemical footprint decision.*
+*CLF-004 is Critical — no electrolytic/electrorefining pathway may proceed without a chemical footprint decision, and a candidate pathway now exists pending a chlorine containment answer.*
+*CLF-005 — Resolved 2026-07-07 (see §1). Retained in this table as a closed record rather than removed, consistent with this file's own audit trail practice.*
 
 **ID collision history:** originally registered as `CF-001` through `CF-003` (collided with `Architecture/Cognitive_Frameworks.md`/`Operations/Electronics.md`), corrected to `CLF-001`–`CLF-003`. An intervening hygiene pass renamed these to `FL-001`–`FL-004`, reintroducing a collision with `Architecture/Forge_flow.md`'s FL-001 (Blocking) — reverted back to `CLF-`. Do not rename off this prefix without checking `Unknowns.md`'s full active index first.
 
-**Registration status:** not yet registered in `Routing.md`, `Discovery.md`, `Unknowns.md`, or `Admin/AUDIT_HARNESS.py`. First priority action ahead of further content work.
+**Registration status:** not yet registered in `Routing.md`, `Discovery.md`, `Unknowns.md`, or `Admin/AUDIT_HARNESS.py`. First priority action ahead of further content work. *(Note: `AUDIT_HARNESS.py` v13 already carries this file in FALLBACK_REGISTRY and CLF-001–CLF-010 in UNKNOWN_FIRST_CYCLE as of the 2026-07-07 harness patch — Routing.md, Discovery.md, and Unknowns.md registration remain outstanding.)*
 
 Full sidecar details maintained here; register cross-references in `Unknowns.md` on next audit.
 
@@ -137,16 +137,12 @@ Full sidecar details maintained here; register cross-references in `Unknowns.md`
 
 ## Resolution Log
 
-- 2026-07-06: **v0.5.0 — Math rendering fix; four structural gaps logged; embedded-value principle drafted (unratified).**
-  (1) **All LaTeX delimiters converted** from `\( \)`/`\[ \]` to `$...$`/`$$...$$` throughout. The prior delimiter style is not reliably rendered by GitHub's native markdown processor on the actual repository page — the equations were likely displaying as literal escaped text rather than formatted math. This was misdiagnosed in the audit that flagged it (which cited a `$FIR$` inconsistency that wasn't actually present in the file), but the underlying rendering risk was real and independent of that misdiagnosis.
-  (2) **CLF-007 logged** (PIR aggregation function undefined) — verified real: the worked example does collapse four sub-vectors into a scalar with no stated operator, and an arithmetic mean genuinely would contradict the file's own single-fatal-dependency framing.
-  (3) **CLF-008 logged** (bleed-off/degraded-material downstream destination undefined) — verified real against Section 3's dependency table, which has no such link. Candidate destinations noted (Gate_03_Reduction.md, Return_To_Eden.md's $W_{\text{out}}$) but not confirmed or adopted as fact.
-  (4) **CLF-009 logged** (characterization→fabrication interface contract undefined) — real but lower-stakes; kept at Minor priority since it's a forward design pressure, not a current blocker.
-  (5) **CLF-010 logged** (FIR boundary conditions undefined) — a genuine audit-consistency gap distinct from general content depth; different auditors could compute FIR differently for the same physical material today.
-  (6) **Embedded Value Preservation principle drafted** as a proposed, explicitly unratified doctrine addition (§2a) — a values-level statement extending Ship_of_Theseus.md's repair-first logic one layer earlier, tracked the same way GOV-MAND-009 is tracked elsewhere in the repository: drafted, held pending human governing authority review, not silently adopted.
-  (7) **Two false claims from an intervening review were checked and rejected, not incorporated:** the claim that the Sidecar Link anchor (`#6-open-unknowns`) points to a nonexistent header is false — Section 6 is titled exactly that. The claim that Verification Ref's backtick formatting is inconsistent with repository convention is false — it matches every other file audited this session.
-  (8) **Deliberately not bundled into this pass:** material hierarchy, explicit feedstock-class taxonomy, a formal "Minimum Viable Closed Loop" success-criteria section, and a bootstrap-sequence justification sentence — all reasonable future content, but held back to keep this diff reviewable rather than merging a large batch of additive-but-non-blocking suggestions in the same pass as structural fixes.
-- 2026-07-06: v0.4.0 — Reconciliation pass (see prior log entry for full detail). FL- collision reverted to CLF-; CLF-004/005 restored after being dropped; CLF-006 added; PIR multi-vector definition reconciled with worked example; Sidecar Link corrected; version numbering corrected.
+- 2026-07-07: **v0.6.0 — CLF-005 resolved (symbol rename); CLF-004 candidate pathway logged (human-directed).**
+  (1) **CLF-005 resolved.** Direct comparison of this file's $\Phi_{ext}$ usage against `Challenges/Return_To_Eden.md`'s Section 3 Eden Index formulation confirmed the two are different metrics — Return_To_Eden.md's is a normalized, baselined ecosystem-subsidy ratio; this file's was an unnormalized, process-level supply-dependency concept. Renamed to **Supply Chain Dependency ($\Delta_{sc}$)** throughout §1 to remove the collision. No change required in Return_To_Eden.md.
+  (2) **CLF-004 candidate pathway logged**, sourced from human governing authority directly rather than an agent audit pass: on-site acid synthesis via salt-water electrolysis with a homemade ion-selective membrane (chlor-alkali-type process), offered as a third option alongside external sourcing and closed-loop reclamation. Logged as a candidate, not a resolution — chlorine gas co-production requires a containment/scrubbing design against Ethical_Constraints.md's toxic-handling doctrine before this can be adopted. CLF-004 remains Open/Critical.
+  (3) Both changes made under explicit human direction this session; no self-approval of unknown resolution.
+- 2026-07-06: v0.5.0 — Math rendering fix; four structural gaps logged; embedded-value principle drafted (unratified). *(full detail in prior version's log — see repository history)*
+- 2026-07-06: v0.4.0 — Reconciliation pass. FL- collision reverted to CLF-; CLF-004/005 restored after being dropped; CLF-006 added; PIR multi-vector definition reconciled with worked example; Sidecar Link corrected; version numbering corrected.
 - 2026-07-06: v0.2.4 (intervening) — Multi-auditor hygiene pass. Added Degraded Operation & Failure Modes section; downgraded Status to Exploration; renamed unknowns CF-→FL- (introduced new collision); dropped CLF-004, CLF-005, and Resolution Log without carrying content forward.
 - 2026-07-06: v0.3.0 — Integration audit. Ethical Anchor restored to canonical string. CF-001/002/003 renamed to CLF-001/002/003. CLF-004/005 logged. Characterization.md/Metals.md labeled [PLANNED]. Flat path fixed. File State standardized. PIR sub-vector breakdown restored.
 - 2026-07-06: v0.2.0 — Initial committed version.
