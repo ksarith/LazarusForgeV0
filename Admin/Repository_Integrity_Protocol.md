@@ -14,8 +14,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-19; revised 2026-06-27; revised 2026-07-02; revised 2026-07-08 |
-| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor; Claude — Registration Latency addition (human-directed) 2026-07-08 |
+| Last Audit       | 2026-06-19; revised 2026-06-27; revised 2026-07-02; revised 2026-07-08 (two passes) |
+| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor; Claude — Registration Latency addition (human-directed) 2026-07-08; Claude — Phase 0 manual execution tier added (human-directed) 2026-07-08 |
 | Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -58,6 +58,8 @@
 This file defines the operational integrity enforcement procedures for LazarusForgeV0. It exists to bridge the gap between the `Admin/Governance_Charter.md` constitutional declaration of integrity requirements (Declared and Detectable state) and fully Enforceable integrity protections. Without this file, integrity violations may go unclassified, recovery procedures may be improvised inconsistently, and the repository may lose institutional memory of compromise events. This file is the candidate integrity model that `Admin/AUDIT_HARNESS.py` automation will eventually implement — it is written now so the automation has a target to build against.
 
 **Honest v0 acknowledgment:** At current maturity, the primary integrity mechanism is human discipline. Automated detection is the destination. This file defines the provisional procedures a human operator or auditor executes manually until automation matures. Procedures written here must therefore be executable without tooling.
+
+**v0.6 update (2026-07-08):** Phase 1 checks now have a standing manual execution mechanism — the daily morning repository audit prompt fetches this file directly and applies its Protected Elements checks against every file the audit touches, classifying findings per the Violation Classification ladder below. This does not constitute Phase 1 automation (`Admin/AUDIT_HARNESS.py` implementation remains the actual automation target — see RIP-002), but it closes the prior gap where Phase 1 checks existed only as specification with no execution path at all, manual or automated. Treat this as a new tier: **Phase 0 — Manual execution via recurring agent audit**, sitting before Phase 1 in the Automation Migration Path below.
 
 ---
 
@@ -348,6 +350,14 @@ The version preservation protocol above is the prevention. But given that curren
 
 This section defines what automated integrity checking will eventually implement, written now so `Admin/AUDIT_HARNESS.py` has a specification target.
 
+### Phase 0 — Manual Execution via Recurring Agent Audit (active, 2026-07-08)
+
+Not automation — a defined, repeatable manual execution path, distinct from ad hoc human spot-checking. The daily morning repository audit prompt fetches this file at session start and applies the Phase 1 check list below against every file the audit opens, classifying findings per the Violation Classification ladder rather than merely noting them.
+
+**What Phase 0 provides that ad hoc checking did not:** a bounded, repeating cadence (daily) rather than "whenever an auditor happens to remember," and a forcing function — the prompt requires an explicit "None" statement when checks are clean, rather than allowing silent omission when nothing is found.
+
+**What Phase 0 does not provide:** guaranteed execution (an agent can still skip or shallow-check the RIP.md fetch despite the prompt instructing it — this remains detectable only by spot-checking the resulting report, not enforced), machine-verifiable consistency, or coverage of files the daily audit doesn't happen to open. Phase 1 automation remains the target for closing these gaps. Phase 0 is a bridge, not a substitute — see RIP-002.
+
 ### Phase 1 — Structural Checks (near-term)
 
 Automatable without cryptographic tooling:
@@ -470,6 +480,8 @@ Mandatory re-audit conditions for this document:
 - RIP-004 reopened — Tier 1 Axiom Verification already implemented in `Admin/Forge_Audit_Kit.md` v1.1 Step 1
 - Registration Latency protected element removed, or its one-cycle bound loosened without a documented replacement bound
 - Sidecar↔`Unknowns.md` parity check removed from the Phase 1 automation target list
+- Phase 0 manual execution (daily audit prompt) described anywhere as "Phase 1 automation" or "automated enforcement" — Phase 0 is agent-executed per prompt instruction, not machine-enforced, and conflating the two would overstate actual capability in violation of this file's own core rule
+- Daily audit prompt's RIP.md fetch step removed, or its findings section allowed to be silently omitted rather than requiring an explicit "None" statement
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -514,6 +526,8 @@ Mandatory re-audit conditions for this document:
 **Description:** Phase 1 automation checks (Ethical Anchor string match, File State field presence, cross-reference resolution, FROZEN marker validation, navigation file spot-check, sidecar↔`Unknowns.md` registration parity) are defined here but not yet implemented in `Admin/AUDIT_HARNESS.py`.
 
 **Why It Matters:** Phase 1 checks are the most tractable automation target — no cryptographic tooling required. Delay means these remain human-only checks subject to fatigue and omission.
+
+**Partial mitigation — 2026-07-08:** A Phase 0 tier was added (see Automation Migration Path above) — the daily morning repository audit prompt now fetches this file directly and applies the Phase 1 check list manually against every file it opens, on a repeating daily cadence with mandatory explicit reporting. This is not automation and does not close this unknown — it reduces exposure between now and Phase 1 implementation by replacing ad hoc, easily-omitted spot-checking with a defined, repeating, forcing-function-backed manual process. Status remains Open; downgraded from unmitigated to partially mitigated.
 
 **Resolution Path:** Deferred via Specification — implement Phase 1 checks in `Admin/AUDIT_HARNESS.py`. This file is the specification. Checks are ordered by implementation tractability: Ethical Anchor match first, then File State fields, then cross-reference resolution, then navigation file spot-check, then sidecar↔`Unknowns.md` registration parity (added to this ordering 2026-07-08, see RIP-008).
 
@@ -649,6 +663,7 @@ Mandatory re-audit conditions for this document:
 
 ### Resolution Log
 
+- 2026-07-08: **v0.6 — Phase 0 (Manual Execution via Recurring Agent Audit) tier added; RIP-002 partially mitigated (human-directed).** The daily morning repository audit prompt now fetches this file at session start and applies its Protected Elements checks against every file the audit opens, classifying findings per the Violation Classification ladder and requiring an explicit "None" statement when clean rather than allowing silent omission. Changes: (1) File Purpose gained a v0.6 acknowledgment naming this mechanism. (2) New "Phase 0" tier added to Automation Migration Path, positioned before Phase 1, with explicit scope (what it provides vs. does not) — deliberately not framed as automation. (3) RIP-002 updated with a "Partial mitigation" note; status remains Open, since Phase 0 reduces exposure but does not implement Phase 1 in `AUDIT_HARNESS.py`. (4) Two new Drift Indicators added guarding against Phase 0 being mischaracterized as automation, or its reporting requirement being silently dropped. This is an evolution of purpose, not just a new check: RIP.md's Phase 1 section previously existed purely as unexecuted specification; it now has a standing, repeating execution path for the first time, independent of when `AUDIT_HARNESS.py` implementation happens.
 - 2026-07-08: **v0.5 — Registration Latency protected element added; RIP-008 logged and resolved at the specification layer (human-directed).** Generalizes RIP-004's Tier 1 Axiom detection-latency pattern to the sidecar↔`Unknowns.md` registration gap, discovered via the CLF- cluster sitting unregistered at Critical priority for 24+ hours. Changes: (1) New Protected Element "Registration Latency — Sidecar to Unknowns.md Index" added after Audit Lineage. (2) RIP-008 logged and resolved at Payment via Specification level — implementation in `AUDIT_HARNESS.py` and `Forge_Audit_Kit.md` remains outstanding and is tracked under RIP-002's updated ordering. (3) Violation Classification Minor/Major example lists extended. (4) Automation Migration Path Phase 1 list extended with the sidecar↔index parity check. (5) Governance Enforcement States table gained a new row. (6) Drift Indicators extended with two new conditions guarding against the new element being loosened or silently dropped from Phase 1 scope. (7) ASM-006 added. (8) New Lessons Learned row and Abandoned Paths row — the latter documenting that a dedicated new "system self-analysis" file was considered and rejected in favor of extending this file, after confirming no overlap with `Admin/Auditor_Protocols.md`. (9) A corresponding forward cross-reference was added to `Admin/Auditor_Protocols.md`'s Sidecar Model section (patch delivered separately). Open Unknowns 6 → 7.
 - 2026-07-02: v0.4 — RIP-004 sidecar entry brought into full conformance
   with the RIP-001 discharge pattern (previously inconsistent: plain
@@ -700,6 +715,8 @@ Mandatory re-audit conditions for this document:
 ---
 
 ## Status
+
+Version 0.6 — Phase 0 (Manual Execution via Recurring Agent Audit) tier added (2026-07-08), giving this file's Phase 1 checks a standing execution path via the daily morning audit prompt for the first time, ahead of `AUDIT_HARNESS.py` automation. RIP-002 downgraded from unmitigated to partially mitigated; remains Open pending actual Phase 1 implementation.
 
 Version 0.5 — Registration Latency protected element and RIP-008 added (2026-07-08), generalizing the RIP-004 latency-bounding pattern to sidecar↔`Unknowns.md` index registration. Prompted by direct observation of the CLF- cluster registration gap. A new dedicated file for this class of risk was considered and rejected — this file and `Admin/Auditor_Protocols.md` were checked directly and confirmed as the correct existing homes.
 
