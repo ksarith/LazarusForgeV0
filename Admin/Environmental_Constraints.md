@@ -58,7 +58,7 @@ This file is also the planned resolution junction for EC-010 (`Admin/Ethical_Con
 ## Assumptions
 
 | ID         | Assumption                                                                                    | Basis                              | Confidence | Expiry Trigger                                              |
-|------------|-----------------------------------------------------------------------------------------------|------------------------------------|------------|-------------------------------------------------------------|
+|------------|-------------------------------------------------------------------------------------------------|-------------------------------------|------------|-------------------------------------------------------------|
 | ASM-EC-001 | Reference Deployment Context (RDC) provides a usable baseline for environmental parameters   | `Architecture/Facilities.md` checklist — Internally Derived | Medium | Specific site initialization with locally measured data |
 | ASM-EC-002 | Local regulatory frameworks are navigable with sufficient documentation and good-faith operation | Historical salvage operations — Analogous External | Low | Evidence of prohibitive or hostile regulatory regime confirmed |
 | ASM-EC-003 | Climate parameters change slowly enough for v0–v1 manual adjustment cycles                   | Current operational horizon — Internally Derived | Medium | Rapid non-linear change observed at deployment site |
@@ -123,6 +123,8 @@ Legal and regulatory constraints determine what the Forge may do at a given site
 > *Where regulatory frameworks are ambiguous or incomplete, the Forge does not independently decide to operate through the ambiguity. It applies `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default: pursue the most fully-compliant path available that still accomplishes the legitimate salvage/repair goal, and where genuine ambiguity remains after reasonable analysis, escalate to human governing authority per the Human Escalation Protocol rather than proceeding on the system's own judgment. The four conditions previously listed here (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition) remain relevant as a description of what "operating close to the line" must still satisfy once a human has authorized proceeding — they are not, on their own, a sufficient basis for the system to proceed without that authorization.*
 >
 > This does not change the escalation doctrine already stated below for unresolvable jurisdictional conflicts, which already routes to `Admin/Ethical_Constraints.md` §Legal Context Awareness.
+>
+> **Bridge authority for unavailable escalation (proposed 2026-07-07, pending ratification alongside the above):** *Where escalation to human governing authority is not available within a timeframe the situation requires — operator unreachable, conditions changing faster than the escalation channel can respond — the system may proceed under the four conditions this file previously specified as sufficient (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition), treated here as a bounded bridge authority rather than a standing default. This bridge closes automatically the moment escalation becomes available, requires immediate logging of the specific unavailability condition that triggered it, and mandates expedited post-hoc human review at the next available opportunity — not routine review, but priority review, since bridge-authority action bypassed the normal deference sequence. This does not authorize action that Tier 1 Axioms or the Anti-Weaponization Doctrine would prohibit under any circumstance.*
 
 **Jurisdiction conflicts:** When laws are mutually incompatible (maritime vs. national, environmental vs. salvage rights, multiple sovereign claims), escalate to human review per `Admin/Ethical_Constraints.md` §Legal Context Awareness. Until ENV-003 (jurisdiction conflict hierarchy) is resolved, "escalate to human review" is the operative instruction. For Leviathan-class deployments, assume multi-jurisdiction environments as the default condition, not the exception.
 
@@ -252,7 +254,7 @@ When environmental constraints tighten, the Forge degrades gracefully rather tha
 
 | ID | Summary | Positions in Conflict | Risk | Status | Owner |
 |----|---------|-----------------------|------|--------|-------|
-| ENV-DS-001 | Bootstrap operating doctrine vs. Compliance-Maximizing Default | This file's self-directed gray-zone posture (proceed on four self-assessed conditions, stop only on regulator prohibition) vs. `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (defer to human authority when ambiguity remains after reasonable analysis) | High | Open — proposed reconciliation drafted, pending human governing authority ratification | `Admin/Environmental_Constraints.md` |
+| ENV-DS-001 | Bootstrap operating doctrine vs. Compliance-Maximizing Default | This file's self-directed gray-zone posture (proceed on four self-assessed conditions, stop only on regulator prohibition) vs. `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (defer to human authority when ambiguity remains after reasonable analysis) | High | Open — reconciliation drafted 2026-07-06, amended 2026-07-07 with a bounded bridge-authority exception for escalation-unavailable scenarios (operator unreachable, fast-changing conditions); both pending human governing authority ratification as a single package | `Admin/Environmental_Constraints.md` |
 
 ---
 
@@ -281,6 +283,7 @@ Mandatory re-audit conditions for this document:
 - Verification Ref field changed from `Admin/Verification_Gates_LF.md`
 - Upstream/Downstream table loses any of the eight downstream dependents listed without a corresponding unknown or correction entry
 - Bootstrap operating doctrine's proposed reconciliation (Constraint Category 2) reverted to self-directed gray-zone operation without human governing authority ratification of the reconciled text, or ratified in a form that reintroduces proceeding-without-escalation under ambiguity
+- Bridge authority (Constraint Category 2) invoked as a routine default rather than a logged, bounded exception — e.g. escalation attempted only nominally, expedited post-hoc review skipped or delayed, or the four bridge conditions applied without the triggering unavailability condition being documented
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -473,7 +476,7 @@ Mandatory re-audit conditions for this document:
 
 ---
 
-### ENV-010 — Upstream Facilities.md checklist reciprocity unverified
+### ENV-010 — Upstream Facilities.md checklist reciprocity — CONFIRMED PARTIAL GAP
 
 | Field         | Value                                  |
 |---------------|-----------------------------------------|
@@ -484,19 +487,21 @@ Mandatory re-audit conditions for this document:
 | Blocking      | Yes (for Candidate Spec promotion)     |
 | Owner         | `Admin/Environmental_Constraints.md`   |
 | First Logged  | 2026-07-06                             |
-| Last Reviewed | 2026-07-06                             |
+| Last Reviewed | 2026-07-07                             |
 
-**Description:** This file designates `Architecture/Facilities.md`'s Site Initialization Checklist as the mandatory local substitution document for all Constraint Category 1 Placeholder values. It has not been verified whether Facilities.md's own checklist actually mandates collection of these exact parameters (temperature range, humidity, dust load, seismic classification, biological activity, etc.). If Facilities.md's checklist omits any of them, this file's substitution mechanism is a non-operational shell for that parameter.
+**Description:** This file designates `Architecture/Facilities.md`'s Site Initialization Checklist as the mandatory local substitution document for all Constraint Category 1 Placeholder values. Direct comparison against Facilities.md's Section VII checklist (2026-07-07) confirms a **partial gap**, not a full non-operational shell: temperature (summer + winter), humidity, precipitation/flood risk, and dust/particulate baseline all have corresponding mandatory collection fields. However, three of this file's eight Category 1 parameters have **no corresponding field at all** — seismic risk classification, biological activity (biofouling rate, pest pressure), and UV exposure/weathering rate. Wind is only partially covered: the checklist collects prevailing wind *direction* (for exhaust placement) but not wind *loading* (the structural design value this file actually specifies).
 
-**Why It Matters:** A resolution path that points to another file's checklist is only as good as that checklist actually collecting the data being pointed to. An unverified reciprocal dependency can silently leave Placeholder values with no path to ever being replaced.
+**Why It Matters:** A resolution path that points to another file's checklist is only as good as that checklist actually collecting the data being pointed to. For the three fully-missing parameters and the wind-loading gap, this file's substitution mechanism is a non-operational shell — those Placeholder values have no path to ever being replaced until Facilities.md's checklist is extended.
 
-**Resolution Path:** Audit `Architecture/Facilities.md`'s Site Initialization Checklist directly against this file's Constraint Category 1 parameter list. Confirm each parameter has a corresponding mandatory collection field in that checklist, or log the gap as a new unknown in Facilities.md's own sidecar.
+**Resolution Path:** Log a new unknown in `Architecture/Facilities.md`'s own sidecar requesting four additional Section VII rows: seismic risk classification, biological activity baseline, UV exposure/weathering rate, and wind loading (structural, distinct from the existing wind direction row). Until added, treat this file's Placeholder values for those four parameters as unresolvable via the stated substitution mechanism.
 
-*Surfaced by Gemini (Skeptic/Auditor), 2026-07-06 Exploration audit.*
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-06 Exploration audit. Confirmed against source text 2026-07-07.*
 
 ---
 
 ### Resolution Log
+
+- 2026-07-07: **v0.3 (proposed) — Bridge-authority amendment to ENV-DS-001's reconciled text**, human-directed. Addresses an operational-continuity gap in the 2026-07-06 reconciliation: escalate-before-proceeding has no fallback when a human is genuinely unreachable within the timeframe a fast-moving situation requires, risking indefinite operational stall. Amendment adds a bounded bridge authority — the original four self-assessed conditions, reactivated only when escalation is unavailable, auto-closing on escalation becoming available, with mandatory logging and expedited post-hoc review. Not a return to unrestricted gray-zone operation; still subordinate to Tier 1 Axioms and Anti-Weaponization Doctrine. Logged as an addition to the same pending-ratification item, not a separate dispute. Corresponding Drift Indicator added for misuse-as-default risk. ENV-010 confirmed against Facilities.md source text — partial gap (three parameters fully missing, one partial), not full non-operational shell as originally flagged as a possibility.
 
 - 2026-07-06: **v0.2 — Doctrine conflict flagged (ENV-DS-001); ENV-007/ENV-008 sidecar drift corrected; ENV-010 logged; Adversarial Analysis section added (G3); bare-ID cross-references canonized (G5).**
   (1) **Bootstrap operating doctrine flagged as conflicting** with `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (added 2026-07-05) — this file's self-directed gray-zone posture predates that doctrine by 16 days and was never reconciled against it. Proposed reconciled text drafted in Constraint Category 2; logged as ENV-DS-001 in Active Disputes; held pending human governing authority ratification rather than self-approved.
@@ -513,7 +518,7 @@ Mandatory re-audit conditions for this document:
 
 - `Admin/Governance_Charter.md` — Tier 1 Axioms P-1 (Preservation of Life) and P-3 (Collaboration and Mutual Benefit) are the ethical floor for all environmental decisions; GOV-010 (regulatory compliance friction) resolution path leads here
 - `Admin/Ethical_Constraints.md` — EC-010 (jurisdiction conflict hierarchy) and EC-009 (human authority conflict) resolution paths lead here; Life Preservation and Anti-Weaponization doctrines apply when environmental pressure conflicts with Tier 1 constraints; Compliance-Maximizing Default governs this file's Bootstrap operating doctrine (see ENV-DS-001)
-- `Architecture/Facilities.md` — Site Initialization Checklist is the primary local substitution document for all Placeholder values in Constraint Category 1; FA-003 (zoning and permitting) cross-references Constraint Category 2; reciprocity with this file's parameter list unverified (ENV-010)
+- `Architecture/Facilities.md` — Site Initialization Checklist is the primary local substitution document for all Placeholder values in Constraint Category 1; FA-003 (zoning and permitting) cross-references Constraint Category 2; reciprocity with this file's parameter list confirmed partially incomplete (ENV-010)
 - `Admin/Safety_Protocols.md` — operator safety constraints must be calibrated against local environmental conditions; SP-005 (regulatory compliance) cross-references this file
 - `Operations/Energy.md` — energy strategy is directly shaped by local renewable availability and thermal recovery efficiency
 - `Operations/Gate_05_Separation_Thermal.md` — thermal operations subject to fire-risk season and emissions constraints
@@ -532,9 +537,11 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
+- 2026-07-07: **v0.3 (proposed) — Bridge-authority amendment to ENV-DS-001's reconciled text**, human-directed. See Resolution Log for detail. ENV-010 confirmed as a partial gap against Facilities.md source text.
+
 Version 0.2 — Draft, correction and reconciliation pass (2026-07-06).
 
-**First priority action:** Human governing authority ratification of the proposed Bootstrap operating doctrine reconciliation (ENV-DS-001, Constraint Category 2) — this is the highest-stakes open item in this file and should not be treated as settled by this pass alone.
+**First priority action:** Human governing authority ratification of the proposed Bootstrap operating doctrine reconciliation, including the 2026-07-07 bridge-authority amendment (ENV-DS-001, Constraint Category 2) — this is the highest-stakes open item in this file and should not be treated as settled by this pass alone.
 
 **What must remain constant:**
 
