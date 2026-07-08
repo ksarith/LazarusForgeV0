@@ -29,9 +29,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-11                                                          |
-| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit  |
-| Open Unknowns    | 5                                                                   |
+| Last Audit       | 2026-07-07                                                          |
+| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit; Claude — CE-006 logged (human-directed) 2026-07-07 |
+| Open Unknowns    | 6                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -995,7 +995,35 @@ disposal routing to GR-003. Cross-reference Air_Scrubber.md AS-003.
 
 ---
 
+### CE-006 — Chlorine containment doctrine undefined for on-site chlor-alkali acid synthesis
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | High |
+| Priority | Critical |
+| Type | Technical / Safety |
+| Blocking | Yes (for `Challenges/Closed_Loop_Feedstock.md` CLF-004 candidate pathway) |
+| Owner | `Architecture/Chemistry.md` |
+| First Logged | 2026-07-07 |
+| Last Reviewed | 2026-07-07 |
+
+**Description:** A candidate pathway logged in `Challenges/Closed_Loop_Feedstock.md` CLF-004 proposes on-site acid synthesis via salt-water electrolysis with a homemade ion-selective membrane (chlor-alkali-type process), using salt, water, and electricity as precursors. Standard chlor-alkali electrolysis co-produces chlorine gas at the anode. No containment, venting, or scrubbing doctrine exists in this file for that byproduct.
+
+**Why It Matters:** `Admin/Ethical_Constraints.md`'s §Toxic and Hazardous Material Handling prohibits active release and permits only passive encapsulated use. Chlorine gas is acutely toxic even at low concentration — this file's own Navigation Anchors already list it among the toxic gases requiring warning-signal doctrine, not clearance-signal doctrine. CLF-004 cannot adopt this pathway as a resolution until a containment answer exists here; without one, the candidate remains an idea rather than a viable option.
+
+**Resolution Path:** Define minimum containment doctrine for small-scale chlor-alkali electrolysis: sealed reaction vessel design principles, required scrubbing or neutralization of anode-side off-gas before any release to atmosphere, detection/alarm threshold consistent with acute toxicity limits, and disposal routing for scrubber byproduct (cross-reference `Operations/Gate_03_Reduction.md` GR-003 and `Operations/Air_Scrubber.md` AS-003 for existing scrubbing/disposal precedent). Cross-reference back to `Challenges/Closed_Loop_Feedstock.md` CLF-004 once resolved.
+
+---
+
 ### Resolution Log
+
+- 2026-07-07: CE-006 logged (human-directed), sourced from a candidate acid-sourcing
+  pathway raised in `Challenges/Closed_Loop_Feedstock.md` CLF-004 — on-site chlor-alkali
+  electrolysis using salt, water, and a homemade ion-selective membrane. Chlorine gas
+  co-production has no containment doctrine in this file; logged as Critical/Blocking
+  against CLF-004's candidate pathway pending resolution. Open Unknowns 5→6. Last Audit
+  updated.
 
 - 2026-06-11: ChatGPT informal audit integrated. Eight findings actioned:
   (1) Navigation Anchors, Upstream/Downstream tables added. (2) Spec Gate
