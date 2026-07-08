@@ -1,5 +1,5 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v13
+LAZARUS FORGE — AUDIT HARNESS v13 (patched)
 Google Colab notebook cells — paste each block into a separate cell.
 
 CHANGES FROM v12:
@@ -26,6 +26,26 @@ CHANGES FROM v12:
     so it will NOT surface as a Phase 1 finding; tracked here instead until
     either the file is patched or a fourth Phase 1 check is added for it.
 
+CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
+  - PC-005 (Closed_Loop_Feedstock.md registration): confirmed already
+    present in FALLBACK_REGISTRY under Challenges/ — no change needed there.
+  - Cell 3.5, extract_boundary(): sidecar-unknown detection previously only
+    matched the "## Auditor Notes..." + "### UID" convention used by Gate_
+    files. Challenges/Closed_Loop_Feedstock.md logs its ten CLF- unknowns
+    as a markdown table under "## 6. Open Unknowns" instead — the old logic
+    would have silently reported "none open" for a file carrying three
+    Critical unknowns (CLF-003, CLF-004, CLF-006). Broadened to also
+    trigger on any "Open Unknowns" header and match table-row IDs
+    (| CLF-001 | ...), with inline Resolved/Discharged status checks since
+    table format keeps status in the same row rather than 8 lines below.
+  - Cell 3.5, UNKNOWN_FIRST_CYCLE: added CLF-001 through CLF-010 at cycle
+    10. Previously unmapped — Expiry Watch could never fire for this file's
+    unknowns (age reported as None, not overdue) with no visible indicator
+    anything was missing from the map.
+  - Cell 2, EXTRA_FILES menu: added Closed_Loop_Feedstock.md under
+    Challenges/ section, with a note flagging the CLF-005 Φ_ext symbol
+    collision against Return_To_Eden.md so an auditor working either file
+    is prompted to consider pulling in the other.
 
 KNOWN OPEN ITEM (flag for next session, not fixed here):
   - Challenges/Return_To_Eden.md has no File State sidecar table as of
@@ -313,6 +333,7 @@ EXTRA_FILES = [
     # "Critical_Minerals.md",           # rare earth, urban mining, CM-UNK
     # "Emergence.md",                   # emergent agent behavior, EM-UNK
     # "Return_To_Eden.md",              # Eden Index cross-system heuristic, no File State sidecar yet
+    # "Closed_Loop_Feedstock.md",       # CLF-series, 3 Critical unknowns; CLF-005 shares Φ_ext symbol w/ Return_To_Eden.md — pull both if auditing either
 ]
 
 # ── STEP 4: Set document status ──────────────────────────────────
@@ -763,6 +784,10 @@ UNKNOWN_FIRST_CYCLE = {
     "HR-UNK-001": 10, "HR-UNK-002": 10,
     # Cognitive Frameworks (cycle 10)
     "CF-004": 10,
+    # Closed Loop Feedstock — CLF-series (cycle 10)
+    "CLF-001": 10, "CLF-002": 10, "CLF-003": 10, "CLF-004": 10,
+    "CLF-005": 10, "CLF-006": 10, "CLF-007": 10, "CLF-008": 10,
+    "CLF-009": 10, "CLF-010": 10,
     # Misc
     "FA-001": 4, "FA-002": 4, "FA-003": 4, "FA-004": 4,
     "SP-001": 4, "SP-002": 4, "SP-003": 4, "SP-004": 4, "SP-005": 4,
@@ -820,20 +845,28 @@ def extract_boundary(filename, content):
                 if m:
                     result["last_audit"] = m.group(1).strip()
 
-        # Sidecar unknown IDs
-        if "## Auditor Notes" in line:
+        # Sidecar unknown IDs — two conventions in use across the repo:
+        #   (a) "## Auditor Notes..." header + "### UID" sub-headers (Gate files)
+        #   (b) "## N. Open Unknowns" header + a markdown table of UIDs
+        #       (e.g. Challenges/Closed_Loop_Feedstock.md)
+        if "## Auditor Notes" in line or "Open Unknowns" in line:
             in_sidecar = True
             continue
-        if in_sidecar and line.startswith("## ") and "Auditor Notes" not in line:
+        if in_sidecar and line.startswith("## ") and "Auditor Notes" not in line and "Open Unknowns" not in line:
             in_sidecar = False
         if in_sidecar:
+            # Convention (a): ### UID sub-header
             m = re.match(r'^###\s+([A-Z]+-[\w-]+)', line)
+            # Convention (b): | UID | ... | table row
+            if not m:
+                m = re.match(r'^\|\s*([A-Z]{2,}-\d{3,})\s*\|', line)
             if m:
                 uid = m.group(1)
                 # Use slice from current idx — avoids first-match bug
                 snippet = "\n".join(lines[idx:idx + 8])
                 if ("Status        | Resolved" not in snippet and
-                        "Status        | Discharged" not in snippet):
+                        "Status        | Discharged" not in snippet and
+                        "Resolved" not in line and "Discharged" not in line):
                     result["unknowns"].append(uid)
 
     return result
