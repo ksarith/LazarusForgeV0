@@ -14,9 +14,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-19; revised 2026-06-27                                      |
-| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor |
-| Open Unknowns    | 6                                                                   |
+| Last Audit       | 2026-06-19; revised 2026-06-27; revised 2026-07-02; revised 2026-07-08 |
+| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor; Claude — Registration Latency addition (human-directed) 2026-07-08 |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -36,11 +36,13 @@
 - Relationship between integrity doctrine and constitutional axioms
 - Incident logging requirements
 - Navigation file protection requirements (`Discovery.md` / `Routing.md`)
+- Registration latency between file sidecars and `Unknowns.md`'s global index
 
 **This file DOES NOT define:**
 - Cryptographic authentication implementation (→ `Admin/Security_Protocols.md`)
 - Constitutional governance doctrine (→ `Admin/Governance_Charter.md`)
 - Auditor operational behavior (→ `Admin/Auditor_Protocols.md`)
+- The Sidecar Model's structural architecture — local ledger vs. global index (→ `Admin/Auditor_Protocols.md` §Decentralized Audit Architecture; this file defines the *timing* integrity of that architecture, not its structure)
 - CI/CD pipeline automation mechanics
 - Runtime enforcement code
 - Specific tooling implementations
@@ -62,12 +64,13 @@ This file defines the operational integrity enforcement procedures for LazarusFo
 ## Assumptions
 
 | ID      | Assumption                                                                      | Basis                            | Confidence | Expiry Trigger                                         |
-|---------|---------------------------------------------------------------------------------|----------------------------------|------------|--------------------------------------------------------|
+|---------|-----------------------------------------------------------------------------------|-----------------------------------|------------|----------------------------------------------------------|
 | ASM-001 | Version preservation is currently a human discipline, not an automated guarantee | Observed repository workflow     | High       | Automated version control enforced at repository level |
 | ASM-002 | Most integrity violations at v0 will be accidental rather than adversarial       | Current contributor profile      | Medium     | Adversarial actors confirmed in operational environment |
 | ASM-003 | Human auditors are the primary detection layer at v0                            | Absence of automated tooling     | High       | `Admin/AUDIT_HARNESS.py` implements automated baseline checks |
 | ASM-004 | Prior file states may not always be available for comparison                    | Observed version preservation gaps | High     | Systematic prior-state archival established            |
 | ASM-005 | Multi-agent workflows create specific integrity risks around omission of prior agent contributions | Observed provisional document workflow | High | Single-agent workflow formally adopted |
+| ASM-006 | A newly-logged sidecar unknown becomes effectively invisible to cross-file audit tooling until it is mirrored into `Unknowns.md`'s active index | Observed CLF- cluster registration gap, 2026-07 | High | `Admin/AUDIT_HARNESS.py` implements automated sidecar↔index parity check |
 
 ---
 
@@ -203,6 +206,20 @@ For each protected element, this section defines what "intact" looks like in a c
 
 ---
 
+### Registration Latency — Sidecar to Unknowns.md Index
+
+**Baseline:** Unknown entries newly logged in a file's own sidecar (`## Auditor Notes & Unknowns`) are mirrored into `Unknowns.md`'s active index within one audit cycle of creation — the same latency-bounding pattern RIP-004 established for Tier 1 Axiom text.
+
+**Intact condition:** No sidecar entry with a First Logged date older than one audit cycle is absent from `Unknowns.md`'s active index.
+
+**Detection method:** At audit opening, cross-check each fetched file's sidecar IDs against `Unknowns.md`'s active index. Flag any absence exceeding one cycle.
+
+**Violation class:** Minor if the unresolved unknown's Priority is below Critical. Major if Critical/Blocking and unregistered past one cycle — an unindexed Critical unknown is functionally invisible to any agent or process that relies on `Unknowns.md` as its entry point into repository state, including this file's own Audit Lineage check above, which only verifies that *revised* files are reflected in `Unknowns.md`, not that *newly created* unknowns are.
+
+**v0 note:** Discovered via the CLF- cluster (`Challenges/Closed_Loop_Feedstock.md`) sitting unregistered in `Unknowns.md` at Critical priority for over 24 hours, tracked only as general housekeeping under PC-005 rather than as a bounded-latency integrity question in its own right. See RIP-008.
+
+---
+
 ### Ethical Anchor Field
 
 **Baseline:** Every file's Ethical Anchor field contains the canonical string exactly.
@@ -243,7 +260,7 @@ For each protected element, this section defines what "intact" looks like in a c
 
 ### Minor Violation
 
-**Examples:** Stale cross-reference, count mismatch in File State table, missing version suffix in archive filename, unlabeled aspirational reference.
+**Examples:** Stale cross-reference, count mismatch in File State table, missing version suffix in archive filename, unlabeled aspirational reference, a sub-Critical sidecar unknown unregistered past one audit cycle.
 
 **Response:**
 1. Log the violation in the affected file's sidecar as a new unknown or note on an existing unknown
@@ -254,7 +271,7 @@ For each protected element, this section defines what "intact" looks like in a c
 
 ### Major Violation
 
-**Examples:** Frozen section modified without justification comment, Resolution Log entry deleted, unknown entry removed without discharge record, silent omission of prior agent contributions, version increment without audit trail entry, navigation file mapping error.
+**Examples:** Frozen section modified without justification comment, Resolution Log entry deleted, unknown entry removed without discharge record, silent omission of prior agent contributions, version increment without audit trail entry, navigation file mapping error, a Critical/Blocking sidecar unknown unregistered in `Unknowns.md` past one audit cycle.
 
 **Response:**
 1. Halt Specification promotion for the affected file
@@ -340,6 +357,7 @@ Automatable without cryptographic tooling:
 - FROZEN marker presence and scope validation
 - Version header presence in `Unknowns.md`
 - Navigation file spot-check: sample of `Discovery.md` / `Routing.md` path entries against hardcoded folder-prefixed layout in `Admin/Repository_Structure.md`
+- Sidecar↔`Unknowns.md` registration parity: cross-check each fetched file's sidecar IDs against `Unknowns.md`'s active index; flag any sidecar entry absent past one audit cycle
 
 ### Phase 2 — Comparison Checks (requires archived prior states)
 
@@ -388,7 +406,8 @@ This file advances the repository toward Enforceable integrity for the elements 
 | Frozen sections            | Detectable   | Reviewable           | Phase 1 automation            |
 | Canonical cross-references | Detectable   | Reviewable           | Phase 1 automation            |
 | Navigation files           | Detectable   | Reviewable           | Phase 1 automation            |
-| Audit lineage              | Detectable   | Reviewable           | Phase 1 automation            |
+| Audit lineage               | Detectable   | Reviewable           | Phase 1 automation            |
+| Registration latency (sidecar → `Unknowns.md`) | Detectable | Reviewable | Phase 1 automation (near-term) |
 | Ethical Anchor field       | Detectable   | Reviewable           | Phase 1 automation (near-term)|
 | Sidecar entries            | Detectable   | Reviewable           | Phase 2 automation            |
 | Multi-agent continuity     | Detectable   | Reviewable           | Partially procedural — human discipline at v0 |
@@ -400,7 +419,7 @@ Full Enforceability requires `Admin/Security_Protocols.md` Phase 3. This file cl
 ## Lessons Learned
 
 | Date       | Evidence Type | What Was Tried                                          | What Failed                                                        | What Was Learned                                                                                 | Confidence | Revalidation Needed |
-|------------|---------------|---------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|------------|---------------------|
+|------------|---------------|-----------------------------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------|----------------------|
 | 2026-05-23 | Audit Review  | Revision overriding original without archival           | Prior state unavailable for comparison; drift undetectable         | Version preservation before revision is the single highest-value v0 integrity practice           | Replicated | No                  |
 | 2026-05-23 | Audit Review  | Multi-agent sessions without explicit prior-state loading | Prior agent contributions silently omitted in subsequent sessions | Assumption Extraction at session open (Rule 6) is an integrity requirement, not a courtesy      | Replicated | No                  |
 | 2026-05-23 | Modeling      | Treating all integrity violations as equal severity     | Response procedures were inconsistent; Constitutional violations handled like Minor ones         | Violation classification ladder required — response must be proportional to severity and reversibility | Analogous | Yes            |
@@ -408,6 +427,7 @@ Full Enforceability requires `Admin/Security_Protocols.md` Phase 3. This file cl
 | 2026-06-19 | Audit Review  | Navigation files (Discovery.md, Routing.md) treated as ordinary files | If path mappings are compromised, all downstream Phase 1 checks silently validate invalid targets | Discovery.md and Routing.md are keystone integrity targets — must be explicitly protected and spot-checked before automated runs | Internally Derived | Yes |
 | 2026-06-19 | Audit Review  | Constitutional violation detection with no defined maximum latency | Tier 1 Axiom modification could persist undetected across multiple audit cycles absent explicit per-cycle text confirmation | Bounding an unbounded detection window rarely needs new infrastructure — sequencing the check as mandatory Step 1 of an existing audit checklist bounds exposure to one cycle at zero marginal cost | Replicated | No |
 | 2026-06-27 | Governance Review | Manual /Archive/ directory deposit treated as the primary prior-state mechanism | Redundant with existing Git release tag infrastructure; unrecognized for 5+ weeks | Git release tags with GPG-signed autogenerated zips are a more tamper-evident and lower-friction archival mechanism than manual file deposits; check the releases page before concluding prior-state archival is absent | Analogous | No |
+| 2026-07-08 | Audit Review  | Treating `Unknowns.md`'s version number as a sufficient recency proxy for "nothing new to report" | A newly-created Critical unknown (CLF- cluster) sat unregistered in `Unknowns.md` for 24+ hours; an audit relying on the index's version bump alone would report no change while a Critical item sat effectively invisible | The RIP-004 latency-bounding pattern (Tier 1 Axiom text) applies equally to sidecar↔index registration — any unbounded detection window on a protected element is itself the risk, independent of what the element is | Internally Derived | Yes |
 
 ---
 
@@ -422,11 +442,12 @@ Full Enforceability requires `Admin/Security_Protocols.md` Phase 3. This file cl
 ## Abandoned Paths
 
 | Date       | Path                                                              | Why Abandoned                                                                                       | Reconsider? |
-|------------|-------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------|
+|------------|---------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|-------------|
 | 2026-05-23 | Cryptographic enforcement as v0 integrity mechanism               | Requires `Admin/Security_Protocols.md` implementation — claiming it would be integrity theater      | Yes — at Phase 3 |
 | 2026-05-23 | Full rollback as default recovery procedure                       | Surgical restoration of specific compromised elements is preferable — full rollback discards valid work unnecessarily | No |
 | 2026-05-23 | Treating multi-agent omission as always accidental                | Omission without rationale is a violation regardless of intent — intent affects severity classification, not violation status | No |
 | 2026-06-19 | Unrestricted reconstruction as valid recovery path               | Reconstruction without independent verification anchors hallucinated content into repository as if it were restored fact | No |
+| 2026-07-08 | A new dedicated "system self-analysis" file for governance-machinery risks | Checked against this file and `Admin/Auditor_Protocols.md` first — the risk category (protected-element detection latency) already had a home and pattern (RIP-004) in this file; a new file would have fragmented an existing doctrine rather than filling a real gap | No, unless a future risk category is confirmed to fit neither file |
 
 ---
 
@@ -447,6 +468,8 @@ Mandatory re-audit conditions for this document:
 - Ethical Anchor field absent, altered, or does not match canonical string
 - Abandoned path for cryptographic enforcement reopened without `Admin/Security_Protocols.md` at sufficient maturity
 - RIP-004 reopened — Tier 1 Axiom Verification already implemented in `Admin/Forge_Audit_Kit.md` v1.1 Step 1
+- Registration Latency protected element removed, or its one-cycle bound loosened without a documented replacement bound
+- Sidecar↔`Unknowns.md` parity check removed from the Phase 1 automation target list
 
 **Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
 
@@ -457,7 +480,7 @@ Mandatory re-audit conditions for this document:
 ### RIP-001 — Prior-state archival system not yet established
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | Resolved — Discharge via Lessons Learned |
 | Risk          | High                                    |
 | Priority      | Critical                                |
@@ -478,7 +501,7 @@ Mandatory re-audit conditions for this document:
 ### RIP-002 — AUDIT_HARNESS.py Phase 1 checks not yet implemented
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | Open                                    |
 | Risk          | Medium                                  |
 | Priority      | Major                                   |
@@ -488,18 +511,18 @@ Mandatory re-audit conditions for this document:
 | First Logged  | 2026-05-23                              |
 | Last Reviewed | 2026-05-23                              |
 
-**Description:** Phase 1 automation checks (Ethical Anchor string match, File State field presence, cross-reference resolution, FROZEN marker validation, navigation file spot-check) are defined here but not yet implemented in `Admin/AUDIT_HARNESS.py`.
+**Description:** Phase 1 automation checks (Ethical Anchor string match, File State field presence, cross-reference resolution, FROZEN marker validation, navigation file spot-check, sidecar↔`Unknowns.md` registration parity) are defined here but not yet implemented in `Admin/AUDIT_HARNESS.py`.
 
 **Why It Matters:** Phase 1 checks are the most tractable automation target — no cryptographic tooling required. Delay means these remain human-only checks subject to fatigue and omission.
 
-**Resolution Path:** Deferred via Specification — implement Phase 1 checks in `Admin/AUDIT_HARNESS.py`. This file is the specification. Checks are ordered by implementation tractability: Ethical Anchor match first, then File State fields, then cross-reference resolution, then navigation file spot-check.
+**Resolution Path:** Deferred via Specification — implement Phase 1 checks in `Admin/AUDIT_HARNESS.py`. This file is the specification. Checks are ordered by implementation tractability: Ethical Anchor match first, then File State fields, then cross-reference resolution, then navigation file spot-check, then sidecar↔`Unknowns.md` registration parity (added to this ordering 2026-07-08, see RIP-008).
 
 ---
 
 ### RIP-003 — Violation incident log location undefined
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | Open                                    |
 | Risk          | Medium                                  |
 | Priority      | Major                                   |
@@ -520,7 +543,7 @@ Mandatory re-audit conditions for this document:
 ### RIP-004 — Constitutional violation detection latency
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | Resolved — Discharge via Lessons Learned |
 | Risk          | High                                    |
 | Priority      | Major                                   |
@@ -534,14 +557,14 @@ Mandatory re-audit conditions for this document:
 
 **Resolution:** Tier 1 Axiom Verification is now Step 1 of the mandatory Audit Opening Checklist in `Admin/Forge_Audit_Kit.md` v1.1. Every audit cycle opens with axiom text confirmation before any other check. Detection latency is bounded to one audit cycle.
 
-**Lessons Learned:** An unbounded detection-latency window on a Tier 1 Axiom check is itself a Constitutional-class risk, not a lower-tier gap — a modification could otherwise persist silently across an arbitrary number of cycles. The fix did not require new tooling, only sequencing: making axiom verification the mandatory first step of every audit opening bounds the exposure window to exactly one cycle at zero marginal cost. Future latency-class unknowns (detection windows, staleness checks) should default to "make it Step 1 of an existing mandatory checklist" before proposing new infrastructure.
+**Lessons Learned:** An unbounded detection-latency window on a Tier 1 Axiom check is itself a Constitutional-class risk, not a lower-tier gap — a modification could otherwise persist silently across an arbitrary number of cycles. The fix did not require new tooling, only sequencing: making axiom verification the mandatory first step of every audit opening bounds the exposure window to exactly one cycle at zero marginal cost. Future latency-class unknowns (detection windows, staleness checks) should default to "make it Step 1 of an existing mandatory checklist" before proposing new infrastructure. **Directly generalized 2026-07-08 to RIP-008 (sidecar↔`Unknowns.md` registration latency) — same pattern, different protected element.**
 
 ---
 
 ### RIP-005 — Security_Protocols.md Phase 3 dependency
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | In Progress                             |
 | Risk          | High                                    |
 | Priority      | Major                                   |
@@ -562,7 +585,7 @@ Mandatory re-audit conditions for this document:
 ### RIP-006 — Archive retention policy undefined
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | In Progress — Partially Resolved        |
 | Risk          | Low                                     |
 | Priority      | Minor                                   |
@@ -583,7 +606,7 @@ Mandatory re-audit conditions for this document:
 ### RIP-007 — Integrity incident ownership undefined
 
 | Field         | Value                                   |
-|---------------|-----------------------------------------|
+|---------------|-------------------------------------------|
 | Status        | Open                                    |
 | Risk          | Medium                                  |
 | Priority      | Major                                   |
@@ -601,51 +624,32 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### RIP-008 — Unbounded registration latency between file sidecars and `Unknowns.md` active index
+
+| Field         | Value                                   |
+|---------------|-------------------------------------------|
+| Status        | Open                                    |
+| Risk          | High                                    |
+| Priority      | Major                                   |
+| Type          | Governance / Technical                  |
+| Blocking      | No                                      |
+| Owner         | `Admin/Repository_Integrity_Protocol.md`|
+| First Logged  | 2026-07-08                              |
+| Last Reviewed | 2026-07-08                              |
+
+**Description:** No maximum detection latency was defined for the gap between a new unknown being logged in a file's own sidecar and that unknown appearing in `Unknowns.md`'s active index. Discovered directly: `Challenges/Closed_Loop_Feedstock.md`'s CLF- cluster (three Critical entries — CLF-003, CLF-004, CLF-006) sat fully logged in its own sidecar but absent from `Unknowns.md` for over 24 hours, tracked only as general housekeeping under PC-005 rather than as a bounded-latency integrity question. A morning-report audit pass that treated `Unknowns.md`'s version number as a sufficient recency proxy — rather than opening each file's own sidecar directly — would report "nothing new" while a Critical unknown sat effectively invisible to any process using `Unknowns.md` as its entry point.
+
+**Why It Matters:** This is the direct sibling of RIP-004 (Tier 1 Axiom detection latency), which established that an unbounded detection window on a protected element is itself the risk, independent of what the element is. `Unknowns.md`'s entire value proposition per `Admin/Auditor_Protocols.md`'s Sidecar Model is as the trustworthy global index — a silent lag between sidecar truth and index truth undermines that model without ever triggering any existing check, since Audit Lineage (above) only verifies that *revised* files are reflected in `Unknowns.md`, not that *newly created* unknowns are registered promptly.
+
+**Resolution Path:** Payment via Specification — resolved in this revision. New Protected Element "Registration Latency — Sidecar to Unknowns.md Index" added above, bounding the detection window to one audit cycle, mirroring RIP-004's pattern exactly. Corresponding entries added to: Violation Classification (Minor/Major examples), Automation Migration Path Phase 1 (sidecar↔index parity check), Governance Enforcement States table, and Drift Indicators. Remaining gap: implementation in `Admin/AUDIT_HARNESS.py` (tracked under RIP-002's updated ordering) and addition as a mandatory checklist step in `Admin/Forge_Audit_Kit.md`, immediately following the existing Step 1 Tier 1 Axiom check — not yet executed, flagged for next session. A forward cross-reference was also added to `Admin/Auditor_Protocols.md`'s Sidecar Model section pointing back to this entry.
+
+*Surfaced by human governing authority (James) via direct observation of the CLF- cluster registration gap, 2026-07-08. Homed in this file rather than a new dedicated file after confirming against both this file and `Admin/Auditor_Protocols.md` that no existing file already owned this specific risk category — see Abandoned Paths.*
+
+---
+
 ### Resolution Log
 
-- 2026-05-23: File created (v0.1) — GOV-003 resolution path initiated. Bridges `Admin/Governance_Charter.md` constitutional declarations and `Admin/Auditor_Protocols.md` operational detection behavior. Defines integrity baselines, violation classification ladder, recovery procedures, and automation migration path. Honest v0 acknowledgment of human-discipline-primary integrity layer. RIP-001 through RIP-005 logged.
-- 2026-06-19: v0.2 — Four-agent audit pass (Gemini, ChatGPT, Grok, Claude). Ten changes: (1) Navigation Anchors added. (2) Verification Ref corrected to `Admin/Verification_Gates_LF.md` (PC-001 class fix). (3) Navigation File Integrity section added to Protected Elements — Discovery.md and Routing.md declared as keystone protected elements; spot-check before automated runs; Constitutional violation class for deliberate mapping attacks. (4) Navigation file protection added to Phase 1 automation target list. (5) Navigation files row added to Governance Enforcement States table. (6) Reconstruction recovery rule tightened — reconstructed content cannot clear Gate 6 or advance beyond Exploration without independent line-by-line verification against external raw logs. (7) Abandoned path added for unrestricted reconstruction. (8) RIP-004 resolved — Tier 1 Axiom Verification already implemented in Forge_Audit_Kit.md v1.1 Step 1; moved to Resolved in sidecar; Drift Indicator added to prevent reopening. (9) RIP-005 description updated — file now exists at v0.5; status In Progress. (10) RIP-006 logged — archive retention policy undefined. (11) RIP-007 logged — integrity incident ownership undefined. (12) Stale "planned" labels stripped from Relationship section for Security_Protocols.md and Governance_Migration_Protocol.md. (13) Scope Boundary updated to note RIP-006 and RIP-007 as deferred items. (14) Two new Lessons Learned entries added. Open Unknowns updated to 7 (RIP-004 resolved, RIP-006 and RIP-007 added).
-
----
-
-## Relationship to Existing Documents
-
-- `Admin/Governance_Charter.md` — Tier 1 constitutional source; declares integrity requirements this file operationalizes; GOV-003 is the originating unknown
-- `Admin/Auditor_Protocols.md` — Tier 2; auditor detection behavior; Adversarial Challenge Classes 6, 9, and 10 are the primary detection mechanisms this file coordinates with
-- `Admin/Forge_Audit_Kit.md` — Tier 3; RIP-004 resolved — Tier 1 Axiom Verification now Step 1 of mandatory Audit Opening Checklist in v1.1
-- `Admin/Ethical_Constraints.md` — co-Tier 1; Ethical Anchor field integrity is governed by doctrine here
-- `Admin/File_Template.md` — defines Ethical Anchor field canonical string and Frozen Section marker format
-- `Unknowns.md` — Constitutional violation incidents logged as Cross-Module entries here; RIP-004 discharge synced (v3.5 Audit Trail, 2026-06-19; sidecar brought into full conformance with discharge pattern 2026-07-02)
-- `Discovery.md` — canonical cross-reference resolution source; Archive directory to be added here when established; now also a protected element
-- `Routing.md` — programmatic path routing; now a protected element alongside Discovery.md
-- `Admin/Repository_Structure.md` — hardcoded folder-prefixed layout used as Navigation file spot-check baseline in Phase 1
-- `Admin/AUDIT_HARNESS.py` — primary automation target for Phase 1 and Phase 2 checks defined here
-- `Admin/Security_Protocols.md` — exists at v0.5 (2026-06-19); Phase 3 cryptographic enforcement dependency; SEC- unknowns track implementation gaps
-- `Admin/Governance_Migration_Protocol.md` — exists; Tier 1 Axiom amendment procedures cross-reference
-
----
-
-## Status
-
-Version 0.4 — RIP-004 discharge record brought into conformance with the
-RIP-001 pattern (2026-07-02); underlying audit maturity unchanged since
-four-agent pass (2026-06-19).
-
-**What must remain constant:**
-
-**A governance system that cannot verify its own state cannot protect anything else.**
-
-**Prior state preservation is not optional at v0 — it is the integrity layer.**
-- 2026-06-27: v0.3 — RIP-001 closed (Discharge via Lessons Learned). Git release
-  tag system with GPG-signed autogenerated source zips recognized as fulfilling
-  the prior-state preservation requirement at v0 scale. Ten tagged releases
-  V0.6 through V0.97 constitute the systematic archival mechanism. Manual
-  /Archive/ directory deposit is redundant and no longer required as primary
-  mechanism. RIP-006 partially resolved — GitHub indefinite retention satisfies
-  Tier 1 permanent retention requirement; remaining gap is /Archive/ directory
-  content retention policy pending distillate architecture definition.
-  Open Unknowns 7 → 6. Lessons Learned row added.
-
+- 2026-07-08: **v0.5 — Registration Latency protected element added; RIP-008 logged and resolved at the specification layer (human-directed).** Generalizes RIP-004's Tier 1 Axiom detection-latency pattern to the sidecar↔`Unknowns.md` registration gap, discovered via the CLF- cluster sitting unregistered at Critical priority for 24+ hours. Changes: (1) New Protected Element "Registration Latency — Sidecar to Unknowns.md Index" added after Audit Lineage. (2) RIP-008 logged and resolved at Payment via Specification level — implementation in `AUDIT_HARNESS.py` and `Forge_Audit_Kit.md` remains outstanding and is tracked under RIP-002's updated ordering. (3) Violation Classification Minor/Major example lists extended. (4) Automation Migration Path Phase 1 list extended with the sidecar↔index parity check. (5) Governance Enforcement States table gained a new row. (6) Drift Indicators extended with two new conditions guarding against the new element being loosened or silently dropped from Phase 1 scope. (7) ASM-006 added. (8) New Lessons Learned row and Abandoned Paths row — the latter documenting that a dedicated new "system self-analysis" file was considered and rejected in favor of extending this file, after confirming no overlap with `Admin/Auditor_Protocols.md`. (9) A corresponding forward cross-reference was added to `Admin/Auditor_Protocols.md`'s Sidecar Model section (patch delivered separately). Open Unknowns 6 → 7.
 - 2026-07-02: v0.4 — RIP-004 sidecar entry brought into full conformance
   with the RIP-001 discharge pattern (previously inconsistent: plain
   "Resolved" status instead of "Resolved — Discharge via Lessons Learned";
@@ -664,3 +668,43 @@ four-agent pass (2026-06-19).
   `Admin/Forge_Audit_Kit.md` as the standard Resolved Unknown Discharge
   Procedure. Not executed this session; flagged for human governing
   authority decision.
+- 2026-06-27: v0.3 — RIP-001 closed (Discharge via Lessons Learned). Git release
+  tag system with GPG-signed autogenerated source zips recognized as fulfilling
+  the prior-state preservation requirement at v0 scale. Ten tagged releases
+  V0.6 through V0.97 constitute the systematic archival mechanism. Manual
+  /Archive/ directory deposit is redundant and no longer required as primary
+  mechanism. RIP-006 partially resolved — GitHub indefinite retention satisfies
+  Tier 1 permanent retention requirement; remaining gap is /Archive/ directory
+  content retention policy pending distillate architecture definition.
+  Open Unknowns 7 → 6. Lessons Learned row added.
+- 2026-06-19: v0.2 — Four-agent audit pass (Gemini, ChatGPT, Grok, Claude). Ten changes: (1) Navigation Anchors added. (2) Verification Ref corrected to `Admin/Verification_Gates_LF.md` (PC-001 class fix). (3) Navigation File Integrity section added to Protected Elements — Discovery.md and Routing.md declared as keystone protected elements; spot-check before automated runs; Constitutional violation class for deliberate mapping attacks. (4) Navigation file protection added to Phase 1 automation target list. (5) Navigation files row added to Governance Enforcement States table. (6) Reconstruction recovery rule tightened — reconstructed content cannot clear Gate 6 or advance beyond Exploration without independent line-by-line verification against external raw logs. (7) Abandoned path added for unrestricted reconstruction. (8) RIP-004 resolved — Tier 1 Axiom Verification already implemented in Forge_Audit_Kit.md v1.1 Step 1; moved to Resolved in sidecar; Drift Indicator added to prevent reopening. (9) RIP-005 description updated — file now exists at v0.5; status In Progress. (10) RIP-006 logged — archive retention policy undefined. (11) RIP-007 logged — integrity incident ownership undefined. (12) Stale "planned" labels stripped from Relationship section for Security_Protocols.md and Governance_Migration_Protocol.md. (13) Scope Boundary updated to note RIP-006 and RIP-007 as deferred items. (14) Two new Lessons Learned entries added. Open Unknowns updated to 7 (RIP-004 resolved, RIP-006 and RIP-007 added).
+- 2026-05-23: File created (v0.1) — GOV-003 resolution path initiated. Bridges `Admin/Governance_Charter.md` constitutional declarations and `Admin/Auditor_Protocols.md` operational detection behavior. Defines integrity baselines, violation classification ladder, recovery procedures, and automation migration path. Honest v0 acknowledgment of human-discipline-primary integrity layer. RIP-001 through RIP-005 logged.
+
+---
+
+## Relationship to Existing Documents
+
+- `Admin/Governance_Charter.md` — Tier 1 constitutional source; declares integrity requirements this file operationalizes; GOV-003 is the originating unknown
+- `Admin/Auditor_Protocols.md` — Tier 2; auditor detection behavior; Adversarial Challenge Classes 6, 9, and 10 are the primary detection mechanisms this file coordinates with; §Decentralized Audit Architecture (Sidecar Model) defines the local-ledger/global-index structure that this file's Registration Latency protected element times — cross-referenced there as of 2026-07-08
+- `Admin/Forge_Audit_Kit.md` — Tier 3; RIP-004 resolved — Tier 1 Axiom Verification now Step 1 of mandatory Audit Opening Checklist in v1.1; RIP-008's sidecar↔index parity check is targeted as a near-term addition to that same checklist, not yet executed
+- `Admin/Ethical_Constraints.md` — co-Tier 1; Ethical Anchor field integrity is governed by doctrine here
+- `Admin/File_Template.md` — defines Ethical Anchor field canonical string and Frozen Section marker format
+- `Unknowns.md` — Constitutional violation incidents logged as Cross-Module entries here; RIP-004 discharge synced (v3.5 Audit Trail, 2026-06-19; sidecar brought into full conformance with discharge pattern 2026-07-02); this file's Registration Latency element directly governs the timeliness of entries appearing here
+- `Discovery.md` — canonical cross-reference resolution source; Archive directory to be added here when established; now also a protected element
+- `Routing.md` — programmatic path routing; now a protected element alongside Discovery.md
+- `Admin/Repository_Structure.md` — hardcoded folder-prefixed layout used as Navigation file spot-check baseline in Phase 1
+- `Admin/AUDIT_HARNESS.py` — primary automation target for Phase 1 and Phase 2 checks defined here, including the new sidecar↔index parity check
+- `Admin/Security_Protocols.md` — exists at v0.5 (2026-06-19); Phase 3 cryptographic enforcement dependency; SEC- unknowns track implementation gaps
+- `Admin/Governance_Migration_Protocol.md` — exists; Tier 1 Axiom amendment procedures cross-reference
+
+---
+
+## Status
+
+Version 0.5 — Registration Latency protected element and RIP-008 added (2026-07-08), generalizing the RIP-004 latency-bounding pattern to sidecar↔`Unknowns.md` index registration. Prompted by direct observation of the CLF- cluster registration gap. A new dedicated file for this class of risk was considered and rejected — this file and `Admin/Auditor_Protocols.md` were checked directly and confirmed as the correct existing homes.
+
+**What must remain constant:**
+
+**A governance system that cannot verify its own state cannot protect anything else.**
+
+**Prior state preservation is not optional at v0 — it is the integrity layer.**
