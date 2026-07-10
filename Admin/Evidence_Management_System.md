@@ -11,14 +11,14 @@
 | Field              | Value |
 |--------------------|-------|
 | Status             | Exploration |
-| Version            | v0.1 |
+| Version            | v0.2 |
 | Body Stability     | Transitional |
 | Spec Gates         | 0/6 |
 | Verification Ref   | `Admin/Verification_Gates_LF.md` |
 | Ethical Anchor     | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
 | Highest Risk       | This file's proposed architecture is mistaken for adopted doctrine and referenced by `Admin/AUDIT_HARNESS.py` or any live promotion logic before EMS-001/EMS-002 are resolved. |
-| Last Audit         | 2026-07-09 (creation — multi-agent synthesis, hardening, and structural correction pass) |
-| Auditor            | Gemini, ChatGPT, Grok — original proposal and iterative refinement (external contributions, human-relayed); Claude — Skeptic/Auditor, vulnerability hardening and structural correction, 2026-07-09 |
+| Last Audit         | 2026-07-09 (creation); revised 2026-07-10 (multi-agent review round integrated) |
+| Auditor            | Gemini, ChatGPT, Grok — original proposal, iterative refinement, and 2026-07-10 review pass (external contributions, human-relayed); Claude — Skeptic/Auditor, vulnerability hardening, structural correction, and revision integration, 2026-07-09/10 |
 | Open Unknowns      | 2 (EMS-001, EMS-002) |
 | Active Disputes    | 0 |
 | Pending Ratification | 1 (this entire file — see Status) |
@@ -120,6 +120,18 @@ Computed Maturity Vector
 
 A Concept Node may only ever *submit evidence*. It cannot write `m_phys = 0.85` directly — no manifest, telemetry binding, or node edit is permitted to set a vector dimension by assignment. The harness alone computes and injects `compiled_state`. This is the fix for the exact failure mode Repository_Integrity_Protocol.md's Constitutional-violation ladder exists to prevent, applied here to a lower-stakes but still real self-authorization surface.
 
+### 3a. Evidence, Trust, and Integrity Are Distinct Properties
+
+Added 2026-07-10, per Gemini's review of v0.1. The original draft treated cryptographic signatures largely as a single "governance" bucket. Three separable questions were being conflated:
+
+| Property | Question It Answers | Where It Lives |
+|----------|----------------------|-----------------|
+| **Evidence** | Did the experiment produce this result? | `empirical_data`, `validation_criteria` |
+| **Trust** | Who produced this record, and are they authorized to? | `provenance.operator_or_agent`, `provenance.hardware_signature` |
+| **Integrity** | Has this record changed since it was recorded? | Would require append-only enforcement / hash comparison — not yet specified; see `Admin/Repository_Integrity_Protocol.md`'s own Phase 2/3 dependency for the pattern this would follow |
+
+`m_gov`'s deduction checklist (§5c, §6) currently scores Trust and a partial proxy for Integrity (signature presence) but has no mechanism for true Integrity verification (detecting a record was altered post-hoc) at this file's current maturity. That gap is inherited from Repository_Integrity_Protocol.md's own honest v0 acknowledgment — full Integrity verification depends on the same Phase 3 cryptographic tooling RIP.md is itself waiting on.
+
 ---
 
 ### 4. Proposed Schemas (unadopted — preserved for reference)
@@ -150,6 +162,11 @@ evidence_ledger:
 # Read-only block calculated and injected strictly by AUDIT_HARNESS.py
 compiled_state:
   last_audit_timestamp: "2026-07-09T16:45:00Z"
+  scoring_algorithm:
+    id: "EMS-Score-v2"    # Added 2026-07-10 per Gemini review — ties every
+                          # computed score to the algorithm version that
+                          # produced it, so a future scoring revision doesn't
+                          # silently reinterpret historical maturity values
   calculated_vector:
     m_phys: 0.85
     m_exp: 0.70
@@ -180,8 +197,8 @@ Every piece of physical or experimental evidence carries its own error margins, 
   "instrumentation_metadata": {
     "sensor_id": "THERMOCOUPLE-K-042",
     "last_calibration_date": "2026-05-12",
-    "estimated_sensor_drift_per_annum": "0.4%",
-    "systemic_confidence_interval": "95%"
+    "estimated_sensor_drift_per_annum_pct": 0.4,
+    "systemic_confidence_interval_pct": 95.0
   },
   "empirical_data": {
     "target_metric": "thermal_equilibrium_temperature",
@@ -202,7 +219,7 @@ Every piece of physical or experimental evidence carries its own error margins, 
 }
 ```
 
-Note: `observed_value` and `absolute_uncertainty` are numeric fields, not embedded in a free-text `measurement_uncertainty` string — this correction is required; see §5a.
+Note: `observed_value`, `absolute_uncertainty`, and `estimated_sensor_drift_per_annum_pct` are all numeric fields, not embedded in free-text strings — this correction is required throughout; see §5a. (The drift field was still string-typed as of v0.1 — an inconsistency with §5a's own rule, caught in the 2026-07-10 review round and corrected here.)
 
 #### 4c. Rejected precursor — Concept Node with directly-editable `maturity_vector` (Grok, first draft)
 
@@ -255,6 +272,17 @@ During review, three specific exploitable weaknesses were found in earlier draft
 **The flaw:** Grants a perfect governance score merely because a signature *string exists* — no verification that the signature matches the payload, no check that evidence records themselves passed schema validation.
 
 **The fix:** `m_gov` starts at 1.0 and is strictly *degraded* by an explicit deduction checklist (unsigned node, unverified evidence signatures, etc.) — never auto-granted by presence alone.
+
+#### 5d. Negative Evidence Is Not the Same as No Evidence (added 2026-07-10, per Gemini review)
+
+The v0.1 draft did not distinguish two states that currently collapse to similar low scores but mean very different things:
+
+- **No evidence** — no experiment has been run. The claim is simply untested.
+- **Negative evidence** — an experiment was run and it failed, or produced a result outside `validation_criteria.expected_range`.
+
+Both currently drag `m_phys`/`m_exp` toward zero in §6's implementation, which is directionally correct for aggregation purposes but loses information a human reviewer would want: "nobody has checked this yet" and "we checked and it doesn't hold" warrant different next actions. A failed run should remain a first-class, retained evidence record (not discarded or treated as a null result) — the reference implementation already does this correctly by requiring every attempted run to appear in `physical_refs` regardless of outcome (§5b's stability-ratio fix depends on failed runs being counted, not dropped). What's still missing is a way to *surface* that distinction to a reader of `compiled_state`, rather than only to the scoring math. Left as an open refinement for whichever revision resolves EMS-001, rather than resolved here — this is a display/reporting question, not a scoring-correctness one, so it doesn't block ratification the way EMS-001/002 do.
+
+Related, deferred further: contradictory evidence (Run A passes, Run B fails, Run C passes on the same claim) is handled correctly by the stability-ratio math but the document doesn't yet discuss what that pattern means for repository knowledge beyond the score itself. Noted for a future revision, not v0.2.
 
 ---
 
@@ -321,9 +349,9 @@ def calculate_maturity_from_evidence_v2(
                 run_score = 0.50
 
             # Degrade score further if instrumentation drift is high
-            drift_str = run.get("instrumentation_metadata", {}).get(
-                "estimated_sensor_drift_per_annum", "0%")
-            drift_val = float(drift_str.strip("%")) if "%" in drift_str else 0.0
+            # (numeric field per §5a fix — no string parsing)
+            drift_val = float(run.get("instrumentation_metadata", {}).get(
+                "estimated_sensor_drift_per_annum_pct", 0.0))
             if drift_val > 1.0:
                 run_score *= 0.8
 
@@ -416,6 +444,7 @@ This is useful *descriptive* language for explaining RIP.md's existing structure
 |------|---------------|-----------------|--------------|--------------------|------------|----------------------|
 | 2026-07-09 | Audit Review | Three independent agent drafts all cited GOV-008 for the physical-telemetry-binding problem | GOV-008 is actually about bootstrap quorum, an unrelated question — none of the three agents checked the ID against source before building on it | Convergence across multiple agents is not confirmation of correctness — it can mean one agent's error propagated into the others' context rather than three independent verifications agreeing. Always check a cited ID against source text directly, regardless of how many agents agree on it. | Internally Derived | No |
 | 2026-07-09 | Audit Review | Building implementation momentum ("let's draft the production-ready harness") within the same thread that produced an unratified architectural proposal | No ratification checkpoint existed between "this is a good idea" and "let's start building it" | Genuinely good architecture still needs the same drafted-then-held pattern as any other major doctrine change, especially when the proposing agents have momentum — the risk isn't the idea's quality, it's skipping the checkpoint | Internally Derived | No |
+| 2026-07-10 | Audit Review | Three agents reviewing v0.1 independently converged quickly on "feed vector into Spec Gates, don't replace" as the safer EMS-001 path | Not itself a failure — Grok's independent Path 2/3 alternatives showed real divergent thinking, unlike the earlier GOV-008 echo — but fast multi-agent agreement is exactly the pattern that produced GOV-008's error, so it still warranted a deliberate check rather than being taken as confirmation by volume | The same scrutiny this file applies to its own subject matter (convergence ≠ correctness) needs to be applied to reviews *of* this file too, not just to the proposal's original content | Internally Derived | No |
 
 ---
 
@@ -456,20 +485,27 @@ Mandatory re-audit conditions for this document:
 
 | Field | Value |
 |-------|-------|
-| Status | Open |
+| Status | In Progress |
 | Risk | High |
 | Priority | Critical |
 | Type | Governance / Architectural |
 | Blocking | Yes (for any implementation work on this proposal) |
 | Owner | `Admin/Evidence_Management_System.md` |
 | First Logged | 2026-07-09 |
-| Last Reviewed | 2026-07-09 |
+| Last Reviewed | 2026-07-10 |
 
 **Description:** This proposal's 7-dimensional maturity vector and MIN aggregation is a parallel structure to `Admin/Verification_Gates_LF.md`'s six-gate Spec Gates system, which is the repository's actual live promotion mechanism. Whether the vector should replace Spec Gates, feed into them as an input, or run entirely alongside them for physical-evidence tracking specifically has not been decided.
 
-**Why It Matters:** Building this out before deciding risks the repository ending up with two maturity systems that can disagree with each other about the same file's promotion readiness — worse than the current single, imperfect system.
+**Candidate paths, per 2026-07-10 review round (Grok):**
+1. **Input Pipeline** — the vector feeds specific Spec Gates as quantitative backing (e.g., a gate requiring empirical grounding could require `m_phys ≥ 0.75` and `m_rep ≥ 0.50`). Spec Gates remain the sole live promotion mechanism; the vector becomes a structured input to some of them. Lowest structural risk, fully reversible.
+2. **Structural Replacement** — the vector replaces the 0/6 Spec Gates system entirely across every governed file's File State table. Highest structural risk: every file in the repository currently references `Admin/Verification_Gates_LF.md` by name in its Verification Ref field, so this path's propagation scope is comparable to or larger than CT-010's rename sweep.
+3. **Physical-Domain Sandbox** — the vector applies only to Architecture/ and Operations/ files; Admin/ and governance-tier files continue using Spec Gates unmodified. Splits the repository into two promotion regimes by file domain.
 
-**Resolution Path:** Human governing authority decision required. No technical work should proceed on this file's schemas or implementation until this is ruled on.
+**2026-07-10 update:** Human governing authority has indicated an initial leaning toward integration/replacement (Path 2 direction) rather than Path 1's narrower feed-in model, and intends to review `Admin/Verification_Gates_LF.md` directly in an upcoming session. **This unknown cannot close, and no path should be finalized, until that review happens** — this file's own drafting has proceeded entirely from *references to* Verification_Gates_LF.md in other files, never from its actual Scope Boundary, gate definitions, or body text. Status moved from Open to In Progress to reflect that a decision process has begun, without treating any path as selected yet.
+
+**Why It Matters:** Building this out before deciding risks the repository ending up with two maturity systems that can disagree with each other about the same file's promotion readiness — worse than the current single, imperfect system. Given the leaning toward Path 2, the risk sharpens further: a full structural replacement decided without reading the file being replaced risks losing gate logic or Verification_Gates_LF.md-specific doctrine (e.g., any existing violation classes, promotion exceptions, or cross-references from `Admin/Repository_Integrity_Protocol.md`'s Audit Lineage checks) that isn't visible from other files' references to it alone.
+
+**Resolution Path:** Upload/review `Admin/Verification_Gates_LF.md` directly. Map its actual gate definitions against the 7-dimensional vector concretely before ruling on which of the three paths (or a fourth, informed by what the file actually contains) is correct.
 
 ---
 
@@ -496,6 +532,7 @@ Mandatory re-audit conditions for this document:
 
 ### Resolution Log
 
+- 2026-07-10: **v0.2 — Multi-agent review round integrated.** (1) §4b/§6: `estimated_sensor_drift_per_annum` converted from string to numeric field (`estimated_sensor_drift_per_annum_pct`), fixing an inconsistency with §5a's own anti-string-matching rule that survived into v0.1's reference implementation — caught by ChatGPT's review. (2) §3a added: Evidence, Trust, and Integrity formally distinguished as separate properties, per Gemini's review — `m_gov` currently scores Evidence and Trust proxies but has no true Integrity (tamper-detection) mechanism, a gap inherited honestly from Repository_Integrity_Protocol.md's own Phase 3 dependency. (3) §4a compiled_state schema gained `scoring_algorithm.id`, per Gemini's review — ties every computed score to the algorithm version that produced it. (4) §5d added: negative evidence (a failed run) distinguished from no evidence (untested), per Gemini's review — noted as a display/reporting gap, not a scoring-correctness one, and left open rather than fully resolved in this pass. (5) EMS-001 updated to In Progress: human governing authority has indicated an initial leaning toward integration/replacement (Path 2) and intends to review `Admin/Verification_Gates_LF.md` directly; the unknown explicitly cannot close until that review happens, since this file's understanding of Spec Gates has so far come only from other files' references to it. (6) New Lessons Learned entry: applying this file's own "convergence ≠ correctness" lesson to the review round that produced this revision, not only to the original proposal.
 - 2026-07-09: File created (v0.1). Synthesized and preserved from an extended multi-agent exchange (Gemini, ChatGPT, Grok) proposing a 7-dimensional evidence-backed maturity vector system, hardened against three identified scoring vulnerabilities (string-matching exploit, survivorship-bias reproducibility flaw, hollow-governance auto-pass) during Claude's Skeptic/Auditor review of the exchange. Created at Exploration status, explicitly not wired into `Admin/AUDIT_HARNESS.py` or any live promotion logic. Two Critical unknowns logged (EMS-001: relationship to Spec Gates undefined; EMS-002: GOV-008 misattribution — no correct ID exists yet for the telemetry-binding problem, found independently repeated across all three originating agent drafts). The "Systemic Autonomy Threshold (R > 1)" claim from the same exchange was reviewed and not adopted — assessed as overstating what cross-agent semantic persistence actually demonstrates. Filed per the same drafted-then-held pattern as ENV-DS-001 and the Embedded Value Preservation principle (`Challenges/Closed_Loop_Feedstock.md` §2a).
 
 ---
@@ -514,9 +551,9 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.1 — Exploration. Created 2026-07-09 to preserve a genuine multi-agent architectural proposal without granting it live authority. Not implemented, not referenced by any executing code, not ratified.
+Version 0.2 — Exploration. 2026-07-10 multi-agent review round integrated (drift-field fix, Evidence/Trust/Integrity distinction, algorithm versioning, negative-evidence note). EMS-001 moved to In Progress pending direct review of `Admin/Verification_Gates_LF.md` — not yet supplied to this file's authoring context. Not implemented, not referenced by any executing code, not ratified.
 
-**First priority action:** Human governing authority ruling on EMS-001 (relationship to Spec Gates) before any further development of this file's schemas or implementation.
+**First priority action:** Human governing authority review of `Admin/Verification_Gates_LF.md`'s actual content, to inform a concrete ruling on EMS-001's three candidate paths.
 
 **What must remain constant:**
 
