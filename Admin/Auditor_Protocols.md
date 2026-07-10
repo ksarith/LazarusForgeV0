@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.19**
+**Version 0.20**
 
 ## File State
 
@@ -10,8 +10,8 @@
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-10                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged (human-directed), 2026-07-10 |
-| Open Unknowns    | 10                                                                  |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10 |
+| Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -513,13 +513,9 @@ Does a revision quietly expand claimed capabilities beyond what the current vers
 Does the document reference a file that does not exist? All cross-references must resolve to real files. Files confirmed in `Discovery.md` are treated as verified. Aspirational references must be labeled *planned*. Repository uses folder-prefixed paths — do not flag folder-prefixed canonical names as failures.
 
 **7. Confidence Without Basis**
-All quantitative claims must carry one of four labels:
-- **Measured** — derived from real experimental data
-- **Estimated** — derived from analog systems with documented scaling factors
-- **Analogous** — drawn from similar documented systems
-- **Placeholder** — provisional, pending verification
+All quantitative claims must carry one of the five canonical confidence labels defined in §Evidence Classification and Institutional Truth Provenance Hierarchy: Measured, Replicated, Simulated, Analogous, or Placeholder. (This item previously stated its own four-label list — Measured/Estimated/Analogous/Placeholder — which conflicted with the Evidence Classification section below; resolved via AP-021, 2026-07-10. "Estimated" is retired; do not use it. A claim previously labeled "Estimated" should be relabeled Analogous or Simulated depending on whether it derives from a comparable real system or a computational/procedural model — see §Evidence Classification for the distinguishing criteria.)
 
-Unlabeled numbers are assumed Placeholder. False precision labeled "estimated" is still a violation.
+Unlabeled numbers are assumed Placeholder. False precision labeled with any of the five canonical labels is still a violation if the underlying evidence doesn't support that tier.
 
 **8. Lifecycle Truncation**
 Every module specification must include: Degraded Operation, Failure Modes & Detection, Maintenance Access, End-of-Life / Recycling Path. A specification describing only the working state is incomplete.
@@ -1595,20 +1591,22 @@ Mandatory re-audit conditions for this document:
 
 | Field         | Value                              |
 |---------------|-------------------------------------|
-| Status        | Open                                |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Medium                              |
 | Priority      | Major                               |
 | Type          | Governance / Technical              |
-| Blocking      | Yes (for `Admin/Verification_Gates_LF.md` Gate 2 reconciliation) |
+| Blocking      | No (was: Yes, for `Admin/Verification_Gates_LF.md` Gate 2 reconciliation — now unblocked) |
 | Owner         | Admin/Auditor_Protocols.md          |
 | First Logged  | 2026-07-10                          |
 | Last Reviewed | 2026-07-10                          |
 
 **Description:** This file defines quantitative confidence labels twice, and the two definitions disagree. §The Fallacy Checklist, Item 7 states four labels: Measured / Estimated / Analogous / Placeholder. §Evidence Classification and Institutional Truth Provenance Hierarchy (added later via AP-006, tagged Payment via Specification) states five labels: Measured / Replicated / Simulated / Analogous / Placeholder — no "Estimated," with "Replicated" and "Simulated" appearing nowhere in the Fallacy Checklist's list. These are not the same five concepts under different names — "Replicated" (independently repeated across separate instances) and "Estimated" (derived from analog systems with documented scaling factors) describe genuinely different evidentiary situations.
 
-**Why It Matters:** `Admin/Verification_Gates_LF.md`'s Gate 2 pass criteria cites the older four-label system, meaning Gate 2 has not been synchronized with this file's own more recent Evidence Classification doctrine — a VG-001-class derivation-chain drift, discovered one layer deeper than the 2026-07-02 near-miss VG-001's own Resolution Log already records. Given the more elaborate treatment the five-label system receives here (Institutional Provenance Labels, the Provenance Ceiling Rule, the Epistemic State Calibration Reference's five worked examples), it reads as the intended current standard; the Fallacy Checklist's four-label list is the one that has gone stale.
+**Why It Mattered:** `Admin/Verification_Gates_LF.md`'s Gate 2 pass criteria cited the older four-label system, meaning Gate 2 had not been synchronized with this file's own more recent Evidence Classification doctrine — a VG-001-class derivation-chain drift, discovered one layer deeper than the 2026-07-02 near-miss VG-001's own Resolution Log already records.
 
-**Resolution Path:** Retire "Estimated" from §The Fallacy Checklist Item 7; replace with the five-label Evidence Classification list (Measured / Replicated / Simulated / Analogous / Placeholder), with a forward pointer to §Evidence Classification rather than a duplicate definition, to prevent this specific drift from recurring. Once resolved here, `Admin/Verification_Gates_LF.md`'s Gate 2 must be updated to match per its own Gate Definition Synchronization Protocol (VG-001) — same-cycle review requirement, logged there even if the reviewing agent finds nothing further to change.
+**Resolution:** Human governing authority confirmed 2026-07-10 that the five-label Evidence Classification system is canonical. §The Fallacy Checklist Item 7 rewritten to point to §Evidence Classification rather than duplicate a definition, "Estimated" retired with guidance on relabeling (Analogous or Simulated, depending on evidentiary basis). `Admin/Verification_Gates_LF.md` Gate 2 updated to match in the same pass — see that file's VG-002.
+
+**Lessons Learned:** A duplicated definition inside a single file is a drift risk even without any other file involved — this inconsistency existed within Auditor_Protocols.md itself for an unknown period before a mapping exercise for an unrelated proposal (the evidence-vector work) happened to require reading Gate 2's actual source criteria closely enough to notice. Two definitions of the same concept in one file should be treated as a Minor finding worth logging on sight, even outside a dedicated audit pass — this one waited for an incidental discovery rather than a scheduled check.
 
 *Surfaced during human-directed review of a proposed evidence-management maturity vector's fit against Gate 2, 2026-07-10 — the inconsistency was found while checking Gate 2's actual source criteria before mapping anything onto it, not from a dedicated audit of this file.*
 
@@ -1616,6 +1614,7 @@ Mandatory re-audit conditions for this document:
 
 ### Resolution Log
 
+- 2026-07-10: **v0.20 — AP-021 resolved (human governing authority ratification).** Five-label Evidence Classification system (Measured/Replicated/Simulated/Analogous/Placeholder) confirmed canonical. §The Fallacy Checklist Item 7 rewritten to point to §Evidence Classification rather than duplicate a conflicting definition; "Estimated" retired with explicit relabeling guidance. `Admin/Verification_Gates_LF.md` Gate 2 updated to match in the same pass (see that file's VG-002 resolution). Open Unknowns 10 → 9.
 - 2026-07-10: **v0.19 — AP-021 logged (human-directed discovery).** Confidence label inconsistency found between §The Fallacy Checklist Item 7 (four labels, includes "Estimated") and §Evidence Classification and Institutional Truth Provenance Hierarchy (five labels, includes "Replicated"/"Simulated," no "Estimated"). Not yet resolved — resolution path specified but not executed this pass, pending human governing authority confirmation that the five-label system is the intended standard before the Fallacy Checklist text is edited. Open Unknowns 9 → 10.
 
 - 2026-07-05 (second entry, same day): **v0.18 — Line 754 Gate 3 status
