@@ -10,8 +10,8 @@
 
 | Field              | Value |
 |--------------------|-------|
-| Status             | Exploration |
-| Version            | v0.2 |
+| Status             | Resolved — Discharge via Merge into `Admin/Verification_Gates_LF.md` |
+| Version            | v0.3 (final) |
 | Body Stability     | Transitional |
 | Spec Gates         | 0/6 |
 | Verification Ref   | `Admin/Verification_Gates_LF.md` |
@@ -485,7 +485,7 @@ Mandatory re-audit conditions for this document:
 
 | Field | Value |
 |-------|-------|
-| Status | In Progress |
+| Status | Resolved — Discharge via Merge |
 | Risk | High |
 | Priority | Critical |
 | Type | Governance / Architectural |
@@ -507,13 +507,15 @@ Mandatory re-audit conditions for this document:
 
 **Resolution Path:** Upload/review `Admin/Verification_Gates_LF.md` directly. Map its actual gate definitions against the 7-dimensional vector concretely before ruling on which of the three paths (or a fourth, informed by what the file actually contains) is correct.
 
+**Resolved 2026-07-10:** Reviewed against all six gate definitions directly. Overlap found with Gate 2 only — Gates 1, 3–6 have no evidence-vector overlap (fallacy checking, hazard battery, scope alignment, cross-reference resolution, textual conflict). Full structural replacement (Path 2) ruled out on this basis; a narrow Input Pipeline (Path 1), scoped to Gate 2 specifically, merged in as backing material. See `Admin/Verification_Gates_LF.md` VG-002 for the live tracking of this integration, which remains held pending `Admin/Auditor_Protocols.md` AP-021.
+
 ---
 
 ### EMS-002 — No correct ID exists for the physical-telemetry-binding problem this proposal addresses
 
 | Field | Value |
 |-------|-------|
-| Status | Open |
+| Status | Resolved — Discharge via Merge (moot) |
 | Risk | Medium |
 | Priority | Critical |
 | Type | Governance / Technical |
@@ -528,9 +530,13 @@ Mandatory re-audit conditions for this document:
 
 **Resolution Path:** If this file is ratified past Exploration, register a new ID at that time — candidate prefix `EMS-` (matching this file) or folding into `Admin/Security_Protocols.md`'s SEC- series, since the underlying question is fundamentally about hardware/telemetry trust binding. Human governing authority's call.
 
+**Resolved 2026-07-10 (moot):** This file's content merged into `Admin/Verification_Gates_LF.md` as Gate 2 backing material rather than being ratified as an independent file. The telemetry-binding tracking now lives under that file's own VG- prefix (see VG-002) rather than needing a new EMS- or SEC- namespace, since it's tracked as backing material for an existing gate rather than a standalone system requiring its own registration.
+
 ---
 
 ### Resolution Log
+
+- 2026-07-10: **v0.3 (final) — Discharged via Merge into `Admin/Verification_Gates_LF.md`.** Direct review of that file's six actual gate definitions found overlap with Gate 2 only (physical plausibility / confidence labeling) — Gates 1, 3–6 test fallacious reasoning, hazard battery application, scope alignment, cross-reference resolution, and textual conflict, none of which this file's evidence vector has any mechanism to evaluate. Full structural replacement (EMS-001 Path 2) ruled out on that basis. Schemas, hardened reference implementation, and a confidence-label mapping merged into Verification_Gates_LF.md as a new "Gate 2 Evidentiary Backing" subsection, explicitly held inactive. EMS-001 and EMS-002 both resolved/mooted, superseded by that file's VG-002. This file is retained per repository convention (resolved unknowns and superseded files are not deleted) as the historical record of the original multi-agent proposal, its hardening pass, and its 2026-07-10 review round — but is no longer the live location for this work. Live tracking is now `Admin/Verification_Gates_LF.md` VG-002.
 
 - 2026-07-10: **v0.2 — Multi-agent review round integrated.** (1) §4b/§6: `estimated_sensor_drift_per_annum` converted from string to numeric field (`estimated_sensor_drift_per_annum_pct`), fixing an inconsistency with §5a's own anti-string-matching rule that survived into v0.1's reference implementation — caught by ChatGPT's review. (2) §3a added: Evidence, Trust, and Integrity formally distinguished as separate properties, per Gemini's review — `m_gov` currently scores Evidence and Trust proxies but has no true Integrity (tamper-detection) mechanism, a gap inherited honestly from Repository_Integrity_Protocol.md's own Phase 3 dependency. (3) §4a compiled_state schema gained `scoring_algorithm.id`, per Gemini's review — ties every computed score to the algorithm version that produced it. (4) §5d added: negative evidence (a failed run) distinguished from no evidence (untested), per Gemini's review — noted as a display/reporting gap, not a scoring-correctness one, and left open rather than fully resolved in this pass. (5) EMS-001 updated to In Progress: human governing authority has indicated an initial leaning toward integration/replacement (Path 2) and intends to review `Admin/Verification_Gates_LF.md` directly; the unknown explicitly cannot close until that review happens, since this file's understanding of Spec Gates has so far come only from other files' references to it. (6) New Lessons Learned entry: applying this file's own "convergence ≠ correctness" lesson to the review round that produced this revision, not only to the original proposal.
 - 2026-07-09: File created (v0.1). Synthesized and preserved from an extended multi-agent exchange (Gemini, ChatGPT, Grok) proposing a 7-dimensional evidence-backed maturity vector system, hardened against three identified scoring vulnerabilities (string-matching exploit, survivorship-bias reproducibility flaw, hollow-governance auto-pass) during Claude's Skeptic/Auditor review of the exchange. Created at Exploration status, explicitly not wired into `Admin/AUDIT_HARNESS.py` or any live promotion logic. Two Critical unknowns logged (EMS-001: relationship to Spec Gates undefined; EMS-002: GOV-008 misattribution — no correct ID exists yet for the telemetry-binding problem, found independently repeated across all three originating agent drafts). The "Systemic Autonomy Threshold (R > 1)" claim from the same exchange was reviewed and not adopted — assessed as overstating what cross-agent semantic persistence actually demonstrates. Filed per the same drafted-then-held pattern as ENV-DS-001 and the Embedded Value Preservation principle (`Challenges/Closed_Loop_Feedstock.md` §2a).
@@ -551,9 +557,9 @@ Mandatory re-audit conditions for this document:
 
 ## Status
 
-Version 0.2 — Exploration. 2026-07-10 multi-agent review round integrated (drift-field fix, Evidence/Trust/Integrity distinction, algorithm versioning, negative-evidence note). EMS-001 moved to In Progress pending direct review of `Admin/Verification_Gates_LF.md` — not yet supplied to this file's authoring context. Not implemented, not referenced by any executing code, not ratified.
+Version 0.3 (final) — **Resolved — Discharge via Merge into `Admin/Verification_Gates_LF.md`.** Content is now live there as Gate 2 Evidentiary Backing (inactive, held pending AP-021), tracked under that file's VG-002. This file is retained as the historical record only.
 
-**First priority action:** Human governing authority review of `Admin/Verification_Gates_LF.md`'s actual content, to inform a concrete ruling on EMS-001's three candidate paths.
+**First priority action (now owned by `Admin/Verification_Gates_LF.md` VG-002):** Resolve `Admin/Auditor_Protocols.md` AP-021 (confidence-label system inconsistency), then update Gate 2's live pass criteria to require the evidentiary mapping.
 
 **What must remain constant:**
 
