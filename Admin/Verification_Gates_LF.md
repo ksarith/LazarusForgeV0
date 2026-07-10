@@ -17,8 +17,8 @@
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | Self (this file is the verification reference)                      |
 | Last Audit       | 2026-07-10                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor (findings actioned by Claude); Claude — EMS merge integration (human-directed), 2026-07-10 |
-| Open Unknowns    | 1                                                                   |
+| Auditor          | ChatGPT — Skeptic/Auditor (findings actioned by Claude); Claude — EMS merge integration and VG-002/AP-021 resolution cascade (human-directed), 2026-07-10 |
+| Open Unknowns    | 0                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -133,10 +133,21 @@ engineering, or operational constraints?
 **Pass criteria:**
 - No claims that violate thermodynamic, mechanical, or material science
   constraints
-- Quantitative values labeled with confidence level: Measured / Estimated
-  / Analogous / Placeholder
+- Quantitative values labeled with one of the five canonical confidence
+  levels defined in `Admin/Auditor_Protocols.md` §Evidence Classification:
+  Measured / Replicated / Simulated / Analogous / Placeholder. ("Estimated"
+  is retired — see `Admin/Auditor_Protocols.md` AP-021, resolved
+  2026-07-10; a claim previously labeled Estimated should be relabeled
+  Analogous or Simulated per that section's criteria.)
 - Unlabeled numbers treated as Placeholder and flagged
-- Analog-sourced estimates carry documented scaling factors
+- Analogous-sourced estimates carry documented scaling factors
+- **A claim labeled Measured or Replicated must be backed by an evidence
+  record meeting the Gate 2 Evidentiary Backing thresholds below** —
+  `m_phys ≥ 0.75` for Measured; `m_phys ≥ 0.75` **and** `m_rep ≥ 0.50` for
+  Replicated. Simulated and Analogous labels are not yet gated by this
+  mechanism (no corresponding vector threshold defined) and remain
+  self-asserted, consistent with prior practice, until a future revision
+  extends coverage.
 
 **Fail routing:** Return for revision. Specific violations must be
 identified and logged. Gate 2 must be re-applied after revision before
@@ -144,11 +155,11 @@ proceeding to Gate 3.
 
 ---
 
-### Gate 2 Evidentiary Backing — Physical Evidence Vector (proposed, not yet active)
+### Gate 2 Evidentiary Backing — Physical Evidence Vector (active, 2026-07-10)
 
-**Status: proposed, blocked on AP-021.** Merged in from a standalone Exploration-status proposal (`Admin/Evidence_Management_System.md` v0.2, retired into this file 2026-07-10) after review concluded four of the six gates here have no overlap with an evidence-vector model, but Gate 2 specifically does — its pass criteria currently rests on a *self-asserted* confidence label with no verification mechanism behind it. This subsection preserves that proposal as backing material for Gate 2. **It does not change Gate 2's pass criteria above.** Per this file's own Gate Definition Synchronization Protocol, Gate 2's actual criteria cannot be updated to require this mechanism until AP-021 (`Admin/Auditor_Protocols.md` — Fallacy Checklist vs. Evidence Classification label inconsistency) is resolved at the source. See VG-002.
+**Status: active.** Merged in from a standalone Exploration-status proposal (`Admin/Evidence_Management_System.md` v0.2, retired into this file 2026-07-10) after review concluded four of the six gates here have no overlap with an evidence-vector model, but Gate 2 specifically does — its pass criteria previously rested on a *self-asserted* confidence label with no verification mechanism behind it. `Admin/Auditor_Protocols.md` AP-021 resolved 2026-07-10 (five-label Evidence Classification confirmed canonical), unblocking this mechanism per the Gate Definition Synchronization Protocol. Gate 2's pass criteria above now requires it for any Measured or Replicated claim.
 
-**The mapping, once AP-021 resolves in favor of the five-label Evidence Classification system:**
+**The mapping, now active per Gate 2's pass criteria above:**
 
 | Confidence Label (`Admin/Auditor_Protocols.md` §Evidence Classification) | Proposed Evidentiary Requirement |
 |---|---|
@@ -294,7 +305,7 @@ def calculate_maturity_from_evidence_v2(
     return computed, m_effective
 ```
 
-**What this subsection does not do:** it does not authorize any file to claim "Measured" or "Replicated" using this mechanism today. Gate 2's live pass criteria (above) is unchanged. This is backing material, held pending AP-021.
+**What this subsection does not yet do:** it does not mean any file currently claiming "Measured" or "Replicated" has actually been checked against these thresholds — `Admin/AUDIT_HARNESS.py` does not implement `calculate_maturity_from_evidence_v2()` or any evidence-vault loader. The requirement is now live in Gate 2's pass criteria (an auditor applying Gate 2 by hand must check for it), but automated enforcement remains future work. This is the same Phase 0/Phase 1 distinction `Admin/Repository_Integrity_Protocol.md` draws elsewhere: the rule is active and human-checkable; the automation that would check it without a human doing the reading is not.
 
 ---
 
@@ -582,30 +593,30 @@ Lessons Learned entry already names for detection-latency unknowns.
 
 ---
 
-### VG-002 — Gate 2 Evidentiary Backing merge blocked on AP-021
+### VG-002 — Gate 2 Evidentiary Backing merge, blocked on AP-021 — RESOLVED
 
 | Field         | Value                           |
 |---------------|----------------------------------|
-| Status        | Open                             |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Medium                           |
 | Priority      | Major                            |
 | Type          | Governance / Technical           |
-| Blocking      | Yes (for activating the Gate 2 Evidentiary Backing subsection) |
+| Blocking      | No                                |
 | Owner         | Admin/Verification_Gates_LF.md   |
 | First Logged  | 2026-07-10                       |
 | Last Reviewed | 2026-07-10                       |
 
-**Description:** A physical-evidence maturity vector, originally proposed and preserved at Exploration status in a standalone file (`Admin/Evidence_Management_System.md`), has been merged into this file as backing material for Gate 2 (see the Gate 2 Evidentiary Backing subsection above). The confidence-label mapping this backing material depends on cites `Admin/Auditor_Protocols.md`'s five-label Evidence Classification system — but that file currently defines confidence labels two different, disagreeing ways (see `Admin/Auditor_Protocols.md` AP-021). Gate 2's own pass criteria cannot be updated to require the evidentiary backing until AP-021 resolves at the source, per this file's own Gate Definition Synchronization Protocol.
+**Description:** A physical-evidence maturity vector, originally proposed and preserved at Exploration status in a standalone file (`Admin/Evidence_Management_System.md`), was merged into this file as backing material for Gate 2. The confidence-label mapping this backing material depends on cited `Admin/Auditor_Protocols.md`'s five-label Evidence Classification system — but that file defined confidence labels two different, disagreeing ways (`Admin/Auditor_Protocols.md` AP-021).
 
-**Resolves/supersedes:** `Admin/Evidence_Management_System.md`'s EMS-001 (relationship to Spec Gates — resolved by this merge: Gate 2 specifically, not a structural replacement of all six gates, since Gates 1/3–6 have no evidence-vector overlap) and EMS-002 (GOV-008 misattribution — moot; the telemetry-binding problem's tracking now lives here under this file's own VG- prefix rather than needing a separate EMS- or SEC- namespace).
+**Resolves/supersedes:** `Admin/Evidence_Management_System.md`'s EMS-001 (relationship to Spec Gates — resolved by this merge: Gate 2 specifically, not a structural replacement of all six gates) and EMS-002 (GOV-008 misattribution — moot; tracking lived here under this file's own VG- prefix instead).
 
-**Why It Matters:** This is a two-step dependency chain (AP-021 → Gate 2 criteria update) — activating the backing material prematurely, before AP-021 resolves, would mean Gate 2 depends on a confidence-label system that doesn't have one settled definition yet.
-
-**Resolution Path:** Resolve AP-021 in `Admin/Auditor_Protocols.md` first. Once resolved, update Gate 2's pass criteria above to require the mapping table's evidentiary thresholds for any document claiming "Measured" or "Replicated" on a quantitative physical claim. Log the update here per the standard Gate Definition Synchronization Protocol cycle — same-cycle review, even if the only change needed is confirming consistency.
+**Resolution:** AP-021 resolved 2026-07-10 — human governing authority confirmed the five-label Evidence Classification system canonical. Gate 2's pass criteria above updated in the same session to require the mapping table's evidentiary thresholds for any document claiming "Measured" or "Replicated." The mechanism is now live at the human-audit level; `Admin/AUDIT_HARNESS.py` automation of it remains unimplemented — see the Evidentiary Backing subsection's closing note.
 
 ---
 
 ### Resolution Log
+
+- 2026-07-10: **v0.7 — Gate 2 evidentiary backing activated; VG-002 resolved.** `Admin/Auditor_Protocols.md` AP-021 resolved this same session (human governing authority confirmed the five-label Evidence Classification system canonical). Gate 2's pass criteria updated to require it: Measured claims need `m_phys ≥ 0.75`; Replicated claims additionally need `m_rep ≥ 0.50`. Simulated and Analogous remain self-asserted pending a future revision. The mechanism is live at the human-audit level only — `Admin/AUDIT_HARNESS.py` does not implement the reference calculation or an evidence vault loader; this gap is noted explicitly in the Evidentiary Backing subsection rather than left implicit. Open Unknowns 1 → 0.
 
 - 2026-07-10: **v0.6 — Evidence Management System merged in as Gate 2
   backing material (human-directed).** Reviewed a standalone Exploration-
@@ -724,10 +735,10 @@ halt autonomous audit progression and escalate for human review.
 
 ## Status
 
-Version 0.6 — Evidence Management System merged in as Gate 2 backing
-material, held inactive pending AP-021 (2026-07-10). Disambiguation note
-confirming sole ownership of "Gate"/"canonical" terminology within this
-file's domain (2026-07-03).
+Version 0.7 — Gate 2 evidentiary backing activated; requires the physical-
+evidence maturity vector's thresholds for Measured/Replicated confidence
+claims. Human-audit-level enforcement only; `Admin/AUDIT_HARNESS.py`
+automation remains future work (2026-07-10).
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
 G6 require formal audit pass against Auditor_Protocols.md before claiming.
