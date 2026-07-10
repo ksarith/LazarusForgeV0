@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.18**
+**Version 0.19**
 
 ## File State
 
@@ -9,9 +9,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-06-24                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor |
-| Open Unknowns    | 9                                                                   |
+| Last Audit       | 2026-07-10                                                          |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged (human-directed), 2026-07-10 |
+| Open Unknowns    | 10                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -1591,7 +1591,32 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-021 — Confidence label system inconsistent within this file (Fallacy Checklist vs. Evidence Classification)
+
+| Field         | Value                              |
+|---------------|-------------------------------------|
+| Status        | Open                                |
+| Risk          | Medium                              |
+| Priority      | Major                               |
+| Type          | Governance / Technical              |
+| Blocking      | Yes (for `Admin/Verification_Gates_LF.md` Gate 2 reconciliation) |
+| Owner         | Admin/Auditor_Protocols.md          |
+| First Logged  | 2026-07-10                          |
+| Last Reviewed | 2026-07-10                          |
+
+**Description:** This file defines quantitative confidence labels twice, and the two definitions disagree. §The Fallacy Checklist, Item 7 states four labels: Measured / Estimated / Analogous / Placeholder. §Evidence Classification and Institutional Truth Provenance Hierarchy (added later via AP-006, tagged Payment via Specification) states five labels: Measured / Replicated / Simulated / Analogous / Placeholder — no "Estimated," with "Replicated" and "Simulated" appearing nowhere in the Fallacy Checklist's list. These are not the same five concepts under different names — "Replicated" (independently repeated across separate instances) and "Estimated" (derived from analog systems with documented scaling factors) describe genuinely different evidentiary situations.
+
+**Why It Matters:** `Admin/Verification_Gates_LF.md`'s Gate 2 pass criteria cites the older four-label system, meaning Gate 2 has not been synchronized with this file's own more recent Evidence Classification doctrine — a VG-001-class derivation-chain drift, discovered one layer deeper than the 2026-07-02 near-miss VG-001's own Resolution Log already records. Given the more elaborate treatment the five-label system receives here (Institutional Provenance Labels, the Provenance Ceiling Rule, the Epistemic State Calibration Reference's five worked examples), it reads as the intended current standard; the Fallacy Checklist's four-label list is the one that has gone stale.
+
+**Resolution Path:** Retire "Estimated" from §The Fallacy Checklist Item 7; replace with the five-label Evidence Classification list (Measured / Replicated / Simulated / Analogous / Placeholder), with a forward pointer to §Evidence Classification rather than a duplicate definition, to prevent this specific drift from recurring. Once resolved here, `Admin/Verification_Gates_LF.md`'s Gate 2 must be updated to match per its own Gate Definition Synchronization Protocol (VG-001) — same-cycle review requirement, logged there even if the reviewing agent finds nothing further to change.
+
+*Surfaced during human-directed review of a proposed evidence-management maturity vector's fit against Gate 2, 2026-07-10 — the inconsistency was found while checking Gate 2's actual source criteria before mapping anything onto it, not from a dedicated audit of this file.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-10: **v0.19 — AP-021 logged (human-directed discovery).** Confidence label inconsistency found between §The Fallacy Checklist Item 7 (four labels, includes "Estimated") and §Evidence Classification and Institutional Truth Provenance Hierarchy (five labels, includes "Replicated"/"Simulated," no "Estimated"). Not yet resolved — resolution path specified but not executed this pass, pending human governing authority confirmation that the five-label system is the intended standard before the Fallacy Checklist text is edited. Open Unknowns 9 → 10.
 
 - 2026-07-05 (second entry, same day): **v0.18 — Line 754 Gate 3 status
   re-corrected after regression.** This was already identified and fixed
