@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.14 — 2026-07-10. Corrected four stale Active Index entries: AP-001, AP-014, AP-015, AP-020 were all already Resolved (or Resolved — Discharge via Trajectory) at their owning file (`Admin/Auditor_Protocols.md`) but had never been removed here — a Size Management Rule 2 violation discovered in the reverse direction from RIP-008 (resolved-but-not-deregistered, rather than created-but-not-registered). AP-021 added (confidence-label system inconsistency within Auditor_Protocols.md, blocking Verification_Gates_LF.md VG-002).**
+**Version 4.15 — 2026-07-10. AP-021 resolved same-day as logged — five-label Evidence Classification system confirmed canonical by human governing authority. `Verification_Gates_LF.md` Gate 2 pass criteria updated in the same pass to require the evidentiary maturity-vector thresholds for Measured/Replicated claims — now live at human-audit level. `AUDIT_HARNESS.py` automation of the mechanism remains unimplemented.**
 **Expiry Rule active — see `Admin/Canonical_Terms.md` §4 for the Cycle definition this rule now explicitly references (one calendar year default, not one audit pass — see CT-011). Protocol Performance metrics collecting.**
 
 ---
@@ -27,11 +27,11 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.14 Means
+## What v4.15 Means
 
-- **Four stale Active Index entries corrected — the reverse of RIP-008.** AP-001, AP-014, and AP-015 were confirmed Resolved directly against `Admin/Auditor_Protocols.md`'s own sidecar (AP-015 specifically "Resolved — Discharge via Trajectory"). AP-020 was previously flagged here as "pending Trajectory discharge decision" — that decision has since been made and the source now shows it Resolved. None of these required new work; this was pure index correction, not four new closures requiring ratification.
-- **Registration lag is bidirectional, not just "new unknowns arrive late."** RIP-008 (`Admin/Repository_Integrity_Protocol.md`) bounds the case of a newly-logged sidecar entry taking time to reach this index. This correction surfaces the mirror case: a *resolved* sidecar entry can sit unremoved from this index indefinitely, with nothing currently checking for it. Not yet formalized as its own protected element — worth a note for whoever next revisits RIP-008's Registration Latency section, but not resolved here.
-- **AP-021 registered** — `Admin/Auditor_Protocols.md` defines quantitative confidence labels two disagreeing ways internally (a four-label Fallacy Checklist list vs. a five-label Evidence Classification hierarchy). Blocks `Admin/Verification_Gates_LF.md` VG-002 (Gate 2 Evidentiary Backing, merged in from the now-discharged `Admin/Evidence_Management_System.md`).
+- **AP-021 resolved same-day.** Human governing authority confirmed the five-label Evidence Classification system (Measured/Replicated/Simulated/Analogous/Placeholder) as canonical. `Admin/Auditor_Protocols.md`'s Fallacy Checklist Item 7 rewritten to point to that section rather than duplicate a conflicting definition; "Estimated" retired.
+- **Gate 2 has real teeth for the first time.** `Admin/Verification_Gates_LF.md`'s Gate 2 pass criteria now requires the merged-in evidentiary maturity vector's thresholds (`m_phys ≥ 0.75` for Measured; additionally `m_rep ≥ 0.50` for Replicated) rather than accepting a self-asserted label. This is enforcement at the human-audit level only — `Admin/AUDIT_HARNESS.py` does not implement the underlying calculation, so no automated check exists yet. Any file currently labeled Measured or Replicated has not been re-verified against this new requirement; that verification happens at each file's next Gate 2 pass, not retroactively as part of this index update.
+- **VG-002 resolved**, superseding the already-discharged EMS-001/EMS-002.
 - **Not yet done, still flagged from prior versions:** Discovery.md's mirrored "Cross-Module Unknowns — Attention Required" table has not been refreshed to match recent version bumps.
 
 ---
@@ -235,7 +235,6 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | AP-017 | Adversarial Battery independence requirement undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-018 | Saturation threshold hysteresis and smoothing undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-019 | Semantic convergence metrics for unknown resolution undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
-| AP-021 | Confidence label system inconsistent within Auditor_Protocols.md — Fallacy Checklist's four-label list (Measured/Estimated/Analogous/Placeholder) disagrees with the newer five-label Evidence Classification hierarchy (Measured/Replicated/Simulated/Analogous/Placeholder); blocks `Verification_Gates_LF.md` VG-002 | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
 | RIP-005 | Security_Protocols.md Phase 3 dependency — file exists at v0.5; cryptographic implementation not yet operational | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Major |
 | RIP-006 | Archive retention policy — partially resolved; GitHub indefinite retention satisfies Tier 1 requirement; /Archive/ directory content retention pending distillate architecture | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Minor |
@@ -893,5 +892,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.12 — 2026-07-06:** Multi-file catch-up pass. CT-007 Resolved (`ECN-` rename verified against Economics.md source text; a citation error in the original escalation — EC-008 — was corrected, ECN-003 identified as the real fifth collision). EC-010 and ENV-007/008 sidecar drift corrected. New Closed-Loop Feedstock cluster registered (CLF-001–010, ten entries; CLF-003/004/006 Critical; ID collision history CF-→FL-→CLF- noted). ENV-DS-001 registered in Active Disputes, pending ratification. PC-005 registered. Cross-refs added: RE-UNK-001↔CLF-005, CM-002↔CLF-004.
 **v4.13 — 2026-07-09:** CE-006 registered (`Architecture/Chemistry.md` — chlorine gas containment for on-site chlor-alkali acid synthesis, Critical), closing a same-day registration gap first logged 2026-07-07. Cross-referenced bidirectionally with CLF-004's candidate pathway. Added to Critical Watch and Dependency Clusters.
 **v4.14 — 2026-07-10:** Corrected four stale Active Index entries (AP-001, AP-014, AP-015, AP-020) — all already Resolved at `Admin/Auditor_Protocols.md`'s own sidecar but never removed here; the reverse-direction sibling of the RIP-008 registration-lag class. AP-021 registered (confidence-label inconsistency within Auditor_Protocols.md, blocking `Admin/Verification_Gates_LF.md` VG-002). `Admin/Evidence_Management_System.md` discharged via merge into `Admin/Verification_Gates_LF.md` this same session — not independently registered here as it was never given standalone active-index entries.
+**v4.15 — 2026-07-10:** AP-021 resolved same-day — five-label Evidence Classification system confirmed canonical. `Verification_Gates_LF.md` Gate 2 pass criteria updated to require the evidentiary maturity-vector thresholds for Measured/Replicated claims, active at human-audit level; `AUDIT_HARNESS.py` automation not yet implemented. VG-002 resolved.
 
 ---
