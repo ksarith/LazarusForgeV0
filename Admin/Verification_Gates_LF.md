@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | Self (this file is the verification reference)                      |
-| Last Audit       | 2026-05-29                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor (findings actioned by Claude)             |
-| Open Unknowns    | 0                                                                   |
+| Last Audit       | 2026-07-10                                                          |
+| Auditor          | ChatGPT — Skeptic/Auditor (findings actioned by Claude); Claude — EMS merge integration (human-directed), 2026-07-10 |
+| Open Unknowns    | 1                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -141,6 +141,160 @@ engineering, or operational constraints?
 **Fail routing:** Return for revision. Specific violations must be
 identified and logged. Gate 2 must be re-applied after revision before
 proceeding to Gate 3.
+
+---
+
+### Gate 2 Evidentiary Backing — Physical Evidence Vector (proposed, not yet active)
+
+**Status: proposed, blocked on AP-021.** Merged in from a standalone Exploration-status proposal (`Admin/Evidence_Management_System.md` v0.2, retired into this file 2026-07-10) after review concluded four of the six gates here have no overlap with an evidence-vector model, but Gate 2 specifically does — its pass criteria currently rests on a *self-asserted* confidence label with no verification mechanism behind it. This subsection preserves that proposal as backing material for Gate 2. **It does not change Gate 2's pass criteria above.** Per this file's own Gate Definition Synchronization Protocol, Gate 2's actual criteria cannot be updated to require this mechanism until AP-021 (`Admin/Auditor_Protocols.md` — Fallacy Checklist vs. Evidence Classification label inconsistency) is resolved at the source. See VG-002.
+
+**The mapping, once AP-021 resolves in favor of the five-label Evidence Classification system:**
+
+| Confidence Label (`Admin/Auditor_Protocols.md` §Evidence Classification) | Proposed Evidentiary Requirement |
+|---|---|
+| Placeholder | `m_phys = 0` — no evidence submitted |
+| Analogous | External comparable system only — no `m_phys` evidence; `m_eng`/`m_math` may be present |
+| Simulated | `m_math` or `m_eng` present (computational/procedural model); `m_phys` still 0 |
+| Measured | `m_phys ≥ 0.75` — single verified instance; `m_rep` not required |
+| Replicated | `m_phys ≥ 0.75` **and** `m_rep ≥ 0.50` — independently repeated, not a single lucky run |
+
+**Architecture (Claims → Evidence → Computed Maturity):** A document does not self-report `m_phys`, `m_rep`, or any vector dimension by direct edit — that reintroduces exactly the self-authorization problem `Admin/Repository_Integrity_Protocol.md` exists to prevent. A document may only submit evidence records (pointers to timestamped, provenance-tagged JSON artifacts); `Admin/AUDIT_HARNESS.py`, if this is ever implemented, would be the sole computer and injector of the resulting vector. See the schemas and reference implementation below, preserved verbatim from the source proposal.
+
+**Evidence record schema (physical):**
+
+```json
+{
+  "evidence_id": "run_log_leviathan_2026_07_09_14",
+  "target_node_id": "node_fa_001_fluid_stratification",
+  "timestamp": "2026-07-09T14:22:18Z",
+  "provenance": {
+    "environment": "RIG-LEVIATHAN-01",
+    "operator_or_agent": "agent_gemini_auditor_v1",
+    "hardware_signature": "0x3c9a...88ff"
+  },
+  "instrumentation_metadata": {
+    "sensor_id": "THERMOCOUPLE-K-042",
+    "last_calibration_date": "2026-05-12",
+    "estimated_sensor_drift_per_annum_pct": 0.4,
+    "systemic_confidence_interval_pct": 95.0
+  },
+  "empirical_data": {
+    "target_metric": "thermal_equilibrium_temperature",
+    "observed_value": 417.0,
+    "absolute_uncertainty": 2.0,
+    "unit": "C",
+    "duration_held_seconds": 3600
+  },
+  "validation_criteria": {
+    "expected_range": "410C to 425C",
+    "outcome": "PASS"
+  },
+  "reproducibility_context": {
+    "trial_series_id": "SERIES-PYRO-04",
+    "sequence_number": 1,
+    "total_consecutive_passes_in_series": 1
+  }
+}
+```
+
+All numeric fields are typed as numbers, never embedded in free-text strings — a naive string-matching evaluator (e.g., checking whether `"±2"` appears in a text field) is trivially defeated by a value like `"±200°C (Not ±2°C)"`, and was an identified vulnerability in an earlier draft of this proposal.
+
+**Reference implementation (preserved, unexecuted — not called by `Admin/AUDIT_HARNESS.py`):**
+
+```python
+import math
+import datetime
+from typing import Dict, Any, Tuple
+
+def calculate_maturity_from_evidence_v2(
+    node_metadata: Dict[str, Any],
+    evidence_vault: Dict[str, Any],
+    lambda_decay: float = 0.05,
+    current_time: datetime.datetime = None
+) -> Tuple[Dict[str, float], float]:
+
+    if current_time is None:
+        current_time = datetime.datetime.utcnow()
+
+    computed = {
+        "m_phys": 0.0, "m_exp": 0.0, "m_math": 0.0,
+        "m_eng": 0.0, "m_gov": 1.0, "m_ops": 0.0, "m_rep": 0.0
+    }
+
+    ledger = node_metadata.get("evidence_ledger", {})
+
+    if ledger.get("mathematical"):
+        computed["m_math"] = 0.95
+    if ledger.get("engineering"):
+        computed["m_eng"] = 0.90
+
+    physical_refs = ledger.get("physical", [])
+    total_runs_attempted = len(physical_refs)
+    passed_runs = 0
+    max_phys_score = 0.0
+
+    for ref in physical_refs:
+        run = evidence_vault.get(ref)
+        if not run:
+            continue
+        if run.get("validation_criteria", {}).get("outcome") == "PASS":
+            passed_runs += 1
+            empirical = run.get("empirical_data", {})
+            val = float(empirical.get("observed_value", 0.0))
+            abs_unc = float(empirical.get("absolute_uncertainty", float('inf')))
+            relative_precision = abs_unc / val if val != 0 else float('inf')
+
+            if relative_precision <= 0.005:
+                run_score = 0.90
+            elif relative_precision <= 0.02:
+                run_score = 0.75
+            else:
+                run_score = 0.50
+
+            drift_val = float(run.get("instrumentation_metadata", {}).get(
+                "estimated_sensor_drift_per_annum_pct", 0.0))
+            if drift_val > 1.0:
+                run_score *= 0.8
+
+            max_phys_score = max(max_phys_score, run_score)
+
+    computed["m_phys"] = max_phys_score
+    if total_runs_attempted > 0:
+        computed["m_exp"] = 0.90 * (passed_runs / total_runs_attempted)
+
+    # Reproducibility as a stability-ratio-weighted scale — NOT a raw success
+    # count. An earlier draft scored m_rep from passed_runs alone, which let
+    # a rig that failed 45 of 50 attempts still score a near-perfect m_rep;
+    # this version penalizes low pass fraction directly.
+    if passed_runs > 0 and total_runs_attempted > 0:
+        stability_ratio = passed_runs / total_runs_attempted
+        volume_scale = min(1.0, 0.4 * math.log2(passed_runs + 1))
+        computed["m_rep"] = round(stability_ratio * volume_scale, 2)
+
+    ops_reports = ledger.get("operational", [])
+    if ops_reports:
+        latest = evidence_vault.get(ops_reports[-1])
+        if latest:
+            ts_str = latest.get("timestamp", "").replace("Z", "+00:00")
+            evidence_time = datetime.datetime.fromisoformat(ts_str)
+            delta_days = (current_time - evidence_time).days
+            computed["m_ops"] = round(0.90 * math.exp(-lambda_decay * delta_days), 2)
+
+    # Governance starts at 1.0 and is degraded by deduction, never
+    # auto-granted by the mere presence of a signature field.
+    if not node_metadata.get("signature"):
+        computed["m_gov"] -= 0.50
+    for ref in physical_refs + ops_reports:
+        run = evidence_vault.get(ref)
+        if run and not run.get("provenance", {}).get("hardware_signature"):
+            computed["m_gov"] -= 0.10
+    computed["m_gov"] = max(0.0, computed["m_gov"])
+
+    m_effective = min(computed.values())
+    return computed, m_effective
+```
+
+**What this subsection does not do:** it does not authorize any file to claim "Measured" or "Replicated" using this mechanism today. Gate 2's live pass criteria (above) is unchanged. This is backing material, held pending AP-021.
 
 ---
 
@@ -428,7 +582,51 @@ Lessons Learned entry already names for detection-latency unknowns.
 
 ---
 
+### VG-002 — Gate 2 Evidentiary Backing merge blocked on AP-021
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance / Technical           |
+| Blocking      | Yes (for activating the Gate 2 Evidentiary Backing subsection) |
+| Owner         | Admin/Verification_Gates_LF.md   |
+| First Logged  | 2026-07-10                       |
+| Last Reviewed | 2026-07-10                       |
+
+**Description:** A physical-evidence maturity vector, originally proposed and preserved at Exploration status in a standalone file (`Admin/Evidence_Management_System.md`), has been merged into this file as backing material for Gate 2 (see the Gate 2 Evidentiary Backing subsection above). The confidence-label mapping this backing material depends on cites `Admin/Auditor_Protocols.md`'s five-label Evidence Classification system — but that file currently defines confidence labels two different, disagreeing ways (see `Admin/Auditor_Protocols.md` AP-021). Gate 2's own pass criteria cannot be updated to require the evidentiary backing until AP-021 resolves at the source, per this file's own Gate Definition Synchronization Protocol.
+
+**Resolves/supersedes:** `Admin/Evidence_Management_System.md`'s EMS-001 (relationship to Spec Gates — resolved by this merge: Gate 2 specifically, not a structural replacement of all six gates, since Gates 1/3–6 have no evidence-vector overlap) and EMS-002 (GOV-008 misattribution — moot; the telemetry-binding problem's tracking now lives here under this file's own VG- prefix rather than needing a separate EMS- or SEC- namespace).
+
+**Why It Matters:** This is a two-step dependency chain (AP-021 → Gate 2 criteria update) — activating the backing material prematurely, before AP-021 resolves, would mean Gate 2 depends on a confidence-label system that doesn't have one settled definition yet.
+
+**Resolution Path:** Resolve AP-021 in `Admin/Auditor_Protocols.md` first. Once resolved, update Gate 2's pass criteria above to require the mapping table's evidentiary thresholds for any document claiming "Measured" or "Replicated" on a quantitative physical claim. Log the update here per the standard Gate Definition Synchronization Protocol cycle — same-cycle review, even if the only change needed is confirming consistency.
+
+---
+
 ### Resolution Log
+
+- 2026-07-10: **v0.6 — Evidence Management System merged in as Gate 2
+  backing material (human-directed).** Reviewed a standalone Exploration-
+  status proposal (`Admin/Evidence_Management_System.md` v0.2 — a 7-
+  dimensional physical-evidence maturity vector) against all six gates
+  here. Found overlap with Gate 2 only — Gates 1, 3–6 test fallacious
+  reasoning, hazard battery application, scope alignment, cross-reference
+  resolution, and textual contradiction respectively, none of which an
+  evidence vector has any mechanism to evaluate. Ruled out full structural
+  replacement on that basis. Merged the proposal's schemas, hardened
+  reference implementation, and a confidence-label mapping into a new
+  "Gate 2 Evidentiary Backing" subsection, explicitly marked proposed and
+  inactive. VG-002 logged: the mapping depends on `Admin/Auditor_Protocols.md`'s
+  five-label Evidence Classification system, which was found — in the
+  course of this same review — to conflict with that file's own four-
+  label Fallacy Checklist list (see `Admin/Auditor_Protocols.md` AP-021,
+  logged same session). Gate 2's live pass criteria is therefore
+  unchanged pending AP-021's resolution, per this file's own Gate
+  Definition Synchronization Protocol. `Admin/Evidence_Management_System.md`
+  discharged as merged; its EMS-001 and EMS-002 unknowns superseded by
+  VG-002. Open Unknowns 0 → 1.
 
 - 2026-05-28: File created (v0.1). Derived from `Admin/Auditor_Protocols.md`
   v0.7 §Verification Gate Enforcement. Corrects first draft (Gemini —
@@ -526,8 +724,10 @@ halt autonomous audit progression and escalate for human review.
 
 ## Status
 
-Version 0.5 — Disambiguation note added confirming sole ownership of
-"Gate"/"canonical" terminology within this file's domain (2026-07-03).
+Version 0.6 — Evidence Management System merged in as Gate 2 backing
+material, held inactive pending AP-021 (2026-07-10). Disambiguation note
+confirming sole ownership of "Gate"/"canonical" terminology within this
+file's domain (2026-07-03).
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
 G6 require formal audit pass against Auditor_Protocols.md before claiming.
