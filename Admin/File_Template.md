@@ -173,12 +173,12 @@ The repository uses six canonical verification gates defined in `Admin/Verificat
 
 | Gate | Requirement                  |
 |------|------------------------------|
-| G1   | Internal coherence           |
-| G2   | Physical plausibility        |
-| G3   | Testability                  |
-| G4   | Cross-module integration     |
-| G5   | Evidence grounding           |
-| G6   | Auditability                 |
+| G1   | Fallacy Check                |
+| G2   | Physical Plausibility        |
+| G3   | Adversarial Challenge        |
+| G4   | Scope Alignment              |
+| G5   | Cross-Reference Integrity    |
+| G6   | Conflict Check                |
 
 Modules may define additional local gates but may not remove canonical gates.
 A file cannot be promoted to Specification without passing all six.
@@ -204,12 +204,12 @@ own rigor, not build-readiness:
 
 | Gate | Problem-Statement reading |
 |------|------------------------------|
-| G1 — Internal coherence | Reasoning behind naming this a problem is sound |
-| G2 — Physical plausibility | The claimed problem doesn't violate physical/scientific fact — is the severity, scarcity, or failure mode actually as claimed? |
-| G3 — Testability | The problem framing has survived adversarial counterargument — is this real, and real at Forge's actual scale? |
-| G4 — Cross-module integration | Belongs in v0 scope, or is it a `Admin/Trajectories.md`-deferred concern? |
-| G5 — Evidence grounding | Cross-references resolve; claims aren't invented |
-| G6 — Auditability | No contradiction with existing doctrine |
+| G1 — Fallacy Check | Reasoning behind naming this a problem is sound |
+| G2 — Physical Plausibility | The claimed problem doesn't violate physical/scientific fact — is the severity, scarcity, or failure mode actually as claimed? |
+| G3 — Adversarial Challenge | The problem framing has survived adversarial counterargument — is this real, and real at Forge's actual scale? |
+| G4 — Scope Alignment | Belongs in v0 scope, or is it a `Admin/Trajectories.md`-deferred concern? |
+| G5 — Cross-Reference Integrity | Cross-references resolve; claims aren't invented |
+| G6 — Conflict Check | No contradiction with existing doctrine |
 
 A Problem-Statement file's Spec Gates count tracks readiness for the repository
 to *act* on the problem — spawn an Operations/ file, register formal Unknowns
