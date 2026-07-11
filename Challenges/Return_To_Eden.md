@@ -18,8 +18,9 @@
 | Field | Value |
 | :--- | :--- |
 | Status | Exploration |
-| Spec Gates | None cleared |
-| Verification Ref | None |
+| Challenges Subtype | Solution-Track |
+| Spec Gates | None cleared (G1–G2 conditional, G4–G6 cleared per 2026-06-30 audit — see Last Audit) |
+| Verification Ref | `Admin/Verification_Gates_LF.md` |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 | Highest Risk | RE-UNK-001 — Eden Index variables lack defined measurement protocols; index is formally specified but not yet operationally measurable. RE-UNK-005 is a direct dependency. |
 | Last Audit | 2026-06-30 (Grok + ChatGPT dual audit; G1–G2 conditional, G4–G6 cleared; dimensional consistency corrected v1.0.1 → v1.0.2) |
