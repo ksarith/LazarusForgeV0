@@ -1,5 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
-**Version 4.15 — 2026-07-10. AP-021 resolved same-day as logged — five-label Evidence Classification system confirmed canonical by human governing authority. `Verification_Gates_LF.md` Gate 2 pass criteria updated in the same pass to require the evidentiary maturity-vector thresholds for Measured/Replicated claims — now live at human-audit level. `AUDIT_HARNESS.py` automation of the mechanism remains unimplemented.**
+**Version 4.16 — 2026-07-10. Eight genuinely new registrations added following a full-repository sweep (first possible now that the complete repo zip can be reviewed at once): FL-002, GF-005, GMP-002, GMP-009, PR-005, RIP-003, RS-002, RS-003. A ninth candidate cluster (LW-004/006/008/009/010 in `Tests/Living_Waters.md`) was checked and rejected — those are Experimental Pathway subsection headers, not Open Unknowns entries, despite sharing the LW- numbering scheme.**
 **Expiry Rule active — see `Admin/Canonical_Terms.md` §4 for the Cycle definition this rule now explicitly references (one calendar year default, not one audit pass — see CT-011). Protocol Performance metrics collecting.**
 
 ---
@@ -27,11 +27,12 @@ Formal axioms, theorems, and Verification Algebra backing CF-004, AP-006, and ep
 
 ---
 
-## What v4.15 Means
+## What v4.16 Means
 
-- **AP-021 resolved same-day.** Human governing authority confirmed the five-label Evidence Classification system (Measured/Replicated/Simulated/Analogous/Placeholder) as canonical. `Admin/Auditor_Protocols.md`'s Fallacy Checklist Item 7 rewritten to point to that section rather than duplicate a conflicting definition; "Estimated" retired.
-- **Gate 2 has real teeth for the first time.** `Admin/Verification_Gates_LF.md`'s Gate 2 pass criteria now requires the merged-in evidentiary maturity vector's thresholds (`m_phys ≥ 0.75` for Measured; additionally `m_rep ≥ 0.50` for Replicated) rather than accepting a self-asserted label. This is enforcement at the human-audit level only — `Admin/AUDIT_HARNESS.py` does not implement the underlying calculation, so no automated check exists yet. Any file currently labeled Measured or Replicated has not been re-verified against this new requirement; that verification happens at each file's next Gate 2 pass, not retroactively as part of this index update.
-- **VG-002 resolved**, superseding the already-discharged EMS-001/EMS-002.
+- **Eight new registrations, found via full-repo sweep.** FL-002 (Forge_flow.md), GF-005 (Gate_06_Fabrication.md), GMP-002 and GMP-009 (Governance_Migration_Protocol.md), PR-005 (Precision.md), RIP-003 (Repository_Integrity_Protocol.md), RS-002 and RS-003 (Repository_Structure.md). All were confirmed Open at their owning file's own sidecar, with none appearing in this index in any prior version — not a same-day lag like CE-006 was, but a standing gap of unknown duration.
+- **RIP-003 was missed by this index's own author across v4.13–v4.15.** Worth naming plainly: registering RIP-008/RIP-009 correctly in earlier versions didn't catch that RIP-003 — a longstanding, unrelated Open/Major entry in the same file's sidecar — had never been mirrored here either. Full-repo cross-referencing caught this; per-file spot-checking across several sessions had not.
+- **RS-003 ("Archive/ directory not yet physically created") may already be substantively addressed** by RIP-001's resolution (`Admin/Repository_Integrity_Protocol.md` — Git release tags established as the primary archival mechanism, manual `/Archive/` directory explicitly downgraded from required). Registered as-is since RS-003 itself hasn't been reconciled against that resolution; flagged here rather than silently resolved on its behalf.
+- **A candidate ninth cluster was checked and rejected.** `Tests/Living_Waters.md`'s LW-004, LW-006, LW-008, LW-009, LW-010 share the LW- unknown-ID numbering scheme but are actually `## Experimental Pathways` subsection headers (technology names — Freeze Separation, Membrane Distillation, etc.), not entries under that file's own `## Open Unknowns` section. Not registered.
 - **Not yet done, still flagged from prior versions:** Discovery.md's mirrored "Cross-Module Unknowns — Attention Required" table has not been refreshed to match recent version bumps.
 
 ---
@@ -169,6 +170,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
 |---|---|---|---|---|---|
 | FL-001 | Gate logic determinism | `Architecture/Forge_flow.md` | In Progress | Active | Blocking |
+| FL-002 | Reduction module unassigned | `Architecture/Forge_flow.md` | Open | — | Major |
 | TS-001 | "Sufficient for forge duty" threshold | `Operations/Gate_02_Triage.md` | In Progress | Active | Blocking |
 | TS-002 | Contamination routing protocol | `Operations/Gate_02_Triage.md` | Open | — | Blocking |
 | TS-003 | Gate determinism (downstream) | `Operations/Gate_02_Triage.md` | In Progress | Active | Blocking |
@@ -236,6 +238,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | AP-018 | Saturation threshold hysteresis and smoothing undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | AP-019 | Semantic convergence metrics for unknown resolution undefined | `Admin/Auditor_Protocols.md` | Open | — | Major |
 | RIP-002 | AUDIT_HARNESS.py Phase 1 checks not yet implemented | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
+| RIP-003 | Violation incident log location undefined | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
 | RIP-005 | Security_Protocols.md Phase 3 dependency — file exists at v0.5; cryptographic implementation not yet operational | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Major |
 | RIP-006 | Archive retention policy — partially resolved; GitHub indefinite retention satisfies Tier 1 requirement; /Archive/ directory content retention pending distillate architecture | `Admin/Repository_Integrity_Protocol.md` | In Progress | Vehicle | Minor |
 | RIP-007 | Integrity incident ownership undefined | `Admin/Repository_Integrity_Protocol.md` | Open | — | Major |
@@ -535,6 +538,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GF-003 | Material removal hardware not specified | `Operations/Gate_06_Fabrication.md` | Open | — | Minor |
 | GF-004 | Fabrication energy consumption not characterized | `Operations/Gate_06_Fabrication.md` | Open | — | Minor |
 | GF-006 | Structural adequacy criteria undefined for v0 qualification | `Operations/Gate_06_Fabrication.md` | Open | — | Major |
+| GF-005 | Utilization stage has no owning file | `Operations/Gate_06_Fabrication.md` | Open | — | Minor |
 | GF-007 | Fabrication-area fire suppression and hot-work doctrine undefined | `Operations/Gate_06_Fabrication.md` | Open | — | Critical |
 
 ### Intake
@@ -648,7 +652,9 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GMP-005 | Track A / Track B boundary insufficient for interpretive Tier 1 capture — partially resolved in v0.2 via expanded Track identification rule | `Admin/Governance_Migration_Protocol.md` | In Progress | Vehicle | Major |
 | GMP-006 | Concurrent amendment handling undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Major |
 | GMP-007 | Amendment withdrawal procedure undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
+| GMP-002 | Canonical Governance Ownership transfer not yet recorded in Charter | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
 | GMP-008 | Stale proposal expiration policy undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
+| GMP-009 | Track classification undefined for non-Axiom content changes to the Tier 1 file itself | `Admin/Governance_Migration_Protocol.md` | Open | — | Major |
 
 *GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007a.*
 
@@ -657,6 +663,8 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | ID | Title | Owning File | Status | Subtype | Priority (Promo) |
 |---|---|---|---|---|---|
 | RS-001 | Non-markdown file type introduction procedure undefined | `Admin/Repository_Structure.md` | Open | — | Minor |
+| RS-002 | Forge_flow.md casing outlier not yet corrected | `Admin/Repository_Structure.md` | Open | — | Minor |
+| RS-003 | Archive/ directory not yet physically created | `Admin/Repository_Structure.md` | Open | — | Major |
 
 ### Precision
 
@@ -666,6 +674,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | PR-002 | Reference standard not established | `Architecture/Precision.md` | Open | — | Major |
 | PR-003 | Traceable dimensional claims required at Specification | `Architecture/Precision.md` | Open | — | Major |
 | PR-004 | Backlash and compliance characterization not performed | `Architecture/Precision.md` | Open | — | Major |
+| PR-005 | GK-005 resolution confirmation pending | `Architecture/Precision.md` | Open | — | Minor |
 
 *PR-001 Critical — blocks T1/T2 part claims; PR-004 is a prerequisite.*
 
@@ -893,5 +902,6 @@ GOV-003 In Progress — Repository_Integrity_Protocol.md is the executing resolu
 **v4.13 — 2026-07-09:** CE-006 registered (`Architecture/Chemistry.md` — chlorine gas containment for on-site chlor-alkali acid synthesis, Critical), closing a same-day registration gap first logged 2026-07-07. Cross-referenced bidirectionally with CLF-004's candidate pathway. Added to Critical Watch and Dependency Clusters.
 **v4.14 — 2026-07-10:** Corrected four stale Active Index entries (AP-001, AP-014, AP-015, AP-020) — all already Resolved at `Admin/Auditor_Protocols.md`'s own sidecar but never removed here; the reverse-direction sibling of the RIP-008 registration-lag class. AP-021 registered (confidence-label inconsistency within Auditor_Protocols.md, blocking `Admin/Verification_Gates_LF.md` VG-002). `Admin/Evidence_Management_System.md` discharged via merge into `Admin/Verification_Gates_LF.md` this same session — not independently registered here as it was never given standalone active-index entries.
 **v4.15 — 2026-07-10:** AP-021 resolved same-day — five-label Evidence Classification system confirmed canonical. `Verification_Gates_LF.md` Gate 2 pass criteria updated to require the evidentiary maturity-vector thresholds for Measured/Replicated claims, active at human-audit level; `AUDIT_HARNESS.py` automation not yet implemented. VG-002 resolved.
+**v4.16 — 2026-07-10:** First full-repository sweep (enabled by direct zip upload rather than per-file spot-checks). Eight genuine registration gaps found and closed: FL-002, GF-005, GMP-002, GMP-009, PR-005, RIP-003, RS-002, RS-003 — all confirmed Open at source, none previously appearing here, including RIP-003 which this index's own author had missed across three prior versions. A candidate ninth cluster (LW-004/006/008/009/010) was checked and correctly rejected as pathway subsection headers, not unknowns. RS-003 flagged as possibly mooted by RIP-001 but not resolved on its behalf. Sweep also confirmed zero Ethical Anchor violations, zero Routing.md gaps, zero Discovery.md gaps, and a real structural finding outside this file's own scope: nine files (six Challenges/, two Tests/, matching an early-June cohort) lack a "Spec Gates" field in their File State tables entirely, predating the schema every recently-touched file now uses — not resolved here, flagged for separate follow-up.
 
 ---
