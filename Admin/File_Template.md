@@ -185,6 +185,55 @@ A file cannot be promoted to Specification without passing all six.
 
 ---
 
+### Challenges/ File Subtypes — Problem-Statement vs. Solution-Track
+
+Not every file in `Challenges/` is heading toward a build. Most name a real-world
+problem the Forge should be aware of and eventually act on — they are not
+themselves specifications for anything that gets fabricated. Applying the full
+build-readiness reading of Spec Gates to this class of file is a category
+mismatch, not a compliance gap. Two subtypes exist, and a file's subtype should
+be stated explicitly rather than left to be inferred from which fields happen
+to be present.
+
+**Problem-Statement subtype** — names and scopes a real-world problem; does not
+itself converge toward a build. The lean File State schema (Status, Version,
+Owner, Verification Ref, Ethical Anchor) is a deliberate, documented choice for
+this subtype, not a truncated version of the full schema. **Spec Gates still
+apply, reinterpreted** — the six canonical gates test the problem statement's
+own rigor, not build-readiness:
+
+| Gate | Problem-Statement reading |
+|------|------------------------------|
+| G1 — Internal coherence | Reasoning behind naming this a problem is sound |
+| G2 — Physical plausibility | The claimed problem doesn't violate physical/scientific fact — is the severity, scarcity, or failure mode actually as claimed? |
+| G3 — Testability | The problem framing has survived adversarial counterargument — is this real, and real at Forge's actual scale? |
+| G4 — Cross-module integration | Belongs in v0 scope, or is it a `Admin/Trajectories.md`-deferred concern? |
+| G5 — Evidence grounding | Cross-references resolve; claims aren't invented |
+| G6 — Auditability | No contradiction with existing doctrine |
+
+A Problem-Statement file's Spec Gates count tracks readiness for the repository
+to *act* on the problem — spawn an Operations/ file, register formal Unknowns
+against it, become someone's actual work — not readiness to fabricate anything.
+
+**Solution-Track subtype** — a Challenges/ file that has grown past naming a
+problem into active engineering: worked equations, a telemetry model, a
+resolution log tracking real design decisions. Uses the full eleven-field File
+State schema and the standard build-readiness reading of all six gates, same as
+any Architecture/ or Operations/ file. `Challenges/Closed_Loop_Feedstock.md` and
+`Challenges/Return_To_Eden.md` are the current examples — both began as
+problem statements and were promoted in practice as their content outgrew that
+scope. Promotion from Problem-Statement to Solution-Track is a real transition
+that should be logged in the file's own Resolution Log, not a silent schema
+drift discovered later by audit.
+
+**Declaring subtype:** add a `Challenges Subtype` field to Problem-Statement
+files' File State table (value: `Problem-Statement` or `Solution-Track`) so the
+distinction is explicit rather than inferred from which fields are present or
+absent. Existing Problem-Statement files predating this doctrine may retrofit
+this field without triggering a full schema migration.
+
+---
+
 ### File State Purpose
 
 The File State block is the first thing an autonomous agent reads after Navigation Anchors. It determines:
