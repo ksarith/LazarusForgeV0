@@ -1,5 +1,13 @@
 # Cognitive_Salvage_Layer.md
-**Version 0.3**
+**Version 0.3.1**
+
+---
+
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
 
 ## File State
 
@@ -78,7 +86,11 @@ CSL-A06 is load-bearing: the entire pipeline's safety guarantee rests on Stage 3
 
 ---
 
-## The Heuristic Failure Class
+---
+
+## Body
+
+### The Heuristic Failure Class
 
 Standard Forge operational flow assumes:
 
@@ -107,7 +119,7 @@ These are not failures of sensing or execution. They are failures of procedural 
 
 ---
 
-## Feedback Loop Architecture
+### Feedback Loop Architecture
 
 The Cognitive Salvage Layer operates as a verification-gated pipeline from physical anomaly to autonomous execution update. The pipeline applies identically to disassembly and fabrication heuristics — the anomaly_class field in the Heuristic Object distinguishes them.
 
@@ -156,7 +168,7 @@ The canonicalization pass is shown as a distinct stage but is currently undefine
 
 ---
 
-## Core Data Streams
+### Core Data Streams
 
 **Triage and Disassembly Path Logging**
 Chronological sequence of player actions — where they cut, separate, unbolt, or manipulate a component and in what order. Sequence order is often the entire insight.
@@ -175,7 +187,7 @@ Time, estimated tool wear, contamination risk exposure, distortion risk, and ene
 
 ---
 
-## The Heuristic Object Schema
+### The Heuristic Object Schema
 
 Every candidate solution path is serialized as a Heuristic Object before entering the Auditor pipeline.
 
@@ -240,7 +252,7 @@ Every candidate solution path is serialized as a Heuristic Object before enterin
 
 ---
 
-## Auditor Decision Tree
+### Auditor Decision Tree
 
 When a player submits a successful solution path, the Heuristic Object enters a four-stage verification pipeline. The Forge treats player inputs as untrusted, unverified candidate heuristics at all times.
 
@@ -350,7 +362,7 @@ A path that survives Stages 1–3 is physically feasible. Stage 4 determines its
 
 ---
 
-## Grading Classification Matrix
+### Grading Classification Matrix
 
 | Status Code      | Disposition               | Description                                                                                       |
 |------------------|---------------------------|---------------------------------------------------------------------------------------------------|
@@ -363,7 +375,7 @@ A path that survives Stages 1–3 is physically feasible. Stage 4 determines its
 
 ---
 
-## Integration Points
+### Integration Points
 
 ### Component_Triage_System.md / Gate_02_Triage.md
 When triage confidence drops below threshold, the item is flagged and a puzzle instance generated.
@@ -403,13 +415,54 @@ GH-003 adversarial resistance requirements route here: rate-limiting, honeypot a
 
 ---
 
-## Epistemic State of This Document
+### Relationship to Existing Documents
 
-Exploration stage. All claims PROVISIONAL / Internally Derived unless otherwise noted. Gate 1 passed this session. Gates 2–6 not yet attempted. CSL-A03, CSL-A05, and CSL-A06 are explicitly Placeholder.
+- `Admin/Auditor_Protocols.md` — epistemic governance layer
+- `Admin/Ethical_Constraints.md` — hard-line constraints apply
+- `Admin/Canonical_Terms.md` — HF-001 (Heuristic Failure) registration proposed
+- `Architecture/Forge_flow.md` — reference standard for shared terminology
+- `Unknowns.md` — GH-series global index
+- `Forge_Net.md` — planned; federation target for NOVEL Heuristic Objects
+- `Operations/Leviathan.md` — planned; primary emergency cognition consumer
+- `Operations/Gate_06_Fabrication.md` — fabrication integration point
+- `Economics.md` — value retention weighting for Stage 4
+- `Admin/Security_Protocols.md` — adversarial resistance requirements (GH-003)
+- `Discovery.md` — registered at v0.1
+
+### Core Invariant
+
+**What must remain constant:**
+
+**The player generates candidate solutions. The Forge verifies them. That distinction is what makes the pipeline safe.**
 
 ---
 
-## Gate 1 Audit Record
+## Lessons Learned
+
+| Date     | Evidence Type | What Was Tried                              | What Failed                                                    | What Was Learned                                                              | Confidence | Revalidation Needed |
+|----------|---------------|---------------------------------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------|------------|---------------------|
+| Jun 2026 | Audit Review  | Inline MUTABLE_HEURISTIC tagging            | Parallel vocabulary — Fallacy 4 risk                           | Epistemic state vocabulary must stay singular across the repository           | Analogous  | No                  |
+| Jun 2026 | Audit Review  | 85% consensus threshold from synthesis      | No derivation; false-precision Measured claim                  | Threshold figures without derivation are Placeholder                          | Analogous  | No                  |
+| Jun 2026 | Audit Review  | Single-dimension efficiency_delta           | Implied time-only grading; fabrication needs distortion dimension | Multi-dimensional metrics_delta required for Stage 4 Pareto grading        | Analogous  | No                  |
+| Jun 2026 | Audit Review  | Pipeline scoped to disassembly only (v0.1)  | Fabrication failures same class; not surfaced by three external reviews | Fabrication failures more dangerous (silent structural failure); must be explicit | Analogous | No            |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
+---
+
+## Auditor Notes & Unknowns
+
+### Epistemic State of This Document
+
+Exploration stage. All claims PROVISIONAL / Internally Derived unless otherwise noted. Gate 1 passed this session. Gates 2–6 not yet attempted. CSL-A03, CSL-A05, and CSL-A06 are explicitly Placeholder.
+
+### Gate 1 Audit Record
 
 ```
 Adversarial Challenge Battery:
@@ -441,76 +494,6 @@ Full Battery deferred to Candidate Spec. No specification-level claims promoted.
 ```
 
 ---
-
-## Abandoned Paths
-
-| Date      | Path                                                     | Why Abandoned                                                              | Reconsider? |
-|-----------|----------------------------------------------------------|----------------------------------------------------------------------------|-------------|
-| Jun 2026  | Inline compilation tags (MUTABLE_HEURISTIC, UNCERTAINTY) | Parallel epistemic vocabulary — immediate Fallacy 4 drift risk             | No          |
-| Jun 2026  | 85% consensus threshold                                  | Unlabeled Placeholder; false-precision Measured claim                      | Placeholder — see GH-002 |
-| Jun 2026  | LayerMD structural template                              | Hallucinated framework; not consistent with File_Template.md               | No          |
-| Jun 2026  | Flat action_sequence array (v0.1)                        | Insufficient for kinematic replay and canonicalization                     | No          |
-| Jun 2026  | efficiency_delta single-dimension field (v0.1)           | Implied time-only grading; replaced with metrics_delta                     | No          |
-| Jun 2026  | novelty_flag boolean (v0.1)                              | Risk of accidental NOVEL promotion; replaced with candidate_novel_flag     | No          |
-
----
-
-## Drift Indicators
-
-- Auditor Decision Tree stages modified without cross-referencing `Admin/Auditor_Protocols.md`
-- NOVEL status assigned to any heuristic before GH-006 closes
-- CANDIDATE_NOVEL used as a promotion pathway rather than a hold status
-- Grading matrix status codes diverge from Auditor_Protocols.md epistemic state vocabulary
-- Heuristic Object schema fields changed without version bump and migration note in Resolution Log
-- Integration point references to planned files promoted from *planned* to confirmed without Discovery.md update
-- GH-series unknowns closed without documented Resolution Path
-- Physical test results logged without updating CSL-A02, CSL-A03, CSL-A06 confidence fields
-- S2R delta threshold hardcoded without logged derivation
-- Fabrication heuristic pipeline extended into weld qualification or tolerance specification (→ Gate_06_Fabrication.md)
-- Leviathan integration section expanded into architecture specification before `Operations/Leviathan.md` exists
-- Ethical Anchor field absent, altered, or not matching canonical string
-- validated_on_machinery_revision not updated when Forge machinery revision increments
-
----
-
-## Lessons Learned
-
-| Date     | Evidence Type | What Was Tried                              | What Failed                                                    | What Was Learned                                                              | Confidence | Revalidation Needed |
-|----------|---------------|---------------------------------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------|------------|---------------------|
-| Jun 2026 | Audit Review  | Inline MUTABLE_HEURISTIC tagging            | Parallel vocabulary — Fallacy 4 risk                           | Epistemic state vocabulary must stay singular across the repository           | Analogous  | No                  |
-| Jun 2026 | Audit Review  | 85% consensus threshold from synthesis      | No derivation; false-precision Measured claim                  | Threshold figures without derivation are Placeholder                          | Analogous  | No                  |
-| Jun 2026 | Audit Review  | Single-dimension efficiency_delta           | Implied time-only grading; fabrication needs distortion dimension | Multi-dimensional metrics_delta required for Stage 4 Pareto grading        | Analogous  | No                  |
-| Jun 2026 | Audit Review  | Pipeline scoped to disassembly only (v0.1)  | Fabrication failures same class; not surfaced by three external reviews | Fabrication failures more dangerous (silent structural failure); must be explicit | Analogous | No            |
-
----
-
-## Relationship to Existing Documents
-
-- `Admin/Auditor_Protocols.md` — epistemic governance layer
-- `Admin/Ethical_Constraints.md` — hard-line constraints apply
-- `Admin/Canonical_Terms.md` — HF-001 (Heuristic Failure) registration proposed
-- `Architecture/Forge_flow.md` — reference standard for shared terminology
-- `Unknowns.md` — GH-series global index
-- `Forge_Net.md` — planned; federation target for NOVEL Heuristic Objects
-- `Operations/Leviathan.md` — planned; primary emergency cognition consumer
-- `Operations/Gate_06_Fabrication.md` — fabrication integration point
-- `Economics.md` — value retention weighting for Stage 4
-- `Admin/Security_Protocols.md` — adversarial resistance requirements (GH-003)
-- `Discovery.md` — registered at v0.1
-
----
-
-## Status
-
-Version 0.3 — Sidecar triage and schema polish. GH-009 elevated to Critical. GH-012 added. Schema: provenance_trust_tier, failure_modes_observed.
-
-**What must remain constant:**
-
-**The player generates candidate solutions. The Forge verifies them. That distinction is what makes the pipeline safe.**
-
----
-
-## Auditor Notes & Unknowns
 
 ### GH-001 — Heuristic-to-deterministic translation fidelity undefined
 
@@ -767,3 +750,35 @@ Version 0.3 — Sidecar triage and schema polish. GH-009 elevated to Critical. G
 - 2026-06-24: **v0.1 initial draft.** File created at Exploration stage. GH-001 through GH-006 registered. Inline compilation tags and LayerMD structure abandoned. File registered in Discovery.md and Unknowns.md.
 - 2026-06-24: **v0.2 — Gate 1 pass.** Fabrication heuristics added throughout (Scope Boundary, File Purpose, Heuristic Failure Class, Core Data Streams, Stage 3, Integration Points). Heuristic Object schema updated: typed action_sequence, metrics_delta (replaces efficiency_delta), candidate_novel_flag (replaces novelty_flag), simulation_fidelity_version, validated_on_machinery_revision, physical_grounding_ref. CANDIDATE_NOVEL status added to Grading Matrix with Pareto criterion and GH-006 hard gate. CSL-A06 added (simulation-to-physical fidelity — load-bearing Placeholder). S2R delta trigger added to Stage 3. Canonicalization pass noted in pipeline. HF-001 Canonical Terms registration proposed. GH-007 through GH-011 registered. Gate 1 passed (G1, G2, G4, G5, G6 clear; G3 partial — full Battery deferred to Candidate Spec). Open Unknowns 6 → 11. Spec Gates 0/6 → 1/6. Unknowns.md requires update: GH-007 through GH-011 global index registration.
 - 2026-06-24: **v0.3 — sidecar triage and schema polish.** GH-009 elevated to Critical (N² interaction scaling argument; resolution path hardened with Interaction Volume and risk-stratified testing). GH-007 Trajectory note added (Cognitive_Canonicalization.md candidate at Candidate Spec). GH-012 registered (discovery yield rate — primary ROI signal for layer; cross-reference AP-001). Schema: provenance_trust_tier subfield added (stratified trust tier for differentiated Auditor handling); failure_modes_observed array added (negative learning from Stage 3 failures and player constraint violations). Open Unknowns 11 → 12. Highest Risk remains High (GH-009 Critical elevates sidecar but file-level risk was already High). Unknowns.md requires update: GH-009 Critical elevation, GH-012 global index registration. AUDIT_HARNESS.py UNKNOWN_FIRST_CYCLE requires GH-012 at cycle 10.
+- 2026-07-12: **Template-skeleton restructure, no content removed.** Added missing Navigation Anchors block (previously entirely absent). Wrapped the Heuristic Failure Class through Integration Points sections under a new `## Body` header. Folded "Relationship to Existing Documents" and the "What must remain constant" invariant into Body as subsections rather than leaving them as top-level non-canonical headers. Moved "Epistemic State of This Document" and "Gate 1 Audit Record" into `## Auditor Notes & Unknowns` as introductory subsections — they're audit-record content, which is what that section exists for. Dropped the standalone "## Status" header's version-summary line as a duplicate of this Resolution Log's own v0.3 entry above; kept its invariant statement in Body. Added an explicit (empty) Active Disputes section, matching File State's already-accurate "Active Disputes: 0". Reordered Abandoned Paths and Drift Indicators to the end of the file, after Auditor Notes & Unknowns, per template order — they previously sat before Lessons Learned.
+
+---
+
+## Abandoned Paths
+
+| Date      | Path                                                     | Why Abandoned                                                              | Reconsider? |
+|-----------|----------------------------------------------------------|----------------------------------------------------------------------------|-------------|
+| Jun 2026  | Inline compilation tags (MUTABLE_HEURISTIC, UNCERTAINTY) | Parallel epistemic vocabulary — immediate Fallacy 4 drift risk             | No          |
+| Jun 2026  | 85% consensus threshold                                  | Unlabeled Placeholder; false-precision Measured claim                      | Placeholder — see GH-002 |
+| Jun 2026  | LayerMD structural template                              | Hallucinated framework; not consistent with File_Template.md               | No          |
+| Jun 2026  | Flat action_sequence array (v0.1)                        | Insufficient for kinematic replay and canonicalization                     | No          |
+| Jun 2026  | efficiency_delta single-dimension field (v0.1)           | Implied time-only grading; replaced with metrics_delta                     | No          |
+| Jun 2026  | novelty_flag boolean (v0.1)                              | Risk of accidental NOVEL promotion; replaced with candidate_novel_flag     | No          |
+
+---
+
+## Drift Indicators
+
+- Auditor Decision Tree stages modified without cross-referencing `Admin/Auditor_Protocols.md`
+- NOVEL status assigned to any heuristic before GH-006 closes
+- CANDIDATE_NOVEL used as a promotion pathway rather than a hold status
+- Grading matrix status codes diverge from Auditor_Protocols.md epistemic state vocabulary
+- Heuristic Object schema fields changed without version bump and migration note in Resolution Log
+- Integration point references to planned files promoted from *planned* to confirmed without Discovery.md update
+- GH-series unknowns closed without documented Resolution Path
+- Physical test results logged without updating CSL-A02, CSL-A03, CSL-A06 confidence fields
+- S2R delta threshold hardcoded without logged derivation
+- Fabrication heuristic pipeline extended into weld qualification or tolerance specification (→ Gate_06_Fabrication.md)
+- Leviathan integration section expanded into architecture specification before `Operations/Leviathan.md` exists
+- Ethical Anchor field absent, altered, or not matching canonical string
+- validated_on_machinery_revision not updated when Forge machinery revision increments
