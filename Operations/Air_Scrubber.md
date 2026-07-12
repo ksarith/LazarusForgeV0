@@ -51,7 +51,7 @@ are addressed there), but the formal hearing
 conservation program for Air Scrubber operations
 and site-specific SPL measurements remain open.
 Gate 4 Cold Verification Harness integrated as
-Section IX — Spec Gates remain at 3/6 until
+its own body section — Spec Gates remain at 3/6 until
 physical verification protocols are executed and
 logged.*
 
@@ -122,7 +122,7 @@ provides the sensor matrix that tells the Forge
 whether safe operation is occurring. If the scrubber
 cannot verify safe operation, the Forge shuts down.
 
-The Gate 4 Cold Verification Harness in Section IX
+The Gate 4 Cold Verification Harness below
 defines the physical testing protocol that must be
 executed before hot operations begin. It treats
 the sensor matrix as an adversarial system — failure
@@ -455,7 +455,7 @@ it is full is a liability.
 
 ---
 
-## IX. Gate 4 Cold Verification Harness
+## Gate 4 Cold Verification Harness
 
 This protocol governs the physical and logical
 verification of the differential diagnostic grid
@@ -646,47 +646,6 @@ If all four protocols achieve Pass status:
 
 ---
 
-## Abandoned Paths
-
-| Date | Path | Why Abandoned | Reconsider? |
-|------|------|---------------|-------------|
-| May 2026 | Variant 4 deep-sea scope at v0 power class | Compression work to 100 atm is physically untenable at 100–150W; separate power class required | Yes — at v2/v3 |
-| May 2026 | Stage D without explicit thermal sink specification | Hidden failure mode — water heats to ineffectiveness without thermal rejection path | No |
-| May 2026 | Direct-to-carbon routing of pyrolysis outgassing | Instantaneous tar blinding of filter media confirmed by hardware data — fractional condensation prerequisite is permanent doctrine | No |
-
----
-
-## Drift Indicators
-
-Mandatory re-audit conditions for this document:
-
-- Saturation Fault monitoring requirement removed,
-  bypassed, or decoupled from the differential PID
-  sensor matrix
-- Negative pressure safety boundary doctrine
-  weakened or removed
-- Flashback arrestor requirements omitted from
-  combustible outgassing lines
-- Thermal sink requirement removed from Stage D
-- Noise hazard removed from Safety Advisory, Design
-  Philosophy, or Monitoring sections
-- 500W power budget claimed as validated without
-  active power measurement data
-- Variant 4 depth scope expanded beyond less than
-  5 atm without an autonomous power class
-  reallocation
-- Gate 4 Cold Verification Harness removed or
-  results amended without physical re-test
-- Spec Gates advanced to 4/6 without all four
-  protocols achieving Pass status in Test
-  Execution Matrix
-
-**Compound Drift Rule:** If multiple indicators
-activate simultaneously, halt autonomous audit
-progression and escalate for human review.
-
----
-
 ## Auditor Notes & Unknowns
 
 ### AS-001 — 500W power budget not validated against Forge demand baseline
@@ -779,8 +738,8 @@ chemistry validation per `Unknowns.md`.
 
 **Resolution Path:** Run automated calibration
 sweeps during first hot-pyrolysis validation testing
-to map clean baseline deltas. Gate 4 Cold
-Verification Harness (Section IX) must execute
+to map clean baseline deltas. The Gate 4 Cold
+Verification Harness must execute
 first — it validates interlock logic before hot
 calibration begins. Payment via Specification once
 first hot-pyrolysis run produces calibration data.
@@ -811,7 +770,7 @@ Scrubber operations exists.
 **Why It Matters:** If actual SPL during scrubber
 operation exceeds safe exposure limits, current PPE
 specification may be insufficient. The Protocol 1.4
-noise fault masking interlock in Section IX requires
+noise fault masking interlock in the Gate 4 Cold Verification Harness section requires
 a measured noise floor baseline — this unknown blocks
 that calibration step.
 
@@ -871,3 +830,54 @@ that calibration step.
   `Admin/Safety_Protocols.md`. Open Unknowns updated
   to 4 (AS-004 remains open; site SPL not yet
   measured).
+- 2026-07-12: Stray "Section IX" roman-numeral prefix removed from the
+  Gate 4 Cold Verification Harness heading and its four live in-body
+  references (this Resolution Log entry above is left unchanged as an
+  accurate historical record of what the section was called on
+  2026-06-08). No other body section in this file uses roman-numeral
+  headings, so the "IX" was a leftover artifact from the raw-append
+  integration described above, not an intentional numbering scheme.
+  Reordered Abandoned Paths and Drift Indicators to after Auditor Notes
+  & Unknowns, per template order — they previously sat between Active
+  Disputes and Auditor Notes & Unknowns. No other content changed.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| May 2026 | Variant 4 deep-sea scope at v0 power class | Compression work to 100 atm is physically untenable at 100–150W; separate power class required | Yes — at v2/v3 |
+| May 2026 | Stage D without explicit thermal sink specification | Hidden failure mode — water heats to ineffectiveness without thermal rejection path | No |
+| May 2026 | Direct-to-carbon routing of pyrolysis outgassing | Instantaneous tar blinding of filter media confirmed by hardware data — fractional condensation prerequisite is permanent doctrine | No |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Saturation Fault monitoring requirement removed,
+  bypassed, or decoupled from the differential PID
+  sensor matrix
+- Negative pressure safety boundary doctrine
+  weakened or removed
+- Flashback arrestor requirements omitted from
+  combustible outgassing lines
+- Thermal sink requirement removed from Stage D
+- Noise hazard removed from Safety Advisory, Design
+  Philosophy, or Monitoring sections
+- 500W power budget claimed as validated without
+  active power measurement data
+- Variant 4 depth scope expanded beyond less than
+  5 atm without an autonomous power class
+  reallocation
+- Gate 4 Cold Verification Harness removed or
+  results amended without physical re-test
+- Spec Gates advanced to 4/6 without all four
+  protocols achieving Pass status in Test
+  Execution Matrix
+
+**Compound Drift Rule:** If multiple indicators
+activate simultaneously, halt autonomous audit
+progression and escalate for human review.
