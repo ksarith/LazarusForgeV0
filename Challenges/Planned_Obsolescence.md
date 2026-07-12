@@ -17,8 +17,8 @@
 |---|---|
 | **Status** | Active |
 | **Challenges Subtype** | Problem-Statement |
-| **Version** | v0.2 |
-| **Last Updated** | 2026-06-11 |
+| **Version** | v0.3 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -45,6 +45,22 @@
 - Polymer enclosure upcycling → `Operations/Plastics.md`
 - Provenance and identity doctrine for repaired devices → `Admin/Ship_of_Theseus.md`
 - Toxic stream handling (BFR, lead, cadmium) → `Operations/Air_Scrubber.md`, `Operations/Electronics.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that planned obsolescence — designed unrepairability, firmware lock, sealed enclosures — is a deliberate economic practice the Forge must engineer around, and to set the requirement that recovery target function first, not just material. Without this file, electronics recovery would default to bulk shredding for raw material, which is exactly the outcome planned obsolescence's designers priced in — it would fail to recognize firmware lock and sealed housings as solvable material-property problems rather than legal or economic dead ends.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Firmware lock can be treated as a material property (wipe/verify/reflash) rather than a legal boundary, without exposing the Forge to meaningful legal risk | Stated design philosophy; no legal review has been performed (PO-001 open) | Low | PO-001 resolved with a legal review across relevant jurisdictions |
+| ASM-002 | Non-destructive thermal/mechanical techniques (delamination, controlled desoldering) can defeat sealed and potted enclosures at a success rate that makes them preferable to bulk shredding | Current Operations/Electronics.md doctrine; potting compound removal chemistry is unvalidated (PO-002 open) | Medium | PO-002 resolved with a validated removal protocol |
+| ASM-003 | Community re-baselining skill transfer is achievable without a centralized training/documentation standard existing yet | Long-Term Objective's stated goal of returning repairability to communities; PO-004 explicitly notes no owning file defines this standard | Low | PO-004 resolved with an owning file and standard |
 
 ---
 
@@ -135,6 +151,20 @@ The Forge is part of what changes the world around them.
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no physical testing has occurred against this file's approaches | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
 ---
 
 ## Open Unknowns
@@ -151,6 +181,31 @@ The Forge is part of what changes the world around them.
 ---
 
 *See: `Operations/Electronics.md` for the primary technical doctrine responding to this challenge — thermal desoldering, Logic-Zero re-baselining, debug interface recovery, and counterfeit detection. See: `Admin/Ship_of_Theseus.md` for the provenance and identity doctrine for recovered and repaired devices. See: `Unknowns.md` for all cross-module tracked unknowns.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.3 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). No Body content changed.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | Defaulting to bulk shredding for locked/sealed electronics | Engineering Requirements explicitly rejects this as the default response — destroys the functional silicon and passives recovery is meant to reach, treating firmware lock and sealed housings as dead ends rather than solvable material-property problems | No |
+
+---
+
+## Drift Indicators
+
+- Body defaults to bulk shredding or full reduction for locked/sealed assemblies without first attempting non-destructive recovery
+- Firmware re-baselining doctrine is applied without acknowledging PO-001's unresolved legal-boundary status
+- A recovery approach depends on proprietary tooling or manufacturer cooperation rather than the Forge's own standardized interface layer
+- PO-004 (community skill transfer standard) remains unreviewed past 90 days while the Long-Term Objective's community-repairability goal is treated as active doctrine
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
