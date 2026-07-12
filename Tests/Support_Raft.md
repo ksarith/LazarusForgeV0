@@ -16,11 +16,23 @@
 | Field | Value |
 |---|---|
 | **Status** | Exploration |
-| **Version** | v0.5 |
-| **Last Updated** | 2026-06-11 |
-| **Owner** | Tests/ |
+| **Body Stability** | Volatile |
+| **Spec Gates** | 0/6 |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
+| **Last Audit** | 2026-06-11 |
+| **Auditor** | Gemini (Auditor) |
+| **Open Unknowns** | 13 |
+| **Active Disputes** | 0 |
+| **Highest Risk** | High — SR-001 (galvanic corrosion) is Open/High and required before v1.0; a hull that corrodes faster than modeled threatens the whole anchor-node concept |
+| **Sidecar Link** | #auditor-notes--unknowns |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+
+**Legacy cross-reference fields (retained for continuity):**
+
+| Field | Value |
+|---|---|
+| **Version** | v0.6 |
+| **Owner** | Tests/ |
 
 ---
 
@@ -77,7 +89,29 @@
 
 ---
 
-## Purpose — The Five Anchor Roles
+---
+
+## File Purpose
+
+This file exists to establish the Support Raft as stationary regional anchor infrastructure for mobile Leviathan units — the doctrine that mobile units stay lightweight and mission-focused by offloading energy, truth-verification, recovery, material processing, and communication needs onto a stationary node they return to, rather than each unit carrying that complexity itself. Without this file, those five functions would have no shared owner, and there would be no place enforcing the anchor-not-headquarters distinction as the system scales — the Raft providing infrastructure conditions is architecturally different from the Raft directing unit behavior, and that difference matters for autonomy doctrine.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | A stationary anchor node can provide a net positive energy and data surplus to the swarm that exceeds its own hull maintenance and infrastructure overhead | Foundational constraint named directly (Gemini audit, Gate 10) | Medium — asserted as a hard requirement, not yet validated with real figures | First full energy trace across Scale & Operating Envelope figures once they leave Placeholder status |
+| ASM-002 | SWATH hull configuration is the right v0 implementation choice, though not a doctrine commitment — a spar buoy, semi-submersible, or anchored platform could equally satisfy the five anchor roles | Explicitly stated as an implementation decision, chosen for being proven, stable, and having internal volume for the five functions | Medium | A future site context or scale requirement makes SWATH's tradeoffs (draft, mooring complexity) worse than an alternative |
+| ASM-003 | Operational cell size (~50–200 km²), supported unit count (8–40), and revisit frequency (12–72 hours) are reasonable v0 placeholders | Analogous to research vessel support zone conventions and LEO constellation coverage patterns | Low — explicitly Placeholder, all downstream claims inherit that status | Leviathan unit physical envelope and first trial deployment data become available |
+| ASM-004 | Induction charging loss in real subsea conditions (20–40%) is a more reliable planning figure than the original laboratory estimate (12%) | Lessons Learned entry — laboratory figure was corrected against real subsea conditions (seawater conductivity, alignment variance, biofouling) | Medium — corrected once already, still Analogous rather than Measured | SR-004 (induction charging pad design) resolved with field-measured loss data |
+| ASM-005 | The Raft can be treated as replaceable-by-design without that undermining swarm reliability, provided a next-generation platform exists before end-of-region protocol begins | Failure Philosophy & Succession doctrine — explicit design principle | Medium — the "next-generation platform must be present first" condition (SR-005) is itself still Open | SR-005 resolved with an operational sequencing plan defining minimum generational overlap |
+
+---
+
+## Body
+
+### The Five Anchor Roles
 
 The Support Raft is the stationary regional anchor for mobile Leviathan units operating in open-ocean or high-flow environments. Its purpose is to absorb complexity so that mobile units remain lightweight and mission-focused.
 
@@ -99,7 +133,7 @@ The Raft's role resolves into five distinct anchor functions:
 
 ---
 
-## Scale & Operating Envelope (v0 Placeholder)
+### Scale & Operating Envelope (v0 Placeholder)
 
 All energy, docking, and storage sizing assumes the following placeholder ranges:
 
@@ -114,7 +148,7 @@ All downstream claims that depend on these figures inherit their Placeholder sta
 
 ---
 
-## Hull Architecture — SWATH Platform
+### Hull Architecture — SWATH Platform
 
 The current v0 answer to the anchor role is a **Small Waterplane Area Twin Hull (SWATH)** configuration. This is an implementation decision, not a doctrine commitment. The anchor roles above could be satisfied by a spar buoy, semi-submersible, anchored platform, or future configuration. The SWATH is chosen for v0 because it is proven, stable, and has the internal volume to host the five anchor functions.
 
@@ -140,7 +174,7 @@ The current v0 answer to the anchor role is a **Small Waterplane Area Twin Hull 
 
 ---
 
-## Sacrificial Shell System
+### Sacrificial Shell System
 
 Biofouling on stationary marine structures is inevitable. For a stationary SWATH platform, fouling threatens buoyancy-to-draft ratios and intake efficiency — particularly thermal heat sinks and induction charging pads. The alternative to fighting fouling is to design for it: accept colonization on designated surfaces and manage the cycle deliberately.
 
@@ -166,7 +200,7 @@ Shed panels deposited as reef substrate are environmental contribution, not wast
 
 ---
 
-## Energy Harvesting & Trace
+### Energy Harvesting & Trace
 
 *All figures labeled with confidence level. Infrastructure overhead included. Bootstrap-honest accounting per `Operations/Energy.md`.*
 
@@ -195,7 +229,7 @@ Shed panels deposited as reef substrate are environmental contribution, not wast
 
 ---
 
-## Stasis Mode
+### Stasis Mode
 
 If energy reserves fall below 20% of capacity:
 
@@ -216,7 +250,7 @@ If energy reserves fall below 20% of capacity:
 
 ---
 
-## Truth Anchor — Orchestration & Cache Doctrine
+### Truth Anchor — Orchestration & Cache Doctrine
 
 **Local Truth Cache:**
 - Read-only copies of `Admin/Auditor_Protocols.md`, `Admin/Ethical_Constraints.md`, and `Discovery.md` stored locally
@@ -240,7 +274,7 @@ If energy reserves fall below 20% of capacity:
 
 ---
 
-## Mechanical Design & Resilience
+### Mechanical Design & Resilience
 
 **Modular docking:**
 - Universal docking ports on working platform and submerged hull sections
@@ -264,7 +298,7 @@ If energy reserves fall below 20% of capacity:
 
 ---
 
-## Material Separation Gate Hosting
+### Material Separation Gate Hosting
 
 Optional hosted capability. The Raft functions without it. Not included in baseline energy or space budgeting.
 
@@ -277,7 +311,7 @@ If hosted: the Raft provides power draw, thermal sink for heat pipe output, and 
 
 ---
 
-## Marine-Specific Challenges
+### Marine-Specific Challenges
 
 **Biofouling:** Managed through Sacrificial Shell System. Accumulation rate is a monitored diagnostic signal. Challenge framing owned by `Challenges/Biofouling.md`.
 
@@ -291,7 +325,7 @@ If hosted: the Raft provides power draw, thermal sink for heat pipe output, and 
 
 ---
 
-## Failure Philosophy & Succession
+### Failure Philosophy & Succession
 
 The Raft is not indispensable. It is replaceable. Those two properties are related — the Raft's design must make its own replacement possible.
 
@@ -328,7 +362,7 @@ None are masters. Each occupies a scope. The Raft is not headquarters. It is an 
 
 ---
 
-## Explicit Non-Goals (v0)
+### Explicit Non-Goals (v0)
 
 - Directing or overriding Leviathan unit behavior
 - Achieving energy self-sufficiency for the regional cell
@@ -340,34 +374,299 @@ None are masters. Each occupies a scope. The Raft is not headquarters. It is an 
 
 ## Lessons Learned
 
-| Date | What was tried | What failed | What was learned |
-|---|---|---|---|
-| May 2026 | Induction loss estimated at 12% | Laboratory-optimistic; real subsea conditions with seawater conductivity, alignment variance, and biofouling push losses to 20–40% | Always use field analog data for marine energy estimates, not laboratory figures |
-| May 2026 | Stasis Mode suspended all docking without cold storage rack | Created dead-unit-clog scenario — recovered but uncharged units blocking active docking ports | Passive recovery and active charging docks must be architecturally separated |
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| May 2026 | Analogous data correction | Induction loss estimated at 12% | Laboratory-optimistic; real subsea conditions with seawater conductivity, alignment variance, and biofouling push losses to 20–40% | Always use field analog data for marine energy estimates, not laboratory figures | Analogous | Yes — pending SR-004 field-measured data |
+| May 2026 | Architectural review | Stasis Mode suspended all docking without cold storage rack | Created dead-unit-clog scenario — recovered but uncharged units blocking active docking ports | Passive recovery and active charging docks must be architecturally separated | High | No |
 
 ---
 
-## Open Unknowns (Sidecar)
+## Active Disputes
 
-| ID | Title | Status | Risk | Resolution Path |
-|---|---|---|---|---|
-| SR-001 | Galvanic corrosion mitigation — mixed-metal hull with induction charging in seawater | Open | High | Marine engineering analog review; sacrificial anode placement, hull material selection, charging isolation. Cross-ref `Architecture/Chemistry.md` CE-001. Before v1.0. |
-| SR-002 | Sacrificial shell material selection — colonization, separation, reef transition, Forge fabrication | Open | Medium | Marine materials literature review and prototype panel field testing. Three candidate classes identified. |
-| SR-003 | Battery buffer sizing — exact sizing requires swarm count, mission duration, depth profile | Open | Medium | Leviathan unit specs and trial deployment data. Current target 150% of swarm-cycle charge — Placeholder. |
-| SR-004 | Induction charging pad design for 20–40% loss range with biofouling compensation | Open | Medium | Subsea charging system analog review (MBARI, WHOI AUV docking programs). |
-| SR-005 | Chicken-and-egg succession — next-generation platform must be present before end-of-region begins | Open | Medium | Operational sequencing planning — minimum overlap period between generations. Route to `Admin/Trajectories.md` for v1. |
-| SR-006 | Cold storage rack design — capacity, securing mechanism, separation from active docks | **In Progress** | Low | Declare rack capacity as fixed multiple of swarm unit count. Specification trigger: Leviathan unit physical envelope defined. |
-| SR-007 | Cache sanitization on hull compromise — encryption and remote-wipe protocol | Open | Medium | Encrypted storage with hull-breach-triggered remote wipe. Cross-ref `Admin/Security_Protocols.md` SEC-007. Before v1.0. |
-| SR-008 | Dynamic positioning vs. mooring — deployment-site dependent | Open | Low | Site characterization. Exploratory until first site selected. |
-| SR-009 | Ballast pump energy draw during storm-mode draft reconfiguration | Open | Medium | Analogous data from semi-submersible and research vessel ballast systems. Range 5–50 kW added as Analogous estimate. Must be validated before total energy trace. |
-| SR-010 | Thermal management modularity for optional Gate hosting | **Resolved** | — | Declared modular/expandable in Mechanical Design section. Heat exchangers baseline-rated for Raft-only; expandable for Gate integration. Resolved 2026-06-11. |
-| SR-011 | Shell ROI efficiency — panel swap energy cost vs. intake recovery gain | Open | Medium | Mathematical ROI model required. Depends on SR-004 (pad design); energy budget comparison. |
-| SR-012 | Mechanical bio-damping — colonization impact on wave-surge converter moving parts | Open | Medium | Feeds SR-001 corrosion mitigation. Quantitative impact on converter efficiency not characterized. |
-| SR-013 | Buoyancy shift — calcifying organism mass accumulation limit before SWATH control overwhelmed | Open | Medium | Depends on SR-002 (shell material selection); first operational deployment data required. |
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
 
 ---
 
-## Resolution Log
+## Auditor Notes & Unknowns
+
+*Full sidecar conversion, 2026-07-12 — prior format was a compact Status/Risk/Resolution Path table. Converted to the standard per-entry format below, matching the precedent set in `Tests/Living_Waters.md`'s same-day backfill.*
+
+### SR-001 — Galvanic corrosion mitigation
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | High |
+| Priority | Blocking |
+| Type | Technical |
+| Blocking | Yes — required before v1.0 specification |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Mixed metals in seawater with induced currents from induction charging creates aggressive galvanic corrosion potential across the hull.
+
+**Why It Matters:** A hull that corrodes faster than modeled undermines the entire anchor-node concept — the Raft is meant to outlast and outperform what mobile units could sustain alone. Corrosion chemistry itself is owned by `Architecture/Chemistry.md` CE-001; this unknown is specifically the mitigation strategy at the hull-design level.
+
+**Resolution Path:** Marine engineering analog review; sacrificial anode placement, hull material selection, charging isolation. Cross-reference `Architecture/Chemistry.md` CE-001. Required before v1.0.
+
+---
+
+### SR-002 — Sacrificial shell material selection
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** No candidate material is specified at v0 for the sacrificial shell. Candidates must support natural marine organism attachment without toxic leaching, be structurally separable from the inner hull, transition cleanly to artificial reef substrate when shed, and ideally be fabricated from Forge output materials.
+
+**Why It Matters:** The Sacrificial Shell System is the Raft's entire answer to biofouling — without a validated material, the shedding cycle this file's design philosophy depends on has no real substrate to build from.
+
+**Resolution Path:** Marine materials literature review and prototype panel field testing. Three candidate classes identified, none yet selected.
+
+---
+
+### SR-003 — Battery buffer sizing
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Exact battery buffer sizing requires swarm count, mission duration, and depth profile — none of which are validated yet. Current target is 150% of standard swarm-cycle charge, held as Placeholder pending Scale validation.
+
+**Why It Matters:** Undersized buffers risk Stasis Mode triggering too often under normal operation; oversized buffers waste hull volume and mass that could serve other anchor functions.
+
+**Resolution Path:** Leviathan unit specs and trial deployment data required before this moves past Placeholder.
+
+---
+
+### SR-004 — Induction charging pad design
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Pad design must accommodate a 20–40% loss range under real subsea conditions, with biofouling compensation, following the correction from the original 12% laboratory-optimistic estimate (see Lessons Learned).
+
+**Why It Matters:** Charging loss directly determines swarm charge budget — an unresolved pad design means the Energy Anchor role can't be sized with confidence.
+
+**Resolution Path:** Subsea charging system analog review (MBARI, WHOI AUV docking programs).
+
+---
+
+### SR-005 — Succession sequencing (chicken-and-egg)
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Architectural / Operational |
+| Blocking | No — but blocks end-of-region protocol execution specifically |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** The next-generation platform must be present before end-of-region protocol begins, but no operational sequencing plan defines the minimum overlap period between generations.
+
+**Why It Matters:** Without this, the Raft's own Succession Principle ("the Raft's final act is enabling its successor") has no concrete trigger condition — a Raft could decommission before its replacement is actually ready.
+
+**Resolution Path:** Operational sequencing planning — minimum overlap period between generations. Routes to `Admin/Trajectories.md` for v1.
+
+---
+
+### SR-006 — Cold storage rack design
+
+| Field | Value |
+|---|---|
+| Status | In Progress |
+| Risk | Low |
+| Priority | Minor |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Capacity, securing mechanism, and separation from active docks for the cold storage rack are not yet specified.
+
+**Why It Matters:** The rack is what prevents the dead-unit-clog scenario (a real failure mode already surfaced in Lessons Learned) — an unspecified rack risks recreating that exact problem at a different scale.
+
+**Resolution Path:** Rack capacity declared as a fixed multiple of swarm unit count. Specification trigger: Leviathan unit physical envelope defined.
+
+---
+
+### SR-007 — Cache sanitization on hull compromise
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical / Security |
+| Blocking | Yes — required before v1.0 deployment |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** If a Raft is physically compromised, the Local Truth Cache — read-only copies of governing documents like `Admin/Ethical_Constraints.md` and `Admin/Auditor_Protocols.md` — exposes internal governance logic.
+
+**Why It Matters:** A physically captured Raft shouldn't become a readable copy of the Forge's own governance doctrine. This is a genuine security exposure, not just a design nicety.
+
+**Resolution Path:** Encrypted storage with remote-wipe capability triggered by hull breach sensor or loss-of-heartbeat. Cross-reference `Admin/Security_Protocols.md` SEC-007. Design required before v1.0 deployment.
+
+---
+
+### SR-008 — Dynamic positioning vs. mooring
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Low |
+| Priority | Minor |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Whether primary conventional mooring or secondary dynamic positioning is used is deployment-site dependent and not resolvable in the abstract.
+
+**Why It Matters:** Also determines hull section depth-rating requirements (see Marine-Specific Challenges — pressure and depth).
+
+**Resolution Path:** Site characterization required. Exploratory until first site is selected.
+
+---
+
+### SR-009 — Ballast pump energy draw
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — partial resolution already applied |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Energy draw during storm-mode draft reconfiguration is not fully characterized.
+
+**Why It Matters:** Feeds directly into total energy trace and Stasis Mode threshold calculations.
+
+**Resolution Path:** Analogous data from semi-submersible and research vessel ballast systems already added (5–50 kW range, Analogous estimate) as partial resolution. Must be validated before total energy trace is treated as reliable.
+
+---
+
+### SR-010 — Thermal management modularity for optional Gate hosting
+
+| Field | Value |
+|---|---|
+| Status | Resolved |
+| Risk | — |
+| Priority | — |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-06 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Whether the Raft's thermal rejection system can accommodate Material Separation Gate heat loads when hosted, without being oversized for Gate-absent baseline operation.
+
+**Why It Matters:** Resolved — kept here for institutional memory per this file's own sidecar discipline, not because it's still open.
+
+**Resolution Path:** Declared modular/expandable in the Mechanical Design section. Heat exchangers baseline-rated for Raft-only operation; expandable for Gate integration. Resolved 2026-06-11.
+
+---
+
+### SR-011 — Shell ROI efficiency
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical / Economic |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Panel swap energy cost versus intake recovery gain is not modeled — whether the Sacrificial Shell System's shedding cycle is actually worth its energy cost is unconfirmed.
+
+**Why It Matters:** If ROI is negative, the shedding cycle needs redesign or a different cadence before it's a net-positive strategy rather than a net drain.
+
+**Resolution Path:** Mathematical ROI model required. Depends on SR-004 (pad design) and an energy budget comparison.
+
+---
+
+### SR-012 — Mechanical bio-damping
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** Colonization impact on wave-surge converter moving parts — quantitative impact on converter efficiency is not characterized.
+
+**Why It Matters:** Feeds SR-001 (corrosion mitigation); biological fouling and mechanical wear may interact in ways that make either unknown harder to resolve in isolation.
+
+**Resolution Path:** Not yet defined — requires field data on converter efficiency degradation under real colonization conditions.
+
+---
+
+### SR-013 — Buoyancy shift from calcifying organisms
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No |
+| Owner | Tests/Support_Raft.md |
+| First Logged | 2026-05-04 |
+| Last Reviewed | 2026-06-11 |
+
+**Description:** The mass accumulation limit for calcifying organisms before SWATH control is overwhelmed is uncharacterized.
+
+**Why It Matters:** SWATH's stability advantage depends on predictable buoyancy — uncontrolled mass accumulation could erode the platform-motion benefits the whole hull choice was made for.
+
+**Resolution Path:** Depends on SR-002 (shell material selection); first operational deployment data required.
+
+---
+
+### Resolution Log
 
 | Date | Entry |
 |---|---|
@@ -379,6 +678,29 @@ None are masters. Each occupies a scope. The Raft is not headquarters. It is an 
 | 2026-06-11 | SR-010 resolved — thermal management architecture declared modular/expandable in Mechanical Design section. |
 | 2026-06-11 | SR-006 moved to In Progress — cold storage rack concept implemented in Stasis Mode; specification trigger defined (Leviathan unit physical envelope). |
 | 2026-06-11 | File brought to File_Template.md compliance — Navigation Anchors, File State, Scope Boundary, Upstream/Downstream tables added. All stale file references corrected. Five-anchor Purpose framing adopted. Failure Philosophy & Succession section added. |
+| 2026-07-12 | **Template-skeleton backfill and full sidecar conversion, v0.5 → v0.6.** Converted File State to the canonical field set, retaining legacy fields (Version, Owner) as a secondary table. Split the merged "Purpose — The Five Anchor Roles" header into a dedicated File Purpose section plus a Body subsection, matching template order. Added a standalone Assumptions section (5 entries, extracted from existing Foundational Constraint, Scale placeholder figures, and Lessons Learned content — no new claims introduced). Wrapped all remaining content sections under a new `## Body` header. Converted Lessons Learned to the canonical 7-column schema. Added an explicit (empty) Active Disputes section. Converted the compact Open Unknowns table (13 entries) into full per-entry sidecar format (Status/Risk/Priority/Type/Blocking/Owner/Description/Why It Matters/Resolution Path) under a renamed `## Auditor Notes & Unknowns` section, mirroring the same-day `Tests/Living_Waters.md` precedent — Risk and Priority values derived from the existing compact table and body cross-references, not newly asserted. Added Abandoned Paths and Drift Indicators (both previously absent). |
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| May 2026 | Stasis Mode suspending all docking (including passive recovery) below the energy threshold | Created a dead-unit-clog scenario — recovered but uncharged units blocked active docking ports, and units lost the ability to be passively recovered exactly when energy scarcity made recovery most needed | No — passive recovery and active charging docks are now architecturally separated by design |
+| — | Laboratory-optimistic 12% induction loss figure | Superseded by 20–40% real-subsea-condition estimate once field analog data was applied | No — retained only as the "what failed" example in Lessons Learned |
+
+---
+
+## Drift Indicators
+
+- Body proposes the Raft directing or overriding Leviathan unit behavior — violates the anchor-not-headquarters distinction this file exists to preserve
+- Energy self-sufficiency for the regional cell is proposed as a design goal — explicitly listed as a Non-Goal at v0
+- A Scale & Operating Envelope figure is cited as validated rather than Placeholder/Analogous without a corresponding LW-TEST-style empirical result
+- SWATH is treated as a locked doctrine commitment rather than a reversible v0 implementation choice
+- End-of-region protocol is initiated without a next-generation platform confirmed present (SR-005 condition)
+- SR-001 (galvanic corrosion) or SR-007 (cache sanitization) remain unresolved past v1.0 specification despite both being explicitly required before that milestone
+- Foundational constraint (net positive energy/data surplus to the swarm) is not re-verified once real Scale figures replace the current Placeholder values
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
