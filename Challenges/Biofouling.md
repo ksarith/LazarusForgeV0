@@ -19,8 +19,8 @@
 |---|---|
 | **Status** | Active |
 | **Challenges Subtype** | Problem-Statement |
-| **Version** | v0.2 |
-| **Last Updated** | 2026-06-11 |
+| **Version** | v0.3 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -48,6 +48,22 @@
 - Metal fraction recovery for anode production → `Operations/Gate_04_Separation_Mechanical.md`, `Operations/Gate_05_Separation_Thermal.md`
 - Polymer surface texture fabrication → `Operations/Plastics.md`
 - Fouling data as network signal → `Tests/Leviathan_testing.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that biofouling and marine corrosion are permanent environmental pressures the Forge inherits rather than problems it can engineer away, and to set the requirements any Forge response to them must satisfy — ecosystem-safe, maintenance-free across multi-year deployments, and locally sourced. Without this file, biofouling risk would be addressed piecemeal inside individual hardware files (hull panels, anodes, surface coatings) with no shared framing forcing those responses to reject toxic antifouling and unsustainable maintenance dependencies as a matter of first principle.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Colonization cannot be prevented outright at v0 scale — only managed, redirected, or delayed | Historical failure of chemical antifouling (TBT, copper coatings) despite decades of deployment; biological literature on biofilm succession | High | A non-toxic, maintenance-free prevention method is validated at operational depth |
+| ASM-002 | Deep-ocean Leviathan-class deployments cannot rely on scheduled dry-dock maintenance | Design intent stated in `Tests/Leviathan_testing.md`; no dry-dock capability exists in v0 scope | High | v0 scope adds a maintenance-vessel or surfacing-for-service capability |
+| ASM-003 | Fouling rate and organism composition vary enough by latitude/season that a single mitigation cycle will not suit all deployment regions | General marine biology; not yet validated against Forge-specific field data (see BF-003) | Medium | BF-003 resolved with field data across multiple deployment regions |
 
 ---
 
@@ -136,6 +152,20 @@ The barnacle is not the enemy. It is evidence that the environment is alive and 
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no physical testing has occurred against this file's approaches | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
 ---
 
 ## Open Unknowns
@@ -152,6 +182,32 @@ The barnacle is not the enemy. It is evidence that the environment is alive and 
 ---
 
 *See: `Tests/Support_Raft.md` SR-001 (galvanic corrosion mitigation) and SR-012 (mechanical bio-damping on wave-surge converters) for the primary open unknowns this challenge drives. See: `Architecture/Friction_Dynamics.md` §5.1–§5.2 for hydrodynamic drag quantification and boundary layer disruption doctrine. See: `Architecture/Friction_Dynamics.md` §7.2 for abrasive wear mechanisms from biofouling debris. See: `Unknowns.md` for all cross-module tracked unknowns.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.3 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). No Body content changed. Abandoned Paths entries (TBT, copper coatings) drawn directly from existing Crisis-section text, not newly introduced claims.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | Tributyltin (TBT) antifoulant coatings | Most effective antifoulant ever deployed, but collapsed oyster, whelk, and dogwhelk populations across European coastlines before being banned — directly violates this file's ecosystem-safe requirement | No |
+| — | Copper-based antifoulant coatings | Less acutely toxic than TBT but accumulates in marine sediment near marinas and ports, concentrating in shellfish beds coastal communities depend on — violates ecosystem-safe requirement | No |
+
+---
+
+## Drift Indicators
+
+- Body proposes a chemical antifoulant approach without addressing the ecosystem-safety requirement this file establishes
+- A mitigation approach is adopted that depends on scheduled human maintenance intervals
+- A mitigation approach depends on globally-sourced consumables rather than salvaged/Forge-recoverable materials
+- BF-003 (regional fouling rate differential) remains unreviewed past 90 days despite deployments proceeding across multiple latitudes
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
