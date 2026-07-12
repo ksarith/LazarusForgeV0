@@ -1,5 +1,5 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v13 (patched-2)
+LAZARUS FORGE — AUDIT HARNESS v13 (patched-3)
 Google Colab notebook cells — paste each block into a separate cell.
 
 CHANGES FROM v12:
@@ -46,6 +46,24 @@ CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
     Challenges/ section, with a note flagging the CLF-005 Φ_ext symbol
     collision against Return_To_Eden.md so an auditor working either file
     is prompted to consider pulling in the other.
+
+CHANGES IN THIS PATCH (v13-patched-2 → v13-patched-3, 2026-07-12):
+  - FALLBACK_REGISTRY — added Energy_Scarcity.md (Challenges/), new file
+    created same date (v0.1, not yet Gate 1-reviewed). Also mirrored into
+    Discovery.md (tree listing, file registry table, Scope Map entry),
+    Routing.md (routing table), Unknowns.md v4.19 (new ES- cluster,
+    ES-001 through ES-003), and README.md (External Challenges list,
+    Status section file count) same day.
+  - Cell 2: EXTRA_FILES commented list — added Energy_Scarcity.md under
+    Challenges/ section. Also removed two stale annotations found while
+    editing this block: Chaos_Dynamics.md's "no File State table yet" and
+    Return_To_Eden.md's "no File State sidecar yet" — both were fixed in
+    earlier sessions (Chaos_Dynamics.md received its full template
+    skeleton 2026-07-12; Return_To_Eden.md's File State table predates
+    this harness version) but the comments here were never updated to
+    match. Same staleness pattern as the KNOWN OPEN ITEM entries closed
+    out in the v13-patched-2 changelog below — docstring maintenance
+    lagging actual file state, not a live repository gap.
 
 CHANGES IN THIS PATCH (v13-patched → v13-patched-2, 2026-07-11):
   - KNOWN OPEN ITEM list — closed out both entries below. Direct fetch
@@ -195,6 +213,7 @@ FALLBACK_REGISTRY = {
     "Water.md":                          "Challenges/Water.md",
     "Return_To_Eden.md":                 "Challenges/Return_To_Eden.md",
     "Closed_Loop_Feedstock.md":          "Challenges/Closed_Loop_Feedstock.md",
+    "Energy_Scarcity.md":                "Challenges/Energy_Scarcity.md",
 }
 
 def _parse_routing(content):
@@ -346,7 +365,7 @@ EXTRA_FILES = [
     # "Support_Raft.md",                # marine platform, SR-UNK items
     # "Leviathan_testing.md",           # hostile-environment autonomy
     # "Hydrologic_Resource_Cascade.md", # cascade hydrology, HR-UNK items
-    # "Chaos_Dynamics.md",              # sandbox/R&D pipeline doctrine, EN-005 vehicle; no File State table yet
+    # "Chaos_Dynamics.md",              # sandbox/R&D pipeline doctrine, EN-005 vehicle
     # ── Challenges/ ─────────────────────────────────────────────────
     # "Water.md",                       # hydrological challenge requirements
     # "Biofouling.md",                  # marine fouling, MIC, BF-UNK items
@@ -354,7 +373,8 @@ EXTRA_FILES = [
     # "Planned_Obsolescence.md",        # firmware lock, potting removal
     # "Critical_Minerals.md",           # rare earth, urban mining, CM-UNK
     # "Emergence.md",                   # emergent agent behavior, EM-UNK
-    # "Return_To_Eden.md",              # Eden Index cross-system heuristic, no File State sidecar yet
+    # "Energy_Scarcity.md",             # energy poverty, grid fragility, ES-UNK items; new 2026-07-12, not yet Gate 1-reviewed
+    # "Return_To_Eden.md",              # Eden Index cross-system heuristic
     # "Closed_Loop_Feedstock.md",       # CLF-series, 3 Critical unknowns; CLF-005 shares Φ_ext symbol w/ Return_To_Eden.md — pull both if auditing either
 ]
 
