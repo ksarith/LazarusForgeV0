@@ -1,7 +1,9 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
+**Version 4.18 — 2026-07-12. Registration gap sweep following today's Tests/ folder backfill (`Living_Waters.md`, `Support_Raft.md`, `Cognitive_Salvage_Layer.md` all restructured to full sidecar format same day). Checked all three against this index: Living Waters cluster (LW-UNK-001–009) was already complete, no action needed. Found and fixed two real gaps — SR-010 (`Support_Raft.md`, Resolved 2026-06-11) was never registered here at all, not even as a closed record; added. GH-013 (`Cognitive_Salvage_Layer.md`, new same-day registration for the Conceptual Salvage Pipeline's storage-mechanism unknown) added. Also normalized the Support Raft cluster's Priority (Promo) column — was using High/Medium/Low, inconsistent with this table's own Blocking/Major/Minor/Exploratory vocabulary used everywhere else; corrected to match.**
 **Version 4.17 — 2026-07-11. CLF-005 marked Resolved (was already resolved in `Closed_Loop_Feedstock.md` v0.6.0 on 2026-07-07; this index's own entry was stale and produced a false-positive finding in an external audit pass). RE-UNK-001's cross-ref note updated to match — the symbol-collision question is closed, RE-UNK-001's underlying measurement-protocol gap remains open and unaffected.**
 **Version 4.16 — 2026-07-10. Eight genuinely new registrations added following a full-repository sweep (first possible now that the complete repo zip can be reviewed at once): FL-002, GF-005, GMP-002, GMP-009, PR-005, RIP-003, RS-002, RS-003. A ninth candidate cluster (LW-004/006/008/009/010 in `Tests/Living_Waters.md`) was checked and rejected — those are Experimental Pathway subsection headers, not Open Unknowns entries, despite sharing the LW- numbering scheme.**
 **Expiry Rule active — see `Admin/Canonical_Terms.md` §4 for the Cycle definition this rule now explicitly references (one calendar year default, not one audit pass — see CT-011). Protocol Performance metrics collecting.**
+
 
 ---
 
@@ -484,18 +486,19 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | AS-002 | Marine bubble-column depth scope | `Operations/Air_Scrubber.md` | In Progress | Active | Low |
 | AS-003 | Scrubber waste stream and saturation | `Operations/Air_Scrubber.md` | In Progress | Active | Medium |
 | AS-004 | Noise exposure limits and hearing conservation program undefined | `Operations/Air_Scrubber.md` | Open | — | Major |
-| SR-001 | Galvanic corrosion mitigation | `Tests/Support_Raft.md` | Open | — | High |
-| SR-002 | Sacrificial shell material selection | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-003 | Battery buffer sizing | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-004 | Induction charging pad design | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-005 | Chicken-and-egg end-of-region | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-006 | Cold storage rack design | `Tests/Support_Raft.md` | In Progress | Active | Low |
-| SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | — | Low |
-| SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-011 | Shell ROI efficiency | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-012 | Mechanical bio-damping | `Tests/Support_Raft.md` | Open | — | Medium |
-| SR-013 | Buoyancy shift — calcifying organism mass limit | `Tests/Support_Raft.md` | Open | — | Medium |
+| SR-001 | Galvanic corrosion mitigation | `Tests/Support_Raft.md` | Open | — | Blocking |
+| SR-002 | Sacrificial shell material selection | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-003 | Battery buffer sizing | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-004 | Induction charging pad design | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-005 | Chicken-and-egg end-of-region | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-006 | Cold storage rack design | `Tests/Support_Raft.md` | In Progress | Active | Minor |
+| SR-007 | Cache sanitization on hull compromise | `Tests/Support_Raft.md` | Open | — | Blocking |
+| SR-008 | Dynamic positioning vs. mooring | `Tests/Support_Raft.md` | Open | — | Minor |
+| SR-009 | Ballast pump energy draw | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-010 | Thermal management modularity for optional Gate hosting | `Tests/Support_Raft.md` | **Resolved** 2026-06-11 | — | — |
+| SR-011 | Shell ROI efficiency | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-012 | Mechanical bio-damping | `Tests/Support_Raft.md` | Open | — | Major |
+| SR-013 | Buoyancy shift — calcifying organism mass limit | `Tests/Support_Raft.md` | Open | — | Major |
 
 ### Salvage & Fabrication
 
@@ -740,11 +743,13 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GH-010 | Simulator overfitting undefined — pipeline may harvest simulator expertise rather than physical expertise | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
 | GH-011 | Heuristic canonicalization layer undefined — variant sequences inflate consensus_run_count without adding evidential weight | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
 | GH-012 | Discovery yield rate undefined — fraction of harvested heuristics that are genuinely novel; primary ROI signal for the layer | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Major |
+| GH-013 | Conceptual salvage artifact storage mechanism undefined — no object schema exists for non-physical-input recovery (Conceptual Salvage Pipeline, provisional) | `Tests/Cognitive_Salvage_Layer.md` | Open | — | Minor (Blocking for the Conceptual Salvage Pipeline subsection specifically, not the file as a whole) |
 
 *GH-001 and CSL-A06 are co-blocking: translation fidelity and simulation-to-physical fidelity are the two load-bearing assumptions for operational deployment.*
 *GH-003 maps to Adversarial Battery Challenge Class 8 — route adversarial resistance requirements to Admin/Security_Protocols.md.*
 *GH-009 Critical — interaction surface grows as N²; Interaction Volume doctrine required before knowledge base scales beyond ~20 promoted heuristics.*
 *GH-006 hard gate: no heuristic may receive NOVEL status until GH-006 closes; CANDIDATE_NOVEL intermediate status holds qualifying entries.*
+*GH-013 — registered 2026-07-12 alongside the file's new "Conceptual Salvage Pipeline" Body subsection, which is explicitly Exploration-within-Exploration and has not passed Gate 1. Do not treat GH-013's resolution as validating that subsection's doctrine — the subsection needs its own Gate 1 review independent of this unknown closing.*
 
 ### Hydrologic Resource Cascade
 
