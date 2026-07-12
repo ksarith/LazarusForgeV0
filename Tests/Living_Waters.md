@@ -3,22 +3,57 @@
 
 ---
 
+## Navigation Anchors
+* **Context Core:** [Discovery.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Discovery.md)
+* **Network Routing:** [Routing.md](https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Routing.md)
+
+---
+
 ## File State
 
 | Field | Value |
 |---|---|
-| Version | v0.3 |
-| Status | Active — Experimental |
-| Folder | Tests/ |
-| Last Updated | 2026-06-14 |
-| Authors | James (Owner), Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
+| Status | Exploration |
+| Body Stability | Volatile |
+| Spec Gates | 0/6 |
+| Verification Ref | Admin/Verification_Gates_LF.md |
+| Last Audit | 2026-06-14 |
+| Auditor | James (Owner), Claude (Synthesizer), Gemini (Auditor), ChatGPT (Synthesizer), Grok (Synthesizer) |
+| Open Unknowns | 9 |
+| Active Disputes | 0 |
+| Highest Risk | Critical — LW-UNK-001 (volatile co-distillation) and LW-UNK-003 (lumen implosion) both carry immediate safety consequences if bypassed |
+| Sidecar Link | #auditor-notes--unknowns |
+| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+
+**Legacy cross-reference fields (retained for continuity):**
+
+| Field | Value |
+|---|---|
+| Version | v0.4 |
 | Depends On | Energy.md, Safety_Protocols.md, Unknowns.md, Economics.md |
 | Feeds Into | Operations/ (pending validation) |
-| Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ---
 
-## Purpose
+## Scope Boundary
+
+**This file DOES define:**
+- The Living Waters Initiative's four separation mechanisms (thermal, pressure, phase change, chemical/biological) and the ten experimental pathways built on them (LW-001 through LW-010).
+- The Water Hierarchy tiering purification effort to intended use.
+- Site-conditioned pathway selection guidance.
+- Sequencing doctrine (purification before atmospheric harvesting).
+- Promotion criteria for partial advancement of individual pathways to Operations/.
+
+**This file DOES NOT define:**
+- Power sourcing engineering specifications for pumps, compressors, or thermal inputs (see `Energy.md`).
+- PPE and handling doctrine for contaminated streams (see `Safety_Protocols.md`).
+- Marine deployment ethical/environmental impact assessment or brine disposal doctrine (see `Ethical_Constraints.md`).
+- Resource valuation of recovered salt and minerals (see `Economics.md`).
+- A formal Site Characterization → Pathway Selection decision framework — declared future work, not yet written (LW-UNK-008).
+
+---
+
+## File Purpose
 
 The Living Waters Initiative explores methods of producing potable and process water from contaminated, saline, atmospheric, or waste streams.
 
@@ -38,7 +73,21 @@ The initiative investigates pressure-driven, thermal, biological, and electroche
 
 ---
 
-## Governing Principle
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Purification must precede atmospheric harvesting because condensate carries airborne contaminants that require treatment before closed-loop storage | Sequencing Doctrine, stated design philosophy | Medium | An arid-context deployment demonstrates safe direct-to-storage harvesting without a purification baseline |
+| ASM-002 | Ambient hydrostatic pressure at 400–600 m depth can substitute for mechanical high-pressure pumps in reverse osmosis (LW-003) | Flux model $J = A(\Delta P - \Delta\pi)$; osmotic pressure of seawater (~2.7 MPa) compared against hydrostatic pressure at depth | Low — theoretical, no empirical validation yet | LW-TEST-301/302/304 completed |
+| ASM-003 | Vacuum distillation (LW-001) is energy-unviable without heat recycling, making Mechanical Vapor Recompression or multi-effect design a hard design requirement, not an optimization | Stated energy figures: ~628 kWh/m³ without recycling vs. 10–25 kWh/m³ with MVR | Medium — figures are Analogous/literature-derived, not Forge-measured | LW-TEST-101 (MVR Efficiency) completed |
+| ASM-004 | Commercial atmospheric water generator energy-intensity benchmarks (0.3–0.5 kWh/L at >70% RH) will hold at Forge build quality with salvaged components | Comparison to commercial AWG benchmarks; explicitly flagged as unvalidated at Forge build quality | Low — modeling estimate | LW-TEST-502 (Energy Intensity Validation) completed |
+| ASM-005 | Local relative-humidity reduction from atmospheric harvesting (LW-005a) is a plausible secondary effect but not a design target, and no atmospheric-scale claim is intended | Explicit scope limitation in LW-005a; consistent with this file's DOES NOT define atmospheric-scale effects | High — this is a scope decision, not an empirical claim | Body content proposes atmospheric-scale effects as a design objective (would itself be a Drift Indicator trigger) |
+
+---
+
+## Body
+
+### Governing Principle
 
 Water purification is fundamentally the separation of water molecules from everything else.
 
@@ -55,7 +104,7 @@ The Forge recognizes four major separation mechanisms:
 
 ---
 
-## Water Hierarchy
+### Water Hierarchy
 
 The Forge recognizes that not all water requires drinking quality. Producing unnecessarily pure water for low-grade uses is avoidable energy expenditure. Quality requirements must match intended use.
 
@@ -73,7 +122,7 @@ This hierarchy parallels the degraded modes logic in Energy.md. Purification eff
 
 ---
 
-## Site Context
+### Site Context
 
 **The answer for different Forges will naturally vary. Location is the key determination.**
 
@@ -100,9 +149,9 @@ Pathway selection is site-conditioned, not universal. A Forge that knows where i
 
 ---
 
-## Experimental Pathways
+### Experimental Pathways
 
-### LW-001 — Vacuum Distillation
+#### LW-001 — Vacuum Distillation
 
 **Concept**
 
@@ -165,7 +214,7 @@ Stage 1 strips high-volatility compounds before water recovery begins. This prev
 
 ---
 
-### LW-002 — Conventional Reverse Osmosis
+#### LW-002 — Conventional Reverse Osmosis
 
 **Concept**
 
@@ -185,7 +234,7 @@ Pressure forces water through a semi-permeable membrane while rejecting dissolve
 
 ---
 
-### LW-003 — Pressure-Assisted Deep Water Osmosis (DSRO)
+#### LW-003 — Pressure-Assisted Deep Water Osmosis (DSRO)
 
 **Concept**
 
@@ -237,7 +286,7 @@ The freshwater lumen interior is at or near atmospheric pressure. If osmotic flu
 
 ---
 
-### LW-004 — Freeze Separation
+#### LW-004 — Freeze Separation
 
 **Concept**
 
@@ -258,7 +307,7 @@ Ice formation preferentially excludes dissolved salts and many contaminants. Rep
 
 ---
 
-### LW-005 — Atmospheric Water Harvesting
+#### LW-005 — Atmospheric Water Harvesting
 
 **Concept**
 
@@ -276,7 +325,7 @@ Atmospheric harvesting is supplemental until a reliable purification baseline ex
 
 ---
 
-### LW-005a — Refrigeration-Based Atmospheric Condensation (Active AWG)
+#### LW-005a — Refrigeration-Based Atmospheric Condensation (Active AWG)
 
 **Concept**
 
@@ -345,7 +394,7 @@ The high-voltage ionization system in LW-005a (+20–25 kV DC) uses the same gen
 
 ---
 
-### LW-006 — Membrane Distillation
+#### LW-006 — Membrane Distillation
 
 **Concept**
 
@@ -360,7 +409,7 @@ Combines heat gradients with hydrophobic membranes to transport water vapor whil
 
 ---
 
-### LW-007 — Forward Osmosis
+#### LW-007 — Forward Osmosis
 
 **Concept**
 
@@ -380,7 +429,7 @@ Uses osmotic concentration gradients rather than high-pressure pumps to draw wat
 
 ---
 
-### LW-008 — Multi-Effect Vacuum Distillation
+#### LW-008 — Multi-Effect Vacuum Distillation
 
 **Concept**
 
@@ -400,7 +449,7 @@ LW-001 must be validated first. LW-008 is the efficiency evolution of a proven c
 
 ---
 
-### LW-009 — Constructed Wetlands / Biological Polishing
+#### LW-009 — Constructed Wetlands / Biological Polishing
 
 **Concept**
 
@@ -426,7 +475,7 @@ LW-009 is a polishing and recovery stage, not a primary purification pathway. It
 
 ---
 
-### LW-010 — Mineral Recovery
+#### LW-010 — Mineral Recovery
 
 **Concept**
 
@@ -447,25 +496,7 @@ Brine-as-resource transforms a waste disposal problem into a production line. Th
 
 ---
 
-## Open Unknowns
-
-| ID | Description | Status |
-|---|---|---|
-| LW-UNK-001 | Volatile co-distillation characterization for LW-001 across salvage-context input stream types | Partially addressed — LW-TEST-102 defines test approach. Empirical validation pending. |
-| LW-UNK-002 | Membrane survivability for LW-003 at sustained operational depth | Open |
-| LW-UNK-003 | Lumen structural integrity limits for LW-003 freshwater conduit under deep pressure | Partially addressed — implosion threshold characterized. Salvage material validation pending. |
-| LW-UNK-004 | Biofouling rate characterization for LW-003 in target deployment zones | Open |
-| LW-UNK-005 | Energy balance: LW-001 with MVR vs. LW-002 surface RO at equivalent throughput | Partially addressed — energy profiles established. Empirical validation at Forge scale pending. |
-| LW-UNK-006 | Salvage-compatible membrane sourcing for any RO pathway | Open |
-| LW-UNK-007 | Draw solution regeneration chemistry and energy cost for LW-007 forward osmosis | Open |
-| LW-UNK-008 | Site characterization → pathway selection decision framework | Declared — formal framework not yet written |
-| LW-UNK-009 | Salvage sourcing path for fence-mounted AWG variant (LW-005a) — required before Forge build candidacy | Open |
-
-*Candidates for migration to Unknowns.md pending triage.*
-
----
-
-## Long-Term Vision
+### Long-Term Vision
 
 ```
 Water Source
@@ -500,7 +531,7 @@ Living Waters ultimately seeks a closed-loop water architecture where:
 
 ---
 
-## Promotion Criteria
+### Promotion Criteria
 
 This file may be considered for partial promotion to Operations/ when:
 
@@ -514,13 +545,249 @@ Promotion is partial and pathway-specific. Unvalidated pathways remain in Tests/
 
 ---
 
-## Cross-References
+### Cross-References
 
 - `Energy.md` — Power sourcing for vacuum pumps, thermal inputs, MVR compressors, and product water lifting.
 - `Safety_Protocols.md` — PPE and handling doctrine for contaminated input streams and VOC rejection staging.
 - `Unknowns.md` — LW-UNK entries pending migration.
 - `Ethical_Constraints.md` — Governs marine deployment impact assessment for LW-003; brine disposal doctrine.
 - `Economics.md` — Resource valuation of recovered salt and mineral byproducts (LW-010).
+
+---
+
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no LW-TEST has been physically executed | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
+---
+
+## Auditor Notes & Unknowns
+
+*Full sidecar conversion, 2026-07-12 — prior format was a flat ID/Description/Status table, self-labeled "candidates for migration to Unknowns.md pending triage." Converted to the standard per-entry format below; Unknowns.md global index registration remains a separate, not-yet-completed step (see Resolution Log).*
+
+### LW-UNK-001 — Volatile co-distillation characterization for LW-001
+
+| Field | Value |
+|---|---|
+| Status | Open (Partially Addressed) |
+| Risk | Critical |
+| Priority | Blocking |
+| Type | Technical / Safety |
+| Blocking | Yes — Promotion Criteria #2 names this unknown explicitly |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Low-boiling organics (fuels, solvents, benzene, ethanol, gasoline fractions, some biological metabolites) will co-distill with or ahead of water vapor under vacuum in LW-001. In salvage-context sources where input composition is unpredictable, initial distillate may be a concentrated toxin stream rather than potable water.
+
+**Why It Matters:** This is flagged [CRITICAL] in the pathway description itself — bypassing it produces a system that appears to make water while actually concentrating toxins into the output stream. Directly implicates the Ethical Anchor if deployed without resolution.
+
+**Resolution Path:** LW-TEST-102 (Volatile Fractionation) defines the two-stage decompression cycle test approach — Stage 1 (~10–15 kPa) strips volatiles to a reject/fuel line, Stage 2 (<4.5 kPa) recovers water. Empirical validation of the fractionation valve and first-stage rejection routing is pending.
+
+---
+
+### LW-UNK-002 — Membrane survivability for LW-003 at sustained operational depth
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | High |
+| Priority | Blocking |
+| Type | Technical |
+| Blocking | Yes — LW-003 cannot be validated without a membrane rated for sustained depth pressure |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Whether an available membrane can survive sustained operation at the 400–600 m target deployment window without excessive compaction or failure is untested.
+
+**Why It Matters:** LW-003's entire energy-advantage case depends on operating in a narrow depth band where ambient hydrostatic pressure exceeds osmotic pressure without excessive compaction risk. A membrane that fails at depth invalidates the pathway's core proposition.
+
+**Resolution Path:** LW-TEST-302 (Osmotic Equilibrium Depth) — verify deployment depth held strictly within 400–600 m and characterize membrane behavior across that band.
+
+---
+
+### LW-UNK-003 — Lumen structural integrity limits for LW-003 freshwater conduit
+
+| Field | Value |
+|---|---|
+| Status | Open (Partially Addressed) |
+| Risk | Critical |
+| Priority | Blocking |
+| Type | Technical / Safety |
+| Blocking | Yes |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** At 500 m depth, net crushing load on the freshwater lumen is approximately 4.9 MPa (5.0 MPa exterior hydrostatic vs. ~0.1 MPa interior atmospheric). Standard PVC and thin-walled salvage tubing will implode. Flagged [CRITICAL] in the pathway text.
+
+**Why It Matters:** Lumen implosion at depth is both an equipment-loss and a recovery-logistics hazard — this isn't a performance shortfall, it's a structural failure mode with direct safety consequences.
+
+**Resolution Path:** Implosion threshold has been calculated (salvage targets identified: HDPE SDR-9 pipe, thick-walled steel tubing, hydraulic hose sleeves rated >5.5 MPa external crush load). LW-TEST-301 (Crush Depth Simulation) will validate this empirically. Salvage material validation against the calculated threshold is the remaining gap.
+
+---
+
+### LW-UNK-004 — Biofouling rate characterization for LW-003
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — affects maintenance interval, not core validation |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Biofouling rate at the membrane surface in target deployment zones is uncharacterized.
+
+**Why It Matters:** Determines maintenance interval and whether acoustic anti-fouling pulse cycling is necessary for sustained operation.
+
+**Resolution Path:** LW-TEST-303 (Biofouling and Flow Decay) — measure flux decay over simulated time blocks, establish maintenance interval, evaluate acoustic anti-fouling pulse cycle effectiveness.
+
+---
+
+### LW-UNK-005 — Energy balance: LW-001 with MVR vs. LW-002 surface RO
+
+| Field | Value |
+|---|---|
+| Status | Open (Partially Addressed) |
+| Risk | High |
+| Priority | Blocking |
+| Type | Technical |
+| Blocking | Yes — Promotion Criteria #3 requires documented energy budget against Forge operational constraints |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** LW-001 is flagged [CRITICAL] on energy cost — without heat recycling it consumes ~628 kWh/m³, versus 10–25 kWh/m³ with MVR and 2.5–4.0 kWh/m³ for industrial RO baseline. Whether MVR-equipped LW-001 is energy-competitive with surface RO at equivalent throughput, specifically using salvaged components, is not yet validated.
+
+**Why It Matters:** Determines whether LW-001 is a viable primary pathway at all, or only viable in narrow contexts (e.g., high waste-heat availability).
+
+**Resolution Path:** LW-TEST-101 (MVR Efficiency) — measure compressor electrical input against volumetric output; reject configurations exceeding 25 kWh/m³. Energy profiles are established from literature/Analogous sources; Forge-scale empirical validation is the remaining gap.
+
+---
+
+### LW-UNK-006 — Salvage-compatible membrane sourcing for any RO pathway
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical / Sourcing |
+| Blocking | No — LW-002 is a reference/comparative pathway, not a primary candidate; does not block LW-001 or LW-003 |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** No confirmed salvage-compatible membrane source has been identified for reverse-osmosis-family pathways (LW-002, LW-003, LW-007).
+
+**Why It Matters:** LW-002 is explicitly held as "not a primary Forge candidate without membrane sourcing solution" — this unknown is the reason that pathway stays a reference baseline rather than an active candidate.
+
+**Resolution Path:** Not yet defined — requires a salvage stream survey for membrane-bearing salvaged equipment (water filtration units, medical dialysis equipment, existing RO systems).
+
+---
+
+### LW-UNK-007 — Draw solution regeneration chemistry and energy cost for LW-007
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical |
+| Blocking | No — LW-007 is Exploratory, not a primary pathway |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** Forward osmosis (LW-007) requires draw solution regeneration to release purified water; no salvage-compatible draw solution chemistry has been identified, and regeneration energy cost is unaccounted for.
+
+**Why It Matters:** This is the key unknown blocking test design for LW-007 — without it, no meaningful test parameters can be written.
+
+**Resolution Path:** Not yet defined — identify candidate draw solution chemistries compatible with salvage sourcing and solar regeneration before test design proceeds.
+
+---
+
+### LW-UNK-008 — Site characterization → pathway selection decision framework
+
+| Field | Value |
+|---|---|
+| Status | Open (Declared) |
+| Risk | Low |
+| Priority | Minor |
+| Type | Architectural |
+| Blocking | No |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** A formal framework converting Site Characterization Inputs (proximity to water, climate, elevation, salvage availability, energy profile, contaminant classes) into a specific pathway recommendation has been declared as future work but not yet written. Currently the Site Context table provides informal guidance only.
+
+**Why It Matters:** Without a formal framework, pathway selection depends on manual interpretation of the Site Context table rather than a repeatable decision procedure — a scaling risk once multiple Forges need to make this determination independently.
+
+**Resolution Path:** Payment via Specification — write the formal decision framework as a dedicated addition to this file, once enough pathway validation data exists to make the framework's outputs meaningful rather than speculative.
+
+---
+
+### LW-UNK-009 — Salvage sourcing path for fence-mounted AWG variant (LW-005a)
+
+| Field | Value |
+|---|---|
+| Status | Open |
+| Risk | Low |
+| Priority | Minor |
+| Type | Sourcing |
+| Blocking | No — fence-mounted is an alternative deployment form, not the primary Forge candidate (vertical unit architecture is primary) |
+| Owner | Tests/Living_Waters.md |
+| First Logged | 2026-06-14 |
+| Last Reviewed | 2026-06-14 |
+
+**Description:** The fence-mounted AWG variants (2 ft solar unit, 8 ft rollable grid unit) currently assume new manufacture at defined cost targets, which conflicts with salvage-first doctrine. No salvage sourcing path has been demonstrated.
+
+**Why It Matters:** Until resolved, these variants remain reference designs for context rather than actual Forge build candidates — required before this variant could be considered for build candidacy at all.
+
+**Resolution Path:** Not yet defined — requires demonstrating that the variant's component list (solar panel, DC fan, controller) can be salvage-sourced at comparable performance to the new-manufacture reference design.
+
+---
+
+### Resolution Log
+
+- 2026-07-12: **Template-skeleton backfill and full sidecar conversion, v0.3 → v0.4.** Added Navigation Anchors (previously absent). Converted File State to the canonical field set, retaining the legacy fields (Version, Depends On, Feeds Into) as a secondary table for continuity. Added a standalone Scope Boundary section (previously absent). Retitled "Purpose" to "File Purpose." Added a standalone Assumptions section (5 entries, extracted from existing Governing Principle, LW-001, and LW-003 content — no new claims introduced). Wrapped Governing Principle through Cross-References under a new `## Body` header; individual LW-00x pathway headers demoted to `####` to nest correctly under the new `### Experimental Pathways` subheader. Converted the flat Open Unknowns table (9 entries) into full per-entry sidecar format (Status/Risk/Priority/Type/Blocking/Owner/Resolution Path) under a new `## Auditor Notes & Unknowns` section — Risk and Priority values derived from existing [CRITICAL] flags and Promotion Criteria references in the source text, not newly asserted. Added Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (all previously absent). **Unknowns.md global index registration for LW-UNK-001 through 009 remains outstanding** — this backfill formalized the sidecar, it did not perform the separate migration this file's own prior note called for.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | — | No paths formally abandoned yet. LW-002 (conventional RO) and the fence-mounted AWG variants (LW-005a) are deprioritized behind other candidates (see LW-UNK-006 and LW-UNK-009) but remain open, not rejected — they're held as reference/comparative pathways pending sourcing solutions, not dead ends. | — |
+
+---
+
+## Drift Indicators
+
+- Body proposes deploying LW-001 without the two-stage volatile fractionation cycle (LW-UNK-001) — this is the specific failure mode that turns "water production" into "toxin concentration"
+- Body proposes deploying LW-003 without a validated crush-depth-rated conduit (LW-UNK-003)
+- LW-001 yield or efficiency claims are stated without the "peak-condition" or "unvalidated modeling estimate" qualifiers already present in the source data
+- Atmospheric-scale effects (regional humidity reduction, weather modification) are proposed as a design objective rather than an explicitly out-of-scope secondary effect
+- A pathway is promoted to Operations/ without satisfying all five Promotion Criteria, or promoted as a blanket file-level change rather than pathway-specific
+- Water Hierarchy tiering is skipped and all output is treated as requiring Tier 1 (potable) purity by default
+- Ethical Anchor field is absent, altered, or does not match the canonical string
+- LW-UNK entries remain unmigrated to Unknowns.md's global index past a reasonable interval without that gap being flagged (see Resolution Log, 2026-07-12)
 
 ---
 
