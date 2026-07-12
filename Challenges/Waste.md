@@ -16,6 +16,7 @@
 | Field | Value |
 |---|---|
 | **Status** | Active |
+| **Challenges Subtype** | Problem-Statement |
 | **Version** | v0.2 |
 | **Last Updated** | 2026-06-11 |
 | **Owner** | Challenges/ |
