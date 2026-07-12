@@ -17,8 +17,8 @@
 |---|---|
 | **Status** | Active |
 | **Challenges Subtype** | Problem-Statement |
-| **Version** | v0.2 |
-| **Last Updated** | 2026-06-11 |
+| **Version** | v0.3 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -46,6 +46,22 @@
 - Polymer triage and pyrolysis → `Operations/Plastics.md`
 - Closed-loop utilization feedback → `Operations/Gate_07_Utilization.md`
 - Network knowledge federation → `Architecture/Forge_Net.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that waste is a design choice — a system that made disposal cheap and recovery expensive — rather than a natural or inevitable category, and to set the requirement that the Forge preserve embedded complexity ahead of bulk material recovery. Without this file, individual gate files would have no shared framing forcing them to treat triage-before-reduction as a first principle, and the repository would have no place naming the informal waste-worker economy and repair-economy erosion as conditions the Forge is responding to rather than incidental context.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Triage decisions can reliably distinguish embedded functional complexity from bulk material at the point of intake | Core design philosophy (triage-before-reduction); no formal preservation metric yet exists (WA-001 open) | Low | WA-001 resolved with a formal embedded-complexity preservation metric |
+| ASM-002 | Operators can reliably identify hazardous fractions (asbestos, heavy metals, BFRs) in mixed, unsorted waste streams without a validated identification protocol | Engineering Requirements assumes this capability; WA-002 explicitly notes no validated protocol or training standard exists | Low | WA-002 resolved with a validated identification protocol |
+| ASM-003 | The Forge's presence in a community can integrate with, rather than displace, existing informal waste recovery workers | Long-Term Objective's stated intent; WA-003 explicitly notes no integration framework yet exists | Low | WA-003 resolved with an informal-sector integration doctrine |
 
 ---
 
@@ -135,6 +151,20 @@ The river does not waste water. The forest does not waste leaves. Waste, in thos
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no physical testing has occurred against this file's approaches | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
 ---
 
 ## Open Unknowns
@@ -153,6 +183,31 @@ The river does not waste water. The forest does not waste leaves. Waste, in thos
 ---
 
 *See: `Architecture/Forge_flow.md` for the master gate sequence this challenge drives. See: `Operations/Gate_02_Triage.md` for the primary triage doctrine. See: `Operations/Plastics.md` for polymer fraction handling. See: `Operations/Air_Scrubber.md` for hazardous stream containment. See: `Unknowns.md` for all cross-module tracked unknowns.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.3 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). No Body content changed.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | Measuring recovery success by material weight alone | The Crisis section explicitly rejects weight-based recycling metrics as missing the point — they don't capture whether embodied complexity (a functional motor vs. its raw copper and iron) survived processing | No |
+
+---
+
+## Drift Indicators
+
+- Body treats reduction (smelting, bulk shredding) as an acceptable default before triage has genuinely exhausted recovery paths
+- A processing loop is adopted or continued without a positive value-per-kWh accounting
+- WA-002 or WA-004 (hazardous identification, negative-value disposal) remain unreviewed past 90 days while mixed-waste operations continue
+- Informal waste worker communities are treated as a deployment obstacle rather than a stakeholder this file's Long-Term Objective commits to supporting
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
