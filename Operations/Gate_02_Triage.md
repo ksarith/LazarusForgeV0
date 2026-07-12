@@ -381,37 +381,6 @@ Recurring failure patterns on specific component types are flagged for classific
 
 ---
 
-## Abandoned Paths
-
-| Date     | Path                                                                  | Why Abandoned                                                                                           | Reconsider? |
-|----------|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| May 2026 | Direct Reduction routing for Station 3 Fail without Triage Terminal  | Irreversible action without Human/AI Oversight Gate — permanently abandoned; Triage Terminal is mandatory | No          |
-| May 2026 | Single operational utility axis for triage decisions                  | Strategic recoverability is a distinct dimension — optimizing only for current utility destroys future capability | No |
-| May 2026 | Queues as passive storage without decay or saturation doctrine        | Passive queues become dead inventory under resource pressure — active allocation doctrine is permanent   | No          |
-
----
-
-## Drift Indicators
-
-Mandatory re-audit conditions for this document:
-
-- Station 0 contamination check made optional or skippable under throughput pressure
-- Triage Terminal removed or bypassed for any item class
-- Dual-use flag assessment removed from Station 0
-- Strategic Recoverability tier classification removed or collapsed to single axis
-- Queue decay protocol removed or decay interval extended without operational basis
-- False-positive doctrine reversed — destruction confidence lowered below retention confidence during bootstrap
-- Gate Correspondence table diverges from `Architecture/Forge_flow.md` gate definitions
-- Stale flat filenames present in cross-references
-- Human/AI Oversight Gate requirement removed for Strategic or Critical tier components
-- DS-001 resolved without explicit audit cycle and cross-validation with Gate_07_Utilization.md
-- Ethical Anchor field absent, altered, or does not match canonical string
-
-**Compound Drift Rule:** If multiple indicators activate simultaneously, halt
-autonomous audit progression and escalate for human review.
-
----
-
 ## Auditor Notes & Unknowns
 
 ### TS-001 — "Sufficient for forge duty" threshold undefined
@@ -544,3 +513,35 @@ Cross-Module Unknowns table.
 - May 2026: Station 4 anti-overfitting protection added.
 - 2026-05-23: Retrofitted to File_Template.md structure. Safety Advisory, File State table, Scope Boundary, File Purpose, Assumptions table, Abandoned Paths, Drift Indicators added. DS-001 (retirement handoff dispute) added to Active Disputes. Stale flat filenames corrected to canonical folder-prefixed paths throughout. Lessons Learned reformatted to full table with Evidence Type and Confidence columns. Sidecar unknowns reformatted to structured table format.
 - 2026-06-06: Navigation Anchors block added. Verification Ref corrected to Admin/Verification_Gates_LF.md. Electronics.md cross-reference corrected to Operations/Electronics.md. Duplicate separator removed. Interfaces table updated — Precision.md and Facilities.md added as upstream references. CT-002 cross-reference entry added to sidecar. Open Unknowns updated 3 → 4.
+- 2026-07-12: Reordered Abandoned Paths and Drift Indicators to after Auditor Notes & Unknowns, per template order — they previously sat between Active Disputes and Auditor Notes & Unknowns. No other content changed. Same fix applied same day to `Operations/Air_Scrubber.md` and `Operations/Energy.md`.
+
+---
+
+## Abandoned Paths
+
+| Date     | Path                                                                  | Why Abandoned                                                                                           | Reconsider? |
+|----------|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| May 2026 | Direct Reduction routing for Station 3 Fail without Triage Terminal  | Irreversible action without Human/AI Oversight Gate — permanently abandoned; Triage Terminal is mandatory | No          |
+| May 2026 | Single operational utility axis for triage decisions                  | Strategic recoverability is a distinct dimension — optimizing only for current utility destroys future capability | No |
+| May 2026 | Queues as passive storage without decay or saturation doctrine        | Passive queues become dead inventory under resource pressure — active allocation doctrine is permanent   | No          |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Station 0 contamination check made optional or skippable under throughput pressure
+- Triage Terminal removed or bypassed for any item class
+- Dual-use flag assessment removed from Station 0
+- Strategic Recoverability tier classification removed or collapsed to single axis
+- Queue decay protocol removed or decay interval extended without operational basis
+- False-positive doctrine reversed — destruction confidence lowered below retention confidence during bootstrap
+- Gate Correspondence table diverges from `Architecture/Forge_flow.md` gate definitions
+- Stale flat filenames present in cross-references
+- Human/AI Oversight Gate requirement removed for Strategic or Critical tier components
+- DS-001 resolved without explicit audit cycle and cross-validation with Gate_07_Utilization.md
+- Ethical Anchor field absent, altered, or does not match canonical string
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt
+autonomous audit progression and escalate for human review.
