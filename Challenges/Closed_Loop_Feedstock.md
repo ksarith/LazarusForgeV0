@@ -11,7 +11,8 @@
 | Field              | Value |
 |--------------------|-------|
 | Status             | Exploration |
-| Version            | v0.6.0 |
+| Challenges Subtype | Solution-Track |
+| Version            | v0.6.1 |
 | Body Stability     | Transitional |
 | Spec Gates         | 0/6 |
 | Verification Ref   | `Admin/Verification_Gates_LF.md` |
@@ -137,6 +138,7 @@ Full sidecar details maintained here; register cross-references in `Unknowns.md`
 
 ## Resolution Log
 
+- 2026-07-11: **v0.6.1 — Challenges Subtype field added: Solution-Track.** This file has used the full eleven-field File State schema and worked-engineering content since v0.3.0, and `Admin/File_Template.md`'s Challenges/ subtype doctrine names it directly as a current Solution-Track example. Declaring the field explicitly closes the gap between doctrine and this file's own File State table — no schema change, no promotion event (promotion already happened in practice; this just records it).
 - 2026-07-07: **v0.6.0 — CLF-005 resolved (symbol rename); CLF-004 candidate pathway logged (human-directed).**
   (1) **CLF-005 resolved.** Direct comparison of this file's $\Phi_{ext}$ usage against `Challenges/Return_To_Eden.md`'s Section 3 Eden Index formulation confirmed the two are different metrics — Return_To_Eden.md's is a normalized, baselined ecosystem-subsidy ratio; this file's was an unnormalized, process-level supply-dependency concept. Renamed to **Supply Chain Dependency ($\Delta_{sc}$)** throughout §1 to remove the collision. No change required in Return_To_Eden.md.
   (2) **CLF-004 candidate pathway logged**, sourced from human governing authority directly rather than an agent audit pass: on-site acid synthesis via salt-water electrolysis with a homemade ion-selective membrane (chlor-alkali-type process), offered as a third option alongside external sourcing and closed-loop reclamation. Logged as a candidate, not a resolution — chlorine gas co-production requires a containment/scrubbing design against Ethical_Constraints.md's toxic-handling doctrine before this can be adopted. CLF-004 remains Open/Critical.
