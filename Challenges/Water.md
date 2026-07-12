@@ -17,8 +17,8 @@
 |---|---|
 | **Status** | Active |
 | **Challenges Subtype** | Problem-Statement |
-| **Version** | v0.2 |
-| **Last Updated** | 2026-06-11 |
+| **Version** | v0.3 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -44,6 +44,22 @@
 - Venturi scrubbing and airflow design → `Architecture/Friction_Dynamics.md` §4
 - Spin Chamber applications → `Operations/Gate_04_Separation_Mechanical.md`, `Operations/Gate_05_Separation_Thermal.md`
 - Biochar production from organic streams → `Operations/Plastics.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that water scarcity and contamination are structural conditions the Forge must respond to as a core purpose, not a humanitarian add-on, and to set the requirement that remediation be self-funding and community-maintainable rather than dependent on grid power or external chemical inputs. Without this file, the Living Waters initiative's individual mechanisms (stratification, Spin Chamber, atmospheric recovery) would have no shared doctrine forcing them to treat contaminants as recoverable material rather than waste, and no requirement binding them to intermittent-power, community-scale deployment.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Atmospheric moisture recovery can supply meaningful water volume in high-humidity, low-kinetic-energy environments where surface/groundwater is compromised | Current Living Waters approach; TH-003 (atmospheric moisture yield) is explicitly the Blocking unknown for this deployment | Low | TH-003 resolved with characterized yield data |
+| ASM-002 | Remediation processes can be made self-funding by converting isolated contaminants into recoverable material streams (stabilized metals, biochar) at a rate that offsets processing cost | Core design philosophy ("the pollutant is also the resource"); not yet validated against real contamination streams | Low | A field deployment demonstrates or fails to demonstrate net-positive material recovery value |
+| ASM-003 | A technically sound remediation system will be adopted and maintained by the community it serves without a defined adoption/maintenance protocol | Long-Term Objective's sovereignty goal; WS-004 explicitly notes no owning file defines this protocol | Low | WS-004 resolved with a community adoption and maintenance protocol |
 
 ---
 
@@ -127,6 +143,19 @@ The river does not arrive from a central warehouse. It rises from the land it ha
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no physical testing has occurred against this file's approaches | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
 
 ---
 
@@ -145,6 +174,31 @@ The river does not arrive from a central warehouse. It rises from the land it ha
 ---
 
 *See: `Unknowns.md` TH-003 — Blocking unknown for Living Waters condensation deployment. See: `Operations/Gate_04_Separation_Mechanical.md` and `Operations/Gate_05_Separation_Thermal.md` for linked separation mechanism documentation. See: `Architecture/Thermal_Systems.md` §5–§6 for heat pump and Peltier condensation doctrine. See: `Architecture/Friction_Dynamics.md` §4 for Venturi scrubbing and airflow design.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.3 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent); also closed a stray double-blank-line formatting gap above the Open Unknowns header. No Body content changed otherwise.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | Chemical biocides, toxic membranes, and single-use filter media for remediation | Engineering Requirements explicitly rejects these as unacceptable in contexts where ecosystems are already under stress — remediation must not introduce new toxins | No |
+
+---
+
+## Drift Indicators
+
+- Body proposes a remediation mechanism that depends on grid power rather than harvested/intermittent energy
+- A remediation approach isolates contaminants without stabilizing or converting them into a recoverable material stream
+- TH-003 (atmospheric moisture yield, the Blocking unknown for Living Waters) remains unreviewed past 90 days while condensation deployment proceeds
+- WS-004 (community adoption/maintenance protocol) remains unreviewed past 90 days while systems are deployed to communities
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
