@@ -1,5 +1,5 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v13 (patched)
+LAZARUS FORGE — AUDIT HARNESS v13 (patched-2)
 Google Colab notebook cells — paste each block into a separate cell.
 
 CHANGES FROM v12:
@@ -47,18 +47,40 @@ CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
     collision against Return_To_Eden.md so an auditor working either file
     is prompted to consider pulling in the other.
 
+CHANGES IN THIS PATCH (v13-patched → v13-patched-2, 2026-07-11):
+  - KNOWN OPEN ITEM list — closed out both entries below. Direct fetch
+    confirms Challenges/Return_To_Eden.md and Tests/Chaos_Dynamics.md
+    both now have complete File State tables; Chaos_Dynamics.md also has
+    its Navigation Anchors block. These were flagged stale after an
+    external audit pass (Grok, 2026-07-11) cited them as still-missing —
+    root cause was this docstring not being updated after the files were
+    patched, not a live repository gap. See also: Unknowns.md v4.17,
+    which had the same staleness problem on CLF-005/RE-UNK-001 and has
+    been corrected.
+  - NEW KNOWN OPEN ITEM added below: Index Sync Check proposal (Grok,
+    2026-07-11) — harness currently has no automated check comparing a
+    file's own Resolution Log dates against Unknowns.md's Active Index
+    status for the same ID. This is what let CLF-005 sit Resolved in its
+    owning file for four days while Unknowns.md still listed it Open,
+    which then propagated as a false positive into an external audit.
+    Proposed: a fourth Phase 1 check, or a lightweight WARNING tier, that
+    flags any ID where the owning file's Resolution Log shows a later
+    Resolved/Discharged date than what Unknowns.md's Active Index carries.
+    Not implemented in this patch — flagged for scoping next session.
+
 KNOWN OPEN ITEM (flag for next session, not fixed here):
-  - Challenges/Return_To_Eden.md has no File State sidecar table as of
-    this compile. Phase 1 will log a MAJOR/STRUCTURE finding
-    ("File State table not found") the first time it's fetched. This is
-    expected/accurate, not a harness bug — add the sidecar to the file
-    itself before it's audited for promotion readiness.
-  - Tests/Chaos_Dynamics.md has no File State table as of this compile
-    (confirmed 2026-07-04) — same situation as Return_To_Eden.md above.
-    Also missing the mandatory Navigation Anchors block; this harness has
-    no check for that block's presence, so it will not surface via Phase 1
-    — tracked here only, not enforced. Patch the file directly (add both)
-    before treating it as audit-complete.
+  - Index Sync Check (see above) — not yet designed or implemented.
+    Scoping questions for next session: does this run against every ID
+    on every Phase 1 pass (cost/latency), or only on the specific file
+    being audited plus its cross-referenced IDs? Where does the harness
+    get the owning file's Resolution Log date from — new fetch logic, or
+    reuse of the existing boundary extractor?
+
+CLOSED THIS PATCH (previously KNOWN OPEN ITEM, verified resolved 2026-07-11):
+  - Challenges/Return_To_Eden.md's missing File State sidecar table —
+    confirmed present and complete via direct fetch.
+  - Tests/Chaos_Dynamics.md's missing File State table and Navigation
+    Anchors block — both confirmed present via direct fetch.
 
 USAGE:
   1. Cell 1 — run once per session (builds registry from Routing.md)
