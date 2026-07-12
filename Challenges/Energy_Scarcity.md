@@ -1,4 +1,4 @@
-# Challenges/Energy.md
+# Challenges/Energy_Scarcity.md
 
 ---
 ## Navigation Anchors
@@ -176,6 +176,7 @@ The grid does not have to be the only shape reliable power can take.
 ## Resolution Log
 
 - 2026-07-12: v0.1 — Initial file creation. Proposed by James, motivated by the observation that `Challenges/` had grown to cover water, waste, biofouling, critical minerals, planned obsolescence, and emergence as external problem-statements, but energy — despite being at least as globally consequential and already load-bearing for `Operations/Energy.md`'s own design choices — had no equivalent framing file. Structured identically to `Challenges/Water.md` (the closest precedent: an External Challenge Class problem with an existing Operations-layer doctrine file already responding to it in practice). ES-001 through ES-003 registered as new unknowns, using an `ES-` prefix chosen specifically to avoid collision with `Operations/Energy.md`'s `EV-` prefix, `Architecture/Engineering.md`'s `EN-` prefix, and `Admin/Economics.md`'s `EC-` prefix. Not yet audited by any second agent — Gate 1 review outstanding.
+- 2026-07-12 (same day): File committed to the repository as `Challenges/Energy_Scarcity.md` rather than `Challenges/Energy.md` — the more precise name, since it avoids any ambiguity with `Operations/Energy.md` at the filename level, not just in Scope Boundary prose. Title line corrected to match. No other content changed.
 
 ---
 
