@@ -149,6 +149,11 @@ Challenges are permanent. Solutions are temporary local answers.
   concentration as a structural threat to technological sovereignty. The technosphere as
   the primary mine. Aggressive urban mining, centrifugal separation, selective induction
   melting for neodymium, cobalt, lithium, tantalum recovery
+- `Challenges/Energy_Scarcity.md` — Energy poverty, grid fragility, and fossil-fuel
+  dependency as a structural condition the Forge responds to, not merely an operational
+  input it consumes. Distinguished explicitly from `Operations/Energy.md`, which answers
+  how the Forge powers itself — this file answers why energy access is a Forge purpose.
+  Community energy sovereignty objective
 
 **Reflexive Challenges** — pressures created by the Forge's own capability:
 - `Challenges/Emergence.md` — Emergent intelligence and alignment-by-environment design.
@@ -407,11 +412,15 @@ All seven operational gates exist (Gate_01 through Gate_07). The governance laye
 reached constitutional maturity with Tier 1 Axioms in place. The architecture layer
 now includes five peer foundational files (Engineering.md, Mechanical_Structures.md,
 Thermal_Systems.md, Friction_Dynamics.md, Chemistry.md) covering the physical-world
-doctrine layer in full. Seven Challenges/ files establish the problem layer across three
+doctrine layer in full. Eight Challenges/ files establish the problem layer across three
 categories: external pressures, reflexive pressures created by the Forge's own capability,
 and the integration target that defines what success looks like when both have been
 answered. `Challenges/Emergence.md` remains the first explicitly Reflexive Challenge —
 the only one whose pressure is created by the Forge's own capability.
+`Challenges/Energy_Scarcity.md`, added 2026-07-12, is the newest — naming energy poverty
+and grid fragility as a standing external pressure the Forge's own energy doctrine
+(`Operations/Energy.md`) has been answering in practice without the problem layer
+naming it explicitly until now.
 
 **The founding idea has not changed; its scope has.** The original premise — reduce a
 useless item, recover its material, reintegrate it into something useful — is still the
