@@ -191,6 +191,7 @@ Challenges/                                 — Problem layer: why these capabil
     ├── Planned_Obsolescence.md             — Deliberate unrepairability and locked hardware
     ├── Critical_Minerals.md                — Rare earth and critical mineral supply chains
     ├── Emergence.md                        — Emergent intelligence: alignment-by-environment design
+    ├── Energy_Scarcity.md                  — Energy poverty, grid fragility, and community energy sovereignty; ES-001 through ES-003
     ├── Return_To_Eden.md                   — Closed-loop material cycle framework; Eden Index (I_E); Tier I–IV progression doctrine
     └── Closed_Loop_Feedstock.md            — Persistence Yield (Y_p = FIR × PIR) telemetry model; recursive epistemic-ascent loop; salvage-to-feedstock closed-loop doctrine; CLF-001 through CLF-010
 
@@ -320,12 +321,13 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Tests/Solar_Descent.md` | Exploration | 0/6 | High |
 | `Tests/Cognitive_Salvage_Layer.md` | Exploration | 0/6 | Medium |
 | `Tests/Hydrologic_Resource_Cascade.md` | Exploration | 0/6 | Medium |
-| `Tests/Chaos_Dynamics.md` | Exploration (per file's own declared status) | — (no File State table exists) | Unrated — no Highest Risk field declared |
+| `Tests/Chaos_Dynamics.md` | Exploration | 0/6 | High |
 | `Challenges/Water.md` | Active | — | — |
 | `Challenges/Biofouling.md` | Active | — | — |
 | `Challenges/Waste.md` | Active | — | — |
 | `Challenges/Planned_Obsolescence.md` | Active | — | — |
 | `Challenges/Critical_Minerals.md` | Active | — | — |
+| `Challenges/Energy_Scarcity.md` | Active | — | — |
 | `Challenges/Emergence.md` | Exploration | 0/6 | High |
 | `Challenges/Return_To_Eden.md` | Exploration | 0/6 (per file's own File State: "None cleared") | High — RE-UNK-001/RE-UNK-005 Blocking at Tier I gate, non-blocking at Exploration; confirmed directly against the file's own Highest Risk field 2026-07-05, no longer inferred |
 | `Challenges/Closed_Loop_Feedstock.md` | Exploration (per file's own File State, v0.5.0 — downgraded from an initial "Active / Core Doctrinal" self-declaration during audit) | 0/6 | High — CLF-003, CLF-004, CLF-006 (Critical); confirmed directly against the file's own Highest Risk field |
@@ -740,6 +742,12 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 **Upstream:** Ethical_Constraints.md; Governance_Charter.md (Q-3); Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Electronics.md; Auditor_Protocols.md.
 **Downstream:** Cognitive_Frameworks.md (CF-001, CF-002, Section IX); Forge_Net.md; Leviathan_testing.md; Support_Raft.md; Verification_Gates_LF.md.
 ⚠️ EM-001 (behavioral opacity detection threshold) — High; blocks watchdog specification. EM-004 (governance substrate integrity under emergent agent access) — Critical; mirrors GOV-003, SEC-007.
+
+### `Challenges/Energy_Scarcity.md`
+Energy poverty, grid fragility, and fossil-fuel dependency as an External Challenge Class problem. Distinguishes itself explicitly from `Operations/Energy.md`, which answers "how does the Forge power itself" — this file answers the prior question of why energy access is a Forge purpose. Community energy sovereignty objective; Four-Domain Observation linkage to `Tests/Living_Waters.md`. New 2026-07-12 — not yet audited by a second agent, Gate 1 review outstanding.
+**Upstream:** Ethical_Constraints.md; Operations/Energy.md; Thermal_Systems.md (TH-001, TH-003); Economics.md (EC-002); Safety_Protocols.md.
+**Downstream:** Operations/Energy.md; Tests/Living_Waters.md; Challenges/Waste.md; Economics.md.
+⚠️ ES-001 (community-facing energy surplus routing mechanism) — Major, load-bearing for the Long-Term Objective. ES-002 (economic legibility threshold) — Major. ES-003 (intermittency communication doctrine) — Minor.
 
 ### `Challenges/Return_To_Eden.md`
 Closed-loop material cycle framework. Eden Index ($I_E$) — a composite metric ($B_d$, $\Omega_r$, $\eta_{sys}$, $W_{out}$, $\Phi_{ext}$) targeting a declared 98.4% closed-loop material cycle threshold, normalized against baseline reference values in its v1.0.2 formulation. Tier I–IV progression doctrine for advancing closed-loop maturity, gated by explicit (if not yet fully defined) pass/fail criteria between tiers.
