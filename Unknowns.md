@@ -1,4 +1,5 @@
 # Unknowns.md — Cross-Module Unknowns Global Index
+**Version 4.19 — 2026-07-12. New Energy Scarcity cluster registered (ES-001 through ES-003) alongside creation of `Challenges/Energy_Scarcity.md` — new `Challenges/` Problem-Statement file naming energy poverty and grid fragility, structured identically to the Water Scarcity cluster/`Challenges/Water.md` precedent. Also registered in `Discovery.md` (tree listing, file registry table, Scope Map entry) and `Routing.md` (routing table) same day — while there, corrected two unrelated stale entries found in those files: `Discovery.md`'s file registry table still listed `Tests/Chaos_Dynamics.md` as lacking a File State table (fixed same day as this repository's other Tests/ backfills), and `Routing.md` still flagged it as missing Navigation Anchors entirely (same fix, different file, same staleness).**
 **Version 4.18 — 2026-07-12. Registration gap sweep following today's Tests/ folder backfill (`Living_Waters.md`, `Support_Raft.md`, `Cognitive_Salvage_Layer.md` all restructured to full sidecar format same day). Checked all three against this index: Living Waters cluster (LW-UNK-001–009) was already complete, no action needed. Found and fixed two real gaps — SR-010 (`Support_Raft.md`, Resolved 2026-06-11) was never registered here at all, not even as a closed record; added. GH-013 (`Cognitive_Salvage_Layer.md`, new same-day registration for the Conceptual Salvage Pipeline's storage-mechanism unknown) added. Also normalized the Support Raft cluster's Priority (Promo) column — was using High/Medium/Low, inconsistent with this table's own Blocking/Major/Minor/Exploratory vocabulary used everywhere else; corrected to match.**
 **Version 4.17 — 2026-07-11. CLF-005 marked Resolved (was already resolved in `Closed_Loop_Feedstock.md` v0.6.0 on 2026-07-07; this index's own entry was stale and produced a false-positive finding in an external audit pass). RE-UNK-001's cross-ref note updated to match — the symbol-collision question is closed, RE-UNK-001's underlying measurement-protocol gap remains open and unaffected.**
 **Version 4.16 — 2026-07-10. Eight genuinely new registrations added following a full-repository sweep (first possible now that the complete repo zip can be reviewed at once): FL-002, GF-005, GMP-002, GMP-009, PR-005, RIP-003, RS-002, RS-003. A ninth candidate cluster (LW-004/006/008/009/010 in `Tests/Living_Waters.md`) was checked and rejected — those are Experimental Pathway subsection headers, not Open Unknowns entries, despite sharing the LW- numbering scheme.**
@@ -342,6 +343,17 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 
 *EM-001 depends on CF-001 resolution.*
 *EM-004 is Critical — no fast resolution path; architectural decision above repository level required.*
+
+### Energy Scarcity
+
+| ID | Title | Owning File | Status | Subtype | Priority (Promo) |
+|---|---|---|---|---|---|
+| ES-001 | Community-facing energy surplus routing mechanism undefined — load-bearing for the file's Long-Term Objective | `Challenges/Energy_Scarcity.md` | Open | — | Major |
+| ES-002 | Economic legibility threshold for community-facing systems undefined — feeds `Admin/Economics.md` EC-002 | `Challenges/Energy_Scarcity.md` | Open | — | Major |
+| ES-003 | Intermittency communication doctrine undefined — no standard for representing duty-cycle limits to a relying community | `Challenges/Energy_Scarcity.md` | Open | — | Minor |
+
+*New cluster, registered 2026-07-12 alongside `Challenges/Energy_Scarcity.md`'s creation (v0.1, not yet Gate 1-reviewed). ES-001 is the load-bearing unknown — without a surplus-routing mechanism, the file's "energy-neutral or net-contributor to the surrounding community" objective remains aspirational rather than actionable.*
+*`ES-` prefix chosen to avoid collision with `Operations/Energy.md`'s `EV-` prefix, `Architecture/Engineering.md`'s `EN-` prefix, and `Admin/Economics.md`'s `EC-` prefix.*
 
 ### Waste
 
