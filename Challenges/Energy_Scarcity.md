@@ -165,7 +165,7 @@ The grid does not have to be the only shape reliable power can take.
 | ES-003 | Intermittency communication doctrine undefined — no defined standard exists for how a deployed system should represent its own duty cycle and storage limitations to a community relying on it, to avoid false parity with always-on grid expectations. | Open | Minor |
 
 *ES-001 is the load-bearing unknown for this file's Long-Term Objective — without a surplus-routing mechanism, "energy-neutral or net-contributor to the surrounding community" remains aspirational rather than actionable.*
-*Full tracking entries for ES cluster to be registered in `Unknowns.md` on next audit cycle.*
+*ES cluster registered in `Unknowns.md` v4.19, 2026-07-12.*
 
 ---
 
