@@ -172,6 +172,14 @@ pressures have both been answered:
   this document makes precise: *does this move the localized ecosystem closer to Eden
   conditions, or further away?* Structured as four engineering tiers from single-node
   metabolic autonomy through decentralized civilizational persistence.
+- `Challenges/Closed_Loop_Feedstock.md` — The operational mechanism underneath that
+  synthesis target: closing the salvage-to-feedstock material loop locally rather than
+  depending on a pristine upstream supply chain. Tracks progress via the Persistence
+  Yield telemetry model ($Y_p = \text{FIR} \times \text{PIR}$) and treats a crude loop
+  that stays closed as strictly superior to a pristine process that secretly depends on
+  a ghost supply chain. Ten open unknowns (CLF-001 through CLF-010), the first
+  Challenges/ file to carry a Solution-Track subtype designation rather than
+  Problem-Statement.
 
 ---
 
@@ -412,7 +420,7 @@ All seven operational gates exist (Gate_01 through Gate_07). The governance laye
 reached constitutional maturity with Tier 1 Axioms in place. The architecture layer
 now includes five peer foundational files (Engineering.md, Mechanical_Structures.md,
 Thermal_Systems.md, Friction_Dynamics.md, Chemistry.md) covering the physical-world
-doctrine layer in full. Eight Challenges/ files establish the problem layer across three
+doctrine layer in full. Nine Challenges/ files establish the problem layer across three
 categories: external pressures, reflexive pressures created by the Forge's own capability,
 and the integration target that defines what success looks like when both have been
 answered. `Challenges/Emergence.md` remains the first explicitly Reflexive Challenge —
@@ -420,7 +428,11 @@ the only one whose pressure is created by the Forge's own capability.
 `Challenges/Energy_Scarcity.md`, added 2026-07-12, is the newest — naming energy poverty
 and grid fragility as a standing external pressure the Forge's own energy doctrine
 (`Operations/Energy.md`) has been answering in practice without the problem layer
-naming it explicitly until now.
+naming it explicitly until now. `Challenges/Closed_Loop_Feedstock.md`, present in the
+repository since before this list was written but omitted from it, is now included —
+the first Challenges/ file to carry a Solution-Track subtype rather than
+Problem-Statement, sitting alongside Return_To_Eden.md as the operational half of
+the Integration Challenge.
 
 **The founding idea has not changed; its scope has.** The original premise — reduce a
 useless item, recover its material, reintegrate it into something useful — is still the
