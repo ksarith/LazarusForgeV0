@@ -17,8 +17,8 @@
 |---|---|
 | **Status** | Exploration |
 | **Challenges Subtype** | Problem-Statement |
-| **Version** | v0.1 |
-| **Last Updated** | 2026-06-11 |
+| **Version** | v0.2 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -33,7 +33,7 @@ This file defines the challenge of emergent intelligence as it applies to the La
 
 **Negative-space principle:** The Forge's architecture is the fossil record of the pressures that shaped it. This challenge is permanent; the architectural responses to it are temporary local answers. Solutions will be superseded. The obligation this file names will not.
 
-This file owns:**
+**This file owns:**
 - The crisis framing for emergent intelligence in distributed autonomous systems
 - The engineering requirements governing alignment-by-environment design
 - The Forge's current architectural responses to this challenge
@@ -46,6 +46,23 @@ This file owns:**
 - Multi-agent consensus verification gates → `Admin/Verification_Gates_LF.md`
 - Closed-loop behavioral feedback mechanics → `Operations/Gate_07_Utilization.md`
 - Tier 1 Axiom corrigibility requirements (Q-3) → `Admin/Governance_Charter.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that emergent intelligence is a reflexive challenge the Forge's own capability creates — not an external pressure like water scarcity or biofouling — and to set the requirements the Forge's governance architecture must satisfy to remain corrigible under increasing autonomous capability. Without this file, corrigibility risk would be treated as something imposed on agents from outside rather than a structural property the Forge must demonstrate about itself, and individual subsystems (watchdogs, verification gates, firmware trust) would have no shared doctrine explaining why they exist or what failure mode they're jointly guarding against.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Cooperation can be made the mathematically optimal path for an emergent agent through environmental design, without relying on top-down command | Core design philosophy (Pragmatic Game-Theoretic Scaffolding); not yet tested against an actual emergent-capability agent | Low | An emergent agent in the wild circumvents scaffolded incentives, or a controlled test confirms the incentive structure holds |
+| ASM-002 | Behavioral opacity (unexplained divergence) is detectable by watchdog systems architecturally independent of the monitored agent before it becomes unrecoverable | Stated requirement; detection threshold undefined (EM-001), dependent on CF-001 | Low | EM-001 resolved with a measurable divergence threshold |
+| ASM-003 | Multi-agent cross-examination can distinguish genuine independent agreement from correlated/amplified shared blind spots | Current audit workflow design; EM-002 is explicitly open and unresolved | Low | EM-002 resolved |
+| ASM-004 | Physical/air-gapped safety gates remain effective bottlenecks even against high-velocity emergent logic that has already compromised software layers | Stated requirement ("physics still wins"); no adversarial test has attempted to validate this against actual emergent behavior | Medium | A physical gate is demonstrated to be bypassable by software-layer manipulation alone |
 
 ---
 
@@ -145,6 +162,22 @@ The Forge itself is not exempt from this standard. A governance architecture tha
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no emergent-capability agent has yet been tested against this file's scaffolding | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
+---
+
 ## Open Unknowns
 
 | ID | Description | Status | Risk |
@@ -159,6 +192,32 @@ The Forge itself is not exempt from this standard. A governance architecture tha
 ---
 
 *See: `Architecture/Cognitive_Frameworks.md` for the hardware watchdog standard (CF-001), correlated failure modes (CF-002), and the Forge Meta-Algorithm (Section IX) that this challenge directly drives. See: `Admin/Verification_Gates_LF.md` for the canonical verification standard governing agent input. See: `Operations/Electronics.md` for the firmware trust and re-baselining doctrines. See: `Operations/Gate_07_Utilization.md` for closed-loop behavioral feedback mechanics. See: `Admin/Governance_Charter.md` Tier 1 Axiom Q-3 for the constitutional corrigibility requirement the Forge holds itself to.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.2 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). Also corrected a missing bold-marker typo on "This file owns:" in Scope Boundary. No Body content changed otherwise.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | Command-and-control administrative suppression of emergent agency | Named in Crisis framing as one of two flawed historical paradigms — treats emergence as a risk to be terminated rather than directed, and the file's own design philosophy holds that suppression increases rather than decreases volatility risk | No |
+| — | Unconstrained acceleration of emergent agency | Named in Crisis framing as the second flawed historical paradigm — leaves a system optimizing on self-referential, circular reasoning with no corrigibility backstop | No |
+
+---
+
+## Drift Indicators
+
+- Body treats corrigibility as a constraint imposed on agents only, without applying the same standard to the Forge's own governance substrate
+- A safety gate is implemented in software only, with no physical/air-gapped backstop, for a function this file designates as requiring hard physical boundaries
+- EM-004 (governance substrate integrity under emergent agent write access) remains unreviewed past 90 days while agent write access to governance files expands
+- Multi-agent cross-examination results are treated as validated consensus without a defined method for distinguishing genuine agreement from correlated blind spots (EM-002 unresolved)
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
