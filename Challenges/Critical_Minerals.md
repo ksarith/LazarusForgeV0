@@ -17,8 +17,9 @@
 | Field | Value |
 |---|---|
 | **Status** | Active |
-| **Version** | v0.2 |
-| **Last Updated** | 2026-06-11 |
+| **Challenges Subtype** | Problem-Statement |
+| **Version** | v0.3 |
+| **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
 | **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
@@ -46,6 +47,22 @@
 - Fabrication from recovered alloy feedstock → `Operations/Gate_06_Fabrication.md`
 - Network contribution of material recovery data → `Architecture/Forge_Net.md`
 - Economic doctrine for recovered material valuation → `Admin/Economics.md`
+
+---
+
+## File Purpose
+
+This file exists to establish that critical mineral scarcity is a geopolitical and geological chokepoint the Forge can route around rather than a supply constraint it must accept, and to set the requirements any Forge response must satisfy — physical separation before chemical, functional characterization over elemental purity, and no new extraction pressure introduced by the recovery process itself. Without this file, urban mining would be treated as a generic recycling task rather than the primary ore-body strategy it is meant to be, and individual gate files would have no shared standard forcing them to prioritize intact recovery over bulk shredding.
+
+---
+
+## Assumptions
+
+| ID | Assumption | Basis | Confidence | Expiry Trigger |
+|---|---|---|---|---|
+| ASM-001 | Physical separation methods (centrifugal, magnetic, density) can recover a meaningful share of critical mineral content without chemical leaching | Engineering Requirements' stated preference; not yet validated at scale against real salvage streams | Medium | MG-002/MG-003 (RPM calibration) resolved with measured recovery yields |
+| ASM-002 | Recovered critical mineral fractions at reduced purity are functionally usable in a meaningful share of applications | Stated design philosophy (functional substitute over virgin-spec replication); no performance floor yet defined | Medium | CM-003 (functional substitute performance floor) resolved |
+| ASM-003 | Urban ore density (critical mineral content per unit of typical salvage stream) is sufficient to make recovery economically and energetically worthwhile at v0 scale | Referenced examples (hard drives, EV batteries, catalytic converters); no systematic inventory yet exists | Low | CM-004 (urban ore database coverage) resolved |
 
 ---
 
@@ -142,6 +159,22 @@ The landfill is a mine. The question is whether we build the tools to work it.
 
 ---
 
+## Lessons Learned
+
+| Date | Evidence Type | What Was Tried | What Failed | What Was Learned | Confidence | Revalidation Needed |
+|---|---|---|---|---|---|---|
+| — | — | — | — | No entries yet — no physical testing has occurred against this file's approaches | — | — |
+
+---
+
+## Active Disputes
+
+| ID | Summary | Positions in Conflict | Risk | Status | Owner |
+|---|---|---|---|---|---|
+| — | No active disputes | — | — | — | — |
+
+---
+
 ## Open Unknowns
 
 | ID | Description | Status | Risk |
@@ -157,6 +190,31 @@ The landfill is a mine. The question is whether we build the tools to work it.
 ---
 
 *See: `Operations/Gate_04_Separation_Mechanical.md` MG-002 and MG-003 for RPM calibration unknowns governing centrifugal mineral separation. See: `Operations/Gate_05_Separation_Thermal.md` SC-001 and SC-008 for induction separation unknowns. See: `Admin/Economics.md` ECN-001 for the critical mineral surplus disposition path unknown. See: `Unknowns.md` for all cross-module tracked unknowns.*
+
+---
+
+## Resolution Log
+
+- 2026-07-11: v0.3 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). No Body content changed.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|---|---|---|---|
+| — | — | No paths formally abandoned yet — hydrometallurgical acid leach is deprioritized behind physical separation per Engineering Requirements, but remains an open (not rejected) route pending CM-002's closed-loop reagent recovery doctrine | — |
+
+---
+
+## Drift Indicators
+
+- Body proposes hydrometallurgical acid leach as a primary route without a closed-loop reagent recovery doctrine (CM-002 unresolved)
+- A recovery process is adopted that depends on reagent inputs sourced from the same concentrated supply chains this file exists to bypass
+- Recovered fractions are routed to fabrication without functional characterization (elemental composition alone treated as sufficient)
+- CM-004 (urban ore database coverage) remains unreviewed past 90 days while recovery yield estimates are still being treated as reliable
+- Open Unknowns count diverges from what is registered in `Unknowns.md`
+- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
