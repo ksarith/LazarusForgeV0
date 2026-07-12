@@ -516,7 +516,11 @@ This principle is more fundamental than the light node claim. If the LED array f
 
 ### Resolution Log
 
-*(empty — no unknowns resolved at time of first draft)*
+### Resolution Log
+
+- 2026-07-12: Retired a stale Drift Indicator referencing DS-001 as still-open. DS-001 was already Closed (Gemini audit, 2026-06-14) per the Active Disputes table above — the trigger condition described a dispute that no longer existed. Replaced with a reopening guard instead of deleting the entry outright, since the underlying naming decision is still worth protecting against silent reversal.
+
+*(no other unknowns resolved at time of first draft)*
 
 ---
 
@@ -538,5 +542,5 @@ Standard mandatory re-audit conditions per File_Template.md apply.
 
 - ASM-001 (phototaxis yield assumption) remains unchallenged for more than 90 days without TF-TEST-001 initiation → mandatory re-audit.
 - TF-006 (non-target insect capture) reaches Critical status without an operating protocol in Body → halt expansion, escalate to Ethical_Constraints.md review.
-- DS-001 (naming dispute) persists beyond three audit cycles without prior art search completion → escalate to Unknowns.md for repository-level resolution.
+- DS-001 (naming dispute) is Closed per Active Disputes above (Gemini audit, 2026-06-14) — if this ever shows as reopened or unresolved in a future audit without a new dispute entry logged first, that mismatch is itself the drift signal → escalate to Unknowns.md for repository-level resolution.
 - Body content references atmospheric mitigation effects of any kind → immediate human review required. This is a hard scope violation.
