@@ -224,28 +224,6 @@ Secondary indicators:
 
 ---
 
-## Abandoned Paths
-
-| Date | Path | Why Abandoned | Reconsider? |
-|------|------|---------------|-------------|
-| —    | —    | No abandoned paths yet | — |
-
----
-
-## Drift Indicators
-
-Mandatory re-audit conditions for this document:
-
-- Power Demand mode definitions revised without updating the hardware power envelope limits
-- Biogas counted as a net-positive source if digestate core temp drops below 35°C for sustained periods
-- Salvaged battery storage commissioned in an enclosed space without a verified 2-hour fire barrier or independent ventilation routing
-- Hard-coded lithium voltage cutoff shifted below 3.0V via software override patches
-- The falsifiable primary metric (kWh per kg) is replaced with non-measurable efficiency targets
-
-**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
-
----
-
 ## Auditor Notes & Unknowns
 
 ### EV-001 — Forge power demand uncharacterized at any operating mode
@@ -316,3 +294,26 @@ Mandatory re-audit conditions for this document:
 - 2026-05-27: EV-001 reformatted to structured sidecar format. Corrected stale `Unknowns_LF.md` reference to `Unknowns.md`. Added EV-002 and EV-003 tracking.
 - 2026-05-31: Restructured document to achieve Spec Gate 1 baseline. Integrated Tar Minimization interlock and the 35°C/22% Biogas efficiency threshold into core Energy Sources layer. Bound EV-001 to specific hardware envelope profile table. Fully codified physical isolation boundaries and automated air scrubber max-flow overrides for EV-003. Cleaned double-hash tracking headers.
 - 2026-06-08: Navigation Anchors block added. Verification Ref corrected from `Admin/Forge_Audit_Kit.md` to `Admin/Verification_Gates_LF.md` (PC-001). Sidecar entries expanded to full field table format per `Admin/File_Template.md`. Formatting normalized — horizontal rules added between all major sections.
+- 2026-07-12: Reordered Abandoned Paths and Drift Indicators to after Auditor Notes & Unknowns, per template order — they previously sat between Active Disputes and Auditor Notes & Unknowns. No other content changed. Same fix applied same day to `Operations/Air_Scrubber.md` and `Operations/Gate_02_Triage.md`.
+
+---
+
+## Abandoned Paths
+
+| Date | Path | Why Abandoned | Reconsider? |
+|------|------|---------------|-------------|
+| —    | —    | No abandoned paths yet | — |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Power Demand mode definitions revised without updating the hardware power envelope limits
+- Biogas counted as a net-positive source if digestate core temp drops below 35°C for sustained periods
+- Salvaged battery storage commissioned in an enclosed space without a verified 2-hour fire barrier or independent ventilation routing
+- Hard-coded lithium voltage cutoff shifted below 3.0V via software override patches
+- The falsifiable primary metric (kWh per kg) is replaced with non-measurable efficiency targets
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
