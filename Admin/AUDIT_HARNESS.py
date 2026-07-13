@@ -1,6 +1,30 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v13 (patched-3)
+LAZARUS FORGE — AUDIT HARNESS v13 (patched-4)
 Google Colab notebook cells — paste each block into a separate cell.
+
+CHANGES FROM v12:
+  - Cell 1: FALLBACK_REGISTRY — added Chaos_Dynamics.md (Tests/).
+    Already discoverable via dynamic parse — Routing.md's Master Routing
+    Map gained a real row for it 2026-07-04 (created same date). Added
+    here per this file's own established practice of also mirroring new
+    files into the fallback safety net, not because dynamic parse needs it.
+  - Cell 2: EXTRA_FILES commented list — added Chaos_Dynamics.md under
+    Tests/ section for discoverability, flagged no-File-State-table.
+  - KNOWN OPEN ITEM list — closed out the v12 item "Routing.md does not
+    yet list Challenges/Return_To_Eden.md": that row was added 2026-07-04.
+    Drift-detection print in _build_registry() should now report sync on
+    that entry; if it still reports drift, Routing.md's row format may not
+    match the backtick-path regex in _parse_routing() and needs a look.
+    New KNOWN OPEN ITEM added for Chaos_Dynamics.md: no File State table
+    as of this compile (confirmed via direct fetch, 2026-07-04) — same
+    situation Return_To_Eden.md was already flagged for. Phase 1 will log
+    a MAJOR/STRUCTURE "File State table not found" finding the first time
+    it's fetched. Also missing the mandatory Navigation Anchors block
+    (Routing.md backlink requirement) — this harness does not currently
+    check for that block's presence at all (Phase 1 checks File State
+    fields and cross-references, not the Navigation Anchors block itself),
+    so it will NOT surface as a Phase 1 finding; tracked here instead until
+    either the file is patched or a fourth Phase 1 check is added for it.
 
 CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
   - PC-005 (Closed_Loop_Feedstock.md registration): confirmed already
@@ -22,6 +46,42 @@ CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
     Challenges/ section, with a note flagging the CLF-005 Φ_ext symbol
     collision against Return_To_Eden.md so an auditor working either file
     is prompted to consider pulling in the other.
+
+CHANGES IN THIS PATCH (v13-patched-3 → v13-patched-4, 2026-07-12):
+  - _parse_file_state() — fixed a bold-key parsing bug that caused every
+    File State field using markdown bold formatting (`| **Status** |`
+    rather than `| Status |`) to be stored under a key like "**Status**"
+    instead of "Status", silently breaking every downstream lookup.
+    This affected Check 1 (Ethical Anchor presence/mutation) and Check 2
+    (required-field presence) for a large share of the repository —
+    Water.md, Waste.md, Biofouling.md, Critical_Minerals.md,
+    Planned_Obsolescence.md, Emergence.md, Energy_Scarcity.md,
+    Trophic_Forge.md, Support_Raft.md, Living_Waters.md, and most other
+    files edited in recent sessions all use bolded keys. Prior to this
+    fix, Phase 1 would have reported Ethical Anchor and every required
+    field as absent on all of them — a false positive, not a real
+    constitutional or structural gap. Found 2026-07-12: three independent
+    second-agent audits run against `Challenges/Energy_Scarcity.md`
+    reported Status, Verification Ref, and Ethical Anchor as missing,
+    when all three were plainly present in the source file. Verified the
+    bug by direct regex test before patching, and re-verified against the
+    live file after — both fields now parse correctly.
+  - _enforce_phase1() Check 2 — added lean-schema detection. Files
+    declaring `Challenges Subtype: Problem-Statement` in their File State
+    table are now checked against the lean field set the subtype doctrine
+    in `Admin/File_Template.md` actually sanctions (Status, Verification
+    Ref, Ethical Anchor) rather than the full 11-field schema
+    _bootstrap_rules() pulls from File_Template.md's own example table.
+    Before this fix, every Problem-Statement Challenges file would have
+    thrown false MAJOR/STRUCTURE findings for Spec Gates, Body Stability,
+    Last Audit, Auditor, Open Unknowns, Active Disputes, Highest Risk,
+    and Sidecar Link — none of which that subtype is supposed to carry.
+    Same root incident as the bold-key fix above.
+  - Neither fix has been run against the full repository yet — both were
+    verified against `Challenges/Energy_Scarcity.md` and `Challenges/Water.md`
+    specifically. A full Phase 1 sweep post-patch would be worth doing to
+    confirm no other required-field or Ethical Anchor findings in past
+    audit sessions were false positives from these two bugs.
 
 CHANGES IN THIS PATCH (v13-patched-2 → v13-patched-3, 2026-07-12):
   - FALLBACK_REGISTRY — added Energy_Scarcity.md (Challenges/), new file
@@ -527,6 +587,18 @@ def _parse_file_state(content):
         if row:
             key = row.group(1).strip()
             val = row.group(2).strip()
+            # Strip markdown bold markers — many files (Water.md,
+            # Trophic_Forge.md, Energy_Scarcity.md, and most others written
+            # since File_Template.md's early sessions) format File State
+            # keys as **Status** rather than Status. Prior to this fix,
+            # every such file failed required-field and Ethical Anchor
+            # checks below with false positives, because "**Status**" was
+            # compared literally against "Status" and never matched. Found
+            # 2026-07-12 via three independent second-agent audits on
+            # Energy_Scarcity.md that all reported fields as missing when
+            # they were plainly present in the source.
+            key = key.strip('*').strip()
+            val = val.strip('*').strip()
             # Skip header separator rows
             if key and not _re.match(r'^[-:]+$', key):
                 metadata[key] = val
@@ -602,8 +674,26 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
             sys.exit(1)
 
     # ── Check 2: Structural — required field presence ─────────────────
+    # Files declaring Challenges Subtype: Problem-Statement use the lean
+    # File State schema File_Template.md's subtype doctrine explicitly
+    # sanctions (Status, Challenges Subtype, Verification Ref, Ethical
+    # Anchor — not the full 11-field schema with Spec Gates, Body
+    # Stability, Sidecar Link, etc.). Prior to this fix, _bootstrap_rules
+    # always pulled the full schema from File_Template.md's own example
+    # table with no subtype awareness, so every Problem-Statement file
+    # (Water.md, Waste.md, Biofouling.md, Critical_Minerals.md,
+    # Planned_Obsolescence.md, Emergence.md, Energy_Scarcity.md — six-plus
+    # files) threw false MAJOR/STRUCTURE findings for fields that subtype
+    # is not supposed to carry. Found 2026-07-12 alongside the bold-key
+    # parsing fix above, same root incident (three second-agent audits on
+    # Energy_Scarcity.md reporting fields as missing that were correctly
+    # and deliberately absent per doctrine).
     if found:
-        for field in required_fields:
+        if metadata.get("Challenges Subtype") == "Problem-Statement":
+            active_required = ["Status", "Verification Ref", "Ethical Anchor"]
+        else:
+            active_required = required_fields
+        for field in active_required:
             if field not in metadata:
                 findings.append(Finding(
                     "MAJOR", "STRUCTURE", filename,
