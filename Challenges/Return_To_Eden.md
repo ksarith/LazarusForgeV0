@@ -19,10 +19,15 @@
 | :--- | :--- |
 | Status | Exploration |
 | Challenges Subtype | Solution-Track |
+| Body Stability | Volatile — five open unknowns (RE-UNK-001 through 005) directly affect the Eden Index formula's operability; the mathematical formulation itself is explicitly labeled PROVISIONAL pending instrument specification |
 | Spec Gates | None cleared (G1–G2 conditional, G4–G6 cleared per 2026-06-30 audit — see Last Audit) |
 | Verification Ref | `Admin/Verification_Gates_LF.md` |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
+| Auditor | Grok + ChatGPT — dual Exploration audit, 2026-06-30 |
+| Open Unknowns | 5 (RE-UNK-001 through RE-UNK-005) |
+| Active Disputes | 0 |
 | Highest Risk | RE-UNK-001 — Eden Index variables lack defined measurement protocols; index is formally specified but not yet operationally measurable. RE-UNK-005 is a direct dependency. |
+| Sidecar Link | #auditor-notes--unknowns |
 | Last Audit | 2026-06-30 (Grok + ChatGPT dual audit; G1–G2 conditional, G4–G6 cleared; dimensional consistency corrected v1.0.1 → v1.0.2) |
 
 ---
@@ -107,7 +112,11 @@ As the Lazarus Forge catalog expands, this file serves as the definitive archite
 
 ---
 
-## Auditor Notes
+## Auditor Notes & Unknowns
+
+### Resolution Log
+
+- 2026-07-12: File State backfilled with five previously-missing fields (Body Stability, Auditor, Open Unknowns, Active Disputes, Sidecar Link) — found by a full-repository Phase 1 sweep (ChatGPT, adapted local-disk harness run) that checked this file against the complete canonical schema rather than just confirming a File State table's existence. This corrects an earlier same-session note (this file's own history, referenced in `Unknowns.md`) that had verified the table was present but not that it was complete — a real gap, not a false positive. Values derived directly from existing content: Auditor and Last Audit reused from the pre-existing field; Open Unknowns counted from the five RE-UNK entries below; Active Disputes set to 0 (no dispute table exists in this file and none are referenced elsewhere); Body Stability assessed as Volatile given the formula's own PROVISIONAL label and its five open unknowns. Header retitled from "Auditor Notes" to "Auditor Notes & Unknowns" to match the Sidecar Link anchor and repository convention. **This file's larger structural gaps — no Scope Boundary, no dedicated File Purpose section (Section 1 covers similar ground but isn't titled or positioned as one), no Assumptions section, no Active Disputes table, no Abandoned Paths, no Drift Indicators — are not addressed by this patch and remain open for a full template backfill, comparable in scope to what `Tests/Living_Waters.md` and `Tests/Support_Raft.md` received.**
 
 ### RE-UNK-001
 | Field | Value |
