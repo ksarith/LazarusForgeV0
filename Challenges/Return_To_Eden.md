@@ -172,3 +172,95 @@ As the Lazarus Forge catalog expands, this file serves as the definitive archite
 | Blocking | Tier I gate advancement — inherits RE-UNK-001 blocking condition. Non-blocking at Exploration. |
 | Resolution Vehicle | Experiments.md — baseline characterization protocol (site-entry measurement campaign); cross-ref Admin/Environmental_Constraints.md (site characterization), Tests/Living_Waters.md ($\Omega_r$ proxy candidates), Challenges/Water.md ($W_{out}$ baselines) |
 | First Cycle | 11 |
+
+# Patch Draft: Return_To_Eden.md v1.0.2 → v1.1.0 (proposed)
+`Challenges/Return_To_Eden.md`
+
+This is a drop-in patch, not a full file rewrite. Two changes:
+1. Corrected Section 3 formula (bounded — fixes a divergence defect independent of RE-UNK-001/005)
+2. Three new structural sections (File Purpose, Scope Boundary, Assumptions), addressing three of the six gaps named in the 2026-07-12 Resolution Log entry. Active Disputes table, Abandoned Paths, and Drift Indicators remain open — not addressed here.
+
+Placement: these three sections replace the current "## 1. Operational Definition" header and sit between the File State table and what is currently "## 2. Systemic Heuristics." I haven't renumbered the downstream sections (2→8) since I don't have File_Template.md's canonical eleven-part ordering in front of me — slot per that spec rather than my numbering.
+
+---
+
+## File Purpose
+
+This document defines a systems-level optimization objective — the "Return to Eden" Challenge — used to evaluate whether a technical design in Lazarus Forge moves a localized system toward or away from Eden conditions. "Eden conditions" are defined operationally as a matrix of thermodynamic optimization, biological resilience, resource abundance, and human civilizational persistence. This definition is explicitly stripped of historical, biological, metaphorical, or theological prerequisites — how an operator personally interprets "Eden" is irrelevant to the specification.
+
+The objective is to engineer localized physical nodes capable of reversing structural entropy, eliminating toxic legacies, maximizing biodiversity, and establishing post-scarcity micro-climates using salvage-first doctrine.
+
+> **The Core Anchor:** The Forge does not merely survive scarcity; it processes waste, entropy, and industrial decay until the localized system yields thermodynamic abundance. Eden is not a lost past; it is an optimized technical baseline.
+
+---
+
+## Scope Boundary
+
+**In-Scope:**
+- The Eden Index ($I_E$) as a cross-system evaluation heuristic (Section 3)
+- The four Technical Challenge Tiers and their engineering targets (Section 4)
+- Primary Challenge Metrics used as index-level pass/fail criteria (Section 5)
+- The systemic heuristic question ("does this move the system toward or away from Eden?") applied at the architecture level across modules
+
+**Out-of-Scope (deferred to sub-modules):**
+- Hardware and mechanical implementation — `Operations/Air_Scrubber.md`, `Operations/Plastics.md`, `Operations/Woodworking.md`
+- Governance mechanics and human-variable handling — `Admin/Governance_Charter.md`, `Admin/Auditor_Protocols.md`
+- Chemical and analytical assay methods — `Architecture/Chemistry.md`
+- Water-quality remediation procedures — `Tests/Living_Waters.md`
+- Measurement instrument specification and calibration — `Experiments.md` (pending RE-UNK-001/005 resolution)
+
+This file sets the objective function; it does not prescribe how any individual module hits it.
+
+---
+
+## Assumptions
+
+- Baseline access to salvage/scrap material sufficient to build closed-loop infrastructure exists at the node site, per Lazarus Forge's founding salvage-first doctrine.
+- A minimally viable local operator or workforce is available to execute Tier-appropriate interventions.
+- Human operators and governance structures conform to `Admin/Governance_Charter.md` and `Admin/Auditor_Protocols.md`; human and governance failure modes are treated as engineering variables (Section 6.2), not as externalities outside this document's concern.
+- The Eden Index's normalized-ratio structure is conceptually valid prior to RE-UNK-001/005 resolution — the index is well-defined but not yet operationally measurable. This distinction is what keeps the file's Exploration/Volatile status honest rather than papering over the gap.
+
+---
+
+## 3. Mathematical Formulation & The Eden Index *(corrected)*
+
+To prevent abstract drift, progress toward Eden conditions is computed via the localized **Eden Index ($I_E$)**. The index models the ratio of self-sustaining biological and thermodynamic order against structural waste and external dependencies, normalized against system baseline references established at site entry. Let the system be represented by:
+
+$$I_E = \frac{\displaystyle\sum\left(\frac{B_d}{B_{d,0}} \cdot \frac{\Omega_r}{\Omega_{r,0}}\right) + \eta_{sys}}{1 + \dfrac{W_{out}}{W_{out,0}} + \dfrac{\Phi_{ext}}{\Phi_{ext,0}}}$$
+
+Where:
+* **$B_d$** = Localized Biodiversity Index (Shannon-Wiener variant for target micro-climate).
+* **$\Omega_r$** = Regenerative Velocity (rate of soil, water, and atmospheric detoxification).
+* **$\eta_{sys}$** = Systemic Autonomy (fraction of internal loops operating without external material imports). Dimensionless [0, 1].
+* **$W_{out}$** = Unassimilated Waste Output (entropy shed outside the system boundary).
+* **$\Phi_{ext}$** = External Energy/Resource subsidy requirements.
+* **$B_{d,0}$, $\Omega_{r,0}$, $W_{out,0}$, $\Phi_{ext,0}$** = Baseline reference values measured at system entry (pre-intervention state). Normalization renders all ratio terms dimensionless; the sum over contributing subsystem zones remains dimensionless throughout.
+
+At baseline (system entry, before intervention), all normalized ratios equal 1 and $I_E = (1 + \eta_{sys}) / 3$. As the system approaches the ideal Eden state ($W_{out}/W_{out,0} \rightarrow 0$ and $\Phi_{ext}/\Phi_{ext,0} \rightarrow 0$), the denominator approaches 1 and $I_E$ converges toward the numerator value rather than diverging — the index stays bounded and interpretable at the theoretical limit. The +1 floor reflects that a real system can approach but never fully reach zero waste output and zero external subsidy, and prevents instability if either ratio individually nears zero before both converge. Baseline measurement protocol is currently undefined — see RE-UNK-005.
+
+**Editorial note (v1.1.0):** This corrects a defect present in v1.0.1–v1.0.2: the unmodified denominator allowed $I_E \to \infty$ as the system approached the ideal state this same section describes — an unbounded index can't function as a Tier-gate threshold (e.g., any proposed "$I_E \geq 1.5$" pass condition) or support dashboard/trend-analysis use cases. This fix addresses the formula's mathematical well-formedness only; it does not resolve variable measurability — see RE-UNK-001 and RE-UNK-005, still open.
+
+**Note:** The formulation is PROVISIONAL pending instrument specifications and calibration procedures for all five primary variables. See RE-UNK-001 and RE-UNK-005.
+
+---
+
+## Suggested Resolution Log entry
+
+```
+- 2026-07-13: Section 3 (Mathematical Formulation) corrected — added +1 floor to the
+  I_E denominator. The unmodified v1.0.1–v1.0.2 formula allowed I_E → ∞ as the system
+  approached the ideal Eden state described in the same section's own text (W_out/W_out,0
+  → 0 and Φ_ext/Φ_ext,0 → 0 simultaneously), an internal inconsistency independent of
+  RE-UNK-001/005 measurability. Baseline value shifts from (1+η_sys)/2 to (1+η_sys)/3 as
+  a result — any future Tier-gate I_E thresholds must be calibrated against the corrected
+  scale, not the original. File Purpose, Scope Boundary, and Assumptions sections added
+  per 2026-07-12 audit log's identified structural gaps. Active Disputes table, Abandoned
+  Paths, and Drift Indicators remain open for a future pass.
+```
+
+---
+
+## Flagged but not drafted here (out of scope for this patch)
+
+- A multiplicative subindex decomposition ($E \times R \times A \times D$) was proposed elsewhere in this audit cycle. Rejected in this form — $R = W_{out,0}/W_{out}$ and $D = \Phi_{ext,0}/\Phi_{ext}$ are each individually unbounded as their denominators approach zero, which is worse than the single-fraction defect this patch fixes, and the product structure means one collapsed subsystem zeroes the whole index. If decomposition is still wanted for dashboarding, each subindex needs a saturating transform (e.g. $x/(1+x)$) before combining — that's a separate design task, not a drop-in fix.
+- A proposed RE-UNK-004→005→001→002 resolution order isn't supported by the file's own Blocking fields — RE-UNK-004 is explicitly non-blocking and tied only to Discovery.md's Scope Map, not to Tier I computation. Worth correcting before that ordering gets cited anywhere else.
