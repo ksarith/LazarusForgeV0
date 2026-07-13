@@ -21,7 +21,7 @@
 | **Last Updated** | 2026-07-11 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
-| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+| **Ethical Anchor** | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ---
 
@@ -197,6 +197,7 @@ The Forge itself is not exempt from this standard. A governance architecture tha
 
 ## Resolution Log
 
+- 2026-07-12: Ethical Anchor field corrected — was using a non-canonical variant (backticked, `Admin/`-prefixed: "Defer to `Admin/Ethical_Constraints.md` if present.") instead of the canonical plain-text string ("Defer to Ethical_Constraints.md if present."). Same drift found across 9 files in a full-repository Phase 1 sweep (ChatGPT, adapted local-disk harness run) — verified independently against source before patching. No semantic change; the anchor's meaning was never in question, only its exact text.
 - 2026-07-11: v0.2 — Footer-section backfill: added File Purpose, Assumptions, Lessons Learned, Active Disputes, Abandoned Paths, and Drift Indicators sections (previously absent). Also corrected a missing bold-marker typo on "This file owns:" in Scope Boundary. No Body content changed otherwise.
 
 ---
