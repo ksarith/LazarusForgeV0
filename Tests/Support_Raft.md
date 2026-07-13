@@ -25,7 +25,7 @@
 | **Active Disputes** | 0 |
 | **Highest Risk** | High — SR-001 (galvanic corrosion) is Open/High and required before v1.0; a hull that corrodes faster than modeled threatens the whole anchor-node concept |
 | **Sidecar Link** | #auditor-notes--unknowns |
-| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+| **Ethical Anchor** | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 **Legacy cross-reference fields (retained for continuity):**
 
@@ -668,6 +668,7 @@ None are masters. Each occupies a scope. The Raft is not headquarters. It is an 
 
 ### Resolution Log
 
+- 2026-07-12: Ethical Anchor field corrected — was using a non-canonical variant (backticked, `Admin/`-prefixed: "Defer to `Admin/Ethical_Constraints.md` if present.") instead of the canonical plain-text string ("Defer to Ethical_Constraints.md if present."). Same drift found across 9 files in a full-repository Phase 1 sweep (ChatGPT, adapted local-disk harness run) — verified independently against source before patching. No semantic change; the anchor's meaning was never in question, only its exact text.
 | Date | Entry |
 |---|---|
 | 2026-05-04 | Induction loss estimate corrected from 12% (laboratory) to 20–40% (real subsea conditions). Logged in Lessons Learned. |
