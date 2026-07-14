@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.10**
+**Version 1.11**
 
 ## File State
 
@@ -9,8 +9,9 @@
 | Spec Gates     | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                    |
 | Last Audit     | 2026-07-14                                                          |
-| Auditor        | Claude — Synthesizer; Claude — v1.10 reduction + Expiry Watch redesign (human-directed), 2026-07-14 |
-| Open Unknowns  | 4 (FAK-001, FAK-005, FAK-006, FAK-009 — see sidecar)                |
+| Auditor        | Claude — Synthesizer; Claude — v1.10 reduction + Expiry Watch redesign (human-directed); Claude — self-audit + v1.11 (FAK-010/011/012, First Battery) — all 2026-07-14 |
+| Open Unknowns  | 5 — see Sidecar Link                                                |
+| Sidecar Link   | Admin/Forge_Audit_Kit_Changelog.md#sidecar--auditor-notes--unknowns |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 **Derived from:** `Admin/Auditor_Protocols.md` v0.20 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.20
@@ -156,7 +157,7 @@ Substantive notes required — bare checkmarks are not verification. Full text: 
 
 ## AI Contribution Rules
 
-Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.14"*
+Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.20"*
 
 Valid roles: Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -277,6 +278,8 @@ Load additional files only when the audit focus requires them — each adds toke
 
 **Maintenance trigger:** Update this file when `Admin/Auditor_Protocols.md` is revised OR when `Unknowns.md` version increments. Minimum fields to update: derivation version strings, role declaration version string, EF condensed section if EF sections changed. (Critical watch list removed at v1.10 — no longer a maintenance target.)
 
+**End-of-Life:** This kit is a working document, not a permanent one — its function is to stay current with `Admin/Auditor_Protocols.md`, `Admin/Verification_Gates_LF.md`, and `Unknowns.md`. When it's superseded — a successor kit, a structural change to the audit process, or the source documents outgrowing what a condensed reference can track — it is not deleted. It's shelved at its final version as a historical record: evidence of what the audit process actually was at a given point in Forge's evolution, available for ideological and process study rather than active use. Superseding a kit is a normal lifecycle event, not a failure; the sidecar and version history in `Admin/Forge_Audit_Kit_Changelog.md` are what make that shelving legible later rather than just an abandoned file.
+
 ---
 
 ## Drift Indicators
@@ -300,19 +303,17 @@ Load additional files only when the audit focus requires them — each adds toke
 
 ## Auditor Notes & Unknowns
 
-**FAK-001** — Kit version maintenance trigger not formally owned. Maintenance trigger defined in How to Use. Status: Open — formal ownership assignment still needed.
+Sidecar relocated to `Admin/Forge_Audit_Kit_Changelog.md` §Sidecar as of
+v1.11 (2026-07-14) — this kit is a working document, and its self-tracking
+content was accumulating alongside the reference content it exists to
+keep lean. This is a documented exception to the general rule that
+sidecar entries live in the owning file; every other file in the
+repository keeps its sidecar in-body. Adversarial Battery record for
+this kit is in the same file, §Adversarial Battery Record.
 
-**FAK-004** — Index triage policy (critical watch list, adopted v1.1) was never formally ratified. **Resolved (v1.10, human-directed):** approach superseded rather than ratified. Pre-loading an auditor with expected findings before it reads the target file undermines independent verification (EF-0.1: precedent and consensus are disqualified as evidence) — this is the same failure mode as agent-convergence-without-verification, just at the checklist-design level instead of the finding level. Resolution: critical watch list removed from the pre-audit checklist; `Unknowns.md` cross-referencing moved to Post-Audit Cross-Reference, performed only after independent findings are drafted. Lessons Learned: a checklist step can itself introduce the bias an audit is supposed to catch — worth auditing the audit process, not just its outputs. Status: Resolved — Discharge via Lessons Learned.
-
-**FAK-005** — Character-count reduction pass at v1.3 reached ~16,950 chars; EF condensed reference and Audit Opening Checklist were ruled load-bearing, not bloat. Growth since — Resolution Log narrative, Auditor Notes narrative, and especially the critical watch list (FAK-004) — brought the kit to 35,112 chars by v1.9. **v1.10 pass:** Resolution Log externalized to `Admin/Forge_Audit_Kit_Changelog.md`; FAK-* entries trimmed to this kit's own Discharge Procedure format; critical watch list removed (FAK-004). Post-reduction count: ~25,100 chars (28% reduction from v1.9's 35,112). Still above the 12,000 ceiling, further than v1.3's ~16,950 — the removed critical watch list is not directly comparable to v1.3's cuts, which trimmed working checklist prose rather than eliminating a whole mechanism. Status: Open — the 12,000-char ceiling parameter itself still hasn't been revisited; ceiling flag remains active as a Drift Indicator.
-
-**FAK-006** — Resolved Unknown Discharge Procedure canonized here at v1.4 from organically-emerged RIP-001 practice; per this kit's own Scope Boundary, full procedural doctrine belongs in `Admin/Auditor_Protocols.md`. Status: Open — condensed version live here; full-doctrine migration to `Admin/Auditor_Protocols.md` still pending.
-
-**FAK-007** — Critical watch summary went stale against `Unknowns.md` twice (v4.0→v4.5, then v4.9→v4.10) before being refreshed each time; full incident in changelog. Resolution: refreshed 2026-07-05. Lessons Learned: a hand-maintained duplicate of another file's registry will recur as a staleness source regardless of refresh diligence — structurally superseded by FAK-004/v1.10, which removes the duplicate mechanism rather than re-committing to keep refreshing it. Status: Resolved.
-
-**FAK-008** — Cross-agent Gate 3/G6 scoring dispute on `Security_Protocols.md`: gate execution-quality and open-unknown blocking are separate, independently required axes (see Verification Gates). Resolution: logged as Synthesizer-level resolution in `Security_Protocols.md` Active Disputes, 2026-07-02. Status: Resolved.
-
-**FAK-009** — Gate scope clarification (FAK-008) was drafted while `Verification_Gates_LF.md` was unavailable, so it cited `Admin/Auditor_Protocols.md` directly instead of the correct intermediate canonical layer — first concrete incident evidence for VG-001. Resolution: citation corrected here once the file became available; checked independently consistent, no actual divergence. Lessons Learned: a derived file can cite the wrong layer of its own derivation chain even when the content stays correct — citation path and content correctness are different failure modes and both need checking. Status: Open (VG-001 itself remains unresolved in `Verification_Gates_LF.md`; this kit's citation is corrected).
+Current: 5 open (FAK-001, FAK-005, FAK-006, FAK-009, and one flagged for
+`Canonical_Terms.md` rather than resolved here — see Battery record,
+Cycle/CURRENT_CYCLE finding).
 
 ---
 
