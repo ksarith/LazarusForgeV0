@@ -1,140 +1,9 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v13 (patched-4)
+LAZARUS FORGE — AUDIT HARNESS v14
 Google Colab notebook cells — paste each block into a separate cell.
 
-CHANGES FROM v12:
-  - Cell 1: FALLBACK_REGISTRY — added Chaos_Dynamics.md (Tests/).
-    Already discoverable via dynamic parse — Routing.md's Master Routing
-    Map gained a real row for it 2026-07-04 (created same date). Added
-    here per this file's own established practice of also mirroring new
-    files into the fallback safety net, not because dynamic parse needs it.
-  - Cell 2: EXTRA_FILES commented list — added Chaos_Dynamics.md under
-    Tests/ section for discoverability, flagged no-File-State-table.
-  - KNOWN OPEN ITEM list — closed out the v12 item "Routing.md does not
-    yet list Challenges/Return_To_Eden.md": that row was added 2026-07-04.
-    Drift-detection print in _build_registry() should now report sync on
-    that entry; if it still reports drift, Routing.md's row format may not
-    match the backtick-path regex in _parse_routing() and needs a look.
-    New KNOWN OPEN ITEM added for Chaos_Dynamics.md: no File State table
-    as of this compile (confirmed via direct fetch, 2026-07-04) — same
-    situation Return_To_Eden.md was already flagged for. Phase 1 will log
-    a MAJOR/STRUCTURE "File State table not found" finding the first time
-    it's fetched. Also missing the mandatory Navigation Anchors block
-    (Routing.md backlink requirement) — this harness does not currently
-    check for that block's presence at all (Phase 1 checks File State
-    fields and cross-references, not the Navigation Anchors block itself),
-    so it will NOT surface as a Phase 1 finding; tracked here instead until
-    either the file is patched or a fourth Phase 1 check is added for it.
-
-CHANGES IN THIS PATCH (v13 → v13-patched, 2026-07-07):
-  - PC-005 (Closed_Loop_Feedstock.md registration): confirmed already
-    present in FALLBACK_REGISTRY under Challenges/ — no change needed there.
-  - Cell 3.5, extract_boundary(): sidecar-unknown detection previously only
-    matched the "## Auditor Notes..." + "### UID" convention used by Gate_
-    files. Challenges/Closed_Loop_Feedstock.md logs its ten CLF- unknowns
-    as a markdown table under "## 6. Open Unknowns" instead — the old logic
-    would have silently reported "none open" for a file carrying three
-    Critical unknowns (CLF-003, CLF-004, CLF-006). Broadened to also
-    trigger on any "Open Unknowns" header and match table-row IDs
-    (| CLF-001 | ...), with inline Resolved/Discharged status checks since
-    table format keeps status in the same row rather than 8 lines below.
-  - Cell 3.5, UNKNOWN_FIRST_CYCLE: added CLF-001 through CLF-010 at cycle
-    10. Previously unmapped — Expiry Watch could never fire for this file's
-    unknowns (age reported as None, not overdue) with no visible indicator
-    anything was missing from the map.
-  - Cell 2, EXTRA_FILES menu: added Closed_Loop_Feedstock.md under
-    Challenges/ section, with a note flagging the CLF-005 Φ_ext symbol
-    collision against Return_To_Eden.md so an auditor working either file
-    is prompted to consider pulling in the other.
-
-CHANGES IN THIS PATCH (v13-patched-3 → v13-patched-4, 2026-07-12):
-  - _parse_file_state() — fixed a bold-key parsing bug that caused every
-    File State field using markdown bold formatting (`| **Status** |`
-    rather than `| Status |`) to be stored under a key like "**Status**"
-    instead of "Status", silently breaking every downstream lookup.
-    This affected Check 1 (Ethical Anchor presence/mutation) and Check 2
-    (required-field presence) for a large share of the repository —
-    Water.md, Waste.md, Biofouling.md, Critical_Minerals.md,
-    Planned_Obsolescence.md, Emergence.md, Energy_Scarcity.md,
-    Trophic_Forge.md, Support_Raft.md, Living_Waters.md, and most other
-    files edited in recent sessions all use bolded keys. Prior to this
-    fix, Phase 1 would have reported Ethical Anchor and every required
-    field as absent on all of them — a false positive, not a real
-    constitutional or structural gap. Found 2026-07-12: three independent
-    second-agent audits run against `Challenges/Energy_Scarcity.md`
-    reported Status, Verification Ref, and Ethical Anchor as missing,
-    when all three were plainly present in the source file. Verified the
-    bug by direct regex test before patching, and re-verified against the
-    live file after — both fields now parse correctly.
-  - _enforce_phase1() Check 2 — added lean-schema detection. Files
-    declaring `Challenges Subtype: Problem-Statement` in their File State
-    table are now checked against the lean field set the subtype doctrine
-    in `Admin/File_Template.md` actually sanctions (Status, Verification
-    Ref, Ethical Anchor) rather than the full 11-field schema
-    _bootstrap_rules() pulls from File_Template.md's own example table.
-    Before this fix, every Problem-Statement Challenges file would have
-    thrown false MAJOR/STRUCTURE findings for Spec Gates, Body Stability,
-    Last Audit, Auditor, Open Unknowns, Active Disputes, Highest Risk,
-    and Sidecar Link — none of which that subtype is supposed to carry.
-    Same root incident as the bold-key fix above.
-  - Neither fix has been run against the full repository yet — both were
-    verified against `Challenges/Energy_Scarcity.md` and `Challenges/Water.md`
-    specifically. A full Phase 1 sweep post-patch would be worth doing to
-    confirm no other required-field or Ethical Anchor findings in past
-    audit sessions were false positives from these two bugs.
-
-CHANGES IN THIS PATCH (v13-patched-2 → v13-patched-3, 2026-07-12):
-  - FALLBACK_REGISTRY — added Energy_Scarcity.md (Challenges/), new file
-    created same date (v0.1, not yet Gate 1-reviewed). Also mirrored into
-    Discovery.md (tree listing, file registry table, Scope Map entry),
-    Routing.md (routing table), Unknowns.md v4.19 (new ES- cluster,
-    ES-001 through ES-003), and README.md (External Challenges list,
-    Status section file count) same day.
-  - Cell 2: EXTRA_FILES commented list — added Energy_Scarcity.md under
-    Challenges/ section. Also removed two stale annotations found while
-    editing this block: Chaos_Dynamics.md's "no File State table yet" and
-    Return_To_Eden.md's "no File State sidecar yet" — both were fixed in
-    earlier sessions (Chaos_Dynamics.md received its full template
-    skeleton 2026-07-12; Return_To_Eden.md's File State table predates
-    this harness version) but the comments here were never updated to
-    match. Same staleness pattern as the KNOWN OPEN ITEM entries closed
-    out in the v13-patched-2 changelog below — docstring maintenance
-    lagging actual file state, not a live repository gap.
-
-CHANGES IN THIS PATCH (v13-patched → v13-patched-2, 2026-07-11):
-  - KNOWN OPEN ITEM list — closed out both entries below. Direct fetch
-    confirms Challenges/Return_To_Eden.md and Tests/Chaos_Dynamics.md
-    both now have complete File State tables; Chaos_Dynamics.md also has
-    its Navigation Anchors block. These were flagged stale after an
-    external audit pass (Grok, 2026-07-11) cited them as still-missing —
-    root cause was this docstring not being updated after the files were
-    patched, not a live repository gap. See also: Unknowns.md v4.17,
-    which had the same staleness problem on CLF-005/RE-UNK-001 and has
-    been corrected.
-  - NEW KNOWN OPEN ITEM added below: Index Sync Check proposal (Grok,
-    2026-07-11) — harness currently has no automated check comparing a
-    file's own Resolution Log dates against Unknowns.md's Active Index
-    status for the same ID. This is what let CLF-005 sit Resolved in its
-    owning file for four days while Unknowns.md still listed it Open,
-    which then propagated as a false positive into an external audit.
-    Proposed: a fourth Phase 1 check, or a lightweight WARNING tier, that
-    flags any ID where the owning file's Resolution Log shows a later
-    Resolved/Discharged date than what Unknowns.md's Active Index carries.
-    Not implemented in this patch — flagged for scoping next session.
-
-KNOWN OPEN ITEM (flag for next session, not fixed here):
-  - Index Sync Check (see above) — not yet designed or implemented.
-    Scoping questions for next session: does this run against every ID
-    on every Phase 1 pass (cost/latency), or only on the specific file
-    being audited plus its cross-referenced IDs? Where does the harness
-    get the owning file's Resolution Log date from — new fetch logic, or
-    reuse of the existing boundary extractor?
-
-CLOSED THIS PATCH (previously KNOWN OPEN ITEM, verified resolved 2026-07-11):
-  - Challenges/Return_To_Eden.md's missing File State sidecar table —
-    confirmed present and complete via direct fetch.
-  - Tests/Chaos_Dynamics.md's missing File State table and Navigation
-    Anchors block — both confirmed present via direct fetch.
+Full version history: Admin/AUDIT_HARNESS_CHANGELOG.md
+(relocated out of this docstring in v14 — add new entries there, not here)
 
 USAGE:
   1. Cell 1 — run once per session (builds registry from Routing.md)
@@ -180,6 +49,11 @@ ALIASES = {
     "Stratification_Chamber_v0.md":      "Operations/Gate_04_Separation_Mechanical.md",
     "Nothingness Theorem":               "Admin/Nothingness%20Theorem",
     "Computational Institutional Reasoning": "Admin/Computational%20Institutional%20Reasoning",
+    # Harness's own data file (v14) — not .md/.py, so _parse_routing()'s
+    # regex would never pick it up from Routing.md even if listed there.
+    # Belongs in ALIASES (always merged) rather than FALLBACK_REGISTRY
+    # (only merged when Routing.md fetch fails entirely).
+    "unknown_cycles.json":                "Admin/unknown_cycles.json",
 }
 
 # ── Fallback registry ─────────────────────────────────────────────────
@@ -622,24 +496,15 @@ def _extract_md_refs(content):
         refs.add(path)
     return refs
 
-# ── Phase 1 enforcement per file ──────────────────────────────────────
-def _enforce_phase1(filename, content, anchor, required_fields, registry, findings):
+# ── Phase 1 Check 1: Constitutional — Ethical Anchor ───────────────────
+def _check_ethical_anchor(filename, metadata, found, anchor, findings):
     """
-    Run three Phase 1 checks on a single fetched file.
-    Constitutional violation writes .quarantine and halts.
-    All other findings are logged and non-blocking.
+    Verify Ethical Anchor field presence and exact match against the
+    bootstrapped canonical string. A mismatch is a confirmed constitutional
+    mutation: writes .quarantine and halts the session (sys.exit(1)).
+    Missing-field cases are logged as non-blocking findings — absence is
+    not itself treated as a confirmed mutation.
     """
-    if content.startswith("[FETCH FAILED"):
-        findings.append(Finding(
-            "MAJOR", "STRUCTURE", filename,
-            "File fetch failed — structural checks skipped. "
-            "Verify path in Routing.md."
-        ))
-        return
-
-    metadata, found = _parse_file_state(content)
-
-    # ── Check 1: Constitutional — Ethical Anchor ──────────────────────
     if not found:
         findings.append(Finding(
             "MAJOR", "STRUCTURE", filename,
@@ -673,21 +538,25 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
             print(f"{'!'*60}\n")
             sys.exit(1)
 
-    # ── Check 2: Structural — required field presence ─────────────────
-    # Files declaring Challenges Subtype: Problem-Statement use the lean
-    # File State schema File_Template.md's subtype doctrine explicitly
-    # sanctions (Status, Challenges Subtype, Verification Ref, Ethical
-    # Anchor — not the full 11-field schema with Spec Gates, Body
-    # Stability, Sidecar Link, etc.). Prior to this fix, _bootstrap_rules
-    # always pulled the full schema from File_Template.md's own example
-    # table with no subtype awareness, so every Problem-Statement file
-    # (Water.md, Waste.md, Biofouling.md, Critical_Minerals.md,
-    # Planned_Obsolescence.md, Emergence.md, Energy_Scarcity.md — six-plus
-    # files) threw false MAJOR/STRUCTURE findings for fields that subtype
-    # is not supposed to carry. Found 2026-07-12 alongside the bold-key
-    # parsing fix above, same root incident (three second-agent audits on
-    # Energy_Scarcity.md reporting fields as missing that were correctly
-    # and deliberately absent per doctrine).
+# ── Phase 1 Check 2: Structural — required field presence ──────────────
+def _check_required_fields(filename, metadata, found, required_fields, findings):
+    """
+    Verify presence of required File State fields. Files declaring
+    Challenges Subtype: Problem-Statement use the lean File State schema
+    File_Template.md's subtype doctrine explicitly sanctions (Status,
+    Challenges Subtype, Verification Ref, Ethical Anchor — not the full
+    11-field schema with Spec Gates, Body Stability, Sidecar Link, etc.).
+    Prior to this fix, _bootstrap_rules always pulled the full schema from
+    File_Template.md's own example table with no subtype awareness, so
+    every Problem-Statement file (Water.md, Waste.md, Biofouling.md,
+    Critical_Minerals.md, Planned_Obsolescence.md, Emergence.md,
+    Energy_Scarcity.md — six-plus files) threw false MAJOR/STRUCTURE
+    findings for fields that subtype is not supposed to carry. Found
+    2026-07-12 alongside the bold-key parsing fix in _parse_file_state,
+    same root incident (three second-agent audits on Energy_Scarcity.md
+    reporting fields as missing that were correctly and deliberately
+    absent per doctrine).
+    """
     if found:
         if metadata.get("Challenges Subtype") == "Problem-Statement":
             active_required = ["Status", "Verification Ref", "Ethical Anchor"]
@@ -700,7 +569,13 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
                     f"Required field '{field}' missing from File State table."
                 ))
 
-    # ── Check 3: Cross-reference resolution (classified) ─────────────
+# ── Phase 1 Check 3: Cross-reference resolution (classified) ───────────
+def _check_cross_refs(filename, content, registry, findings):
+    """
+    Extract internal .md references and classify any that don't resolve
+    against the registry: LEGACY (known alias), PLANNED (pending rename),
+    ARCHIVE (versioned archive path), or UNKNOWN (investigate).
+    """
     # Planned renames: paths that appear in docs as future canonical names
     # before Routing.md has been updated.
     PLANNED_RENAMES = {
@@ -747,6 +622,29 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
                 f"[UNKNOWN] '{ref}' — no canonical or alias match. "
                 f"Investigate: stale reference or missing Routing.md entry."
             ))
+
+# ── Phase 1 enforcement per file ──────────────────────────────────────
+def _enforce_phase1(filename, content, anchor, required_fields, registry, findings):
+    """
+    Run the three Phase 1 checks above on a single fetched file, in order.
+    Constitutional violation (Check 1) writes .quarantine and halts.
+    All other findings are logged and non-blocking.
+    v14: split into _check_ethical_anchor / _check_required_fields /
+    _check_cross_refs — same checks, same order, no behavior change.
+    """
+    if content.startswith("[FETCH FAILED"):
+        findings.append(Finding(
+            "MAJOR", "STRUCTURE", filename,
+            "File fetch failed — structural checks skipped. "
+            "Verify path in Routing.md."
+        ))
+        return
+
+    metadata, found = _parse_file_state(content)
+
+    _check_ethical_anchor(filename, metadata, found, anchor, findings)
+    _check_required_fields(filename, metadata, found, required_fields, findings)
+    _check_cross_refs(filename, content, registry, findings)
 
 # ── Main Phase 1 runner ───────────────────────────────────────────────
 def run_phase1(fetched_files, registry):
@@ -804,113 +702,29 @@ def run_phase1(fetched_files, registry):
 _p1_findings, _p1_anchor, _p1_fields = run_phase1(fetched, FILE_REGISTRY)
 
 # Map of known unknown IDs to the cycle they were first logged.
-# Add entries here when new unknowns are registered.
 # Used for aging detection — IDs not in this map report age as unknown.
-UNKNOWN_FIRST_CYCLE = {
-    # Ethics & Governance
-    "EC-001": 1, "EC-002": 1, "EC-003": 1, "EC-004": 1, "EC-005": 1,
-    "EC-006": 1, "EC-007": 1, "EC-008": 7, "EC-009": 7, "EC-010": 7,
-    "EC-011": 7,
-    "GOV-001": 2, "GOV-002": 2, "GOV-003": 2, "GOV-004": 2, "GOV-005": 2,
-    "GOV-006": 2, "GOV-007": 2, "GOV-008": 3, "GOV-009": 3, "GOV-010": 7,
-    "SEC-001": 4, "SEC-002": 4, "SEC-003": 4, "SEC-004": 4, "SEC-005": 4,
-    "SEC-006": 4, "SEC-007": 4, "SEC-008": 9, "SEC-009": 9, "SEC-010": 9,
-    "SEC-011": 9,
-    "RIP-001": 2, "RIP-002": 2, "RIP-003": 2, "RIP-005": 4,
-    "RIP-006": 9, "RIP-007": 9,
-    "GMP-003": 5, "GMP-004": 5, "GMP-005": 5, "GMP-006": 9,
-    "GMP-007": 9, "GMP-008": 9,
-    "CT-001": 5, "CT-002": 5, "CT-003": 5, "CT-004": 6, "CT-005": 7,
-    "CT-006": 9, "CT-007": 9, "CT-008": 10, "CT-009": 10,
-    "VG-001": 5,
-    "AP-001": 2, "AP-002": 2, "AP-003": 2, "AP-004": 2, "AP-005": 2,
-    "AP-006": 2, "AP-007": 2,
-    "AP-008": 9, "AP-009": 9, "AP-010": 9, "AP-011": 9,
-    "AP-012": 10, "AP-013": 10, "AP-014": 10, "AP-015": 10,
-    "AP-016": 10, "AP-017": 10, "AP-018": 10, "AP-019": 10,
-    "AP-020": 10,
-    # Environmental
-    "ENV-001": 9, "ENV-002": 9, "ENV-003": 9, "ENV-004": 9, "ENV-005": 9,
-    "ENV-006": 9, "ENV-008": 9, "ENV-009": 9,
-    # Engineering & Structures
-    "EN-001": 5, "EN-002": 5, "EN-003": 5, "EN-004": 5, "EN-005": 5,
-    "ME-001": 5, "ME-002": 5, "ME-003": 8, "ME-004": 8,
-    # Cognitive / Emergence
-    "CF-001": 5, "CF-002": 5, "CF-003": 5,
-    "EM-001": 6, "EM-002": 6, "EM-003": 6, "EM-004": 6,
-    # Gate Logic
-    "FL-001": 1, "TS-001": 1, "TS-002": 1, "TS-003": 1,
-    "CO-001": 1, "CO-002": 1,
-    # Energy
-    "EV-001": 4, "EV-002": 4, "EV-003": 4,
-    # Operations
-    "SC-001": 1, "SC-002": 1, "SC-003": 1, "SC-004": 1, "SC-005": 1,
-    "SC-006": 1, "SC-007": 1, "SC-008": 1,
-    "MG-001": 1, "MG-002": 1, "MG-003": 1, "MG-004": 1, "MG-005": 1,
-    "MG-006": 1, "MG-007": 1, "MG-008": 1,
-    "GI-001": 3, "GI-002": 3, "GI-003": 3, "GI-004": 3, "GI-005": 3,
-    "GI-006": 3, "GI-007": 3,
-    "GR-001": 3, "GR-002": 3, "GR-003": 3, "GR-004": 3, "GR-005": 3,
-    "GR-006": 3, "GR-007": 3, "GR-008": 3,
-    "GF-001": 3, "GF-002": 3, "GF-003": 3, "GF-004": 3,
-    "GF-006": 3, "GF-007": 3,
-    "GU-001": 3, "GU-002": 3, "GU-003": 3, "GU-004": 3, "GU-005": 3,
-    "PL-001": 4, "PL-002": 4, "PL-003": 4, "PL-004": 4, "PL-005": 4,
-    "EL-001": 3, "EL-002": 3, "EL-003": 3, "EL-004": 3, "EL-005": 3,
-    "EL-006": 3, "EL-007": 3, "EL-008": 3,
-    # Chemistry
-    "CE-001": 6, "CE-002": 6, "CE-003": 6, "CE-004": 6, "CE-005": 8,
-    # Thermal / Friction
-    "TH-001": 5, "TH-002": 5, "TH-003": 5, "TH-004": 5,
-    "TH-005": 8, "TH-006": 8,
-    "FD-001": 5, "FD-002": 5, "FD-003": 5, "FD-005": 8,
-    # Challenges
-    "WA-001": 6, "WA-002": 6, "WA-003": 6, "WA-004": 6,
-    "BF-001": 6, "BF-002": 6, "BF-003": 6, "BF-004": 6,
-    "PO-001": 6, "PO-002": 6, "PO-003": 6, "PO-004": 6,
-    "WS-001": 6, "WS-002": 6, "WS-003": 6, "WS-004": 6,
-    "CM-001": 6, "CM-002": 6, "CM-003": 6, "CM-004": 6,
-    # Tests
-    "LT-001": 1, "LT-002": 1, "LT-003": 1, "LT-004": 1, "LT-005": 1,
-    "LT-006": 1,
-    "SR-001": 6, "SR-002": 6, "SR-003": 6, "SR-004": 6, "SR-005": 6,
-    "SR-006": 6, "SR-007": 6, "SR-008": 6, "SR-009": 6,
-    "SR-011": 5, "SR-012": 5, "SR-013": 5,
-    "LW-UNK-001": 7, "LW-UNK-002": 7, "LW-UNK-003": 7, "LW-UNK-004": 7,
-    "LW-UNK-005": 7, "LW-UNK-006": 7, "LW-UNK-007": 7, "LW-UNK-008": 7,
-    "LW-UNK-009": 7,
-    "TF-001": 7, "TF-002": 7, "TF-003": 7, "TF-004": 7, "TF-005": 7,
-    "TF-006": 7, "TF-007": 7, "TF-008": 7, "TF-009": 7, "TF-010": 7,
-    "SD-UNK-001": 7, "SD-UNK-002": 7, "SD-UNK-003": 7, "SD-UNK-004": 7,
-    "SD-UNK-005": 7, "SD-UNK-006": 7, "SD-UNK-007": 7, "SD-UNK-008": 7,
-    "SD-UNK-009": 7, "SD-UNK-010": 7, "SD-UNK-011": 7, "SD-UNK-012": 7,
-    # Cognitive Salvage Layer — GH-series (cycle 10)
-    "GH-001": 10, "GH-002": 10, "GH-003": 10, "GH-004": 10,
-    "GH-005": 10, "GH-006": 10, "GH-007": 10, "GH-008": 10,
-    "GH-009": 10, "GH-010": 10, "GH-011": 10, "GH-012": 10,
-    # Hydrologic Resource Cascade — HR-series (cycle 10)
-    "HR-UNK-001": 10, "HR-UNK-002": 10,
-    # Cognitive Frameworks (cycle 10)
-    "CF-004": 10,
-    # Closed Loop Feedstock — CLF-series (cycle 10)
-    "CLF-001": 10, "CLF-002": 10, "CLF-003": 10, "CLF-004": 10,
-    "CLF-005": 10, "CLF-006": 10, "CLF-007": 10, "CLF-008": 10,
-    "CLF-009": 10, "CLF-010": 10,
-    # Misc
-    "FA-001": 4, "FA-002": 4, "FA-003": 4, "FA-004": 4,
-    "SP-001": 4, "SP-002": 4, "SP-003": 4, "SP-004": 4, "SP-005": 4,
-    "SP-006": 4,
-    "AS-001": 4, "AS-002": 4, "AS-003": 4, "AS-004": 4,
-    "TR-001": 4, "TR-002": 3,
-    "FN-001": 4, "FN-002": 4, "FN-003": 4, "FN-004": 4, "FN-005": 4,
-    "WW-001": 4, "WW-002": 4, "WW-003": 4, "WW-004": 4, "WW-005": 4,
-    "ST-001": 1, "ST-002": 1, "ST-003": 5, "ST-004": 10,
-    "GK-002": 1, "GK-003": 1, "GK-004": 1,
-    "EP-001": 5, "EP-002": 5, "EP-003": 5, "EP-004": 5,
-    "EP-005": 4, "EP-006": 5,
-    "PR-001": 4, "PR-002": 4, "PR-003": 4, "PR-004": 4,
-    "UNK-008": 6, "UNK-009": 4,
-}
+# v14: moved from an inline dict to Admin/unknown_cycles.json (fetched
+# below, grouped by category, flattened at load time). Add new entries
+# to that file when new unknowns are registered — this is now a JSON
+# edit, not a .py diff. On fetch/parse failure, falls back to an empty
+# map with a warning rather than halting (matches how other non-critical
+# fetch failures are handled elsewhere in this harness).
+_unknown_cycles_raw = fetch("unknown_cycles.json")
+if _unknown_cycles_raw.startswith("[FETCH FAILED"):
+    print("⚠ unknown_cycles.json fetch failed — Expiry Watch will report "
+          "all unknown IDs as unmapped (age=None) this session.")
+    UNKNOWN_FIRST_CYCLE = {}
+else:
+    try:
+        _unknown_cycles_doc = json.loads(_unknown_cycles_raw)
+        UNKNOWN_FIRST_CYCLE = {}
+        for _group in _unknown_cycles_doc.get("groups", {}).values():
+            UNKNOWN_FIRST_CYCLE.update(_group)
+    except (json.JSONDecodeError, AttributeError) as _e:
+        print(f"⚠ unknown_cycles.json parse failed: {_e} — Expiry Watch "
+              f"will report all unknown IDs as unmapped (age=None) this "
+              f"session.")
+        UNKNOWN_FIRST_CYCLE = {}
 
 EXPIRY_THRESHOLD = 2  # cycles without resolution path before escalation
 
