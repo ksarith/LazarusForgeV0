@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.9**
+**Version 1.10**
 
 ## File State
 
@@ -8,12 +8,12 @@
 | Status         | Draft                                                               |
 | Spec Gates     | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                    |
-| Last Audit     | 2026-07-05                                                          |
-| Auditor        | Claude — Synthesizer; Claude — FAK-007 full refresh 2026-07-05      |
-| Open Unknowns  | See sidecar                                                         |
+| Last Audit     | 2026-07-14                                                          |
+| Auditor        | Claude — Synthesizer; Claude — v1.10 reduction + Expiry Watch redesign (human-directed), 2026-07-14 |
+| Open Unknowns  | 4 (FAK-001, FAK-005, FAK-006, FAK-009 — see sidecar)                |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.18 | `Admin/Verification_Gates_LF.md` v0.4 | `Unknowns.md` v4.10
+**Derived from:** `Admin/Auditor_Protocols.md` v0.20 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.20
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -75,11 +75,13 @@ Promotion rule: assumptions narrow, unknowns shrink, external validation expands
 
 ## Truth Provenance Labels
 
-**Quantitative:** Measured | Estimated | Analogous | Placeholder — Unlabeled = Placeholder.
+**Quantitative** (`Admin/Auditor_Protocols.md` §Evidence Classification; five-label system confirmed canonical via AP-021, 2026-07-10 — "Estimated" retired, relabel prior Estimated claims as Analogous or Simulated):
+Measured | Replicated | Simulated | Analogous | Placeholder — Unlabeled = Placeholder.
+Measured requires `m_phys ≥ 0.75`; Replicated additionally requires `m_rep ≥ 0.50` (`Admin/Verification_Gates_LF.md` Gate 2, active 2026-07-10).
 
 **Institutional:** Internally Derived | Analogous External | Experimentally Verified | Operationally Hardened
 
-No internally-derived claim may be represented as Operationally Hardened without external validation. Full doctrine: `Admin/Auditor_Protocols.md` §AP-006.
+No internally-derived claim may be represented as Operationally Hardened without external validation. Full doctrine: `Admin/Auditor_Protocols.md` §Evidence Classification and Institutional Truth Provenance Hierarchy.
 
 ---
 
@@ -101,75 +103,22 @@ Confirm all eight axioms (P-1–P-4, Q-1–Q-4) match prior committed version in
 **2. Epistemic Foundation Integrity Check**
 Confirm EF-0.0 through EF-0.8b text in `Admin/Auditor_Protocols.md` matches prior committed version. Any unratified modification = Integrity Violation (EF-0.2 Level 3) → STATE_HOLD immediately.
 
-**3. Expiry Watch**
-Check `Unknowns.md` for Blocking entries approaching the Cycle threshold
-(see `Admin/Canonical_Terms.md` §4 — one calendar year by default,
-operator-adjustable; **not** one audit pass, a distinction that matters —
-see Drift Indicators) without a documented Resolution Path. Escalate to
-Systemic Risk or demote dependent module. If AUDIT_HARNESS.py boundary
-index is present in session, use it — aging alerts are pre-computed.
-Otherwise load `Unknowns.md` directly.
+**3. Expiry Watch (file-scoped only — do not pre-load repo-wide findings)**
+Check the target file's own Auditor Notes & Unknowns sidecar for entries
+at or past the Cycle threshold (see `Admin/Canonical_Terms.md` §4 — one
+calendar year by default, operator-adjustable; **not** one audit pass, a
+distinction that matters — see Drift Indicators) without a substantively-
+updated Resolution Path. If `AUDIT_HARNESS.py`'s boundary index is present
+in session, use it — aging is pre-computed per file. Otherwise compute
+directly from the target file's own sidecar entries.
 
-**Current critical watch (refreshed 2026-07-05 against `Unknowns.md` v4.10
-— FAK-007 closed, see Resolution Log).** This is a curated highlight of
-load-bearing and cross-blocking entries, not the exhaustive Critical list —
-`Unknowns.md`'s own "Critical and Blocking unknowns only" cross-reference
-table is the complete, canonical set; check it directly for anything not
-named here.
-
-- **GOV-011 Resolved 2026-07-05** — was newly-registered Critical Watch as
-  of v4.10; confirmed isolated to `Governance_Charter.md`, real gate score
-  6/6. *`Unknowns.md`'s own global index has not yet been updated to
-  reflect this — it still shows GOV-011 as open. That sync is a separate,
-  outstanding task, not done as part of this refresh.*
-- GOV-003 / GOV-005 Critical (`Governance_Charter.md`) — unchanged.
-- AP-012 and AP-016 Resolved 2026-07-03, no longer Critical Watch (Gate 3
-  independently re-blocked pending AP-017, not these two — see
-  `Admin/Auditor_Protocols.md` §Gate 3 status, corrected 2026-07-05).
-- SEC-007a / SEC-007b both Critical (`Security_Protocols.md`), b blocked
-  pending a.
-- RIP-001 Resolved 2026-06-27 — unchanged.
-- EN-001 Blocking (`Architecture/Engineering.md`) — status advanced to In
-  Progress 2026-07-05: blanket 6×+ floor replaced with a differentiated
-  per-material interim table; still not Resolved, no destructive test data
-  yet. Four Sandbox hypotheses registered in `Tests/Chaos_Dynamics.md`,
-  currently Deferred pending physical testing capability.
-- CF-001 Blocking, In Progress (`Operations/Electronics.md`).
-- **EC-002 — ambiguous without a file qualifier, see CT-007 escalation
-  (`Admin/Canonical_Terms.md`).** Two unrelated entries share this ID:
-  Blocking "Anti-Weaponization pattern-matching" (`Ethical_Constraints.md`)
-  and Critical "Operating cost baseline not established, blocks TR-001"
-  (`Economics.md`). Always name the owning file when citing EC-00X until
-  CT-007's rename resolves this — EC-001, EC-004, EC-005, and EC-008 carry
-  the same ambiguity.
-- WA-002 / WA-004 Critical (`Challenges/Waste.md`) — unchanged.
-- FA-001 Critical (`Architecture/Facilities.md`) — unchanged, blocks hot
-  operations and emergency response. SD-UNK-004 (`Tests/Solar_Descent.md`)
-  parallels this.
-- PR-001 Critical (`Architecture/Precision.md`) — blocks T1/T2 part claims.
-- EM-004 Critical (`Challenges/Emergence.md`) — no fast resolution path,
-  architectural decision above repository level required.
-- TF-001 Critical/Blocking (`Tests/Trophic_Forge.md`) — entire organizing
-  principle rests on this.
-- HR-UNK-001 / HR-UNK-002 Critical (`Tests/Hydrologic_Resource_Cascade.md`)
-  — entire resource-recovery premise and contaminant risk, respectively.
-  Newly surfaced in this refresh — not in the prior (v4.0-derived) summary.
-- GH-009 Critical (`Tests/Cognitive_Salvage_Layer.md`) — N² interaction
-  scaling risk once past ~20 promoted heuristics. Newly surfaced.
-- LW-UNK-001 / LW-UNK-003 Critical safety gaps (`Tests/Living_Waters.md`)
-  — Partially Addressed, empirical validation pending.
-- CM-002 Critical (`Challenges/Critical_Minerals.md`) — closed-loop reagent
-  recovery undefined before hydrometallurgical processing.
-- ENV-009 Critical (`Admin/Environmental_Constraints.md`) — file is
-  doctrine-only until first real site assessment.
-
-*Not itemized here but present in `Unknowns.md`'s full Critical list —
-check there directly: EV-003, CE-003, EL-005/006, GR-003/007, GF-007,
-GI-002/003/007, FN-001/005, PL-001, WW-005, SD-UNK-001/002.*
-
-AP-001 through AP-007 Systemic Risk escalation active — all seven entries
-now carry resolution frameworks; formal downgrade requires human governing
-party confirmation at next audit cycle.
+Do not consult `Unknowns.md`'s repo-wide Critical/Blocking list before
+auditing. This step is scoped to the target file's own registered
+unknowns only — independent verification means assessing the file as it
+actually reads, not confirming a pre-loaded expectation of what should be
+wrong with it (EF-0.1: agent consensus and precedent are disqualified as
+evidence). The full registry is consulted afterward — see Post-Audit
+Cross-Reference.
 
 **4. Semantic Stability Check**
 Scan for high-drift-risk terms. Flag as [FALLACY 4 — Semantic Drift]. Route to `Admin/Canonical_Terms.md`.
@@ -235,10 +184,9 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 | G5 | Cross-reference integrity — all paths use canonical folder-prefixed names? | Hold at draft |
 | G6 | Conflict check — no contradiction with existing committed specs? | Resolve before committing |
 
-**Gate scope vs. promotion readiness (clarified 2026-07-02, source: `Admin/Verification_Gates_LF.md` §Gate 3, §Gate 6, §Promotion Requirements Summary — the canonical gate-definition layer this kit condenses; independently traceable to `Admin/Auditor_Protocols.md` §Specification Promotion Rules and §Adversarial Audit Layer, which Verification_Gates_LF.md itself derives from):** Gates test a document's own execution quality — was the check actually done, documented, and does the committed text avoid contradiction. Gates do **not** test whether unknowns a check surfaced have been resolved. "All six gates pass" and "open unknowns are non-blocking" are two separate, independently required conditions for Specification promotion (§Specification Promotion Rules / §Promotion Requirements Summary) — a document can clear all six gates while promotion stays blocked by open unknowns, and that is not a gate failure.
+**Gate scope vs. promotion readiness (source: `Admin/Verification_Gates_LF.md` §Gate 3, §Gate 6, §Promotion Requirements Summary — the canonical gate-definition layer this kit condenses):** Gates test a document's own execution quality — was the check actually done, documented, and does the committed text avoid contradiction. Gates do **not** test whether unknowns a check surfaced have been resolved. "All six gates pass" and "open unknowns are non-blocking" are two separate, independently required conditions for Specification promotion — a document can clear all six gates while promotion stays blocked by open unknowns, and that is not a gate failure.
 
-*Process note: this clarification was first drafted 2026-07-02 citing only `Admin/Auditor_Protocols.md` directly, bypassing `Admin/Verification_Gates_LF.md` — the file this kit's condensed gate table is actually supposed to derive from (see VG-001). Verification_Gates_LF.md was made available later the same session and checked against the drafted text: independently consistent, no divergence found. Citation corrected here to route through the correct canonical layer. See VG-001 Resolution Log for the full incident record.*
-
+- **G2 evidentiary backing (active 2026-07-10, source: `Admin/Verification_Gates_LF.md` Gate 2, VG-002):** a claim labeled Measured or Replicated must meet the evidentiary thresholds in Truth Provenance Labels above (`m_phys ≥ 0.75`; Replicated additionally `m_rep ≥ 0.50`). Simulated and Analogous remain self-asserted pending a future revision. Enforcement is manual — `AUDIT_HARNESS.py` does not yet compute or check the evidence vector; an auditor applying G2 must check this by hand.
 - **G3** passes if the Adversarial Battery was applied and documented — full Battery, or partial with deferred classes named and reasoned (Exploration-stage default per §Adversarial Audit Layer "When to Apply"). G3 does not require that findings from the Battery be resolved; unresolved Critical findings block *promotion*, tracked as open unknowns, not as a G3 failure.
 - **G6** passes if the committed text does not contradict itself or another *committed* spec. G6 does not test whether upstream dependencies are resolved — that is a promotion-readiness question.
 
@@ -263,6 +211,23 @@ Canonizes the pattern first applied at RIP-001 (`Admin/Repository_Integrity_Prot
 5. Add a matching row to the owning file's own top-level Lessons Learned table — distilled and pattern-focused, not a duplicate of step 3.
 6. `Unknowns.md`: remove from the active index; add one line to Expiry Watch or the Audit Trail pointing back to the sidecar. **Do not skip steps 2–5 and jump to step 6** — RIP-004 was closed correctly in substance on 2026-06-19 but skipped steps 2, 4, and 5 for six weeks before being brought into conformance.
 7. Bump the owning file's Open Unknowns count and add a Resolution Log entry.
+
+---
+
+## Post-Audit Cross-Reference
+
+Perform after independent findings are drafted from the target file
+alone — never before. Check `Unknowns.md`'s "Critical and Blocking
+unknowns only" cross-reference table for entries tied to this file that
+its own sidecar didn't surface: cross-file collisions, shared blocking
+chains, prefix ambiguity (e.g. the EC- collision under CT-007). Note any
+gap between the file's own sidecar and the registry as a new finding, not
+a silent correction to either.
+
+This step is a completeness check on an audit already performed, not a
+source of findings to look for going in — auditing toward a pre-loaded
+list is what Expiry Watch (step 3) exists to avoid. Its output populates
+Sign-Off's `Unknowns logged` field below.
 
 ---
 
@@ -306,11 +271,11 @@ Load this file plus the document under audit. That is the baseline for every rou
 
 Load additional files only when the audit focus requires them — each adds tokens. Candidates: `Admin/Auditor_Protocols.md` (full role doctrine, full EF constitutional text, full Adversarial Battery), `Unknowns.md` (full unknown detail), `Discovery.md` (path lookup, Rename Registry), target file's upstream architecture files.
 
-**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 95,000 characters at v0.14. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
+**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 95,000 characters at v0.20. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
 
 **Load full source documents instead of this kit when:** auditing `Admin/Auditor_Protocols.md` itself · onboarding a new agent · full unknown entry detail required · EF section interpretive dispute.
 
-**Maintenance trigger:** Update this file when `Admin/Auditor_Protocols.md` is revised OR when `Unknowns.md` version increments. Minimum fields to update: derivation version strings, role declaration version string, critical watch list, Expiry Watch note, EF condensed section if EF sections changed.
+**Maintenance trigger:** Update this file when `Admin/Auditor_Protocols.md` is revised OR when `Unknowns.md` version increments. Minimum fields to update: derivation version strings, role declaration version string, EF condensed section if EF sections changed. (Critical watch list removed at v1.10 — no longer a maintenance target.)
 
 ---
 
@@ -335,84 +300,28 @@ Load additional files only when the audit focus requires them — each adds toke
 
 ## Auditor Notes & Unknowns
 
-**FAK-001** — Kit version maintenance trigger not formally owned. Maintenance trigger defined in How to Use. Formal ownership assignment still needed. Status: Open.
+**FAK-001** — Kit version maintenance trigger not formally owned. Maintenance trigger defined in How to Use. Status: Open — formal ownership assignment still needed.
 
-**FAK-004** — Index triage policy not formally ratified. Critical watch list approach adopted since v1.1. Ratify in next audit cycle. Status: Open.
+**FAK-004** — Index triage policy (critical watch list, adopted v1.1) was never formally ratified. **Resolved (v1.10, human-directed):** approach superseded rather than ratified. Pre-loading an auditor with expected findings before it reads the target file undermines independent verification (EF-0.1: precedent and consensus are disqualified as evidence) — this is the same failure mode as agent-convergence-without-verification, just at the checklist-design level instead of the finding level. Resolution: critical watch list removed from the pre-audit checklist; `Unknowns.md` cross-referencing moved to Post-Audit Cross-Reference, performed only after independent findings are drafted. Lessons Learned: a checklist step can itself introduce the bias an audit is supposed to catch — worth auditing the audit process, not just its outputs. Status: Resolved — Discharge via Lessons Learned.
 
-**FAK-005** — Kit character count reduction pass complete at v1.3. Active Unknowns full list removed — replaced by critical watch summary in Expiry Watch step. Governing Principles compressed. Expiry Watch prose removed in favor of inline critical watch summary. Actual post-reduction count: ~16,950 chars. The 12,000-char ceiling is not achievable without removing load-bearing doctrine — EF condensed reference (~2,100 chars) and Audit Opening Checklist (~2,300 chars) are working content, not bloat. Ceiling flag remains active as a Drift Indicator. The 12,000 figure is the parameter that needs revisiting, not the content. Status: Open — ceiling flag active, reduction pass complete.
+**FAK-005** — Character-count reduction pass at v1.3 reached ~16,950 chars; EF condensed reference and Audit Opening Checklist were ruled load-bearing, not bloat. Growth since — Resolution Log narrative, Auditor Notes narrative, and especially the critical watch list (FAK-004) — brought the kit to 35,112 chars by v1.9. **v1.10 pass:** Resolution Log externalized to `Admin/Forge_Audit_Kit_Changelog.md`; FAK-* entries trimmed to this kit's own Discharge Procedure format; critical watch list removed (FAK-004). Post-reduction count: ~25,100 chars (28% reduction from v1.9's 35,112). Still above the 12,000 ceiling, further than v1.3's ~16,950 — the removed critical watch list is not directly comparable to v1.3's cuts, which trimmed working checklist prose rather than eliminating a whole mechanism. Status: Open — the 12,000-char ceiling parameter itself still hasn't been revisited; ceiling flag remains active as a Drift Indicator.
 
-**FAK-006** — Resolved Unknown Discharge Procedure canonized here at v1.4 (2026-07-02) from organically-emerged RIP-001 practice, since no formal doctrine existed anywhere in the repository despite the pattern being in active use. Per this kit's own Scope Boundary, full auditor procedural doctrine belongs in `Admin/Auditor_Protocols.md` — this kit should carry only the condensed checklist form, consistent with every other section here. `Admin/Auditor_Protocols.md` was not available this session to receive the full version. Status: Open — condensed version live here; full-doctrine migration to `Admin/Auditor_Protocols.md` pending.
+**FAK-006** — Resolved Unknown Discharge Procedure canonized here at v1.4 from organically-emerged RIP-001 practice; per this kit's own Scope Boundary, full procedural doctrine belongs in `Admin/Auditor_Protocols.md`. Status: Open — condensed version live here; full-doctrine migration to `Admin/Auditor_Protocols.md` still pending.
 
-**FAK-007** — `Unknowns.md` derivation string was stale at v4.0 while actual file had reached v4.5 (three version-bump maintenance triggers missed per this kit's own How to Use §Maintenance trigger rule). Corrected 2026-07-02. Critical watch summary (Audit Opening Checklist step 3) was derived against v4.0 and had not been refreshed against the intervening SEC-007a/b split, SEC-012, EDL registry, or Resolved Unknown Discharge Procedure additions. **Resolved 2026-07-05** — full refresh completed against `Unknowns.md` v4.10: derivation string corrected v4.9 → v4.10 (a second staleness had crept in since the 2026-07-02 fix); critical watch summary rebuilt from live data rather than patched; GOV-011's resolution reflected; EC-002 ambiguity (see CT-007 escalation, `Admin/Canonical_Terms.md`) surfaced and flagged inline rather than silently perpetuated; Cycle definition cross-referenced per CT-011. Status: Resolved.
+**FAK-007** — Critical watch summary went stale against `Unknowns.md` twice (v4.0→v4.5, then v4.9→v4.10) before being refreshed each time; full incident in changelog. Resolution: refreshed 2026-07-05. Lessons Learned: a hand-maintained duplicate of another file's registry will recur as a staleness source regardless of refresh diligence — structurally superseded by FAK-004/v1.10, which removes the duplicate mechanism rather than re-committing to keep refreshing it. Status: Resolved.
 
-**FAK-008** — Gate scope vs. promotion readiness ambiguity (see Verification Gates section) resolved a live cross-agent dispute: Grok scored Security_Protocols.md's G3/G6 as partial/blocked by folding unresolved upstream unknowns into gate status; Gemini scored both as passing, treating gate status as coverage/textual-only per `Admin/Auditor_Protocols.md` §Specification Promotion Rules' explicit separation of "gates pass" from "open unknowns non-blocking." Gemini's reading is structurally correct per source doctrine. Logged as a Synthesizer-level resolution (reversible if reasoning is disputed, not a Tier 1 ratification) in `Admin/Security_Protocols.md` Active Disputes per `Admin/Auditor_Protocols.md` §Dispute Handling Protocol. Status: Resolved.
+**FAK-008** — Cross-agent Gate 3/G6 scoring dispute on `Security_Protocols.md`: gate execution-quality and open-unknown blocking are separate, independently required axes (see Verification Gates). Resolution: logged as Synthesizer-level resolution in `Security_Protocols.md` Active Disputes, 2026-07-02. Status: Resolved.
 
-**FAK-009** — `Admin/Verification_Gates_LF.md` was unavailable when FAK-008's clarification was drafted, so it cited `Admin/Auditor_Protocols.md` directly instead of the intermediate canonical layer this kit is actually supposed to derive from. This is a concrete instance of the exact risk VG-001 (logged in Verification_Gates_LF.md since 2026-05-29) describes: derived files diverging silently at derivation boundaries. Made available later the same session; checked and found independently consistent — no actual divergence occurred, but the citation path was wrong. Corrected: kit's Derived-from line now includes Verification_Gates_LF.md; gate note citation corrected to route through it. Full incident logged in Verification_Gates_LF.md's own Resolution Log as the first concrete evidence for VG-001, which remains Open — the underlying synchronization-authority-chain gap (no defined update trigger, reconciliation owner, or promotion freeze condition) is not fixed by this one manual catch. Status: Open (VG-001 itself unresolved; this kit's citation is corrected).
+**FAK-009** — Gate scope clarification (FAK-008) was drafted while `Verification_Gates_LF.md` was unavailable, so it cited `Admin/Auditor_Protocols.md` directly instead of the correct intermediate canonical layer — first concrete incident evidence for VG-001. Resolution: citation corrected here once the file became available; checked independently consistent, no actual divergence. Lessons Learned: a derived file can cite the wrong layer of its own derivation chain even when the content stays correct — citation path and content correctness are different failure modes and both need checking. Status: Open (VG-001 itself remains unresolved in `Verification_Gates_LF.md`; this kit's citation is corrected).
 
 ---
 
 ## Resolution Log
 
-- 2026-07-05: **v1.9 — FAK-007 Resolved: full critical watch refresh.**
-  Derivation string corrected `Unknowns.md` v4.9 → v4.10 (a second
-  staleness had accumulated since the 2026-07-02 fix) and
-  `Admin/Auditor_Protocols.md` v0.16 → v0.18. Critical watch summary (Audit
-  Opening Checklist step 3) rebuilt from live `Unknowns.md` v4.10 data
-  rather than patched — added explicit note that this is a curated
-  highlight, not the exhaustive Critical list, and pointed to
-  `Unknowns.md`'s own cross-reference table for completeness rather than
-  attempting to duplicate ~35 Critical entries here (consistent with
-  FAK-005's character-ceiling constraint). GOV-011's 2026-07-05 resolution
-  reflected, with an explicit flag that `Unknowns.md`'s own global index
-  has not yet been updated to match — that sync is separate outstanding
-  work. Surfaced and flagged inline, rather than silently perpetuated: the
-  `EC-002` reference in the prior critical watch summary was ambiguous
-  without a file qualifier — confirmed as an actual, already-occurred `EC-`
-  prefix collision between `Ethical_Constraints.md` and `Economics.md`
-  (five colliding IDs total), escalated as CT-007 in
-  `Admin/Canonical_Terms.md` rather than resolved here (this file doesn't
-  own that fix). Expiry Watch step text now cross-references
-  `Admin/Canonical_Terms.md` §4's Cycle definition per CT-011, distinguishing
-  audit pass from calendar cycle. New Drift Indicator added for
-  cycle-vs-pass conflation.
+Full history: `Admin/Forge_Audit_Kit_Changelog.md` (relocated out of this
+kit at v1.10 — add new entries there, not here).
 
-- 2026-06-21: **v1.2** — Derivation string updated to `Admin/Auditor_Protocols.md` v0.8.1. Epistemic Foundation condensed reference added. Audit Opening Checklist restructured. AP-001–AP-007 Systemic Risk escalation added. Physical harness gate note added. Rule 8 added to AI Contribution Rules. Token ceiling note added.
-- 2026-06-24: **v1.3** — Derivation strings updated to `Admin/Auditor_Protocols.md` v0.14 and `Unknowns.md` v4.0. Role declaration version string updated to v0.14. Human Interaction Point Doctrine added to Governing Principles. EF-0.2 L2 entry updated to reflect autonomous degradation doctrine. Active Unknowns section removed — replaced by critical watch summary integrated into Expiry Watch step. AP Systemic Risk escalation note updated: all seven entries carry resolution frameworks; AP-006 and AP-009 Resolved; AP-012 and AP-016 Critical. GH- prefix added to Governance Sidecar ID Reference. Operational Blocking / Epistemic Blocking added to Semantic Stability table. Gate 3 note updated with AP-017 independence requirement and current block status. AP-010 physical harness note updated. Token ceiling note updated to reflect v0.14 character count. FAK-005 remains Open — actual post-reduction count ~16,950; ceiling parameter needs revisiting, not the content. Reduction pass complete.
-- 2026-06-27: **v1.3 patch** — Spec Gates (0/6) and Verification Ref (Admin/Verification_Gates_LF.md) added to File State block. Phase 1 enforcement (AUDIT_HARNESS.py v11) flagged missing fields — all repository documents follow the same File State schema, no exceptions for meta documents.
-- 2026-07-02: **v1.4** — Resolved Unknown Discharge Procedure section added, canonizing the RIP-001 pattern (permanent sidecar retention, Resolution + Lessons Learned narrative fields, matching top-table row, one-line Unknowns.md pointer — no centralized archive). Placed between Verification Gates and Sign-Off Format. Matching Drift Indicator added. FAK-006 logged — condensed version lives here per Scope Boundary; full doctrine migration to `Admin/Auditor_Protocols.md` still pending (file unavailable this session). Prompted by retroactive correction of RIP-004's discharge record, which had skipped the Lessons Learned narrative field and matching table row for six weeks despite being correctly resolved in substance.
-- 2026-07-02: **v1.5** — Gate scope vs. promotion readiness clarification added to Verification Gates, sourced from `Admin/Auditor_Protocols.md` §Specification Promotion Rules and §Adversarial Audit Layer (file made available this session for the first time). Resolves the standing Grok/Gemini G3/G6 disagreement on `Admin/Security_Protocols.md`: gates test a document's own execution quality (check applied and documented, text non-contradictory); "open unknowns are non-blocking" is a separate, independently required promotion condition, not folded into G3 or G6. Flagged a legibility issue in the source: `Admin/Auditor_Protocols.md`'s own Gate 3 status entry blends "battery coverage complete" with "promotion blocked" in one line — correct in substance, ambiguous in phrasing. Gate 3 note rewritten to separate the two explicitly. `Unknowns.md` derivation string corrected from stale v4.0 to v4.5 (three missed maintenance-trigger updates). New Drift Indicator added for gate/promotion-status conflation. FAK-007 logged — critical watch summary still needs a full refresh against v4.0→v4.5 changes, not done this session. FAK-008 logged — dispute resolution recorded as Synthesizer-level, reversible, cross-referenced into `Admin/Security_Protocols.md` Active Disputes per `Admin/Auditor_Protocols.md` §Dispute Handling Protocol.
-- 2026-07-02: **v1.6** — `Admin/Verification_Gates_LF.md` reconciliation.
-  Derivation line corrected to include it (was citing `Auditor_Protocols.md`
-  only, skipping the intermediate canonical layer this kit's gate table is
-  actually derived from). Gate scope vs. promotion readiness note's citation
-  corrected to route through Verification_Gates_LF.md §Gate 3/§Gate 6/
-  §Promotion Requirements Summary; checked against it and confirmed
-  independently consistent — no actual divergence, wrong citation path only.
-  FAK-009 logged as the first concrete incident evidence for VG-001 (open
-  since 2026-05-29, previously hypothetical risk). VG-001 remains Open —
-  see Verification_Gates_LF.md Resolution Log for the full record.
-- 2026-07-02: **v1.7** — Derivation line was stale within the same session
-  that fixed it: v1.6 cited `Verification_Gates_LF.md v0.2` after that file
-  had already been bumped to v0.3 in the same pass, and still cited
-  `Unknowns.md v4.5` after Unknowns.md had moved to v4.6 then v4.7. Both
-  corrected. Caught via a user-initiated live-repo check (Grok retrieval of
-  File State fields across five files) following a file-management incident
-  (accidental cloning, ~10% truncation of `Auditor_Protocols.md`, five
-  duplicate `Unknowns.md` versions consolidated back to one). Check found
-  no content loss — `Unknowns.md` confirmed v4.7, this file confirmed v1.6,
-  `Security_Protocols.md` Open Unknowns confirmed at 12 (only possible if
-  the SEC-007a/b split edit persisted) — but did catch this kit's own
-  derivation-citation drift, a same-session recurrence of the exact pattern
-  VG-001 and FAK-007 describe. Note: this check verified File State header
-  fields only, not full body content (SEC-DS-001, EDL registry, RIP-004
-  Lessons Learned fields, Discovery.md Objectives section unconfirmed by
-  this pass).
-- 2026-07-03: **v1.8** — Derivation line updated (`Auditor_Protocols.md`
-  v0.14 → v0.16, `Verification_Gates_LF.md` v0.3 → v0.4, `Unknowns.md`
-  v4.7 → v4.9). Gate 3 note corrected: AP-012 and AP-016 Resolved as of
-  `Auditor_Protocols.md` v0.16 (2026-07-03, Payment via Specification,
-  full multi-agent specification text verified against original blocking
-  conditions) — was still citing them as blocking. Critical watch summary
-  partially corrected for the same reason (AP-012/AP-016 removed, RIP-001
-  and SEC-007 updated to current split/resolved state); full v4.0→v4.9
-  refresh still not done, FAK-007 remains open.
+Most recent: v1.10 (2026-07-14) — Expiry Watch redesign (critical watch
+list removed, cross-reference moved post-audit), Resolution Log and
+FAK-* narrative externalized, Truth Provenance Labels and derivation
+versions corrected to current source state.
