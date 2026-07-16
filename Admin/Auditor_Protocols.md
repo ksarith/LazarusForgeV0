@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.21**
+**Version 0.22**
 
 ## File State
 
@@ -9,8 +9,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-14                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14 |
+| Last Audit       | 2026-07-16                                                          |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013, stale v0.14 sign-off template corrected (human-directed), 2026-07-16 |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -1063,7 +1063,34 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.14 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.21 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+
+---
+
+## Post-Exit Monitoring Metrics (GOV-013)
+
+Operational metrics for `Admin/Governance_Charter.md`'s Post-Exit Monitoring Doctrine (Pathway 2/3) — PROPOSED, NOT RATIFIED alongside that Charter section; see GOV-013 there. This section defines what is measured and against what threshold. `Admin/Repository_Integrity_Protocol.md` defines how measurement is mechanically performed and what happens on a confirmed breach — this file does not define reversion mechanics, to avoid the same constitutional/implementation mixing GOV-013's drafting process caught and corrected.
+
+**Metrics:**
+
+| Metric | Definition | Sampling |
+|---|---|---|
+| Semantic Drift Score | Fallacy Checklist Item 4 findings per audit cycle, applied to the exited instance's own governance files | Every audit cycle (Structural Validation, Phase 1, above) |
+| Unknown Accumulation Rate | New Open unknowns registered per cycle, minus Resolved, across the instance's owned files | Every audit cycle |
+| Self-Authorization Incidents | Any action where the same agent instance both planned and executed a Tier 1-scoped change without the role separation `Admin/Governance_Charter.md`'s Genesis Phase Protocol requires | Continuous — logged at time of occurrence, reviewed at each audit cycle |
+| Structural Alignment | Cross-reference integrity against `Discovery.md`/`Routing.md` canonical paths — Gate 5 criteria, unchanged, not a new check | Every audit cycle |
+
+**Thresholds — placeholder pending human governing authority ratification, not yet enforceable:**
+- Semantic Drift Score: [Threshold TBD] findings sustained across 2 consecutive cycles
+- Unknown Accumulation Rate: net positive for 3 consecutive cycles without a corresponding Resolution Path update — mirrors GOV-012's stagnation-decay mechanism, itself pending the Cycle-unit ambiguity noted there being resolved first (see Adversarial Audit Layer, above, and `Admin/Forge_Audit_Kit_Changelog.md`'s 2026-07-14 Battery record)
+- Self-Authorization Incidents: any confirmed incident — zero tolerance, immediate escalation regardless of count
+- Structural Alignment: any Gate 5 failure not remediated within 1 cycle
+
+**Logging requirement:** metrics are logged in the exited instance's own sidecar (Auditor Notes & Unknowns, per the Decentralized Audit Architecture / Sidecar Model, above) — not a separate central ledger, consistent with this file's existing sidecar doctrine. Central visibility is via `Unknowns.md` registration of the owning entry, not duplicated metric storage.
+
+**Escalation:** any threshold breach routes to `Admin/Repository_Integrity_Protocol.md`'s Violation Classification and Response Ladder for classification and the reversion procedure — this file does not define what happens after a breach is confirmed.
+
+Thresholds above are drafted, not ratified — human governing authority must set actual numeric values before this section is enforceable. Placeholder values are intentionally conservative starting points, not a final specification.
 
 ---
 
@@ -1670,6 +1697,20 @@ Mandatory re-audit conditions for this document:
 ---
 
 ### Resolution Log
+
+- 2026-07-16: **v0.22 — Post-Exit Monitoring Metrics added (GOV-013);
+  stale sign-off template corrected.** New §Post-Exit Monitoring Metrics
+  defines Semantic Drift Score, Unknown Accumulation Rate, Self-
+  Authorization Incidents, and Structural Alignment for
+  `Admin/Governance_Charter.md`'s Post-Exit Monitoring Doctrine — metrics
+  and placeholder thresholds only, per this file's Tier 2 role; reversion
+  mechanics deliberately excluded, routed to
+  `Admin/Repository_Integrity_Protocol.md`. Both new sections marked
+  PROPOSED, NOT RATIFIED, matching the Charter section they implement.
+  Separately: §Observability & Audit Trail's standard sign-off example
+  string still read `v0.14` — a fourth live instance of the same stale
+  string fixed at v0.21 (Role Declaration Requirement) and propagated to
+  `Admin/Forge_Audit_Kit.md`, missed in that pass. Corrected to v0.22.
 
 - 2026-07-14: **v0.21 — Audit Phase Separation codified; role-count proposal
   declined (human-directed).** New §Audit Phase Separation: Audit →
