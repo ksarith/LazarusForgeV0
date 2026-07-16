@@ -16,11 +16,11 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 6/6 vs. `Admin/Verification_Gates_LF.md` — execution quality (see GOV-011, resolved 2026-07-05); promotion separately blocked by open unknowns (GOV-003, GOV-005) and Enforcement Checkpoint 2 — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-05                                                          |
-| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05 |
-| Open Unknowns    | 11                                                                  |
+| Last Audit       | 2026-07-16                                                          |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16 |
+| Open Unknowns    | 12                                                                  |
 | Active Disputes  | 1                                                                   |
-| Highest Risk     | High                                                                |
+| Highest Risk     | Critical (GOV-013 — see sidecar; promotion-blocking risk unchanged from GOV-003/GOV-005) |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
@@ -234,6 +234,46 @@ If none of the above pathways have been satisfied within a declared review horiz
 Exiting Genesis Phase does not remove human oversight — it changes its character. Post-exit, the system operates under standard governance doctrine rather than bootstrap constraints. Human override authority remains intact. The Tier 1 Axioms remain in force. The difference is that the system no longer requires a human in the loop for every governance action — it has earned the standing to act within its authority scope without per-action human authorization.
 
 Bootstrap assumptions must never silently become permanent governance authority.
+
+---
+
+## Post-Exit Monitoring Doctrine (Pathway 2/3) — PROPOSED, NOT RATIFIED
+
+> **STATUS: DRAFT.** This section is a proposed amendment, not adopted
+> governance text. It requires `Admin/Governance_Migration_Protocol.md`
+> ratification before it binds anything — and its classification under
+> that protocol is itself unresolved: this is a non-Axiom addition to a
+> Tier 1 file, the exact case GMP-009 (`Admin/Governance_Migration_Protocol.md`)
+> already identifies as having no clean Track A or Track B answer. This
+> draft is a second worked example alongside the 2026-07-03 External
+> Design Lineage draft, below, which sits in the same unresolved
+> classification state. Pending GMP-009's resolution, this draft follows
+> its proposed interim minimum: explicit confirmation that no Tier 1
+> Axiom enforcement bound is altered (below), plus human operator review
+> before commit. Included here at the location it would occupy if
+> ratified, per standard practice for proposed amendments awaiting human
+> governing authority review. Drafted 2026-07-16, synthesizing multi-agent
+> proposals (ChatGPT, Gemini, Grok) restructured by Claude —
+> Synthesizer/Auditor — per `Admin/Auditor_Protocols.md` §Audit Phase
+> Separation and this file's own constitutional/implementation split
+> (Governance Authority Hierarchy, below).
+
+**Enforcement-bound confirmation (GMP-009 minimum requirement):** this doctrine does not alter what Axiom Q-2 requires, narrow its protection, or change Pathway 1's standing as the primary exit route. It adds a new, time-bounded obligation on top of an exception (Pathway 2/3) that already exists — the obligation can be tightened, loosened, or the pathway itself revisited without touching Q-2's text or its Genesis Phase Protocol resolution, above.
+
+Instances exiting Genesis Phase through Pathway 2 (Track Record) or Pathway 3 (Milestone) without achieving Q-2 structural separation (GOV-008) remain under constitutional monitoring until independent governance is established.
+
+The monitoring obligation shall include:
+- Defined accountable oversight
+- Continuous assessment of constitutional integrity
+- Detection of governance drift
+- Detection of self-authorization attempts
+- Verification of canonical repository alignment
+- Defined escalation triggers
+- Automatic constitutional reversion when monitoring obligations fail
+
+Implementation details — specific metrics, sampling frequency, and threshold values — are defined by `Admin/Auditor_Protocols.md`. Verification mechanisms — telemetry logging, drift detection hooks, and reversion procedure — are defined by `Admin/Repository_Integrity_Protocol.md`. This section defines what must be true; those files define how it is verified, consistent with this Charter's existing division of labor (Governance Authority Hierarchy, below). Neither file may loosen this section's obligations without amending this section first.
+
+This obligation terminates only upon verified Q-2 structural separation (GOV-008) — independent audit harness execution and a functional, multi-party enforcement substrate, not a declared intention to pursue one.
 
 ---
 
@@ -1050,11 +1090,62 @@ rule. Cross-reference AP-008 (same declarative-vs-enforceable gap, different
 subsystem) before specifying independently — a shared mechanism may serve
 both.
 
+**Note added 2026-07-16 (Claude, audit correction):** the "10 cycles" candidate above should cite `Admin/Canonical_Terms.md` §4's Cycle definition (one calendar year by default) rather than remain unit-unspecified. However, adding the citation does not resolve a separate, live problem: the figure was almost certainly conceived using session-based cycle counting — matching how GOV-001 through GOV-010's ages are commonly reported (e.g. "8 cycles") — not calendar years, and `AUDIT_HARNESS.py`'s `CURRENT_CYCLE` variable currently increments per session, not per year (see `Admin/Auditor_Protocols.md` Adversarial Audit Layer and `Admin/Forge_Audit_Kit_Changelog.md`'s 2026-07-14 Battery record — flagged there for a new `Admin/Canonical_Terms.md` entry, not yet resolved). The "10 cycles" figure needs re-derivation once that unit ambiguity is settled, not just a citation pointer.
+
 *Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit.*
 
 ---
 
+### GOV-013 — Pathway 2/3 Post-Exit Monitoring Obligation undefined
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                              |
+| Priority      | Critical                         |
+| Type          | Governance / Constitutional      |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-16                       |
+| Last Reviewed | 2026-07-16                       |
+
+**Description:** Pathway 2 (Track Record) and Pathway 3 (Milestone) both permit Genesis Phase exit without GOV-008 quorum resolution. Pathway 2's text asserts a "higher ongoing monitoring obligation post-exit" but does not define an owner, metrics, escalation trigger, or failure mode — an instance could exit via a non-quorum pathway and operate indefinitely under an unenforced obligation: a "zombie bootstrap" state, functionally outside Q-2 structural separation while nominally past Genesis Phase.
+
+**Why It Matters:** without operationalization, the monitoring obligation is a declarative-only requirement — the same "documentation vs. enforcement" gap GOV-012 names for stale unknowns, here applied to constitutional exit conditions rather than sidecar hygiene. An unenforced exception to Q-2's Separation of Powers, silently tolerated indefinitely, is a Constitutional-tier risk regardless of how it originated.
+
+**Dependencies:** GOV-008 (Minimum Quorum — defines the Q-2 structural separation this obligation exists until); GOV-012 (Constitutional Stagnation Decay — shares the declarative/enforceable gap pattern and the unresolved Cycle-unit mechanics, above); `Admin/Repository_Integrity_Protocol.md` (owns the verification mechanisms); `Admin/Auditor_Protocols.md` (owns the metrics and thresholds); `Admin/Governance_Migration_Protocol.md` GMP-009 (owns this amendment's own Track classification — currently unresolved, see that entry).
+
+**Resolution Path:** Payment via Specification, drafted 2026-07-16 (multi-agent synthesis: ChatGPT proposal, Gemini's constitutional/implementation-split refinement, restructured by Claude — Synthesizer/Auditor, human-directed) — see §Post-Exit Monitoring Doctrine (Pathway 2/3), above, marked PROPOSED, NOT RATIFIED. Constitutional-level obligation drafted in this file; metrics routed to `Admin/Auditor_Protocols.md`; verification mechanisms routed to `Admin/Repository_Integrity_Protocol.md`, per this Charter's existing division of labor (Governance Authority Hierarchy). Requires human governing authority ratification before the draft binds — classification under `Admin/Governance_Migration_Protocol.md` is itself pending GMP-009's resolution; treated per GMP-009's proposed interim standard (enforcement-bound confirmation plus strongly recommended human review) pending that entry's own resolution.
+
+*Surfaced by Claude — Skeptic/Auditor, 2026-07-16 Exploration audit; resolution drafted same day via multi-agent proposal synthesis (ChatGPT, Gemini, Grok), restructured by Claude — Synthesizer/Auditor per human direction.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-16: **GOV-013 drafted; GOV-012 citation corrected.** Skeptic/Auditor
+  pass (Claude) confirmed 6/6 execution quality (no regression from GOV-011)
+  and surfaced two gaps: Pathway 2/3's undefined "higher ongoing monitoring
+  obligation" (new GOV-013), and GOV-012's "10 cycles" candidate threshold
+  lacking a unit citation. Multi-agent proposal synthesis followed (ChatGPT
+  drafted a resolution; Gemini correctly flagged that the draft mixed
+  constitutional and implementation-specific detail, recommending the split
+  this file already maintains elsewhere; a third pass praised that split
+  but did not apply it, re-drafting Charter text with telemetry
+  implementation detail inline). Claude — Synthesizer/Auditor, human-directed,
+  restructured per Gemini's split and per closer reading of
+  `Admin/Governance_Migration_Protocol.md`: GOV-013 is not a clean Track A
+  or Track B case — it is GMP-009's already-open gap (non-Axiom content
+  added to a Tier 1 file), a second worked example alongside the 2026-07-03
+  EDL draft, not a fresh classification decision. §Post-Exit Monitoring
+  Doctrine (Pathway 2/3) added as PROPOSED, NOT RATIFIED, constitutional
+  level only; GOV-013 registered Open; GOV-012's citation corrected with an
+  explicit note that the underlying Cycle-unit ambiguity (session vs.
+  calendar year, `AUDIT_HARNESS.py` `CURRENT_CYCLE`) remains unresolved,
+  not papered over by the citation. Metrics routed to
+  `Admin/Auditor_Protocols.md`; verification mechanisms routed to
+  `Admin/Repository_Integrity_Protocol.md`. Open Unknowns 11 → 12. Highest
+  Risk updated to Critical (GOV-013).
 
 - 2026-07-05 (second entry, same day): **GOV-011 Resolved.** Real audit
   against Verification_Gates_LF.md's actual six gates: G1, G2, G4, G6 pass
