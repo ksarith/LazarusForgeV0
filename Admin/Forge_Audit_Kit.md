@@ -14,7 +14,7 @@
 | Sidecar Link   | Admin/Forge_Audit_Kit_Changelog.md#sidecar--auditor-notes--unknowns |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.20 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.20
+**Derived from:** `Admin/Auditor_Protocols.md` v0.21 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.20
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -157,7 +157,7 @@ Substantive notes required — bare checkmarks are not verification. Full text: 
 
 ## AI Contribution Rules
 
-Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.20"*
+Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.21"*
 
 Valid roles: Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -272,7 +272,7 @@ Load this file plus the document under audit. That is the baseline for every rou
 
 Load additional files only when the audit focus requires them — each adds tokens. Candidates: `Admin/Auditor_Protocols.md` (full role doctrine, full EF constitutional text, full Adversarial Battery), `Unknowns.md` (full unknown detail), `Discovery.md` (path lookup, Rename Registry), target file's upstream architecture files.
 
-**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 95,000 characters at v0.20. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
+**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 96,000 characters at v0.21. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
 
 **Load full source documents instead of this kit when:** auditing `Admin/Auditor_Protocols.md` itself · onboarding a new agent · full unknown entry detail required · EF section interpretive dispute.
 
