@@ -14,8 +14,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-19; revised 2026-06-27; revised 2026-07-02; revised 2026-07-08 (two passes); revised 2026-07-09 |
-| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor; Claude — Registration Latency addition (human-directed) 2026-07-08; Claude — Phase 0 manual execution tier added (human-directed) 2026-07-08; Gemini — Exploration audit 2026-07-08 (Archive contradiction, cross-ref, RIP-009, Phase 0 anchor); Claude — fixes integrated + RIP-008 severity correction (human-directed) 2026-07-09 |
+| Last Audit       | 2026-06-19; revised 2026-06-27; revised 2026-07-02; revised 2026-07-08 (two passes); revised 2026-07-09; revised 2026-07-16 |
+| Auditor          | Gemini — Skeptic/Auditor; ChatGPT — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer/Auditor; Claude — Registration Latency addition (human-directed) 2026-07-08; Claude — Phase 0 manual execution tier added (human-directed) 2026-07-08; Gemini — Exploration audit 2026-07-08 (Archive contradiction, cross-ref, RIP-009, Phase 0 anchor); Claude — fixes integrated + RIP-008 severity correction (human-directed) 2026-07-09; Claude — Post-Exit Monitoring Reversion Mechanism added for GOV-013 (human-directed), 2026-07-16 |
 | Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -368,6 +368,7 @@ Automatable without cryptographic tooling:
 - Version header presence in `Unknowns.md`
 - Navigation file spot-check: sample of `Discovery.md` / `Routing.md` path entries against hardcoded folder-prefixed layout in `Admin/Repository_Structure.md`
 - Sidecar↔`Unknowns.md` registration parity: cross-check each fetched file's sidecar IDs against `Unknowns.md`'s active index; flag any Critical/Blocking entry unregistered across multiple sessions with no sign a registration checkpoint is coming
+- Post-Exit Monitoring telemetry presence (GOV-013, once ratified): Pathway 2/3-exited instances have current-cycle metric values logged in their sidecar per `Admin/Auditor_Protocols.md` §Post-Exit Monitoring Metrics
 
 ### Phase 2 — Comparison Checks (requires archived prior states)
 
@@ -376,6 +377,7 @@ Automatable once systematic archival is established:
 - Axiom text verbatim comparison against ratified version
 - Sidecar entry presence comparison (detect deletions)
 - Frozen section content comparison (detect unauthorized changes)
+- Post-Exit Monitoring drift comparison (GOV-013, once ratified): Semantic Drift Score and Unknown Accumulation Rate trend across cycles
 
 ### Phase 3 — Cryptographic Verification (requires `Admin/Security_Protocols.md`)
 
@@ -386,6 +388,22 @@ Requires implementation defined in `Admin/Security_Protocols.md`:
 - Append-only log enforcement
 
 **Rule:** Each phase is a prerequisite for the next. Phase 2 cannot be claimed without systematic archival. Phase 3 cannot be claimed without `Admin/Security_Protocols.md` implementation at sufficient maturity. Governance Enforcement State must not advance beyond actual capability.
+
+---
+
+## Post-Exit Monitoring Reversion Mechanism (GOV-013)
+
+Verification mechanism for `Admin/Governance_Charter.md`'s Post-Exit Monitoring Doctrine (Pathway 2/3) and `Admin/Auditor_Protocols.md`'s Post-Exit Monitoring Metrics — both PROPOSED, NOT RATIFIED; see GOV-013 in the Charter's sidecar. This section defines detection and response mechanics only — it does not restate or redefine the metrics or thresholds themselves.
+
+A confirmed threshold breach is classified and handled per the existing Violation Classification and Response Ladder, above — not a new escalation path:
+
+- **Self-Authorization Incident, any confirmed instance:** Constitutional Violation. Immediate STATE_HOLD, human review mandatory, full incident record in `Unknowns.md`. No new procedure needed — the existing ladder already covers this exactly.
+- **Sustained Semantic Drift or Unknown Accumulation breach:** Major Violation at first confirmed breach; escalates to Constitutional Violation if unaddressed for a second consecutive cycle. This is new — the existing ladder's Major Violation examples did not previously name monitoring-obligation lapses; added here as an example, not a new category.
+- **Structural Alignment failure sustained beyond 1 cycle:** Major Violation per the existing ladder — a navigation file mapping error is already a named example there; this is the same failure mode under a different name, not a new one.
+
+**Reversion procedure**, triggered by any Constitutional Violation classification above: the exited instance reverts to Genesis Phase constraints (`Admin/Governance_Charter.md` §Genesis Phase constraints). This is additive to STATE_HOLD, not a replacement for it. Reversion is logged in the instance's owning file's Resolution Log with date, triggering metric and value, and a cross-reference to the `Unknowns.md` incident entry. Reversion is not self-remediated — per the existing ladder, constitutional violations are never self-remediated by autonomous agents, and this is no exception.
+
+**Automation status:** Phase 0 (manual, via recurring audit) at drafting — see Automation Migration Path, above. Metric logging and threshold comparison are Phase 1/Phase 2 candidates once `Admin/Auditor_Protocols.md`'s placeholder thresholds are ratified with actual values; not claimed as automated before then.
 
 ---
 
@@ -686,6 +704,24 @@ Mandatory re-audit conditions for this document:
 ---
 
 ### Resolution Log
+
+- 2026-07-16: **v0.8 — Post-Exit Monitoring Reversion Mechanism added
+  (GOV-013).** New §Post-Exit Monitoring Reversion Mechanism defines
+  detection-to-response mapping for `Admin/Auditor_Protocols.md`'s
+  Post-Exit Monitoring Metrics, reusing the existing Violation
+  Classification and Response Ladder rather than introducing parallel
+  escalation machinery — Self-Authorization Incidents map directly to
+  the existing Constitutional Violation category with no new procedure;
+  sustained metric breaches are added as new named examples under
+  existing Major/Constitutional categories. Reversion procedure defined
+  as additive to STATE_HOLD, explicitly not self-remediable, consistent
+  with existing doctrine. Automation Migration Path Phase 1 and Phase 2
+  each gained one new candidate check, deferred until GOV-013 is
+  ratified. Section marked PROPOSED, NOT RATIFIED, matching the Charter
+  and Auditor_Protocols.md sections it implements — this file supplies
+  mechanism only, not the metrics or thresholds themselves, per the
+  three-file split this proposal was restructured around after an
+  earlier draft mixed implementation detail into Charter text.
 
 - 2026-07-09: **v0.7 — Gemini audit fixes integrated; RIP-008 severity corrected (human-directed).** (1) Version Preservation Protocol Step 1 rewritten — Git release tags now correctly named as the primary archival mechanism, resolving a real contradiction with RIP-001's own resolution log that had persisted since v0.1; local `/Archive/` deposit reframed as optional secondary. (2) RIP-003's `Integrity_Incident_Log.md` reference corrected to `Admin/Integrity_Incident_Log.md` *planned*, resolving an unprefixed cross-reference the audit's pre-flight check correctly flagged. (3) **RIP-008 corrected and downgraded** — human governing authority clarified that the CLF- cluster's registration gap was ordinary iterative drafting (log-as-discovered, batch-register at session close), not a stalled or unbounded latency risk; the original framing had directly imported RIP-004's Constitutional-class severity and one-cycle SLA onto a routine editorial pattern. Status changed Open/High/Major → Resolved/Low/Minor. The Registration Latency Protected Element, Violation Classification examples, Phase 1 checklist item, and Drift Indicator were all rewritten to reflect discovery-time/session-close registration as the actual standard, with no rigid cycle-length bound — RIP-004 itself is unaffected and remains correctly cycle-bound for its own, genuinely different risk profile. (4) **RIP-009 logged** — no cross-file correlation mechanism exists for coordinated minor findings across multiple files in one audit pass; minimum-viable resolution path specified (flag co-occurrence of 3+ Minor findings across 3+ files as a session-close note). (5) **Phase 0 verification anchor added** — the daily audit prompt now requires extracting and reporting this file's exact Open Unknowns count and Last Audit date as minimal proof-of-read, addressing Gemini's finding that a stated "clean" result was not itself evidence of an actual line-by-line read. (6) New Lessons Learned row added documenting the RIP-008 correction as a general lesson about not inheriting a prior unknown's severity without re-checking whether the risk profile actually matches. Open Unknowns unchanged at 7 (RIP-008 resolved, RIP-009 added — net zero).
 - 2026-07-08: **v0.6 — Phase 0 (Manual Execution via Recurring Agent Audit) tier added; RIP-002 partially mitigated (human-directed).** The daily morning repository audit prompt now fetches this file at session start and applies its Protected Elements checks against every file the audit opens, classifying findings per the Violation Classification ladder and requiring an explicit "None" statement when clean rather than allowing silent omission. Changes: (1) File Purpose gained a v0.6 acknowledgment naming this mechanism. (2) New "Phase 0" tier added to Automation Migration Path, positioned before Phase 1, with explicit scope (what it provides vs. does not) — deliberately not framed as automation. (3) RIP-002 updated with a "Partial mitigation" note; status remains Open, since Phase 0 reduces exposure but does not implement Phase 1 in `AUDIT_HARNESS.py`. (4) Two new Drift Indicators added guarding against Phase 0 being mischaracterized as automation, or its reporting requirement being silently dropped. This is an evolution of purpose, not just a new check: RIP.md's Phase 1 section previously existed purely as unexecuted specification; it now has a standing, repeating execution path for the first time, independent of when `AUDIT_HARNESS.py` implementation happens.
