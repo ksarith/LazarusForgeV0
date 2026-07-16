@@ -14,8 +14,8 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-19                                                          |
-| Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer |
+| Last Audit       | 2026-06-19; revised through at least 2026-07-05 internally (GMP-005/GMP-009 dated later than this header — header was not kept current, see Resolution Log); Claude — GOV-013 cross-reference added, 2026-07-16 |
+| Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer; Claude — GMP-009 cross-referenced to GOV-013 (human-directed), 2026-07-16 |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -762,9 +762,31 @@ enforcement bound is altered, plus human operator review before commit
 of Tier 2 documents). Cross-reference the EDL amendment itself as the
 worked example once classified.
 
+**Second worked example, 2026-07-16:** `Admin/Governance_Charter.md` GOV-013
+(Post-Exit Monitoring Doctrine, Pathway 2/3) is a live second case in the
+same unresolved state as EDL — new constitutional content, no Axiom text
+touched. Drafted and treated per this entry's own proposed interim minimum
+(enforcement-bound confirmation present in that section; human review
+recommended, not yet obtained) rather than waiting on this entry's formal
+resolution. Two independent live cases sitting in the same unclassified
+state is worth weighing when this entry is next reviewed — not a reason
+to resolve it unilaterally here.
+
 ---
 
 ### Resolution Log
+
+- 2026-07-16: **GMP-009 cross-referenced to GOV-013.** While drafting
+  `Admin/Governance_Charter.md` GOV-013 (Post-Exit Monitoring Doctrine,
+  Pathway 2/3), determined it doesn't cleanly fit Track A or Track B —
+  it's GMP-009's already-open gap (non-Axiom content added to a Tier 1
+  file), not a fresh classification question. Added GOV-013 as a second
+  worked example alongside EDL in GMP-009's entry; GMP-009 itself not
+  resolved here, left for its own review. Separately: this file's own
+  File State Last Audit header was stale against its own body content
+  (GMP-005/GMP-009 both dated later than the header) — flagged in the
+  header rather than fully re-dated, since establishing the file's true
+  last-touch history is a separate task not attempted this pass.
 
 - 2026-06-05: File created (v0.1) — GOV-001 resolution path initiated.
   Two-track migration architecture established. Phase 1–4 Track B procedure
