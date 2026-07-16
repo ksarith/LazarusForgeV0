@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.20**
+**Version 0.21**
 
 ## File State
 
@@ -9,8 +9,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-10                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10 |
+| Last Audit       | 2026-07-14                                                          |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14 |
 | Open Unknowns    | 9                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -396,7 +396,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.14"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.21"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -917,7 +917,39 @@ Adversarial Challenge Battery:
 
 ---
 
-## Drift Detection Protocol
+## Audit Phase Separation
+
+Three cognitively distinct postures apply across an audit cycle, in strict sequence. Each phase's artifacts freeze at its own close; later phases add, they do not rewrite.
+
+| Phase | Posture | Default stance |
+|---|---|---|
+| 1. Audit | Characterize faithfully | "What does this document actually claim?" |
+| 2. Adversarial Challenge | Assume it's wrong, find out how | "How does this fail?" |
+| 3. Synthesis | Integrate, don't reconcile | "How do these findings relate?" |
+
+**Why sequential, not simultaneous:** characterizing a document fairly and trying to break it are different cognitive tasks that interfere with each other when blended — an auditor mid-characterization who is also hunting for failure modes tends to do a worse job of both. This is not a new principle; it extends the Audit Sequence's existing step-ordering (Structural Validation before Cross-Reference before Drift Detection, etc.) one level up, from steps within an audit to phases across the audit cycle.
+
+**Audit Freeze:** once Phase 1 concludes and its findings are recorded, those observations, the evidence supporting them, and the conclusions drawn do not change during Phase 2. Phase 2's findings do not rewrite Phase 1's — they stand alongside it. If Phase 2 discovers Phase 1 missed something, that is a new finding attributed to Phase 2, not a silent correction to Phase 1. This preserves EF-0.7's inspectable lineage: a later reader should see what was known at each stage, not only the final merged state.
+
+**Synthesis integrates, it does not reconcile:** Phase 3 does not force Phase 1 and Phase 2 findings to agree. "High confidence" (Phase 1) and "found an exploit" (Phase 2) are not a contradiction requiring resolution — they are two different questions answered honestly. Synthesis states the relationship between findings; it does not manufacture consensus. Where findings genuinely conflict, not merely address different questions, route through Dispute Handling Protocol, above — do not resolve by editing either phase's record.
+
+**No downstream phase may silently modify an upstream phase's artifacts.** Corrections are additive: new findings, superseding entries, or a new audit cycle — never in-place edits to a closed phase's record. This is the Resolved Unknown Discharge Procedure's non-deletion principle (`Admin/Forge_Audit_Kit.md`, `Unknowns.md`) applied to the audit process itself, not only to unknowns.
+
+**Relationship to AP-017:** Phase 2's value depends on genuine independence — an agent auditing its own Phase 1 contributions in the same session satisfies the sequencing above but not AP-017's no-session-context requirement. Phase separation is necessary but not sufficient for a meaningful Adversarial Challenge; both apply. (Concrete instance: the 2026-07-14 Battery against `Admin/Forge_Audit_Kit.md` was phase-separated from its own preceding audit but run by an agent instance with full session context — sequencing was respected, AP-017 independence was not. Findings stand; the independence gap is logged as a fresh AP-017 instance, below.)
+
+---
+
+## Role Count: Ratified Position
+
+This repository's Auditor Role Classes (above) — Skeptic, Systems, Evidence, Ethical, Synthesizer — plus the Adversarial Challenge Battery's ten classes (above) are sufficient. Three proposed additions were considered and declined as standing roles, 2026-07-14:
+
+- **Red Team roster** (a fixed set of named teams — Physics, Systems, Governance, Operational, Semantic, Economic, Malicious Actor). Declined: the Adversarial Challenge Battery already covers this ground with ten classes more precisely scoped to Forge's actual failure modes than a generic roster, applied by relevance rather than by assigned team membership. A fixed roster is the same shape of problem as a hand-maintained duplicate registry — wrong size for most documents, and itself a maintenance burden.
+- **Curator** (a role for "does this belong here, has this drifted, should doctrine move up"). Declined: this is Synthesizer-level judgment already in active use — see the `Admin/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes, 2026-07-14, neither of which required a Curator title to decide what was load-bearing versus duplicative.
+- **Historian** (a role for tracking recurring patterns across audit cycles). Declined as a standing role. The underlying question — what keeps recurring — is legitimate and worth asking periodically, but it is a report, not a persona: it needs no governance authority, no sidecar ownership, no role declaration. Reassess as a standing role only if periodic pattern review is attempted and found to need one.
+
+**Why this matters beyond headcount:** every standing role is a maintenance obligation — role declarations, ownership, sidecar conventions — the same cost structure as the critical watch list retired at `Admin/Forge_Audit_Kit.md` v1.10. Add a role only when a checklist or a lens has been tried and found insufficient, not preemptively.
+
+---
 
 Auditors must actively monitor for:
 - Terminology mutation
@@ -1520,6 +1552,8 @@ Mandatory re-audit conditions for this document:
 
 *Surfaced by Claude — Adversarial Challenge Class 6-A, 2026-06-24.*
 
+**Fresh instance, 2026-07-14:** the Battery run against `Admin/Forge_Audit_Kit.md` itself (that file's FAK-012) was correctly phase-separated from its own preceding audit (see §Audit Phase Separation, above) but was run by the same agent instance with full session context — sequencing was respected, this entry's independence requirement was not. Findings from that pass stand; they are not independently confirmed in the sense this entry requires. Still Open.
+
 ---
 
 ### AP-018 — Saturation threshold hysteresis and smoothing undefined
@@ -1612,7 +1646,56 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-022 — Audit/Adversarial/Synthesis phase separation and role-count ceiling
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Resolved — Discharge via Specification |
+| Risk          | Low                          |
+| Priority      | Minor                        |
+| Type          | Governance / Process         |
+| Blocking      | No                           |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-14                   |
+| Last Reviewed | 2026-07-14                   |
+
+**Description:** A multi-agent brainstorm (Gemini, Grok, ChatGPT, relayed by human governing authority) proposed formalizing Forge's audit process into a broader pipeline — Independent Audit → Adversarial Challenge → Synthesis → Historian → Curator → Governance Review — with new standing roles (Historian, Curator, a seven-team Red Team roster) alongside the existing Auditor Role Classes. Two questions needed resolution: whether phase separation was worth codifying, and whether the proposed roles should be adopted.
+
+**Resolution:** Human governing authority confirmed 2026-07-14: phase separation is required, role proliferation is not. See §Audit Phase Separation and §Role Count: Ratified Position, added this pass. Audit → Adversarial Challenge → Synthesis codified as sequential and freeze-respecting (extends the existing Audit Sequence's step-ordering principle one level up). Red Team roster, Curator, and Historian declined as standing roles — the Adversarial Challenge Battery's ten classes, the Synthesizer role, and periodic ad hoc pattern review already cover this ground without new governance surface area.
+
+**Lessons Learned:** the declined proposals weren't wrong in substance — Curator-type and Historian-type judgment genuinely happened during this session's `Admin/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes. The question was never whether that judgment is needed; it's whether it needs a standing role, a sidecar ownership line, and a role-declaration string to exercise. It doesn't, yet — same reasoning that retired `Admin/Forge_Audit_Kit.md`'s critical watch list at v1.10: a structure sized for hypothetical future scale is itself a maintenance burden before that scale exists.
+
+*Surfaced during human-directed review of multi-agent process-design proposals, 2026-07-14 — resolved same session.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-14: **v0.21 — Audit Phase Separation codified; role-count proposal
+  declined (human-directed).** New §Audit Phase Separation: Audit →
+  Adversarial Challenge → Synthesis established as sequential,
+  freeze-respecting phases — extends Audit Sequence's existing
+  step-ordering principle from steps within an audit to phases across the
+  audit cycle. Audit Freeze defined: a closed phase's observations,
+  evidence, and conclusions do not change in later phases; corrections are
+  additive (new findings, superseding entries, new audit cycle), never
+  in-place edits — the Resolved Unknown Discharge Procedure's non-deletion
+  principle applied to the audit process itself. Synthesis integrates
+  rather than reconciles: findings answering different questions aren't
+  forced to agree; genuine conflicts route through Dispute Handling
+  Protocol. New §Role Count: Ratified Position declines three proposed
+  standing roles (Red Team roster, Curator, Historian) — the Adversarial
+  Challenge Battery's ten classes and existing Role Classes already cover
+  the ground more precisely; Curator- and Historian-type judgment already
+  happens without needing a title. AP-022 logged and resolved same pass —
+  Open Unknowns unchanged: 9. Role Declaration Requirement's example
+  string corrected v0.14 → v0.21 — stale since the v0.14 rewrite itself
+  (2026-06-24), propagated into `Admin/Forge_Audit_Kit.md` and caught
+  there first, 2026-07-14, before being traced back to this file (see
+  that file's FAK-010). AP-017 gained a cross-reference to the 2026-07-14
+  `Admin/Forge_Audit_Kit.md` Battery as a concrete instance of
+  sequencing-without-independence: phase-separated correctly, did not
+  meet AP-017's no-session-context bar.
 
 - 2026-07-10: **v0.20 — AP-021 resolved (human governing authority ratification).** Five-label Evidence Classification system (Measured/Replicated/Simulated/Analogous/Placeholder) confirmed canonical. §The Fallacy Checklist Item 7 rewritten to point to §Evidence Classification rather than duplicate a conflicting definition; "Estimated" retired with explicit relabeling guidance. `Admin/Verification_Gates_LF.md` Gate 2 updated to match in the same pass (see that file's VG-002 resolution). Open Unknowns 10 → 9.
 - 2026-07-10: **v0.19 — AP-021 logged (human-directed discovery).** Confidence label inconsistency found between §The Fallacy Checklist Item 7 (four labels, includes "Estimated") and §Evidence Classification and Institutional Truth Provenance Hierarchy (five labels, includes "Replicated"/"Simulated," no "Estimated"). Not yet resolved — resolution path specified but not executed this pass, pending human governing authority confirmation that the five-label system is the intended standard before the Fallacy Checklist text is edited. Open Unknowns 9 → 10.
