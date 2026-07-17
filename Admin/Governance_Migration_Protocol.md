@@ -14,9 +14,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 0/6                                                                 |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-06-19; revised through at least 2026-07-05 internally (GMP-005/GMP-009 dated later than this header — header was not kept current, see Resolution Log); Claude — GOV-013 cross-reference added, 2026-07-16 |
-| Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer; Claude — GMP-009 cross-referenced to GOV-013 (human-directed), 2026-07-16 |
-| Open Unknowns    | 9                                                                   |
+| Last Audit       | 2026-06-19; revised through at least 2026-07-05 internally (GMP-005/GMP-009 dated later than this header — header was not kept current, see Resolution Log); Claude — GOV-013 cross-reference added, 2026-07-16; Claude — GMP-005/GMP-009 resolved, Track A/B redefined by constitutional impact (human-directed), 2026-07-17 |
+| Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer; Claude — GMP-009 cross-referenced to GOV-013 (human-directed), 2026-07-16; Claude — GMP-005/GMP-009 resolved (multi-agent proposal, human-directed), 2026-07-17 |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -112,37 +112,72 @@ All governance migration in LazarusForgeV0 falls into one of two tracks.
 The tracks are not interchangeable. Applying the wrong track to a migration
 is a governance error.
 
-### Track A — Standard Migration (Tiers 2–5)
+### Track A — Non-Constitutional Governance Changes
 
-For all governance documents below Tier 1: operational protocols, audit
-procedures, domain specifications, condensed references, and supporting
-governance files.
+For any change that does not alter Tier 1 Axiom text, Tier 1 enforcement
+bounds, Tier 1 interpretation, or introduce a new Tier 1 exception —
+regardless of which file the change lives in. This includes the large
+majority of governance evolution: operational protocols, audit
+procedures, domain specifications, condensed references, supporting
+governance files, and non-Axiom content within `Admin/Governance_Charter.md`
+itself (housekeeping, historical notes, doctrine sections that don't
+touch the eight Axioms, canonical ownership tables, resolution logs).
 
-Track A is the expected operational path. Most governance evolution happens
-here. The process is lighter than Track B by design — governance complexity
-must remain proportional to operational value.
+Track A is the expected operational path. The process is lighter than
+Track B by design — governance complexity must remain proportional to
+constitutional effect, not to which file happens to hold the text.
 
-### Track B — Tier 1 Axiom Amendment
+### Track B — Constitutional Changes
 
-For any change to the eight Tier 1 Axioms (P-1 through P-4, Q-1 through Q-4)
-in `Admin/Governance_Charter.md`.
+For any change that alters Axiom wording, Axiom meaning, Tier 1
+enforcement bounds, introduces a new constitutional exception, or
+reinterprets constitutional authority — regardless of which file the
+change lives in. Includes, but is not limited to, direct amendment of
+the eight Tier 1 Axioms (P-1 through P-4, Q-1 through Q-4) in
+`Admin/Governance_Charter.md`.
 
 Track B carries substantially higher process requirements than Track A.
 The difference is not bureaucratic — it reflects the difference between
 adjusting a procedure and changing a foundational constraint that all
 other governance derives from.
 
-**Track identification rule:** If a proposed change touches the text,
-scope, or interpretation of any Tier 1 Axiom, it is Track B. This
-includes changes to Tier 2 or lower documents that redefine how a
-Tier 1 Axiom is applied, or that introduce new exceptions to Tier 1
-constraints, even if no Tier 1 text is modified — see GMP-005.
-When in doubt, treat as Track B. Misclassifying a Track B migration
-as Track A is a Constitutional violation.
+**Track identification rule — Constitutional Impact Statement, required
+for every proposed migration, Track A or B:**
 
-Track A authority is subordinate to Charter constraints. Track A
-migrations affecting Tier 2 documents must explicitly confirm that no
-enforcement bounds of a Tier 1 Axiom are altered as a result.
+- [ ] Alters Tier 1 Axiom text
+- [ ] Alters Tier 1 enforcement bounds
+- [ ] Alters Tier 1 interpretation
+- [ ] Introduces a new constitutional exception
+- [ ] None of the above
+
+If every box is unchecked except "None of the above": Track A. If any of
+the first four boxes is checked: Track B, regardless of which file the
+change is written in or how minor the change looks. **When in doubt,
+treat as Track B.** Misclassifying a Track B migration as Track A is a
+Constitutional violation — this holds for the impact-based test exactly
+as it held for the old text-only test; the standard didn't loosen when
+the classification axis changed from location to impact.
+
+**Adding a new obligation is not automatically a constitutional
+exception.** A change that adds scrutiny, monitoring, or accountability
+on top of an existing constitutional provision — without loosening,
+replacing, or reinterpreting that provision — checks "None of the above"
+and is Track A. A change framed as *replacing* or *superseding* an
+existing enforcement mechanism is Track B even if it appears to tighten
+things, because it alters an enforcement bound. Worked example: GOV-013
+(`Admin/Governance_Charter.md`) adds a monitoring obligation on top of
+Pathway 2/3's existing exception without changing what Axiom Q-2 itself
+requires — Track A. A hypothetical change removing Pathway 1's quorum
+requirement in exchange for the same monitoring obligation would be
+Track B — it alters an enforcement bound, even though the intent reads
+as comparably protective.
+
+Track A authority is subordinate to Charter constraints regardless of
+which file it operates on. Every Track A migration must complete the
+Constitutional Impact Statement above and file it with the change
+record — this replaces the prior narrower requirement to confirm "no
+enforcement bounds of a Tier 1 Axiom are altered" for Tier 2 documents
+only; the confirmation is now required uniformly, not just downward.
 
 ---
 
@@ -601,14 +636,14 @@ is one of the primary use cases for that architecture.
 
 | Field         | Value                                      |
 |---------------|--------------------------------------------|
-| Status        | In Progress                                |
+| Status        | Resolved — Discharge via Specification     |
 | Risk          | High                                       |
 | Priority      | Major                                      |
 | Type          | Governance                                 |
 | Blocking      | No                                         |
 | Owner         | `Admin/Governance_Migration_Protocol.md`   |
 | First Logged  | 2026-06-05                                 |
-| Last Reviewed | 2026-06-19                                 |
+| Last Reviewed | 2026-07-17                                 |
 
 **Description:** The original Track A / Track B boundary only addressed
 text changes to Tier 1 Axioms. A change to a Tier 2 document
@@ -627,6 +662,41 @@ Tier 1 Axiom application or introduce new exceptions. Track A authority
 clause now requires explicit confirmation that no Tier 1 enforcement
 bounds are altered. Status moved to In Progress. Full resolution requires
 adversarial review of the expanded rule before promoting to Specification.
+
+**Resolved (v0.3, 2026-07-17, human-directed):** generalized bidirectionally
+and merged with GMP-009, which named the missing other half of this same
+gap — non-Axiom content added *within* `Admin/Governance_Charter.md`
+itself had no classification either, since the original Track A was
+scoped to "documents below Tier 1" and couldn't reach it. Both gaps were
+one gap: the axis classified by document location instead of
+constitutional impact. Track A and Track B, above, are now defined by
+impact — Axiom text, enforcement bounds, interpretation, exceptions — not
+by which file the change sits in, with a Constitutional Impact Statement
+checklist making the classification auditable rather than subjective.
+
+Adversarial review (this pass, informal — Classes 4/6/9 per the review
+that proposed this fix, not a full Battery): (1) Semantic Drift — tested
+whether "impact-based" quietly loosens anything the old text-based rule
+caught: it doesn't — every case the old rule classified Track B still
+checks a box under the new rule, since the boxes are a superset of "touches
+Axiom text." (2) Recursive Justification Loop — this rewrite classifies
+itself: `Admin/Governance_Migration_Protocol.md` is a Tier 2 document, and
+the rewrite changes the migration *process*, not what any Axiom requires
+— checks "None of the above," Track A, consistent with EF-0.5 (no
+document exempt from its own rules, including this one). (3) Epistemic
+Corruption — checked whether "adds a new obligation" could be gamed to
+smuggle a loosening through as Track A; addressed directly in the new
+"adding a new obligation is not automatically a constitutional exception"
+paragraph above, which draws the replace/supersede line explicitly rather
+than leaving it to the drafter's framing.
+
+Tested against two live cases: EDL (`Admin/Governance_Charter.md`) and
+GOV-013 both check "None of the above" — neither alters Axiom text,
+enforcement bounds, interpretation, or introduces an exception; both
+formally Track A as of this resolution. See both entries for the applied
+classification.
+
+Status: Resolved — Discharge via Specification.
 
 ---
 
@@ -726,14 +796,14 @@ restart Phase 1. Cross-reference GMP-006 (serialization) and GMP-007
 
 | Field         | Value                                      |
 |---------------|--------------------------------------------|
-| Status        | Open                                       |
+| Status        | Resolved — Discharge via Specification     |
 | Risk          | Medium                                     |
 | Priority      | Major                                      |
 | Type          | Governance                                 |
 | Blocking      | No                                         |
 | Owner         | `Admin/Governance_Migration_Protocol.md`   |
 | First Logged  | 2026-07-03                                 |
-| Last Reviewed | 2026-07-03                                 |
+| Last Reviewed | 2026-07-17                                 |
 
 **Description:** The Track identification rule classifies migrations by
 whether they touch Tier 1 *Axiom* text, scope, or interpretation. It does
@@ -753,14 +823,17 @@ non-Axiom procedural content is disproportionate and would likely deter
 exactly the kind of housekeeping addition Governance_Charter.md already
 contains elsewhere (e.g., the Canonical Verification Gates section).
 
-**Resolution Path:** Define a third classification, or an explicit Track A
-sub-case, for "content changes to the Tier 1 file that do not touch Axiom
-text, scope, or enforcement." Minimum requirement carried over from Track
-A's existing Tier-2 rule: explicit confirmation that no Tier 1 Axiom
-enforcement bound is altered, plus human operator review before commit
-(strongly recommended, not mandatory, matching existing Track A treatment
-of Tier 2 documents). Cross-reference the EDL amendment itself as the
-worked example once classified.
+**Resolved (2026-07-17, human-directed):** not via a third classification
+or a Track A sub-case as originally framed here — via recognizing this was
+never a separate gap from GMP-005. GMP-005 already established
+impact-over-location classification for the downward case (Tier 2 documents
+reinterpreting Tier 1). This entry named the missing upward/lateral case
+(non-Axiom content within the Tier 1 file itself). Both are the same
+principle applied in different directions. GMP-005's resolution generalizes
+the rule to be direction-agnostic — see Track A / Track B, above, and
+GMP-005's own Resolution field for the adversarial review this pass
+included. EDL and GOV-013, both cited below as worked examples, are now
+formally classified Track A under the generalized rule.
 
 **Second worked example, 2026-07-16:** `Admin/Governance_Charter.md` GOV-013
 (Post-Exit Monitoring Doctrine, Pathway 2/3) is a live second case in the
@@ -768,13 +841,36 @@ same unresolved state as EDL — new constitutional content, no Axiom text
 touched. Drafted and treated per this entry's own proposed interim minimum
 (enforcement-bound confirmation present in that section; human review
 recommended, not yet obtained) rather than waiting on this entry's formal
-resolution. Two independent live cases sitting in the same unclassified
-state is worth weighing when this entry is next reviewed — not a reason
-to resolve it unilaterally here.
+resolution. Both cases resolved to Track A as of this pass — see their
+own entries for the classification applied.
 
 ---
 
 ### Resolution Log
+
+- 2026-07-17: **GMP-005 and GMP-009 resolved together; Track A/B
+  redefined by constitutional impact, not document location.** Multi-agent
+  review (two rounds — a "third track" proposal, then a redefinition
+  proposal identifying GMP-005 as already-established precedent) converged
+  on: don't add a Track C, generalize the existing rule. Track A and Track
+  B, above, now classify by whether a change touches Tier 1 Axiom text,
+  enforcement bounds, interpretation, or exceptions — regardless of which
+  file — replacing the prior location-based split ("Tiers 2-5" vs. "the
+  eight Axioms in Governance_Charter.md") that had no room for non-Axiom
+  content added to the Tier 1 file itself. Constitutional Impact Statement
+  checklist added to make classification auditable. "When in doubt, Track
+  B" and "misclassification is a Constitutional violation" carried forward
+  explicitly onto the new axis, not dropped in the rewrite. New paragraph
+  distinguishes obligations that add scrutiny (Track A) from changes that
+  replace or supersede an enforcement mechanism (Track B), closing a gaming
+  vector the review process itself flagged. Adversarial review this pass
+  (informal — Semantic Drift, Recursive Justification Loop, Epistemic
+  Corruption) documented in GMP-005's entry, including the rule
+  classifying its own amendment as Track A. EDL and GOV-013
+  (`Admin/Governance_Charter.md`) both formally classified Track A —
+  see their entries. GMP-002 (migration doctrine ownership transfer,
+  still Open) may be affected by this rewrite; not reviewed this pass.
+  Open Unknowns 9 → 7.
 
 - 2026-07-16: **GMP-009 cross-referenced to GOV-013.** While drafting
   `Admin/Governance_Charter.md` GOV-013 (Post-Exit Monitoring Doctrine,
