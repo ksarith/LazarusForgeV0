@@ -1,5 +1,5 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v14
+LAZARUS FORGE — AUDIT HARNESS v15
 Google Colab notebook cells — paste each block into a separate cell.
 
 Full version history: Admin/AUDIT_HARNESS_CHANGELOG.md
@@ -363,9 +363,11 @@ if failed:
 # Produces a compact session index — no stored artifact, no maintenance.
 # Persistent version of this information: Discovery.md scope map.
 #
-# CURRENT CYCLE: update this value at the start of each audit pass.
-# Increment by 1 each time a full multi-agent audit cycle completes.
-CURRENT_CYCLE = 10   # ← update this each session
+# v15: aging is now computed from each unknown's own "First Logged" date
+# (already required in every sidecar entry) against real elapsed calendar
+# time — see EXPIRY_THRESHOLD_DAYS below. No manual per-session counter to
+# maintain; see that section's comment for why the prior CURRENT_CYCLE /
+# UNKNOWN_FIRST_CYCLE approach was replaced, not just relabeled.
 
 import re as _re
 import datetime
@@ -701,32 +703,28 @@ def run_phase1(fetched_files, registry):
 # Run Phase 1 now
 _p1_findings, _p1_anchor, _p1_fields = run_phase1(fetched, FILE_REGISTRY)
 
-# Map of known unknown IDs to the cycle they were first logged.
-# Used for aging detection — IDs not in this map report age as unknown.
-# v14: moved from an inline dict to Admin/unknown_cycles.json (fetched
-# below, grouped by category, flattened at load time). Add new entries
-# to that file when new unknowns are registered — this is now a JSON
-# edit, not a .py diff. On fetch/parse failure, falls back to an empty
-# map with a warning rather than halting (matches how other non-critical
-# fetch failures are handled elsewhere in this harness).
-_unknown_cycles_raw = fetch("unknown_cycles.json")
-if _unknown_cycles_raw.startswith("[FETCH FAILED"):
-    print("⚠ unknown_cycles.json fetch failed — Expiry Watch will report "
-          "all unknown IDs as unmapped (age=None) this session.")
-    UNKNOWN_FIRST_CYCLE = {}
-else:
-    try:
-        _unknown_cycles_doc = json.loads(_unknown_cycles_raw)
-        UNKNOWN_FIRST_CYCLE = {}
-        for _group in _unknown_cycles_doc.get("groups", {}).values():
-            UNKNOWN_FIRST_CYCLE.update(_group)
-    except (json.JSONDecodeError, AttributeError) as _e:
-        print(f"⚠ unknown_cycles.json parse failed: {_e} — Expiry Watch "
-              f"will report all unknown IDs as unmapped (age=None) this "
-              f"session.")
-        UNKNOWN_FIRST_CYCLE = {}
-
-EXPIRY_THRESHOLD = 2  # cycles without resolution path before escalation
+# v14 built a JSON-backed cycle-number map here (Admin/unknown_cycles.json,
+# UNKNOWN_FIRST_CYCLE) as a fix for the previous inline-dict bulk problem.
+# v15 removes that mechanism entirely rather than relabeling it: per
+# Admin/Canonical_Terms.md §4 (ratified 2026-07-05), "Cycle" means one
+# calendar year by default — specifically to keep Expiry Watch from being
+# too aggressive. CURRENT_CYCLE incremented per session, not per year, so
+# every aging computation under it was ~26-50x more aggressive than the
+# ratified intent — confirmed 2026-07-16 (see Admin/Auditor_Protocols.md
+# Adversarial Audit Layer and Admin/Forge_Audit_Kit_Changelog.md's
+# 2026-07-14 Battery record for the discovery, and Admin/Governance_Charter.md's
+# GOV-013 drafting session for confirmation this was the actual intent
+# CURRENT_CYCLE was violating, not just an ambiguous term).
+#
+# The fix isn't a better cycle-number map — it's not needing one. Every
+# unknown's own sidecar entry already carries a "First Logged: YYYY-MM-DD"
+# field (required, already present, already authoritative). extract_boundary
+# now captures that date alongside each UID; age is computed directly in
+# elapsed days, no separate registry to fetch, maintain, or keep in sync.
+# Admin/unknown_cycles.json is no longer read by this harness — the file
+# itself is dead weight in the repository, kept only as history unless
+# removed separately.
+EXPIRY_THRESHOLD_DAYS = 365  # Canonical_Terms.md §4 default (1 calendar year)
 
 
 def extract_boundary(filename, content):
@@ -789,22 +787,43 @@ def extract_boundary(filename, content):
                 if ("Status        | Resolved" not in snippet and
                         "Status        | Discharged" not in snippet and
                         "Resolved" not in line and "Discharged" not in line):
-                    result["unknowns"].append(uid)
+                    # First Logged can sit further down the field table than
+                    # the 8-line window above reaches (e.g. Status/Risk/
+                    # Priority/Type/Blocking/Owner all precede it in the
+                    # GOV-*/AP-* convention) — search out to the next
+                    # sub-header instead of a fixed short window, capped so
+                    # a missing next-header can't run away.
+                    end = idx + 1
+                    limit = min(idx + 30, len(lines))
+                    while end < limit and not re.match(r'^#{2,3}\s', lines[end]):
+                        end += 1
+                    wide_snippet = "\n".join(lines[idx:end])
+                    fl = re.search(r'First Logged\s*\|\s*(\d{4}-\d{2}-\d{2})', wide_snippet)
+                    first_logged = fl.group(1) if fl else None
+                    result["unknowns"].append((uid, first_logged))
 
     return result
 
 
-def check_aging(unknown_ids):
-    """Return list of (uid, age, overdue) for unknowns in the loaded files."""
+def check_aging(unknown_entries):
+    """Return list of (uid, age_days, overdue) for unknowns in the loaded
+    files. unknown_entries is a list of (uid, first_logged_date_str) as
+    produced by extract_boundary — age is computed directly from that date
+    against today, not from any external registry."""
     results = []
-    for uid in unknown_ids:
-        first = UNKNOWN_FIRST_CYCLE.get(uid)
-        if first is None:
+    today = datetime.date.today()
+    for uid, first_logged in unknown_entries:
+        if not first_logged:
             results.append((uid, None, False))
-        else:
-            age = CURRENT_CYCLE - first
-            overdue = age >= EXPIRY_THRESHOLD
-            results.append((uid, age, overdue))
+            continue
+        try:
+            first_date = datetime.date.fromisoformat(first_logged)
+        except ValueError:
+            results.append((uid, None, False))
+            continue
+        age_days = (today - first_date).days
+        overdue = age_days >= EXPIRY_THRESHOLD_DAYS
+        results.append((uid, age_days, overdue))
     return results
 
 
@@ -812,7 +831,8 @@ def format_boundary_index(fetched_files):
     """Format boundary index + aging alerts for prompt injection."""
     lines = [
         "SESSION BOUNDARY INDEX (auto-extracted — ephemeral)",
-        f"Current cycle: {CURRENT_CYCLE} | Expiry threshold: {EXPIRY_THRESHOLD} cycles",
+        f"Expiry threshold: {EXPIRY_THRESHOLD_DAYS} days "
+        f"(Canonical_Terms.md §4 default — 1 calendar year)",
         "Compact summary of loaded files. Full content follows in FILES PROVIDED.",
         "Persistent version: Discovery.md scope map.",
         ""
@@ -823,7 +843,8 @@ def format_boundary_index(fetched_files):
             lines.append(f"  {fname}: FETCH FAILED — excluded from index")
             continue
         b = extract_boundary(fname, content)
-        unk_str = ", ".join(b["unknowns"]) if b["unknowns"] else "none open"
+        uids = [uid for uid, _ in b["unknowns"]]
+        unk_str = ", ".join(uids) if uids else "none open"
         lines.append(f"  {fname}")
         lines.append(f"    Status: {b['status']} | Gates: {b['gates']} | "
                      f"Risk: {b['risk']} | Last Audit: {b['last_audit']}")
@@ -834,14 +855,22 @@ def format_boundary_index(fetched_files):
     # Aging report
     aged = check_aging(all_unknowns)
     overdue = [(uid, age) for uid, age, flag in aged if flag]
+    unmapped = [uid for uid, age, flag in aged if age is None]
     if overdue:
         lines.append(f"⚠ EXPIRY WATCH — {len(overdue)} unknown(s) at or past "
-                     f"{EXPIRY_THRESHOLD}-cycle threshold:")
+                     f"{EXPIRY_THRESHOLD_DAYS}-day threshold:")
         for uid, age in overdue:
-            lines.append(f"    {uid}: {age} cycle(s) open — verify resolution path exists")
+            years = age / 365
+            lines.append(f"    {uid}: {age} day(s) open (~{years:.1f} yr) — "
+                         f"verify resolution path exists")
         lines.append("")
     else:
         lines.append("✓ Expiry Watch: no overdue unknowns in loaded files.")
+        lines.append("")
+    if unmapped:
+        lines.append(f"  ({len(unmapped)} unknown(s) missing a parseable "
+                     f"First Logged date — age unknown, not flagged: "
+                     f"{', '.join(unmapped)})")
         lines.append("")
 
     return "\n".join(lines)
