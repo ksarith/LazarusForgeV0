@@ -16,8 +16,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 6/6 vs. `Admin/Verification_Gates_LF.md` — execution quality (see GOV-011, resolved 2026-07-05); promotion separately blocked by open unknowns (GOV-003, GOV-005) and Enforcement Checkpoint 2 — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-16                                                          |
-| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16 |
+| Last Audit       | 2026-07-17                                                          |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16; Claude — GOV-013/EDL Track classification confirmed (human-directed), 2026-07-17 |
 | Open Unknowns    | 12                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | Critical (GOV-013 — see sidecar; promotion-blocking risk unchanged from GOV-003/GOV-005) |
@@ -241,22 +241,23 @@ Bootstrap assumptions must never silently become permanent governance authority.
 
 > **STATUS: DRAFT.** This section is a proposed amendment, not adopted
 > governance text. It requires `Admin/Governance_Migration_Protocol.md`
-> ratification before it binds anything — and its classification under
-> that protocol is itself unresolved: this is a non-Axiom addition to a
-> Tier 1 file, the exact case GMP-009 (`Admin/Governance_Migration_Protocol.md`)
-> already identifies as having no clean Track A or Track B answer. This
-> draft is a second worked example alongside the 2026-07-03 External
-> Design Lineage draft, below, which sits in the same unresolved
-> classification state. Pending GMP-009's resolution, this draft follows
-> its proposed interim minimum: explicit confirmation that no Tier 1
-> Axiom enforcement bound is altered (below), plus human operator review
-> before commit. Included here at the location it would occupy if
-> ratified, per standard practice for proposed amendments awaiting human
-> governing authority review. Drafted 2026-07-16, synthesizing multi-agent
-> proposals (ChatGPT, Gemini, Grok) restructured by Claude —
-> Synthesizer/Auditor — per `Admin/Auditor_Protocols.md` §Audit Phase
-> Separation and this file's own constitutional/implementation split
-> (Governance Authority Hierarchy, below).
+> ratification before it binds anything. Classification: **Track A**,
+> confirmed 2026-07-17 — `Admin/Governance_Migration_Protocol.md` GMP-005/
+> GMP-009 resolved the gap this section originally sat in (non-Axiom
+> content added to a Tier 1 file had no clean classification) by
+> redefining Track A/B around constitutional impact rather than document
+> location. This section's own enforcement-bound confirmation, below,
+> satisfies the Constitutional Impact Statement — every box unchecked
+> except "None of the above." Track A classification narrows what
+> ratifying this section requires; it does not itself ratify the section
+> — human governing authority review of the doctrine's substance is still
+> pending. This draft is a second worked example alongside the 2026-07-03
+> External Design Lineage draft, below, which resolved to the same
+> classification. Drafted 2026-07-16, synthesizing multi-agent proposals
+> (ChatGPT, Gemini, Grok) restructured by Claude — Synthesizer/Auditor —
+> per `Admin/Auditor_Protocols.md` §Audit Phase Separation and this file's
+> own constitutional/implementation split (Governance Authority Hierarchy,
+> below).
 
 **Enforcement-bound confirmation (GMP-009 minimum requirement):** this doctrine does not alter what Axiom Q-2 requires, narrow its protection, or change Pathway 1's standing as the primary exit route. It adds a new, time-bounded obligation on top of an exception (Pathway 2/3) that already exists — the obligation can be tightened, loosened, or the pathway itself revisited without touching Q-2's text or its Genesis Phase Protocol resolution, above.
 
@@ -431,11 +432,20 @@ Requirements:
 
 > **STATUS: DRAFT.** This section is a proposed amendment, not adopted
 > governance text. It requires `Admin/Governance_Migration_Protocol.md`
-> two-track ratification before it binds anything. Included here in draft
-> form at the location it would occupy if ratified, per standard practice
-> for proposed amendments awaiting human governing authority review.
-> Drafted 2026-07-03, synthesizing multi-agent proposals (ChatGPT, Gemini,
-> Grok) reviewed and narrowed by Claude — Synthesizer/Auditor.
+> ratification before it binds anything. Classification: **Track A**,
+> confirmed 2026-07-17 — this draft was the original case that surfaced
+> GMP-009 (no clean classification existed for non-Axiom content added to
+> a Tier 1 file); `Admin/Governance_Migration_Protocol.md` GMP-005/GMP-009
+> resolved that gap by redefining Track A/B around constitutional impact
+> rather than document location. This section touches no Axiom text,
+> enforcement bound, interpretation, or exception. Track A classification
+> narrows what ratifying this section requires; it does not itself ratify
+> the section — human governing authority review of the doctrine's
+> substance is still pending. Included here in draft form at the location
+> it would occupy if ratified, per standard practice for proposed
+> amendments awaiting human governing authority review. Drafted
+> 2026-07-03, synthesizing multi-agent proposals (ChatGPT, Gemini, Grok)
+> reviewed and narrowed by Claude — Synthesizer/Auditor.
 
 **Proposed placement note:** the original proposal cited "Gate 3 or Gate 4"
 as the attachment point. That referred to this file's internal gate system,
@@ -1113,15 +1123,27 @@ both.
 
 **Why It Matters:** without operationalization, the monitoring obligation is a declarative-only requirement — the same "documentation vs. enforcement" gap GOV-012 names for stale unknowns, here applied to constitutional exit conditions rather than sidecar hygiene. An unenforced exception to Q-2's Separation of Powers, silently tolerated indefinitely, is a Constitutional-tier risk regardless of how it originated.
 
-**Dependencies:** GOV-008 (Minimum Quorum — defines the Q-2 structural separation this obligation exists until); GOV-012 (Constitutional Stagnation Decay — shares the declarative/enforceable gap pattern and the unresolved Cycle-unit mechanics, above); `Admin/Repository_Integrity_Protocol.md` (owns the verification mechanisms); `Admin/Auditor_Protocols.md` (owns the metrics and thresholds); `Admin/Governance_Migration_Protocol.md` GMP-009 (owns this amendment's own Track classification — currently unresolved, see that entry).
+**Dependencies:** GOV-008 (Minimum Quorum — defines the Q-2 structural separation this obligation exists until); GOV-012 (Constitutional Stagnation Decay — shares the declarative/enforceable gap pattern and the unresolved Cycle-unit mechanics, above); `Admin/Repository_Integrity_Protocol.md` (owns the verification mechanisms); `Admin/Auditor_Protocols.md` (owns the metrics and thresholds); `Admin/Governance_Migration_Protocol.md` GMP-005/GMP-009 (owned this amendment's Track classification — resolved 2026-07-17, Track A, see those entries).
 
-**Resolution Path:** Payment via Specification, drafted 2026-07-16 (multi-agent synthesis: ChatGPT proposal, Gemini's constitutional/implementation-split refinement, restructured by Claude — Synthesizer/Auditor, human-directed) — see §Post-Exit Monitoring Doctrine (Pathway 2/3), above, marked PROPOSED, NOT RATIFIED. Constitutional-level obligation drafted in this file; metrics routed to `Admin/Auditor_Protocols.md`; verification mechanisms routed to `Admin/Repository_Integrity_Protocol.md`, per this Charter's existing division of labor (Governance Authority Hierarchy). Requires human governing authority ratification before the draft binds — classification under `Admin/Governance_Migration_Protocol.md` is itself pending GMP-009's resolution; treated per GMP-009's proposed interim standard (enforcement-bound confirmation plus strongly recommended human review) pending that entry's own resolution.
+**Resolution Path:** Payment via Specification, drafted 2026-07-16 (multi-agent synthesis: ChatGPT proposal, Gemini's constitutional/implementation-split refinement, restructured by Claude — Synthesizer/Auditor, human-directed) — see §Post-Exit Monitoring Doctrine (Pathway 2/3), above, marked PROPOSED, NOT RATIFIED. Constitutional-level obligation drafted in this file; metrics routed to `Admin/Auditor_Protocols.md`; verification mechanisms routed to `Admin/Repository_Integrity_Protocol.md`, per this Charter's existing division of labor (Governance Authority Hierarchy). Track classification resolved 2026-07-17: Track A, confirmed under `Admin/Governance_Migration_Protocol.md`'s post-GMP-005/GMP-009 impact-based rule — this doctrine's enforcement-bound confirmation, above, satisfies the Constitutional Impact Statement. Still requires human governing authority ratification of the doctrine's substance before it binds; Track A classification settles *how* that ratification is scoped, not *whether* it has happened.
 
 *Surfaced by Claude — Skeptic/Auditor, 2026-07-16 Exploration audit; resolution drafted same day via multi-agent proposal synthesis (ChatGPT, Gemini, Grok), restructured by Claude — Synthesizer/Auditor per human direction.*
 
 ---
 
 ### Resolution Log
+
+- 2026-07-17: **GOV-013 and EDL Track classification confirmed.**
+  `Admin/Governance_Migration_Protocol.md` resolved GMP-005/GMP-009
+  (bidirectional impact-based Track A/B, replacing the location-based
+  split) — see that file's Resolution Log for the full change. Both
+  proposed sections in this file updated to reflect confirmed Track A
+  status: neither alters Axiom text, enforcement bounds, interpretation,
+  or introduces an exception. Track classification is a process
+  determination, not substantive ratification — both sections remain
+  PROPOSED, NOT RATIFIED pending human governing authority review of
+  their actual content. No change to Open Unknowns (12) — this pass
+  settled how these two drafts get ratified, not whether they have been.
 
 - 2026-07-16: **GOV-013 drafted; GOV-012 citation corrected.** Skeptic/Auditor
   pass (Claude) confirmed 6/6 execution quality (no regression from GOV-011)
