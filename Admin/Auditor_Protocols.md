@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.22**
+**Version 0.23**
 
 ## File State
 
@@ -7,11 +7,11 @@
 |------------------|---------------------------------------------------------------------|
 | Status           | Draft                                                               |
 | Body Stability   | Transitional                                                        |
-| Spec Gates       | 3/6                                                                 |
+| Spec Gates       | 3/6 (G1, G4, G6 clear; G3 blocked on AP-017; G5 conditional on cross-ref fixes below; G2 N/A — no physical/quantitative claims of its own) |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-16                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013, stale v0.14 sign-off template corrected (human-directed), 2026-07-16 |
-| Open Unknowns    | 9                                                                   |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16 |
+| Open Unknowns    | 12                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -180,7 +180,7 @@ Repository age, constitutional status, historical success, or institutional auth
 Stability derives from repeated successful verification rather than accumulated prestige. Preservation of a known error for the sake of continuity constitutes an immediate Integrity Failure.
 
 This principle applies explicitly to:
-- `Admin/Discovery.md`
+- `Discovery.md`
 - `Admin/Governance_Charter.md`
 - `Admin/Auditor_Protocols.md`
 - All localized interpretations of Axiom Zero itself
@@ -396,7 +396,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.21"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.23"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -1063,7 +1063,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.21 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.23 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1563,13 +1563,13 @@ Mandatory re-audit conditions for this document:
 | Field         | Value                        |
 |---------------|------------------------------|
 | Status        | Open                         |
-| Risk          | Major                        |
+| Risk          | High                         |
 | Priority      | Major                        |
 | Type          | Governance / Epistemic       |
 | Blocking      | Epistemic                    |
 | Owner         | Admin/Auditor_Protocols.md   |
 | First Logged  | 2026-06-24                   |
-| Last Reviewed | 2026-06-24                   |
+| Last Reviewed | 2026-07-16                   |
 
 **Description:** No doctrine requires that any Battery class be applied by an agent without session context from the current audit cycle. A formally compliant Battery sign-off can be produced by an agent auditing its own prior contributions. Gate 3 can be satisfied without genuine independence.
 
@@ -1696,7 +1696,57 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-023 — Self-audit bookkeeping drift: Open Unknowns count, version strings, citations
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Resolved — Discharge via Specification |
+| Risk          | Low                          |
+| Priority      | Minor                        |
+| Type          | Bookkeeping / Process         |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-16                   |
+| Last Reviewed | 2026-07-16                   |
+
+**Description:** A Claude self-audit (2026-07-16) of this file found five drifted items, verified against source before correcting: (1) File State's `Open Unknowns: 9` undercounted the actual 12 non-Resolved sidecar entries; (2) the Role Declaration Requirement and Standard Sign-Off template strings both still read `v0.21` against the file's actual `v0.22` — the third recurrence of this exact bug, this time introduced by Claude's own v0.22 edit two turns prior, not inherited; (3) §Adversarial Priority Weighting cited `Admin/Discovery.md`, but `Routing.md`'s canonical registration is `Discovery.md` with no `Admin/` prefix; (4) AP-017's Risk field read `Major` — a Priority-scale value, not a valid Risk-scale one (Low/Medium/High) — almost certainly copy-pasted from the adjacent Priority field; (5) `Admin/Forge_Audit_Kit_Changelog.md`, cited from this file, was never added to `Routing.md` — along with `Admin/AUDIT_HARNESS_CHANGELOG.md`, also missing.
+
+**Why It Matters:** none of these are individually severe, but the version-string recurrence is the third instance of the same bug in one session, and it's the clearest available evidence for AP-022's own reasoning applied at the tooling level, not just the role-count level: self-referential bookkeeping (counts, version strings, citations) has no structural enforcement in this repository, only chance discovery during unrelated audits. This entry itself was found the same way.
+
+**Resolution:** all five corrected 2026-07-16 (human-directed, Claude — Skeptic/Auditor then Synthesizer/Auditor). Open Unknowns corrected to 12; version strings corrected to v0.23 (this file's version, bumped same pass); citation corrected; AP-017's Risk corrected to High (matching every other Blocking/high-consequence entry's calibration); both changelog files registered in `Routing.md`.
+
+**Lessons Learned:** "fixed the root cause" (AP-022's Resolution Log entry, two turns prior) turned out to mean "fixed the instances found that pass," not all instances — the sign-off template at line 1066 was missed even while directly editing the surrounding section. A single-pass fix of a recurring bug class is not the same claim as a swept fix; the two turns between this and the prior correction are the actual measure of how long a miss survives without a structural check. No structural check is proposed here — Structural Validation (Phase 1), above, could plausibly carry "role-declaration and sign-off version strings match File State" as a standing item, but that's a design decision for whoever next touches that section, not assumed as part of this entry's resolution.
+
+*Surfaced by Claude — Skeptic/Auditor, 2026-07-16 self-audit; resolved same session, human-directed.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-16: **v0.23 — Self-audit corrections (AP-023); coordinated with
+  `AUDIT_HARNESS.py` v15's Cycle-unit fix.** A Claude self-audit found and
+  AP-023 documents five drifted bookkeeping items, all corrected this
+  pass: Open Unknowns header (9 → 12, actual count); Role Declaration
+  Requirement and Standard Sign-Off template strings (v0.21 → v0.23 — a
+  third recurrence, this time introduced by this file's own v0.22 edit
+  two turns prior rather than inherited); `Admin/Discovery.md` citation
+  corrected to `Discovery.md` (Routing.md's actual canonical form);
+  AP-017's Risk field corrected from an invalid `Major` (copy-pasted from
+  Priority) to `High`; `Admin/AUDIT_HARNESS_CHANGELOG.md` and
+  `Admin/Forge_Audit_Kit_Changelog.md` registered in `Routing.md` (both
+  missing since their 2026-07-14 creation). Spec Gates header gained an
+  inline gate list. Separately, coordinated with a same-day fix in
+  `Admin/AUDIT_HARNESS.py`: `CURRENT_CYCLE`/`UNKNOWN_FIRST_CYCLE`
+  (session-count aging) replaced with direct date parsing from each
+  unknown's own First Logged field against a 365-day threshold — the
+  `Admin/Canonical_Terms.md` §4 Cycle definition this file's own Adversarial
+  Audit Layer had already flagged as unreconciled with the harness. Real
+  effect confirmed against `Admin/Governance_Charter.md`: GOV-001 is 55
+  days old, not "8 cycles" — zero unknowns in that file are actually
+  overdue under the ratified threshold. `Admin/unknown_cycles.json` is
+  now orphaned (harness no longer fetches it) and was deliberately left
+  unregistered in `Routing.md` rather than cleaned up, per Routing.md's
+  own 2026-07-16 note.
 
 - 2026-07-16: **v0.22 — Post-Exit Monitoring Metrics added (GOV-013);
   stale sign-off template corrected.** New §Post-Exit Monitoring Metrics
