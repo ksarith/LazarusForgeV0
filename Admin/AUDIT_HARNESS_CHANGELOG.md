@@ -6,6 +6,61 @@ Add new entries here, not back into the .py docstring.
 
 ────────────────────────────────────────────────────────────────────
 
+CHANGES IN THIS PATCH (v14 → v15, 2026-07-16):
+  - Root fix, not a relabeling: CURRENT_CYCLE (manual per-session
+    counter) and UNKNOWN_FIRST_CYCLE / Admin/unknown_cycles.json
+    (cycle-number registry, built at v14) removed entirely.
+    Admin/Canonical_Terms.md §4 ratifies Cycle = one calendar year by
+    default — confirmed 2026-07-16 (human) that this was ratified
+    specifically to keep Expiry Watch from being too aggressive.
+    CURRENT_CYCLE incremented per session, not per year, so every aging
+    computation under it was roughly 26-50x more aggressive than the
+    ratified intent, not merely mislabeled. See
+    Admin/Auditor_Protocols.md's Adversarial Audit Layer (2026-07-14
+    Battery finding) and Admin/Governance_Charter.md's GOV-013 drafting
+    session (2026-07-16) for the evidence chain.
+  - Replacement: every unknown's own sidecar entry already carries a
+    required "First Logged: YYYY-MM-DD" field. extract_boundary() now
+    captures that date alongside each UID (result["unknowns"] is a list
+    of (uid, first_logged) tuples, was a list of uid strings — the one
+    breaking change, both consumers in this file updated). check_aging()
+    computes age in real elapsed days against EXPIRY_THRESHOLD_DAYS = 365
+    (Canonical_Terms.md §4 default). No registry to fetch, maintain, or
+    keep in sync with newly-registered unknowns — the data was already
+    present and authoritative; v14's JSON map was solving the wrong
+    problem (bulk of a redundant registry) instead of the actual one
+    (aging computed in the wrong unit).
+  - First Logged extraction required widening the field-table snippet
+    window used during sidecar parsing: the existing 8-line window
+    (sized for the Resolved/Discharged check, left unchanged) doesn't
+    reach First Logged for the 8-field GOV-*/AP-* convention. Added a
+    second, boundary-based snippet (scans to the next `##`/`###` header,
+    capped at 30 lines) specifically for the date search, rather than
+    widening the existing window and risking a behavior change to the
+    Resolved/Discharged check it wasn't built for.
+  - Verified before shipping: behavioral test against synthetic sidecar
+    entries (open/recent, open/old, resolved/old — correctly excluded,
+    no-date) confirmed correct extraction, exclusion, and aging in both
+    directions; a second pass against real Admin/Governance_Charter.md
+    content confirmed the fix in practice — GOV-001 through GOV-013 are
+    1-55 days old, not "8 cycles," and none are overdue under the real
+    365-day threshold. The prior SESSION BOUNDARY INDEX language reporting
+    those same unknowns as "8 cycle(s) open" (see a 2026-07-16 audit,
+    same day) was the miscalibration this patch removes.
+  - format_boundary_index() output changed accordingly: header now reads
+    threshold in days with a Canonical_Terms.md citation instead of
+    "Current cycle: N"; overdue lines report days and an approximate
+    year figure instead of a bare cycle count; unknowns with no
+    parseable First Logged date are now listed explicitly (age unknown,
+    not silently flagged either way) rather than disappearing from the
+    aging report.
+  - Admin/unknown_cycles.json is no longer fetched by this harness and
+    is now orphaned — left in the repository as history (Routing.md
+    2026-07-16 note), not registered as a live cross-reference, not
+    deleted.
+
+────────────────────────────────────────────────────────────────────
+
 CHANGES IN THIS PATCH (v13-patched-4 → v14, 2026-07-13):
   - Structural split, no audit-logic behavior change. Prompted by file
     size review: ~380 of 1130 lines were static data or history rather
