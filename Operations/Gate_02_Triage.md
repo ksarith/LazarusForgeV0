@@ -30,8 +30,8 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 2/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-05-09                                                          |
-| Auditor          | ChatGPT — Synthesizer; Claude — Engineer                            |
+| Last Audit       | 2026-07-17                                                          |
+| Auditor          | ChatGPT — Synthesizer; Claude — Engineer; Claude — Embedded Value Preservation cross-reference added (human-directed), 2026-07-17 |
 | Open Unknowns    | 4                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -140,6 +140,9 @@ Triage operates on two axes simultaneously:
 
 Components requiring rare materials, specialized tooling, high precision manufacturing, or fragile supply chains should require higher confidence before irreversible material recovery is authorized.
 
+**9. Embedded Value Preservation (added 2026-07-17, ratified — `Challenges/Closed_Loop_Feedstock.md` §2a)**
+This principle governs a step Principle 8 doesn't reach: what happens to a component that *fails* triage as a whole. Before a Gate D item proceeds to full material reduction, check whether it contains sub-components that already embody significant manufacturing effort — precision bearings, laminated motor cores, magnet wire, shafts, threaded fasteners — and are separable at lower cost than the value they represent. Extract and preserve those intact; reduce only what's left. Reduction remains the default for the unit as a whole once it has failed triage — this principle narrows what gets reduced, it doesn't reopen the pass/fail decision itself. See §IV Routing table below for where this check occurs.
+
 ---
 
 ## II. Triage Philosophy
@@ -191,6 +194,8 @@ Triage stations map to the gate logic in `Architecture/Forge_flow.md`:
 | Station partial — failure exceeds current tooling capability | Gate B fail → Gate C | Assess for downgrade or Triage Terminal |
 | Station fail — no function, material recovery value present | Gate D | Material Recovery (Reduction path) |
 | Station fail — no function, no material recovery value | Gate D + Oversight | Triage Terminal |
+
+*Gate D routing to Material Recovery includes an Embedded Value Preservation check (Principle 9) before full reduction — separable high-value sub-components (bearings, cores, magnet wire, shafts, fasteners) are extracted and preserved intact first; only the remainder proceeds to `Operations/Gate_03_Reduction.md`.*
 
 *Worked example:* A pump motor rated 500W runs at 320W under standard pump load — Gate A fail. The same motor drives a ventilation fan at 40% duty — Gate C pass (repurpose to ventilation duty).
 
@@ -498,6 +503,7 @@ Cross-Module Unknowns table.
 
 ### Resolution Log
 
+- 2026-07-17: **Embedded Value Preservation cross-reference added (human-directed).** New Core Principle 9, sourced from `Challenges/Closed_Loop_Feedstock.md` §2a's ratification the same day. Governs a step Principle 8 (Strategic Recoverability) doesn't reach: separable high-value sub-components in a triage-failed unit are extracted and preserved before what remains proceeds to full reduction. Routing table (§IV) annotated at the Gate D / Material Recovery row. Does not change the pass/fail triage decision itself — only what happens to material already routed to Reduction.
 - May 2026: Gate Correspondence table added.
 - May 2026: Motor worked example added to Station 1.
 - May 2026: Triage Terminal added — Human/AI Oversight Gate now present.
