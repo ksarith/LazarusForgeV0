@@ -68,6 +68,55 @@ That check has now been run. `AUDIT_HARNESS.py` line 368: `CURRENT_CYCLE = 10   
 
 ## Version History
 
+- 2026-07-17: **v1.12 — Verification Gates section trimmed (Fallacy 5,
+  flagged 2026-07-16, three turns outstanding).** Two of three dated
+  paragraphs collapsed to a compact standing rule; full history preserved
+  here rather than deleted.
+
+  *Known source ambiguity (full text, removed from kit body):*
+  `Admin/Auditor_Protocols.md`'s own Gate 3 status entry stated Gate 3
+  "BLOCKED pending AP-012 and AP-016" in the same line as "Battery
+  application is complete" — correct in substance (coverage complete,
+  promotion blocked) but the phrasing blended the two axes this kit's
+  Gate scope vs. promotion readiness note separates. Flagged as a
+  legibility issue worth a wording pass, not a governance error. By
+  2026-07-17 this was doubly stale: AP-012 and AP-016 have been Resolved
+  since 2026-07-03, and `Admin/Auditor_Protocols.md` has moved through
+  v0.17 → v0.24 since this note was written — the specific phrasing it
+  described may no longer exist in the source at all. Removed rather
+  than updated, since re-verifying decade-old phrasing against a since-
+  heavily-revised file wasn't a good use of a trim pass; if the
+  underlying legibility pattern recurs, it's now covered by the general
+  "Gate 3 status is not permanent" rule that replaced this and the
+  paragraph below.
+
+  *Gate 3 note (full text, removed from kit body):* Battery coverage
+  complete for `Admin/Auditor_Protocols.md` (v0.13). At least one Battery
+  class per promotion cycle must be applied by an agent with no session
+  context from the current audit cycle (AP-017). AP-012 and AP-016 — the
+  two entries previously blocking promotion — are Resolved as of
+  `Admin/Auditor_Protocols.md` v0.16 (2026-07-03, Payment via
+  Specification). Gate 3 blocking status should be re-evaluated at next
+  audit rather than assumed clear — a resolved blocker is not
+  automatically a passed gate. The one durable principle in this
+  paragraph (blockers can resolve without the gate itself having been
+  re-checked) survives as the compact replacement rule; the v0.13/AP-012/
+  AP-016-specific narrative around it does not need to keep being read by
+  every future auditor of every future file this kit is used on.
+
+  *Physical harness note: kept, not trimmed.* AP-010 is still Open as of
+  2026-07-17 — this paragraph is a live, generally-applicable rule (Gate
+  6 requires a test-harness cross-reference for documents with physical
+  claims), not incident narrative, and doesn't share the other two
+  paragraphs' problem of being tied to a specific resolved incident.
+
+  Derivation versions also corrected while in this file: `Auditor_Protocols.md`
+  v0.21 → v0.24, `Unknowns.md` v4.20 → v4.21 (both had drifted since this
+  kit's 2026-07-14 Last Audit — three version bumps on the former, one on
+  the latter, none previously caught).
+
+────────────────────────────────────────────────────────────────────
+
 - 2026-07-14: **v1.11 — Self-audit response + sidecar/battery relocation
   + First Battery.** A Claude self-audit of the v1.10 kit (source files
   unavailable that session, scope limited but honest about it — unlike
