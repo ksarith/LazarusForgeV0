@@ -29,8 +29,8 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-07                                                          |
-| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit; Claude — CE-006 logged (human-directed) 2026-07-07 |
+| Last Audit       | 2026-07-17                                                          |
+| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit; Claude — CE-006 logged (human-directed) 2026-07-07; Claude — CE-006 directed approach added (human-directed), 2026-07-17 |
 | Open Unknowns    | 6                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
@@ -1006,7 +1006,7 @@ disposal routing to GR-003. Cross-reference Air_Scrubber.md AS-003.
 | Blocking | Yes (for `Challenges/Closed_Loop_Feedstock.md` CLF-004 candidate pathway) |
 | Owner | `Architecture/Chemistry.md` |
 | First Logged | 2026-07-07 |
-| Last Reviewed | 2026-07-07 |
+| Last Reviewed | 2026-07-17 |
 
 **Description:** A candidate pathway logged in `Challenges/Closed_Loop_Feedstock.md` CLF-004 proposes on-site acid synthesis via salt-water electrolysis with a homemade ion-selective membrane (chlor-alkali-type process), using salt, water, and electricity as precursors. Standard chlor-alkali electrolysis co-produces chlorine gas at the anode. No containment, venting, or scrubbing doctrine exists in this file for that byproduct.
 
@@ -1014,9 +1014,22 @@ disposal routing to GR-003. Cross-reference Air_Scrubber.md AS-003.
 
 **Resolution Path:** Define minimum containment doctrine for small-scale chlor-alkali electrolysis: sealed reaction vessel design principles, required scrubbing or neutralization of anode-side off-gas before any release to atmosphere, detection/alarm threshold consistent with acute toxicity limits, and disposal routing for scrubber byproduct (cross-reference `Operations/Gate_03_Reduction.md` GR-003 and `Operations/Air_Scrubber.md` AS-003 for existing scrubbing/disposal precedent). Cross-reference back to `Challenges/Closed_Loop_Feedstock.md` CLF-004 once resolved.
 
+**Directed approach, 2026-07-17 (human governing authority):** capture and nullification, not venting-with-treatment, is the proposed resolution direction — chlorine off-gas is fully captured before any point where release could occur, then chemically neutralized rather than merely scrubbed toward a lower-but-nonzero release. `Operations/Air_Scrubber.md`'s existing Stage E KMnO₄ chemisorption mandate (Spec Gates 3/6, already carrying an automated interlock sensor matrix per AS-003) is the most directly applicable existing mechanism — potassium permanganate and comparable alkaline scrubbing agents convert Cl₂ to less hazardous chloride/hypochlorite species, which is nullification in substance, not just dilution. This is a directional decision, not a completed one: it narrows what CE-006 needs to specify (verify chemisorption capacity and reaction kinetics are adequate at this process's chlorine generation rate and flow, and confirm sealed-vessel capture prevents any anode-side leak path before the scrubber stage) rather than choosing among unrelated containment strategies from scratch. **The governing caveat is unchanged and takes precedence over this directed approach if they ever conflict:** Attempt to do no harm. If capture-and-nullification cannot be verified adequate at the vessel and flow rates this process actually requires, that is a reason to hold the pathway, not to relax the standard.
+
 ---
 
 ### Resolution Log
+
+- 2026-07-17: **CE-006 — directed approach added (human governing authority):**
+  capture and nullification (not vent-with-treatment) named as the resolution
+  direction, pointing to `Operations/Air_Scrubber.md`'s existing Stage E
+  KMnO₄ chemisorption mechanism as the most directly applicable existing
+  infrastructure. Narrows the remaining work to verifying chemisorption
+  capacity/kinetics and sealed-vessel capture at this process's actual
+  generation rate, rather than open-ended containment-strategy selection.
+  Still Open — a directional decision, not a completed resolution. Ethical
+  Anchor / do-no-harm standard stated as taking precedence over this
+  direction if the two ever conflict.
 
 - 2026-07-07: CE-006 logged (human-directed), sourced from a candidate acid-sourcing
   pathway raised in `Challenges/Closed_Loop_Feedstock.md` CLF-004 — on-site chlor-alkali
