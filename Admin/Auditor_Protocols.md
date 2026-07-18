@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.23**
+**Version 0.24**
 
 ## File State
 
@@ -9,9 +9,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6 (G1, G4, G6 clear; G3 blocked on AP-017; G5 conditional on cross-ref fixes below; G2 N/A — no physical/quantitative claims of its own) |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-16                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16 |
-| Open Unknowns    | 12                                                                  |
+| Last Audit       | 2026-07-17                                                          |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17 |
+| Open Unknowns    | 13                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -1359,7 +1359,7 @@ Mandatory re-audit conditions for this document:
 
 **Why It Matters:** Governance systems become fragile if repository state itself cannot be trusted — stale doctrine can masquerade as current policy, fabricated resolution logs can close unknowns without evidence, and silent rollback can erase lineage.
 
-**Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture). Partial progress: EF-0.3 (Epistemic Ledger) directly addresses lineage preservation — all core state corrections must be immutably recorded with five fields, and ledger entries may only be created on genuine falsification. EF-0.2 Level 3 explicitly classifies history tampering and alteration of audit trail entries as Integrity Violations triggering Epistemic Reset and mandatory human governing party review. These two sections constitute the doctrine layer of AP-007's resolution; the remaining gap is the enforcement layer — how tampering is detected structurally rather than declared textually. SHA-256 upstream parity checks (Gemini recommendation, 2026-06-21) are the next concrete resolution step, to be specified in `Admin/Security_Protocols.md`.
+**Resolution Path:** Payment via Specification — define repository integrity requirements in the Autonomous Auditor Constraints and Drift Detection sections. Cross-reference GOV-003 (integrity enforcement architecture). Partial progress: EF-0.3 (Epistemic Ledger) directly addresses lineage preservation — all core state corrections must be immutably recorded with five fields, and ledger entries may only be created on genuine falsification. EF-0.2 Level 3 explicitly classifies history tampering and alteration of audit trail entries as Integrity Violations triggering Epistemic Reset and mandatory human governing party review. These two sections constitute the doctrine layer of AP-007's resolution; the remaining gap is the enforcement layer — how tampering is detected structurally rather than declared textually. A future implementation target, not yet started: SHA-256 upstream parity checks (Gemini recommendation, 2026-06-21), planned for `Admin/Security_Protocols.md` but not present there as of 2026-07-17 — confirmed by direct inspection; that file currently contains SEC-ASM-002 (an assumption about SHA-256's continued robustness, a different concern) and SEC-010 (algorithm migration doctrine), neither of which is the parity-check mechanism this path describes.
 
 ---
 
@@ -1581,6 +1581,8 @@ Mandatory re-audit conditions for this document:
 
 **Fresh instance, 2026-07-14:** the Battery run against `Admin/Forge_Audit_Kit.md` itself (that file's FAK-012) was correctly phase-separated from its own preceding audit (see §Audit Phase Separation, above) but was run by the same agent instance with full session context — sequencing was respected, this entry's independence requirement was not. Findings from that pass stand; they are not independently confirmed in the sense this entry requires. Still Open.
 
+**Clarification, 2026-07-17 (multi-agent convergence, human-directed):** closure requires **informational** independence, not merely conversational independence. A new chat session is insufficient if the prompt carries a curated Assumption Extraction block, a summary of prior findings, or "carried forward unless contradicted" framing — that reintroduces the same priming risk a fresh conversation was meant to avoid, since the auditor starts from someone else's conclusions rather than the raw source. The closest available approximation: a session given only the raw repository files and the standard audit prompt, with no summary of this file's own audit history and no prior findings carried forward. Two same-day adversarial passes against this file (2026-07-17) both independently converged on this same distinction without being shown each other's findings — treated as mutually reinforcing, not as satisfying this entry, since both passes retained standard session framing.
+
 ---
 
 ### AP-018 — Saturation threshold hysteresis and smoothing undefined
@@ -1721,7 +1723,85 @@ Mandatory re-audit conditions for this document:
 
 ---
 
+### AP-024 — Human attestation provenance is insufficiently granular
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | High                         |
+| Priority      | Major                        |
+| Type          | Governance / Epistemic       |
+| Blocking      | No                           |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-17                   |
+| Last Reviewed | 2026-07-17                   |
+
+**Description:** "Human-directed" appears repeatedly throughout this file's own Resolution Log with no defined meaning, and could refer to at least five materially different states: the human authored the change directly; the human reviewed the exact diff before it was applied; the human reviewed a summary of the change; the human gave standing/blanket authorization covering this and future similar changes; or the human performed no substantive review and the label is a formality. These collapse into one label. Evidence provenance (Truth Provenance Labels, above) is well-specified for factual claims; attestation provenance — who actually verified a governance change, at what level of review — has no equivalent structure.
+
+**Why It Matters:** an agent that is both auditor and sole remediator, working with a human optimizing for velocity, has structural incentive to close findings quickly and label them "human-directed" without a distinguishable record of what was actually reviewed. This is a distinct gap from AP-013 (closure *authority* — who may mark something Resolved) — AP-024 concerns closure *provenance*, how much review a given closure actually received, which AP-013 doesn't address. A well-formatted, plausible Resolution Log entry referencing a real file and a specific mechanism is not distinguishable, as currently recorded, from one that was never independently verified — the same "narrative outrunning evidence" risk this file's own EF-0.1 already rejects for factual claims, unaddressed here for governance claims about the claims themselves.
+
+**Resolution Path:** Payment via Specification — require the Resolution Log field to specify attestation level for any Blocking/Major-priority closure at minimum, using an explicit scale rather than free-form prose:
+
+| Level | Meaning |
+|---|---|
+| H0 | No review — label present as formality only |
+| H1 | Standing/blanket authorization, not specific to this change |
+| H2 | Summary reviewed, not the underlying diff |
+| H3 | Exact diff reviewed before or after application |
+| H4 | Human directly authored the change |
+| H5 | Independently re-verified by a party other than the one who made the change |
+
+This becomes governance metadata rather than prose, auditable the same way Truth Provenance Labels make evidence claims auditable. Cross-reference AP-013 (closure authority is a separate, adjacent question) and AP-004 (arbitration framework, if attestation-level disputes arise).
+
+*Surfaced independently by two adversarial passes, 2026-07-17 (Claude, in-session per AP-017 disclosure; a second model, session details not independently confirmed) — converging findings, not independent confirmation of each other per AP-017's own standard. Generalized wording and the H0–H5 scale adopted from multi-agent synthesis discussion the same day.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-17: **v0.24 — AP-024 logged (multi-agent convergence); AP-017 and
+  AP-007 refined; a factual error in one reviewing pass identified and
+  not adopted.** Two adversarial passes ran against this file the same
+  day, plus two reactions to a Claude battery from the prior turn and a
+  reconciliation attempt. Findings checked against source before any were
+  adopted:
+  - **AP-024 created**, generalized to "human attestation provenance is
+    insufficiently granular" per convergent recommendation, with an H0-H5
+    attestation scale (No review / Blanket authorization / Summary
+    reviewed / Diff reviewed / Human-authored / Independently
+    re-verified) adopted from the reconciliation pass. Cross-referenced
+    against AP-013 (closure authority — a distinct, adjacent question:
+    who may close, not how thoroughly a specific closure was reviewed).
+  - **AP-017** gained an explicit informational-vs-conversational
+    independence distinction — a new chat with a carried-forward
+    Assumption Extraction block doesn't satisfy this entry, since the
+    priming risk survives the conversational break.
+  - **AP-007** wording tightened further — "to be specified" was already
+    accurate but sat close enough to "already addressed" language about
+    EF-0.3/EF-0.2 to invite a skim-misread; now explicit that the SHA-256
+    parity-check mechanism is not present in `Admin/Security_Protocols.md`
+    as of this date, confirmed by direct inspection, not merely planned
+    generically.
+  - **Two proposals not adopted as new entries, because they already
+    exist:** "compromised human authority" doctrine is already EC-011
+    (`Admin/Ethical_Constraints.md`, Open) — re-confirmed relevant, not a
+    new gap. "Combined Failure Envelope" for simultaneous system failures
+    substantially overlaps AP-016 (Concurrent multi-node quarantine
+    behavior, Resolved 2026-07-03) — worth a narrower follow-up only if a
+    specific scenario AP-016 doesn't cover is identified, not a
+    fresh entry.
+  - **One reviewing pass's factual claims not adopted at all:** a
+    document proposing "AP-018 through AP-021" as new unknowns (audit
+    scalability, termination criteria, metric-gaming resistance, auditor
+    diversity) — all four IDs already existed, attached to real,
+    unrelated content (AP-018 saturation hysteresis, AP-019 semantic
+    convergence metrics, AP-020 Resolved textual calibration, AP-021
+    Resolved evidence classification). That pass's broader PASS/WARNING
+    assessment table is not treated as grounded against this file's
+    actual current state, since it demonstrably wasn't checked against
+    it here — itself a live instance of the narrative-outrunning-evidence
+    risk AP-024 exists to address.
+  - Open Unknowns 12 → 13 (AP-024 added, nothing else changed count).
 
 - 2026-07-16: **v0.23 — Self-audit corrections (AP-023); coordinated with
   `AUDIT_HARNESS.py` v15's Cycle-unit fix.** A Claude self-audit found and
