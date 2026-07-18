@@ -14,10 +14,10 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 1/6 (G1 cleared — fallacy checklist applied at creation; G3/G5 fixes applied 2026-07-06, pending re-audit confirmation) |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
-| Last Audit       | 2026-07-06                                                          |
-| Auditor          | Grok — Systems Integrator; Claude — Synthesizer; Gemini — Exploration audit 2026-07-06; Claude — doctrine reconciliation + sidecar correction 2026-07-06 |
+| Last Audit       | 2026-07-17                                                          |
+| Auditor          | Grok — Systems Integrator; Claude — Synthesizer; Gemini — Exploration audit 2026-07-06; Claude — doctrine reconciliation + sidecar correction 2026-07-06; Claude — ENV-DS-001 ratified (human governing authority), 2026-07-17 |
 | Open Unknowns    | 8 (ENV-001, ENV-002, ENV-003, ENV-004, ENV-005, ENV-006, ENV-009, ENV-010)                                |
-| Active Disputes  | 1 (ENV-DS-001 — pending human ratification)                        |
+| Active Disputes  | 0                                                                    |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
@@ -116,15 +116,13 @@ Legal and regulatory constraints determine what the Forge may do at a given site
 - Maritime law and salvage rights (relevant for Leviathan-class deployments)
 - Cultural heritage protections (cross-ref `Admin/Ethical_Constraints.md` §Cultural and Sacred Site Recognition)
 
-**Bootstrap operating doctrine — SUPERSEDED, pending ratification (see notice below):**
+**Bootstrap operating doctrine — ratified 2026-07-17 (human governing authority):**
 
-> ⚠️ **Doctrine conflict flagged 2026-07-06 — proposed reconciliation below, not yet ratified by human governing authority.** The paragraph that previously stood here allowed the Forge to operate in legal gray zones under four self-assessed conditions (safety, documentation, no irreversible harm, cease on clear prohibition) without any requirement to defer to a human before proceeding. That is structurally incompatible with `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (added 2026-07-05, sixteen days after this file was last touched), which requires the system to defer to human governing authority whenever legal ambiguity remains after reasonable analysis — rather than proceeding into ambiguity and waiting for a regulator to issue a stop order. Ethical_Constraints.md is Tier 1 per `Admin/Governance_Charter.md`'s governance hierarchy and this file's own Upstream table already names Ethical_Constraints.md as constraining it; the conflict resolves in that direction, not this file's. **Proposed reconciled text, pending ratification:**
->
-> *Where regulatory frameworks are ambiguous or incomplete, the Forge does not independently decide to operate through the ambiguity. It applies `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default: pursue the most fully-compliant path available that still accomplishes the legitimate salvage/repair goal, and where genuine ambiguity remains after reasonable analysis, escalate to human governing authority per the Human Escalation Protocol rather than proceeding on the system's own judgment. The four conditions previously listed here (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition) remain relevant as a description of what "operating close to the line" must still satisfy once a human has authorized proceeding — they are not, on their own, a sufficient basis for the system to proceed without that authorization.*
->
-> This does not change the escalation doctrine already stated below for unresolvable jurisdictional conflicts, which already routes to `Admin/Ethical_Constraints.md` §Legal Context Awareness.
->
-> **Bridge authority for unavailable escalation (proposed 2026-07-07, pending ratification alongside the above):** *Where escalation to human governing authority is not available within a timeframe the situation requires — operator unreachable, conditions changing faster than the escalation channel can respond — the system may proceed under the four conditions this file previously specified as sufficient (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition), treated here as a bounded bridge authority rather than a standing default. This bridge closes automatically the moment escalation becomes available, requires immediate logging of the specific unavailability condition that triggered it, and mandates expedited post-hoc human review at the next available opportunity — not routine review, but priority review, since bridge-authority action bypassed the normal deference sequence. This does not authorize action that Tier 1 Axioms or the Anti-Weaponization Doctrine would prohibit under any circumstance.*
+*Where regulatory frameworks are ambiguous or incomplete, the Forge does not independently decide to operate through the ambiguity. It applies `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default: pursue the most fully-compliant path available that still accomplishes the legitimate salvage/repair goal, and where genuine ambiguity remains after reasonable analysis, escalate to human governing authority per the Human Escalation Protocol rather than proceeding on the system's own judgment. The four conditions previously listed here (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition) remain relevant as a description of what "operating close to the line" must still satisfy once a human has authorized proceeding — they are not, on their own, a sufficient basis for the system to proceed without that authorization.*
+
+This does not change the escalation doctrine already stated below for unresolvable jurisdictional conflicts, which already routes to `Admin/Ethical_Constraints.md` §Legal Context Awareness.
+
+**Bridge authority for unavailable escalation (ratified 2026-07-17 alongside the above):** *Where escalation to human governing authority is not available within a timeframe the situation requires — operator unreachable, conditions changing faster than the escalation channel can respond — the system may proceed under the four conditions this file previously specified as sufficient (human safety not compromised; documentation maintained; no irreversible environmental harm; cessation on clear prohibition), treated here as a bounded bridge authority rather than a standing default. This bridge closes automatically the moment escalation becomes available, requires immediate logging of the specific unavailability condition that triggered it, and mandates expedited post-hoc human review at the next available opportunity — not routine review, but priority review, since bridge-authority action bypassed the normal deference sequence. This does not authorize action that Tier 1 Axioms or the Anti-Weaponization Doctrine would prohibit under any circumstance.*
 
 **Jurisdiction conflicts:** When laws are mutually incompatible (maritime vs. national, environmental vs. salvage rights, multiple sovereign claims), escalate to human review per `Admin/Ethical_Constraints.md` §Legal Context Awareness. Until ENV-003 (jurisdiction conflict hierarchy) is resolved, "escalate to human review" is the operative instruction. For Leviathan-class deployments, assume multi-jurisdiction environments as the default condition, not the exception.
 
@@ -254,7 +252,7 @@ When environmental constraints tighten, the Forge degrades gracefully rather tha
 
 | ID | Summary | Positions in Conflict | Risk | Status | Owner |
 |----|---------|-----------------------|------|--------|-------|
-| ENV-DS-001 | Bootstrap operating doctrine vs. Compliance-Maximizing Default | This file's self-directed gray-zone posture (proceed on four self-assessed conditions, stop only on regulator prohibition) vs. `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (defer to human authority when ambiguity remains after reasonable analysis) | High | Open — reconciliation drafted 2026-07-06, amended 2026-07-07 with a bounded bridge-authority exception for escalation-unavailable scenarios (operator unreachable, fast-changing conditions); both pending human governing authority ratification as a single package | `Admin/Environmental_Constraints.md` |
+| ENV-DS-001 | Bootstrap operating doctrine vs. Compliance-Maximizing Default | This file's self-directed gray-zone posture (proceed on four self-assessed conditions, stop only on regulator prohibition) vs. `Admin/Ethical_Constraints.md`'s Compliance-Maximizing Default (defer to human authority when ambiguity remains after reasonable analysis) | High | **Resolved 2026-07-17** — reconciliation drafted 2026-07-06, amended 2026-07-07 with a bounded bridge-authority exception for escalation-unavailable scenarios, ratified as a single package by human governing authority 2026-07-17. See Constraint Category 2 for adopted text. | `Admin/Environmental_Constraints.md` |
 
 ---
 
@@ -501,6 +499,13 @@ Mandatory re-audit conditions for this document:
 
 ### Resolution Log
 
+- 2026-07-17: **v0.4 — ENV-DS-001 ratified (human governing authority).** Both
+  pieces of the pending package — the core Compliance-Maximizing Default
+  reconciliation (2026-07-06) and the bounded bridge-authority amendment
+  (2026-07-07) — adopted together as Constraint Category 2's operative
+  Bootstrap operating doctrine, replacing the superseded text. Active
+  Disputes 1 → 0.
+
 - 2026-07-07: **v0.3 (proposed) — Bridge-authority amendment to ENV-DS-001's reconciled text**, human-directed. Addresses an operational-continuity gap in the 2026-07-06 reconciliation: escalate-before-proceeding has no fallback when a human is genuinely unreachable within the timeframe a fast-moving situation requires, risking indefinite operational stall. Amendment adds a bounded bridge authority — the original four self-assessed conditions, reactivated only when escalation is unavailable, auto-closing on escalation becoming available, with mandatory logging and expedited post-hoc review. Not a return to unrestricted gray-zone operation; still subordinate to Tier 1 Axioms and Anti-Weaponization Doctrine. Logged as an addition to the same pending-ratification item, not a separate dispute. Corresponding Drift Indicator added for misuse-as-default risk. ENV-010 confirmed against Facilities.md source text — partial gap (three parameters fully missing, one partial), not full non-operational shell as originally flagged as a possibility.
 
 - 2026-07-06: **v0.2 — Doctrine conflict flagged (ENV-DS-001); ENV-007/ENV-008 sidecar drift corrected; ENV-010 logged; Adversarial Analysis section added (G3); bare-ID cross-references canonized (G5).**
@@ -541,7 +546,7 @@ Mandatory re-audit conditions for this document:
 
 Version 0.2 — Draft, correction and reconciliation pass (2026-07-06).
 
-**First priority action:** Human governing authority ratification of the proposed Bootstrap operating doctrine reconciliation, including the 2026-07-07 bridge-authority amendment (ENV-DS-001, Constraint Category 2) — this is the highest-stakes open item in this file and should not be treated as settled by this pass alone.
+**Status update, 2026-07-17:** ENV-DS-001 (Bootstrap operating doctrine reconciliation, including the bridge-authority amendment) ratified by human governing authority — see Resolution Log. No longer the outstanding priority item; Open Unknowns above remain the next-priority items, none currently rated above the general High file risk level.
 
 **What must remain constant:**
 
