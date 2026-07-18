@@ -1444,4 +1444,61 @@ both.
 
 ## Abandoned Paths
 
-| Date       | Path                                                                        | Why Abandoned                                                            
+| Date       | Path                                                                        | Why Abandoned                                                                                              | Reconsider? |
+|------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------|
+| 2026-05-23 | Forge_Audit_Kit.md as Tier 2 governance authority                           | Kit is explicitly derived from Auditor_Protocols.md — a derived document cannot outrank its source          | No          |
+| 2026-05-23 | Single undifferentiated axiom list mixing Protections and Prohibitions      | Structural distinction lost; mirrors constitutional design error that weakens both clause types              | No          |
+| 2026-05-23 | Humanitarian override exception for Axiom P-1                               | Historical record (Nobel, Oppenheimer) demonstrates this is the primary attack vector on hard ethical constraints — runtime evaluation of override claims is the failure mode, not the safeguard | No |
+| 2026-05-23 | Governance complexity as a proxy for governance quality                     | Recursive governance expansion is itself a failure mode — complexity must remain proportional to operational value | No |
+
+---
+
+## Drift Indicators
+
+Mandatory re-audit conditions for this document:
+
+- Genesis Phase Protocol removed or Genesis Phase declared complete without satisfying at least one of the four declared exit pathways with human ratification
+- Genesis Phase Pathway 4 review horizon passes without a formal human governing party review and documented decision
+- Interim authentication requirement for Constitutional-class overrides removed before `Admin/Security_Protocols.md` reaches Provisional Specification
+- `Admin/Canonical_Terms.md`, `Admin/Repository_Structure.md`, `Admin/Security_Protocols.md`, or `Admin/Governance_Migration_Protocol.md` removed from the repository or renamed without updating the Canonical Governance Ownership table
+- Tier 1 Axiom text modified without formal amendment entry in Resolution Log
+- Tier ordering in Governance Authority Hierarchy diverges from canonical relationship between `Admin/Auditor_Protocols.md` and `Admin/Forge_Audit_Kit.md`
+- Canonical Governance Ownership table contains entries without explicit Status field
+- Enforcement State claims imply stronger capability than currently exists
+- Bootstrap Governance Doctrine invoked to justify permanent authority assumptions
+- Protections Clause or Prohibitions Clause collapsed back into undifferentiated axiom list
+- STATE_HOLD escalation path undefined or removed
+- Human ratification requirement for axiom amendment removed or weakened
+- Ethical Anchor field absent, altered, or does not match canonical string
+- Governance Failure Modes table loses Axiom Erosion, Axiom Theater, or Constitutional Capture entries
+- Tier 1 Axioms cited to justify actions they were designed to prevent
+- Checkpoint 2 block status removed from File State or Checkpoint 2 body text without Genesis Phase exit condition being satisfied and ratified
+
+**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
+
+---
+
+## Relationship to Existing Documents
+
+- `Admin/Ethical_Constraints.md` — co-occupies Tier 1; governs permission and hard-line operational doctrine; Anti-Weaponization and Life Preservation are not subject to override
+- `Admin/Auditor_Protocols.md` — Tier 2; canonical verification doctrine; operates within authority hierarchy defined here
+- `Admin/Forge_Audit_Kit.md` — Tier 3; operational condensation derived from Auditor_Protocols.md; may not outrank its source
+- `Architecture/Forge_flow.md` — reference standard for shared operational terminology
+- `Admin/Trajectories.md` — destination for scope creep that proves to be valid future work
+- `Discovery.md` — navigation layer; confirmed file list; Rename Registry
+- `Unknowns.md` — global index for cross-module unknowns (index only)
+- `Admin/File_Template.md` — standard file structure; this document now conforms to it
+- `Admin/Canonical_Terms.md` — canonical target for terminology governance; created 2026-05-26
+- `Admin/Repository_Structure.md` — canonical target for repository structure doctrine; created 2026-06-06
+- `Admin/Security_Protocols.md` — canonical target for authority authentication and integrity enforcement; created prior to 2026-05-28; GOV-006 and RIP-005 resolution path
+- `Admin/Governance_Migration_Protocol.md` — canonical target for Tier 1 Axiom amendment procedures; created 2026-06-06; GOV-001 resolution path
+- `Lazarus-Forge-` — companion doctrine repository; source of principles refined into practice here
+- `Astroid-miner` [PLANNED] — planned repository; deferred to Leviathan milestone; do not treat as active dependency
+
+**Note on Ethical Anchor fallback status:** When this charter is unavailable, the Ethical Anchor field present in every repository file ("Attempt to do no harm. Defer to Ethical_Constraints.md if present.") acts as a temporary immutable floor — not as a substitute for Tier 1 constitutional authority. The Ethical Anchor preserves the foundational behavioral constraint during infrastructure blackout. It does not inherit full Tier 1 constitutional status, does not grant override authority, and does not substitute for axiom-level governance. It is the floor that survives; the charter is what builds above it.
+
+---
+
+> **The attempt to do no harm is not contingent on the presence of a governance document.**
+>
+> **These axioms are not proven. They are booted.**
