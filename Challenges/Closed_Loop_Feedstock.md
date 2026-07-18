@@ -12,17 +12,16 @@
 |--------------------|-------|
 | Status             | Exploration |
 | Challenges Subtype | Solution-Track |
-| Version            | v0.6.1 |
+| Version            | v0.7.0 |
 | Body Stability     | Transitional |
 | Spec Gates         | 0/6 |
 | Verification Ref   | `Admin/Verification_Gates_LF.md` |
 | Ethical Anchor     | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 | Highest Risk       | Silent contamination cascades or toolhead destruction (CLF-003/CLF-006). |
-| Last Audit         | 2026-07-07 (human-directed revision — symbol collision resolved, candidate acid-sourcing pathway logged) |
-| Auditor            | Claude — Skeptic/Auditor (integration, 2026-07-07); prior: Grok, Gemini, Claude (2026-07-06) |
+| Last Audit         | 2026-07-17 (human-directed ratification — Embedded Value Preservation adopted; CLF-004 cross-referenced to CE-006's directed approach) |
+| Auditor            | Claude — Skeptic/Auditor (integration, 2026-07-07); prior: Grok, Gemini, Claude (2026-07-06); Claude — ratification pass (human-directed), 2026-07-17 |
 | Open Unknowns      | 10 (CLF-001 through CLF-010) |
 | Active Disputes    | 0 |
-| Pending Ratification | 1 (Embedded Value Preservation principle — see Body §2a) |
 | Sidecar Link       | #6-open-unknowns |
 
 ---
@@ -48,13 +47,11 @@ Every advanced fabrication node in the legacy industrial paradigm relies on a hy
 - Toolpath or fabrication adjustments (defers to `Operations/Gate_06_Fabrication.md`).
 - Toxic/hazardous material handling doctrine, including electrolyte acids and chemical reclamation (defers to `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, and to `Operations/Gate_03_Reduction.md` GR-003).
 
-### 2a. Proposed Doctrine Addition — Embedded Value Preservation (pending human governing authority ratification)
+### 2a. Embedded Value Preservation — ratified 2026-07-17 (human governing authority)
 
-> ⚠️ **Not yet ratified.** Logged here per the same pattern this repository already uses for drafted-but-unratified doctrine (cf. `Admin/Governance_Charter.md`'s GOV-MAND-009/EDL amendment — drafted, deliberately held pending human review, not neglect).
->
-> **Proposed principle:** *Preserve embedded value whenever practical. Reduction is not the default. A component that already embodies significant manufacturing effort — precision bearings, laminated motor cores, magnet wire, shafts, threaded fasteners — should be recovered and reused intact unless disassembly or degradation makes reduction the higher-value path. The Forge should prefer recovering existing manufacturing work over reducing it back to raw material by default.*
->
-> This extends the same repair-first logic `Admin/Ship_of_Theseus.md` already establishes for whole units, applied one layer earlier — to the components inside a unit that isn't itself repairable. If ratified, this would sit upstream of `Operations/Gate_02_Triage.md`'s existing station logic (which already distinguishes reuse from destruction) rather than replacing it, and would need a cross-reference there. Not adopted into operative Scope Boundary text until ratified.
+**Principle:** *Preserve embedded value whenever practical. Reduction is not the default. A component that already embodies significant manufacturing effort — precision bearings, laminated motor cores, magnet wire, shafts, threaded fasteners — should be recovered and reused intact unless disassembly or degradation makes reduction the higher-value path. The Forge should prefer recovering existing manufacturing work over reducing it back to raw material by default.*
+
+This extends the same repair-first logic `Admin/Ship_of_Theseus.md` already establishes for whole units, applied one layer earlier — to the components inside a unit that isn't itself repairable. It sits upstream of `Operations/Gate_02_Triage.md`'s existing station logic (which already distinguishes reuse from destruction at the whole-component level) rather than replacing it — see that file's Core Principles for the corresponding cross-reference. Now adopted into this file's operative Scope Boundary.
 
 ## 3. System Dependencies
 
@@ -117,7 +114,7 @@ Recursive loops risk cascading contamination (heavy metals in polymers, alloy dr
 | CLF-001 | Blending ratios and thermal stabilizer performance for mixed, un-refined polymer streams across multiple thermal cycles. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-002 | Minimal viable field assay protocols (spot tests, melt-flow, etc.) for copper/aluminum alloys from salvage. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-003 | Nozzle and die wear tolerances when processing high-variance, particulate-laden salvage feedstocks. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
-| CLF-004 | Chemical footprint of electrolytic/electrorefining pathways undefined — local/organic acid sourcing vs. closed-loop acid reclamation not decided. Intersects `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, `Operations/Gate_03_Reduction.md` GR-003, PL-001/CE-003, and `Challenges/Critical_Minerals.md` CM-002 (closed-loop reagent recovery — same underlying problem, different material stream). **Candidate pathway logged 2026-07-07 (human-directed):** on-site acid synthesis via salt-water electrolysis with an ion-selective membrane (chlor-alkali-type process) — third option distinct from "external sourcing" and "closed-loop reclamation," using cheap/abundant, non-toxic precursors (salt, water, electricity). Not a resolution: standard chlor-alkali electrolysis co-produces chlorine gas, which requires a containment/scrubbing design to satisfy Ethical_Constraints.md's active-release-prohibited doctrine before this pathway can be adopted. Still Critical/Open pending a containment answer and formal ratification of the sourcing decision. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
+| CLF-004 | Chemical footprint of electrolytic/electrorefining pathways undefined — local/organic acid sourcing vs. closed-loop acid reclamation not decided. Intersects `Admin/Ethical_Constraints.md` §Toxic and Hazardous Material Handling, `Operations/Gate_03_Reduction.md` GR-003, PL-001/CE-003, and `Challenges/Critical_Minerals.md` CM-002 (closed-loop reagent recovery — same underlying problem, different material stream). **Candidate pathway logged 2026-07-07 (human-directed):** on-site acid synthesis via salt-water electrolysis with an ion-selective membrane (chlor-alkali-type process) — a third option alongside "external sourcing" and "closed-loop reclamation," not a replacement for them; the sourcing decision among the three remains open. Uses cheap/abundant, non-toxic precursors (salt, water, electricity). Not a resolution: standard chlor-alkali electrolysis co-produces chlorine gas, which requires a containment/scrubbing design to satisfy Ethical_Constraints.md's active-release-prohibited doctrine before this pathway can be adopted. **Directed approach added 2026-07-17 (human-directed) at `Architecture/Chemistry.md` CE-006:** capture and nullification via existing `Operations/Air_Scrubber.md` chemisorption infrastructure, subject to verification at this process's actual generation rate — see CE-006 for detail. Still Critical/Open pending that verification and formal ratification of the sourcing decision among the three candidate paths. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
 | CLF-006 | Recursive cascading contamination thresholds, bleed-off, and purge metrics undefined — what triggers diversion to low-spec/full reduction, and what the quantitative purge/wear limits actually are. | Challenges/Closed_Loop_Feedstock.md | Open | — | Critical |
 | CLF-007 | PIR aggregation function undefined — the four sub-vectors (energy, chemical, maintenance, labor) are collapsed into "overall PIR" with no stated operator. An arithmetic mean would let one strong vector mask a near-zero vector, contradicting this file's own stated intent. Needs a geometric mean or weighted product, with weights reflecting each vector's existential risk. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
 | CLF-008 | Downstream destination for degraded/bleed-off material and hazardous byproducts (toxic slag, anode slime) undefined. Section 3's dependency table has no link for where this material physically flows. Candidate links: `Operations/Gate_03_Reduction.md` (full-reduction diversion) and `Challenges/Return_To_Eden.md` $W_{\text{out}}$ (waste-output accumulation) — neither confirmed. | Challenges/Closed_Loop_Feedstock.md | Open | — | Major |
@@ -137,6 +134,22 @@ Full sidecar details maintained here; register cross-references in `Unknowns.md`
 ---
 
 ## Resolution Log
+
+- 2026-07-17: **v0.7.0 — Embedded Value Preservation ratified; CLF-004
+  reframed; CE-006 directed approach cross-referenced (human governing
+  authority).** §2a's proposed doctrine adopted into operative Scope
+  Boundary text — Pending Ratification 1 → 0. Cross-reference to
+  `Operations/Gate_02_Triage.md` added there (see that file's Resolution
+  Log). CLF-004's candidate chlor-alkali pathway reframed explicitly as
+  one of three options under consideration, not a selected path — the
+  file's own prior wording ("third option... distinct from") was already
+  non-exclusive; tightened further to make that reading unambiguous.
+  Cross-referenced `Architecture/Chemistry.md` CE-006's 2026-07-17 directed
+  approach (capture-and-nullification via existing Air_Scrubber.md
+  infrastructure). CLF-004 remains Open/Critical — a directional decision
+  on the chlorine problem is not the same as CLF-004 being resolved; the
+  sourcing choice among the three candidates and CE-006's verification
+  work both remain outstanding.
 
 - 2026-07-12: Ethical Anchor field corrected — was using a non-canonical variant (backticked, `Admin/`-prefixed: "Defer to `Admin/Ethical_Constraints.md` if present.") instead of the canonical plain-text string ("Defer to Ethical_Constraints.md if present."). Same drift found across 9 files in a full-repository Phase 1 sweep (ChatGPT, adapted local-disk harness run) — verified independently against source before patching. No semantic change; the anchor's meaning was never in question, only its exact text.
 - 2026-07-11: **v0.6.1 — Challenges Subtype field added: Solution-Track.** This file has used the full eleven-field File State schema and worked-engineering content since v0.3.0, and `Admin/File_Template.md`'s Challenges/ subtype doctrine names it directly as a current Solution-Track example. Declaring the field explicitly closes the gap between doctrine and this file's own File State table — no schema change, no promotion event (promotion already happened in practice; this just records it).
