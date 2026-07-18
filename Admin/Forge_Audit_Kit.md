@@ -1,5 +1,5 @@
 # Forge_Audit_Kit.md
-**Version 1.11**
+**Version 1.12**
 
 ## File State
 
@@ -8,13 +8,13 @@
 | Status         | Draft                                                               |
 | Spec Gates     | 0/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                    |
-| Last Audit     | 2026-07-14                                                          |
-| Auditor        | Claude — Synthesizer; Claude — v1.10 reduction + Expiry Watch redesign (human-directed); Claude — self-audit + v1.11 (FAK-010/011/012, First Battery) — all 2026-07-14 |
+| Last Audit     | 2026-07-17                                                          |
+| Auditor        | Claude — Synthesizer; Claude — v1.10 reduction + Expiry Watch redesign (human-directed); Claude — self-audit + v1.11 (FAK-010/011/012, First Battery) — 2026-07-14; Claude — v1.12 Verification Gates trim (human-directed), derivation versions corrected, 2026-07-17 |
 | Open Unknowns  | 5 — see Sidecar Link                                                |
 | Sidecar Link   | Admin/Forge_Audit_Kit_Changelog.md#sidecar--auditor-notes--unknowns |
 | Ethical Anchor | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
-**Derived from:** `Admin/Auditor_Protocols.md` v0.21 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.20
+**Derived from:** `Admin/Auditor_Protocols.md` v0.24 | `Admin/Verification_Gates_LF.md` v0.7 | `Unknowns.md` v4.21
 
 When this file contradicts a full source document, the full source document prevails.
 
@@ -157,7 +157,7 @@ Substantive notes required — bare checkmarks are not verification. Full text: 
 
 ## AI Contribution Rules
 
-Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.21"*
+Role declaration required: *"Operating as [Role] per Auditor_Protocols.md v0.24"*
 
 Valid roles: Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -191,9 +191,7 @@ Sequential. Auditor has binding block authority. Self-approval loops not permitt
 - **G3** passes if the Adversarial Battery was applied and documented — full Battery, or partial with deferred classes named and reasoned (Exploration-stage default per §Adversarial Audit Layer "When to Apply"). G3 does not require that findings from the Battery be resolved; unresolved Critical findings block *promotion*, tracked as open unknowns, not as a G3 failure.
 - **G6** passes if the committed text does not contradict itself or another *committed* spec. G6 does not test whether upstream dependencies are resolved — that is a promotion-readiness question.
 
-**Known source ambiguity:** `Admin/Auditor_Protocols.md`'s own Gate 3 status entry states Gate 3 "BLOCKED pending AP-012 and AP-016" in the same line as "Battery application is complete" — correct in substance (coverage complete, promotion blocked) but the phrasing blends the two axes this note separates. Source document remains authoritative; flagged here as a legibility issue worth a future wording pass, not a governance error.
-
-**Gate 3 note:** Battery coverage complete for `Admin/Auditor_Protocols.md` (v0.13). At least one Battery class per promotion cycle must be applied by an agent with no session context from the current audit cycle (AP-017). AP-012 and AP-016 — the two entries previously blocking promotion — are Resolved as of `Admin/Auditor_Protocols.md` v0.16 (2026-07-03, Payment via Specification). Gate 3 blocking status should be re-evaluated at next audit rather than assumed clear — a resolved blocker is not automatically a passed gate.
+**Gate 3 status is not permanent.** A resolved blocker is not automatically a passed gate — re-verify Gate 3's actual blocking status at each audit rather than assuming a prior "cleared" or "blocked" note still holds. Full incident history (a 2026-07-05 case where this went wrong in both directions) in `Admin/Forge_Audit_Kit_Changelog.md`.
 
 **Physical harness note (AP-010 pending):** For documents with physical implementation claims, Gate 6 requires at least one confirmed cross-reference to an active test harness specifying test and grounding artifact. Documents without physical claims are exempt.
 
@@ -272,7 +270,7 @@ Load this file plus the document under audit. That is the baseline for every rou
 
 Load additional files only when the audit focus requires them — each adds tokens. Candidates: `Admin/Auditor_Protocols.md` (full role doctrine, full EF constitutional text, full Adversarial Battery), `Unknowns.md` (full unknown detail), `Discovery.md` (path lookup, Rename Registry), target file's upstream architecture files.
 
-**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 96,000 characters at v0.21. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
+**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 100,000 characters at v0.24. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
 
 **Load full source documents instead of this kit when:** auditing `Admin/Auditor_Protocols.md` itself · onboarding a new agent · full unknown entry detail required · EF section interpretive dispute.
 
