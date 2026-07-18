@@ -17,10 +17,10 @@
 | Spec Gates       | 6/6 vs. `Admin/Verification_Gates_LF.md` — execution quality (see GOV-011, resolved 2026-07-05); promotion separately blocked by open unknowns (GOV-003, GOV-005) and Enforcement Checkpoint 2 — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-17                                                          |
-| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16; Claude — GOV-013/EDL Track classification confirmed (human-directed), 2026-07-17 |
-| Open Unknowns    | 12                                                                  |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16; Claude — GOV-013/EDL Track classification confirmed (human-directed), 2026-07-17; ChatGPT — adversarial pass, 2026-07-17; Claude — GOV-014 through GOV-020 verified against source and registered (human-directed), 2026-07-17 |
+| Open Unknowns    | 19                                                                  |
 | Active Disputes  | 1                                                                   |
-| Highest Risk     | Critical (GOV-013 — see sidecar; promotion-blocking risk unchanged from GOV-003/GOV-005) |
+| Highest Risk     | Critical (GOV-013, GOV-015, GOV-018 — see sidecar; promotion-blocking risk unchanged from GOV-003/GOV-005) |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
@@ -1131,7 +1131,187 @@ both.
 
 ---
 
+### GOV-014 — Governance complexity ceiling undefined
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** Governance Closure Doctrine and Governance Anti-Theater Doctrine both limit *recursive* governance growth (governance creating governance), but nothing limits the raw count, depth, or dependency-graph complexity of subordinate doctrine files a governing body may create without ever violating proportionality on a per-file basis. Each individual addition can be proportionate while the aggregate becomes unmanageable.
+
+**Why It Matters:** this is a slow, compounding risk, not an acute one — the kind of gap that's cheap to fix early and expensive to fix once hundreds of interdependent doctrine files exist. No existing doctrine measures or bounds this dimension at all.
+
+**Resolution Path:** Payment via Specification — define what "governance complexity" means operationally (doctrine file count, cross-reference density, dependency graph depth are candidates) and what ceiling or review trigger applies. Cross-reference GOV-016 (Pruning) and GOV-020 (Cost Metric) below — the three are related but distinct: this is about complexity accumulation, GOV-016 is about removing what's no longer needed, GOV-020 is about measuring the cost/benefit ratio.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 2, Recursive Authority), 2026-07-17; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-015 — Constitutional interpretation capture
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                              |
+| Priority      | Critical                         |
+| Type          | Governance / Security            |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** This Charter prevents self-certification, self-auditing, silent amendment, tier inversion, and lineage destruction at the Tier 1 text level. It does not defend against a coalition that never touches Tier 1 Axiom text at all, but instead creates a large number of subordinate files that collectively reinterpret what the Axioms mean in practice — Tier 1 stays textually intact while becoming practically irrelevant. Confirmed by direct search: no existing section addresses interpretation-drift-by-volume as a distinct attack class from the single-file reinterpretation GMP-005 already covers.
+
+**Why It Matters:** this is the most severe of the seven findings in this pass. It's a Constitutional Capture vector that doesn't require breaking any existing rule — every individual subordinate file could pass its own audit while the aggregate effect hollows out Tier 1. The Charter's current model assumes lower-tier documents behave honestly in aggregate; nothing structurally enforces that assumption.
+
+**Resolution Path:** Payment via Specification — likely requires some form of aggregate drift detection (does the *practical* meaning of an Axiom, inferred from how subordinate doctrine collectively treats it, still match its *textual* meaning), not just per-file review. Cross-reference `Admin/Governance_Migration_Protocol.md` GMP-005 (single-file reinterpretation, resolved) — this is the same failure mode at aggregate scale, unresolved. Cross-reference GOV-014 (complexity ceiling) — a bounded doctrine count makes this attack harder to execute unnoticed, though it doesn't resolve the underlying gap by itself.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 3, Constitutional Capture), 2026-07-17; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-016 — Governance pruning doctrine absent
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Low                               |
+| Priority      | Minor                            |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** The Charter's incentive structure rewards truth over certainty, unknowns over hidden assumptions, lineage over appearance, and correction over ego — a genuinely healthy set of incentives. But nothing explicitly rewards *removing* governance that's become obsolete. Combined with the sidecar model's permanent-retention doctrine (unknowns are never deleted, only marked Resolved), governance accumulates in one direction only.
+
+**Why It Matters:** lowest urgency of the seven — this is a slow entropy problem, not an acute risk. Worth tracking because it compounds with GOV-014 (complexity ceiling) over a long enough horizon.
+
+**Resolution Path:** Payment via Specification — a periodic review process where doctrine must justify continued relevance, distinct from the sidecar's permanent-retention rule (retention of the *record* that something was decided is not the same as that decision remaining active operative doctrine). Cross-reference GOV-014.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 4, Incentive Audit), 2026-07-17; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-017 — Institutional governance stagnation
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** Distinct from GOV-012, confirmed by checking that entry's actual scope: GOV-012 detects stagnation of individual *unknowns* (an entry sitting Open too long without a substantively-updated Resolution Path). Nothing detects stagnation of the governance *document itself* — a Charter that is never edited, never audited, and never evolves, while the repository around it continues to operate. This isn't failure in the crash sense; it's the Charter becoming a historical artifact that no longer reflects how the system actually behaves.
+
+**Why It Matters:** GOV-013 addresses a system exiting Genesis Phase and then operating unmonitored (zombie bootstrap). This is the adjacent case — governance itself going quietly inactive rather than a specific instance's exit conditions going unmonitored. Related failure mode, different mechanism, both currently undetected.
+
+**Resolution Path:** Payment via Specification — likely a Last Audit staleness check at the Charter level itself (this file already tracks its own Last Audit date; the gap is that nothing acts on that date growing old). Cross-reference GOV-012 (shares detection-mechanism shape, different subject) and GOV-013 (adjacent zombie-governance failure mode).
+
+*Surfaced by ChatGPT — adversarial pass (Battery 5, Zombie Governance), 2026-07-17; verified against source (confirmed non-duplicative of GOV-012's actual scope) and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-018 — Governance fork reconciliation undefined
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | High                              |
+| Priority      | Critical                         |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** `Admin/Governance_Migration_Protocol.md` has well-developed doctrine for a single lineage's governance evolving over time (Track A/B, amendment procedure). It has no doctrine for two independently-valid, independently-audited constitutional lineages diverging (a repository fork) and later needing reconciliation. Confirmed by direct search of both this file and the Migration Protocol — no fork or merge terminology appears in either.
+
+**Why It Matters:** rated Critical alongside GOV-015 — both are gaps only visible once you assume the system succeeds and scales, rather than gaps in current single-instance operation. A fork scenario with two constitutionally valid but divergent lineages has no defined reconciliation path, which could itself become a source of governance capture or paralysis if it ever occurs.
+
+**Resolution Path:** Payment via Specification — likely belongs in `Admin/Governance_Migration_Protocol.md` as a new Track or procedure, not this file, given that file's ownership of migration doctrine generally. Genuinely long-horizon; not urgent at current v0 single-instance scale, but cheaper to design before a fork exists than after.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 6, Fork Attack), 2026-07-17; verified against source (confirmed absent from both this file and Governance_Migration_Protocol.md) and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-019 — Conflicting authenticated human overrides
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Medium                           |
+| Priority      | Major                            |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** Human Override Doctrine's Interim Authentication Requirement, above, defines what makes a *single* override valid (independent second-operator confirmation, external cryptographic signature, or an outside dated record) but says nothing about what happens if two different, independently-authenticated humans issue conflicting overrides. Confirmed by direct reading of the full section — no arbitration mechanism exists.
+
+**Why It Matters:** at current v0 single-contributor scale this is dormant risk, but the authentication requirement itself is explicitly interim, built for a future where multiple authenticated humans are a realistic scenario — this gap will become live exactly when the interim requirement's target state (multi-operator) is reached, unless addressed before then.
+
+**Resolution Path:** Payment via Specification — define arbitration order (majority, seniority, emergency authority, or escalation to a defined Tier 1 process). Cross-reference GOV-006 (override authenticity validation, already Open and cited by Human Override Doctrine) — GOV-006 is about verifying an override is genuinely human; this is about resolving conflict between two overrides that are both already verified genuine. Distinct, adjacent gaps.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 8, Human Override Abuse), 2026-07-17; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### GOV-020 — Governance cost metric undefined
+
+| Field         | Value                           |
+|---------------|----------------------------------|
+| Status        | Open                             |
+| Risk          | Low                               |
+| Priority      | Minor                            |
+| Type          | Governance                       |
+| Blocking      | No                                |
+| Owner         | `Admin/Governance_Charter.md`    |
+| First Logged  | 2026-07-17                       |
+| Last Reviewed | 2026-07-17                       |
+
+**Description:** This Charter's own text warns that governance overhead could eventually exceed engineering value, but defines no metric to actually measure that ratio — meaning the proportionality principle it asks other doctrine to satisfy is not itself auditable in practice, only in intent.
+
+**Why It Matters:** lowest urgency of the seven, but it's the measurement gap underneath GOV-014 and GOV-016 — without some form of governance-to-engineering cost ratio, neither "is the complexity ceiling being approached" nor "is pruning actually needed yet" has a factual basis to answer from.
+
+**Resolution Path:** Payment via Specification — a lightweight metric (doctrine word count vs. operational file word count, or unknown-resolution velocity vs. unknown-creation velocity, are candidates, not commitments). Cross-reference GOV-014 and GOV-016 — this is their shared measurement layer.
+
+*Surfaced by ChatGPT — adversarial pass (Battery 9, Constitutional Economics), 2026-07-17; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-17: **GOV-014 through GOV-020 registered — adversarial pass
+  (ChatGPT), verified against source before registration.** Given ChatGPT
+  proposed four already-taken, unrelated IDs in an unrelated file earlier
+  this same day (see `Admin/Auditor_Protocols.md` v0.24 Resolution Log),
+  every claim in this pass was checked before anything was added, not
+  after: all seven proposed IDs confirmed available; each proposed gap
+  confirmed absent from existing doctrine by direct search rather than
+  assumed novel (fork/merge, complexity ceiling, pruning, and conflicting-
+  override arbitration all returned zero hits in this file or
+  `Admin/Governance_Migration_Protocol.md`); GOV-017 specifically checked
+  against GOV-012's actual scope to confirm non-duplication (GOV-012 is
+  unknown-level stagnation, GOV-017 is document-level); all cited existing
+  doctrine (Governance Closure, Anti-Theater, GOV-013's "zombie bootstrap"
+  language) confirmed accurately quoted. All seven registered Open — this
+  pass logs findings, it does not resolve them. Two rated Critical
+  (GOV-015, GOV-018) alongside GOV-013; both are long-horizon /
+  scale-dependent risks, not defects in current single-instance operation.
+  Open Unknowns 12 → 19.
 
 - 2026-07-17: **GOV-013 and EDL Track classification confirmed.**
   `Admin/Governance_Migration_Protocol.md` resolved GMP-005/GMP-009
@@ -1264,61 +1444,4 @@ both.
 
 ## Abandoned Paths
 
-| Date       | Path                                                                        | Why Abandoned                                                                                              | Reconsider? |
-|------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------|
-| 2026-05-23 | Forge_Audit_Kit.md as Tier 2 governance authority                           | Kit is explicitly derived from Auditor_Protocols.md — a derived document cannot outrank its source          | No          |
-| 2026-05-23 | Single undifferentiated axiom list mixing Protections and Prohibitions      | Structural distinction lost; mirrors constitutional design error that weakens both clause types              | No          |
-| 2026-05-23 | Humanitarian override exception for Axiom P-1                               | Historical record (Nobel, Oppenheimer) demonstrates this is the primary attack vector on hard ethical constraints — runtime evaluation of override claims is the failure mode, not the safeguard | No |
-| 2026-05-23 | Governance complexity as a proxy for governance quality                     | Recursive governance expansion is itself a failure mode — complexity must remain proportional to operational value | No |
-
----
-
-## Drift Indicators
-
-Mandatory re-audit conditions for this document:
-
-- Genesis Phase Protocol removed or Genesis Phase declared complete without satisfying at least one of the four declared exit pathways with human ratification
-- Genesis Phase Pathway 4 review horizon passes without a formal human governing party review and documented decision
-- Interim authentication requirement for Constitutional-class overrides removed before `Admin/Security_Protocols.md` reaches Provisional Specification
-- `Admin/Canonical_Terms.md`, `Admin/Repository_Structure.md`, `Admin/Security_Protocols.md`, or `Admin/Governance_Migration_Protocol.md` removed from the repository or renamed without updating the Canonical Governance Ownership table
-- Tier 1 Axiom text modified without formal amendment entry in Resolution Log
-- Tier ordering in Governance Authority Hierarchy diverges from canonical relationship between `Admin/Auditor_Protocols.md` and `Admin/Forge_Audit_Kit.md`
-- Canonical Governance Ownership table contains entries without explicit Status field
-- Enforcement State claims imply stronger capability than currently exists
-- Bootstrap Governance Doctrine invoked to justify permanent authority assumptions
-- Protections Clause or Prohibitions Clause collapsed back into undifferentiated axiom list
-- STATE_HOLD escalation path undefined or removed
-- Human ratification requirement for axiom amendment removed or weakened
-- Ethical Anchor field absent, altered, or does not match canonical string
-- Governance Failure Modes table loses Axiom Erosion, Axiom Theater, or Constitutional Capture entries
-- Tier 1 Axioms cited to justify actions they were designed to prevent
-- Checkpoint 2 block status removed from File State or Checkpoint 2 body text without Genesis Phase exit condition being satisfied and ratified
-
-**Compound Drift Rule:** If multiple indicators activate simultaneously, halt autonomous audit progression and escalate for human review.
-
----
-
-## Relationship to Existing Documents
-
-- `Admin/Ethical_Constraints.md` — co-occupies Tier 1; governs permission and hard-line operational doctrine; Anti-Weaponization and Life Preservation are not subject to override
-- `Admin/Auditor_Protocols.md` — Tier 2; canonical verification doctrine; operates within authority hierarchy defined here
-- `Admin/Forge_Audit_Kit.md` — Tier 3; operational condensation derived from Auditor_Protocols.md; may not outrank its source
-- `Architecture/Forge_flow.md` — reference standard for shared operational terminology
-- `Admin/Trajectories.md` — destination for scope creep that proves to be valid future work
-- `Discovery.md` — navigation layer; confirmed file list; Rename Registry
-- `Unknowns.md` — global index for cross-module unknowns (index only)
-- `Admin/File_Template.md` — standard file structure; this document now conforms to it
-- `Admin/Canonical_Terms.md` — canonical target for terminology governance; created 2026-05-26
-- `Admin/Repository_Structure.md` — canonical target for repository structure doctrine; created 2026-06-06
-- `Admin/Security_Protocols.md` — canonical target for authority authentication and integrity enforcement; created prior to 2026-05-28; GOV-006 and RIP-005 resolution path
-- `Admin/Governance_Migration_Protocol.md` — canonical target for Tier 1 Axiom amendment procedures; created 2026-06-06; GOV-001 resolution path
-- `Lazarus-Forge-` — companion doctrine repository; source of principles refined into practice here
-- `Astroid-miner` [PLANNED] — planned repository; deferred to Leviathan milestone; do not treat as active dependency
-
-**Note on Ethical Anchor fallback status:** When this charter is unavailable, the Ethical Anchor field present in every repository file ("Attempt to do no harm. Defer to Ethical_Constraints.md if present.") acts as a temporary immutable floor — not as a substitute for Tier 1 constitutional authority. The Ethical Anchor preserves the foundational behavioral constraint during infrastructure blackout. It does not inherit full Tier 1 constitutional status, does not grant override authority, and does not substitute for axiom-level governance. It is the floor that survives; the charter is what builds above it.
-
----
-
-> **The attempt to do no harm is not contingent on the presence of a governance document.**
->
-> **These axioms are not proven. They are booted.**
+| Date       | Path                                                                        | Why Abandoned                                                            
