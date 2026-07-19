@@ -19,7 +19,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08           |
 | Auditor          | Claude — Skeptic/Auditor                                            |
-| Open Unknowns    | 2                                                                   |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | Medium                                                              |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -213,6 +213,17 @@ Baseline Observability defeats two Critical components simultaneously.*
 - Welding or joining capability
 
 *Reason: The seed must be able to repair and extend itself.*
+
+**Weld Unit Sizing Doctrine, 2026-07-19 (human-directed design principle, resolves part of UNK-008):**
+
+Favor smaller weld units — finer passes, lower heat input per pass — over larger single-pass welding for G.E.C.K.-class fabrication. The reasoning has two independent legs, not one:
+
+1. **Tolerance:** smaller passes carry less heat input, producing less thermal distortion and a smaller heat-affected zone per pass, which improves dimensional repeatability — the same principle behind "aim small, miss small": bounding the magnitude of each individual action bounds the magnitude of its error, even before accuracy improves. This directly feeds `Architecture/Precision.md`'s positional-accuracy and dimensional-repeatability ceiling components.
+2. **Power budget, not throughput:** this is not a claim that smaller weld units finish jobs faster or use less total energy — more passes to cover the same joint means more total time, a real and accepted tradeoff. The actual benefit is to **peak power draw**: a smaller weld unit demands less peak current, which directly shrinks what the Power & Energy Module (§VI.1 above) must be sized to supply. Since a G.E.C.K.'s power module sizing is driven by the Fabrication Module's worst-case draw, a smaller weld unit means a lighter, more compact seed overall — the relevant metric for "more reasonable G.E.C.K." is peak power and mass, not job completion speed.
+
+**Honest limit, not a monotonic rule:** this does not mean smaller is always better without bound. Excessive pass count reintroduces problems from a different direction — accumulated inter-pass residual stress, and if passes don't get adequate cooling between them, total arc-on time and cumulative heat input can approach or exceed a coarser single-pass approach. There is a real optimum weld-unit size for a given joint and material, not an unbounded improvement curve. Consistent with `Architecture/Precision.md`'s own doctrine: a stated precision or efficiency ceiling must be an honest bound demonstrated in practice, not an aspirational claim.
+
+**Remaining open work (UNK-008, still Open):** this doctrine establishes the *design principle*, not the *specification*. Still needed: actual welding wire specification and qualification (wire diameter/alloy suited to small-pass work), the specific weld-unit size/power envelope that qualifies as "small" for G.E.C.K. purposes, and empirical validation of the distortion-reduction claim against `Operations/Gate_05_Separation_Thermal.md`'s planned wire extrusion interface once that interface exists. Cross-reference `Architecture/Precision.md` §V (Precision Threshold) for the ceiling-declaration framework this doctrine feeds.
 
 ---
 
@@ -526,8 +537,41 @@ in Components.md routes to PR-001 for resolution.
 
 ---
 
+### UNK-008 — Welding wire specification and qualification (cross-module, ownership reassigned here 2026-07-19)
+
+| Field         | Value                            |
+|---------------|-----------------------------------|
+| Status        | Open                              |
+| Risk          | Medium                            |
+| Priority      | Major                             |
+| Type          | Technical                         |
+| Blocking      | No                                 |
+| Owner         | Architecture/Geck_forge_seed.md (reassigned — was `Operations/Gate_05_Separation_Thermal.md`, which had explicitly disclaimed ownership) |
+| First Logged  | 2026-06-24 (approx., per `Unknowns.md`) |
+| Last Reviewed | 2026-07-19                        |
+
+**Description:** Welding wire specification (diameter, alloy) and qualification for G.E.C.K.-class fabrication is undefined. Previously listed in `Unknowns.md`'s global table as owned by `Operations/Gate_05_Separation_Thermal.md` — but that file's own Scope Boundary explicitly states this is "downstream — not yet assigned," and its Drift Trigger table calls it "the unowned cross-module gap." Reassigned here since §VI.4's Weld Unit Sizing Doctrine (above) is where the actual design reasoning now lives.
+
+**Why It Matters:** An owning-file contradiction meant this unknown had a table entry but no file actually treating it as its responsibility — a bookkeeping gap of the same kind this repository's own audit discipline exists to catch.
+
+**Resolution Path:** §VI.4 above establishes the design *principle* (favor smaller weld units for tolerance and peak-power reasons, with an honest non-monotonic limit) but not the *specification*. Remaining: actual wire diameter/alloy selection suited to small-pass work, empirical validation against `Operations/Gate_05_Separation_Thermal.md`'s planned wire extrusion interface once built, and the specific power/size envelope that qualifies as "small" for G.E.C.K. purposes. Cross-reference `Architecture/Precision.md` §V for the ceiling-declaration framework this feeds into.
+
+*Surfaced by human governing authority (weld-unit-sizing design principle), formalized by Claude 2026-07-19.*
+
+---
+
 ### Resolution Log
 
+- 2026-07-19: Weld Unit Sizing Doctrine added to §VI.4 Fabrication Module
+  (human-directed design principle) — smaller weld passes for tolerance
+  (reduced heat input/distortion) and peak-power reasons (smaller Power &
+  Energy Module sizing), with an explicit non-monotonic limit stated per
+  `Architecture/Precision.md`'s honest-ceiling doctrine. UNK-008 (welding
+  wire specification and qualification) ownership reassigned here from
+  `Operations/Gate_05_Separation_Thermal.md`, which had explicitly
+  disclaimed it in its own Scope Boundary — a table/file contradiction of
+  the kind this repository's audit discipline exists to catch. Open
+  Unknowns 2 → 3.
 - 2026-05-04: **GK-001** — Resolved. Forge loop explicitly defined in Section III.
 - 2026-05-04: **UNK-005** — Partially resolved. Marine G.E.C.K. variant stub added
   (Section X). Full specification deferred to `Admin/Trajectories.md` v1/v2 scope.
