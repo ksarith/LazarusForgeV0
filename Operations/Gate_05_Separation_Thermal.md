@@ -721,7 +721,7 @@ Spin Chamber:
 | RPM never-exceed revised without SC-005 resolution | Dynamic analysis is a prerequisite for any RPM limit change |
 | Drive system specified with non-standard components without documented justification | Standardization doctrine applies — bespoke components require explicit override |
 | Safety Advisory conditions change without SC-006 update | Siting requirements and the advisory must stay synchronized |
-| Wire extrusion interface advanced without welding wire specification owner identified | SC-004 and the unowned cross-module gap must resolve together |
+| Wire extrusion interface advanced without welding wire specification owner identified | SC-004 must resolve alongside `Architecture/Geck_forge_seed.md` UNK-008 (ownership reassigned there 2026-07-19; the design principle is defined, the full specification is not) |
 | Melt material class expands beyond Al-class without assumptions review | ASM-002 expiry trigger — temperature bands, density values, and crucible material selection all change with material class |
 | Hot idle doctrine abandoned in favor of full thermal cycling | Core thermal doctrine — crucible and coil life assumptions depend on it |
 
