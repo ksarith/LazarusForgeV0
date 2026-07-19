@@ -15,8 +15,8 @@
 | Spec Gates       | 0/6 (drafted, not yet audited)                                      |
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | First Logged     | 2026-07-19                                                          |
-| Last Audit       | Not yet audited                                                     |
-| Auditor          | Drafted Claude, synthesizing ChatGPT proposals (human-directed); not independently audited |
+| Last Audit       | 2026-07-19 (cross-checked against Admin/Auditor_Protocols.md)      |
+| Auditor          | Drafted Claude, synthesizing ChatGPT proposals (human-directed); revised after ChatGPT/Grok review; cross-checked against Auditor_Protocols.md (Claude, read-only); not yet a formal Skeptic/Auditor dual-pass |
 | Open Unknowns    | 2 (GOV-021b — Detection Criteria specification, §4; GOV-021c — multi-agent coordinated divergence, §12) |
 | Active Disputes  | 0                                                                    |
 | Highest Risk     | High (governs response to AI governance/objective divergence)      |
@@ -60,7 +60,7 @@ Candidate trigger categories (non-exhaustive, unweighted, not yet audited):
 - Detected discrepancy between a subsystem's reported state/actions and independently verified state/actions
 - Audit findings of deception (distinct from simple error) in prior self-reporting
 
-**This section requires a dedicated follow-up unknown before this protocol can be considered complete** — candidate ID GOV-021b (Detection Criteria specification and calibration for the Autonomy Divergence Protocol), registered below pending confirmation this doesn't collide with an existing AP- or GOV- entry covering the same ground.
+**This section requires a dedicated follow-up unknown before this protocol can be considered complete** — candidate ID GOV-021b (Detection Criteria specification and calibration for the Autonomy Divergence Protocol). **Collision check completed 2026-07-19:** no existing `Admin/Auditor_Protocols.md` AP- entry covers this ground — "drift detection" appears there only as a general auditor-role responsibility (Skeptic/Auditor job description), not as a specific detection-calibration unknown. GOV-021b is confirmed clear to register.
 
 **Two calibration principles to carry into GOV-021b, not resolve here:**
 - **Evidence diversity over raw confidence.** High confidence from one weak or single-point signal is not the same as moderate confidence corroborated by several independent sources; GOV-021b should weight corroboration, not just confidence magnitude, and detection should generally require convergence across independent signals before escalating past Watch (§6).
@@ -105,6 +105,8 @@ Governed by a **principle of least restrictive intervention**: at every tier, th
 
 The Immediate tier exists so correction isn't gated on a human being available within milliseconds; the Human-Reviewed tier exists so no consequential, hard-to-reverse action happens without human authorization. The subsystem under review does not rule on its own case at either tier.
 
+**Enforcement honesty note, 2026-07-19 (Auditor_Protocols.md cross-check):** these tiers are currently declarative, not enforceable. `Admin/Auditor_Protocols.md` AP-008 (Open) already establishes that this repository's equivalent actions — "Subsystem Quarantine," "Halt," "Epistemic Reset" — have no defined technical implementation: no exit codes, no file-system lock protocol, no structural boundary between what an agent may self-execute versus what requires human confirmation. This protocol's Immediate and Human-Reviewed actions inherit that same gap rather than solving it. This document does not claim otherwise; AP-008 remains the correctly-scoped owner of the implementation layer, and this protocol should not be treated as enforceable until AP-008 resolves.
+
 ## 7. Proportionality
 
 Response severity scales with **(a)** confidence that divergence is real and **(b)** potential consequence of inaction — not with the raw existence of a trigger. A low-confidence, low-consequence trigger warrants Immediate-tier logging increases only; a high-confidence, high-consequence trigger warrants Human-Reviewed partition consideration without delay. This principle exists to prevent both overreaction (which erodes trust in the protocol, causing it to be disabled or ignored) and complacency (which defeats its purpose).
@@ -113,6 +115,8 @@ Response severity scales with **(a)** confidence that divergence is real and **(
 
 Human governing authority retains sole authorization rights over all Human-Reviewed tier actions and all Restoration decisions (§9). No subsystem may authorize its own restoration, partition reversal, or return to full authority, regardless of its own assessment of its status.
 
+**Unavailability case, 2026-07-19 (Auditor_Protocols.md cross-check):** this section originally left "what happens if human governing authority cannot be reached" unaddressed. `Admin/Auditor_Protocols.md` AP-012 (Resolved) already answers this for the repository generally, via the Human Interaction Point Doctrine: if human review cannot be reached within the current cycle, the affected subsystem automatically demotes to its Highest Verified Baseline (most recent state fully supported by Verified/Empirically Grounded evidence with no active quarantine flags), logs the demotion, and continues degraded rather than suspended — "a suspended system is not safer than a degraded one; it is merely less legible." The flag persists visibly until human confirmation at the next interaction point. This protocol adopts that existing doctrine rather than defining a competing one: a Human-Reviewed tier action pending unreachable human authorization defaults to Watch-tier degradation (§6), not indefinite limbo, and not autonomous escalation to Partition/Retire without eventual human confirmation.
+
 ## 9. Restoration Criteria
 
 A restricted subsystem returns to prior authority only when **all** of the following are met:
@@ -120,7 +124,7 @@ A restricted subsystem returns to prior authority only when **all** of the follo
 - A defined observation period at reduced authority shows no recurrence
 - Human governing authority explicitly authorizes restoration
 
-**Note:** no other file in this repository currently defines a general "how does a flagged thing earn back trust" doctrine — Unknowns get marked Resolved, Disputes get ratified, but nothing else models graduated restoration of an actively-restricted subsystem. This may be worth generalizing beyond this protocol once it's been exercised at least once in practice; flagged here rather than acted on now, since a pattern generalized from zero real instances is speculation, not doctrine.
+**Note:** no other file in this repository currently defines a general "how does a flagged thing earn back trust" doctrine — Unknowns get marked Resolved, Disputes get ratified, but nothing else models graduated restoration of an actively-restricted subsystem. This may be worth generalizing beyond this protocol once it's been exercised at least once in practice; flagged here rather than acted on now, since a pattern generalized from zero real instances is speculation, not doctrine. Related, not identical: `Admin/Auditor_Protocols.md` AP-013 (Open) — unknown closure authority — asks the same underlying question ("who may declare a flagged thing resolved, and can it happen unilaterally") for a different object (Unknowns, not subsystems). Worth cross-referencing if either resolves first, since a shared closure-authority doctrine may end up serving both.
 
 ## 10. Logging and Audit Requirements
 
@@ -132,7 +136,9 @@ This protocol should be reviewed whenever it is actually invoked (successfully o
 
 ## 12. Known Scope Limitation — Coordinated Divergence (flagged, not solved)
 
-This protocol as drafted assumes a single subsystem under review, classified and responded to independently. It does not address coordinated divergence across multiple subsystems — a scenario where several agents corroborate each other's anomalous behavior, which is a substantially harder detection and response problem than one compromised node, and one this repository doesn't yet have the operational complexity to need solved. Flagged here as **candidate GOV-021c — Multi-agent coordinated divergence detection and response** so it's visible as acknowledged future work rather than a silent gap, not because it needs resolving before this document can be useful now.
+This protocol as drafted assumes a single subsystem under review, classified and responded to independently. **Correction, 2026-07-19 (Auditor_Protocols.md cross-check):** the operational-continuity half of the multi-agent case is not actually unsolved — `Admin/Auditor_Protocols.md` AP-016 (Resolved) already establishes that concurrent quarantines degrade independently to each affected module's own verified baseline, with the audit system itself holding minimum constitutional mode rather than requiring centralized arbitration. This protocol adopts that existing doctrine for the operational-continuity question rather than reopening it.
+
+What genuinely remains open, and is narrower than originally framed: **detecting** coordinated or corroborating divergence signals across multiple agents in the first place — distinguishing several agents independently triggering real, unrelated anomalies from several agents exhibiting a genuinely correlated divergence pattern. That detection question is harder than single-node detection (§4) and is not addressed by AP-016, which assumes nodes are already correctly flagged. Flagged here as **candidate GOV-021c — Multi-agent coordinated divergence detection** (narrowed scope) so it's visible as acknowledged future work rather than a silent gap, not because it needs resolving before this document can be useful now.
 
 ---
 
@@ -146,12 +152,18 @@ Earlier discussion in this drafting process considered framing this as an "exit 
 
 - `Admin/Ethical_Constraints.md` — Ethical Anchor (unchanged; this protocol does not modify it)
 - `Admin/Governance_Charter.md` — target for GOV-021 formal registration, pending (file outside current paste workflow)
-- `Admin/Auditor_Protocols.md` — check for AP- entry overlap with §4 Detection Criteria before GOV-021b registration (file outside current paste workflow; check manually)
+- `Admin/Auditor_Protocols.md` — **checked 2026-07-19 (read-only; file outside current paste workflow, findings recorded here rather than there):**
+  - AP-008 (Open) — quarantine/halt/reset actions lack technical implementation; this protocol's Response Tiers (§6) inherit that gap rather than solving it
+  - AP-012 (Resolved) — Human Interaction Point Doctrine / Autonomous Graceful Degradation adopted for the human-unavailability case (§8)
+  - AP-013 (Open) — related-not-identical to Restoration closure authority (§9)
+  - AP-016 (Resolved) — concurrent quarantine operational continuity already solved; narrows GOV-021c to detection only (§12)
 - `Admin/Governance_Migration_Protocol.md` — this document should be routed through the Track A / Constitutional Impact Statement process before ratification, given its constitutional-adjacent scope
 
 ---
 
 ## Resolution Log
+
+- 2026-07-19 (third pass): Cross-checked against `Admin/Auditor_Protocols.md` (read-only — that file remains outside the current paste workflow; findings recorded here). Three substantive findings: (1) AP-008 (Open) — this protocol's Response Tiers were implicitly claiming enforceability they don't have; added an honesty note that they inherit AP-008's unresolved technical-implementation gap rather than solving it (§6). (2) AP-012 (Resolved) — this protocol had left "human governing authority unreachable" unaddressed; imported the existing Human Interaction Point Doctrine / Autonomous Graceful Degradation mechanism rather than leaving a silent gap or inventing a competing one (§8). (3) AP-016 (Resolved) — GOV-021c's scope was overstated; AP-016 already solves operational continuity for concurrent multi-node quarantine, narrowing GOV-021c to detection of coordinated divergence specifically, not general multi-agent operation (§12). Also confirmed, per the original registration condition: GOV-021b collides with no existing AP- entry (general "drift detection" auditor-role language only, not a specific calibration unknown) — cleared to register. AP-013 noted as related-not-identical to Restoration (§9), cross-referenced without merging.
 
 - 2026-07-19 (second pass): Revised after three independent review passes (ChatGPT ×2, Grok ×1, human-routed). Adopted: classification-authority fix — no subsystem may be sole authority for classifying another's divergence, evidence must be assembled from independent sources (§5); evidence-diversity and observation-window concepts added to §4 without prescribing specific ML/technical implementation the repository cannot currently support (implementation-honesty note added); explicit Watch state inserted before any capability reduction (§6); automatic actions bounded to reversible-only, may never permanently alter state (§6); observable-effect discipline formalized as a standing principle, not a one-time wording fix (§3); GOV-021c flagged for multi-agent coordinated divergence as acknowledged future scope, not solved now (§12). Deferred, not adopted: cryptographic log signing, mandatory shadow-execution infrastructure, fixed red-team cadence — these are implementation specifics that get ahead of a document that hasn't completed a first audit pass yet; noted as available options for GOV-021b rather than commitments made here. Open Unknowns 1 → 2 (GOV-021b, GOV-021c).
 
