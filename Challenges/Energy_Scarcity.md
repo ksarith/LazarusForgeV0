@@ -18,10 +18,10 @@
 | **Status** | Active |
 | **Challenges Subtype** | Problem-Statement |
 | **Version** | v0.1 |
-| **Last Updated** | 2026-07-12 |
+| **Last Updated** | 2026-07-19 |
 | **Owner** | Challenges/ |
 | **Verification Ref** | `Admin/Verification_Gates_LF.md` |
-| **Ethical Anchor** | Attempt to do no harm. Defer to `Admin/Ethical_Constraints.md` if present. |
+| **Ethical Anchor** | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
 ---
 
@@ -178,6 +178,7 @@ The grid does not have to be the only shape reliable power can take.
 - 2026-07-12: v0.1 — Initial file creation. Proposed by James, motivated by the observation that `Challenges/` had grown to cover water, waste, biofouling, critical minerals, planned obsolescence, and emergence as external problem-statements, but energy — despite being at least as globally consequential and already load-bearing for `Operations/Energy.md`'s own design choices — had no equivalent framing file. Structured identically to `Challenges/Water.md` (the closest precedent: an External Challenge Class problem with an existing Operations-layer doctrine file already responding to it in practice). ES-001 through ES-003 registered as new unknowns, using an `ES-` prefix chosen specifically to avoid collision with `Operations/Energy.md`'s `EV-` prefix, `Architecture/Engineering.md`'s `EN-` prefix, and `Admin/Economics.md`'s `EC-` prefix. Not yet audited by any second agent — Gate 1 review outstanding.
 - 2026-07-12 (same day): File committed to the repository as `Challenges/Energy_Scarcity.md` rather than `Challenges/Energy.md` — the more precise name, since it avoids any ambiguity with `Operations/Energy.md` at the filename level, not just in Scope Boundary prose. Title line corrected to match. No other content changed.
 - 2026-07-12 (third entry, same day): Three second-agent audits run against this file. Two of three raised File State findings (Status: Active "contradicts" Exploration classification; missing Spec Gates field; bolded table keys breaking harness parsing) that were checked against `Challenges/Water.md` and found to be false positives — Active and the omitted Spec Gates field are the correct, doctrine-sanctioned values for the Problem-Statement lean schema, not defects. A third finding (stale `Challenges/Energy.md` cross-reference) was already resolved in the file the auditors were given but flagged anyway, suggesting at least one audit worked from a pre-fix snapshot. One finding across all three audits was genuine and adopted: Engineering Requirements' surplus clause now explicitly subordinates community distribution claims to EV-001 validation and notes that surplus is only meaningful net of conversion, storage, maintenance, and parasitic losses — both added to the "Treat surplus" bullet above.
+- 2026-07-19: Ethical Anchor field corrected — was using a non-canonical variant (backticked, `Admin/`-prefixed: "Defer to `Admin/Ethical_Constraints.md` if present.") instead of the canonical plain-text string ("Defer to Ethical_Constraints.md if present."). This file was created 2026-07-12, the same day as PC-006's 9-file sweep fix in `Unknowns.md` v4.20 — this file was evidently missed by that sweep (created same-day, likely after the sweep's fetch), and none of the three second-agent audits logged above caught it either. Flagged by a Grok pass 2026-07-19 (cross-checked against source before patching, per standard practice — Grok's broader claims in that same report were stale, but this specific finding held up). No semantic change; the anchor's meaning was never in question, only its exact text.
 
 ---
 
@@ -197,7 +198,6 @@ The grid does not have to be the only shape reliable power can take.
 - This file's scope drifts into redefining `Operations/Energy.md`'s internal generation doctrine rather than staying at the external-challenge framing level
 - ES-001 (surplus routing) remains unreviewed past 90 days while community-facing deployment claims proceed elsewhere in the repository
 - Open Unknowns count diverges from what is registered in `Unknowns.md`
-- Ethical Anchor field is absent, altered, or does not match the canonical string
 
 ---
 
