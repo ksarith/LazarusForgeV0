@@ -804,7 +804,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 
 | ID | Title | Owning Files | Status | Subtype | Priority |
 |---|---|---|---|---|---|
-| UNK-008 | Welding wire specification and qualification — no owner assigned | `Operations/Gate_05_Separation_Thermal.md` | Open | — | Major |
+| UNK-008 | Welding wire specification and qualification — ownership reassigned 2026-07-19 to `Architecture/Geck_forge_seed.md` (was incorrectly listed as `Gate_05_Separation_Thermal.md`, which explicitly disclaims it) | `Architecture/Geck_forge_seed.md` | Open | — | Major |
 | UNK-009 | External root-of-trust — spans GOV-003, GOV-005, RIP-001, SEC-007a/SEC-007b | `Admin/Governance_Charter.md`, `Admin/Repository_Integrity_Protocol.md`, `Admin/Security_Protocols.md` | Open | — | Critical |
 
 ### Future / Deferred
