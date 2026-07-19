@@ -29,9 +29,9 @@
 | Body Stability   | Volatile                                                            |
 | Spec Gates       | 1/6                                                                 |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-17                                                          |
-| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit; Claude — CE-006 logged (human-directed) 2026-07-07; Claude — CE-006 directed approach added (human-directed), 2026-07-17 |
-| Open Unknowns    | 6                                                                   |
+| Last Audit       | 2026-07-19                                                          |
+| Auditor          | Claude (2026-06-02); ChatGPT informal (2026-06-11); Claude retrofit; Claude — CE-006 logged (human-directed) 2026-07-07; Claude — CE-006 directed approach added (human-directed), 2026-07-17; Claude — CE-006 mechanism correction, CE-007 registered (Grok flag, cross-checked against source), 2026-07-19 |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -1006,19 +1006,60 @@ disposal routing to GR-003. Cross-reference Air_Scrubber.md AS-003.
 | Blocking | Yes (for `Challenges/Closed_Loop_Feedstock.md` CLF-004 candidate pathway) |
 | Owner | `Architecture/Chemistry.md` |
 | First Logged | 2026-07-07 |
-| Last Reviewed | 2026-07-17 |
+| Last Reviewed | 2026-07-19 |
 
 **Description:** A candidate pathway logged in `Challenges/Closed_Loop_Feedstock.md` CLF-004 proposes on-site acid synthesis via salt-water electrolysis with a homemade ion-selective membrane (chlor-alkali-type process), using salt, water, and electricity as precursors. Standard chlor-alkali electrolysis co-produces chlorine gas at the anode. No containment, venting, or scrubbing doctrine exists in this file for that byproduct.
 
 **Why It Matters:** `Admin/Ethical_Constraints.md`'s §Toxic and Hazardous Material Handling prohibits active release and permits only passive encapsulated use. Chlorine gas is acutely toxic even at low concentration — this file's own Navigation Anchors already list it among the toxic gases requiring warning-signal doctrine, not clearance-signal doctrine. CLF-004 cannot adopt this pathway as a resolution until a containment answer exists here; without one, the candidate remains an idea rather than a viable option.
 
-**Resolution Path:** Define minimum containment doctrine for small-scale chlor-alkali electrolysis: sealed reaction vessel design principles, required scrubbing or neutralization of anode-side off-gas before any release to atmosphere, detection/alarm threshold consistent with acute toxicity limits, and disposal routing for scrubber byproduct (cross-reference `Operations/Gate_03_Reduction.md` GR-003 and `Operations/Air_Scrubber.md` AS-003 for existing scrubbing/disposal precedent). Cross-reference back to `Challenges/Closed_Loop_Feedstock.md` CLF-004 once resolved.
+**Resolution Path:** ~~Define minimum containment doctrine for small-scale chlor-alkali electrolysis~~ — superseded 2026-07-19 by the mechanism correction above. Route this pathway's chlorine off-gas through `Operations/Air_Scrubber.md` Stage D (Wet Scrubbing / Water Column) with a caustic (NaOH) reagent dose, not through Stage E. Remaining work: (1) sealed reaction vessel design confirming no anode-side leak path before the scrubber stage; (2) caustic dosing rate and residence time adequate at this process's actual Cl₂ generation rate and flow (cross-reference `Operations/Air_Scrubber.md` AS-003 calibration doctrine); (3) detection/alarm threshold consistent with acute toxicity limits; (4) disposal-or-reuse routing for the resulting NaOCl liquor — see CE-007. Cross-reference back to `Challenges/Closed_Loop_Feedstock.md` CLF-004 once resolved.
 
 **Directed approach, 2026-07-17 (human governing authority):** capture and nullification, not venting-with-treatment, is the proposed resolution direction — chlorine off-gas is fully captured before any point where release could occur, then chemically neutralized rather than merely scrubbed toward a lower-but-nonzero release. `Operations/Air_Scrubber.md`'s existing Stage E KMnO₄ chemisorption mandate (Spec Gates 3/6, already carrying an automated interlock sensor matrix per AS-003) is the most directly applicable existing mechanism — potassium permanganate and comparable alkaline scrubbing agents convert Cl₂ to less hazardous chloride/hypochlorite species, which is nullification in substance, not just dilution. This is a directional decision, not a completed one: it narrows what CE-006 needs to specify (verify chemisorption capacity and reaction kinetics are adequate at this process's chlorine generation rate and flow, and confirm sealed-vessel capture prevents any anode-side leak path before the scrubber stage) rather than choosing among unrelated containment strategies from scratch. **The governing caveat is unchanged and takes precedence over this directed approach if they ever conflict:** Attempt to do no harm. If capture-and-nullification cannot be verified adequate at the vessel and flow rates this process actually requires, that is a reason to hold the pathway, not to relax the standard.
+
+**Mechanism correction, 2026-07-19 (Grok flag, cross-checked against source before adoption):** the 2026-07-17 directed approach's premise does not hold. Stage E's KMnO₄-impregnated-alumina bed is an oxidizing chemisorbent, purpose-built for reducing-species VOCs (CO, formaldehyde, light hydrocarbons) — Cl₂ is itself already an oxidizer, and there is no oxidation pathway for KMnO₄ to act on it through. Checked against a primary industrial gas-filtration manufacturer's own product catalog (PureAir® Filtration, chemisorbant media line, accessed 2026-07-19): their pure KMnO₄/alumina media (PureAir 4/8/12/12-SP — same media class as Stage E) is rated for H2S, SO2, NO2, NO, HCHO, mercaptan, dimethyl sulfide, phosphine, ethylene, and alcohol — **Cl₂ is absent from that list.** Chlorine appears only under their separate acid-gas media (Sulphasorb 2™), a dedicated chlorine emergency media (Safetysorb), or a blend explicitly combining permanganate media with acid-gas media (PP Blend) — the manufacturer maintains these as distinct product lines precisely because permanganate alone does not do this job. Stage E as currently specified is not a valid containment mechanism for this pathway's chlorine byproduct.
+
+The correct mechanism is a wet caustic (NaOH) absorption stage, not Stage E's dry chemisorption bed — and `Operations/Air_Scrubber.md`'s **Stage D (Wet Scrubbing / Water Column)** is already architected for exactly this: a recirculating liquid loop with continuous chemical monitoring, the standard industrial form for chlorine gas absorption (Cl₂ + 2NaOH → NaCl + NaOCl + H₂O). This is not a new stage requirement — it's routing this pathway's off-gas through Stage D with a caustic reagent dose, rather than relying on Stage E. See `Operations/Air_Scrubber.md`'s own Resolution Log for the cross-referenced update.
+
+**Turning the problem into a solution, 2026-07-19:** every caustic chlorine scrubber produces sodium hypochlorite (NaOCl) — dilute bleach — as its natural reaction product, not as a secondary waste to further process. Small-scale NaOH-scrubber-to-hypochlorite apparatus is an established, patented approach (US Patent 4,308,123, "Apparatus for the small-scale manufacture of chlorine and sodium hydroxide or sodium hypochlorite"), not a novel or speculative direction. Framing Stage D's output as **nullification-with-recoverable-value** rather than pure hazard neutralization is consistent with this file's own precedent (§ toward `Challenges/Closed_Loop_Feedstock.md`'s epigraph — "The Forge optimizes for the closure of loops, not the purity of outputs") and with `Operations/Air_Scrubber.md`'s existing Waste as a Managed Output doctrine, which already mandates testing captured material for reuse potential before hazardous immobilization. Sodium hypochlorite has direct salvage value as a disinfectant/sanitizer — relevant to `Challenges/Water.md`'s potable-water doctrine and general facility sanitation — rather than needing disposal. This does not relax any safety requirement: NaOCl solutions decompose over time (faster with heat, UV, and concentration), can release Cl₂ gas back if mismanaged, and are incompatible with several common reagents (sulfites, peroxide, acids) — see new CE-007 below for the storage/stability/utility doctrine this introduces, which did not previously exist anywhere in the repository.
+
+---
+
+### CE-007 — Sodium hypochlorite byproduct storage, stability, and reuse doctrine undefined
+
+| Field | Value |
+|-------|-------|
+| Status | Open |
+| Risk | Medium |
+| Priority | Major |
+| Type | Technical / Safety |
+| Blocking | No — CE-006's containment resolution does not depend on this; only the value-recovery framing does |
+| Owner | `Architecture/Chemistry.md` |
+| First Logged | 2026-07-19 |
+| Last Reviewed | 2026-07-19 |
+
+**Description:** CE-006's Stage D caustic-scrubbing mechanism produces sodium hypochlorite (NaOCl) liquor as its natural output. No file in the repository currently defines storage concentration limits, decomposition/venting risk over time, incompatible-reagent doctrine, or a downstream utility pathway (disinfection, sanitation, or other reuse) for this output. Without this, CE-006's captured chlorine converts from an atmospheric hazard into a stored chemical hazard with no governing doctrine.
+
+**Why It Matters:** NaOCl solutions decompose over time — faster with heat, UV exposure, and higher concentration — releasing Cl₂ gas back if stored improperly, which would silently defeat CE-006's containment purpose. NaOCl is also incompatible with several common reagents (sulfites, hydrogen peroxide, acids), creating a secondary hazard-mixing risk if stored near other Forge chemical streams without labeling/segregation doctrine. `Admin/Ethical_Constraints.md`'s do-no-harm standard applies to this stored output exactly as it does to the original gas.
+
+**Resolution Path:** Define (1) safe storage concentration and container material (dilute NaOCl is corrosive to many metals); (2) decomposition monitoring or a blowdown/dilution schedule consistent with industrial chlorine-scrubber practice; (3) segregation/incompatibility doctrine cross-referenced to `Admin/Safety_Protocols.md`; (4) a downstream utility pathway — cross-reference `Challenges/Water.md` for potable-water disinfection use, or general facility sanitation, as the most direct salvage-value application. Payment via Specification once a storage/reuse doctrine exists and is cross-referenced back to CE-006.
 
 ---
 
 ### Resolution Log
+
+- 2026-07-19: **CE-006 — mechanism correction; CE-007 registered (Grok flag, cross-checked against
+  source, human-directed adoption).** The 2026-07-17 directed approach's premise — that Stage E's
+  KMnO₄ chemisorption bed neutralizes Cl₂ — does not hold; verified against a primary manufacturer's
+  product catalog (PureAir® Filtration) showing pure KMnO₄/alumina media does not target Cl₂, which
+  requires a separate acid-gas or dedicated chlorine media in their own product line. Redirected to
+  `Operations/Air_Scrubber.md` Stage D (Wet Scrubbing / Water Column) with caustic (NaOH) dosing —
+  the standard industrial mechanism for Cl₂ absorption, and already the correct architecture for a
+  liquid-phase capture stage. Reframed as value-recovery rather than pure nullification: caustic
+  chlorine scrubbing naturally produces sodium hypochlorite (dilute bleach), an established small-scale
+  process (US Patent 4,308,123), consistent with this repository's salvage-first, closure-of-loops
+  philosophy rather than treating the byproduct as waste. CE-007 registered for the resulting
+  storage/stability/reuse doctrine gap, which did not exist anywhere in the repository before this entry.
+  Open Unknowns 6 → 7.
 
 - 2026-07-17: **CE-006 — directed approach added (human governing authority):**
   capture and nullification (not vent-with-treatment) named as the resolution
