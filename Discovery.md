@@ -744,7 +744,7 @@ Emergent intelligence and alignment-by-environment design. Phase-shift framing; 
 ⚠️ EM-001 (behavioral opacity detection threshold) — High; blocks watchdog specification. EM-004 (governance substrate integrity under emergent agent access) — Critical; mirrors GOV-003, SEC-007.
 
 ### `Challenges/Energy_Scarcity.md`
-Energy poverty, grid fragility, and fossil-fuel dependency as an External Challenge Class problem. Distinguishes itself explicitly from `Operations/Energy.md`, which answers "how does the Forge power itself" — this file answers the prior question of why energy access is a Forge purpose. Community energy sovereignty objective; Four-Domain Observation linkage to `Tests/Living_Waters.md`. New 2026-07-12 — not yet audited by a second agent, Gate 1 review outstanding.
+Energy poverty, grid fragility, and fossil-fuel dependency as an External Challenge Class problem. Distinguishes itself explicitly from `Operations/Energy.md`, which answers "how does the Forge power itself" — this file answers the prior question of why energy access is a Forge purpose. Community energy sovereignty objective; Four-Domain Observation linkage to `Tests/Living_Waters.md`. New 2026-07-12 — three second-agent audits completed same day (see that file's Resolution Log); Gate 1 review done.
 **Upstream:** Ethical_Constraints.md; Operations/Energy.md; Thermal_Systems.md (TH-001, TH-003); Economics.md (EC-002); Safety_Protocols.md.
 **Downstream:** Operations/Energy.md; Tests/Living_Waters.md; Challenges/Waste.md; Economics.md.
 ⚠️ ES-001 (community-facing energy surplus routing mechanism) — Major, load-bearing for the Long-Term Objective. ES-002 (economic legibility threshold) — Major. ES-003 (intermittency communication doctrine) — Minor.
