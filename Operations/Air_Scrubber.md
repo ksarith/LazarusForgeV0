@@ -258,6 +258,18 @@ Absorbs soluble gases and captures charged/agglomerated
 particulates. Water is operated in a recirculating
 loop with continuous chemical monitoring.
 
+> 🧪 **Cross-Reference, 2026-07-19 — Chlorine-Specific Caustic Dosing:**
+> For processes generating chlorine gas (e.g. the chlor-alkali
+> acid-sourcing candidate pathway in `Challenges/Closed_Loop_Feedstock.md`
+> CLF-004), Stage D is the correct capture mechanism — a caustic (NaOH)
+> reagent dose in this recirculating column absorbs Cl₂ via the standard
+> industrial reaction (Cl₂ + 2NaOH → NaCl + NaOCl + H₂O). **Stage E's
+> KMnO₄ chemisorption bed does not perform this function** — it is an
+> oxidizing chemisorbent for reducing-species VOCs, and Cl₂ is itself
+> already an oxidizer with no oxidation pathway for KMnO₄ to act through.
+> See `Architecture/Chemistry.md` CE-006/CE-007 for the full mechanism
+> correction and sourcing.
+
 - **Thermal Sink Requirement:** Hot exhaust from
   the Spin Chamber transfers heat to scrubbing water.
   Stage D requires an explicit, ruggedized thermal
@@ -284,6 +296,11 @@ stages.
 > chemisorbent media, such as alumina impregnated with
 > potassium permanganate (KMnO₄), to permanently
 > chemically neutralize low-molecular-weight VOCs.
+>
+> **Scope note, 2026-07-19:** this media targets reducing-species
+> VOCs and does not capture chlorine gas — see the Stage D
+> cross-reference above and `Architecture/Chemistry.md` CE-006/CE-007
+> for chlorine-generating processes.
 
 ---
 
@@ -405,6 +422,16 @@ Captured materials are not disposable nuisances.
   (2) if hazardous, immobilize per applicable
   regulations; (3) if inert, route to bulk
   material recovery.
+
+> 🧪 **Worked Example, 2026-07-19 — Sodium Hypochlorite:**
+> Stage D caustic dosing for chlorine-generating processes (see
+> Stage D cross-reference above) produces sodium hypochlorite
+> (NaOCl) liquor as its natural reaction product — a case where
+> "test for reuse potential" applies directly rather than defaulting
+> to hazardous immobilization. NaOCl has direct salvage value as a
+> disinfectant/sanitizer. See `Architecture/Chemistry.md` CE-007 for
+> the storage, stability, and reuse doctrine this requires before
+> disposition can move past "test for reuse potential" to actual reuse.
 
 ---
 
@@ -791,6 +818,21 @@ that calibration step.
 ---
 
 ### Resolution Log
+
+- 2026-07-19: **Stage D/E cross-reference correction (Grok flag, cross-checked
+  against source, human-directed).** `Architecture/Chemistry.md` CE-006 had
+  directed chlorine off-gas from a candidate acid-sourcing pathway
+  (`Challenges/Closed_Loop_Feedstock.md` CLF-004) toward this file's Stage E
+  KMnO₄ chemisorption bed — verified against a primary manufacturer's product
+  catalog that this bed does not target Cl₂ (it's an oxidizing chemisorbent
+  for reducing-species VOCs; Cl₂ is already an oxidizer). Added a cross-reference
+  note to Stage D directing chlorine-generating processes there instead, with
+  caustic (NaOH) dosing — Stage D's existing recirculating wet-column architecture
+  is already the correct mechanism, no new stage required. Scoped Stage E's
+  hardware precedent note to clarify it does not cover chlorine. Added a worked
+  example to Waste as a Managed Output noting the resulting sodium hypochlorite
+  liquor as a reuse-potential case, cross-referenced to new CE-007. No change to
+  Stage D or Stage E's existing operational doctrine for other gas streams.
 
 - 2026-05-04: `Stratification_Chamber_v0.md`
   reference removed. `Material_Separation_Gate_v0.md`
