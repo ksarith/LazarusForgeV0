@@ -536,7 +536,7 @@ Mandatory re-audit conditions for this document:
 - `Unknowns.md` — ENV-001 through ENV-010 registered; ENV-007/ENV-008 status corrected 2026-07-06
 - `Discovery.md` — this file's registration confirmed Resolved 2026-06-21 (ENV-008)
 - `Routing.md` — this file's registration confirmed live via dynamic bootstrap (ENV-007)
-- `Admin/AUDIT_HARNESS.py` — this file is picked up via dynamic Routing.md bootstrap (v7–v13); static FILE_REGISTRY entry not independently re-verified this pass
+- `Admin/AUDIT_HARNESS.py` — picked up via dynamic Routing.md bootstrap (v7–v13); static FILE_REGISTRY entry independently re-verified 2026-07-19 — present, line 71 (`"Environmental_Constraints.md": "Admin/Environmental_Constraints.md"`)
 
 ---
 
