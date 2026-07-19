@@ -18,7 +18,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-05-04 (Claude — Skeptic/Auditor); revised 2026-06-08           |
 | Auditor          | Claude — Retrofit/Auditor                                           |
-| Open Unknowns    | 6                                                                   |
+| Open Unknowns    | 7                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -449,6 +449,8 @@ Findings should:
 Ideas that fail Leviathan testing are discarded
 without sentiment.
 
+**Cross-repo merge anchor, 2026-07-19 (human governing authority):** this file is designated as the resolved start point for eventual Astroid-miner convergence. `Unknowns.md` UNK-003 ("Cross-repo assumption contracts," owned by `Admin/Auditor_Protocols.md`) has been Deferred pending Leviathan milestone since before this designation — the repo's own governance already anticipated gating cross-repo absorption behind this file's findings, before any specific convergence had been found. LT-007 (below) is the first concrete item logged under this designation. Astroid-miner's ideology has not surpassed Lazarus Forge's — the reverse is judged true by the human governing authority — so where a genuine overlap is found, Astroid-miner content is treated as supporting detail for the Forge's more developed doctrine, not as an equal merge of two mature systems. Most of Astroid-miner's remaining content is not expected to need a formal migration event at all; it either surfaces naturally through contact like this one did, or the Forge has already outgrown it, which is a legitimate outcome and not a failure to merge properly.
+
 ---
 
 ## XIII. Leviathan Extensions Framework
@@ -713,6 +715,8 @@ safeguards are hypothesized, not demonstrated.
 Full mechanism design is trajectory-scope —
 route to Admin/Trajectories.md.
 
+**Scope clarification, 2026-07-19 (Astroid-miner cross-check):** this entry is specifically about peer trust scoring for *learning propagation* (Extension B) — Extension A's own text says consensus is explicitly not required for behavior/knowledge sharing ("Consensus is not required. Disagreement is data"). Astroid-miner's `Rogue_unit_management.md` §1.3 Fleet Consensus Validation (80–99% agreement before corrective action) does **not** resolve LT-004 as scoped — it answers a different question. See new LT-007 below for the question it does answer.
+
 ---
 
 ### LT-005 — Priority propagation has no enforcement mechanism
@@ -779,7 +783,32 @@ LT-005 resolution.
 
 ---
 
+### LT-007 — Corrective action authorization mechanism for a peer unit undefined
+
+| Field         | Value                                            |
+|---------------|--------------------------------------------------|
+| Status        | Open                                             |
+| Risk          | Medium                                           |
+| Priority      | Major                                            |
+| Type          | Technical / Architectural                        |
+| Blocking      | No                                               |
+| Owner         | Tests/Leviathan_testing.md                       |
+| First Logged  | 2026-07-19                                       |
+| Last Reviewed | 2026-07-19                                       |
+
+**Description:** Extension A/B define how a Leviathan swarm shares knowledge and observes divergent behavior (consensus explicitly not required — "Disagreement is data"). Neither Extension, nor any LT- entry, defines how the swarm decides to take *corrective action against one of its own units* — isolation, forced safe-mode, or intervention. This is a distinct question from LT-004's peer-trust-for-learning scope: sharing knowledge without requiring agreement is fine; authorizing an action that overrides one unit's autonomy is not the same kind of decision and arguably needs a different, higher bar.
+
+**Why It Matters:** Without an authorization mechanism, either no unit can ever correct another (a single failing unit's problem becomes permanent) or any unit could unilaterally act against a peer (which Extension A's anti-pattern safeguards implicitly assume can't happen, without ever stating why not).
+
+**Resolution Path:** Astroid-miner's `Rogue_unit_management.md` §1.3 Fleet Consensus Validation is a candidate starting reference — 80–99% fleet-wide agreement required before corrective action is deployed against a flagged unit, specifically to prevent unilateral destructive decisions. Not adopted here as binding; Astroid-miner is expected to eventually be absorbed into Lazarus Forge, and this entry exists so the mechanism has a home to migrate into when that happens, rather than requiring reinvention. Cross-reference `Admin/Autonomy_Divergence_Protocol.md` §5, which independently converged on the same "no subsystem is sole authority" principle at the single-subsystem-under-human-review scale — LT-007 is the peer-swarm-scale version of the same question.
+
+*Surfaced by Claude, cross-checking `Tests/Leviathan_testing.md` against Astroid-miner's `Rogue_unit_management.md` at the human governing authority's direction — this file designated as the resolved start point for eventual Astroid-miner convergence, 2026-07-19.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-19: Designated as the resolved cross-repo merge anchor point for Astroid-miner convergence (human governing authority). LT-004 scope clarified against Extension A's no-consensus-for-learning stance — Astroid-miner's Fleet Consensus Validation does not resolve LT-004 as scoped. LT-007 registered — corrective action authorization mechanism for a peer unit, a genuinely untracked gap surfaced by the cross-check, distinct from LT-004, with Astroid-miner's Fleet Consensus (80–99% agreement) as a candidate reference and a cross-reference to `Admin/Autonomy_Divergence_Protocol.md` §5's independently-convergent principle at a different scale. Open Unknowns 6 → 7.
 
 - 2026-06-08: Full template retrofit — Navigation
   Anchors, File State, Scope Boundary, File
