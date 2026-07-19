@@ -173,6 +173,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | LT-004 | Trust model mechanism undefined | `Tests/Leviathan_testing.md` | Open | — | Blocking |
 | LT-005 | Priority propagation — no mechanism | `Tests/Leviathan_testing.md` | Open | — | Blocking |
 | LT-006 | Ethical log survival at depth | `Tests/Leviathan_testing.md` | Open | — | Non-blocking |
+| LT-007 | Corrective action authorization mechanism for a peer unit undefined — Astroid-miner cross-repo convergence, candidate ref: Fleet Consensus Validation | `Tests/Leviathan_testing.md` | Open | — | Major |
 
 ### Gate Logic & Triage
 
