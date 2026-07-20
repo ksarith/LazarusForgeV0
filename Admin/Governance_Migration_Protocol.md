@@ -16,7 +16,7 @@
 | Verification Ref | `Admin/Verification_Gates_LF.md`                                    |
 | Last Audit       | 2026-06-19; revised through at least 2026-07-05 internally (GMP-005/GMP-009 dated later than this header — header was not kept current, see Resolution Log); Claude — GOV-013 cross-reference added, 2026-07-16; Claude — GMP-005/GMP-009 resolved, Track A/B redefined by constitutional impact (human-directed), 2026-07-17 |
 | Auditor          | ChatGPT — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Skeptic/Auditor; Claude — Synthesizer; Claude — GMP-009 cross-referenced to GOV-013 (human-directed), 2026-07-16; Claude — GMP-005/GMP-009 resolved (multi-agent proposal, human-directed), 2026-07-17 |
-| Open Unknowns    | 7                                                                   |
+| Open Unknowns    | 8                                                                   |
 | Active Disputes  | 0                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -846,6 +846,62 @@ own entries for the classification applied.
 
 ---
 
+### GMP-010 — No evidence-sufficiency gate exists between "directed approach" and downstream reliance
+
+| Field         | Value                                      |
+|---------------|--------------------------------------------|
+| Status        | Open                                       |
+| Risk          | High                                       |
+| Priority      | Major                                      |
+| Type          | Governance / Epistemic                     |
+| Blocking      | No                                         |
+| Owner         | `Admin/Governance_Migration_Protocol.md`   |
+| First Logged  | 2026-07-19                                 |
+| Last Reviewed | 2026-07-19                                 |
+
+**Description:** This repository has no defined gate between a human-directed
+approach being logged (e.g., `Architecture/Chemistry.md` CE-006's 2026-07-17
+directed approach) and other files treating that approach as settled enough
+to build on. `Challenges/Closed_Loop_Feedstock.md`'s CLF-004 referenced
+CE-006's directed approach as the basis for continuing work before the
+underlying mechanism was ever independently verified — and the mechanism
+turned out to be wrong (Stage E's KMnO₄ bed does not capture Cl₂; corrected
+2026-07-19, see CE-006/CE-007 and `Unknowns_Changelog.md` v4.25). Nothing in
+this repository's process would have caught that automatically; it was found
+by chance, two days later, via an external model's flag and a manufacturer
+datasheet lookup — not by any structural check this repository runs on
+itself.
+
+**Why It Matters:** A "directed approach" is explicitly not the same
+epistemic weight as ratified, verified doctrine — this repository already
+distinguishes those states in principle. But nothing currently prevents a
+directed approach from being *treated* as load-bearing by downstream files
+before it earns that weight. This is the general failure mode: acceptance
+happening because a claim was asserted with authority and went
+uncontradicted, not because it was verified. Silence is not confirmation.
+
+**Resolution Path:** Define a lightweight evidence-sufficiency gate for
+directed approaches specifically — not full Track A/B ratification process,
+which would be disproportionate for a working design decision, but a
+minimum bar before other files may cite one as settled: (1) the approach's
+core factual/mechanistic claims should be checked against at least one
+primary source before downstream files build on it, not just before it's
+formally ratified; (2) a directed approach's cross-references in other
+files should note its provisional status explicitly (as CE-006's directed
+approach note already did — "a directional decision, not a completed
+one" — which is why this was recoverable rather than silently wrong
+forever) rather than reading as settled fact; (3) consider whether
+`Admin/AUDIT_HARNESS.py` could flag cross-references into any file whose
+own Status is not yet Verified/Resolved, as a mechanical nudge rather than
+relying on someone happening to check.
+
+*Surfaced during a cross-repo epistemic-logic discussion (human-directed),
+grounded in the CE-006 case as a real, not hypothetical, instance of the
+failure mode. Logged rather than left as conversational insight, per human
+governing authority's direction that this is worth tracking formally.*
+
+---
+
 ### Resolution Log
 
 - 2026-07-17: **GMP-005 and GMP-009 resolved together; Track A/B
@@ -871,6 +927,15 @@ own entries for the classification applied.
   see their entries. GMP-002 (migration doctrine ownership transfer,
   still Open) may be affected by this rewrite; not reviewed this pass.
   Open Unknowns 9 → 7.
+
+- 2026-07-19: **GMP-010 registered.** No evidence-sufficiency gate exists
+  between a directed approach being logged and other files treating it as
+  settled. Grounded in a real case, not a hypothetical: CE-006's 2026-07-17
+  directed approach was cited by CLF-004 as basis for continued work before
+  independent verification — the underlying mechanism was wrong, caught by
+  chance two days later, not by any structural check. Surfaced during a
+  cross-repo epistemic-logic discussion (human-directed). Open Unknowns
+  7 → 8.
 
 - 2026-07-16: **GMP-009 cross-referenced to GOV-013.** While drafting
   `Admin/Governance_Charter.md` GOV-013 (Post-Exit Monitoring Doctrine,
