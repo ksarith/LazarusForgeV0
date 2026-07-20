@@ -895,6 +895,40 @@ forever) rather than reading as settled fact; (3) consider whether
 own Status is not yet Verified/Resolved, as a mechanical nudge rather than
 relying on someone happening to check.
 
+**Adversarial hardening addendum, 2026-07-19 (human-directed):** the above
+resolution path addresses honest error — a directed approach that turns out
+wrong despite good-faith effort. A deliberately subversive false claim
+exploits the identical structural gap and requires the same fix plus three
+specific additions, since "check one primary source" alone is insufficient
+against an adversary who can plant or compromise a single source:
+
+1. **Source diversity, not just source primacy.** Extend point (1) above:
+   a directed approach's core claims should be checked against more than
+   one independent primary source before being treated as settled,
+   mirroring the evidence-diversity-over-raw-confidence principle already
+   adopted in `Admin/Autonomy_Divergence_Protocol.md` §4 for detection —
+   the same logic applies to sourcing generally, not only to subsystem
+   monitoring. A single compromised or fabricated source defeats "check a
+   primary source" but not "check several independent ones."
+2. **No existing doctrine distinguishes wrong-by-accident from
+   wrong-by-design.** `Admin/Autonomy_Divergence_Protocol.md` §5 splits
+   Capability Anomaly from Governance Concern for *internal* subsystem
+   behavior; nothing analogous exists for *external* input — a claim, a
+   source, or an AI collaborator's output that is wrong in a way that
+   specifically benefits some party, versus wrong through ordinary error.
+   Not resolved here — flagged as a genuine, currently-uncovered category,
+   candidate for its own future unknown if it recurs rather than solved
+   speculatively now.
+3. **The multi-agent cross-verification habit that has caught every real
+   error this repository has found (CE-006, PC-005, PC-006, UNK-008's
+   ownership contradiction) is currently a personal practice, not
+   enforced doctrine.** It works because it is done consistently, not
+   because anything requires it. Point (3) above — a harness flag on
+   cross-references into non-Verified files — is the concrete first step
+   toward converting that habit into something the repository enforces
+   structurally, so the check still happens on a day no one thinks to do
+   it by hand.
+
 *Surfaced during a cross-repo epistemic-logic discussion (human-directed),
 grounded in the CE-006 case as a real, not hypothetical, instance of the
 failure mode. Logged rather than left as conversational insight, per human
@@ -927,6 +961,20 @@ governing authority's direction that this is worth tracking formally.*
   see their entries. GMP-002 (migration doctrine ownership transfer,
   still Open) may be affected by this rewrite; not reviewed this pass.
   Open Unknowns 9 → 7.
+
+- 2026-07-19: **GMP-010 adversarial hardening addendum.** Extended to cover
+  deliberate subversion, not just honest error, at human governing
+  authority's direction. Three additions: source diversity (not just
+  primacy) required for directed-approach claims, mirroring
+  `Admin/Autonomy_Divergence_Protocol.md` §4's evidence-diversity
+  principle applied to sourcing generally; flagged the absence of any
+  wrong-by-accident vs. wrong-by-design classification for external
+  input (no action taken — genuinely new category, not solved
+  speculatively); named the repository's multi-agent cross-verification
+  practice as currently personal habit, not enforced doctrine, and
+  pointed at the harness cross-reference flag (already in GMP-010's
+  original resolution path) as the concrete first step toward making it
+  structural.
 
 - 2026-07-19: **GMP-010 registered.** No evidence-sufficiency gate exists
   between a directed approach being logged and other files treating it as
