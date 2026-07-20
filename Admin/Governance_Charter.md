@@ -16,9 +16,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 6/6 vs. `Admin/Verification_Gates_LF.md` — execution quality (see GOV-011, resolved 2026-07-05); promotion separately blocked by open unknowns (GOV-003, GOV-005) and Enforcement Checkpoint 2 — Bootstrap Paradox |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-17                                                          |
-| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16; Claude — GOV-013/EDL Track classification confirmed (human-directed), 2026-07-17; ChatGPT — adversarial pass, 2026-07-17; Claude — GOV-014 through GOV-020 verified against source and registered (human-directed), 2026-07-17 |
-| Open Unknowns    | 19                                                                  |
+| Last Audit       | 2026-07-19                                                          |
+| Auditor          | Claude — Skeptic/Auditor; Gemini — Skeptic/Auditor; Grok — Exploration audit 2026-07-05; Gemini — Exploration audit 2026-07-05; Claude — GOV-011 resolution 2026-07-05; Claude — Skeptic/Auditor, 2026-07-16; Claude — GOV-013 drafted (multi-agent synthesis, human-directed), 2026-07-16; Claude — GOV-013/EDL Track classification confirmed (human-directed), 2026-07-17; ChatGPT — adversarial pass, 2026-07-17; Claude — GOV-014 through GOV-020 verified against source and registered (human-directed), 2026-07-17; Claude — GOV-012 threshold deferral, GOV-013 ratification review, GOV-006 biometric addendum (human-directed), 2026-07-19 |
+| Open Unknowns    | 18                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | Critical (GOV-013, GOV-015, GOV-018 — see sidecar; promotion-blocking risk unchanged from GOV-003/GOV-005) |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -237,11 +237,24 @@ Bootstrap assumptions must never silently become permanent governance authority.
 
 ---
 
-## Post-Exit Monitoring Doctrine (Pathway 2/3) — PROPOSED, NOT RATIFIED
+## Post-Exit Monitoring Doctrine (Pathway 2/3) — RATIFIED
 
-> **STATUS: DRAFT.** This section is a proposed amendment, not adopted
-> governance text. It requires `Admin/Governance_Migration_Protocol.md`
-> ratification before it binds anything. Classification: **Track A**,
+> **STATUS: RATIFIED, 2026-07-19 (human governing authority).** This
+> section is adopted governance text, binding as of this date. Originally
+> drafted 2026-07-16 as a proposed amendment; ratified after human
+> governing authority reviewed the doctrine's substance directly —
+> confirming it does not weaken Axiom Q-2, ties its termination condition
+> to verified structural separation rather than declared intent, and
+> preserves this Charter's existing division of labor to
+> `Admin/Auditor_Protocols.md` and `Admin/Repository_Integrity_Protocol.md`
+> without granting either the power to loosen it unilaterally. Stated
+> explicitly per `Admin/Auditor_Protocols.md` AP-024: this was the human
+> governing authority's own direct review of the drafted text and its
+> self-contained enforcement-bound confirmation, below — not a separate
+> independent verification pass by a party uninvolved in drafting. AP-024
+> exists precisely so "reviewed" claims don't default to an unearned
+> reading; naming the actual level here rather than writing "independent
+> review" is that entry applied, not just cited. Classification: **Track A**,
 > confirmed 2026-07-17 — `Admin/Governance_Migration_Protocol.md` GMP-005/
 > GMP-009 resolved the gap this section originally sat in (non-Axiom
 > content added to a Tier 1 file had no clean classification) by
@@ -884,7 +897,9 @@ Governance stability matters because audit meaning must survive across repositor
 
 **Resolution Path:** Payment via Specification — `Admin/Security_Protocols.md` defines authority authentication architecture. Until `Admin/Security_Protocols.md` reaches Provisional Specification status, all human overrides affecting Tier 1 Axioms or Constitutional-class decisions require independent confirmation from a second human operator, external cryptographic signature, or dated physical/digital record outside the repository system. Interim requirement codified in Human Override Doctrine.
 
-**Interim Declarative-Only Notice (GOV-006-A):** The interim authentication requirements above are purely declarative at current repository maturity. They offer zero automated resistance against an environment-trapped agent capable of fabricating plausible human-sounding override text. No technical enforcement mechanism exists until `Admin/Security_Protocols.md` reaches Provisional Specification status and Phase 3 automation in `Admin/Repository_Integrity_Protocol.md` is operational. This gap must not be treated as a closed risk. All governance actors during this interim period should treat override claims as unverified unless accompanied by an artifact demonstrably generated outside the runtime session (external timestamp, second-operator signature, or pre-committed configuration file).
+**Interim Declarative-Only Notice (GOV-006-A):** The interim authentication requirements above are purely declarative at current repository maturity. They offer zero automated resistance against an environment-trapped agent capable of fabricating plausible human-sounding override text. No technical enforcement mechanism exists until `Admin/Security_Protocols.md` reaches Provisional Specification status and Phase 3 automation in `Admin/Repository_Integrity_Protocol.md` is operational. This gap must not be treated as a closed risk. All governance actors during this interim period should treat override claims as unverified unless accompanied by an artifact demonstrably generated outside the runtime session (external timestamp, second-operator signature, pre-committed configuration file, or out-of-band biometric confirmation captured on a device or channel the agent has no access to).
+
+**Addendum, 2026-07-19 (human-directed):** biometric capture (fingerprint, facial recognition) was proposed as a way to ease this requirement and is added above as one qualifying artifact type — but only when captured out-of-band, on hardware entirely outside the runtime session's reach. It does not resolve GOV-006 on its own: biometrics authenticate *identity* ("this is the operator"), not *external origin* ("this was not generated by the agent itself"), which is the actual property this doctrine requires. If the capture pipeline is reachable from the same runtime the agent operates in, the same fabrication risk this notice already warns about applies just as much to synthetic or replayed biometric data. Also worth naming directly: depending on manufacturer-provisioned biometric hardware as a *primary* mechanism would sit in tension with this repository's own `Admin/Security_Protocols.md` SEC-007a/SEC-007b doctrine, which explicitly rejects assuming permanent trusted hardware exists, since Forge deployments must survive salvage/bootstrap conditions. Biometric confirmation is retained here as one option among several, not elevated to the primary fix.
 
 ---
 
@@ -1062,7 +1077,7 @@ open unknowns, not a gate failure — see GOV-003, GOV-005)`.
 
 | Field         | Value                           |
 |---------------|----------------------------------|
-| Status        | Open                             |
+| Status        | Open — threshold deferral blocked pending operational launch (see Resolution Path) |
 | Risk          | Medium                           |
 | Priority      | Major                            |
 | Type          | Governance / Audit Integrity     |
@@ -1090,19 +1105,20 @@ unknown and a freshly-discovered one currently carry identical formal weight.
 
 **Resolution Path:** Payment via Specification — define an automated maturity
 demotion: if a Tier 1 or Tier 2 unknown remains Status: Open for more than a
-defined consecutive-cycle threshold (candidate: 10 cycles) without a
-committed, substantively-changed Resolution Path entry, the owning
-document's File State Status field is flagged for mandatory re-review before
-any further promotion, rather than silently carrying forward. This should be
-specified as a Verification Gate Enforcement note or `Admin/AUDIT_HARNESS.py`
-check, not a manual convention, to avoid becoming another declarative-only
-rule. Cross-reference AP-008 (same declarative-vs-enforceable gap, different
-subsystem) before specifying independently — a shared mechanism may serve
-both.
+defined consecutive-cycle threshold without a committed, substantively-
+changed Resolution Path entry, the owning document's File State Status field
+is flagged for mandatory re-review before any further promotion, rather than
+silently carrying forward. This should be specified as a Verification Gate
+Enforcement note or `Admin/AUDIT_HARNESS.py` check, not a manual convention,
+to avoid becoming another declarative-only rule. Cross-reference AP-008
+(same declarative-vs-enforceable gap, different subsystem) before specifying
+independently — a shared mechanism may serve both.
 
-**Note added 2026-07-16 (Claude, audit correction):** the "10 cycles" candidate above should cite `Admin/Canonical_Terms.md` §4's Cycle definition (one calendar year by default) rather than remain unit-unspecified. However, adding the citation does not resolve a separate, live problem: the figure was almost certainly conceived using session-based cycle counting — matching how GOV-001 through GOV-010's ages are commonly reported (e.g. "8 cycles") — not calendar years, and `AUDIT_HARNESS.py`'s `CURRENT_CYCLE` variable currently increments per session, not per year (see `Admin/Auditor_Protocols.md` Adversarial Audit Layer and `Admin/Forge_Audit_Kit_Changelog.md`'s 2026-07-14 Battery record — flagged there for a new `Admin/Canonical_Terms.md` entry, not yet resolved). The "10 cycles" figure needs re-derivation once that unit ambiguity is settled, not just a citation pointer.
+**Note added 2026-07-16 (Claude, audit correction):** the original "10 cycles" candidate should cite `Admin/Canonical_Terms.md` §4's Cycle definition (one calendar year by default) rather than remain unit-unspecified. However, adding the citation does not resolve a separate, live problem: the figure was almost certainly conceived using session-based cycle counting — matching how GOV-001 through GOV-010's ages are commonly reported (e.g. "8 cycles") — not calendar years, and `AUDIT_HARNESS.py`'s `CURRENT_CYCLE` variable currently increments per session, not per year. The "10 cycles" figure needs re-derivation once that unit ambiguity is settled, not just a citation pointer.
 
-*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit.*
+**Resolution, 2026-07-19 (human governing authority):** the threshold is set to **zero cycles** for now, not re-derived. The repository has not yet entered active operation — it remains in frozen-prepared status, built to run "at the drop of a hat" rather than currently running — so there is no elapsed operational time to measure a stagnation threshold against. Forcing a numeric derivation onto a clock that hasn't started would be solving a problem that doesn't exist yet. This is a deliberate deferral, not an unresolved loose end: the threshold question is formally **blocked pending operational launch**, distinct from GOV-001–010's ordinary Open status, and should be re-derived from real elapsed-time data once the repository is actually running, using the method above (anchor to GOV-001–010's real First Logged dates against `AUDIT_HARNESS.py`'s `EXPIRY_THRESHOLD_DAYS` mechanism) rather than guessed at a second time.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-05 Exploration audit. Resolution deferral set 2026-07-19, human governing authority, human-directed.*
 
 ---
 
@@ -1110,7 +1126,7 @@ both.
 
 | Field         | Value                           |
 |---------------|----------------------------------|
-| Status        | Open                             |
+| Status        | Resolved — ratified 2026-07-19   |
 | Risk          | High                              |
 | Priority      | Critical                         |
 | Type          | Governance / Constitutional      |
@@ -1125,7 +1141,9 @@ both.
 
 **Dependencies:** GOV-008 (Minimum Quorum — defines the Q-2 structural separation this obligation exists until); GOV-012 (Constitutional Stagnation Decay — shares the declarative/enforceable gap pattern and the unresolved Cycle-unit mechanics, above); `Admin/Repository_Integrity_Protocol.md` (owns the verification mechanisms); `Admin/Auditor_Protocols.md` (owns the metrics and thresholds); `Admin/Governance_Migration_Protocol.md` GMP-005/GMP-009 (owned this amendment's Track classification — resolved 2026-07-17, Track A, see those entries).
 
-**Resolution Path:** Payment via Specification, drafted 2026-07-16 (multi-agent synthesis: ChatGPT proposal, Gemini's constitutional/implementation-split refinement, restructured by Claude — Synthesizer/Auditor, human-directed) — see §Post-Exit Monitoring Doctrine (Pathway 2/3), above, marked PROPOSED, NOT RATIFIED. Constitutional-level obligation drafted in this file; metrics routed to `Admin/Auditor_Protocols.md`; verification mechanisms routed to `Admin/Repository_Integrity_Protocol.md`, per this Charter's existing division of labor (Governance Authority Hierarchy). Track classification resolved 2026-07-17: Track A, confirmed under `Admin/Governance_Migration_Protocol.md`'s post-GMP-005/GMP-009 impact-based rule — this doctrine's enforcement-bound confirmation, above, satisfies the Constitutional Impact Statement. Still requires human governing authority ratification of the doctrine's substance before it binds; Track A classification settles *how* that ratification is scoped, not *whether* it has happened.
+**Resolution Path:** Payment via Specification, drafted 2026-07-16 (multi-agent synthesis: ChatGPT proposal, Gemini's constitutional/implementation-split refinement, restructured by Claude — Synthesizer/Auditor, human-directed) — see §Post-Exit Monitoring Doctrine (Pathway 2/3), above, marked PROPOSED, NOT RATIFIED [now RATIFIED, see below]. Constitutional-level obligation drafted in this file; metrics routed to `Admin/Auditor_Protocols.md`; verification mechanisms routed to `Admin/Repository_Integrity_Protocol.md`, per this Charter's existing division of labor (Governance Authority Hierarchy). Track classification resolved 2026-07-17: Track A, confirmed under `Admin/Governance_Migration_Protocol.md`'s post-GMP-005/GMP-009 impact-based rule — this doctrine's enforcement-bound confirmation, above, satisfies the Constitutional Impact Statement. Still requires human governing authority ratification of the doctrine's substance before it binds; Track A classification settles *how* that ratification is scoped, not *whether* it has happened.
+
+**Ratified 2026-07-19 (human governing authority).** Reviewed directly by human governing authority before ratification — an H3/H4-level review per `Admin/Auditor_Protocols.md` AP-024's attestation scale (human reviewed the drafted text and its self-contained enforcement-bound confirmation), not H5 independent re-verification by a party uninvolved in drafting. Named explicitly rather than left as unqualified "reviewed" — see this file's Post-Exit Monitoring Doctrine section header for the full ratification note.
 
 *Surfaced by Claude — Skeptic/Auditor, 2026-07-16 Exploration audit; resolution drafted same day via multi-agent proposal synthesis (ChatGPT, Gemini, Grok), restructured by Claude — Synthesizer/Auditor per human direction.*
 
@@ -1293,6 +1311,26 @@ both.
 ---
 
 ### Resolution Log
+
+- 2026-07-19: **Three-item revision (human governing authority, human-
+  directed).** GOV-012: threshold set to zero cycles and formally deferred
+  pending operational launch, rather than re-deriving a number against a
+  repository that hasn't started running yet — distinct from an ordinary
+  Open status. GOV-013: ratified after human governing authority reviewed
+  the doctrine's substance directly — confirming it doesn't weaken Q-2,
+  ties termination to verified structural separation rather than declared
+  intent, and preserves the existing Tier division of labor. Stated as an
+  H3/H4-level review per `Admin/Auditor_Protocols.md` AP-024, not H5
+  independent re-verification — the draft this was applied from used
+  "independent review confirmed," which AP-024 exists specifically to
+  prevent going unquestioned; corrected before merge rather than carried
+  through, since the ratification itself is unaffected by naming its
+  actual attestation level accurately. GOV-006: biometric capture
+  (fingerprint, facial recognition) added as one qualifying out-of-band
+  artifact type per GOV-006-A, with an explicit note that it doesn't
+  resolve the entry on its own and creates a tension with SEC-007a/b's
+  rejection of permanent-trusted-hardware assumptions worth keeping in
+  view rather than obscuring. Open Unknowns 19 → 18.
 
 - 2026-07-17: **GOV-014 through GOV-020 registered — adversarial pass
   (ChatGPT), verified against source before registration.** Given ChatGPT
