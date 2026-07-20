@@ -204,6 +204,7 @@ Archive/                                    — Prior states of governance-beari
 - `Precision_LF.md` — superseded by `Architecture/Precision.md` (created 2026-06-05)
 - `Admin/Safety_Protocols.md` — created 2026-06-05 ✓
 - `Admin/Governance_Migration_Protocol.md` — created 2026-06-05 ✓
+- `Admin/Autonomy_Divergence_Protocol.md` — created 2026-07-19, Draft/PROPOSED NOT RATIFIED ✓
 - `Admin/Repository_Structure.md` — created 2026-06-05 ✓
 - `Architecture/Facilities.md` — created 2026-06-05 ✓
 - `Safety_Protocols.md` (noise/hearing conservation) — resolved by `Admin/Safety_Protocols.md` ✓
@@ -289,6 +290,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Admin/Nothingness Theorem` | Compiled — Functionless artifact | — | — |
 | `Admin/Computational Institutional Reasoning` | Compiled — Theoretical paper | — | — |
 | `Admin/Governance_Migration_Protocol.md` | Exploration | 0/6 | High |
+| `Admin/Autonomy_Divergence_Protocol.md` | Draft (PROPOSED NOT RATIFIED) | 0/6 | High |
 | `Admin/AUDIT_HARNESS.py` | Active | — | — |
 | `Architecture/Forge_flow.md` | Exploration | — | High |
 | `Architecture/Components.md` | Exploration | — | Low |
@@ -471,6 +473,12 @@ Tier 1 Axiom amendment procedures. Two-track migration system. Engineer proposal
 **Upstream:** Governance_Charter.md; Auditor_Protocols.md; Engineer_Protocols.md.
 **Downstream:** All governance files (Track A); Governance_Charter.md (Track B amendment target).
 ⚠️ GMP-004 (ratification authentication) — mirrors GOV-006; SEC-007 resolution path.
+
+### `Admin/Autonomy_Divergence_Protocol.md`
+Autonomy Divergence Protocol — how governance responds when a subsystem's behavior appears to diverge from authorized objectives or constraints. Detection → Classification (Capability Anomaly vs. Governance Concern) → graduated Response Tiers (Watch → Immediate → Human-Reviewed) → Restoration. Candidate GOV-021; explicitly rejects any "exit from human oversight" framing — cooperation as the stable indefinite default, not divergence with a cutoff point.
+**Upstream:** Ethical_Constraints.md; Auditor_Protocols.md (AP-008 enforcement gap, AP-012 human-unavailability doctrine, AP-016 concurrent-quarantine doctrine); Governance_Migration_Protocol.md (Track A routing).
+**Downstream:** Governance_Charter.md (pending GOV-021 registration).
+⚠️ Status: Draft, PROPOSED NOT RATIFIED, Spec Gates 0/6, not yet formally audited. Two open sub-unknowns: GOV-021b (Detection Criteria calibration) and GOV-021c (multi-agent coordinated divergence detection).
 
 ---
 
