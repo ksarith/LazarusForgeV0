@@ -690,7 +690,7 @@ GH-009 (Emergent heuristic conflict — N² interaction scaling)
 | GMP-007 | Amendment withdrawal procedure undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
 | GMP-002 | Canonical Governance Ownership transfer not yet recorded in Charter | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
 | GMP-008 | Stale proposal expiration policy undefined | `Admin/Governance_Migration_Protocol.md` | Open | — | Minor |
-| GMP-010 | No evidence-sufficiency gate between a directed approach and downstream reliance on it — grounded in the CE-006 case | `Admin/Governance_Migration_Protocol.md` | Open | — | Major |
+| GMP-010 | No evidence-sufficiency gate between a directed approach and downstream reliance on it — grounded in CE-006; extended 2026-07-19 to cover deliberate subversion (source diversity, wrong-by-design classification flagged) | `Admin/Governance_Migration_Protocol.md` | Open | — | Major |
 
 *GMP-004 highest-risk attack vector on Track B amendment process — depends on SEC-007a.*
 *GMP-005 and GMP-009 are Resolved as of 2026-07-17 (Track A/Track B redefined by constitutional impact rather than document location, merged as one gap) and do not appear in this active index per Size Management Rule 2 — see `Governance_Migration_Protocol.md`'s own sidecar and Resolution Log. `Governance_Charter.md`'s EDL and GOV-013 drafts were both formally classified Track A under the resolution; both remain PROPOSED, NOT RATIFIED independent of that classification.*
