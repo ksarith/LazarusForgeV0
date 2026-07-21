@@ -169,7 +169,7 @@ proceeding to Gate 3.
 | Measured | `m_phys ≥ 0.75` — single verified instance; `m_rep` not required |
 | Replicated | `m_phys ≥ 0.75` **and** `m_rep ≥ 0.50` — independently repeated, not a single lucky run |
 
-**Architecture (Claims → Evidence → Computed Maturity):** A document does not self-report `m_phys`, `m_rep`, or any vector dimension by direct edit — that reintroduces exactly the self-authorization problem `Admin/Repository_Integrity_Protocol.md` exists to prevent. A document may only submit evidence records (pointers to timestamped, provenance-tagged JSON artifacts); `Admin/AUDIT_HARNESS.py`, if this is ever implemented, would be the sole computer and injector of the resulting vector. See the schemas and reference implementation below, preserved verbatim from the source proposal.
+**Architecture (Claims → Evidence → Computed Maturity):** A document does not self-report `m_phys`, `m_rep`, or any vector dimension by direct edit — that reintroduces exactly the self-authorization problem `Admin/Repository_Integrity_Protocol.md` exists to prevent. A document may only submit evidence records (pointers to timestamped, provenance-tagged JSON artifacts); `Automation/AUDIT_HARNESS.py`, if this is ever implemented, would be the sole computer and injector of the resulting vector. See the schemas and reference implementation below, preserved verbatim from the source proposal.
 
 **Evidence record schema (physical):**
 
@@ -210,7 +210,7 @@ proceeding to Gate 3.
 
 All numeric fields are typed as numbers, never embedded in free-text strings — a naive string-matching evaluator (e.g., checking whether `"±2"` appears in a text field) is trivially defeated by a value like `"±200°C (Not ±2°C)"`, and was an identified vulnerability in an earlier draft of this proposal.
 
-**Reference implementation (preserved, unexecuted — not called by `Admin/AUDIT_HARNESS.py`):**
+**Reference implementation (preserved, unexecuted — not called by `Automation/AUDIT_HARNESS.py`):**
 
 ```python
 import math
@@ -305,7 +305,7 @@ def calculate_maturity_from_evidence_v2(
     return computed, m_effective
 ```
 
-**What this subsection does not yet do:** it does not mean any file currently claiming "Measured" or "Replicated" has actually been checked against these thresholds — `Admin/AUDIT_HARNESS.py` does not implement `calculate_maturity_from_evidence_v2()` or any evidence-vault loader. The requirement is now live in Gate 2's pass criteria (an auditor applying Gate 2 by hand must check for it), but automated enforcement remains future work. This is the same Phase 0/Phase 1 distinction `Admin/Repository_Integrity_Protocol.md` draws elsewhere: the rule is active and human-checkable; the automation that would check it without a human doing the reading is not.
+**What this subsection does not yet do:** it does not mean any file currently claiming "Measured" or "Replicated" has actually been checked against these thresholds — `Automation/AUDIT_HARNESS.py` does not implement `calculate_maturity_from_evidence_v2()` or any evidence-vault loader. The requirement is now live in Gate 2's pass criteria (an auditor applying Gate 2 by hand must check for it), but automated enforcement remains future work. This is the same Phase 0/Phase 1 distinction `Admin/Repository_Integrity_Protocol.md` draws elsewhere: the rule is active and human-checkable; the automation that would check it without a human doing the reading is not.
 
 ---
 
@@ -610,13 +610,13 @@ Lessons Learned entry already names for detection-latency unknowns.
 
 **Resolves/supersedes:** `Admin/Evidence_Management_System.md`'s EMS-001 (relationship to Spec Gates — resolved by this merge: Gate 2 specifically, not a structural replacement of all six gates) and EMS-002 (GOV-008 misattribution — moot; tracking lived here under this file's own VG- prefix instead).
 
-**Resolution:** AP-021 resolved 2026-07-10 — human governing authority confirmed the five-label Evidence Classification system canonical. Gate 2's pass criteria above updated in the same session to require the mapping table's evidentiary thresholds for any document claiming "Measured" or "Replicated." The mechanism is now live at the human-audit level; `Admin/AUDIT_HARNESS.py` automation of it remains unimplemented — see the Evidentiary Backing subsection's closing note.
+**Resolution:** AP-021 resolved 2026-07-10 — human governing authority confirmed the five-label Evidence Classification system canonical. Gate 2's pass criteria above updated in the same session to require the mapping table's evidentiary thresholds for any document claiming "Measured" or "Replicated." The mechanism is now live at the human-audit level; `Automation/AUDIT_HARNESS.py` automation of it remains unimplemented — see the Evidentiary Backing subsection's closing note.
 
 ---
 
 ### Resolution Log
 
-- 2026-07-10: **v0.7 — Gate 2 evidentiary backing activated; VG-002 resolved.** `Admin/Auditor_Protocols.md` AP-021 resolved this same session (human governing authority confirmed the five-label Evidence Classification system canonical). Gate 2's pass criteria updated to require it: Measured claims need `m_phys ≥ 0.75`; Replicated claims additionally need `m_rep ≥ 0.50`. Simulated and Analogous remain self-asserted pending a future revision. The mechanism is live at the human-audit level only — `Admin/AUDIT_HARNESS.py` does not implement the reference calculation or an evidence vault loader; this gap is noted explicitly in the Evidentiary Backing subsection rather than left implicit. Open Unknowns 1 → 0.
+- 2026-07-10: **v0.7 — Gate 2 evidentiary backing activated; VG-002 resolved.** `Admin/Auditor_Protocols.md` AP-021 resolved this same session (human governing authority confirmed the five-label Evidence Classification system canonical). Gate 2's pass criteria updated to require it: Measured claims need `m_phys ≥ 0.75`; Replicated claims additionally need `m_rep ≥ 0.50`. Simulated and Analogous remain self-asserted pending a future revision. The mechanism is live at the human-audit level only — `Automation/AUDIT_HARNESS.py` does not implement the reference calculation or an evidence vault loader; this gap is noted explicitly in the Evidentiary Backing subsection rather than left implicit. Open Unknowns 1 → 0.
 
 - 2026-07-10: **v0.6 — Evidence Management System merged in as Gate 2
   backing material (human-directed).** Reviewed a standalone Exploration-
@@ -737,7 +737,7 @@ halt autonomous audit progression and escalate for human review.
 
 Version 0.7 — Gate 2 evidentiary backing activated; requires the physical-
 evidence maturity vector's thresholds for Measured/Replicated confidence
-claims. Human-audit-level enforcement only; `Admin/AUDIT_HARNESS.py`
+claims. Human-audit-level enforcement only; `Automation/AUDIT_HARNESS.py`
 automation remains future work (2026-07-10).
 
 **Gate status:** G1 and G2 assessed as passing at Draft stage. G3 through
