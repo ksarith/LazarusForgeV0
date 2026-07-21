@@ -55,11 +55,11 @@
 
 ## File Purpose
 
-This file defines the operational integrity enforcement procedures for LazarusForgeV0. It exists to bridge the gap between the `Admin/Governance_Charter.md` constitutional declaration of integrity requirements (Declared and Detectable state) and fully Enforceable integrity protections. Without this file, integrity violations may go unclassified, recovery procedures may be improvised inconsistently, and the repository may lose institutional memory of compromise events. This file is the candidate integrity model that `Admin/AUDIT_HARNESS.py` automation will eventually implement — it is written now so the automation has a target to build against.
+This file defines the operational integrity enforcement procedures for LazarusForgeV0. It exists to bridge the gap between the `Admin/Governance_Charter.md` constitutional declaration of integrity requirements (Declared and Detectable state) and fully Enforceable integrity protections. Without this file, integrity violations may go unclassified, recovery procedures may be improvised inconsistently, and the repository may lose institutional memory of compromise events. This file is the candidate integrity model that `Automation/AUDIT_HARNESS.py` automation will eventually implement — it is written now so the automation has a target to build against.
 
 **Honest v0 acknowledgment:** At current maturity, the primary integrity mechanism is human discipline. Automated detection is the destination. This file defines the provisional procedures a human operator or auditor executes manually until automation matures. Procedures written here must therefore be executable without tooling.
 
-**v0.6 update (2026-07-08):** Phase 1 checks now have a standing manual execution mechanism — the daily morning repository audit prompt fetches this file directly and applies its Protected Elements checks against every file the audit touches, classifying findings per the Violation Classification ladder below. This does not constitute Phase 1 automation (`Admin/AUDIT_HARNESS.py` implementation remains the actual automation target — see RIP-002), but it closes the prior gap where Phase 1 checks existed only as specification with no execution path at all, manual or automated. Treat this as a new tier: **Phase 0 — Manual execution via recurring agent audit**, sitting before Phase 1 in the Automation Migration Path below.
+**v0.6 update (2026-07-08):** Phase 1 checks now have a standing manual execution mechanism — the daily morning repository audit prompt fetches this file directly and applies its Protected Elements checks against every file the audit touches, classifying findings per the Violation Classification ladder below. This does not constitute Phase 1 automation (`Automation/AUDIT_HARNESS.py` implementation remains the actual automation target — see RIP-002), but it closes the prior gap where Phase 1 checks existed only as specification with no execution path at all, manual or automated. Treat this as a new tier: **Phase 0 — Manual execution via recurring agent audit**, sitting before Phase 1 in the Automation Migration Path below.
 
 ---
 
@@ -69,10 +69,10 @@ This file defines the operational integrity enforcement procedures for LazarusFo
 |---------|-----------------------------------------------------------------------------------|-----------------------------------|------------|----------------------------------------------------------|
 | ASM-001 | Version preservation is currently a human discipline, not an automated guarantee | Observed repository workflow     | High       | Automated version control enforced at repository level |
 | ASM-002 | Most integrity violations at v0 will be accidental rather than adversarial       | Current contributor profile      | Medium     | Adversarial actors confirmed in operational environment |
-| ASM-003 | Human auditors are the primary detection layer at v0                            | Absence of automated tooling     | High       | `Admin/AUDIT_HARNESS.py` implements automated baseline checks |
+| ASM-003 | Human auditors are the primary detection layer at v0                            | Absence of automated tooling     | High       | `Automation/AUDIT_HARNESS.py` implements automated baseline checks |
 | ASM-004 | Prior file states may not always be available for comparison                    | Observed version preservation gaps | High     | Systematic prior-state archival established            |
 | ASM-005 | Multi-agent workflows create specific integrity risks around omission of prior agent contributions | Observed provisional document workflow | High | Single-agent workflow formally adopted |
-| ASM-006 | A newly-logged sidecar unknown becomes effectively invisible to cross-file audit tooling until it is mirrored into `Unknowns.md`'s active index | Observed CLF- cluster registration gap, 2026-07 | High | `Admin/AUDIT_HARNESS.py` implements automated sidecar↔index parity check |
+| ASM-006 | A newly-logged sidecar unknown becomes effectively invisible to cross-file audit tooling until it is mirrored into `Unknowns.md`'s active index | Observed CLF- cluster registration gap, 2026-07 | High | `Automation/AUDIT_HARNESS.py` implements automated sidecar↔index parity check |
 
 ---
 
@@ -346,7 +346,7 @@ The version preservation protocol above is the prevention. But given that curren
 
 ## Automation Migration Path
 
-This section defines what automated integrity checking will eventually implement, written now so `Admin/AUDIT_HARNESS.py` has a specification target.
+This section defines what automated integrity checking will eventually implement, written now so `Automation/AUDIT_HARNESS.py` has a specification target.
 
 ### Phase 0 — Manual Execution via Recurring Agent Audit (active, 2026-07-08)
 
@@ -542,13 +542,13 @@ Mandatory re-audit conditions for this document:
 | First Logged  | 2026-05-23                              |
 | Last Reviewed | 2026-05-23                              |
 
-**Description:** Phase 1 automation checks (Ethical Anchor string match, File State field presence, cross-reference resolution, FROZEN marker validation, navigation file spot-check, sidecar↔`Unknowns.md` registration parity) are defined here but not yet implemented in `Admin/AUDIT_HARNESS.py`.
+**Description:** Phase 1 automation checks (Ethical Anchor string match, File State field presence, cross-reference resolution, FROZEN marker validation, navigation file spot-check, sidecar↔`Unknowns.md` registration parity) are defined here but not yet implemented in `Automation/AUDIT_HARNESS.py`.
 
 **Why It Matters:** Phase 1 checks are the most tractable automation target — no cryptographic tooling required. Delay means these remain human-only checks subject to fatigue and omission.
 
 **Partial mitigation — 2026-07-08:** A Phase 0 tier was added (see Automation Migration Path above) — the daily morning repository audit prompt now fetches this file directly and applies the Phase 1 check list manually against every file it opens, on a repeating daily cadence with mandatory explicit reporting. This is not automation and does not close this unknown — it reduces exposure between now and Phase 1 implementation by replacing ad hoc, easily-omitted spot-checking with a defined, repeating, forcing-function-backed manual process. Status remains Open; downgraded from unmitigated to partially mitigated.
 
-**Resolution Path:** Deferred via Specification — implement Phase 1 checks in `Admin/AUDIT_HARNESS.py`. This file is the specification. Checks are ordered by implementation tractability: Ethical Anchor match first, then File State fields, then cross-reference resolution, then navigation file spot-check, then sidecar↔`Unknowns.md` registration parity (added to this ordering 2026-07-08, see RIP-008).
+**Resolution Path:** Deferred via Specification — implement Phase 1 checks in `Automation/AUDIT_HARNESS.py`. This file is the specification. Checks are ordered by implementation tractability: Ethical Anchor match first, then File State fields, then cross-reference resolution, then navigation file spot-check, then sidecar↔`Unknowns.md` registration parity (added to this ordering 2026-07-08, see RIP-008).
 
 ---
 
@@ -769,7 +769,7 @@ Mandatory re-audit conditions for this document:
 - `Discovery.md` — canonical cross-reference resolution source; Archive directory to be added here when established; now also a protected element
 - `Routing.md` — programmatic path routing; now a protected element alongside Discovery.md
 - `Admin/Repository_Structure.md` — hardcoded folder-prefixed layout used as Navigation file spot-check baseline in Phase 1
-- `Admin/AUDIT_HARNESS.py` — primary automation target for Phase 1 and Phase 2 checks defined here, including the new sidecar↔index parity check
+- `Automation/AUDIT_HARNESS.py` — primary automation target for Phase 1 and Phase 2 checks defined here, including the new sidecar↔index parity check
 - `Admin/Security_Protocols.md` — exists at v0.5 (2026-06-19); Phase 3 cryptographic enforcement dependency; SEC- unknowns track implementation gaps
 - `Admin/Governance_Migration_Protocol.md` — exists; Tier 1 Axiom amendment procedures cross-reference
 
