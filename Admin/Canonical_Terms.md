@@ -178,7 +178,7 @@ that document is authoritative; definitions here must remain consistent with it.
   and execution procedures. Governed by Tier 2 and 3 doctrine.
 - *Tier 5 (Domain Specifications):* Highly specific technical documents detailing
   individual gates, materials, or scripts — e.g., `Operations/Gate_03_Reduction.md`,
-  `Admin/AUDIT_HARNESS.py`, `Architecture/Forge_flow.md`.
+  `Automation/AUDIT_HARNESS.py`, `Architecture/Forge_flow.md`.
 
 **Sidecar Model**
 The decentralized documentation practice where module-specific unknowns,
@@ -557,7 +557,7 @@ structuralization. Distinct from the filename aliasing function of Discovery.md
 Rename Registry — this tracks internal string references within AUDIT_HARNESS.py
 and tooling.
 
-**Resolution Path:** Audit `Admin/AUDIT_HARNESS.py` internal hardcoded
+**Resolution Path:** Audit `Automation/AUDIT_HARNESS.py` internal hardcoded
 strings against this vocabulary file to confirm alignment with current
 canonical folder-prefixed paths.
 
