@@ -291,7 +291,7 @@ Discovery.md is a navigation map — task tracking belongs in Unknowns.md.
 | `Admin/Computational Institutional Reasoning` | Compiled — Theoretical paper | — | — |
 | `Admin/Governance_Migration_Protocol.md` | Exploration | 0/6 | High |
 | `Admin/Autonomy_Divergence_Protocol.md` | Draft (PROPOSED NOT RATIFIED) | 0/6 | High |
-| `Admin/AUDIT_HARNESS.py` | Active | — | — |
+| `Automation/AUDIT_HARNESS.py` | Active | — | — |
 | `Architecture/Forge_flow.md` | Exploration | — | High |
 | `Architecture/Components.md` | Exploration | — | Low |
 | `Architecture/Facilities.md` | Exploration | 0/6 | High |
