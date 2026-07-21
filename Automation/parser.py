@@ -91,14 +91,27 @@ class MetadataResult:
     # Full evidence ledger: canonical_field -> every reading found
     evidence: Dict[str, List[FieldValue]] = field(default_factory=dict)
 
-    # Parser-proposed (but explainable, never silently forced) values
-    document_id: NormalizedField = field(default_factory=NormalizedField)
-    title: NormalizedField = field(default_factory=NormalizedField)
-    repo_version: NormalizedField = field(default_factory=NormalizedField)
-    document_version: NormalizedField = field(default_factory=NormalizedField)
+    # Parser-proposed (but explainable, never silently forced) values —
+    # these are the actual "File State" fields canonized by
+    # Admin/File_Template.md, not an assumed/proposed schema.
     status: NormalizedField = field(default_factory=NormalizedField)
-    last_updated: NormalizedField = field(default_factory=NormalizedField)
-    dependencies: NormalizedField = field(default_factory=NormalizedField)
+    body_stability: NormalizedField = field(default_factory=NormalizedField)
+    spec_gates: NormalizedField = field(default_factory=NormalizedField)
+    verification_ref: NormalizedField = field(default_factory=NormalizedField)
+    last_audit: NormalizedField = field(default_factory=NormalizedField)
+    auditor: NormalizedField = field(default_factory=NormalizedField)
+    open_unknowns: NormalizedField = field(default_factory=NormalizedField)
+    active_disputes: NormalizedField = field(default_factory=NormalizedField)
+    highest_risk: NormalizedField = field(default_factory=NormalizedField)
+    sidecar_link: NormalizedField = field(default_factory=NormalizedField)
+    ethical_anchor: NormalizedField = field(default_factory=NormalizedField)
+
+    # Ethical Anchor is a mandatory drift indicator per File_Template.md:
+    # "Absence, alteration, or blank value is a mandatory drift indicator
+    # requiring human review." Presence alone isn't enough — it must match
+    # the canonical string exactly. Tracked separately from ordinary
+    # completeness because this one field is doctrine-critical.
+    ethical_anchor_status: str = "missing"   # "exact" | "present_but_altered" | "missing"
 
     # Fields the schema wasn't expecting — preserved, not discarded
     extra_fields: Dict[str, List[FieldValue]] = field(default_factory=dict)
@@ -119,14 +132,16 @@ class MetadataResult:
     errors: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
-        canonical = ["document_id", "title", "repo_version", "document_version",
-                     "status", "last_updated", "dependencies"]
+        canonical = ["status", "body_stability", "spec_gates", "verification_ref",
+                     "last_audit", "auditor", "open_unknowns", "active_disputes",
+                     "highest_risk", "sidecar_link", "ethical_anchor"]
         return {
             "file_path": self.file_path,
             "detected_schemas": self.detected_schemas,
             "metadata_blocks": self.metadata_blocks,
             "parse_confidence": round(self.parse_confidence, 2),
             "metadata_completeness": round(self.metadata_completeness, 2),
+            "ethical_anchor_status": self.ethical_anchor_status,
             "fields_found": self.fields_found,
             "fields_missing": self.fields_missing,
             "conflicting_fields": self.conflicting_fields,
@@ -146,33 +161,49 @@ class MetadataResult:
 class MetadataParser:
     """Multi-schema evidence collector for Lazarus Forge markdown documents."""
 
+    # Canonical string per Admin/File_Template.md §2 (File State) — "fixed
+    # and non-negotiable... must match the canonical string exactly in
+    # every file." Confirm against the live template if this repo's
+    # wording ever changes; the parser should not silently drift from it.
+    CANONICAL_ETHICAL_ANCHOR = (
+        "Attempt to do no harm. Defer to Ethical_Constraints.md if present."
+    )
+
     LEGACY_PATTERNS = {
-        "repo_version": [r"Repo(?:sitory)?\s*Version:\s*(v?[\d\.]+)"],
-        "document_version": [r"(?:Doc(?:ument)?\s*Version|Version):\s*(v?[\d\.]+)"],
-        "document_id": [r"Document\s*ID:\s*([\w\-]+)", r"ID:\s*([\w\-]+)"],
         "status": [r"Status:\s*(\w+)"],
-        "last_updated": [r"(?:Last\s*Updated|Date):\s*([\d\-\/]+)"],
+        "last_audit": [r"(?:Last\s*Audit|Date):\s*([\d\-\/]+)"],
+        "auditor": [r"Auditor:\s*(.+)"],
     }
 
-    # Fields expected on a fully-described canonical document.
-    # Drives metadata_completeness independently of parse_confidence.
+    # Fields expected on a fully-described canonical File State block, per
+    # Admin/File_Template.md §2. Drives metadata_completeness independently
+    # of parse_confidence. (No version/document_id fields — the adopted
+    # template doesn't use them; see Admin/File_Template.md.)
     EXPECTED_FIELDS = [
-        "document_id", "title", "repo_version", "document_version",
-        "status", "last_updated", "dependencies",
+        "status", "body_stability", "spec_gates", "verification_ref",
+        "last_audit", "auditor", "open_unknowns", "active_disputes",
+        "highest_risk", "sidecar_link", "ethical_anchor",
     ]
 
     # Precedence used only to propose a preferred_value when sources
     # disagree — the disagreement itself is always preserved regardless.
-    SOURCE_PRECEDENCE = {"yaml": 3, "markdown_table": 2, "legacy_inline": 1}
+    # markdown_table is first: it is the schema File_Template.md actually
+    # canonizes in this repo. yaml is recognized but not (yet) adopted —
+    # see Admin/File_Template.md and the 2026-07 YAML-adoption discussion.
+    SOURCE_PRECEDENCE = {"markdown_table": 3, "yaml": 2, "legacy_inline": 1}
 
     KEY_MAPPINGS = {
-        "document_id": ["document_id", "doc_id", "id"],
-        "title": ["title", "document_title", "name"],
-        "repo_version": ["repo_version", "repository_version"],
-        "document_version": ["document_version", "doc_version", "version"],
-        "status": ["status", "doc_status"],
-        "last_updated": ["last_updated", "date", "updated"],
-        "dependencies": ["dependencies", "deps", "requires"],
+        "status": ["status"],
+        "body_stability": ["body_stability"],
+        "spec_gates": ["spec_gates"],
+        "verification_ref": ["verification_ref"],
+        "last_audit": ["last_audit", "last_updated", "date"],
+        "auditor": ["auditor"],
+        "open_unknowns": ["open_unknowns"],
+        "active_disputes": ["active_disputes"],
+        "highest_risk": ["highest_risk"],
+        "sidecar_link": ["sidecar_link"],
+        "ethical_anchor": ["ethical_anchor"],
     }
 
     def __init__(self, file_path: str):
@@ -366,9 +397,9 @@ class MetadataParser:
             if not readings:
                 continue
 
-            # last_updated: try to normalize each reading's date string,
+            # last_audit: try to normalize each reading's date string,
             # but keep the raw reading regardless of parse success.
-            if canonical_field == "last_updated":
+            if canonical_field == "last_audit":
                 for fv in readings:
                     parsed = self._try_parse_date(str(fv.value))
                     if parsed:
@@ -402,6 +433,30 @@ class MetadataParser:
                 r.extra_fields[raw_key] = readings
                 r.trace.append(f"Preserved unrecognized field '{raw_key}' ({len(readings)} reading(s)).")
 
+        # Ethical Anchor: File_Template.md calls this "fixed and
+        # non-negotiable... Absence, alteration, or blank value is a
+        # mandatory drift indicator requiring human review." Presence
+        # alone is not enough — check exact string match, not just
+        # whether a value exists.
+        anchor = r.ethical_anchor.preferred_value
+        if not anchor or not str(anchor).strip():
+            r.ethical_anchor_status = "missing"
+            r.errors.append(
+                "Ethical Anchor field is absent or blank — mandatory drift indicator per "
+                "Admin/File_Template.md; requires human review."
+            )
+            r.trace.append("DRIFT INDICATOR: Ethical Anchor missing/blank.")
+        elif str(anchor).strip() == self.CANONICAL_ETHICAL_ANCHOR:
+            r.ethical_anchor_status = "exact"
+        else:
+            r.ethical_anchor_status = "present_but_altered"
+            r.errors.append(
+                f"Ethical Anchor present but does not match canonical string exactly: "
+                f"'{anchor}' — mandatory drift indicator per Admin/File_Template.md; "
+                f"requires human review."
+            )
+            r.trace.append(f"DRIFT INDICATOR: Ethical Anchor altered: '{anchor}'")
+
     # -- Confidence: two independent axes ----------------------------------
 
     def _compute_confidence_and_diagnostics(self) -> None:
@@ -411,7 +466,11 @@ class MetadataParser:
         if not r.detected_schemas:
             r.parse_confidence = 0.0
         else:
-            base = {"yaml": 1.0, "markdown_table": 0.85, "legacy_inline": 0.6}
+            # markdown_table is the canonical schema per Admin/File_Template.md
+            # (60/71 files in v0.99.26 use it; 0 use yaml). yaml is a
+            # recognized-but-not-yet-adopted format, not a higher-trust one —
+            # see the 2026-07 YAML-adoption discussion, decided against for now.
+            base = {"markdown_table": 1.0, "yaml": 0.85, "legacy_inline": 0.6}
             score = max(base.get(s, 0.3) for s in r.detected_schemas)
             # malformed frontmatter / unparseable dates dock parse confidence
             penalty = 0.1 * len(r.warnings) + 0.25 * len(r.errors)
