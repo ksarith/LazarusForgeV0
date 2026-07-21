@@ -1,6 +1,6 @@
 # AUDIT_HARNESS.py — Version History
 
-Full changelog for `Admin/AUDIT_HARNESS.py`, relocated out of the
+Full changelog for `Automation/AUDIT_HARNESS.py`, relocated out of the
 script's own docstring as of v14 (2026-07-13). Newest entries first.
 Add new entries here, not back into the .py docstring.
 
