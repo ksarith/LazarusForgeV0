@@ -932,7 +932,7 @@ instrument does not.
 (e.g., Unknowns opened vs. closed over the last N
 audit cycles) computable from `Unknowns.md`
 history. Candidate location for implementation is
-`Admin/AUDIT_HARNESS.py` — the harness already reads
+`Automation/AUDIT_HARNESS.py` — the harness already reads
 Unknowns.md and could emit a debt ratio alongside
 Phase 1 output. Payment via Specification — once
 a metric is defined and validated against at least
