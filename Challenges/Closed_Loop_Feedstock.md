@@ -127,7 +127,7 @@ Recursive loops risk cascading contamination (heavy metals in polymers, alloy dr
 
 **ID collision history:** originally registered as `CF-001` through `CF-003` (collided with `Architecture/Cognitive_Frameworks.md`/`Operations/Electronics.md`), corrected to `CLF-001`–`CLF-003`. An intervening hygiene pass renamed these to `FL-001`–`FL-004`, reintroducing a collision with `Architecture/Forge_flow.md`'s FL-001 (Blocking) — reverted back to `CLF-`. Do not rename off this prefix without checking `Unknowns.md`'s full active index first.
 
-**Registration status:** registered in `Routing.md`, `Discovery.md`, `Unknowns.md`, and `Admin/AUDIT_HARNESS.py` FILE_REGISTRY — confirmed 2026-07-19 (see `Unknowns.md` PC-005, resolved that date). This note previously claimed registration was outstanding; that was stale as of at least 2026-07-12 (registration had already happened 2026-07-06) and sat unconfirmed for a week before this correction. *(Note: `AUDIT_HARNESS.py` v13's FALLBACK_REGISTRY/UNKNOWN_FIRST_CYCLE mechanism referenced below is separate and was retired in v15 — see that file's own comments; not relevant to this file's core registration status.)*
+**Registration status:** registered in `Routing.md`, `Discovery.md`, `Unknowns.md`, and `Automation/AUDIT_HARNESS.py` FILE_REGISTRY — confirmed 2026-07-19 (see `Unknowns.md` PC-005, resolved that date). This note previously claimed registration was outstanding; that was stale as of at least 2026-07-12 (registration had already happened 2026-07-06) and sat unconfirmed for a week before this correction. *(Note: `AUDIT_HARNESS.py` v13's FALLBACK_REGISTRY/UNKNOWN_FIRST_CYCLE mechanism referenced below is separate and was retired in v15 — see that file's own comments; not relevant to this file's core registration status.)*
 
 Full sidecar details maintained here; register cross-references in `Unknowns.md` on next audit.
 
@@ -135,7 +135,7 @@ Full sidecar details maintained here; register cross-references in `Unknowns.md`
 
 ## Resolution Log
 
-- 2026-07-19: Stale "Registration status" note corrected — this file's own text claimed registration in `Routing.md`, `Discovery.md`, `Unknowns.md`, and `Admin/AUDIT_HARNESS.py` was outstanding, contradicting all four of those files, which have carried it since 2026-07-06. `Unknowns.md`'s PC-005 had flagged this as "possibly stale, not independently re-verified" since v4.20 (2026-07-12) without anyone closing the loop — done now, PC-005 marked Resolved.
+- 2026-07-19: Stale "Registration status" note corrected — this file's own text claimed registration in `Routing.md`, `Discovery.md`, `Unknowns.md`, and `Automation/AUDIT_HARNESS.py` was outstanding, contradicting all four of those files, which have carried it since 2026-07-06. `Unknowns.md`'s PC-005 had flagged this as "possibly stale, not independently re-verified" since v4.20 (2026-07-12) without anyone closing the loop — done now, PC-005 marked Resolved.
 
 - 2026-07-17: **v0.7.0 — Embedded Value Preservation ratified; CLF-004
   reframed; CE-006 directed approach cross-referenced (human governing
