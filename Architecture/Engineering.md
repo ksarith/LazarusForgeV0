@@ -607,7 +607,7 @@ exists to test.
   `(planned)` would have been inaccurate; converted to plain text instead
   to remove them from cross-reference parsing entirely). Gemini's broader
   claim that this "breaks automated compilation" was not independently
-  verified against `Admin/AUDIT_HARNESS.py` in this pass — treat the parser
+  verified against `Automation/AUDIT_HARNESS.py` in this pass — treat the parser
   risk as plausible, not confirmed.
 
 - 2026-07-04 (second entry, same day): EN-005 sidecar updated following
