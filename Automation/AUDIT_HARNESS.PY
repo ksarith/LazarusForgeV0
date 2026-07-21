@@ -81,7 +81,7 @@ FALLBACK_REGISTRY = {
     "Ship_of_Theseus.md":                "Admin/Ship_of_Theseus.md",
     "Trajectories.md":                   "Admin/Trajectories.md",
     "Verification_Gates_LF.md":          "Admin/Verification_Gates_LF.md",
-    "AUDIT_HARNESS.py":                  "Admin/AUDIT_HARNESS.py",
+    "AUDIT_HARNESS.py":                  "Automation/AUDIT_HARNESS.py",
     "Experiments.md":                    "Admin/Experiments.md",
     "Chemistry.md":                      "Architecture/Chemistry.md",
     "Cognitive_Frameworks.md":           "Architecture/Cognitive_Frameworks.md",
