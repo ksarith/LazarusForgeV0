@@ -49,11 +49,10 @@ ALIASES = {
     "Stratification_Chamber_v0.md":      "Operations/Gate_04_Separation_Mechanical.md",
     "Nothingness Theorem":               "Admin/Nothingness%20Theorem",
     "Computational Institutional Reasoning": "Admin/Computational%20Institutional%20Reasoning",
-    # Harness's own data file (v14) — not .md/.py, so _parse_routing()'s
-    # regex would never pick it up from Routing.md even if listed there.
-    # Belongs in ALIASES (always merged) rather than FALLBACK_REGISTRY
-    # (only merged when Routing.md fetch fails entirely).
-    "unknown_cycles.json":                "Admin/unknown_cycles.json",
+    # unknown_cycles.json entry removed 2026-07-21 — the file itself was
+    # deleted from the repository (judged unnecessary; v15 already computes
+    # aging from each unknown's First Logged date, not this file). See
+    # Routing.md's 2026-07-21 correction note for the full record.
 }
 
 # ── Fallback registry ─────────────────────────────────────────────────
