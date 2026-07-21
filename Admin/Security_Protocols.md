@@ -340,7 +340,7 @@ of their declared status.
 **2. Frozen Section Verification**
 
 Sections explicitly designated as `<!-- FROZEN -->` by governance files must
-maintain static hashes. The automated audit script (`Admin/AUDIT_HARNESS.py`)
+maintain static hashes. The automated audit script (`Automation/AUDIT_HARNESS.py`)
 shall verify that local file content matches signed historic blocks before
 triggering compilation or deployment pipelines. *(Placeholder — AUDIT_HARNESS.py
 Phase 1 checks are not yet implemented per RIP-002. Phase 3 frozen-section
