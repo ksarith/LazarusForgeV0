@@ -105,6 +105,16 @@ class MetadataResult:
     highest_risk: NormalizedField = field(default_factory=NormalizedField)
     sidecar_link: NormalizedField = field(default_factory=NormalizedField)
     ethical_anchor: NormalizedField = field(default_factory=NormalizedField)
+    # Only populated/expected for Problem-Statement subtype (lean schema)
+    # or explicit subtype declarations — see LEAN_EXPECTED_FIELDS.
+    version: NormalizedField = field(default_factory=NormalizedField)
+    owner: NormalizedField = field(default_factory=NormalizedField)
+    challenges_subtype: NormalizedField = field(default_factory=NormalizedField)
+
+    # Resolved schema this file was actually graded against, for
+    # transparency in reporting (e.g. "lean" vs "full").
+    grading_schema: str = "full"
+    subtype_basis: str = ""  # how grading_schema was decided
 
     # Ethical Anchor is a mandatory drift indicator per File_Template.md:
     # "Absence, alteration, or blank value is a mandatory drift indicator
@@ -142,6 +152,8 @@ class MetadataResult:
             "parse_confidence": round(self.parse_confidence, 2),
             "metadata_completeness": round(self.metadata_completeness, 2),
             "ethical_anchor_status": self.ethical_anchor_status,
+            "grading_schema": self.grading_schema,
+            "subtype_basis": self.subtype_basis,
             "fields_found": self.fields_found,
             "fields_missing": self.fields_missing,
             "conflicting_fields": self.conflicting_fields,
@@ -176,14 +188,25 @@ class MetadataParser:
     }
 
     # Fields expected on a fully-described canonical File State block, per
-    # Admin/File_Template.md §2. Drives metadata_completeness independently
-    # of parse_confidence. (No version/document_id fields — the adopted
-    # template doesn't use them; see Admin/File_Template.md.)
+    # Admin/File_Template.md §2 — the full eleven-field schema, used by
+    # everything except Problem-Statement subtype files in Challenges/.
     EXPECTED_FIELDS = [
         "status", "body_stability", "spec_gates", "verification_ref",
         "last_audit", "auditor", "open_unknowns", "active_disputes",
         "highest_risk", "sidecar_link", "ethical_anchor",
     ]
+
+    # Problem-Statement subtype (Challenges/ files that name a problem
+    # without themselves converging toward a build) uses a deliberately
+    # lean schema per Admin/File_Template.md §"Challenges/ File Subtypes":
+    # "Status, Version, Owner, Verification Ref, Ethical Anchor" — not a
+    # truncated version of the full schema, a different documented one.
+    LEAN_EXPECTED_FIELDS = ["status", "version", "owner", "verification_ref", "ethical_anchor"]
+
+    # Files named explicitly in File_Template.md as having been promoted
+    # from Problem-Statement to Solution-Track in practice — graded against
+    # the full schema even without (or ahead of) an explicit declaration.
+    KNOWN_SOLUTION_TRACK = {"closed_loop_feedstock.md", "return_to_eden.md"}
 
     # Precedence used only to propose a preferred_value when sources
     # disagree — the disagreement itself is always preserved regardless.
@@ -204,6 +227,9 @@ class MetadataParser:
         "highest_risk": ["highest_risk"],
         "sidecar_link": ["sidecar_link"],
         "ethical_anchor": ["ethical_anchor"],
+        "version": ["version"],
+        "owner": ["owner"],
+        "challenges_subtype": ["challenges_subtype"],
     }
 
     def __init__(self, file_path: str):
@@ -349,9 +375,14 @@ class MetadataParser:
 
     # -- Markdown tables -------------------------------------------------
 
+    _EMPHASIS_RE = re.compile(r"^[\*_`]+|[\*_`]+$")
+
     def _parse_markdown_tables(self, lines: List[str]) -> Tuple[bool, Dict[str, FieldValue]]:
         fields: Dict[str, FieldValue] = {}
-        for idx, line in enumerate(lines[:30]):
+        # Widened from the original top-30-lines window: a file with an
+        # Operational Safety Advisory block (File_Template.md §1) between
+        # Navigation Anchors and File State can push the table past line 30.
+        for idx, line in enumerate(lines[:60]):
             line_str = line.strip()
             if line_str.startswith("|") and line_str.endswith("|"):
                 parts = [p.strip() for p in line_str.split("|")[1:-1]]
@@ -359,8 +390,15 @@ class MetadataParser:
                     k, v = parts[0].strip(), parts[1].strip()
                     if set(k).issubset({"-"}) or set(v).issubset({"-"}):
                         continue
-                    clean_key = k.lower().replace(" ", "_")
-                    clean_val = v.strip("\"'")
+                    # Field names/values are often markdown-emphasized in
+                    # practice (e.g. "| **Status** | Active |") even though
+                    # File_Template.md's own example is unemphasized. Strip
+                    # bold/italic/backtick wrapping before matching, or every
+                    # such row silently fails to map to the canonical schema.
+                    k_clean = self._EMPHASIS_RE.sub("", k).strip()
+                    v_clean = self._EMPHASIS_RE.sub("", v).strip()
+                    clean_key = k_clean.lower().replace(" ", "_")
+                    clean_val = v_clean.strip("\"'")
                     fields[clean_key] = FieldValue(
                         value=clean_val, source="markdown_table", line=idx + 1, raw=line_str
                     )
@@ -476,10 +514,43 @@ class MetadataParser:
             penalty = 0.1 * len(r.warnings) + 0.25 * len(r.errors)
             r.parse_confidence = max(0.0, min(1.0, score - penalty))
 
-        # Metadata completeness: independent of *how* it was read
+        # Metadata completeness: independent of *how* it was read.
+        # Which rubric to grade against depends on subtype, per
+        # Admin/File_Template.md §"Challenges/ File Subtypes":
+        #   1. Explicit "Challenges Subtype" field wins if present.
+        #   2. Files named in KNOWN_SOLUTION_TRACK are graded full even
+        #      without a declaration (promoted in practice, doctrine
+        #      says the declaration should exist but may lag).
+        #   3. Otherwise, any Challenges/ file defaults to lean —
+        #      "Most name a real-world problem... not themselves
+        #      specifications for anything that gets fabricated."
+        #   4. Everything outside Challenges/ is graded full.
+        declared = r.challenges_subtype.preferred_value
+        declared_norm = str(declared).strip().lower() if declared else None
+        file_lower = self.file_path.lower().replace("\\", "/")
+        file_name = file_lower.rsplit("/", 1)[-1]
+        in_challenges = "/challenges/" in f"/{file_lower}"
+
+        if declared_norm == "solution-track":
+            expected, r.grading_schema, r.subtype_basis = (
+                self.EXPECTED_FIELDS, "full", "explicit 'Challenges Subtype: Solution-Track' declaration")
+        elif declared_norm == "problem-statement":
+            expected, r.grading_schema, r.subtype_basis = (
+                self.LEAN_EXPECTED_FIELDS, "lean", "explicit 'Challenges Subtype: Problem-Statement' declaration")
+        elif file_name in self.KNOWN_SOLUTION_TRACK:
+            expected, r.grading_schema, r.subtype_basis = (
+                self.EXPECTED_FIELDS, "full",
+                "named in File_Template.md as a known Solution-Track promotion (undeclared)")
+        elif in_challenges:
+            expected, r.grading_schema, r.subtype_basis = (
+                self.LEAN_EXPECTED_FIELDS, "lean",
+                "Challenges/ file with no explicit subtype declaration — defaulted per doctrine")
+        else:
+            expected, r.grading_schema, r.subtype_basis = (self.EXPECTED_FIELDS, "full", "outside Challenges/")
+
         present = []
         missing = []
-        for field_name in self.EXPECTED_FIELDS:
+        for field_name in expected:
             nf: NormalizedField = getattr(r, field_name)
             if nf.preferred_value not in (None, "", []):
                 present.append(field_name)
@@ -488,7 +559,7 @@ class MetadataParser:
 
         r.fields_found = len(present)
         r.fields_missing = missing
-        r.metadata_completeness = len(present) / len(self.EXPECTED_FIELDS)
+        r.metadata_completeness = len(present) / len(expected)
 
         if r.conflicting_fields:
             r.warnings.append(
