@@ -891,7 +891,7 @@ files should note its provisional status explicitly (as CE-006's directed
 approach note already did — "a directional decision, not a completed
 one" — which is why this was recoverable rather than silently wrong
 forever) rather than reading as settled fact; (3) consider whether
-`Admin/AUDIT_HARNESS.py` could flag cross-references into any file whose
+`Automation/AUDIT_HARNESS.py` could flag cross-references into any file whose
 own Status is not yet Verified/Resolved, as a mechanical nudge rather than
 relying on someone happening to check.
 
