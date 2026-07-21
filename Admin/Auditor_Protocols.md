@@ -944,7 +944,7 @@ Three cognitively distinct postures apply across an audit cycle, in strict seque
 This repository's Auditor Role Classes (above) — Skeptic, Systems, Evidence, Ethical, Synthesizer — plus the Adversarial Challenge Battery's ten classes (above) are sufficient. Three proposed additions were considered and declined as standing roles, 2026-07-14:
 
 - **Red Team roster** (a fixed set of named teams — Physics, Systems, Governance, Operational, Semantic, Economic, Malicious Actor). Declined: the Adversarial Challenge Battery already covers this ground with ten classes more precisely scoped to Forge's actual failure modes than a generic roster, applied by relevance rather than by assigned team membership. A fixed roster is the same shape of problem as a hand-maintained duplicate registry — wrong size for most documents, and itself a maintenance burden.
-- **Curator** (a role for "does this belong here, has this drifted, should doctrine move up"). Declined: this is Synthesizer-level judgment already in active use — see the `Admin/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes, 2026-07-14, neither of which required a Curator title to decide what was load-bearing versus duplicative.
+- **Curator** (a role for "does this belong here, has this drifted, should doctrine move up"). Declined: this is Synthesizer-level judgment already in active use — see the `Automation/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes, 2026-07-14, neither of which required a Curator title to decide what was load-bearing versus duplicative.
 - **Historian** (a role for tracking recurring patterns across audit cycles). Declined as a standing role. The underlying question — what keeps recurring — is legitimate and worth asking periodically, but it is a report, not a persona: it needs no governance authority, no sidecar ownership, no role declaration. Reassess as a standing role only if periodic pattern review is attempted and found to need one.
 
 **Why this matters beyond headcount:** every standing role is a maintenance obligation — role declarations, ownership, sidecar conventions — the same cost structure as the critical watch list retired at `Admin/Forge_Audit_Kit.md` v1.10. Add a role only when a checklist or a lens has been tried and found insufficient, not preemptively.
@@ -1692,7 +1692,7 @@ Mandatory re-audit conditions for this document:
 
 **Resolution:** Human governing authority confirmed 2026-07-14: phase separation is required, role proliferation is not. See §Audit Phase Separation and §Role Count: Ratified Position, added this pass. Audit → Adversarial Challenge → Synthesis codified as sequential and freeze-respecting (extends the existing Audit Sequence's step-ordering principle one level up). Red Team roster, Curator, and Historian declined as standing roles — the Adversarial Challenge Battery's ten classes, the Synthesizer role, and periodic ad hoc pattern review already cover this ground without new governance surface area.
 
-**Lessons Learned:** the declined proposals weren't wrong in substance — Curator-type and Historian-type judgment genuinely happened during this session's `Admin/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes. The question was never whether that judgment is needed; it's whether it needs a standing role, a sidecar ownership line, and a role-declaration string to exercise. It doesn't, yet — same reasoning that retired `Admin/Forge_Audit_Kit.md`'s critical watch list at v1.10: a structure sized for hypothetical future scale is itself a maintenance burden before that scale exists.
+**Lessons Learned:** the declined proposals weren't wrong in substance — Curator-type and Historian-type judgment genuinely happened during this session's `Automation/AUDIT_HARNESS.py` and `Admin/Forge_Audit_Kit.md` reduction passes. The question was never whether that judgment is needed; it's whether it needs a standing role, a sidecar ownership line, and a role-declaration string to exercise. It doesn't, yet — same reasoning that retired `Admin/Forge_Audit_Kit.md`'s critical watch list at v1.10: a structure sized for hypothetical future scale is itself a maintenance burden before that scale exists.
 
 *Surfaced during human-directed review of multi-agent process-design proposals, 2026-07-14 — resolved same session.*
 
@@ -1816,7 +1816,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
   `Admin/Forge_Audit_Kit_Changelog.md` registered in `Routing.md` (both
   missing since their 2026-07-14 creation). Spec Gates header gained an
   inline gate list. Separately, coordinated with a same-day fix in
-  `Admin/AUDIT_HARNESS.py`: `CURRENT_CYCLE`/`UNKNOWN_FIRST_CYCLE`
+  `Automation/AUDIT_HARNESS.py`: `CURRENT_CYCLE`/`UNKNOWN_FIRST_CYCLE`
   (session-count aging) replaced with direct date parsing from each
   unknown's own First Logged field against a 365-day threshold — the
   `Admin/Canonical_Terms.md` §4 Cycle definition this file's own Adversarial

@@ -486,7 +486,7 @@ pilot into a mandatory, repository-wide requirement.
 drafts of this idea: automated harness enforcement (regex modifiers, hard
 promotion-blocking circuit breakers), a mandatory nine-cell schema
 requirement worded as unbypassable, or immediate repository-wide scope.
-Those are implementation mechanics that belong in `Admin/AUDIT_HARNESS.py`'s
+Those are implementation mechanics that belong in `Automation/AUDIT_HARNESS.py`'s
 own spec if adopted, not baked into constitutional text — and immediate
 repository-wide mandate on the strength of one pilot file is more
 enforcement than one data point supports. See §4.
@@ -528,7 +528,7 @@ evidence supports. Proposed phasing, if ratified:
    follow-up amendment — at that point with real cross-file evidence
    instead of a single pilot.
 3. **Enforcement mechanics** (harness regex, automated promotion-blocking)
-   are a separate proposal, scoped to `Admin/AUDIT_HARNESS.py`, evaluated
+   are a separate proposal, scoped to `Automation/AUDIT_HARNESS.py`, evaluated
    only after the schema itself is proven across more than one file.
 
 ### 5. Open Items Before Ratification
@@ -1109,7 +1109,7 @@ defined consecutive-cycle threshold without a committed, substantively-
 changed Resolution Path entry, the owning document's File State Status field
 is flagged for mandatory re-review before any further promotion, rather than
 silently carrying forward. This should be specified as a Verification Gate
-Enforcement note or `Admin/AUDIT_HARNESS.py` check, not a manual convention,
+Enforcement note or `Automation/AUDIT_HARNESS.py` check, not a manual convention,
 to avoid becoming another declarative-only rule. Cross-reference AP-008
 (same declarative-vs-enforceable gap, different subsystem) before specifying
 independently — a shared mechanism may serve both.
