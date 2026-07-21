@@ -428,9 +428,9 @@ Mandatory re-audit conditions for this document:
 | First Logged  | 2026-06-19                             |
 | Last Reviewed | 2026-07-06                             |
 
-**Description (historical):** This file was not referenced in `Admin/AUDIT_HARNESS.py` file registry or EXTRA_FILES comment block. Environmental constraint context was not loadable in standard audit sessions.
+**Description (historical):** This file was not referenced in `Automation/AUDIT_HARNESS.py` file registry or EXTRA_FILES comment block. Environmental constraint context was not loadable in standard audit sessions.
 
-**Resolution:** `Admin/AUDIT_HARNESS.py` advanced from v7 through v13 across the repository's governance push (late June–early July 2026), with dynamic Routing.md bootstrap as the authoritative registry source — this file is picked up automatically as part of that registry rather than needing a separate static entry. Confirmed live: Gemini's 2026-07-06 audit of this file verified the harness successfully parses this file via Routing.md (62 canonical paths parsed). This sidecar entry had not been revisited since the file's creation date and was corrected 2026-07-06, in step with the same correction already reflected in `Unknowns.md`'s active index, which had not listed ENV-007 as Open.
+**Resolution:** `Automation/AUDIT_HARNESS.py` advanced from v7 through v13 across the repository's governance push (late June–early July 2026), with dynamic Routing.md bootstrap as the authoritative registry source — this file is picked up automatically as part of that registry rather than needing a separate static entry. Confirmed live: Gemini's 2026-07-06 audit of this file verified the harness successfully parses this file via Routing.md (62 canonical paths parsed). This sidecar entry had not been revisited since the file's creation date and was corrected 2026-07-06, in step with the same correction already reflected in `Unknowns.md`'s active index, which had not listed ENV-007 as Open.
 
 ---
 
@@ -449,7 +449,7 @@ Mandatory re-audit conditions for this document:
 
 **Description (historical):** This file did not appear in `Routing.md`, `Discovery.md`, or `Unknowns.md`. Until registered, it was invisible to the audit harness and to agents loading standard navigation context.
 
-**Resolution:** `Discovery.md` records this as Resolved 2026-06-21 (registered in Routing.md and Discovery.md). `Unknowns.md`'s active index confirms — it carries ENV-001 through ENV-006 and ENV-009, with no ENV-007 or ENV-008 entry, meaning both have already dropped from the active index per that file's own Size Management Rule 2 (resolved entries leave the active index immediately). Gemini's 2026-07-06 audit independently confirmed the file is now live-parsed via Routing.md (62 canonical paths). **This file's own sidecar had simply never been updated to reflect any of this** — both ENV-007 and ENV-008 sat as Open with Last Reviewed still showing the file's creation date, 17 days after Discovery.md's own resolution note and across three intervening audit passes that didn't check this sidecar against the navigation files it describes. Downgraded to Partially Addressed rather than fully closed only because full registration status against `Admin/AUDIT_HARNESS.py`'s FILE_REGISTRY (as opposed to its Routing.md-driven dynamic bootstrap) has not been independently re-verified this pass — see ENV-007's resolution note for why this likely doesn't matter, but confirming that distinction wasn't in scope today.
+**Resolution:** `Discovery.md` records this as Resolved 2026-06-21 (registered in Routing.md and Discovery.md). `Unknowns.md`'s active index confirms — it carries ENV-001 through ENV-006 and ENV-009, with no ENV-007 or ENV-008 entry, meaning both have already dropped from the active index per that file's own Size Management Rule 2 (resolved entries leave the active index immediately). Gemini's 2026-07-06 audit independently confirmed the file is now live-parsed via Routing.md (62 canonical paths). **This file's own sidecar had simply never been updated to reflect any of this** — both ENV-007 and ENV-008 sat as Open with Last Reviewed still showing the file's creation date, 17 days after Discovery.md's own resolution note and across three intervening audit passes that didn't check this sidecar against the navigation files it describes. Downgraded to Partially Addressed rather than fully closed only because full registration status against `Automation/AUDIT_HARNESS.py`'s FILE_REGISTRY (as opposed to its Routing.md-driven dynamic bootstrap) has not been independently re-verified this pass — see ENV-007's resolution note for why this likely doesn't matter, but confirming that distinction wasn't in scope today.
 
 ---
 
@@ -536,7 +536,7 @@ Mandatory re-audit conditions for this document:
 - `Unknowns.md` — ENV-001 through ENV-010 registered; ENV-007/ENV-008 status corrected 2026-07-06
 - `Discovery.md` — this file's registration confirmed Resolved 2026-06-21 (ENV-008)
 - `Routing.md` — this file's registration confirmed live via dynamic bootstrap (ENV-007)
-- `Admin/AUDIT_HARNESS.py` — picked up via dynamic Routing.md bootstrap (v7–v13); static FILE_REGISTRY entry independently re-verified 2026-07-19 — present, line 71 (`"Environmental_Constraints.md": "Admin/Environmental_Constraints.md"`)
+- `Automation/AUDIT_HARNESS.py` — picked up via dynamic Routing.md bootstrap (v7–v13); static FILE_REGISTRY entry independently re-verified 2026-07-19 — present, line 71 (`"Environmental_Constraints.md": "Admin/Environmental_Constraints.md"`)
 
 ---
 
