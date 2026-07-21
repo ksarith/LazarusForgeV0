@@ -509,7 +509,7 @@ Before executing any sensor verification loop:
 2. **PPE Baseline:** Full face shield and nitrile
    gloves are mandatory during wet sump adjustments.
 3. **Log Initialization:** Initialize
-   `Admin/AUDIT_HARNESS.py` in listen-only mode to
+   `Automation/AUDIT_HARNESS.py` in listen-only mode to
    capture real-time state transitions on the local
    bus.
 
