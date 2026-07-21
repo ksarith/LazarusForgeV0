@@ -522,7 +522,7 @@ The theoretical state tuple $\mathcal{I} = (G, A, \Gamma, \Pi, \Delta_e)$ and it
 
 * **Graph Vertices ($V_c$, $V_u$, $V_p$):** Every concept node and explicit unknown is implemented as a version-controlled markdown document embedded with a standardized YAML sidecar block.
 * **Directed Edges ($E$):** Relational dependencies, contradiction mappings, and provenances are declared explicitly within the YAML front-matter using unique cryptographic hash references.
-* **The State Machine Compiler ($\Gamma$):** Implemented via `Admin/AUDIT_HARNESS.py`. The harness parses the directory tree, compiles the semantic relationships into an in-memory AST, and executes the constitutional predicates before allowing any patch to merge.
+* **The State Machine Compiler ($\Gamma$):** Implemented via `Automation/AUDIT_HARNESS.py`. The harness parses the directory tree, compiles the semantic relationships into an in-memory AST, and executes the constitutional predicates before allowing any patch to merge.
 
 ### Production Node Implementation Blueprint
 
@@ -569,7 +569,7 @@ To evaluate the **Epistemic Debt Instability Theorem** and the **Automated Triag
 
 > **[GAP — Implementation vs. Specification]** This section explicitly maps the theoretical predicates $\gamma_1$–$\gamma_4$ to current harness implementation status. It exists to prevent the gap between declared formal backing and actual enforcement from being papered over.
 
-The current `Admin/AUDIT_HARNESS.py` (v12 as of 2026-06-30) implements **Phase 1 structural enforcement**, which comprises three checks distinct from but preparatory to the $\gamma$ predicate layer:
+The current `Automation/AUDIT_HARNESS.py` (v12 as of 2026-06-30) implements **Phase 1 structural enforcement**, which comprises three checks distinct from but preparatory to the $\gamma$ predicate layer:
 
 | Phase 1 Check | What It Enforces | Relationship to $\gamma$ Predicates |
 | :--- | :--- | :--- |
@@ -649,4 +649,5 @@ When an institution reaches its targeted operational end-of-life or encounters i
 | Resolution Requirement | Define the mapping schema and structural verification protocols before promoting this framework to Candidate Spec status. Cross-ref `Tests/Leviathan_testing.md`, `Tests/Support_Raft.md`, `Admin/Security_Protocols.md`. |
 | Status | Open |
 | First Cycle | 9 |
+
 
