@@ -17,6 +17,10 @@
 | Sidecar Link     | #auditor-notes--unknowns                                            |
 | Ethical Anchor   | Attempt to do no harm. Defer to Ethical_Constraints.md if present. |
 
+**Version String Registry** (self-referential citations outside File State — update on every version bump; required per `Admin/File_Template.md` §Self-Referential Version Strings):
+- §Role Declaration Requirement, example string
+- §Observability & Audit Trail, Standard sign-off template
+
 ---
 
 ## Scope Boundary
