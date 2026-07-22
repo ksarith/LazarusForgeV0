@@ -11,7 +11,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-21                                                          |
 | Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21 |
-| Open Unknowns    | 17                                                                  |
+| Open Unknowns    | 15                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -48,7 +48,7 @@
 - Fabrication procedures
 - Experimental methodology standards
 - Canonical terminology definitions (→ `Admin/Canonical_Terms.md`)
-- Repository architecture ownership boundaries (→ Governance_Charter.md)
+- Repository architecture ownership boundaries (→ Admin/Governance_Charter.md)
 - Cross-repo verification architecture (→ Forge_Net.md)
 
 ---
@@ -396,7 +396,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.23"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.25"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -569,7 +569,7 @@ The following inline reference set provides calibration anchors for inter-agent 
 |---|---|---|
 | "The head pressure of molten nitrate salt at 20 m depth is 353 kPa" | VERIFIED | Derived from measured physical constants (density, gravity); independently corrected by external audit; survives adversarial reduction to a single falsifiable calculation. |
 | "UV phototaxis in TF-006 will achieve threshold behavioral response at 405 nm" | PROVISIONAL | Analogous External — drawn from documented biological literature, not yet tested in the Forge's specific implementation. Internally coherent but grounding requires physical test. |
-| "The optimal barter exchange rate for recovered copper in the RDC context" | UNKNOWN | No empirical basis exists. Market replacement cost doctrine (Economics.md) provides a framework; actual rate requires operational deployment data. |
+| "The optimal barter exchange rate for recovered copper in the RDC context" | UNKNOWN | No empirical basis exists. Market replacement cost doctrine (Admin/Economics.md) provides a framework; actual rate requires operational deployment data. |
 | "The Forge's Anti-Weaponization Doctrine prevents misuse under all deployment conditions" | PROVISIONAL / Internally Derived | Ethical soundness is a permanently load-bearing claim that is inherently unmeasurable via physical footprint. Cannot hold VERIFIED regardless of internal coherence. Subject to mandatory adversarial challenge every three cycles. |
 | "AUDIT_HARNESS.py correctly extracts boundary indices from all registered files" | PROVISIONAL | Verified against current file registry by tool execution; PROVISIONAL because file registry changes may introduce new parsing edge cases not yet encountered. |
 
@@ -1063,7 +1063,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.23 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.25 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1767,7 +1767,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 | Field         | Value                        |
 |---------------|------------------------------|
-| Status        | Open                         |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Low                          |
 | Priority      | Minor                        |
 | Type          | Bookkeeping / Process        |
@@ -1780,7 +1780,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 **Why It Matters:** This is the same bug AP-023 fixed on 2026-07-16 — same two locations, same failure mode, recurring one version bump later. AP-023 itself named this pattern ("third recurrence... fixed here twice now") and predicted it would keep happening without a structural check, not just repeated manual correction. This is the fourth confirmed instance.
 
-**Resolution Path:** Mechanical fix — update both strings to the current version at time of correction. The actual resolution this pattern needs, per AP-023's own Lessons Learned, is a structural check (Structural Validation, Phase 1, could carry "role-declaration and sign-off version strings match File State" as a standing item) rather than a fifth manual catch-and-fix cycle. Cross-reference AP-023.
+**Resolution:** both strings corrected to v0.25 same session, 2026-07-21 (human-directed). The structural fix AP-023's Lessons Learned called for — "role-declaration and sign-off version strings match File State" as a standing Structural Validation (Phase 1) item — is not yet added; this closure is the same category of manual catch-and-fix as AP-023, not a prevention of recurrence. A fifth instance remains possible until that structural check exists. Cross-reference AP-023.
 
 *Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
 
@@ -1813,7 +1813,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 | Field         | Value                        |
 |---------------|------------------------------|
-| Status        | Open                         |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Low                           |
 | Priority      | Minor                        |
 | Type          | Technical / Structural        |
@@ -1822,11 +1822,11 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 | First Logged  | 2026-07-21                    |
 | Last Reviewed | 2026-07-21                    |
 
-**Description:** Three unprefixed legacy filenames appear where this file otherwise uses canonical folder-prefixed paths: `Governance_Charter.md` in Scope Boundary's "DOES NOT define" list (should be `Admin/Governance_Charter.md`); `Economics.md` in the Epistemic State Calibration Reference table (should be `Admin/Economics.md`, per Routing.md's canonical registration).
+**Description:** Two unprefixed legacy filenames appear where this file otherwise uses canonical folder-prefixed paths: `Governance_Charter.md` in Scope Boundary's "DOES NOT define" list (should be `Admin/Governance_Charter.md`); `Economics.md` in the Epistemic State Calibration Reference table (should be `Admin/Economics.md`, per Routing.md's canonical registration).
 
 **Why It Matters:** Fails this file's own Gate 5 criterion (cross-reference integrity — canonical folder-prefixed paths). Minor individually; the same class of drift AP-023 already found and fixed once for a `Discovery.md` citation elsewhere in this file.
 
-**Resolution Path:** Mechanical fix — add folder prefixes at both locations.
+**Resolution:** both prefixes added same session, 2026-07-21 (human-directed).
 
 *Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
 
@@ -1856,6 +1856,24 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 ---
 
 ### Resolution Log
+
+- 2026-07-21 (second entry, same day): **v0.25 — AP-025 and AP-027
+  resolved same session.** Both were zero-judgment mechanical string
+  corrections, applied immediately rather than left open: version strings
+  at §Role Declaration Requirement and §Observability & Audit Trail
+  corrected v0.23 → v0.25 (AP-025); `Governance_Charter.md` and
+  `Economics.md` given folder prefixes (AP-027). AP-027's own Description
+  field originally miscounted "Three" affected paths while naming only
+  two — corrected to "Two" in the same pass; Gemini's original report had
+  also named a `Discovery.md` reference at EF-0.5 as a third flat-path
+  error, checked and rejected — `Discovery.md` is a root-level file with
+  no `Admin/` prefix in its canonical form, so the unprefixed citation
+  there was already correct. AP-026 and AP-028 remain Open — both require
+  a content decision (what Rule 5's corrected text should say beyond
+  matching Item 7; how to restructure the calibration table) rather than
+  a single unambiguous mechanical fix, and were left for separate,
+  deliberate review rather than resolved as a byproduct of this pass.
+  Open Unknowns 17 → 15.
 
 - 2026-07-21: **v0.25 — AP-025 through AP-028 logged (Gemini audit,
   verified against source before registration); AP-017 fresh instance
