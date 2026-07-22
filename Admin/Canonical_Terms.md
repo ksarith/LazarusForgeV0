@@ -572,9 +572,9 @@ canonical folder-prefixed paths.
 | Priority      | Major                                   |
 | Type          | Architectural                           |
 | Blocking      | Yes (Gate_02_Triage.md Spec promotion)  |
-| Owner         | Operations/Gate_02_Triage.md            |
+| Owner         | Admin/Canonical_Terms.md                |
 | First Logged  | 2026-05-26                              |
-| Last Reviewed | 2026-06-24                              |
+| Last Reviewed | 2026-07-21                              |
 
 **Description:** The technical definition for what constitutes a Component
 Library entry format remains fluid. Without a rigorous taxonomy specification,
@@ -583,6 +583,17 @@ different triage nodes will export incompatible semantic tags for identical item
 **Resolution Path:** Cross-validate with `Architecture/Components.md` and
 define entry properties (UUID, structural envelope, metallurgical class)
 before promoting triage documentation to full Specification.
+
+**Consolidation note, 2026-07-21:** `Operations/Gate_02_Triage.md` independently
+logged this same unknown under a colliding `CT-002` ID, 11 days after this
+entry, with its own Owner field pointing back here — while this entry's
+Owner field pointed there. Neither file claimed itself. Surfaced by
+`Automation/integrity_check.py`'s Unknown Pass; Owner corrected to this file
+(matching the self-referential convention every other entry here uses);
+`Operations/Gate_02_Triage.md`'s duplicate renamed to `TS-004` and discharged
+to this entry, which `Unknowns.md`'s global index already treated as
+canonical. This entry remains the single tracked instance of the underlying
+question, still genuinely open.
 
 ---
 
@@ -893,6 +904,18 @@ Auditor_Protocols.md specifically, which is now closed.
 ---
 
 ### Resolution Log
+
+- 2026-07-21: **CT-002 Owner field corrected; `Operations/Gate_02_Triage.md`'s
+  colliding duplicate discharged.** `Automation/integrity_check.py`'s Unknown
+  Pass (first run) found `Operations/Gate_02_Triage.md` independently tracking
+  the same Component Library Schema question under a colliding `CT-002` ID,
+  11 days after this entry, each file's Owner field pointing at the other. Same
+  root-cause shape as CT-007's EC- collision below, this time a sidecar ID
+  rather than a governance prefix registration gap. Owner corrected to
+  `Admin/Canonical_Terms.md` (matching every other entry's self-referential
+  convention in this file); `Gate_02_Triage.md`'s duplicate renamed to its own
+  `TS-004` and marked Resolved — Discharge via Consolidation, pointing here.
+  This entry remains the single tracked instance, still Open.
 
 - 2026-07-05 (third entry, same day): **v0.7 — CT-007 escalated: confirmed
   active `EC-` prefix collision, not hypothetical.** Direct check of
