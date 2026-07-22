@@ -116,30 +116,6 @@ FALLBACK_REGISTRY = {
     "Energy_Scarcity.md":                "Challenges/Energy_Scarcity.md",
 }
 
-def _parse_routing(content):
-    """
-    Parse Routing.md Master Routing Map table into {short_name: repo_path}.
-    Expects rows like: | `Admin/Foo.md` | [Raw](...) | [Repo](...) | ... |
-    Returns dict mapping basename → folder-prefixed path.
-    NOTE: only matches backtick-quoted paths ending in .md or .py — files
-    without an extension or containing spaces (e.g. the two Admin/ Tier 0
-    philosophical/theoretical documents) will not be picked up here and
-    must be hand-maintained in ALIASES instead.
-    """
-    registry = {}
-    for line in content.splitlines():
-        # Match table rows containing a backtick-quoted path
-        m = re.search(r'`([^`]+\.(?:md|py))`', line)
-        if not m:
-            continue
-        full_path = m.group(1)
-        # Derive short name: strip folder prefix, keep filename
-        short = full_path.split("/")[-1]
-        # Avoid overwriting with duplicates (keep first occurrence)
-        if short not in registry:
-            registry[short] = full_path
-    return registry
-
 def _build_registry():
     """
     Fetch Routing.md and build FILE_REGISTRY dynamically.
@@ -151,7 +127,7 @@ def _build_registry():
     try:
         with urllib.request.urlopen(url) as r:
             routing_content = r.read().decode("utf-8")
-        dynamic = _parse_routing(routing_content)
+        dynamic = parse_routing(routing_content)
         print(f" ✓ Routing.md fetched — {len(dynamic)} canonical paths parsed")
 
         # Drift detection against fallback
@@ -235,6 +211,8 @@ import os
 import sys
 import json
 
+from audit_lib import Finding, parse_routing, extract_md_refs, check_cross_refs
+
 # ── Phase 1 constants ────────────────────────────────────────────────
 QUARANTINE_FILE = ".quarantine"
 
@@ -245,25 +223,6 @@ _DEFAULT_ANCHOR = "Attempt to do no harm. Defer to Ethical_Constraints.md if pre
 _DEFAULT_REQUIRED_FIELDS = ["Status", "Spec Gates", "Verification Ref", "Ethical Anchor"]
 
 # ── Finding class ─────────────────────────────────────────────────────
-class Finding:
-    """Structured finding with severity, category, file, and message."""
-    def __init__(self, severity, category, file_path, message):
-        self.severity = severity    # CRITICAL | MAJOR | WARNING
-        self.category = category    # CONSTITUTION | STRUCTURE | REFERENCE
-        self.file_path = file_path
-        self.message = message
-
-    def __str__(self):
-        return f"[{self.severity}/{self.category}] {self.file_path}: {self.message}"
-
-    def to_dict(self):
-        return {
-            "severity": self.severity,
-            "category": self.category,
-            "file": self.file_path,
-            "message": self.message
-        }
-
 # ── Bootstrap governance rules from doctrine files ────────────────────
 def _bootstrap_rules(fetched_files):
     """
@@ -341,23 +300,6 @@ def _parse_file_state(content):
     return metadata, True
 
 # ── Cross-reference extractor ─────────────────────────────────────────
-def _extract_md_refs(content):
-    """
-    Extract internal .md file paths from content.
-    Catches: markdown links, backtick paths, table cell paths.
-    Skips URLs (http/https) and non-.md references.
-    """
-    refs = set()
-    # Markdown links [text](path.md) or [text](path.md#anchor)
-    for link in _re.findall(r'\[.*?\]\(([^)]+)\)', content):
-        clean = link.split('#')[0].strip()
-        if clean.endswith('.md') and not clean.startswith('http'):
-            refs.add(clean)
-    # Backtick paths `Admin/Foo.md`
-    for path in _re.findall(r'`([A-Za-z][A-Za-z0-9_/]+\.md)`', content):
-        refs.add(path)
-    return refs
-
 # ── Phase 1 Check 1: Constitutional — Ethical Anchor ───────────────────
 def _check_ethical_anchor(filename, metadata, found, anchor, findings):
     """
@@ -431,60 +373,6 @@ def _check_required_fields(filename, metadata, found, required_fields, findings)
                     f"Required field '{field}' missing from File State table."
                 ))
 
-# ── Phase 1 Check 3: Cross-reference resolution (classified) ───────────
-def _check_cross_refs(filename, content, registry, findings):
-    """
-    Extract internal .md references and classify any that don't resolve
-    against the registry: LEGACY (known alias), PLANNED (pending rename),
-    ARCHIVE (versioned archive path), or UNKNOWN (investigate).
-    """
-    # Planned renames: paths that appear in docs as future canonical names
-    # before Routing.md has been updated.
-    PLANNED_RENAMES = {
-        "Forge_Flow.md": "Architecture/Forge_flow.md — casing correction pending",
-    }
-    # Archive path pattern — references to versioned archive files
-    _ARCHIVE_PAT = _re.compile(
-        r'(?:Archive/|_v\d+\.|_20\d{6}|v0\.\d+\.md$)', _re.IGNORECASE
-    )
-
-    refs = _extract_md_refs(content)
-    for ref in refs:
-        clean = ref.lstrip('./')
-        # Skip known external repos and explicit planned labels
-        if any(x in ref for x in ['http', 'Lazarus-Forge-', 'Astroid', 'planned']):
-            continue
-
-        registry_paths = set(registry.values()) | set(registry.keys())
-
-        if clean in registry_paths:
-            continue  # Resolved — no finding
-
-        # Classify the miss
-        if clean in ALIASES or clean.replace('Admin/', '').replace('Operations/', '') in ALIASES:
-            findings.append(Finding(
-                "WARNING", "REFERENCE", filename,
-                f"[LEGACY] '{ref}' — legacy name; check Rename Registry "
-                f"in Discovery.md for canonical path."
-            ))
-        elif clean in PLANNED_RENAMES:
-            findings.append(Finding(
-                "WARNING", "REFERENCE", filename,
-                f"[PLANNED] '{ref}' — {PLANNED_RENAMES[clean]}"
-            ))
-        elif _ARCHIVE_PAT.search(clean):
-            findings.append(Finding(
-                "WARNING", "REFERENCE", filename,
-                f"[ARCHIVE] '{ref}' — versioned archive reference; "
-                f"expected once Archive/ is established."
-            ))
-        else:
-            findings.append(Finding(
-                "WARNING", "REFERENCE", filename,
-                f"[UNKNOWN] '{ref}' — no canonical or alias match. "
-                f"Investigate: stale reference or missing Routing.md entry."
-            ))
-
 # ── Phase 1 enforcement per file ──────────────────────────────────────
 def _enforce_phase1(filename, content, anchor, required_fields, registry, findings):
     """
@@ -506,7 +394,7 @@ def _enforce_phase1(filename, content, anchor, required_fields, registry, findin
 
     _check_ethical_anchor(filename, metadata, found, anchor, findings)
     _check_required_fields(filename, metadata, found, required_fields, findings)
-    _check_cross_refs(filename, content, registry, findings)
+    check_cross_refs(filename, content, registry, ALIASES, findings)
 
 # ── Main Phase 1 runner ───────────────────────────────────────────────
 def run_phase1(fetched_files, registry):
