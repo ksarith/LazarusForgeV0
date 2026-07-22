@@ -32,7 +32,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-17                                                          |
 | Auditor          | ChatGPT — Synthesizer; Claude — Engineer; Claude — Embedded Value Preservation cross-reference added (human-directed), 2026-07-17 |
-| Open Unknowns    | 4                                                                   |
+| Open Unknowns    | 3                                                                   |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -469,40 +469,30 @@ Cross-reference `Architecture/Forge_flow.md` FL-001.
 
 ---
 
-### CT-002 — Component Library Schema (cross-reference)
+### TS-004 — Component Library Schema (discharged — see Admin/Canonical_Terms.md CT-002)
 
 | Field         | Value                          |
 |---------------|--------------------------------|
-| Status        | Open                           |
+| Status        | Resolved — Discharge via Consolidation |
 | Risk          | High                           |
 | Priority      | Critical                       |
 | Type          | Technical / Architectural      |
 | Blocking      | Yes — blocks Specification     |
-| Owner         | Architecture/Components.md     |
+| Owner         | Operations/Gate_02_Triage.md   |
 | First Logged  | 2026-06-06                     |
-| Last Reviewed | 2026-06-06                     |
+| Last Reviewed | 2026-07-21                     |
 
-**Description:** The Component Library schema — the data structure and
-minimum fields required for a component entry — is undefined. Gate_02_Triage
-routes passing components to the Component Library but cannot specify what
-a compliant entry looks like.
+**Description:** Originally logged here as "CT-002" — a naming collision with `Admin/Canonical_Terms.md`'s own CT-002, which is the same unknown (Component Library Schema undefined) independently logged eleven days earlier, 2026-05-26. Two sidecars tracked one real question, each with its own Owner field pointing at the *other* file rather than itself.
 
-**Why It Matters:** Without a schema, Component Library entries are
-inconsistent across operators and forge instances. Triage provenance tags
-(Principle 5) have no defined target format. Strategic tier classification
-and queue economics data have no home.
+**Resolution:** Discharged 2026-07-21 (human-directed, surfaced by `Automation/integrity_check.py`'s Unknown Pass). `Admin/Canonical_Terms.md`'s CT-002 is the canonical entry going forward — `Unknowns.md`'s global index already attributed it there before this discharge, making it the de facto owner in practice even though neither file's own Owner field said so. This entry stays here per the Resolved Unknown Discharge Procedure's non-deletion principle (`Admin/Forge_Audit_Kit.md`) — permanent search anchor, ID renamed from the colliding `CT-002` to this file's own local `TS-` convention so it no longer claims a prefix `Admin/Canonical_Terms.md` owns. The underlying question — Component Library Schema — remains genuinely open; only the duplicate tracking is resolved. Still blocks this file's Specification promotion via `Admin/Canonical_Terms.md` CT-002.
 
-**Resolution Path:** Owned by `Architecture/Components.md` — resolution
-requires Components.md to define the Component Library schema (field list,
-required vs. optional, data types). This file's provenance tag requirements
-and queue entry requirements feed that schema definition. CT-002 blocks
-Specification promotion for this file. Cross-reference Discovery.md
-Cross-Module Unknowns table.
+**Lessons Learned:** an ID prefix collision between two files (`CT-` used both by its rightful owner and, coincidentally or by copy, by a second file) went undetected for 46 days because nothing checked for it — the same class of gap `Admin/Auditor_Protocols.md`'s AP-025/AP-026 named for version strings and duplicated definitions, now confirmed to apply to sidecar IDs too. `Automation/integrity_check.py`'s Unknown Pass (built specifically to catch this class of bug) found it on its first run against the repository.
 
 ---
 
 ### Resolution Log
 
+- 2026-07-21: **CT-002 → TS-004 (Resolved — Discharge via Consolidation), human-directed, surfaced by `Automation/integrity_check.py`.** The sidecar entry previously logged here as "CT-002" collided with `Admin/Canonical_Terms.md`'s own CT-002 — the same Component Library Schema unknown, independently logged there 11 days earlier (2026-05-26). Renamed to this file's own `TS-` convention and marked discharged to `Admin/Canonical_Terms.md`'s CT-002, which `Unknowns.md`'s global index already treated as canonical. Entry retained per the non-deletion principle, not removed. Open Unknowns 4 → 3.
 - 2026-07-17: **Embedded Value Preservation cross-reference added (human-directed).** New Core Principle 9, sourced from `Challenges/Closed_Loop_Feedstock.md` §2a's ratification the same day. Governs a step Principle 8 (Strategic Recoverability) doesn't reach: separable high-value sub-components in a triage-failed unit are extracted and preserved before what remains proceeds to full reduction. Routing table (§IV) annotated at the Gate D / Material Recovery row. Does not change the pass/fail triage decision itself — only what happens to material already routed to Reduction.
 - May 2026: Gate Correspondence table added.
 - May 2026: Motor worked example added to Station 1.
