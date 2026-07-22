@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.24**
+**Version 0.25**
 
 ## File State
 
@@ -9,9 +9,9 @@
 | Body Stability   | Transitional                                                        |
 | Spec Gates       | 3/6 (G1, G4, G6 clear; G3 blocked on AP-017; G5 conditional on cross-ref fixes below; G2 N/A — no physical/quantitative claims of its own) |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
-| Last Audit       | 2026-07-17                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17 |
-| Open Unknowns    | 13                                                                  |
+| Last Audit       | 2026-07-21                                                          |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21 |
+| Open Unknowns    | 17                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -1583,6 +1583,12 @@ Mandatory re-audit conditions for this document:
 
 **Clarification, 2026-07-17 (multi-agent convergence, human-directed):** closure requires **informational** independence, not merely conversational independence. A new chat session is insufficient if the prompt carries a curated Assumption Extraction block, a summary of prior findings, or "carried forward unless contradicted" framing — that reintroduces the same priming risk a fresh conversation was meant to avoid, since the auditor starts from someone else's conclusions rather than the raw source. The closest available approximation: a session given only the raw repository files and the standard audit prompt, with no summary of this file's own audit history and no prior findings carried forward. Two same-day adversarial passes against this file (2026-07-17) both independently converged on this same distinction without being shown each other's findings — treated as mutually reinforcing, not as satisfying this entry, since both passes retained standard session framing.
 
+**Fresh instance, 2026-07-21:** a Gemini audit of this file (fresh chat session) was run via `Automation/AUDIT_HARNESS.py`'s `run_audit()`. Verified directly against the actual assembled prompt payload: it carried the standard ASSUMPTION EXTRACTION block with "carried forward unless contradicted by new findings" framing — the exact pattern the 2026-07-17 clarification names as insufficient. Conversationally fresh, not informationally independent. Findings do not satisfy this entry, consistent with every instance logged here to date.
+
+Separately, one reported finding (claimed sidecar truncation at AP-017, omitting AP-018/019/024) was checked against the full prompt payload and confirmed fabricated — the complete 157,387-character file, ending correctly, was present in what Gemini received. This is a distinct failure dimension from what this entry governs: informational independence protects against priming bias, not against a model misreading material it was actually given complete and unprimed-on-conclusions. Both dimensions matter for a trustworthy independent pass; only the first is AP-017's scope. Three of the same report's seven findings were verified accurate (version drift, Rule 5 label inconsistency, flat legacy paths — logged as AP-025, AP-026, AP-027 below); one more (calibration table provenance gap) independently confirmed valid and logged as AP-028; one (Gate 3 status "contradiction") was a partial-quote misreading of already-resolved text, not adopted; one (AP-007/SHA-256) restated a gap the file already discloses about itself, not a new finding.
+
+**Infrastructure progress:** `Automation/cold_session_bundler.py` (built and tested this cycle, not yet run against this file) is the first working implementation of this entry's actual requirement — it assembles a session from raw target files plus the standard audit prompt only, with no Assumption Extraction block, no prior-findings summary, and explicit exclusion of this file's own audit-history content unless it is itself the named target. Closing this entry requires running it for a real qualifying pass and logging that result here; the mechanism to do so did not exist before this cycle and now does.
+
 ---
 
 ### AP-018 — Saturation threshold hysteresis and smoothing undefined
@@ -1757,7 +1763,131 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 ---
 
+### AP-025 — Role Declaration and Standard Sign-Off version strings stale (fourth recurrence)
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Low                          |
+| Priority      | Minor                        |
+| Type          | Bookkeeping / Process        |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-21                    |
+| Last Reviewed | 2026-07-21                    |
+
+**Description:** §Role Declaration Requirement's example string and §Observability & Audit Trail's Standard sign-off template both still read `Auditor_Protocols.md v0.23`. The file's own File State has read v0.24 since 2026-07-17 (AP-024) and is v0.25 as of this entry.
+
+**Why It Matters:** This is the same bug AP-023 fixed on 2026-07-16 — same two locations, same failure mode, recurring one version bump later. AP-023 itself named this pattern ("third recurrence... fixed here twice now") and predicted it would keep happening without a structural check, not just repeated manual correction. This is the fourth confirmed instance.
+
+**Resolution Path:** Mechanical fix — update both strings to the current version at time of correction. The actual resolution this pattern needs, per AP-023's own Lessons Learned, is a structural check (Structural Validation, Phase 1, could carry "role-declaration and sign-off version strings match File State" as a standing item) rather than a fifth manual catch-and-fix cycle. Cross-reference AP-023.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### AP-026 — Rule 5 retains four-label system, missed by AP-021's fix
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Medium                       |
+| Priority      | Major                        |
+| Type          | Governance / Technical       |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-21                    |
+| Last Reviewed | 2026-07-21                    |
+
+**Description:** AP-021 (Resolved, 2026-07-10) closed the four-vs-five-label contradiction between §The Fallacy Checklist Item 7 and §Evidence Classification — but only rewrote Item 7. §AI Contribution Protocols Rule 5 still reads: "Rule 5 — Confidence Labeling: Use the four-label system. Unlabeled = Placeholder," unchanged since before AP-021.
+
+**Why It Matters:** The exact contradiction AP-021 was opened to close still exists, in a third location AP-021's resolution didn't check. A contributor reading Rule 5 in isolation is instructed to use a labeling system this file elsewhere retired.
+
+**Resolution Path:** Mechanical fix — update Rule 5 to match Item 7's corrected text: "Use the five-label system (Measured, Replicated, Simulated, Analogous, Placeholder). Unlabeled = Placeholder." Cross-reference AP-021 (closed, this is a gap in that closure's completeness, not a new contradiction) and AP-023's Lessons Learned on single-pass fixes of recurring bug classes.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### AP-027 — Flat legacy path references in Scope Boundary and calibration table
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Low                           |
+| Priority      | Minor                        |
+| Type          | Technical / Structural        |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-21                    |
+| Last Reviewed | 2026-07-21                    |
+
+**Description:** Three unprefixed legacy filenames appear where this file otherwise uses canonical folder-prefixed paths: `Governance_Charter.md` in Scope Boundary's "DOES NOT define" list (should be `Admin/Governance_Charter.md`); `Economics.md` in the Epistemic State Calibration Reference table (should be `Admin/Economics.md`, per Routing.md's canonical registration).
+
+**Why It Matters:** Fails this file's own Gate 5 criterion (cross-reference integrity — canonical folder-prefixed paths). Minor individually; the same class of drift AP-023 already found and fixed once for a `Discovery.md` citation elsewhere in this file.
+
+**Resolution Path:** Mechanical fix — add folder prefixes at both locations.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
+### AP-028 — Epistemic State Calibration Reference table lacks institutional provenance labels
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Low                           |
+| Priority      | Minor                        |
+| Type          | Governance / Epistemic        |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-21                    |
+| Last Reviewed | 2026-07-21                    |
+
+**Description:** §AP-006 (Resolved) requires every meaningful claim to carry two orthogonal labels — a quantitative confidence label and an institutional provenance label. §AP-014's Epistemic State Calibration Reference table (Resolved) lists five example claims with confidence states (VERIFIED/PROVISIONAL/UNKNOWN) but no dedicated provenance column; provenance is only inferable from prose in some rows and absent in others.
+
+**Why It Matters:** The calibration table is the reference other agents map contested claims against before invoking AP-004 arbitration. A table that only models one of the two required dimensions understates what compliant classification actually requires, in the file's own primary worked example of how to classify.
+
+**Resolution Path:** Payment via Specification — add an explicit Institutional Provenance column to the Calibration Reference table, one label per row, consistent with §AP-006's four-label institutional hierarchy. Cross-reference AP-006 and AP-014 — both Resolved; this is a gap in AP-014's deliverable, not a reopening of either.
+
+*Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-21: **v0.25 — AP-025 through AP-028 logged (Gemini audit,
+  verified against source before registration); AP-017 fresh instance
+  recorded.** A Gemini audit run via `Automation/AUDIT_HARNESS.py` against
+  this file returned seven findings; each checked against the actual
+  assembled prompt payload and full source text before any were adopted,
+  consistent with AP-024's own precedent of not adopting unverified claims.
+  **Four adopted:** stale v0.23 version strings (AP-025 — fourth
+  recurrence of the bug AP-023 fixed 2026-07-16); Rule 5's four-label text
+  surviving AP-021's fix, which only corrected Item 7 (AP-026); three flat
+  legacy paths failing this file's own Gate 5 (AP-027); Epistemic State
+  Calibration Reference table missing institutional provenance labels
+  AP-006 requires (AP-028). **Three not adopted, checked and rejected:**
+  a claimed sidecar truncation at AP-017 (the complete 157,387-character
+  file, ending correctly, was confirmed present in the actual prompt
+  payload — fabricated); a claimed Gate 3 status contradiction (the quoted
+  sentence's own second half already resolves the apparent conflict —
+  partial-quote misreading, not a real gap); a claimed undocumented AP-007
+  dependency (AP-007's own text already discloses this exact gap by name —
+  not a new finding). AP-017 gained a Fresh Instance entry: this run used
+  the standard `run_audit()` prompt, including its Assumption Extraction
+  "carried forward unless contradicted" framing — conversationally fresh,
+  not informationally independent per the 2026-07-17 clarification, same
+  as every instance logged there to date. The sidecar-truncation
+  fabrication is logged as a distinct, adjacent finding: informational
+  independence and accurate reading of provided material are separate
+  failure dimensions, and this instance demonstrates a failure in the
+  second while receiving a complete, correctly-delivered file. AP-017
+  also gained an infrastructure note: `Automation/cold_session_bundler.py`
+  (built this cycle) is the first working implementation of this entry's
+  actual requirement, not yet used for a qualifying run. Open Unknowns
+  13 → 17.
 
 - 2026-07-17: **v0.24 — AP-024 logged (multi-agent convergence); AP-017 and
   AP-007 refined; a factual error in one reviewing pass identified and
