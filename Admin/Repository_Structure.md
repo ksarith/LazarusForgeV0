@@ -122,7 +122,7 @@ Rules:
 - Words separated by underscores
 - No spaces, no hyphens, no camelCase without underscores
 - Acronyms treated as single words: `Air_Scrubber.md` not
-  `AIR_Scrubber.md`
+  `Air_Scrubber.md`
 
 **Known outlier:** `Forge_flow.md` uses lowercase `flow` — this is
 a legacy inconsistency. Correct to `Forge_Flow.md` on next audit pass
