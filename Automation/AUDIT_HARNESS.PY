@@ -220,136 +220,6 @@ print("\nCanonical files:")
 for short, path in sorted(FILE_REGISTRY.items()):
     if short not in ALIASES:
         print(f"  {short:50} → {path}")
-
-
-# ─────────────────────────────────────────────────────────────────────
-# CELL 2 — CONFIGURE THIS CELL (edit TARGET_FILE and FOCUS only)
-# ─────────────────────────────────────────────────────────────────────
-
-# ── STEP 1: Set the file you are auditing ─────────────────────────
-TARGET_FILE = "Governance_Charter.md"
-
-# ── STEP 2: Set the audit focus (1-3 sentences) ──────────────────
-FOCUS = """
-Standard audit. Apply full fallacy checklist and verification gates.
-Pay particular attention to hazard detection gaps, upstream dependency
-fragility, and unknown item handling doctrine.
-""".strip()
-
-# ── STEP 3: Add extra context files if needed ─────────────────────
-# Forge_Audit_Kit.md is always loaded automatically.
-# Add files here ONLY when the audit focus requires them.
-# Each file adds ~5-15k chars. Keep total under 60k where possible.
-EXTRA_FILES = [
-    # "File_Template.md",               # structural compliance audit focus
-    # "Forge_flow.md",                  # gate logic and vocabulary standard
-    # "Ethical_Constraints.md",         # ethics cross-ref, Anti-Weaponization
-    # "Energy.md",                      # energy claims central
-    # "Forge_Net.md",                   # network dependency central
-    # "Gate_02_Triage.md",              # triage handoff relevant
-    # "Components.md",                  # component taxonomy relevant
-    # "Unknowns.md",                    # cross-module audits, unknown routing
-    # "Discovery.md",                   # orientation audits, new agents
-    # "Routing.md",                     # programmatic file lookup
-    # "Mechanical_Structures.md",       # salvaged-frame fabrication
-    # "Thermal_Systems.md",             # heat transfer, Peltier, TEG, heat pump
-    # "Friction_Dynamics.md",           # fluid flow, aerodynamics, tribology
-    # "Chemistry.md",                   # electrochemistry, corrosion, polymers
-    # "Cognitive_Frameworks.md",        # autonomy, TMR doctrine
-    # "Engineer_Protocols.md",          # engineering authority, risk threshold
-    # "Safety_Protocols.md",            # physical operator safety, PPE
-    # "Facilities.md",                  # physical site constraints, airflow
-    # "Precision.md",                   # tolerance tiers, metrology
-    # "Economics.md",                   # procurement, barter, profitability
-    # "Environmental_Constraints.md",   # site constraints, regulatory compliance, jurisdiction
-    # "Governance_Migration_Protocol.md", # Tier 1 amendment, migration
-    # "Repository_Structure.md",        # naming conventions, folder assignment
-    # "Security_Protocols.md",          # cryptographic trust, authentication
-    # "Repository_Integrity_Protocol.md", # integrity baselines, violation classification
-    # ── Tests/ ──────────────────────────────────────────────────────
-    # "Cognitive_Salvage_Layer.md",     # heuristic harvesting pipeline, GH-series unknowns
-    # "Living_Waters.md",               # water purification, LW-UNK items
-    # "Trophic_Forge.md",               # biological cascade, TF-UNK items
-    # "Solar_Descent.md",               # underground solar, SD-UNK items
-    # "Support_Raft.md",                # marine platform, SR-UNK items
-    # "Leviathan_testing.md",           # hostile-environment autonomy
-    # "Hydrologic_Resource_Cascade.md", # cascade hydrology, HR-UNK items
-    # "Chaos_Dynamics.md",              # sandbox/R&D pipeline doctrine, EN-005 vehicle
-    # ── Challenges/ ─────────────────────────────────────────────────
-    # "Water.md",                       # hydrological challenge requirements
-    # "Biofouling.md",                  # marine fouling, MIC, BF-UNK items
-    # "Waste.md",                       # hazardous stream, WA-UNK items
-    # "Planned_Obsolescence.md",        # firmware lock, potting removal
-    # "Critical_Minerals.md",           # rare earth, urban mining, CM-UNK
-    # "Emergence.md",                   # emergent agent behavior, EM-UNK
-    # "Energy_Scarcity.md",             # energy poverty, grid fragility, ES-UNK items; new 2026-07-12, not yet Gate 1-reviewed
-    # "Return_To_Eden.md",              # Eden Index cross-system heuristic
-    # "Closed_Loop_Feedstock.md",       # CLF-series, 3 Critical unknowns; CLF-005 shares Φ_ext symbol w/ Return_To_Eden.md — pull both if auditing either
-]
-
-# ── STEP 4: Set document status ──────────────────────────────────
-DOC_STATUS = "Exploration"
-
-# ── PRE-FLIGHT VALIDATION ─────────────────────────────────────────
-# Catches typos in EXTRA_FILES before any network calls are made.
-_unknown_extras = [f for f in EXTRA_FILES if f not in FILE_REGISTRY]
-if _unknown_extras:
-    raise ValueError(
-        f"EXTRA_FILES contains unrecognized filenames:\n"
-        + "\n".join(f"  - {f}" for f in _unknown_extras)
-        + "\n\nCheck FILE_REGISTRY keys or correct the filename."
-    )
-
-# ── FRAMING LINE ─────────────────────────────────────────────────
-FRAMING_LINE = (
-    f'"{TARGET_FILE}" is currently classified as {DOC_STATUS}. '
-    f"Audit for promotion blockers and consistency with the repository standard. "
-    f"Do not apply specification-level pressure to intentionally incomplete content."
-)
-
-print(f"Target:  {TARGET_FILE}")
-print(f"Path:    {FILE_REGISTRY.get(TARGET_FILE, TARGET_FILE)}")
-print(f"Status:  {DOC_STATUS}")
-print(f"Extras:  {EXTRA_FILES if EXTRA_FILES else 'none'}")
-print(f"\nFraming line (paste at top of Claude conversation):")
-print(f"  {FRAMING_LINE}")
-print("\n✓ Pre-flight validation passed — all EXTRA_FILES recognized.")
-
-
-# ─────────────────────────────────────────────────────────────────────
-# CELL 3 — Fetch files
-# ─────────────────────────────────────────────────────────────────────
-
-print("Fetching files...\n")
-
-CORE_FILES = ["Forge_Audit_Kit.md", TARGET_FILE]
-ALL_FILES = CORE_FILES + EXTRA_FILES
-
-fetched = {}
-total_chars = 0
-for f in ALL_FILES:
-    content = fetch(f)
-    fetched[f] = content
-    total_chars += len(content)
-
-print(f"\nDone. {len(fetched)} file(s) loaded.")
-print(f"Total chars: {total_chars:,} (~{total_chars // 4:,} tokens estimated)")
-
-if total_chars > 60000:
-    print("\n⚠ WARNING: Approaching token ceiling. Consider removing an EXTRA_FILE.")
-elif total_chars > 40000:
-    print("\n→ Moderate load. Should be fine for most sessions.")
-else:
-    print("\n✓ Light load. Room to spare.")
-
-failed = [f for f, c in fetched.items() if c.startswith("[FETCH FAILED")]
-if failed:
-    print(f"\n⚠ FETCH FAILURES ({len(failed)}):")
-    for f in failed:
-        print(f"  - {f}")
-    print("  Audit kit or target file failure will compromise the audit.")
-
-
 # ─────────────────────────────────────────────────────────────────────
 # CELL 3.5 — Phase 1 enforcement + boundary index + unknown aging
 # ─────────────────────────────────────────────────────────────────────
@@ -699,8 +569,6 @@ def run_phase1(fetched_files, registry):
 
     return findings, anchor, required_fields
 
-# Run Phase 1 now
-_p1_findings, _p1_anchor, _p1_fields = run_phase1(fetched, FILE_REGISTRY)
 
 # v14 built a JSON-backed cycle-number map here (Admin/unknown_cycles.json,
 # UNKNOWN_FIRST_CYCLE) as a fix for the previous inline-dict bulk problem.
@@ -874,99 +742,260 @@ def format_boundary_index(fetched_files):
 
     return "\n".join(lines)
 
-
-BOUNDARY_INDEX = format_boundary_index(fetched)
-print(BOUNDARY_INDEX)
-
-
 # ─────────────────────────────────────────────────────────────────────
-# CELL 4 — Assemble prompt
+# EXTRA_FILES reference — pass any of these names in run_audit(extra_files=[...])
 # ─────────────────────────────────────────────────────────────────────
-
-DIVIDER = "=" * 60
-sections = []
-
-sections.append(
-    f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.14\n"
-    f"Repository: LazarusForgeV0"
-)
-
-sections.append(
-    f"ASSUMPTION EXTRACTION (Rule 6):\n"
-    f"Prior contributions assumed:\n"
-    f"- {TARGET_FILE} is classified as {DOC_STATUS}\n"
-    f"- Forge_Audit_Kit.md contains the active Fallacy Checklist, Verification Gates,\n"
-    f"  AI Contribution Rules, and condensed Unknowns Registry\n"
-    f"- Repository uses folder-based structure: Admin/, Architecture/, Operations/,\n"
-    f"  Tests/, Challenges/\n"
-    f"- Rename Registry in Discovery.md maps legacy filenames to current canonical paths\n"
-    f"- Full reference files: Admin/Auditor_Protocols.md | Unknowns.md\n"
-    f"These assumptions are carried forward unless contradicted by new findings."
-)
-
-# Boundary index injected between assumptions and task
-sections.append(BOUNDARY_INDEX)
-
-sections.append(
-    f"TASK:\n"
-    f"Audit {TARGET_FILE} (status: {DOC_STATUS}).\n\n"
-    f"Apply the full Fallacy Checklist from Forge_Audit_Kit.md.\n"
-    f"Use the Verification Gates to assess promotion readiness.\n"
-    f"Open with an Expiry Watch — the SESSION BOUNDARY INDEX above surfaces\n"
-    f"any overdue unknowns from the loaded files; confirm and escalate as needed.\n\n"
-    f"Audit focus:\n{FOCUS}\n\n"
-    f"Label all findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN],\n"
-    f"[CROSS-REF FAILURE]. For each finding, suggest a concrete resolution path.\n\n"
-    f"Cross-reference naming note: the repository uses folder-prefixed paths\n"
-    f"(Admin/Ethical_Constraints.md, Operations/Energy.md, Challenges/Water.md).\n"
-    f"Legacy flat names (Ethical_Constraints.md, energy_v0.md, Spin_Chamber_v0.md)\n"
-    f"are aliases — do not flag folder-prefixed paths as cross-reference failures.\n"
-    f"The canonical form always includes the folder prefix.\n\n"
-    f"End with the standard sign-off format from Forge_Audit_Kit.md."
-)
-
-file_block = f"FILES PROVIDED ({len(fetched)}):\n"
-for i, (name, content) in enumerate(fetched.items(), 1):
-    resolved_path = FILE_REGISTRY.get(name, name)
-    file_block += (f"\n{DIVIDER}\nFILE {i}: {name} "
-                   f"(fetched from: {resolved_path})\n{DIVIDER}\n{content}\n")
-sections.append(file_block)
-
-PROMPT = ("\n\n" + DIVIDER + "\n\n").join(sections)
-
-print(f"Prompt assembled.")
-print(f"Total length: {len(PROMPT):,} chars (~{len(PROMPT) // 4:,} tokens estimated)")
-print(f"\nRun Cell 5 to print the full prompt.")
-
-
-# ─────────────────────────────────────────────────────────────────────
-# CELL 5 — Print prompt (copy everything below the dashes)
-# ─────────────────────────────────────────────────────────────────────
-
-print("FRAMING LINE (paste this at the TOP of the Claude conversation first):")
-print("─" * 60)
-print(FRAMING_LINE)
-print()
-print("PROMPT (copy everything below this line):")
-print("─" * 60)
-print(PROMPT)
+# v16 restructure note: this was previously a commented-out EXTRA_FILES
+# list literal in a "CELL 2" the operator edited directly and re-pasted
+# each session. That's exactly the Colab-input weight this restructure
+# removes — the list is now just reference documentation, and the actual
+# selection is a run_audit() argument. The annotations (why you'd pull
+# each file, symbol-sharing notes like the CLF-005/Return_To_Eden.md one)
+# were doctrine-relevant, not throwaway comments, so they're kept here
+# rather than dropped.
+#
+# Forge_Audit_Kit.md is always loaded automatically — do not pass it.
+# Each file adds ~5-15k chars. Keep total under 60k where possible.
+#
+#   "File_Template.md"               structural compliance audit focus
+#   "Forge_flow.md"                  gate logic and vocabulary standard
+#   "Ethical_Constraints.md"         ethics cross-ref, Anti-Weaponization
+#   "Energy.md"                      energy claims central
+#   "Forge_Net.md"                   network dependency central
+#   "Gate_02_Triage.md"              triage handoff relevant
+#   "Components.md"                  component taxonomy relevant
+#   "Unknowns.md"                    cross-module audits, unknown routing
+#   "Discovery.md"                   orientation audits, new agents
+#   "Routing.md"                     programmatic file lookup
+#   "Mechanical_Structures.md"       salvaged-frame fabrication
+#   "Thermal_Systems.md"             heat transfer, Peltier, TEG, heat pump
+#   "Friction_Dynamics.md"           fluid flow, aerodynamics, tribology
+#   "Chemistry.md"                   electrochemistry, corrosion, polymers
+#   "Cognitive_Frameworks.md"        autonomy, TMR doctrine
+#   "Engineer_Protocols.md"          engineering authority, risk threshold
+#   "Safety_Protocols.md"            physical operator safety, PPE
+#   "Facilities.md"                  physical site constraints, airflow
+#   "Precision.md"                   tolerance tiers, metrology
+#   "Economics.md"                   procurement, barter, profitability
+#   "Environmental_Constraints.md"   site constraints, regulatory compliance, jurisdiction
+#   "Governance_Migration_Protocol.md"  Tier 1 amendment, migration
+#   "Repository_Structure.md"        naming conventions, folder assignment
+#   "Security_Protocols.md"          cryptographic trust, authentication
+#   "Repository_Integrity_Protocol.md"  integrity baselines, violation classification
+#   ── Tests/ ──
+#   "Cognitive_Salvage_Layer.md"     heuristic harvesting pipeline, GH-series unknowns
+#   "Living_Waters.md"               water purification, LW-UNK items
+#   "Trophic_Forge.md"               biological cascade, TF-UNK items
+#   "Solar_Descent.md"               underground solar, SD-UNK items
+#   "Support_Raft.md"                marine platform, SR-UNK items
+#   "Leviathan_testing.md"           hostile-environment autonomy
+#   "Hydrologic_Resource_Cascade.md" cascade hydrology, HR-UNK items
+#   "Chaos_Dynamics.md"              sandbox/R&D pipeline doctrine, EN-005 vehicle
+#   ── Challenges/ ──
+#   "Water.md"                       hydrological challenge requirements
+#   "Biofouling.md"                  marine fouling, MIC, BF-UNK items
+#   "Waste.md"                       hazardous stream, WA-UNK items
+#   "Planned_Obsolescence.md"        firmware lock, potting removal
+#   "Critical_Minerals.md"           rare earth, urban mining, CM-UNK
+#   "Emergence.md"                   emergent agent behavior, EM-UNK
+#   "Energy_Scarcity.md"             energy poverty, grid fragility, ES-UNK items
+#   "Return_To_Eden.md"              Eden Index cross-system heuristic
+#   "Closed_Loop_Feedstock.md"       CLF-series, 3 Critical unknowns;
+#                                     CLF-005 shares Φ_ext symbol w/
+#                                     Return_To_Eden.md — pull both if
+#                                     auditing either
 
 
-# ─────────────────────────────────────────────────────────────────────
-# CELL 6 — Optional: save prompt + framing line to file
-# ─────────────────────────────────────────────────────────────────────
+def run_audit(target_file, focus, extra_files=None, doc_status="Exploration",
+              save_to_file=False):
+    """
+    Full audit pipeline. v16: restructured from six Colab cells the
+    operator pasted and edited in place each session into this one
+    function — same checks, same order, no logic change. See
+    Automation/AUDIT_HARNESS_CHANGELOG.md for the restructure record.
 
-import datetime
-timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M")
-safe_target = TARGET_FILE.replace(".md", "").replace("/", "_")
-filename = f"forge_audit_{safe_target}_{timestamp}.txt"
+    Bootstrap cell (the only thing pasted into Colab now):
 
-with open(filename, "w") as f:
-    f.write(f"FRAMING LINE:\n{FRAMING_LINE}\n\n")
-    f.write("=" * 60 + "\n\n")
-    f.write(PROMPT)
+        import sys, subprocess
+        subprocess.run(["git", "clone", "-q",
+            "https://github.com/ksarith/LazarusForgeV0.git",
+            "/content/LazarusForgeV0"], capture_output=True)
+        sys.path.append('/content/LazarusForgeV0/Automation')
+        from AUDIT_HARNESS import run_audit
 
-print(f"Saved: {filename}")
-print("In Colab: Files panel (left sidebar) → download from there.")
-print(f"\nTarget file resolved to: {FILE_REGISTRY.get(TARGET_FILE, TARGET_FILE)}")
-print(f"Audit kit resolved to:   {FILE_REGISTRY.get('Forge_Audit_Kit.md', 'Admin/Forge_Audit_Kit.md')}")
+        result = run_audit(
+            target_file="Governance_Charter.md",
+            focus="Standard audit. Apply full fallacy checklist and verification gates.",
+            extra_files=[],       # see EXTRA_FILES reference above this function
+            doc_status="Exploration",
+        )
+
+    Args:
+        target_file: filename as it appears in FILE_REGISTRY, e.g.
+            "Governance_Charter.md".
+        focus: 1-3 sentence audit focus string.
+        extra_files: optional list of additional filenames to load
+            alongside Forge_Audit_Kit.md and target_file. See the
+            EXTRA_FILES reference comment block above this function.
+        doc_status: the target file's declared File State Status, used
+            only in the framing line and prompt — not verified against
+            the file's own File State table here (Phase 1 enforcement
+            below reads the real value independently).
+        save_to_file: if True, writes the prompt + framing line to a
+            timestamped .txt in the Colab working directory (old Cell 6
+            behavior). Default False — the prompt is returned either way.
+
+    Returns:
+        dict with keys: prompt, framing_line, findings (Phase 1 Finding
+        list), fetched (dict of filename -> content), boundary_index
+        (formatted string).
+    """
+    extra_files = extra_files or []
+
+    # ── validate extras (old Cell 2 pre-flight check) ──────────────────
+    _unknown_extras = [f for f in extra_files if f not in FILE_REGISTRY]
+    if _unknown_extras:
+        raise ValueError(
+            f"extra_files contains unrecognized filenames:\n"
+            + "\n".join(f"  - {f}" for f in _unknown_extras)
+            + "\n\nCheck FILE_REGISTRY keys or correct the filename."
+        )
+
+    framing_line = (
+        f'"{target_file}" is currently classified as {doc_status}. '
+        f"Audit for promotion blockers and consistency with the repository standard. "
+        f"Do not apply specification-level pressure to intentionally incomplete content."
+    )
+
+    print(f"Target:  {target_file}")
+    print(f"Path:    {FILE_REGISTRY.get(target_file, target_file)}")
+    print(f"Status:  {doc_status}")
+    print(f"Extras:  {extra_files if extra_files else 'none'}")
+    print(f"\nFraming line (paste at top of Claude conversation):")
+    print(f"  {framing_line}")
+    print("\n✓ Pre-flight validation passed — all extra_files recognized.")
+
+    # ── fetch files (old Cell 3) ────────────────────────────────────────
+    print("\nFetching files...\n")
+
+    core_files = ["Forge_Audit_Kit.md", target_file]
+    all_files = core_files + extra_files
+
+    fetched = {}
+    total_chars = 0
+    for f in all_files:
+        content = fetch(f)
+        fetched[f] = content
+        total_chars += len(content)
+
+    print(f"\nDone. {len(fetched)} file(s) loaded.")
+    print(f"Total chars: {total_chars:,} (~{total_chars // 4:,} tokens estimated)")
+
+    if total_chars > 60000:
+        print("\n⚠ WARNING: Approaching token ceiling. Consider removing an extra_files entry.")
+    elif total_chars > 40000:
+        print("\n→ Moderate load. Should be fine for most sessions.")
+    else:
+        print("\n✓ Light load. Room to spare.")
+
+    failed = [f for f, c in fetched.items() if c.startswith("[FETCH FAILED")]
+    if failed:
+        print(f"\n⚠ FETCH FAILURES ({len(failed)}):")
+        for f in failed:
+            print(f"  - {f}")
+        print("  Audit kit or target file failure will compromise the audit.")
+
+    # ── Phase 1 enforcement + boundary index (old Cell 3.5) ─────────────
+    # run_phase1 will sys.exit(1) on a confirmed constitutional mutation,
+    # same as before — unchanged behavior.
+    p1_findings, p1_anchor, p1_fields = run_phase1(fetched, FILE_REGISTRY)
+    boundary_index = format_boundary_index(fetched)
+    print(boundary_index)
+
+    # ── assemble prompt (old Cell 4) ─────────────────────────────────────
+    divider = "=" * 60
+    sections = []
+
+    sections.append(
+        f"Operating as Skeptic/Auditor per Auditor_Protocols.md v0.14\n"
+        f"Repository: LazarusForgeV0"
+    )
+
+    sections.append(
+        f"ASSUMPTION EXTRACTION (Rule 6):\n"
+        f"Prior contributions assumed:\n"
+        f"- {target_file} is classified as {doc_status}\n"
+        f"- Forge_Audit_Kit.md contains the active Fallacy Checklist, Verification Gates,\n"
+        f"  AI Contribution Rules, and condensed Unknowns Registry\n"
+        f"- Repository uses folder-based structure: Admin/, Architecture/, Operations/,\n"
+        f"  Tests/, Challenges/\n"
+        f"- Rename Registry in Discovery.md maps legacy filenames to current canonical paths\n"
+        f"- Full reference files: Admin/Auditor_Protocols.md | Unknowns.md\n"
+        f"These assumptions are carried forward unless contradicted by new findings."
+    )
+
+    sections.append(boundary_index)
+
+    sections.append(
+        f"TASK:\n"
+        f"Audit {target_file} (status: {doc_status}).\n\n"
+        f"Apply the full Fallacy Checklist from Forge_Audit_Kit.md.\n"
+        f"Use the Verification Gates to assess promotion readiness.\n"
+        f"Open with an Expiry Watch — the SESSION BOUNDARY INDEX above surfaces\n"
+        f"any overdue unknowns from the loaded files; confirm and escalate as needed.\n\n"
+        f"Audit focus:\n{focus}\n\n"
+        f"Label all findings: [FALLACY], [GAP], [CONTRADICTION], [UNLOGGED UNKNOWN],\n"
+        f"[CROSS-REF FAILURE]. For each finding, suggest a concrete resolution path.\n\n"
+        f"Cross-reference naming note: the repository uses folder-prefixed paths\n"
+        f"(Admin/Ethical_Constraints.md, Operations/Energy.md, Challenges/Water.md).\n"
+        f"Legacy flat names (Ethical_Constraints.md, energy_v0.md, Spin_Chamber_v0.md)\n"
+        f"are aliases — do not flag folder-prefixed paths as cross-reference failures.\n"
+        f"The canonical form always includes the folder prefix.\n\n"
+        f"End with the standard sign-off format from Forge_Audit_Kit.md."
+    )
+
+    file_block = f"FILES PROVIDED ({len(fetched)}):\n"
+    for i, (name, content) in enumerate(fetched.items(), 1):
+        resolved_path = FILE_REGISTRY.get(name, name)
+        file_block += (f"\n{divider}\nFILE {i}: {name} "
+                       f"(fetched from: {resolved_path})\n{divider}\n{content}\n")
+    sections.append(file_block)
+
+    prompt = ("\n\n" + divider + "\n\n").join(sections)
+
+    print(f"\nPrompt assembled.")
+    print(f"Total length: {len(prompt):,} chars (~{len(prompt) // 4:,} tokens estimated)")
+
+    # ── print (old Cell 5) ────────────────────────────────────────────
+    print("\nFRAMING LINE (paste this at the TOP of the Claude conversation first):")
+    print("─" * 60)
+    print(framing_line)
+    print()
+    print("PROMPT (copy everything below this line):")
+    print("─" * 60)
+    print(prompt)
+
+    # ── optional save (old Cell 6) ───────────────────────────────────────
+    if save_to_file:
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M")
+        safe_target = target_file.replace(".md", "").replace("/", "_")
+        out_filename = f"forge_audit_{safe_target}_{timestamp}.txt"
+
+        with open(out_filename, "w") as f:
+            f.write(f"FRAMING LINE:\n{framing_line}\n\n")
+            f.write("=" * 60 + "\n\n")
+            f.write(prompt)
+
+        print(f"\nSaved: {out_filename}")
+        print("In Colab: Files panel (left sidebar) → download from there.")
+
+    print(f"\nTarget file resolved to: {FILE_REGISTRY.get(target_file, target_file)}")
+    print(f"Audit kit resolved to:   {FILE_REGISTRY.get('Forge_Audit_Kit.md', 'Admin/Forge_Audit_Kit.md')}")
+
+    return {
+        "prompt": prompt,
+        "framing_line": framing_line,
+        "findings": p1_findings,
+        "fetched": fetched,
+        "boundary_index": boundary_index,
+    }
