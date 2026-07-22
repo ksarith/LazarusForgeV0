@@ -14,6 +14,8 @@ import urllib.request
 import urllib.parse
 import re
 
+from audit_lib import Finding, parse_routing, extract_md_refs, check_cross_refs
+
 BASE = "https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/"
 
 # ── Legacy aliases ────────────────────────────────────────────────────
@@ -210,8 +212,6 @@ import datetime
 import os
 import sys
 import json
-
-from audit_lib import Finding, parse_routing, extract_md_refs, check_cross_refs
 
 # ── Phase 1 constants ────────────────────────────────────────────────
 QUARANTINE_FILE = ".quarantine"
