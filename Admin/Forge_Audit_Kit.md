@@ -270,7 +270,7 @@ Load this file plus the document under audit. That is the baseline for every rou
 
 Load additional files only when the audit focus requires them — each adds tokens. Candidates: `Admin/Auditor_Protocols.md` (full role doctrine, full EF constitutional text, full Adversarial Battery), `Unknowns.md` (full unknown detail), `Discovery.md` (path lookup, Rename Registry), target file's upstream architecture files.
 
-**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 100,000 characters at v0.24. Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
+**Token ceiling note:** `Admin/Auditor_Protocols.md` is approximately 157,000 characters at v0.24 (measured directly via harness fetch, 2026-07-21 — prior figure of ~100,000 was stale, likely last checked before AP-018 through AP-024 were added). Load it only when auditing the file itself, onboarding a new agent, or when full EF constitutional text is required for an interpretive dispute. This kit is the runtime reference for all other sessions.
 
 **Load full source documents instead of this kit when:** auditing `Admin/Auditor_Protocols.md` itself · onboarding a new agent · full unknown entry detail required · EF section interpretive dispute.
 
