@@ -579,6 +579,25 @@ Drift Indicators are automatic re-audit triggers. They are not optional checklis
 - Canonical terminology changes meaning across files
 - Navigation Anchors block absent or URLs modified from canonical values
 - **Ethical Anchor field is absent, altered, or does not match the canonical string**
+- **A registered Self-Referential Version String (see below) does not match the file's own File State version**
+
+---
+
+### Self-Referential Version Strings
+
+Some files quote their own version number in body prose — a role declaration example, a sign-off template, a "per vX.Y" citation — separately from the File State header. These drift independently of the header and of each other, because nothing connects them: an editor updates File State on a version bump and has no way to know three other strings elsewhere in the same file also need to change. `Admin/Auditor_Protocols.md` documented this pattern recurring four times across four separate sessions (AP-023, AP-025) before this section existed — each instance caught by chance during an unrelated audit, never by a dedicated check.
+
+**Requirement:** any file containing a self-referential version string outside the File State header must maintain a **Version String Registry** — a short list, placed immediately after File State, naming every such location:
+
+```markdown
+**Version String Registry** (self-referential citations outside File State — update on every version bump):
+- §Role Declaration Requirement, example string
+- §Observability & Audit Trail, Standard sign-off template
+```
+
+This is not optional documentation — it is what makes the Drift Indicator above checkable at all, by a human or a future automated pass, without needing bespoke per-file logic to first discover where the strings live. A file with no self-referential version strings outside File State does not need this section; most files will not need it.
+
+**Preferred alternative:** where phrasing allows, point at File State's version rather than restate it — "per this file's current version" instead of a hardcoded "vX.Y" — removing the desync point entirely rather than registering it. `Admin/Auditor_Protocols.md`'s Rule 5 fix (AP-026) applied this same principle to a duplicated *definition* rather than a version string, but it's the same failure shape: a copy is a place to fall out of sync; a pointer isn't. Use the registry for cases where restating the literal value is unavoidable (e.g., an example string meant to show contributors the exact expected format).
 
 ---
 
@@ -608,6 +627,7 @@ When converting an existing file to this structure:
 - [ ] Apply FROZEN markers to verified sections
 - [ ] Validate canonical terminology usage against `Admin/Canonical_Terms.md`
 - [ ] Verify Drift Indicators before finalizing
+- [ ] If the file contains a self-referential version string outside File State, add a Version String Registry listing every location — or rephrase to point at File State instead of restating the value
 - [ ] Set Status honestly — most existing files are Exploration
 - [ ] Set Body Stability honestly — most existing files are Volatile or Transitional
 - [ ] Set Spec Gates to reflect actual verification progress
