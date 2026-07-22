@@ -11,7 +11,7 @@
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-21                                                          |
 | Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21 |
-| Open Unknowns    | 15                                                                  |
+| Open Unknowns    | 13                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | #auditor-notes--unknowns                                            |
@@ -565,13 +565,13 @@ Placeholder claims may not justify Specification promotion.
 
 The following inline reference set provides calibration anchors for inter-agent application of VERIFIED / PROVISIONAL / UNKNOWN designations. These are the minimum examples against which disagreements about classification should be checked before escalating to AP-004 arbitration.
 
-| Example Claim | Correct State | Reasoning |
-|---|---|---|
-| "The head pressure of molten nitrate salt at 20 m depth is 353 kPa" | VERIFIED | Derived from measured physical constants (density, gravity); independently corrected by external audit; survives adversarial reduction to a single falsifiable calculation. |
-| "UV phototaxis in TF-006 will achieve threshold behavioral response at 405 nm" | PROVISIONAL | Analogous External — drawn from documented biological literature, not yet tested in the Forge's specific implementation. Internally coherent but grounding requires physical test. |
-| "The optimal barter exchange rate for recovered copper in the RDC context" | UNKNOWN | No empirical basis exists. Market replacement cost doctrine (Admin/Economics.md) provides a framework; actual rate requires operational deployment data. |
-| "The Forge's Anti-Weaponization Doctrine prevents misuse under all deployment conditions" | PROVISIONAL / Internally Derived | Ethical soundness is a permanently load-bearing claim that is inherently unmeasurable via physical footprint. Cannot hold VERIFIED regardless of internal coherence. Subject to mandatory adversarial challenge every three cycles. |
-| "AUDIT_HARNESS.py correctly extracts boundary indices from all registered files" | PROVISIONAL | Verified against current file registry by tool execution; PROVISIONAL because file registry changes may introduce new parsing edge cases not yet encountered. |
+| Example Claim | Correct State | Institutional Provenance | Reasoning |
+|---|---|---|---|
+| "The head pressure of molten nitrate salt at 20 m depth is 353 kPa" | VERIFIED | Experimentally Verified | Derived from measured physical constants (density, gravity); independently corrected by external audit; survives adversarial reduction to a single falsifiable calculation. |
+| "UV phototaxis in TF-006 will achieve threshold behavioral response at 405 nm" | PROVISIONAL | Analogous External | Analogous External — drawn from documented biological literature, not yet tested in the Forge's specific implementation. Internally coherent but grounding requires physical test. |
+| "The optimal barter exchange rate for recovered copper in the RDC context" | UNKNOWN | Internally Derived | No empirical basis exists. Market replacement cost doctrine (Admin/Economics.md) provides a framework; actual rate requires operational deployment data. |
+| "The Forge's Anti-Weaponization Doctrine prevents misuse under all deployment conditions" | PROVISIONAL | Internally Derived | Ethical soundness is a permanently load-bearing claim that is inherently unmeasurable via physical footprint. Cannot hold VERIFIED regardless of internal coherence. Subject to mandatory adversarial challenge every three cycles. |
+| "AUDIT_HARNESS.py correctly extracts boundary indices from all registered files" | PROVISIONAL | Experimentally Verified | Verified against current file registry by tool execution; PROVISIONAL because file registry changes may introduce new parsing edge cases not yet encountered. |
 
 Agents disagreeing on epistemic state classification for a claim not covered by this table must first attempt to map the claim to the nearest example above before invoking AP-004 Tier 2 arbitration. If the mapping is contested, that contested mapping is itself the dispute — log it as such rather than escalating the original claim directly.
 
@@ -587,7 +587,7 @@ Agents disagreeing on epistemic state classification for a claim not covered by 
 
 **Rule 4 — Refusal is Valid:** Flag flawed premises — do not refine them. Refusal is a success of the protocol.
 
-**Rule 5 — Confidence Labeling:** Use the four-label system. Unlabeled = Placeholder.
+**Rule 5 — Confidence Labeling:** Use the five canonical confidence labels defined in §Evidence Classification and Institutional Truth Provenance Hierarchy. Unlabeled = Placeholder.
 
 **Rule 6 — Inter-Agent Consistency:** Open with Assumption Extraction: *"Prior contributions assumed: [list]. Carried forward unless contradicted."* Failure to re-evaluate prior assumptions is a primary cause of multi-agent hallucination cascades.
 
@@ -1790,7 +1790,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 | Field         | Value                        |
 |---------------|------------------------------|
-| Status        | Open                         |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Medium                       |
 | Priority      | Major                        |
 | Type          | Governance / Technical       |
@@ -1803,7 +1803,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 **Why It Matters:** The exact contradiction AP-021 was opened to close still exists, in a third location AP-021's resolution didn't check. A contributor reading Rule 5 in isolation is instructed to use a labeling system this file elsewhere retired.
 
-**Resolution Path:** Mechanical fix — update Rule 5 to match Item 7's corrected text: "Use the five-label system (Measured, Replicated, Simulated, Analogous, Placeholder). Unlabeled = Placeholder." Cross-reference AP-021 (closed, this is a gap in that closure's completeness, not a new contradiction) and AP-023's Lessons Learned on single-pass fixes of recurring bug classes.
+**Resolution:** Rule 5 corrected 2026-07-21 (human-directed) — but not by re-hardcoding the five-label list a third time. AP-021's own resolution rewrote Item 7 to *point at* §Evidence Classification rather than duplicate its definition, specifically to prevent this exact drift; Rule 5 previously duplicated it independently instead of pointing, which is what let it silently miss AP-021's fix in the first place. Rule 5 now reads: "Use the five canonical confidence labels defined in §Evidence Classification and Institutional Truth Provenance Hierarchy. Unlabeled = Placeholder." No hardcoded list remains in Rule 5 for a future label-set change to desync from. Cross-reference AP-021, AP-023, AP-025 (same recurring-drift pattern, three consecutive sessions).
 
 *Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
 
@@ -1836,7 +1836,7 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 | Field         | Value                        |
 |---------------|------------------------------|
-| Status        | Open                         |
+| Status        | Resolved — Discharge via Specification |
 | Risk          | Low                           |
 | Priority      | Minor                        |
 | Type          | Governance / Epistemic        |
@@ -1849,13 +1849,37 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 **Why It Matters:** The calibration table is the reference other agents map contested claims against before invoking AP-004 arbitration. A table that only models one of the two required dimensions understates what compliant classification actually requires, in the file's own primary worked example of how to classify.
 
-**Resolution Path:** Payment via Specification — add an explicit Institutional Provenance column to the Calibration Reference table, one label per row, consistent with §AP-006's four-label institutional hierarchy. Cross-reference AP-006 and AP-014 — both Resolved; this is a gap in AP-014's deliverable, not a reopening of either.
+**Resolution:** Institutional Provenance column added 2026-07-21 (human-directed), one label per row: Experimentally Verified (head pressure — measured constants, externally audited); Analogous External (UV phototaxis — already stated in that row's own prose, now formalized into its own column); Internally Derived (barter exchange rate — framework is repository reasoning, no external grounding yet); Internally Derived (Anti-Weaponization Doctrine — was previously folded into the Correct State column as "PROVISIONAL / Internally Derived," now properly separated per AP-006's two-dimension model); Experimentally Verified (AUDIT_HARNESS.py boundary extraction — EF-0.8 tool-execution grounding against the real file registry; provenance ceiling permits VERIFIED but confidence remains PROVISIONAL pending untested edge cases, a valid combination under this file's own doctrine).
+
+**Residual:** the AUDIT_HARNESS.py row's Experimentally Verified label is a claim about this file's own tooling, made by an agent auditing that tooling — EF-0.4 (Auditor Fallibility) applies. Not reopened as a separate unknown, but worth flagging here for whoever next reviews this table rather than treating the label as beyond challenge.
 
 *Surfaced by Gemini (Skeptic/Auditor), 2026-07-21 audit; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
 
 ---
 
 ### Resolution Log
+
+- 2026-07-21 (third entry, same day): **v0.25 — AP-026 and AP-028 resolved.**
+  Both required content decisions rather than mechanical fixes, so both
+  were proposed before being applied rather than fixed unilaterally.
+  **AP-026:** Rule 5 corrected, but not by re-hardcoding the five-label
+  list a third time — AP-021's own resolution rewrote Item 7 to point at
+  §Evidence Classification rather than duplicate its definition,
+  specifically to prevent this class of drift; Rule 5 had duplicated
+  independently instead of pointing, which is how it silently missed
+  AP-021's fix. Rule 5 now points at §Evidence Classification with no
+  hardcoded list to desync. **AP-028:** Institutional Provenance column
+  added to the Epistemic State Calibration Reference table — two rows
+  (UV phototaxis, Anti-Weaponization Doctrine) simply formalized
+  provenance already stated in prose; three rows (head pressure, barter
+  rate, AUDIT_HARNESS.py boundary extraction) required an actual
+  classification judgment, logged with reasoning in AP-028's Resolution
+  field. The AUDIT_HARNESS.py row's Experimentally Verified label is
+  flagged as a residual EF-0.4 concern — a claim about this file's own
+  tooling made by an agent auditing that tooling — not reopened as a
+  separate unknown, but not treated as beyond challenge either. All four
+  of this session's Gemini-sourced entries (AP-025 through AP-028) are
+  now Resolved. Open Unknowns 15 → 13.
 
 - 2026-07-21 (second entry, same day): **v0.25 — AP-025 and AP-027
   resolved same session.** Both were zero-judgment mechanical string
