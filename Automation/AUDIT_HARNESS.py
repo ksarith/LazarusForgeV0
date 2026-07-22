@@ -1,18 +1,9 @@
 """
-LAZARUS FORGE — AUDIT HARNESS v15
-Google Colab notebook cells — paste each block into a separate cell.
+LAZARUS FORGE — AUDIT HARNESS v16
+Single importable module. See run_audit() docstring for the current
+bootstrap cell and usage.
 
 Full version history: Admin/AUDIT_HARNESS_CHANGELOG.md
-(relocated out of this docstring in v14 — add new entries there, not here)
-
-USAGE:
-  1. Cell 1 — run once per session (builds registry from Routing.md)
-  2. Cell 2 — configure audit (edit TARGET_FILE and FOCUS only)
-  3. Cell 3 — fetch files
-  4. Cell 3.5 — Phase 1 enforcement + boundary index + aging check (auto)
-  5. Cell 4 — assemble prompt
-  6. Cell 5 — print prompt to copy
-  7. Cell 6 (optional) — save prompt to file
 """
 
 # ─────────────────────────────────────────────────────────────────────
