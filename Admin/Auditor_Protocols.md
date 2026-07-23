@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.26**
+**Version 0.27**
 
 ## File State
 
@@ -10,8 +10,8 @@
 | Spec Gates       | 3/6 (G1, G4, G6 clear; G3 blocked on AP-017; G5 conditional on cross-ref fixes below; G2 N/A — no physical/quantitative claims of its own) |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-23                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21; Claude — Sidecar and Resolution Log relocated to Archive/Logs/Auditor_Protocols_Logs.md (human-directed), 2026-07-23 |
-| Open Unknowns    | 13                                                                  |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21; Claude — Sidecar and Resolution Log relocated to Archive/Logs/Auditor_Protocols_Logs.md (human-directed), 2026-07-23; independent cold-session instance (Claude, per AP-017) — first qualifying Adversarial Battery pass against this file, findings verified against source, 4 unprefixed paths corrected, AP-029 logged, Local Ledger doctrine cross-referenced (human-directed), 2026-07-23 |
+| Open Unknowns    | 14                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
 | Sidecar Link     | Archive/Logs/Auditor_Protocols_Logs.md#auditor-notes--unknowns     |
@@ -400,7 +400,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.26"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.27"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -619,7 +619,7 @@ A centralized unknowns registry that stores full entry detail grows without boun
 
 ### Local Ledgers + Global Index
 
-**Local Ledger (Sidecar):** Every specification file contains an `## Auditor Notes & Unknowns` section at the footer. Module-specific unknowns live here.
+**Local Ledger (Sidecar):** Every specification file contains an `## Auditor Notes & Unknowns` section at the footer. Module-specific unknowns live here. **Documented exception:** `Admin/Auditor_Protocols.md` itself relocated its own sidecar and Resolution Log to `Archive/Logs/Auditor_Protocols_Logs.md` as of v0.26 — see that section's footer note for rationale. This is the general rule; the exception is logged where it applies, not here.
 
 **Global Index:** `Unknowns.md` is a cross-module index only — summary table, dependency map, systemic risks spanning multiple files, audit trail, resolved archive. Full entry detail lives in the owning file's sidecar.
 
@@ -769,8 +769,8 @@ The strongest audit systems are not optimized to prove correctness. They are opt
 
 The full Adversarial Challenge Battery is required for:
 - Any document being considered for Specification promotion
-- Any document governing irreversible actions (Gate_03_Reduction.md, Ethical_Constraints.md)
-- Any document in the trust chain for autonomous systems (Electronics.md, Cognitive_Frameworks.md)
+- Any document governing irreversible actions (Operations/Gate_03_Reduction.md, Admin/Ethical_Constraints.md)
+- Any document in the trust chain for autonomous systems (Operations/Electronics.md, Architecture/Cognitive_Frameworks.md)
 - Any document that has passed G1 and G2 but still feels wrong
 
 Partial application (selected challenge classes) is acceptable for Exploration-stage documents. Document which classes were applied and why others were deferred.
@@ -1067,7 +1067,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.26 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.27 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1223,9 +1223,9 @@ file's own body — matching the precedent already established for
 Every other file in the repository keeps its sidecar in-body; this is
 the second documented exception, not a new general rule.
 
-Current: 13 open — AP-002, AP-003, AP-004, AP-005, AP-007, AP-008,
-AP-010, AP-011, AP-013, AP-017, AP-018, AP-019, AP-024 (verified by
-direct count against the archive, matching File State above). See the
+Current: 14 open — AP-002, AP-003, AP-004, AP-005, AP-007, AP-008,
+AP-010, AP-011, AP-013, AP-017, AP-018, AP-019, AP-024, AP-029 (verified
+by direct count against the archive, matching File State above). See the
 archive for exact statuses, descriptions, and resolution paths. Active
 Disputes below remains in-body, distinct from the sidecar — disputes
 are interpretation conflicts tracked at the document level, not
@@ -1236,9 +1236,10 @@ per-unknown entries.
 Full history: `Archive/Logs/Auditor_Protocols_Logs.md` (relocated out
 of this file at v0.26 — add new entries there, not here).
 
-Most recent: v0.26 (2026-07-23) — Sidecar and Resolution Log
-relocated out of this file. Lessons Learned (below) explicitly not
-moved — it stays with the doctrine it summarizes.
+Most recent: v0.27 (2026-07-23) — first cold-session-verified AP-017
+instance; 4 unprefixed paths fixed; AP-029 logged (10-Entry Rule
+tripped). Lessons Learned (below) explicitly not moved — it stays with
+the doctrine it summarizes.
 
 ## Relationship to Existing Documents
 
@@ -1257,6 +1258,7 @@ moved — it stays with the doctrine it summarizes.
 - `Astroid-miner` — planned repository; deferred to Leviathan milestone
 
 ---
+
 
 **What must remain constant:**
 
