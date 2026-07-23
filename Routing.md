@@ -133,3 +133,11 @@ Discrepancies between the two are logged as pending corrections in Discovery.md.
 **2026-07-21 correction:** `AUDIT_HARNESS.py` relocated from `Admin/` to `Automation/` — the new Automation/ subsystem's canonical home for repository tooling. Row above updated to match; the non-extension-files note above it was also citing the old `Admin/`-prefixed path for its ALIASES-resolution behavior and has been corrected. `Discovery.md`'s structure-tree entry and the harness's own `FALLBACK_REGISTRY` self-reference (`"AUDIT_HARNESS.py": "..."`) were updated in the same pass. `Admin/AUDIT_HARNESS.py` no longer exists as of this date — treat any remaining `Admin/AUDIT_HARNESS.py` citation elsewhere in the repository (roughly a dozen prose references in doctrine files, none of them live/resolved links) as stale until independently corrected; none of them affect this file's own registry parsing.
 
 **2026-07-21 correction (unknown_cycles.json):** the 2026-07-16 note above said `Admin/unknown_cycles.json` was "left in the repository as history... not deleted." That has since changed — the file has been removed, judged unnecessary now that `Automation/AUDIT_HARNESS.py` v15 computes aging directly from each unknown's First Logged date rather than a separate cycle-number map. The 07-16 note is left above unedited as an accurate record of the decision at the time; this entry supersedes only its final clause. `AUDIT_HARNESS.py`'s `ALIASES` entry for `"unknown_cycles.json"` should be removed as dead code pointing at a now-nonexistent file.
+
+
+Changelogs restructured to logs in archive.
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archive/Logs/Unknowns_Changelog.md
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archive/Logs/Governance_Charter_Changelog.md
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archive/Logs/Forge_Audit_Kit_Changelog.md
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archive/Logs/Auditor_Protocols_Logs.md
+https://raw.githubusercontent.com/ksarith/LazarusForgeV0/refs/heads/main/Archive/Logs/AUDIT_HARNESS_CHANGELOG.md
