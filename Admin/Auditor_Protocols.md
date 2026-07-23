@@ -1,5 +1,5 @@
 # Auditor_Protocols.md
-**Version 0.27**
+**Version 0.28**
 
 ## File State
 
@@ -10,7 +10,7 @@
 | Spec Gates       | 3/6 (G1, G4, G6 clear; G3 blocked on AP-017; G5 conditional on cross-ref fixes below; G2 N/A — no physical/quantitative claims of its own) |
 | Verification Ref | Admin/Verification_Gates_LF.md                                      |
 | Last Audit       | 2026-07-23                                                          |
-| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor; Claude — AP-021 logged and resolved (human-directed ratification), 2026-07-10; Claude — AP-022 logged and resolved, Audit Phase Separation codified (human-directed ratification), 2026-07-14; Claude — Post-Exit Monitoring Metrics added for GOV-013 (human-directed), 2026-07-16; Claude — Skeptic/Auditor self-audit, 2026-07-16; Claude — AP-023 logged and resolved, count/citation/version-string corrections (human-directed), 2026-07-16; Claude — AP-024 logged (multi-agent synthesis, human-directed), AP-017/AP-007 refined, 2026-07-17; Claude — AP-025 through AP-028 logged, AP-017 fresh instance recorded (Gemini findings verified against source, human-directed), 2026-07-21; Claude — Sidecar and Resolution Log relocated to Archive/Logs/Auditor_Protocols_Logs.md (human-directed), 2026-07-23; independent cold-session instance (Claude, per AP-017) — first qualifying Adversarial Battery pass against this file, findings verified against source, 4 unprefixed paths corrected, AP-029 logged, Local Ledger doctrine cross-referenced (human-directed), 2026-07-23 |
+| Auditor          | Claude — Synthesizer/Auditor; Gemini — Skeptic/Auditor; Grok — Synthesizer/Auditor. Most recent: reduction pass (stale Status section removed, Auditor field trimmed), 2026-07-23 — see `Archive/Logs/Auditor_Protocols_Logs.md` Resolution Log for full audit history. |
 | Open Unknowns    | 14                                                                  |
 | Active Disputes  | 1                                                                   |
 | Highest Risk     | High                                                                |
@@ -400,7 +400,7 @@ Not a standalone auditor class — a mode declaration for agents contributing in
 
 All contributors — human and autonomous — must declare their operating role before contributing:
 
-> *"Operating as [Role] per Auditor_Protocols.md v0.27"*
+> *"Operating as [Role] per Auditor_Protocols.md v0.28"*
 
 **Valid roles:** Skeptic/Auditor | Systems/Auditor | Evidence/Auditor | Ethical/Auditor | Synthesizer | Engineer | Connective Tissue
 
@@ -1067,7 +1067,7 @@ Any cross-repo dependency must be documented in both repositories with a stated 
 - Sign-off statement
 
 **Standard sign-off:**
-> *"Verified under Auditor_Protocols v0.27 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
+> *"Verified under Auditor_Protocols v0.28 — gates [list] cleared, gates [list] blocked ([reason]), [N] unknowns logged, [N] overrides. Adversarial classes applied: [list]. Auditor: [Role/Agent]"*
 
 ---
 
@@ -1236,10 +1236,9 @@ per-unknown entries.
 Full history: `Archive/Logs/Auditor_Protocols_Logs.md` (relocated out
 of this file at v0.26 — add new entries there, not here).
 
-Most recent: v0.27 (2026-07-23) — first cold-session-verified AP-017
-instance; 4 unprefixed paths fixed; AP-029 logged (10-Entry Rule
-tripped). Lessons Learned (below) explicitly not moved — it stays with
-the doctrine it summarizes.
+Most recent: v0.28 (2026-07-23) — reduction pass: stale duplicate
+Status section removed, Auditor field trimmed. Lessons Learned (below)
+explicitly not moved — it stays with the doctrine it summarizes.
 
 ## Relationship to Existing Documents
 
@@ -1259,6 +1258,9 @@ the doctrine it summarizes.
 
 ---
 
+## Status
+
+**Version 0.28 — Draft, Body Stability Transitional.** Full audit history: `Archive/Logs/Auditor_Protocols_Logs.md` Resolution Log. This section previously carried a duplicate, stale copy of early version history (v0.14 through v0.16) that was never updated after the file moved past those versions — trimmed 2026-07-23 as pure duplication of content the archive's Resolution Log already carries in full; see that log's v0.28 entry.
 
 **What must remain constant:**
 
