@@ -356,6 +356,35 @@ Not automation — a defined, repeatable manual execution path, distinct from ad
 
 **Verification anchor (added 2026-07-09):** A stated "clean" result is not evidence a file was actually read line-by-line — an agent under context or optimization pressure can assert a check passed without performing it. The daily audit prompt requires extracting and reporting one verifiable fact read directly from this file each run (its exact Open Unknowns count and Last Audit date string) as a minimal proof-of-read. This doesn't guarantee a thorough check, but a wrong or missing extraction is immediate, cheap evidence the fetch didn't happen or wasn't read.
 
+**Report Format — Integrity Confidence and Drift Trend (added v0.9, 2026-07-23):**
+The Phase 0 daily audit output has so far reported findings without a standardized
+summary shape. Two additions standardize it without adding new detection
+capability — this is a reporting-layer change, not a new check.
+
+*Integrity Confidence block* — closes the report with a per-category confidence
+rating (High/Medium/Low), covering: Structural Integrity, Cross-reference
+Integrity, Repository Freshness, Canonical Compliance, Evidence Completeness,
+Automation Confidence. Followed by a one-line Overall Assessment. This is a
+compression of findings already gathered during the audit — it must not be
+asserted independently of them. A category cannot be rated High if the audit
+pass didn't actually exercise the corresponding Protected Element check above.
+
+*Drift Trend block* — compares the current run's counts against the prior
+run's: Integrity status (Stable/Degraded/Improved), Open Unknown count delta,
+Broken Cross-Reference count, Ethical Anchor Violation count, Canonical
+Registration Issue count, Repository Size delta (file count), Automation
+Coverage delta. Requires the prior run's figures to be available — if no
+prior run exists to compare against (first Phase 0 execution, or a gap in
+report retention), state that explicitly rather than reporting a false zero
+delta.
+
+**Constraint:** Neither block is a substitute for the existing Violation
+Classification findings section — both sit after it as a summary layer, and
+both must derive strictly from findings already reported in that section.
+A confidence rating or trend line asserting something the findings section
+doesn't support is itself a Minor integrity violation under this file's own
+ladder (fabricated summary claim).
+
 **What Phase 0 does not provide:** guaranteed execution (an agent can still skip or shallow-check the RIP.md fetch despite the prompt instructing it — the verification anchor above narrows, but does not eliminate, this gap), machine-verifiable consistency, or coverage of files the daily audit doesn't happen to open. Phase 1 automation remains the target for closing these gaps. Phase 0 is a bridge, not a substitute — see RIP-002.
 
 ### Phase 1 — Structural Checks (near-term)
