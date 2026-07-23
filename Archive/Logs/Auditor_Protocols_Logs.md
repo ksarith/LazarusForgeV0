@@ -708,6 +708,28 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 ### Resolution Log
 
+- 2026-07-23 (third entry, same day): **v0.28 — Reduction pass: stale
+  duplicate Status section removed (human-directed), Auditor field
+  trimmed from an accreting inline log to durable content only
+  (Claude, human-directed).** Two real, distinct misses caught after
+  the v0.26 split: (1) `## Status` had carried a second, older copy of
+  version history (v0.14 through v0.16 entries) that should have moved
+  to this archive alongside the Resolution Log during the split — it
+  sat just past the line-number cutoff used for that extraction and
+  was missed entirely; trimmed to its last few lines by direct
+  operator edit, not reproduced here since it was pure duplication of
+  content this archive's Resolution Log already carries in full. (2)
+  File State's `Auditor` field had grown to 1,348 characters by
+  accreting a mini-changelog entry on every version bump — same
+  duplicated-history-in-two-places pattern already named for labels
+  (AP-021/AP-026) and version strings (AP-025), just in a field
+  instead of a section, with no natural ceiling. Trimmed to 320
+  characters: current role composition, most recent action, and a
+  pointer to this file's Resolution Log for full history — matching
+  how every other durable-pointer fix this session has worked. Neither
+  change is content-losing: both were duplicates of information that
+  already exists in full here.
+
 - 2026-07-23 (second entry, same day): **v0.27 — First cold-session-verified
   AP-017 instance, findings checked against source.** `Automation/
   cold_session_bundler.py`'s output was pasted as the literal first
