@@ -409,6 +409,10 @@ entry and the full Resolution Log — lives here now.
 
 Separately, one reported finding (claimed sidecar truncation at AP-017, omitting AP-018/019/024) was checked against the full prompt payload and confirmed fabricated — the complete 157,387-character file, ending correctly, was present in what Gemini received. This is a distinct failure dimension from what this entry governs: informational independence protects against priming bias, not against a model misreading material it was actually given complete and unprimed-on-conclusions. Both dimensions matter for a trustworthy independent pass; only the first is AP-017's scope. Three of the same report's seven findings were verified accurate (version drift, Rule 5 label inconsistency, flat legacy paths — logged as AP-025, AP-026, AP-027 below); one more (calibration table provenance gap) independently confirmed valid and logged as AP-028; one (Gate 3 status "contradiction") was a partial-quote misreading of already-resolved text, not adopted; one (AP-007/SHA-256) restated a gap the file already discloses about itself, not a new finding.
 
+**Fresh instance, 2026-07-23 — first instance verified against the actual bundle payload, not just an assumption about it:** `Automation/cold_session_bundler.py` was run against `Admin/Auditor_Protocols.md` v0.26 and the rendered output — confirmed to contain no ASSUMPTION EXTRACTION block, no summary of this entry's own history, no "carried forward unless contradicted" framing, only the standard audit prompt and raw stripped file content — was pasted as the literal first message to a brand-new chat session. This appears to be the first instance logged here that satisfies the 2026-07-17 informational-independence clarification, not merely conversational freshness. The resulting Phase 1/Phase 2 audit produced 7 findings, checked against source before any were adopted: 2 confirmed real (unprefixed paths in this file's own Adversarial Audit Layer, logged and fixed same pass; a real gap in §Decentralized Audit Architecture's cross-reference to this file's own sidecar-relocation exception, fixed same pass, which also surfaced a genuinely new finding — the 10-Entry Rule tripped at 13 open entries, logged as AP-029); 1 fabricated (a claimed `Verification_Gates.md` vs `Verification_Gates_LF.md` naming inconsistency — no such second filename exists anywhere in this repository); 2 misreads following the same partial-quote pattern as the 2026-07-21 instance above — both quoted a line and stopped short of the immediately adjacent text that already resolves what was flagged (EF-0.2 Level 3's autonomous-degradation clause explicitly pairs "rollback and demotion... proceed autonomously" rather than treating them as competing mechanisms; the Provenance Ceiling Self-Application Rule's next two sentences explicitly reject the "therefore non-binding" reading the finding's exploitation scenario depends on); 2 adversarial-scenario findings (Administrative Fatigue Governor DoS potential, cross-baseline coupling under multi-node quarantine) that are reasoning-based rather than source-checkable, appropriately shaped for Phase 2 output.
+
+**Open question for human governing authority, not resolved by this entry:** whether this instance's mechanism — genuinely cold delivery, verified rather than assumed, producing real findings with some wrong — is sufficient to close this entry, or whether the ~43% finding-error rate (3 of 7) means the *quality* bar implicit in "Gate 3 can be satisfied without genuine independence" (this entry's own stated concern) isn't met even when the *independence* bar is. This entry's Resolution Path calls for comparing independent findings against in-session findings via AP-004 on disagreement — that comparison happened here (this session's verification against source), and it worked: real findings were kept, wrong ones were caught and rejected before adoption. Whether that process satisfies closure, or whether closure requires the independent pass to be more reliable on its own before verification, is a judgment call this entry defers rather than makes unilaterally.
+
 **Infrastructure progress:** `Automation/cold_session_bundler.py` (built and tested this cycle, not yet run against this file) is the first working implementation of this entry's actual requirement — it assembles a session from raw target files plus the standard audit prompt only, with no Assumption Extraction block, no prior-findings summary, and explicit exclusion of this file's own audit-history content unless it is itself the named target. Closing this entry requires running it for a real qualifying pass and logging that result here; the mechanism to do so did not exist before this cycle and now does.
 
 ---
@@ -679,7 +683,50 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 
 ---
 
+### AP-029 — 10-Entry Rule tripped by the sidecar's own open-count (13 > 10)
+
+| Field         | Value                        |
+|---------------|------------------------------|
+| Status        | Open                         |
+| Risk          | Low                           |
+| Priority      | Minor                        |
+| Type          | Governance / Process          |
+| Blocking      | No                            |
+| Owner         | Admin/Auditor_Protocols.md   |
+| First Logged  | 2026-07-23                    |
+| Last Reviewed | 2026-07-23                    |
+
+**Description:** `Admin/Auditor_Protocols.md`'s own §Decentralized Audit Architecture defines the 10-Entry Rule: "More than 10 distinct open entries in a sidecar flags the file for a Resolution Pass before the next audit cycle." This sidecar currently carries 13 open entries (AP-002, AP-003, AP-004, AP-005, AP-007, AP-008, AP-010, AP-011, AP-013, AP-017, AP-018, AP-019, AP-024) — over the threshold, unaddressed.
+
+**Why It Matters:** Surfaced indirectly during a cold-session audit of `Admin/Auditor_Protocols.md` v0.26 (the file's own AP-017 mechanism in its first real use) — the auditor flagged that the sidecar's relocation to this archive made the 10-Entry Rule hard to evaluate cold, which turned out to be only partially true: the count is stated plainly in the file's footer stub, and checking it directly shows the rule was already tripped independent of the relocation question. This is a real, if minor, instance of exactly the drift-through-inattention pattern this file's own AP-025/AP-026 named — a self-referential threshold went unchecked because nothing structurally enforces it, only chance discovery.
+
+**Resolution Path:** Payment via Specification, or Discharge — human governing authority to decide scope: either run the Resolution Pass the rule calls for (review the 13 open entries for consolidation, staleness, or premature-Open status), or explicitly decide the threshold doesn't warrant action at this file's current maturity and log that reasoning here. Either is a valid close; leaving it untouched is not, per the rule's own text.
+
+*Surfaced by a cold-session audit (independent instance, per AP-017) of `Admin/Auditor_Protocols.md` v0.26, 2026-07-23; verified against source and registered by Claude — Synthesizer/Auditor, human-directed.*
+
+---
+
 ### Resolution Log
+
+- 2026-07-23 (second entry, same day): **v0.27 — First cold-session-verified
+  AP-017 instance, findings checked against source.** `Automation/
+  cold_session_bundler.py`'s output was pasted as the literal first
+  message to a brand-new chat — confirmed to carry no Assumption
+  Extraction block, no prior-findings summary — and audited
+  `Admin/Auditor_Protocols.md` v0.26. Of 7 findings returned: 2 confirmed
+  real and fixed same pass (4 unprefixed paths in §Adversarial Audit
+  Layer; §Decentralized Audit Architecture's Local Ledger rule now
+  cross-references this file's own sidecar-relocation exception, which
+  also surfaced AP-029 — the 10-Entry Rule tripped at 13 open entries,
+  unaddressed); 1 fabricated (a nonexistent `Verification_Gates.md`
+  naming inconsistency); 2 misreads following the same partial-quote
+  pattern as the 2026-07-21 Gemini instance — both ignored text
+  immediately adjacent to what they quoted that already resolves the
+  claimed issue; 2 adversarial-scenario findings, appropriately
+  reasoning-based rather than source-checkable. AP-017 updated with the
+  full record and an explicit open question for human governing
+  authority on whether this satisfies closure — not decided here.
+  Open Unknowns 13 → 14 (AP-029 added).
 
 - 2026-07-23: **v0.26 — Sidecar and Resolution Log relocated out of
   `Admin/Auditor_Protocols.md`, human-directed.** This entire file is
@@ -925,5 +972,4 @@ This becomes governance metadata rather than prose, auditable the same way Truth
 - 2026-06-24: **v0.14 — Full clean rewrite (Claude, Synthesizer/Auditor).** All v0.12 and v0.13 amendment blocks integrated into canonical body positions. Sidecar triage pass: AP-006 and AP-009 remain Resolved; AP-014 closed (Payment via Specification — Epistemic State Calibration Reference table added to Evidence Classification section); AP-015 discharged (Trajectory — v0→v1 transition item); AP-020 discharged (Trajectory — Golden Dataset deferred; AP-014 inline set sufficient for current scale); AP-012 and AP-016 reclassified In Progress → Vehicle (Human Interaction Point Doctrine constitutes doctrine layer; enforcement gap remains). Lessons Learned row added for AP-001 indicator rollback. Gate 3 status note added to Verification Gate Enforcement. Systemic Risk escalation status note updated. Open Unknowns decremented 15 → 12. Highest Risk updated to Critical (AP-012, AP-016).
 
 ---
-
 
