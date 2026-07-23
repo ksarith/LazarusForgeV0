@@ -3,7 +3,7 @@ LAZARUS FORGE — AUDIT HARNESS v16
 Single importable module. See run_audit() docstring for the current
 bootstrap cell and usage.
 
-Full version history: Admin/AUDIT_HARNESS_CHANGELOG.md
+Full version history: Archive/Logs/AUDIT_HARNESS_CHANGELOG.md
 """
 
 # ─────────────────────────────────────────────────────────────────────
@@ -457,7 +457,7 @@ def run_phase1(fetched_files, registry):
 # too aggressive. CURRENT_CYCLE incremented per session, not per year, so
 # every aging computation under it was ~26-50x more aggressive than the
 # ratified intent — confirmed 2026-07-16 (see Admin/Auditor_Protocols.md
-# Adversarial Audit Layer and Admin/Forge_Audit_Kit_Changelog.md's
+# Adversarial Audit Layer and Archive/Logs/Forge_Audit_Kit_Changelog.md's
 # 2026-07-14 Battery record for the discovery, and Admin/Governance_Charter.md's
 # GOV-013 drafting session for confirmation this was the actual intent
 # CURRENT_CYCLE was violating, not just an ambiguous term).
@@ -691,7 +691,7 @@ def run_audit(target_file, focus, extra_files=None, doc_status="Exploration",
     Full audit pipeline. v16: restructured from six Colab cells the
     operator pasted and edited in place each session into this one
     function — same checks, same order, no logic change. See
-    Automation/AUDIT_HARNESS_CHANGELOG.md for the restructure record.
+    Archive/Logs/AUDIT_HARNESS_CHANGELOG.md for the restructure record.
 
     Bootstrap cell (the only thing pasted into Colab now):
 
